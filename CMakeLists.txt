@@ -12,6 +12,11 @@ include_directories(${LTDL_INCLUDE_DIRS})
 find_package(PTHREAD REQUIRED)
 include_directories(${PTHREAD_INCLUDE_DIR})
 
+find_path(CPLEX_HEADER_PATH "cplex.h" PATH_SUFFIXES "ilcplex")
+find_path(GLPK_HEADER_PATH "glpk.h")
+find_path(GUROBI_HEADER_PATH "gurobi_c.h")
+find_path(XPRESS_HEADER_PATH "xprs.h")
+
 # Libraries to compile
 
 # cplex
@@ -23,10 +28,21 @@ include_directories(${PTHREAD_INCLUDE_DIR})
 #        libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fd53743b000)
 #        libc.so.6 => /lib64/libc.so.6 (0x00007fd5370bb000)
 #        /lib64/ld-linux-x86-64.so.2 (0x0000003036e00000)
-add_library(lazycplex SHARED lazy_cplex.c)
-target_link_libraries (lazycplex ${LTDL_LIBRARIES} ${PTHREAD_LIBRARIES})
-install(TARGETS lazycplex DESTINATION lib)
-install(FILES lazy_cplex.h DESTINATION include)
+# ldd -u libcplex121.so
+# Unused direct dependencies:
+#
+#         /lib64/libm.so.6
+#         /lib64/libgcc_s.so.1
+#         /lib64/libpthread.so.0
+if(CPLEX_HEADER_PATH-NOTFOUND)
+    message("Cplex header not found: skipping liblazycplex")
+else(CPLEX_HEADER_PATH-NOTFOUND)
+    include_directories(${CPLEX_HEADER_PATH})
+    add_library(lazycplex SHARED lazy_cplex.c)
+    target_link_libraries (lazycplex ${LTDL_LIBRARIES} ${PTHREAD_LIBRARIES})
+    install(TARGETS lazycplex DESTINATION lib)
+    install(FILES lazy_cplex.h DESTINATION include)
+endif(CPLEX_HEADER_PATH-NOTFOUND)
 
 # glpk
 # ldd /usr/lib/libglpk.so
@@ -38,20 +54,40 @@ install(FILES lazy_cplex.h DESTINATION include)
 #        libm.so.6 => /lib/libm.so.6 (0x00007fd1a0946000)
 #        libc.so.6 => /lib/libc.so.6 (0x00007fd1a05c2000)
 #        /lib64/ld-linux-x86-64.so.2 (0x00007fd1a1736000)
-add_library(lazyglpk SHARED lazy_glpk.c)
-target_link_libraries (lazyglpk ${LTDL_LIBRARIES})
-install(TARGETS lazyglpk DESTINATION lib)
-install(FILES lazy_glpk.h DESTINATION include)
+# ldd -u libglpk.so
+# Unused direct dependencies:
+#
+#         /usr/lib/libltdl.so.7
+#         /lib/libdl.so.2
+#         /lib/libz.so.1
+#         /usr/lib/libgmp.so.3
+#         /lib/libm.so.6
+if(GLPK_HEADER_PATH-NOTFOUND)
+    message("Glpk header not found: skipping liblazyglpk")
+else(GLPK_HEADER_PATH-NOTFOUND)
+    include_directories(${GLPK_HEADER_PATH})
+    add_library(lazyglpk SHARED lazy_glpk.c)
+    target_link_libraries (lazyglpk ${LTDL_LIBRARIES})
+    install(TARGETS lazyglpk DESTINATION lib)
+    install(FILES lazy_glpk.h DESTINATION include)
+endif(GLPK_HEADER_PATH-NOTFOUND)
 
 # gurobi
 # ldd libgurobi30.so
 #         linux-vdso.so.1 =>  (0x00007fffed59b000)
 #         libc.so.6 => /lib/libc.so.6 (0x00007f4bc129d000)
 #         /lib64/ld-linux-x86-64.so.2 (0x00007f4bc1c9a000)
-add_library(lazygurobi SHARED lazy_gurobi_c.c)
-target_link_libraries (lazyglpk ${LTDL_LIBRARIES})
-install(TARGETS lazygurobi DESTINATION lib)
-install(FILES lazy_gurobi_c.h DESTINATION include)
+# ldd -u /usr/local/lib/libgurobi30.so
+# Unused direct dependencies:
+if(GUROBI_HEADER_PATH-NOTFOUND)
+    message("Gurobi header not found: skipping liblazygurobi")
+else(GUROBI_HEADER_PATH-NOTFOUND)
+    include_directories(${GUROBI_HEADER_PATH})
+    add_library(lazygurobi SHARED lazy_gurobi_c.c)
+    target_link_libraries (lazyglpk ${LTDL_LIBRARIES})
+    install(TARGETS lazygurobi DESTINATION lib)
+    install(FILES lazy_gurobi_c.h DESTINATION include)
+endif(GUROBI_HEADER_PATH-NOTFOUND)
 
 # xpress
 # ldd libxprs.so
@@ -62,10 +98,21 @@ install(FILES lazy_gurobi_c.h DESTINATION include)
 #         libxprl.so.x7.0 => not found
 #         libc.so.6 => /lib64/libc.so.6 (0x00007f7ef07c2000)
 #         /lib64/ld-linux-x86-64.so.2 (0x0000003036e00000)
-add_library(lazyxprs SHARED lazy_xprs.c)
-target_link_libraries (lazyxprs ${LTDL_LIBRARIES} ${PTHREAD_LIBRARIES})
-install(TARGETS lazyxprs DESTINATION lib)
-install(FILES lazy_xprs.h DESTINATION include)
+# ldd -u /opt/xpressmp/lib/libxprs.so
+# Unused direct dependencies:
+#
+#         /lib64/libm.so.6
+#         /lib64/libpthread.so.0
+#         /lib64/librt.so.1
+if(XPRESS_HEADER_PATH-NOTFOUND)
+    message("Xpress header not found: skipping liblazyxprs")
+else(XPRESS_HEADER_PATH-NOTFOUND)
+    include_directories(${XPRESS_HEADER_PATH})
+    add_library(lazyxprs SHARED lazy_xprs.c)
+    target_link_libraries (lazyxprs ${LTDL_LIBRARIES} ${PTHREAD_LIBRARIES})
+    install(TARGETS lazyxprs DESTINATION lib)
+    install(FILES lazy_xprs.h DESTINATION include)
+endif(XPRESS_HEADER_PATH-NOTFOUND)
 
 # Install targets
 
@@ -88,5 +135,4 @@ set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libgcc1, libltdl-dev")
 # Fedora specific
 set(CPACK_RPM_PACKAGE_REQUIRES "libc6, libgcc1, libltdl-dev")
 
-# Fedora package
 INCLUDE(CPack)
