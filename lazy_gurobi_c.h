@@ -2,6 +2,7 @@
 #define LAZY_GUROBI_C_H
 
 #include <ltdl.h>
+#include "lazy_loading_status.h"
 
 /* handle to the library */
 lt_dlhandle __gurobi_c_handle;
@@ -9,13 +10,6 @@ lt_dlhandle __gurobi_c_handle;
 int load_gurobi_c_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
 int unload_gurobi_c_symbols();
-
-#define SYMBOL_LOAD_SUCCESS     0
-#define SYMBOL_LOAD_FAIL        1
-#define SYMBOL_MISSING          2
-#define SYMBOL_UNLOAD_SUCCESS   0
-#define SYMBOL_UNLOAD_FAIL      1
-
 
 #define GRBaddconstr (*__symbolic_GRBaddconstr)
 #define GRBaddconstrs (*__symbolic_GRBaddconstrs)

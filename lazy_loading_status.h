@@ -1,0 +1,10 @@
+#ifndef LAZY_LOADING_STATUS_H
+#define LAZY_LOADING_STATUS_H
+
+#define SYMBOL_LOAD_SUCCESS     0
+#define SYMBOL_LOAD_FAIL        1
+#define SYMBOL_MISSING          2
+#define SYMBOL_UNLOAD_SUCCESS   0
+#define SYMBOL_UNLOAD_FAIL      1
+
+#endif /* LAZY_LOADING_STATUS_H */
