@@ -3,6 +3,7 @@
 #define LAZY_XPRS_H
 
 #include <ltdl.h>
+#include "lazy_loading_status.h"
 
 /* handle to the library */
 lt_dlhandle __xprs_handle;
@@ -10,13 +11,6 @@ lt_dlhandle __xprs_handle;
 int load_xprs_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
 int unload_xprs_symbols();
-
-#define SYMBOL_LOAD_SUCCESS     0
-#define SYMBOL_LOAD_FAIL        1
-#define SYMBOL_MISSING          2
-#define SYMBOL_UNLOAD_SUCCESS   0
-#define SYMBOL_UNLOAD_FAIL      1
-
 
 #define XPRSaddcols (*__symbolic_XPRSaddcols)
 #define XPRSaddcuts (*__symbolic_XPRSaddcuts)

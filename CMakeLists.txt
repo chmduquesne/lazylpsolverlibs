@@ -84,7 +84,7 @@ endif(GLPK_HEADER_PATH)
 if(GUROBI_HEADER_PATH)
     include_directories(${GUROBI_HEADER_PATH})
     add_library(lazygurobi SHARED lazy_gurobi_c.c)
-    target_link_libraries (lazyglpk ${LTDL_LIBRARIES})
+    target_link_libraries (lazygurobi ${LTDL_LIBRARIES})
     install(TARGETS lazygurobi DESTINATION lib)
     install(FILES lazy_gurobi_c.h DESTINATION include)
 else(GUROBI_HEADER_PATH)
@@ -118,7 +118,10 @@ else(XPRESS_HEADER_PATH)
     set(XPRESS_HEADER_PATH)
 endif(XPRESS_HEADER_PATH)
 
-# Install targets
+# Last install target
+if (CPLEX_HEADER_PATH or GLPK_HEADER_PATH or GUROBI_HEADER_PATH or XPRESS_HEADER_PATH)
+    install(FILES lazy_loading_status.h DESTINATION include)
+endif (CPLEX_HEADER_PATH or GLPK_HEADER_PATH or GUROBI_HEADER_PATH or XPRESS_HEADER_PATH)
 
 # Packaging
 if(WIN32)
