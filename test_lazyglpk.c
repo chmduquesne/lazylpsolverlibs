@@ -1,13 +1,12 @@
-#include "lazy_glpk.h"
 #include "test_lazylibs.h"
+
+#ifdef COMPILED_WITH_GLPK_SUPPORT
+#include "lazy_glpk.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-/* sample.c */
-
-
-int solve(void) {
+int solve_glpk_example() {
     glp_prob *lp;
     int ia[1+1000], ja[1+1000];
     double ar[1+1000], z, x1, x2, x3;
@@ -51,9 +50,4 @@ int solve(void) {
     glp_delete_prob(lp);
     return 0;
 }
-
-int main(int argc, const char *argv[]) {
-    return test_lazysolver(&load_glpk_symbols, &solve, &unload_glpk_symbols);
-}
-
-/* eof */
+#endif
