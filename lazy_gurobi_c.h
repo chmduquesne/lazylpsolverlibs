@@ -2,7 +2,7 @@
 #define LAZY_GUROBI_C_H
 
 #include <ltdl.h>
-#include <lazy_loading_status.h>
+#include "lazy_loading_status.h"
 
 /* handle to the library */
 lt_dlhandle __gurobi_c_handle;
