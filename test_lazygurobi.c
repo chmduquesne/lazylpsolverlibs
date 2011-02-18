@@ -1,6 +1,9 @@
-#include "lazy_gurobi_c.h"
 #include "test_lazylibs.h"
 
+#ifdef COMPILED_WITH_GUROBI_SUPPORT
+#include "lazy_gurobi_c.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /* Copyright 2010, Gurobi Optimization, Inc. */
 
@@ -12,11 +15,8 @@
      x, y, z binary
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-
 int
-solve()
+solve_gurobi_example()
 {
   GRBenv   *env   = NULL;
   GRBmodel *model = NULL;
@@ -124,8 +124,4 @@ QUIT:
 
   return 0;
 }
-
-
-int main(int argc, const char *argv[]) {
-    return test_lazysolver(&load_gurobi_c_symbols, &solve, &unload_gurobi_c_symbols);
-}
+#endif

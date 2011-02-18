@@ -1,5 +1,7 @@
-#include "lazy_cplex.h"
 #include "test_lazylibs.h"
+
+#ifdef COMPILED_WITH_CPLEX_SUPPORT
+#include "lazy_cplex.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -23,7 +25,7 @@ static void
 
 
 int
-solve (int argc, char **argv)
+solve_cplex_example (int argc, char **argv)
 {
    /* Declare and allocate space for the variables and arrays where we
       will store the optimization results including the status, objective
@@ -449,9 +451,4 @@ TERMINATE:
    return (status);
 
 }  /* END populatebynonzero */
-
-int main(int argc, const char *argv[])
-{
-    return test_lazysolver(&load_cplex_symbols, &solve, &unload_cplex_symbols);
-}
-
+#endif

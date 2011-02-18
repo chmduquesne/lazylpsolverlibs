@@ -1,12 +1,23 @@
 
 #include "lazy_glpk.h"
 
+/* C does not support bool */
+#define bool int
+#define true 1
+#define false 0
+
 int load_glpk_symbols() {
     int res;
+    bool try_another;
+
+    try_another = true;
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    if (!(__glpk_handle = lt_dlopenext("libglpk"))) return SYMBOL_LOAD_FAIL;
+    if (try_another) try_another = !(__glpk_handle = lt_dlopenext("libglpk"));
+    if (try_another) try_another = !(__glpk_handle = lt_dlopenext("glpk"));
+
+    if (try_another) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 

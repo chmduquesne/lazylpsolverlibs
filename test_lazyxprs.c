@@ -1,6 +1,8 @@
+#include "test_lazylibs.h"
+
+#ifdef COMPILED_WITH_XPRESS_SUPPORT
 #include "lazy_xprs.h"
 #include <stdio.h>
-#include "test_lazylibs.h"
 
 /**************************************************************************************\
 * Name:        loadlp.c                                              Dash 20/03/2000   *
@@ -39,7 +41,7 @@ void XPRS_CC optimizermsg(XPRSprob prob, void* data, const char *sMsg,int nLen,i
 void errormsg(const char *sSubName,int nLineNo,int nErrorCode);
 
 
-int solve()
+int solve_xprs_example()
 {
    int nReturn;                            /* Return value of Optimizer subroutine */
    int nOptimizerVersion;                  /* Optimizer version number */
@@ -223,8 +225,4 @@ void errormsg(const char *sSubName,int nLineNo,int nErrCode)
    XPRSfree();
    exit(nErrCode);
 }
-
-int main(int argc, const char *argv[]) {
-    return test_lazysolver(&load_xprs_symbols, &solve, &unload_xprs_symbols);
-}
-
+#endif
