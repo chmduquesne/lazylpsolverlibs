@@ -1,11 +1,22 @@
 
+#include <stdio.h>
 #include "lazy_gurobi_c.h"
+
+/* C does not support bool, let's do it with macros */
+#define bool int
+#define true 1
+#define false 0
 
 int load_gurobi_c_symbols() {
     int res;
+    bool try_another;
+    try_another = true;
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
-    if (!(__gurobi_c_handle = lt_dlopenext("libgurobi_c"))) return SYMBOL_LOAD_FAIL;
+
+    try_another = !(__gurobi_c_handle = lt_dlopenext("libgurobi_c"));
+    if (try_another) try_another = !(__gurobi_c_handle = lt_dlopenext("gurobi_c"));
+    if (try_another) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 
@@ -110,6 +121,110 @@ int load_gurobi_c_symbols() {
 
     return res;
 }
+
+void print_gurobi_c_missing_symbols() {
+
+    if (!__symbolic_GRBaddconstr) printf("GRBaddconstr\n");
+    if (!__symbolic_GRBaddconstrs) printf("GRBaddconstrs\n");
+    if (!__symbolic_GRBaddrangeconstr) printf("GRBaddrangeconstr\n");
+    if (!__symbolic_GRBaddrangeconstrs) printf("GRBaddrangeconstrs\n");
+    if (!__symbolic_GRBaddsos) printf("GRBaddsos\n");
+    if (!__symbolic_GRBaddvar) printf("GRBaddvar\n");
+    if (!__symbolic_GRBaddvars) printf("GRBaddvars\n");
+    if (!__symbolic_GRBcbcut) printf("GRBcbcut\n");
+    if (!__symbolic_GRBcbget) printf("GRBcbget\n");
+    if (!__symbolic_GRBcbsolution) printf("GRBcbsolution\n");
+    if (!__symbolic_GRBcheckmodel) printf("GRBcheckmodel\n");
+    if (!__symbolic_GRBchgcoeffs) printf("GRBchgcoeffs\n");
+    if (!__symbolic_GRBcomputeIIS) printf("GRBcomputeIIS\n");
+    if (!__symbolic_GRBconverttofixed) printf("GRBconverttofixed\n");
+    if (!__symbolic_GRBcopymodel) printf("GRBcopymodel\n");
+    if (!__symbolic_GRBdelconstrs) printf("GRBdelconstrs\n");
+    if (!__symbolic_GRBdelsos) printf("GRBdelsos\n");
+    if (!__symbolic_GRBdelvars) printf("GRBdelvars\n");
+    if (!__symbolic_GRBfeasibility) printf("GRBfeasibility\n");
+    if (!__symbolic_GRBfixedmodel) printf("GRBfixedmodel\n");
+    if (!__symbolic_GRBfreeenv) printf("GRBfreeenv\n");
+    if (!__symbolic_GRBfreemodel) printf("GRBfreemodel\n");
+    if (!__symbolic_GRBgetattrinfo) printf("GRBgetattrinfo\n");
+    if (!__symbolic_GRBgetcallbackfunc) printf("GRBgetcallbackfunc\n");
+    if (!__symbolic_GRBgetcbwhatinfo) printf("GRBgetcbwhatinfo\n");
+    if (!__symbolic_GRBgetcharattrarray) printf("GRBgetcharattrarray\n");
+    if (!__symbolic_GRBgetcharattrelement) printf("GRBgetcharattrelement\n");
+    if (!__symbolic_GRBgetcharattrlist) printf("GRBgetcharattrlist\n");
+    if (!__symbolic_GRBgetcoeff) printf("GRBgetcoeff\n");
+    if (!__symbolic_GRBgetconstrs) printf("GRBgetconstrs\n");
+    if (!__symbolic_GRBgetdblattr) printf("GRBgetdblattr\n");
+    if (!__symbolic_GRBgetdblattrarray) printf("GRBgetdblattrarray\n");
+    if (!__symbolic_GRBgetdblattrelement) printf("GRBgetdblattrelement\n");
+    if (!__symbolic_GRBgetdblattrlist) printf("GRBgetdblattrlist\n");
+    if (!__symbolic_GRBgetdblparam) printf("GRBgetdblparam\n");
+    if (!__symbolic_GRBgetdblparaminfo) printf("GRBgetdblparaminfo\n");
+    if (!__symbolic_GRBgetenv) printf("GRBgetenv\n");
+    if (!__symbolic_GRBgeterrormsg) printf("GRBgeterrormsg\n");
+    if (!__symbolic_GRBgetintattr) printf("GRBgetintattr\n");
+    if (!__symbolic_GRBgetintattrarray) printf("GRBgetintattrarray\n");
+    if (!__symbolic_GRBgetintattrelement) printf("GRBgetintattrelement\n");
+    if (!__symbolic_GRBgetintattrlist) printf("GRBgetintattrlist\n");
+    if (!__symbolic_GRBgetintparam) printf("GRBgetintparam\n");
+    if (!__symbolic_GRBgetintparaminfo) printf("GRBgetintparaminfo\n");
+    if (!__symbolic_GRBgetlogfile) printf("GRBgetlogfile\n");
+    if (!__symbolic_GRBgetmerrormsg) printf("GRBgetmerrormsg\n");
+    if (!__symbolic_GRBgetnumparams) printf("GRBgetnumparams\n");
+    if (!__symbolic_GRBgetparamname) printf("GRBgetparamname\n");
+    if (!__symbolic_GRBgetparamtype) printf("GRBgetparamtype\n");
+    if (!__symbolic_GRBgetsos) printf("GRBgetsos\n");
+    if (!__symbolic_GRBgetstrattr) printf("GRBgetstrattr\n");
+    if (!__symbolic_GRBgetstrattrarray) printf("GRBgetstrattrarray\n");
+    if (!__symbolic_GRBgetstrattrelement) printf("GRBgetstrattrelement\n");
+    if (!__symbolic_GRBgetstrattrlist) printf("GRBgetstrattrlist\n");
+    if (!__symbolic_GRBgetstrparam) printf("GRBgetstrparam\n");
+    if (!__symbolic_GRBgetstrparaminfo) printf("GRBgetstrparaminfo\n");
+    if (!__symbolic_GRBgetvars) printf("GRBgetvars\n");
+    if (!__symbolic_GRBiismodel) printf("GRBiismodel\n");
+    if (!__symbolic_GRBloadenv) printf("GRBloadenv\n");
+    if (!__symbolic_GRBloadmodel) printf("GRBloadmodel\n");
+    if (!__symbolic_GRBmsg) printf("GRBmsg\n");
+    if (!__symbolic_GRBnewmodel) printf("GRBnewmodel\n");
+    if (!__symbolic_GRBoptimize) printf("GRBoptimize\n");
+    if (!__symbolic_GRBplatform) printf("GRBplatform\n");
+    if (!__symbolic_GRBpresolvemodel) printf("GRBpresolvemodel\n");
+    if (!__symbolic_GRBread) printf("GRBread\n");
+    if (!__symbolic_GRBreadmodel) printf("GRBreadmodel\n");
+    if (!__symbolic_GRBreadparams) printf("GRBreadparams\n");
+    if (!__symbolic_GRBrelaxmodel) printf("GRBrelaxmodel\n");
+    if (!__symbolic_GRBresetmodel) printf("GRBresetmodel\n");
+    if (!__symbolic_GRBresetparams) printf("GRBresetparams\n");
+    if (!__symbolic_GRBsetcallbackfunc) printf("GRBsetcallbackfunc\n");
+    if (!__symbolic_GRBsetcharattrarray) printf("GRBsetcharattrarray\n");
+    if (!__symbolic_GRBsetcharattrelement) printf("GRBsetcharattrelement\n");
+    if (!__symbolic_GRBsetcharattrlist) printf("GRBsetcharattrlist\n");
+    if (!__symbolic_GRBsetdblattr) printf("GRBsetdblattr\n");
+    if (!__symbolic_GRBsetdblattrarray) printf("GRBsetdblattrarray\n");
+    if (!__symbolic_GRBsetdblattrelement) printf("GRBsetdblattrelement\n");
+    if (!__symbolic_GRBsetdblattrlist) printf("GRBsetdblattrlist\n");
+    if (!__symbolic_GRBsetdblparam) printf("GRBsetdblparam\n");
+    if (!__symbolic_GRBsetintattr) printf("GRBsetintattr\n");
+    if (!__symbolic_GRBsetintattrarray) printf("GRBsetintattrarray\n");
+    if (!__symbolic_GRBsetintattrelement) printf("GRBsetintattrelement\n");
+    if (!__symbolic_GRBsetintattrlist) printf("GRBsetintattrlist\n");
+    if (!__symbolic_GRBsetintparam) printf("GRBsetintparam\n");
+    if (!__symbolic_GRBsetlogfile) printf("GRBsetlogfile\n");
+    if (!__symbolic_GRBsetsignal) printf("GRBsetsignal\n");
+    if (!__symbolic_GRBsetstrattr) printf("GRBsetstrattr\n");
+    if (!__symbolic_GRBsetstrattrarray) printf("GRBsetstrattrarray\n");
+    if (!__symbolic_GRBsetstrattrelement) printf("GRBsetstrattrelement\n");
+    if (!__symbolic_GRBsetstrattrlist) printf("GRBsetstrattrlist\n");
+    if (!__symbolic_GRBsetstrparam) printf("GRBsetstrparam\n");
+    if (!__symbolic_GRBstrongbranch) printf("GRBstrongbranch\n");
+    if (!__symbolic_GRBterminate) printf("GRBterminate\n");
+    if (!__symbolic_GRBupdatemodel) printf("GRBupdatemodel\n");
+    if (!__symbolic_GRBversion) printf("GRBversion\n");
+    if (!__symbolic_GRBwrite) printf("GRBwrite\n");
+    if (!__symbolic_GRBwriteparams) printf("GRBwriteparams\n");
+
+}
+
 int unload_gurobi_c_symbols() {
     /* unload library */
     if (lt_dlclose (__gurobi_c_handle) != 0) return SYMBOL_UNLOAD_FAIL;

@@ -1,9 +1,8 @@
-
 #ifndef LAZY_CPLEX_H
 #define LAZY_CPLEX_H
 
 #include <ltdl.h>
-#include "lazy_loading_status.h"
+#include <lazy_loading_status.h>
 
 /* handle to the library */
 lt_dlhandle __cplex_handle;
@@ -11,6 +10,8 @@ lt_dlhandle __cplex_handle;
 int load_cplex_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
 int unload_cplex_symbols();
+/* prints what symbols ar missing */
+void print_cplex_missing_symbols();
 
 #define CPXcreateprob (*__symbolic_CPXcreateprob)
 #define CPXcloneprob (*__symbolic_CPXcloneprob)
@@ -529,10 +530,8 @@ int unload_cplex_symbols();
 #define CPXgetxqxax (*__symbolic_CPXgetxqxax)
 #define CPXEchgqcname (*__symbolic_CPXEchgqcname)
 
-/* This is me trying to workaround __declspec */
-#define BUILD_CPXSTATIC
+
 #include <ilcplex/cplex.h>
-#undef BUILD_CPXSTATIC
 
 #endif /* LAZY_CPLEX_H */
 
