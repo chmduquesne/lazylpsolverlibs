@@ -529,8 +529,10 @@ int unload_cplex_symbols();
 #define CPXgetxqxax (*__symbolic_CPXgetxqxax)
 #define CPXEchgqcname (*__symbolic_CPXEchgqcname)
 
-
+/* This is me trying to workaround __declspec */
+#define BUILD_CPXSTATIC
 #include <ilcplex/cplex.h>
+#undef BUILD_CPXSTATIC
 
 #endif /* LAZY_CPLEX_H */
 
