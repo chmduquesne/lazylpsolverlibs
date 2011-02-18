@@ -1,9 +1,8 @@
-
 #ifndef LAZY_GLPK_H
 #define LAZY_GLPK_H
 
 #include <ltdl.h>
-#include "lazy_loading_status.h"
+#include <lazy_loading_status.h>
 
 /* handle to the library */
 lt_dlhandle __glpk_handle;
@@ -11,6 +10,8 @@ lt_dlhandle __glpk_handle;
 int load_glpk_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
 int unload_glpk_symbols();
+/* prints what symbols ar missing */
+void print_glpk_missing_symbols();
 
 #define glp_add_arc (*__symbolic_glp_add_arc)
 #define glp_add_cols (*__symbolic_glp_add_cols)

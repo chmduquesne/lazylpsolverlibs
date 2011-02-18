@@ -16,6 +16,6 @@ int solve_gurobi_example();
 int solve_glpk_example();
 #endif
 
-int test_lazysolver(int (*load)(), int(*solve)(), int (*unload)());
+int test_lazysolver(int (*load)(), int(*solve)(), void(*print_missing)(), int (*unload)());
 
 #endif /* TEST_LAZYLIBS_H */
