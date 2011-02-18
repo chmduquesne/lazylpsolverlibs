@@ -36,11 +36,15 @@ find_path(XPRESS_HEADER_PATH "xprs.h")
 #         /lib64/libpthread.so.0
 if(CPLEX_HEADER_PATH)
     set(COMPILED_WITH_CPLEX_SUPPORT 1)
+    add_definitions( -DBUILD_CPXSTATIC )
     include_directories(${CPLEX_HEADER_PATH})
     add_library(lazycplex SHARED lazy_cplex.c)
     target_link_libraries (lazycplex ${LTDL_LIBRARIES} ${PTHREAD_LIBRARIES})
     install(TARGETS lazycplex DESTINATION lib)
     install(FILES lazy_cplex.h DESTINATION include)
+    add_executable(test_lazycplex test_lazycplex.c test_lazylibs.c)
+    target_link_libraries (test_lazycplex lazycplex)
+    install(TARGETS test_lazycplex DESTINATION bin)
 else(CPLEX_HEADER_PATH)
     message("Cplex header not found: skipping liblazycplex")
     set(CPLEX_HEADER_PATH)
@@ -65,12 +69,14 @@ endif(CPLEX_HEADER_PATH)
 #         /usr/lib/libgmp.so.3
 #         /lib/libm.so.6
 if(GLPK_HEADER_PATH)
-    set(COMPILED_WITH_GLPK_SUPPORT 1)
     include_directories(${GLPK_HEADER_PATH})
     add_library(lazyglpk SHARED lazy_glpk.c)
     target_link_libraries (lazyglpk ${LTDL_LIBRARIES})
     install(TARGETS lazyglpk DESTINATION lib)
     install(FILES lazy_glpk.h DESTINATION include)
+    add_executable(test_lazyglpk test_lazyglpk.c test_lazylibs.c)
+    target_link_libraries (test_lazyglpk lazyglpk)
+    install(TARGETS test_lazyglpk DESTINATION bin)
 else(GLPK_HEADER_PATH)
     message("Glpk header not found: skipping liblazyglpk")
     set(GLPK_HEADER_PATH)
@@ -84,12 +90,14 @@ endif(GLPK_HEADER_PATH)
 # ldd -u /usr/local/lib/libgurobi30.so
 # Unused direct dependencies:
 if(GUROBI_HEADER_PATH)
-    set(COMPILED_WITH_GUROBI_SUPPORT 1)
     include_directories(${GUROBI_HEADER_PATH})
     add_library(lazygurobi SHARED lazy_gurobi_c.c)
     target_link_libraries (lazygurobi ${LTDL_LIBRARIES})
     install(TARGETS lazygurobi DESTINATION lib)
     install(FILES lazy_gurobi_c.h DESTINATION include)
+    add_executable(test_lazygurobi test_lazygurobi.c test_lazylibs.c)
+    target_link_libraries (test_lazygurobi lazygurobi)
+    install(TARGETS test_lazygurobi DESTINATION bin)
 else(GUROBI_HEADER_PATH)
     message("Gurobi header not found: skipping liblazygurobi")
     set(GUROBI_HEADER_PATH)
@@ -111,12 +119,14 @@ endif(GUROBI_HEADER_PATH)
 #         /lib64/libpthread.so.0
 #         /lib64/librt.so.1
 if(XPRESS_HEADER_PATH)
-    set(COMPILED_WITH_XPRESS_SUPPORT 1)
     include_directories(${XPRESS_HEADER_PATH})
     add_library(lazyxprs SHARED lazy_xprs.c)
     target_link_libraries (lazyxprs ${LTDL_LIBRARIES} ${PTHREAD_LIBRARIES})
     install(TARGETS lazyxprs DESTINATION lib)
     install(FILES lazy_xprs.h DESTINATION include)
+    add_executable(test_lazyxprs test_lazyxprs.c test_lazylibs.c)
+    target_link_libraries (test_lazyxprs lazyxprs)
+    install(TARGETS test_lazyxprs DESTINATION bin)
 else(XPRESS_HEADER_PATH)
     message("Xpress header not found: skipping liblazyxprs")
     set(XPRESS_HEADER_PATH)
@@ -124,25 +134,8 @@ endif(XPRESS_HEADER_PATH)
 
 # Last install target
 if(CPLEX_HEADER_PATH OR GLPK_HEADER_PATH OR GUROBI_HEADER_PATH OR XPRESS_HEADER_PATH)
-    configure_file ("config.h.in" "config.h")
-    include_directories("${PROJECT_BINARY_DIR}")
     install(FILES lazy_loading_status.h DESTINATION include)
-
-    add_executable(lazylpsolverlibs
-        test_lazygurobi.c
-        test_lazycplex.c
-        test_lazyglpk.c
-        test_lazyxprs.c
-        test_lazylibs.c)
-
-    target_link_libraries (lazylpsolverlibs lazycplex)
-    target_link_libraries (lazylpsolverlibs lazyxprs)
-    target_link_libraries (lazylpsolverlibs lazygurobi)
-    target_link_libraries (lazylpsolverlibs lazyglpk)
-
-    install(TARGETS lazylpsolverlibs DESTINATION bin)
 endif(CPLEX_HEADER_PATH OR GLPK_HEADER_PATH OR GUROBI_HEADER_PATH OR XPRESS_HEADER_PATH)
-
 
 # Packaging
 if(WIN32)
