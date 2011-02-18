@@ -45,9 +45,7 @@ int solve()
    int nOptimizerVersion;                  /* Optimizer version number */
    char sProblem1[]  = "lp";               /* First problem name */
    char sProblem2[]  = "revised";          /* Second problem name */
-   char sLogFile[]   = "loadlp.log";       /* Log file name */
    double dObjValue;                       /* Objective value */
-   int nExpiry;
    /* Store the problem */
 
    /* Row data */
@@ -106,61 +104,61 @@ int solve()
    nReturn=XPRSsetcbmessage(probg,optimizermsg,NULL);
 
    /* Get and display the Optimizer version number */
-   if (nReturn=XPRSgetintcontrol(probg,XPRS_VERSION,&nOptimizerVersion)) errormsg("XPRSgetintcontrol",__LINE__,nReturn);
+   if ((nReturn=XPRSgetintcontrol(probg,XPRS_VERSION,&nOptimizerVersion))) errormsg("XPRSgetintcontrol",__LINE__,nReturn);
    printf("Xpress Optimiser Subroutine Library Release %.2f\n\n",
       (float)nOptimizerVersion/100);
 
    /*** Load and solve the problem ***/
 
    /* Load the matrix into Optimizer */
-   if (nReturn=XPRSloadlp(probg,sProblem1,nCol,nRow,sRowType,dRHS,dRange,dObj,nColStart,nColElem,
-      nRowInd,dMatElem,dLowerBd,dUpperBd)) errormsg("XPRSloadlp",__LINE__,nReturn);
+   if ((nReturn=XPRSloadlp(probg,sProblem1,nCol,nRow,sRowType,dRHS,dRange,dObj,nColStart,nColElem,
+      nRowInd,dMatElem,dLowerBd,dUpperBd))) errormsg("XPRSloadlp",__LINE__,nReturn);
 
    /* Add row names */
-   if (nReturn=XPRSaddnames(probg,1,sRowName,0,nRow-1)) errormsg("XPRSaddnames",__LINE__,nReturn);
+   if ((nReturn=XPRSaddnames(probg,1,sRowName,0,nRow-1))) errormsg("XPRSaddnames",__LINE__,nReturn);
 
    /* Add column names */
-   if (nReturn=XPRSaddnames(probg,2,sColName,0,nCol-1)) errormsg("XPRSaddnames",__LINE__,nReturn);
+   if ((nReturn=XPRSaddnames(probg,2,sColName,0,nCol-1))) errormsg("XPRSaddnames",__LINE__,nReturn);
 
    /* Output the matrix */
    if ( ! istudent ) {
-     if (nReturn=XPRSwriteprob(probg,sProblem1,"")) errormsg("XPRSwriteprob",__LINE__,nReturn);
+     if ((nReturn=XPRSwriteprob(probg,sProblem1,""))) errormsg("XPRSwriteprob",__LINE__,nReturn);
      printf("Matrix file %s.mat has been created.\n",sProblem1);
    }
 
    /* Solve the LP problem */
-   if (nReturn=XPRSmaxim(probg,"")) errormsg("XPRSmaxim",__LINE__,nReturn);
+   if ((nReturn=XPRSmaxim(probg,""))) errormsg("XPRSmaxim",__LINE__,nReturn);
 
    /* Get and display the value of the objective function */
-   if (nReturn=XPRSgetdblattrib(probg,XPRS_LPOBJVAL,&dObjValue)) errormsg("XPRSgetdblattrib",__LINE__,nReturn);
+   if ((nReturn=XPRSgetdblattrib(probg,XPRS_LPOBJVAL,&dObjValue))) errormsg("XPRSgetdblattrib",__LINE__,nReturn);
    printf("The optimal objective value is %g.\n\n",dObjValue);
 
    /*** Add the extra constraint and solve again ***/
 
    /* Add new row */
-   if (nReturn=XPRSaddrows(probg,nNewRow,nNewElem,sNewRowType,dNewRHS,NULL,nNewRowStart,nNewColInd,
-      dNewRowElem)) errormsg("XPRSaddrows",__LINE__,nReturn);
+   if ((nReturn=XPRSaddrows(probg,nNewRow,nNewElem,sNewRowType,dNewRHS,NULL,nNewRowStart,nNewColInd,
+      dNewRowElem))) errormsg("XPRSaddrows",__LINE__,nReturn);
 
    /* Add new row name */
-   if (nReturn=XPRSaddnames(probg,1,sNewRowName,nRow,nRow)) errormsg("XPRSaddnames",__LINE__,nReturn);
+   if ((nReturn=XPRSaddnames(probg,1,sNewRowName,nRow,nRow))) errormsg("XPRSaddnames",__LINE__,nReturn);
 
    /* Output the revised matrix */
    if ( ! istudent ) {
-     if (nReturn=XPRSwriteprob(probg,sProblem2,"")) errormsg("XPRSwriteprob",__LINE__,nReturn);
+     if ((nReturn=XPRSwriteprob(probg,sProblem2,""))) errormsg("XPRSwriteprob",__LINE__,nReturn);
      printf("Matrix file %s.mat has been created.\n",sProblem2);
    }
 
    /* Solve with dual - since the revised problem inherits dual feasibility
       from the original */
-   if (nReturn=XPRSmaxim(probg,"d")) errormsg("XPRSmaxim",__LINE__,nReturn);
+   if ((nReturn=XPRSmaxim(probg,"d"))) errormsg("XPRSmaxim",__LINE__,nReturn);
 
    /* Get and display the value of the objective function */
-   if (nReturn=XPRSgetdblattrib(probg,XPRS_LPOBJVAL,&dObjValue)) errormsg("XPRSgetdblattrib",__LINE__,nReturn);
+   if ((nReturn=XPRSgetdblattrib(probg,XPRS_LPOBJVAL,&dObjValue))) errormsg("XPRSgetdblattrib",__LINE__,nReturn);
    printf("The revised optimal objective value is %g.\n\n",dObjValue);
 
    /* Free memory, close files */
-   if (nReturn=XPRSdestroyprob(probg)) errormsg("XPRSdestroyprob",__LINE__,nReturn);
-   if (nReturn=XPRSfree()) errormsg("XPRSfree",__LINE__,nReturn);
+   if ((nReturn=XPRSdestroyprob(probg))) errormsg("XPRSdestroyprob",__LINE__,nReturn);
+   if ((nReturn=XPRSfree())) errormsg("XPRSfree",__LINE__,nReturn);
 
    return 0;
 }

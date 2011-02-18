@@ -28,7 +28,6 @@ solve()
   char      vtype[3];
   int       optimstatus;
   double    objval;
-  int       zero = 0;
 
   /* Create environment */
 
