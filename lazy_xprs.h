@@ -2,7 +2,7 @@
 #define LAZY_XPRS_H
 
 #include <ltdl.h>
-#include <lazy_loading_status.h>
+#include "lazy_loading_status.h"
 
 /* handle to the library */
 lt_dlhandle __xprs_handle;
