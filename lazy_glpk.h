@@ -344,7 +344,6 @@ void print_glpk_missing_symbols();
 #define glp_write_prob (*__symbolic_glp_write_prob)
 #define glp_write_sol (*__symbolic_glp_write_sol)
 
-
 #include <glpk.h>
 
 #endif /* LAZY_GLPK_H */
