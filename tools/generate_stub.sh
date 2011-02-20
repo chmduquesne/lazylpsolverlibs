@@ -25,7 +25,7 @@ echo "#ifndef LAZY_${capitalized_name}_H
 #define LAZY_${capitalized_name}_H
 
 #include <ltdl.h>
-#include <lazy_loading_status.h>
+#include \"lazy_loading_status.h\"
 
 /* handle to the library */
 lt_dlhandle __${clean_name}_handle;
@@ -37,17 +37,19 @@ int unload_${clean_name}_symbols();
 void print_${clean_name}_missing_symbols();
 " >> $lazy_header
 
+
 for i in $symbols; do
     echo "#define $i (*__symbolic_$i)" >> $lazy_header
 done
-echo "
 
+echo "
 #include <${include}${stubbed_header}>
 
 #endif /* LAZY_${capitalized_name}_H */
 " >> $lazy_header
 
 echo "Generating C file"
+
 echo "
 #include <stdio.h>
 #include \"$lazy_header\"
@@ -80,7 +82,7 @@ echo "
 void print_${clean_name}_missing_symbols() {
 " >> ${lazy_cfile}
 for i in $symbols; do
-    echo "    if (!__symbolic_$i) printf(\"$i\\\n\");" >> $lazy_cfile
+    echo "    if (!__symbolic_$i) printf(\"$i\\n\");" >> $lazy_cfile
 done
 echo "
 }
