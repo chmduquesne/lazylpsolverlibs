@@ -179,13 +179,17 @@ endif(WIN32)
 # General packaging settings
 set(CPACK_PACKAGE_SUMMARY "set of libraries allowing to load lp solvers lazily")
 set(CPACK_PACKAGE_NAME "lazylpsolverlibs")
-set(CPACK_PACKAGE_VERSION "1")
+set(CPACK_PACKAGE_VERSION "0.0.1")
 set(CPACK_PACKAGE_CONTACT "Christophe-Marie Duquesne <chm.duquesne@gmail.com>")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
 
 # Debian specific
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libgcc1, libltdl-dev")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libltdl-dev")
 
 # Fedora specific
-set(CPACK_RPM_PACKAGE_REQUIRES "libc6, libgcc1, libltdl-dev")
+set(CPACK_RPM_PACKAGE_REQUIRES "libltdl-dev")
+
+# Windows specific
+set(CPACK_NSIS_MODIFY_PATH ON)
 
 INCLUDE(CPack)

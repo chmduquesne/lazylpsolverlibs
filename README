@@ -1,0 +1,38 @@
+LAZYLPSOLVERLIBS README
+=======================
+
+OVERVIEW
+========
+lazylpsolverlibs intends to give you runtime library loading access to
+various commercial lp solvers.
+
+PROJECT PAGE
+============
+lazylpsolverlibs is hosted at https://code.google.com/p/lazylpsolverlibs/
+
+DEPENDENCIES
+============
+- libltdl
+- libpthread
+
+INSTALLATION
+============
+Read the INSTALL File
+
+TESTING
+=======
+Run the lazylpsolverlibs executable
+
+USING
+=====
+Look at test_lazy{solver}.c, or take inspiration from the host page, which
+gives a pretty detailed explanation for glpk (the same applies for every
+solvers).
+
+ADDING TESTS
+============
+Tests should be added modifying test_lazy{solver}.c
+
+BUGS
+====
+Report them to <chm.duquesne@gmail.com>
