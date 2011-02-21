@@ -14,8 +14,8 @@ int load_gurobi_c_symbols() {
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    try_another = !(__gurobi_c_handle = lt_dlopenext("libgurobi_c"));
-    if (try_another) try_another = !(__gurobi_c_handle = lt_dlopenext("gurobi_c"));
+    try_another = !(__gurobi_c_handle = lt_dlopenext("libgurobi30"));
+    if (try_another) try_another = !(__gurobi_c_handle = lt_dlopenext("gurobi30"));
     if (try_another) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
