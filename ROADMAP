@@ -1,0 +1,9 @@
+GOALS
+=====
+- Get feedback that this mechanism works for every solvers
+- Be integrated in various libraries
+
+WORK PLANNED
+============
+- Contact libraries authors and tell them about lazylpsolverlibs
+- Integrate it in their libraries

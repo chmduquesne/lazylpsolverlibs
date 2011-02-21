@@ -56,6 +56,8 @@ int test_lazysolver(int (*load)(), int(*solve)(), void (*print_missing)(), int (
 int main(int argc, const char *argv[])
 {
     char buffer[256];
+    fprintf(stdout, "Will now test support for various solvers. Add their libraries in the library path if you don't detect any (PATH on windows, LD_LIBRARY_PATH on linux)\n\n");
+
     fprintf(stdout, "\nTesting cplex support...\n");
 #ifdef COMPILED_WITH_CPLEX_SUPPORT
     test_lazysolver(&load_cplex_symbols,

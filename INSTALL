@@ -1,0 +1,13 @@
+Building
+========
+
+1 - Download and install cmake
+2 - Specify the header path to each solver using the cmake gui
+3 - Choose a directory to build the program
+4 - Build
+
+Installing
+==========
+
+You can either build the program and then type "make install", or directly
+install one of the precompiled packages.
