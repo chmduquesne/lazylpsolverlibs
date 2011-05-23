@@ -514,3 +514,4 @@ CPXqconstrslackfromx
 CPXgetqconstrinfeas
 CPXgetxqxax
 CPXEchgqcname
+CPXsetstaringsol

@@ -529,6 +529,7 @@ void print_cplex_missing_symbols();
 #define CPXgetqconstrinfeas (*__symbolic_CPXgetqconstrinfeas)
 #define CPXgetxqxax (*__symbolic_CPXgetxqxax)
 #define CPXEchgqcname (*__symbolic_CPXEchgqcname)
+#define CPXsetstaringsol (*__symbolic_CPXsetstaringsol)
 
 
 #include <ilcplex/cplex.h>
