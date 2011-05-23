@@ -14,13 +14,10 @@
 /* Include declaration for functions at end of program */
 
 static int
-   populatebyrow     (CPXENVptr env, CPXLPptr lp),
-   populatebycolumn  (CPXENVptr env, CPXLPptr lp),
-   populatebynonzero (CPXENVptr env, CPXLPptr lp);
+   populatebyrow     (CPXENVptr env, CPXLPptr lp);
 
 static void
-   free_and_null     (char **ptr),
-   usage             (char *progname);
+   free_and_null     (char **ptr);
 
 
 
@@ -45,15 +42,6 @@ solve_cplex_example (int argc, char **argv)
    int           status = 0;
    int           i, j;
    int           cur_numrows, cur_numcols;
-
-   /* Check the command line arguments */
-
-   if (( argc != 2 )                         ||
-       ( argv[1][0] != '-' )                 ||
-       ( strchr ("rcn", argv[1][1]) == NULL )   ) {
-      usage (argv[0]);
-      goto TERMINATE;
-   }
 
    /* Initialize the CPLEX environment */
 
@@ -112,17 +100,7 @@ solve_cplex_example (int argc, char **argv)
       problems, consider setting the row, column and nonzero growth
       parameters before performing this task. */
 
-   switch (argv[1][1]) {
-      case 'r':
-         status = populatebyrow (env, lp);
-         break;
-      case 'c':
-         status = populatebycolumn (env, lp);
-         break;
-      case 'n':
-         status = populatebynonzero (env, lp);
-         break;
-   }
+   status = populatebyrow (env, lp);
 
    if ( status ) {
       fprintf (stderr, "Failed to populate problem.\n");
@@ -164,29 +142,6 @@ solve_cplex_example (int argc, char **argv)
       fprintf (stderr, "Failed to obtain solution.\n");
       goto TERMINATE;
    }
-
-   /* Write the output to the screen. */
-
-   printf ("\nSolution status = %d\n", solstat);
-   printf ("Solution value  = %f\n\n", objval);
-
-   for (i = 0; i < cur_numrows; i++) {
-      printf ("Row %d:  Slack = %10f  Pi = %10f\n", i, slack[i], pi[i]);
-   }
-
-   for (j = 0; j < cur_numcols; j++) {
-      printf ("Column %d:  Value = %10f  Reduced cost = %10f\n",
-              j, x[j], dj[j]);
-   }
-
-   /* Finally, write a copy of the problem to a file. */
-
-   status = CPXwriteprob (env, lp, "lpex1.lp", NULL);
-   if ( status ) {
-      fprintf (stderr, "Failed to write LP to disk.\n");
-      goto TERMINATE;
-   }
-
 
 TERMINATE:
 
@@ -240,18 +195,6 @@ free_and_null (char **ptr)
    }
 } /* END free_and_null */
 
-
-
-static void
-usage (char *progname)
-{
-   fprintf (stderr,"Usage: %s -X\n", progname);
-   fprintf (stderr,"   where X is one of the following options: \n");
-   fprintf (stderr,"      r          generate problem by row\n");
-   fprintf (stderr,"      c          generate problem by column\n");
-   fprintf (stderr,"      n          generate problem by nonzero\n");
-   fprintf (stderr," Exiting...\n");
-} /* END usage */
 
 
 /* These functions all populate the problem with data for the following
@@ -327,128 +270,5 @@ TERMINATE:
 
 
 
-/* To populate by column, we first create the rows, and then add the
-   columns.  */
 
-static int
-populatebycolumn (CPXENVptr env, CPXLPptr lp)
-{
-   int      status    = 0;
-   double   obj[NUMCOLS];
-   double   lb[NUMCOLS];
-   double   ub[NUMCOLS];
-   char     *colname[NUMCOLS];
-   int      matbeg[NUMCOLS];
-   int      matind[NUMNZ];
-   double   matval[NUMNZ];
-   double   rhs[NUMROWS];
-   char     sense[NUMROWS];
-   char     *rowname[NUMROWS];
-
-   CPXchgobjsen (env, lp, CPX_MAX);  /* Problem is maximization */
-
-   /* Now create the new rows.  First, populate the arrays. */
-
-   rowname[0] = "c1";
-   sense[0]   = 'L';
-   rhs[0]     = 20.0;
-
-   rowname[1] = "c2";
-   sense[1]   = 'L';
-   rhs[1]     = 30.0;
-
-   status = CPXnewrows (env, lp, NUMROWS, rhs, sense, NULL, rowname);
-   if ( status )   goto TERMINATE;
-
-   /* Now add the new columns.  First, populate the arrays. */
-
-       obj[0] = 1.0;      obj[1] = 2.0;           obj[2] = 3.0;
-
-    matbeg[0] = 0;     matbeg[1] = 2;          matbeg[2] = 4;
-
-    matind[0] = 0;     matind[2] = 0;          matind[4] = 0;
-    matval[0] = -1.0;  matval[2] = 1.0;        matval[4] = 1.0;
-
-    matind[1] = 1;     matind[3] = 1;          matind[5] = 1;
-    matval[1] = 1.0;   matval[3] = -3.0;       matval[5] = 1.0;
-
-        lb[0] = 0.0;       lb[1] = 0.0;           lb[2]  = 0.0;
-        ub[0] = 40.0;      ub[1] = CPX_INFBOUND;  ub[2]  = CPX_INFBOUND;
-
-   colname[0] = "x1"; colname[1] = "x2";      colname[2] = "x3";
-
-   status = CPXaddcols (env, lp, NUMCOLS, NUMNZ, obj, matbeg, matind,
-                        matval, lb, ub, colname);
-   if ( status )  goto TERMINATE;
-
-TERMINATE:
-
-   return (status);
-
-}  /* END populatebycolumn */
-
-
-/* To populate by nonzero, we first create the rows, then create the
-   columns, and then change the nonzeros of the matrix 1 at a time.  */
-
-static int
-populatebynonzero (CPXENVptr env, CPXLPptr lp)
-{
-   int      status    = 0;
-   double   obj[NUMCOLS];
-   double   lb[NUMCOLS];
-   double   ub[NUMCOLS];
-   char     *colname[NUMCOLS];
-   double   rhs[NUMROWS];
-   char     sense[NUMROWS];
-   char     *rowname[NUMROWS];
-   int      rowlist[NUMNZ];
-   int      collist[NUMNZ];
-   double   vallist[NUMNZ];
-
-   CPXchgobjsen (env, lp, CPX_MAX);  /* Problem is maximization */
-
-   /* Now create the new rows.  First, populate the arrays. */
-
-   rowname[0] = "c1";
-   sense[0]   = 'L';
-   rhs[0]     = 20.0;
-
-   rowname[1] = "c2";
-   sense[1]   = 'L';
-   rhs[1]     = 30.0;
-
-   status = CPXnewrows (env, lp, NUMROWS, rhs, sense, NULL, rowname);
-   if ( status )   goto TERMINATE;
-
-   /* Now add the new columns.  First, populate the arrays. */
-
-       obj[0] = 1.0;      obj[1] = 2.0;           obj[2] = 3.0;
-
-        lb[0] = 0.0;       lb[1] = 0.0;           lb[2]  = 0.0;
-        ub[0] = 40.0;      ub[1] = CPX_INFBOUND;  ub[2]  = CPX_INFBOUND;
-
-   colname[0] = "x1"; colname[1] = "x2";      colname[2] = "x3";
-
-   status = CPXnewcols (env, lp, NUMCOLS, obj, lb, ub, NULL, colname);
-   if ( status )  goto TERMINATE;
-
-   /* Now create the list of coefficients */
-
-   rowlist[0] = 0;   collist[0] = 0;   vallist[0] = -1.0;
-   rowlist[1] = 0;   collist[1] = 1;   vallist[1] = 1.0;
-   rowlist[2] = 0;   collist[2] = 2;   vallist[2] = 1.0;
-   rowlist[3] = 1;   collist[3] = 0;   vallist[3] = 1.0;
-   rowlist[4] = 1;   collist[4] = 1;   vallist[4] = -3.0;
-   rowlist[5] = 1;   collist[5] = 2;   vallist[5] = 1.0;
-
-   status = CPXchgcoeflist (env, lp, 6, rowlist, collist, vallist);
-
-   if ( status )  goto TERMINATE;
-
-TERMINATE:
-
-   return (status);
-
-}  /* END populatebynonzero */
 #endif

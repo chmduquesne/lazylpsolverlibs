@@ -16,6 +16,7 @@ int load_cplex_symbols() {
 
     try_another = !(__cplex_handle = lt_dlopenext("libcplex"));
     if (try_another) try_another = !(__cplex_handle = lt_dlopenext("cplex"));
+    if (try_another) try_another = !(__cplex_handle = lt_dlopenext("libcplex121"));
     if (try_another) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
@@ -536,6 +537,7 @@ int load_cplex_symbols() {
     if (!(__symbolic_CPXgetqconstrinfeas = lt_dlsym(__cplex_handle, "CPXgetqconstrinfeas"))) res = SYMBOL_MISSING;
     if (!(__symbolic_CPXgetxqxax = lt_dlsym(__cplex_handle, "CPXgetxqxax"))) res = SYMBOL_MISSING;
     if (!(__symbolic_CPXEchgqcname = lt_dlsym(__cplex_handle, "CPXEchgqcname"))) res = SYMBOL_MISSING;
+    if (!(__symbolic_CPXsetstaringsol = lt_dlsym(__cplex_handle, "CPXsetstaringsol"))) res = SYMBOL_MISSING;
 
     return res;
 }
