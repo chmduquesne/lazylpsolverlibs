@@ -4,9 +4,9 @@
 set ( CMAKE_SYSTEM_NAME "Windows" CACHE STRING "Target platform" )
 
 # which compilers to use for C and C++
-SET(CMAKE_C_COMPILER i486-mingw32-gcc)
-SET(CMAKE_CXX_COMPILER i486-mingw32-g++)
-SET(CMAKE_RC_COMPILER i486-mingw32-windres)
+SET(CMAKE_C_COMPILER i586-mingw32msvc-gcc)
+SET(CMAKE_CXX_COMPILER i586-mingw32msvc-g++)
+SET(CMAKE_RC_COMPILER i586-mingw32msvc-windres)
 
 set ( CPLEX_HEADER_PATH "~/code/or/include" CACHE PATH "Where to find cplex header directory ilcplex/cplex.h" )
 set ( GUROBI_HEADER_PATH "~/code/or/include" CACHE PATH "Where to find gurobi header gurobi_c.h" )
@@ -14,7 +14,7 @@ set ( XPRESS_HEADER_PATH "~/code/or/include" CACHE PATH "Where to find xpress he
 set ( GLPK_HEADER_PATH "~/code/or/include" CACHE PATH "Where to find glpk header glpk.h" )
 
 
-set ( CMAKE_FIND_ROOT_PATH ".wine/drive_c/Program\ Files\ \(x86\)/GnuWin32/" )
+set ( CMAKE_FIND_ROOT_PATH "~/.wine/drive_c/Program\ Files/GnuWin32/" )
 set ( CMAKE_SYSTEM_LIBRARY_PATH ${CMAKE_SYSTEM_LIBRARY_PATH} )
 set ( CMAKE_SYSTEM_INCLUDE_PATH ${CMAKE_SYSTEM_INCLUDE_PATH} ) # if not defined, it puts /usr/include too
 
