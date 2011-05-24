@@ -12,6 +12,9 @@ include_directories(${LTDL_INCLUDE_DIRS})
 find_package(PTHREAD REQUIRED)
 include_directories(${PTHREAD_INCLUDE_DIR})
 
+# gurobi links to libm
+find_library(M_LIB m)
+
 find_path(CPLEX_HEADER_PATH "cplex.h" PATH_SUFFIXES "ilcplex")
 find_path(GLPK_HEADER_PATH "glpk.h")
 find_path(GUROBI_HEADER_PATH "gurobi_c.h")
@@ -100,7 +103,7 @@ if(GUROBI_HEADER_PATH)
     else(WIN32)
         add_library(lazygurobi SHARED lazy_gurobi_c.c)
     endif(WIN32)
-    target_link_libraries (lazygurobi ${LTDL_LIBRARIES})
+    target_link_libraries (lazygurobi ${LTDL_LIBRARIES} ${M_LIB})
     install(TARGETS lazygurobi DESTINATION lib)
     install(FILES lazy_gurobi_c.h DESTINATION include)
 else(GUROBI_HEADER_PATH)
