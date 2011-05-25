@@ -191,7 +191,7 @@ endif(WIN32)
 # General packaging settings
 set(CPACK_PACKAGE_SUMMARY "set of libraries allowing to load lp solvers lazily")
 set(CPACK_PACKAGE_NAME "lazylpsolverlibs")
-set(CPACK_PACKAGE_VERSION "0.0.1")
+set(CPACK_PACKAGE_VERSION "0.0.2")
 set(CPACK_PACKAGE_CONTACT "Christophe-Marie Duquesne <chm.duquesne@gmail.com>")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
 
