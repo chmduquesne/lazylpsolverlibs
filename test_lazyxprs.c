@@ -2,6 +2,7 @@
 
 #ifdef COMPILED_WITH_XPRESS_SUPPORT
 #include "lazy_xprs.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 /**************************************************************************************\

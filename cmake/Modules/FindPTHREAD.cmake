@@ -9,7 +9,6 @@ GET_FILENAME_COMPONENT(module_file_path ${CMAKE_CURRENT_LIST_FILE} PATH )
 
 # Look for the header file.
 FIND_PATH(PTHREAD_INCLUDE_DIR NAMES pthread.h)
-MARK_AS_ADVANCED(PTHREAD_INCLUDE_DIR)
 
 # Look for the library.
 IF(WIN32)

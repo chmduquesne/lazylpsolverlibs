@@ -7,9 +7,7 @@
 #  LTDL_LIBRARIES, the libraries to link against to use libltdl.
 
 find_path(LTDL_INCLUDE_DIR ltdl.h)
-mark_as_advanced(LTDL_INCLUDE_DIR)
 find_library(LTDL_LIBRARY NAMES ltdl)
-mark_as_advanced(LTDL_LIBRARY)
 
 if(LTDL_INCLUDE_DIR AND LTDL_LIBRARY)
     set(LTDL_FOUND 1)
