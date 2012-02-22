@@ -1,4 +1,5 @@
 #include "test_lazylibs.h"
+#include "config.h"
 
 #ifdef COMPILED_WITH_CPLEX_SUPPORT
 #include "lazy_cplex.h"
@@ -26,7 +27,6 @@ int solve_cplex_example (int argc, char **argv) {
     CPXENVptr     env = NULL;
     CPXLPptr      lp = NULL;
     int           status = 0;
-    int           i, j;
     int           cur_numrows, cur_numcols;
 
     env = CPXopenCPLEX (&status);

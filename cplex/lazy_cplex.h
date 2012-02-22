@@ -1,3 +1,4 @@
+
 #ifndef LAZY_CPLEX_H
 #define LAZY_CPLEX_H
 
@@ -530,7 +531,6 @@ void print_cplex_missing_symbols();
 #define CPXgetxqxax (*__symbolic_CPXgetxqxax)
 #define CPXEchgqcname (*__symbolic_CPXEchgqcname)
 #define CPXsetstaringsol (*__symbolic_CPXsetstaringsol)
-
 
 #include <ilcplex/cplex.h>
 

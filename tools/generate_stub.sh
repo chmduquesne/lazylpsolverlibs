@@ -1,99 +1,109 @@
 #!/bin/sh
 
-if test x$1 = x || test x$2 = x ; then
-    echo "Usage: sh $0 solver_header symbol_file [additional include with/]"
-    exit
-else
-    stubbed_header=$1
-    symbols_file=$2
-    include=$3
-fi
-
-clean_name=$(echo ${stubbed_header} | sed "s/.h//")
-capitalized_name=$(echo ${clean_name} | sed 's/\S/\U&\L/g')
-
-lazy_header=lazy_${clean_name}.h
-lazy_cfile=lazy_${clean_name}.c
-rm -f ${lazy_header} ${lazy_cfile}
-
-echo "Generating header"
-echo "Getting symbols to fake"
-# file generated with nm lib + grep header + manual editing
-symbols=$(cat ${symbols_file})
-
-echo "#ifndef LAZY_${capitalized_name}_H
-#define LAZY_${capitalized_name}_H
-
-#include <ltdl.h>
-#include \"lazy_loading_status.h\"
-
-/* handle to the library */
-lt_dlhandle __${clean_name}_handle;
-/* loads the symbols */
-int load_${clean_name}_symbols();
-/* unloads the symbols (if called as many times as loadSymbols) */
-int unload_${clean_name}_symbols();
-/* prints what symbols ar missing */
-void print_${clean_name}_missing_symbols();
-" >> $lazy_header
-
-
-for i in $symbols; do
-    echo "#define $i (*__symbolic_$i)" >> $lazy_header
-done
-
-echo "
-#include <${include}${stubbed_header}>
-
-#endif /* LAZY_${capitalized_name}_H */
-" >> $lazy_header
-
-echo "Generating C file"
-
-echo "
-#include <stdio.h>
-#include \"$lazy_header\"
-
-/* C does not support bool, let's do it with macros */
-#define bool int
-#define true 1
-#define false 0
-
-int load_${clean_name}_symbols() {
-    int res;
-    bool try_another;
-    try_another = true;
-
-    if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
-
-    try_another = !(__${clean_name}_handle = lt_dlopenext(\"lib${clean_name}\"));
-    if (try_another) try_another = !(__${clean_name}_handle = lt_dlopenext(\"${clean_name}\"));
-    if (try_another) return SYMBOL_LOAD_FAIL;
-
-    res = SYMBOL_LOAD_SUCCESS;
-" >> $lazy_cfile
-for i in $symbols; do
-    echo "    if (!(__symbolic_$i = lt_dlsym(__${clean_name}_handle, \"$i\"))) res = SYMBOL_MISSING;" >> $lazy_cfile
-done
-echo "
-    return res;
+usage()
+{
+    echo "Usage: sh $0 <solver_name> <std_include_path> <symbol_file> <prefix>"
+    echo "    solver_name: cplex, gurobi, xprs, glpk"
+    echo "    std_include_path: ilcplex/cplex.h, gurobi_c.h, xprs.h, glpk.h"
+    echo "    symbol_file: list of symbols to fake"
+    echo "    prefix: where to generate the files"
 }
 
-void print_${clean_name}_missing_symbols() {
-" >> ${lazy_cfile}
-for i in $symbols; do
-    echo "    if (!__symbolic_$i) printf(\"$i\\n\");" >> $lazy_cfile
-done
-echo "
+exit_error()
+{
+    echo "$@"
+    usage
+    exit 1
 }
 
-int unload_${clean_name}_symbols() {
-    /* unload library */
-    if (lt_dlclose (__${clean_name}_handle) != 0) return SYMBOL_UNLOAD_FAIL;
+[ -z "$1" ] && exit_error "missing solver name"  || solver_name=$1
+[ -z "$2" ] && exit_error "missing include path" || std_include_path=$2
+[ -z "$3" ] && exit_error "missing symbol file"  || symbols=$(cat $3)
+[ -z "$4" ] && exit_error "missing symbol file"  || prefix=$4
 
-    /* exit */
-    if (lt_dlexit() != 0) return SYMBOL_UNLOAD_FAIL;
+lazy_header=lazy_${solver_name}.h
+lazy_cfile=lazy_${solver_name}.c
 
-    return SYMBOL_UNLOAD_SUCCESS;
+generate_header() {
+    capitalized_name=$(echo ${solver_name} | sed 's/\S/\U&\L/g')
+
+    echo "
+    #ifndef LAZY_${capitalized_name}_H
+    #define LAZY_${capitalized_name}_H
+
+    #include <ltdl.h>
+    #include \"lazy_loading_status.h\"
+
+    /* handle to the library */
+    lt_dlhandle __${solver_name}_handle;
+    /* loads the symbols */
+    int load_${solver_name}_symbols();
+    /* unloads the symbols (if called as many times as loadSymbols) */
+    int unload_${solver_name}_symbols();
+    /* prints what symbols ar missing */
+    void print_${solver_name}_missing_symbols();
+    " >> $prefix/$lazy_header
+
+
+    for i in $symbols; do
+        echo "#define $i (*__symbolic_$i)" >> $prefix/$lazy_header
+    done
+
+    echo "
+    #include <${std_include_path}>
+
+    #endif /* LAZY_${capitalized_name}_H */
+    " >> $prefix/$lazy_header
+    sed -i "s/^    \(.*\)/\1/g" $prefix/$lazy_header
 }
-" >> $lazy_cfile
+
+generate_c_file() {
+    echo "
+    #include <stdio.h>
+    #include <stdbool.h>
+    #include \"$lazy_header\"
+
+    int load_${solver_name}_symbols() {
+        int res;
+        bool try_another;
+        try_another = true;
+
+        if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
+
+        try_another = !(__${solver_name}_handle = lt_dlopenext(\"lib${solver_name}\"));
+        if (try_another) try_another = !(__${solver_name}_handle = lt_dlopenext(\"${solver_name}\"));
+        if (try_another) return SYMBOL_LOAD_FAIL;
+
+        res = SYMBOL_LOAD_SUCCESS;
+    " >> $prefix/$lazy_cfile
+    for i in $symbols; do
+        echo "        if (!(__symbolic_$i = lt_dlsym(__${solver_name}_handle, \"$i\"))) res = SYMBOL_MISSING;" >> $prefix/$lazy_cfile
+    done
+    echo "
+        return res;
+    }
+
+    void print_${solver_name}_missing_symbols() {
+    " >> $prefix/${lazy_cfile}
+    for i in $symbols; do
+        echo "        if (!__symbolic_$i) printf(\"$i\\\n\");" >> $prefix/$lazy_cfile
+    done
+    echo "
+    }
+
+    int unload_${solver_name}_symbols() {
+        /* unload library */
+        if (lt_dlclose (__${solver_name}_handle) != 0) return SYMBOL_UNLOAD_FAIL;
+
+        /* exit */
+        if (lt_dlexit() != 0) return SYMBOL_UNLOAD_FAIL;
+
+        return SYMBOL_UNLOAD_SUCCESS;
+    }
+    " >> $prefix/$lazy_cfile
+    sed -i "s/^    \(.*\)/\1/g" $prefix/$lazy_cfile
+}
+
+rm -f $prefix/$lazy_header $prefix/$lazy_cfile
+generate_header
+generate_c_file

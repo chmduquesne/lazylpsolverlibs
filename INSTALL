@@ -1,10 +1,28 @@
-Building
+Dependencies:
+============
+- libltdl (distributed with gnu-libtool)
+
+Optional dependencies:
+- the header of each solvers you want support for.
+
+Important note:
+==============
+For your convenience, an archive named solver_headers.tar.gz is available:
+https://lazylpsolverlibs.googlecode.com/files/solver_headers.tar.gz
+
+It only contains the headers, _not the solvers binary themselves_, so the
+copyright owners should not be harmed by this. Please note that this
+archive is not part of the project and should not be distributed with the
+source code.
+
+If you are a copyright owner and you are uncomfortable with this archive,
+please contact me <chm.duquesne@gmail.com>, so that we find a solution
+that better suits you.
+
+Building:
 ========
 
-1 - Download and install cmake
-2 - Specify the header path to each solver using the cmake gui
-3 - Choose a directory to build the program
-4 - Build
+1 - Locate the solver headers you need support for.
 
 Installing
 ==========

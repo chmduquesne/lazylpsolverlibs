@@ -1,11 +1,7 @@
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "lazy_xprs.h"
-
-/* C does not support bool, let's do it with macros */
-#define bool int
-#define true 1
-#define false 0
 
 int load_xprs_symbols() {
     int res;

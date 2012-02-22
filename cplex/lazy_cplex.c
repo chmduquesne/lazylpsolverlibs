@@ -1,11 +1,7 @@
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "lazy_cplex.h"
-
-/* C does not support bool, let's do it with macros */
-#define bool int
-#define true 1
-#define false 0
 
 int load_cplex_symbols() {
     int res;
@@ -16,7 +12,6 @@ int load_cplex_symbols() {
 
     try_another = !(__cplex_handle = lt_dlopenext("libcplex"));
     if (try_another) try_another = !(__cplex_handle = lt_dlopenext("cplex"));
-    if (try_another) try_another = !(__cplex_handle = lt_dlopenext("libcplex121"));
     if (try_another) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
@@ -1060,6 +1055,7 @@ void print_cplex_missing_symbols() {
     if (!__symbolic_CPXgetqconstrinfeas) printf("CPXgetqconstrinfeas\n");
     if (!__symbolic_CPXgetxqxax) printf("CPXgetxqxax\n");
     if (!__symbolic_CPXEchgqcname) printf("CPXEchgqcname\n");
+    if (!__symbolic_CPXsetstaringsol) printf("CPXsetstaringsol\n");
 
 }
 

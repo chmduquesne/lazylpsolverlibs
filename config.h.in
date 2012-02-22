@@ -1,9 +1,0 @@
-#ifndef CONFIG_H
-#define CONFIG_H
-
-#cmakedefine COMPILED_WITH_CPLEX_SUPPORT
-#cmakedefine COMPILED_WITH_GLPK_SUPPORT
-#cmakedefine COMPILED_WITH_XPRESS_SUPPORT
-#cmakedefine COMPILED_WITH_GUROBI_SUPPORT
-
-#endif /* CONFIG_H */

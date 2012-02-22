@@ -1,3 +1,4 @@
+
 #ifndef LAZY_XPRS_H
 #define LAZY_XPRS_H
 
@@ -317,7 +318,6 @@ void print_xprs_missing_symbols();
 #define XPRSwriterange (*__symbolic_XPRSwriterange)
 #define XPRSwriteslxsol (*__symbolic_XPRSwriteslxsol)
 #define XPRSwritesol (*__symbolic_XPRSwritesol)
-
 
 #include <xprs.h>
 
