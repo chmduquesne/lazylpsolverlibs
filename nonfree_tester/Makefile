@@ -2,7 +2,7 @@
 # only the headers are needed. The actual solvers are required to run it
 # succesfully.
 
-CC=gcc
+include ../config.mk
 
 CPLEX_INCLUDE_PATH=./include
 XPRESS_INCLUDE_PATH=./include
