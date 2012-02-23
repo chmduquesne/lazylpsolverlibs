@@ -1,11 +1,7 @@
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "lazy_gurobi_c.h"
-
-/* C does not support bool, let's do it with macros */
-#define bool int
-#define true 1
-#define false 0
 
 int load_gurobi_c_symbols() {
     int res;
@@ -14,8 +10,8 @@ int load_gurobi_c_symbols() {
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    try_another = !(__gurobi_c_handle = lt_dlopenext("libgurobi30"));
-    if (try_another) try_another = !(__gurobi_c_handle = lt_dlopenext("gurobi30"));
+    try_another = !(__gurobi_c_handle = lt_dlopenext("libgurobi_c"));
+    if (try_another) try_another = !(__gurobi_c_handle = lt_dlopenext("gurobi_c"));
     if (try_another) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;

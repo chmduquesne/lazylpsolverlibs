@@ -1,17 +1,22 @@
-#ifndef LAZY_GUROBI_C_H
-#define LAZY_GUROBI_C_H
+
+#ifndef LAZY_GUROBI_H
+#define LAZY_GUROBI_H
 
 #include <ltdl.h>
 #include "lazy_loading_status.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* handle to the library */
-lt_dlhandle __gurobi_c_handle;
+lt_dlhandle __gurobi_handle;
 /* loads the symbols */
-int load_gurobi_c_symbols();
+int load_gurobi_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
-int unload_gurobi_c_symbols();
+int unload_gurobi_symbols();
 /* prints what symbols ar missing */
-void print_gurobi_c_missing_symbols();
+void print_gurobi_missing_symbols();
 
 #define GRBaddconstr (*__symbolic_GRBaddconstr)
 #define GRBaddconstrs (*__symbolic_GRBaddconstrs)
@@ -112,8 +117,11 @@ void print_gurobi_c_missing_symbols();
 #define GRBwrite (*__symbolic_GRBwrite)
 #define GRBwriteparams (*__symbolic_GRBwriteparams)
 
+#ifdef __cplusplus
+}
+#endif
 
 #include <gurobi_c.h>
 
-#endif /* LAZY_GUROBI_C_H */
+#endif /* LAZY_GUROBI_H */
 
