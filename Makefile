@@ -5,10 +5,11 @@ include config.mk
 
 ifeq ('cc', ${CC})
 LIB=lib/liblazycplex.so lib/liblazyxprs.so lib/liblazygurobi.so lib/liblazyglpk.so
+BIN=bin/test_lazylpsolverlibs
 else
 LIB=lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll
+BIN=bin/test_lazylpsolverlibs.exe
 endif
-BIN=bin/test_lazylpsolverlibs
 OBJ=test/test_lazycplex.o test/test_lazyxprs.o test/test_lazygurobi.o test/test_lazyglpk.o test/test_lazylibs.o
 
 all: options ${LIB} ${BIN}
@@ -58,7 +59,11 @@ lib/liblazygurobi.so: src/lazy_gurobi_c.c
 
 bin/test_lazylpsolverlibs: ${LIB} ${OBJ}
 	mkdir -p bin
-	$(CC) -Wall -L lib -lltdl -llazycplex -llazyxprs -llazygurobi -llazyglpk ${OBJ} -o bin/test_lazylpsolverlibs ${CFLAGS} ${LDFLAGS}
+	$(CC) -L lib -lltdl -llazycplex -llazyxprs -llazygurobi -llazyglpk ${OBJ} -o bin/test_lazylpsolverlibs ${CFLAGS} ${LDFLAGS}
+
+bin/test_lazylpsolverlibs.exe: ${LIB} ${OBJ}
+	mkdir -p bin
+	$(CC) ${OBJ} -o bin/test_lazylpsolverlibs.exe -lltdl lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll  ${CFLAGS} ${LDFLAGS}
 
 install: all
 	@echo installing libraries to ${DESTDIR}${PREFIX}/lib
