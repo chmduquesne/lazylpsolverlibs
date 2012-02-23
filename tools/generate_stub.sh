@@ -112,7 +112,7 @@ generate_c_file() {
     void print_${solver_name}_missing_symbols() {
     " >> $cfile_prefix/${lazy_cfile}
     for i in $symbols; do
-        echo "        if (!__symbolic_$i) printf(\"$i\\\n\");" >> $cfile_prefix/$lazy_cfile
+        echo "        if (!__symbolic_$i) printf(\"$i\\n\");" >> $cfile_prefix/$lazy_cfile
     done
     echo "
     }
