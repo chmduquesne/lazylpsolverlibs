@@ -1,5 +1,4 @@
-# This part of the project does not require any closed-source header to
-# build and the results can be distributed with no problem.
+# lazylpsolverlibs - libraries for loading solvers lazily
 
 include config.mk
 
@@ -67,13 +66,13 @@ bin/test_lazylpsolverlibs.exe: ${LIB} ${OBJ}
 
 install: all
 	@echo installing libraries to ${DESTDIR}${PREFIX}/lib
-	mkdir -p ${DESTDIR}${PREFIX}/lib
+	@mkdir -p ${DESTDIR}${PREFIX}/lib
 	install -Dm644 lib/liblazycplex.so ${DESTDIR}${PREFIX}/lib/liblazycplex.so
 	install -Dm644 lib/liblazyxprs.so ${DESTDIR}${PREFIX}/lib/liblazyxprs.so
 	install -Dm644 lib/liblazygurobi.so ${DESTDIR}${PREFIX}/lib/liblazygurobi.so
 	install -Dm644 lib/liblazyglpk.so ${DESTDIR}${PREFIX}/lib/liblazyglpk.so
 	@echo installing headers to ${DESTDIR}${PREFIX}/include
-	mkdir -p ${DESTDIR}${PREFIX}/include
+	@mkdir -p ${DESTDIR}${PREFIX}/include
 	install -Dm644 include/lazy_cplex.h ${DESTDIR}${PREFIX}/include/lazy_cplex.h
 	install -Dm644 include/lazy_xprs.h ${DESTDIR}${PREFIX}/include/lazy_xprs.h
 	install -Dm644 include/lazy_gurobi_c.h ${DESTDIR}${PREFIX}/include/lazy_gurobi_c.h
@@ -96,20 +95,30 @@ uninstall:
 clean:
 	rm -rf lib bin dist test/*.o src/*.o
 
-dist: archive
+dist: clean
+	@echo creating dist tarball
+	@mkdir -p lazylpsolverlibs-${VERSION}
+	@cp -R AUTHORS config.mk COPYING include INSTALL Makefile README ROADMAP src test tools lazylpsolverlibs-${VERSION}
+	@tar cvzf lazylpsolverlibs-${VERSION}.tar.gz lazylpsolverlibs-${VERSION}
+	@rm -rf lazylpsolverlibs-${VERSION}
 
-archive:
-	mkdir -p dist
-	hg archive dist/lazylpsolverlibs-${VERSION}.tar.gz -X ".hg*"
-
-deb:
-	mkdir -p dist
-	rm -rf /tmp/installdir
-	${MAKE} install DESTDIR=/tmp/installdir PREFIX=/usr
-	cd dist && fpm -s dir -t deb -n lazylpsolverlibs -v ${VERSION} -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.deb -d "libltdl-dev (>=0)"
-
-rpm:
+deb: all
 	mkdir -p dist
 	rm -rf /tmp/installdir
 	${MAKE} install DESTDIR=/tmp/installdir PREFIX=/usr
-	cd dist && fpm -s dir -t rpm -n lazylpsolverlibs -v ${VERSION} -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.deb -d "libltdl-dev (>=0)"
+	fpm -s dir -t deb -n lazylpsolverlibs -v ${VERSION} -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.deb -d "libltdl-dev (>=0)"
+	mv lazylpsolverlibs-*.deb dist
+
+rpm: all
+	mkdir -p dist
+	rm -rf /tmp/installdir
+	${MAKE} install DESTDIR=/tmp/installdir PREFIX=/usr
+	fpm -s dir -t rpm -n lazylpsolverlibs -v ${VERSION} -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.deb -d "libltdl-dev (>=0)"
+	mv lazylpsolverlibs-*.rpm dist
+
+nsis: all
+	@mkdir -p dist
+	@cp tools/lazylpsolverlibs.nsi dist
+	@sed -i "s/VERSION/${VERSION}/" dist/lazylpsolverlibs.nsi
+	@makensis dist/lazylpsolverlibs.nsi
+	@rm dist/lazylpsolverlibs.nsi

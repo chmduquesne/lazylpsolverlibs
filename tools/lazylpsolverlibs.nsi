@@ -1,6 +1,5 @@
-outFile "lazylpsolverlibs_installer.exe"
+outFile "lazylpsolverlibs_installer-VERSION.exe"
 installDir $PROGRAMFILES\lazylpsolverlibs
 section
 setOutPath $INSTDIR
-file config.mk
 sectionEnd
