@@ -2,13 +2,13 @@
 
 include config.mk
 
-ifeq ('cc', ${CC})
+#ifeq ('cc',${CC})
 LIB=lib/liblazycplex.so lib/liblazyxprs.so lib/liblazygurobi.so lib/liblazyglpk.so
 BIN=bin/test_lazylpsolverlibs
-else
-LIB=lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll
-BIN=bin/test_lazylpsolverlibs.exe
-endif
+#else
+#LIB=lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll
+#BIN=bin/test_lazylpsolverlibs.exe
+#endif
 OBJ=test/test_lazycplex.o test/test_lazyxprs.o test/test_lazygurobi.o test/test_lazyglpk.o test/test_lazylibs.o
 
 all: options ${LIB} ${BIN}
