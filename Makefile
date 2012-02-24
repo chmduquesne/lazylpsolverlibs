@@ -3,11 +3,11 @@
 include config.mk
 
 #ifeq ('cc',${CC})
-LIB=lib/liblazycplex.so lib/liblazyxprs.so lib/liblazygurobi.so lib/liblazyglpk.so
-BIN=bin/test_lazylpsolverlibs
+#LIB=lib/liblazycplex.so lib/liblazyxprs.so lib/liblazygurobi.so lib/liblazyglpk.so
+#BIN=bin/test_lazylpsolverlibs
 #else
-#LIB=lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll
-#BIN=bin/test_lazylpsolverlibs.exe
+LIB=lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll
+BIN=bin/test_lazylpsolverlibs.exe
 #endif
 OBJ=test/test_lazycplex.o test/test_lazyxprs.o test/test_lazygurobi.o test/test_lazyglpk.o test/test_lazylibs.o
 
@@ -32,36 +32,36 @@ generate_stubs:
 
 src/lazy_%.c: generate_stubs
 
+lib:
+	@mkdir -p lib
+
 # WINDOWS
 src/%.o: src/%.c
 	${CC} -c -DBUILDING_LAZYLPSOLVERLIBS -I include $< -o $@ ${CFLAGS}
 
-lib/lazy%.dll: src/lazy_%.o
-	@mkdir -p lib
+lib/lazy%.dll: src/lazy_%.o lib
 	${CC} -shared -o $@ $< -Wl,--output-def,${@:%.dll=%.def},--out-implib,${@:lib/%.dll=lib/lib%.a} -lltdl ${LDFLAGS}
 
-lib/lazygurobi.dll: src/lazy_gurobi_c.o
-	@mkdir -p lib
+lib/lazygurobi.dll: src/lazy_gurobi_c.o lib
 	${CC} -shared -o $@ $< -Wl,--output-def,${@:%.dll=%.def},--out-implib,${@:lib/%.dll=lib/lib%.a} -lltdl ${LDFLAGS}
 
 # LINUX
-lib/liblazy%.so: src/lazy_%.c
-	@mkdir -p lib
+lib/liblazy%.so: src/lazy_%.c lib
 	${CC} -shared -fPIC -I include $< -o $@ ${CFLAGS}
 
-lib/liblazygurobi.so: src/lazy_gurobi_c.c
-	@mkdir -p lib
+lib/liblazygurobi.so: src/lazy_gurobi_c.c lib
 	${CC} -shared -fPIC -I include $< -o $@ ${CFLAGS}
 
 %.o: %.c
 	$(CC) -Wall -I include -c $< -o $@ ${CFLAGS}
 
-bin/test_lazylpsolverlibs: ${LIB} ${OBJ}
-	mkdir -p bin
+bin:
+	@mkdir -p bin
+
+bin/test_lazylpsolverlibs: ${LIB} ${OBJ} bin
 	$(CC) -L lib -lltdl -llazycplex -llazyxprs -llazygurobi -llazyglpk ${OBJ} -o bin/test_lazylpsolverlibs ${CFLAGS} ${LDFLAGS}
 
-bin/test_lazylpsolverlibs.exe: ${LIB} ${OBJ}
-	mkdir -p bin
+bin/test_lazylpsolverlibs.exe: ${LIB} ${OBJ} bin
 	$(CC) ${OBJ} -o bin/test_lazylpsolverlibs.exe -lltdl lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll  ${CFLAGS} ${LDFLAGS}
 
 install: all
