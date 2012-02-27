@@ -118,7 +118,16 @@ rpm: all
 
 nsis: all
 	@mkdir -p dist
-	@cp tools/lazylpsolverlibs.nsi dist
-	@sed -i "s/VERSION/${VERSION}/" dist/lazylpsolverlibs.nsi
-	@makensis dist/lazylpsolverlibs.nsi
-	@rm dist/lazylpsolverlibs.nsi
+	@cp tools/lazylpsolverlibs.nsi lazylpsolverlibs.nsi
+	@sed -i "s/VERSION/${VERSION}/g" lazylpsolverlibs.nsi
+	@cp lib/lazycplex.dll bin
+	@cp lib/lazyxprs.dll bin
+	@cp lib/lazygurobi.dll bin
+	@cp lib/lazyglpk.dll bin
+	@makensis lazylpsolverlibs.nsi
+	@rm lazylpsolverlibs.nsi
+	@rm bin/lazycplex.dll
+	@rm bin/lazyxprs.dll
+	@rm bin/lazygurobi.dll
+	@rm bin/lazyglpk.dll
+	@mv lazylpsolverlibs-${VERSION}_installer.exe dist
