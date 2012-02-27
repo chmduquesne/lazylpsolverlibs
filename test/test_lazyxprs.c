@@ -1,7 +1,7 @@
 #include "test_lazylibs.h"
 
 #ifdef COMPILED_WITH_XPRESS_SUPPORT
-#include "lazy_xprs.h"
+#include "lazyxprs.h"
 #include <stdlib.h>
 #include <stdio.h>
 

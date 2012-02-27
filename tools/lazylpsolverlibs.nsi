@@ -14,10 +14,10 @@ installDir $PROGRAMFILES\GnuWin32
 section
 setOutPath "$INSTDIR\include"
 file include\lazy_loading_status.h
-file include\lazy_cplex.h
-file include\lazy_glpk.h
-file include\lazy_gurobi_c.h
-file include\lazy_xprs.h
+file include\lazycplex.h
+file include\lazyglpk.h
+file include\lazygurobi.h
+file include\lazyxprs.h
 setOutPath "$INSTDIR\lib"
 file lib\lazycplex.def
 file lib\lazycplex.dll
@@ -48,10 +48,10 @@ section "Uninstall"
 delete "$INSTDIR\..\uninstall\lazylpsolverlibs-VERSION_uninstaller.exe"
 rmdir  "$INSTDIR\..\uninstall"
 delete "$INSTDIR\..\include\lazy_loading_status.h"
-delete "$INSTDIR\..\include\lazy_cplex.h"
-delete "$INSTDIR\..\include\lazy_glpk.h"
-delete "$INSTDIR\..\include\lazy_gurobi_c.h"
-delete "$INSTDIR\..\include\lazy_xprs.h"
+delete "$INSTDIR\..\include\lazycplex.h"
+delete "$INSTDIR\..\include\lazyglpk.h"
+delete "$INSTDIR\..\include\lazygurobi.h"
+delete "$INSTDIR\..\include\lazyxprs.h"
 rmdir  "$INSTDIR\..\include"
 delete "$INSTDIR\..\lib\lazycplex.def"
 delete "$INSTDIR\..\lib\lazycplex.dll"

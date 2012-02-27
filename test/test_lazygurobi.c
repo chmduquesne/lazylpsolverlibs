@@ -1,7 +1,7 @@
 #include "test_lazylibs.h"
 
 #ifdef COMPILED_WITH_GUROBI_SUPPORT
-#include "lazy_gurobi_c.h"
+#include "lazygurobi.h"
 #include <stdlib.h>
 #include <stdio.h>
 
