@@ -27,3 +27,10 @@ solvers, follow these steps:
     make download
     make
     sudo make install # or "make install" as root
+
+To compile only with support for the solver you have, modify the LIBS
+target to only include the shared libraries you want, and add
+-DSKIP_<SOLVER>_SUPPORT to the CFLAGS variable (<SOLVER> being the
+capitalized full name of the solver you want to skip, i.e. CPLEX, GUROBI,
+XPRESS or GLPK). You also want to modify the install target of the
+makefile to skip the libraries you did not compile.
