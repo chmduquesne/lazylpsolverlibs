@@ -90,6 +90,7 @@ dist: clean
 	@echo creating dist tarball
 	@mkdir -p lazylpsolverlibs-$(VERSION)
 	@cp -R AUTHORS config.mk COPYING include INSTALL Makefile README ROADMAP CHANGELOG src test tools lazylpsolverlibs-$(VERSION)
+	@rm -rf lazylpsolverlibs-$(VERSION)/include
 	@tar cvzf lazylpsolverlibs-$(VERSION).tar.gz lazylpsolverlibs-$(VERSION)
 	@mv lazylpsolverlibs-$(VERSION).tar.gz dist
 	@rm -rf lazylpsolverlibs-$(VERSION)
