@@ -53,16 +53,16 @@ lib/liblazygurobi.so: src/lazy_gurobi_c.c lib
 	${CC} -shared -fPIC -I include $< -o $@ ${CFLAGS}
 
 %.o: %.c
-	$(CC) -Wall -I include -c $< -o $@ ${CFLAGS}
+	${CC} -I include -c  $< -o $@ ${CFLAGS}
 
 bin:
 	@mkdir -p bin
 
 bin/test_lazylpsolverlibs: ${LIB} ${OBJ} bin
-	$(CC) -L lib -lltdl -llazycplex -llazyxprs -llazygurobi -llazyglpk ${OBJ} -o bin/test_lazylpsolverlibs ${CFLAGS} ${LDFLAGS}
+	$(CC) ${OBJ} -o bin/test_lazylpsolverlibs -lltdl -llazycplex -llazyxprs -llazygurobi -llazyglpk -Llib ${CFLAGS} ${LDFLAGS}
 
 bin/test_lazylpsolverlibs.exe: ${LIB} ${OBJ} bin
-	$(CC) ${OBJ} -o bin/test_lazylpsolverlibs.exe -lltdl lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll  ${CFLAGS} ${LDFLAGS}
+	$(CC) ${OBJ} -o bin/test_lazylpsolverlibs.exe -lltdl lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll ${CFLAGS} ${LDFLAGS}
 
 install: all
 	@echo installing libraries to ${DESTDIR}${PREFIX}/lib
