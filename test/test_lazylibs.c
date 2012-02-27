@@ -1,14 +1,14 @@
 #include "test_lazylibs.h"
-#ifdef COMPILED_WITH_CPLEX_SUPPORT
+#ifndef SKIP_CPLEX_SUPPORT
 #include "lazycplex.h"
 #endif
-#ifdef COMPILED_WITH_XPRESS_SUPPORT
+#ifndef SKIP_XPRESS_SUPPORT
 #include "lazyxprs.h"
 #endif
-#ifdef COMPILED_WITH_GUROBI_SUPPORT
+#ifndef SKIP_GUROBI_SUPPORT
 #include "lazygurobi.h"
 #endif
-#ifdef COMPILED_WITH_GLPK_SUPPORT
+#ifndef SKIP_GLPK_SUPPORT
 #include "lazyglpk.h"
 #endif
 #include "lazy_loading_status.h"
@@ -55,7 +55,7 @@ int main(int argc, const char *argv[])
     printf("This program will now test wether it can reach different solvers.\n");
 
     printf("\nTesting cplex support...\n");
-#ifdef COMPILED_WITH_CPLEX_SUPPORT
+#ifndef SKIP_CPLEX_SUPPORT
     test_lazysolver(&load_cplex_symbols,
             &solve_cplex_example,
             &print_cplex_missing_symbols,
@@ -64,7 +64,7 @@ int main(int argc, const char *argv[])
     printf("lazylibs compiled without cplex support!\n");
 #endif
     printf("\nTesting xpress support...\n");
-#ifdef COMPILED_WITH_XPRESS_SUPPORT
+#ifndef SKIP_XPRESS_SUPPORT
     test_lazysolver(&load_xprs_symbols,
             &solve_xprs_example,
             &print_xprs_missing_symbols,
@@ -73,7 +73,7 @@ int main(int argc, const char *argv[])
     printf("lazylibs compiled without xpress support!\n");
 #endif
     printf("\nTesting gurobi support...\n");
-#ifdef COMPILED_WITH_GUROBI_SUPPORT
+#ifndef SKIP_GUROBI_SUPPORT
     test_lazysolver(&load_gurobi_symbols,
             &solve_gurobi_example,
             &print_gurobi_missing_symbols,
@@ -82,7 +82,7 @@ int main(int argc, const char *argv[])
     printf("lazylibs compiled without gurobi support!\n");
 #endif
     printf("\nTesting glpk support...\n");
-#ifdef COMPILED_WITH_GLPK_SUPPORT
+#ifndef SKIP_GLPK_SUPPORT
     test_lazysolver(&load_glpk_symbols,
             &solve_glpk_example,
             &print_glpk_missing_symbols,

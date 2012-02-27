@@ -1,7 +1,6 @@
 #include "test_lazylibs.h"
-#include "config.h"
 
-#ifdef COMPILED_WITH_GLPK_SUPPORT
+#ifndef SKIP_GLPK_SUPPORT
 #include "lazyglpk.h"
 
 #include <stdio.h>

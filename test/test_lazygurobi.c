@@ -1,6 +1,6 @@
 #include "test_lazylibs.h"
 
-#ifdef COMPILED_WITH_GUROBI_SUPPORT
+#ifndef SKIP_GUROBI_SUPPORT
 #include "lazygurobi.h"
 #include <stdlib.h>
 #include <stdio.h>
