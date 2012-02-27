@@ -1,18 +1,76 @@
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include "lazy_cplex.h"
 
 int load_cplex_symbols() {
     int res;
-    bool try_another;
-    try_another = true;
+    char *LAZYLPSOLVERLIBS_CPLEX_LIB_PATH; /* environment variable */
+    LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = NULL;
+    __cplex_handle = NULL;
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    try_another = !(__cplex_handle = lt_dlopenext("libcplex"));
-    if (try_another) try_another = !(__cplex_handle = lt_dlopenext("cplex"));
-    if (try_another) return SYMBOL_LOAD_FAIL;
+    /* first, try to read the path to load from the environment */
+    LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = getenv("LAZYLPSOLVERLIBS_CPLEX_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_CPLEX_LIB_PATH != NULL) {
+        __cplex_handle = lt_dlopen(LAZYLPSOLVERLIBS_CPLEX_LIB_PATH);
+    }
+
+    /* if this failed, try to load libraries without version number */
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex");
+
+    /* then try some versioned library names known to work (most recent first)*/
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex121");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex121");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex120");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex120");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex112");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex112");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex111");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex111");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex110");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex110");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex102");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex102");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex101");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex101");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex100");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex100");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex91");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex91");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex90");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex90");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex81");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex81");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex80");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex80");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex75");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex75");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex71");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex71");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex70");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex70");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex66");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex66");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex65");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex65");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex60");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex60");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex50");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex50");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex40");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex40");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex30");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex30");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex21");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex21");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("libcplex20");
+    if (!__cplex_handle) __cplex_handle = lt_dlopenext("cplex20");
+
+    /* if everything failed, give up */
+    if (!__cplex_handle) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 

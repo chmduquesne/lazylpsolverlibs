@@ -1,18 +1,29 @@
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include "lazy_xprs.h"
 
 int load_xprs_symbols() {
     int res;
-    bool try_another;
-    try_another = true;
+    char *LAZYLPSOLVERLIBS_XPRS_LIB_PATH; /* environment variable */
+    LAZYLPSOLVERLIBS_XPRS_LIB_PATH = NULL;
+    __xprs_handle = NULL;
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    try_another = !(__xprs_handle = lt_dlopenext("libxprs"));
-    if (try_another) try_another = !(__xprs_handle = lt_dlopenext("xprs"));
-    if (try_another) return SYMBOL_LOAD_FAIL;
+    /* first, try to read the path to load from the environment */
+    LAZYLPSOLVERLIBS_XPRS_LIB_PATH = getenv("LAZYLPSOLVERLIBS_XPRS_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_XPRS_LIB_PATH != NULL) {
+        __xprs_handle = lt_dlopen(LAZYLPSOLVERLIBS_XPRS_LIB_PATH);
+    }
+
+    /* if this failed, try to load libraries without version number */
+    if (!__xprs_handle) __xprs_handle = lt_dlopenext("libxprs");
+    if (!__xprs_handle) __xprs_handle = lt_dlopenext("xprs");
+
+
+    /* if everything failed, give up */
+    if (!__xprs_handle) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 

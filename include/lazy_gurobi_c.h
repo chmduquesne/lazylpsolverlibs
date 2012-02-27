@@ -133,8 +133,17 @@ LLSL_DECL void print_gurobi_c_missing_symbols();
 
 #include <gurobi_c.h>
 
-/* Now we need to redefine LLSL_DECL as nothing (this issues a warning) */
 #ifdef _WIN32
+/*
+ * Windows corner case:
+ *
+ * Beyond this point, LLSL_DECL, which normally expands as
+ * __declspec(dllimport) in order to allow the user to import our dll,
+ * must be redefined as nothing: we don't want this macro to propagate
+ * in the C files.
+ *
+ * Obviously this issues a warning, but this should be harmless.
+ */
 #undef LLSL_DECL
 #define LLSL_DECL
 #endif

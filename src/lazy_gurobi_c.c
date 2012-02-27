@@ -1,18 +1,29 @@
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include "lazy_gurobi_c.h"
 
 int load_gurobi_c_symbols() {
     int res;
-    bool try_another;
-    try_another = true;
+    char *LAZYLPSOLVERLIBS_GUROBI_C_LIB_PATH; /* environment variable */
+    LAZYLPSOLVERLIBS_GUROBI_C_LIB_PATH = NULL;
+    __gurobi_c_handle = NULL;
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    try_another = !(__gurobi_c_handle = lt_dlopenext("libgurobi_c"));
-    if (try_another) try_another = !(__gurobi_c_handle = lt_dlopenext("gurobi_c"));
-    if (try_another) return SYMBOL_LOAD_FAIL;
+    /* first, try to read the path to load from the environment */
+    LAZYLPSOLVERLIBS_GUROBI_C_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GUROBI_C_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_GUROBI_C_LIB_PATH != NULL) {
+        __gurobi_c_handle = lt_dlopen(LAZYLPSOLVERLIBS_GUROBI_C_LIB_PATH);
+    }
+
+    /* if this failed, try to load libraries without version number */
+    if (!__gurobi_c_handle) __gurobi_c_handle = lt_dlopenext("libgurobi_c");
+    if (!__gurobi_c_handle) __gurobi_c_handle = lt_dlopenext("gurobi_c");
+
+
+    /* if everything failed, give up */
+    if (!__gurobi_c_handle) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 

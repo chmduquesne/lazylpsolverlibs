@@ -25,9 +25,9 @@ exit_error()
 
 lazy_header=lazy_${solver_name}.h
 lazy_cfile=lazy_${solver_name}.c
+capitalized_name=$(echo ${solver_name} | sed 's/\S/\U&\L/g')
 
 generate_header() {
-    capitalized_name=$(echo ${solver_name} | sed 's/\S/\U&\L/g')
 
     echo "
     #ifndef LAZY_${capitalized_name}_H
@@ -72,8 +72,17 @@ generate_header() {
 
     #include <${std_include_path}>
 
-    /* Now we need to redefine LLSL_DECL as nothing (this issues a warning) */
     #ifdef _WIN32
+    /*
+     * Windows corner case:
+     *
+     * Beyond this point, LLSL_DECL, which normally expands as
+     * __declspec(dllimport) in order to allow the user to import our dll,
+     * must be redefined as nothing: we don't want this macro to propagate
+     * in the C files.
+     *
+     * Obviously this issues a warning, but this should be harmless.
+     */
     #undef LLSL_DECL
     #define LLSL_DECL
     #endif
@@ -83,22 +92,54 @@ generate_header() {
     sed -i "s/^    \(.*\)/\1/g" $header_prefix/$lazy_header
 }
 
+versioned_library_names() {
+    case $solver_name in
+        cplex)
+            echo "        /* then try some versioned library names known to work (most recent first)*/"
+            for i in 121 120 112 111 110 102 101 100 91 90 81 80 75 71 \
+                70 66 65 60 50 40 30 21 20; do
+                echo "        if (!__cplex_handle) __cplex_handle = lt_dlopenext(\"libcplex$i\");"
+                echo "        if (!__cplex_handle) __cplex_handle = lt_dlopenext(\"cplex$i\");"
+            done
+            ;;
+        gurobi)
+            echo "        /* then try some versioned library names known to work (most recent first)*/"
+            for i in 461 452 402 303; do
+                echo "        if (!__gurobi_handle) __gurobi_handle = lt_dlopenext(\"libgurobi$i\");"
+                echo "        if (!__gurobi_handle) __gurobi_handle = lt_dlopenext(\"gurobi$i\");"
+            done
+            ;;
+    esac
+}
+
 generate_c_file() {
     echo "
     #include <stdio.h>
-    #include <stdbool.h>
+    #include <stdlib.h>
     #include \"$lazy_header\"
 
     int load_${solver_name}_symbols() {
         int res;
-        bool try_another;
-        try_another = true;
+        char *LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH; /* environment variable */
+        LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH = NULL;
+        __${solver_name}_handle = NULL;
 
         if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-        try_another = !(__${solver_name}_handle = lt_dlopenext(\"lib${solver_name}\"));
-        if (try_another) try_another = !(__${solver_name}_handle = lt_dlopenext(\"${solver_name}\"));
-        if (try_another) return SYMBOL_LOAD_FAIL;
+        /* first, try to read the path to load from the environment */
+        LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH = getenv(\"LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH\");
+        if (LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH != NULL) {
+            __${solver_name}_handle = lt_dlopen(LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH);
+        }
+
+        /* if this failed, try to load libraries without version number */
+        if (!__${solver_name}_handle) __${solver_name}_handle = lt_dlopenext(\"lib${solver_name}\");
+        if (!__${solver_name}_handle) __${solver_name}_handle = lt_dlopenext(\"${solver_name}\");
+    " >> $cfile_prefix/$lazy_cfile
+    versioned_library_names >> $cfile_prefix/$lazy_cfile
+    echo "
+        /* if everything failed, give up */
+        if (!__${solver_name}_handle) return SYMBOL_LOAD_FAIL;
 
         res = SYMBOL_LOAD_SUCCESS;
     " >> $cfile_prefix/$lazy_cfile
@@ -112,7 +153,7 @@ generate_c_file() {
     void print_${solver_name}_missing_symbols() {
     " >> $cfile_prefix/${lazy_cfile}
     for i in $symbols; do
-        echo "        if (!__symbolic_$i) printf(\"$i\\n\");" >> $cfile_prefix/$lazy_cfile
+        echo "        if (!__symbolic_$i) printf(\"$i\\\n\");" >> $cfile_prefix/$lazy_cfile
     done
     echo "
     }

@@ -1,18 +1,29 @@
 
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include "lazy_glpk.h"
 
 int load_glpk_symbols() {
     int res;
-    bool try_another;
-    try_another = true;
+    char *LAZYLPSOLVERLIBS_GLPK_LIB_PATH; /* environment variable */
+    LAZYLPSOLVERLIBS_GLPK_LIB_PATH = NULL;
+    __glpk_handle = NULL;
 
     if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
 
-    try_another = !(__glpk_handle = lt_dlopenext("libglpk"));
-    if (try_another) try_another = !(__glpk_handle = lt_dlopenext("glpk"));
-    if (try_another) return SYMBOL_LOAD_FAIL;
+    /* first, try to read the path to load from the environment */
+    LAZYLPSOLVERLIBS_GLPK_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GLPK_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_GLPK_LIB_PATH != NULL) {
+        __glpk_handle = lt_dlopen(LAZYLPSOLVERLIBS_GLPK_LIB_PATH);
+    }
+
+    /* if this failed, try to load libraries without version number */
+    if (!__glpk_handle) __glpk_handle = lt_dlopenext("libglpk");
+    if (!__glpk_handle) __glpk_handle = lt_dlopenext("glpk");
+
+
+    /* if everything failed, give up */
+    if (!__glpk_handle) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 

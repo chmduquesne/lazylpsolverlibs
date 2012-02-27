@@ -10,7 +10,7 @@ PREFIX=/usr/local
 #CC=cc
 
 # WINE (ubuntu)
-CFLAGS=-ansi -Wall -Os -I tools/include -DBUILD_CPXSTATIC -I ~/.wine/drive_c/Program\ Files/GnuWin32/include
+CFLAGS=-ansi -g -Wall -I tools/include -DBUILD_CPXSTATIC -I ~/.wine/drive_c/Program\ Files/GnuWin32/include
 LDFLAGS=-L ~/.wine/drive_c/Program\ Files/GnuWin32/lib
 CC=i586-mingw32msvc-gcc
 
