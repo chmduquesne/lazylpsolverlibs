@@ -86,7 +86,7 @@ distclean: clean
 
 package: dist deb rpm nsis
 
-dist: clean
+dist: dirs
 	@echo creating dist tarball
 	@mkdir -p lazylpsolverlibs-$(VERSION)
 	@cp -R AUTHORS config.mk COPYING include INSTALL Makefile README ROADMAP CHANGELOG src test tools lazylpsolverlibs-$(VERSION)
