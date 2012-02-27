@@ -1,8 +1,6 @@
 Dependencies:
 ============
 - libltdl (distributed with gnu-libtool)
-
-Optional dependencies:
 - the header of each solvers you want support for.
 
 Important note:
@@ -16,16 +14,16 @@ archive is not part of the project and should not be distributed with the
 source code.
 
 If you are a copyright owner and you are uncomfortable with this archive,
-please contact me <chm.duquesne@gmail.com>, so that we find a solution
-that better suits you.
+please be aware that this is the same for me.  Please contact me
+<chm.duquesne@gmail.com>, so that we find a solution that better suits you
+(for example downloading your header directly from your site).
 
-Building:
-========
+Building and installing:
+=======================
 
-1 - Locate the solver headers you need support for.
+If you want to make sure you compile your version with support for every
+solvers, follow these steps:
 
-Installing
-==========
-
-You can either build the program and then type "make install", or directly
-install one of the precompiled packages.
+    make download
+    make
+    sudo make install # or "make install" as root
