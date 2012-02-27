@@ -1,7 +1,6 @@
 #include "test_lazylibs.h"
-#include "config.h"
 
-#ifdef COMPILED_WITH_CPLEX_SUPPORT
+#ifndef SKIP_CPLEX_SUPPORT
 #include "lazycplex.h"
 #include <stdio.h>
 #include <stdlib.h>
