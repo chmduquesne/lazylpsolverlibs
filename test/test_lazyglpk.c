@@ -2,7 +2,7 @@
 #include "config.h"
 
 #ifdef COMPILED_WITH_GLPK_SUPPORT
-#include "lazy_glpk.h"
+#include "lazyglpk.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -2,7 +2,7 @@
 #include "config.h"
 
 #ifdef COMPILED_WITH_CPLEX_SUPPORT
-#include "lazy_cplex.h"
+#include "lazycplex.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>

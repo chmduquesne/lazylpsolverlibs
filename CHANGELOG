@@ -1,0 +1,16 @@
+version 0.0.3:
+    - Added proper windows support with an installer
+    - Added a way to force the library to load with environment variables
+    - Added a check for known versions of libraries
+    - Backward compatibility note:
+        This version *breaks* the backward compatibility by changing the
+        names of some headers. If you were previously using
+        lazylpsolverlibs and this annoys you, drop me an email
+        (<chm.duquesne@gmail.com>). I'll be happy to introduce backward
+        compatible headers. Because right now I don't think anyone uses
+        this library, I am taking the risk not to add these backward
+        compatible headers for the sake of simplicity...
+        Header renaming: lazy_gurobi_c.h -> lazygurobi.h
+        Header renaming: lazy_cplex.h -> lazycplex.h
+        Header renaming: lazy_xprs.h -> lazyxprs.h
+        Header renaming: lazy_glpk.h -> lazyglpk.h
