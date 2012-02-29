@@ -8,133 +8,126 @@ int load_gurobi_symbols() {
     int res;
     char *LAZYLPSOLVERLIBS_GUROBI_LIB_PATH; /* environment variable */
     LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = NULL;
-    __gurobi_handle = NULL;
-
-    if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
+    __gurobi_module = NULL;
 
     /* first, try to read the path to load from the environment */
     LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GUROBI_LIB_PATH");
     if (LAZYLPSOLVERLIBS_GUROBI_LIB_PATH != NULL) {
-        __gurobi_handle = lt_dlopen(LAZYLPSOLVERLIBS_GUROBI_LIB_PATH);
+        __gurobi_module = g_module_open(LAZYLPSOLVERLIBS_GUROBI_LIB_PATH, G_MODULE_BIND_LAZY);
     }
 
     /* if this failed, try to load libraries without version number */
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("libgurobi");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("gurobi");
+    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi"), G_MODULE_BIND_LAZY);
 
     /* then try some versioned library names known to work (most recent first)*/
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("libgurobi461");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("gurobi461");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("libgurobi452");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("gurobi452");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("libgurobi402");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("gurobi402");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("libgurobi303");
-    if (!__gurobi_handle) __gurobi_handle = lt_dlopenext("gurobi303");
+    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi461"), G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi452"), G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi402"), G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi303"), G_MODULE_BIND_LAZY);
 
     /* if everything failed, give up */
-    if (!__gurobi_handle) return SYMBOL_LOAD_FAIL;
+    if (!__gurobi_module) return SYMBOL_LOAD_FAIL;
 
     res = SYMBOL_LOAD_SUCCESS;
 
-    if (!(__symbolic_GRBaddconstr = lt_dlsym(__gurobi_handle, "GRBaddconstr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBaddconstrs = lt_dlsym(__gurobi_handle, "GRBaddconstrs"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBaddrangeconstr = lt_dlsym(__gurobi_handle, "GRBaddrangeconstr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBaddrangeconstrs = lt_dlsym(__gurobi_handle, "GRBaddrangeconstrs"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBaddsos = lt_dlsym(__gurobi_handle, "GRBaddsos"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBaddvar = lt_dlsym(__gurobi_handle, "GRBaddvar"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBaddvars = lt_dlsym(__gurobi_handle, "GRBaddvars"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBcbcut = lt_dlsym(__gurobi_handle, "GRBcbcut"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBcbget = lt_dlsym(__gurobi_handle, "GRBcbget"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBcbsolution = lt_dlsym(__gurobi_handle, "GRBcbsolution"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBcheckmodel = lt_dlsym(__gurobi_handle, "GRBcheckmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBchgcoeffs = lt_dlsym(__gurobi_handle, "GRBchgcoeffs"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBcomputeIIS = lt_dlsym(__gurobi_handle, "GRBcomputeIIS"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBconverttofixed = lt_dlsym(__gurobi_handle, "GRBconverttofixed"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBcopymodel = lt_dlsym(__gurobi_handle, "GRBcopymodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBdelconstrs = lt_dlsym(__gurobi_handle, "GRBdelconstrs"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBdelsos = lt_dlsym(__gurobi_handle, "GRBdelsos"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBdelvars = lt_dlsym(__gurobi_handle, "GRBdelvars"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBfeasibility = lt_dlsym(__gurobi_handle, "GRBfeasibility"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBfixedmodel = lt_dlsym(__gurobi_handle, "GRBfixedmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBfreeenv = lt_dlsym(__gurobi_handle, "GRBfreeenv"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBfreemodel = lt_dlsym(__gurobi_handle, "GRBfreemodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetattrinfo = lt_dlsym(__gurobi_handle, "GRBgetattrinfo"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetcallbackfunc = lt_dlsym(__gurobi_handle, "GRBgetcallbackfunc"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetcbwhatinfo = lt_dlsym(__gurobi_handle, "GRBgetcbwhatinfo"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetcharattrarray = lt_dlsym(__gurobi_handle, "GRBgetcharattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetcharattrelement = lt_dlsym(__gurobi_handle, "GRBgetcharattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetcharattrlist = lt_dlsym(__gurobi_handle, "GRBgetcharattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetcoeff = lt_dlsym(__gurobi_handle, "GRBgetcoeff"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetconstrs = lt_dlsym(__gurobi_handle, "GRBgetconstrs"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetdblattr = lt_dlsym(__gurobi_handle, "GRBgetdblattr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetdblattrarray = lt_dlsym(__gurobi_handle, "GRBgetdblattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetdblattrelement = lt_dlsym(__gurobi_handle, "GRBgetdblattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetdblattrlist = lt_dlsym(__gurobi_handle, "GRBgetdblattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetdblparam = lt_dlsym(__gurobi_handle, "GRBgetdblparam"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetdblparaminfo = lt_dlsym(__gurobi_handle, "GRBgetdblparaminfo"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetenv = lt_dlsym(__gurobi_handle, "GRBgetenv"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgeterrormsg = lt_dlsym(__gurobi_handle, "GRBgeterrormsg"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetintattr = lt_dlsym(__gurobi_handle, "GRBgetintattr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetintattrarray = lt_dlsym(__gurobi_handle, "GRBgetintattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetintattrelement = lt_dlsym(__gurobi_handle, "GRBgetintattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetintattrlist = lt_dlsym(__gurobi_handle, "GRBgetintattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetintparam = lt_dlsym(__gurobi_handle, "GRBgetintparam"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetintparaminfo = lt_dlsym(__gurobi_handle, "GRBgetintparaminfo"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetlogfile = lt_dlsym(__gurobi_handle, "GRBgetlogfile"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetmerrormsg = lt_dlsym(__gurobi_handle, "GRBgetmerrormsg"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetnumparams = lt_dlsym(__gurobi_handle, "GRBgetnumparams"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetparamname = lt_dlsym(__gurobi_handle, "GRBgetparamname"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetparamtype = lt_dlsym(__gurobi_handle, "GRBgetparamtype"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetsos = lt_dlsym(__gurobi_handle, "GRBgetsos"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetstrattr = lt_dlsym(__gurobi_handle, "GRBgetstrattr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetstrattrarray = lt_dlsym(__gurobi_handle, "GRBgetstrattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetstrattrelement = lt_dlsym(__gurobi_handle, "GRBgetstrattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetstrattrlist = lt_dlsym(__gurobi_handle, "GRBgetstrattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetstrparam = lt_dlsym(__gurobi_handle, "GRBgetstrparam"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetstrparaminfo = lt_dlsym(__gurobi_handle, "GRBgetstrparaminfo"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBgetvars = lt_dlsym(__gurobi_handle, "GRBgetvars"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBiismodel = lt_dlsym(__gurobi_handle, "GRBiismodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBloadenv = lt_dlsym(__gurobi_handle, "GRBloadenv"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBloadmodel = lt_dlsym(__gurobi_handle, "GRBloadmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBmsg = lt_dlsym(__gurobi_handle, "GRBmsg"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBnewmodel = lt_dlsym(__gurobi_handle, "GRBnewmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBoptimize = lt_dlsym(__gurobi_handle, "GRBoptimize"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBplatform = lt_dlsym(__gurobi_handle, "GRBplatform"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBpresolvemodel = lt_dlsym(__gurobi_handle, "GRBpresolvemodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBread = lt_dlsym(__gurobi_handle, "GRBread"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBreadmodel = lt_dlsym(__gurobi_handle, "GRBreadmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBreadparams = lt_dlsym(__gurobi_handle, "GRBreadparams"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBrelaxmodel = lt_dlsym(__gurobi_handle, "GRBrelaxmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBresetmodel = lt_dlsym(__gurobi_handle, "GRBresetmodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBresetparams = lt_dlsym(__gurobi_handle, "GRBresetparams"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetcallbackfunc = lt_dlsym(__gurobi_handle, "GRBsetcallbackfunc"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetcharattrarray = lt_dlsym(__gurobi_handle, "GRBsetcharattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetcharattrelement = lt_dlsym(__gurobi_handle, "GRBsetcharattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetcharattrlist = lt_dlsym(__gurobi_handle, "GRBsetcharattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetdblattr = lt_dlsym(__gurobi_handle, "GRBsetdblattr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetdblattrarray = lt_dlsym(__gurobi_handle, "GRBsetdblattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetdblattrelement = lt_dlsym(__gurobi_handle, "GRBsetdblattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetdblattrlist = lt_dlsym(__gurobi_handle, "GRBsetdblattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetdblparam = lt_dlsym(__gurobi_handle, "GRBsetdblparam"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetintattr = lt_dlsym(__gurobi_handle, "GRBsetintattr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetintattrarray = lt_dlsym(__gurobi_handle, "GRBsetintattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetintattrelement = lt_dlsym(__gurobi_handle, "GRBsetintattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetintattrlist = lt_dlsym(__gurobi_handle, "GRBsetintattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetintparam = lt_dlsym(__gurobi_handle, "GRBsetintparam"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetlogfile = lt_dlsym(__gurobi_handle, "GRBsetlogfile"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetsignal = lt_dlsym(__gurobi_handle, "GRBsetsignal"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetstrattr = lt_dlsym(__gurobi_handle, "GRBsetstrattr"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetstrattrarray = lt_dlsym(__gurobi_handle, "GRBsetstrattrarray"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetstrattrelement = lt_dlsym(__gurobi_handle, "GRBsetstrattrelement"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetstrattrlist = lt_dlsym(__gurobi_handle, "GRBsetstrattrlist"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBsetstrparam = lt_dlsym(__gurobi_handle, "GRBsetstrparam"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBstrongbranch = lt_dlsym(__gurobi_handle, "GRBstrongbranch"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBterminate = lt_dlsym(__gurobi_handle, "GRBterminate"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBupdatemodel = lt_dlsym(__gurobi_handle, "GRBupdatemodel"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBversion = lt_dlsym(__gurobi_handle, "GRBversion"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBwrite = lt_dlsym(__gurobi_handle, "GRBwrite"))) res = SYMBOL_MISSING;
-    if (!(__symbolic_GRBwriteparams = lt_dlsym(__gurobi_handle, "GRBwriteparams"))) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddconstr", (gpointer *) &__symbolic_GRBaddconstr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddconstrs", (gpointer *) &__symbolic_GRBaddconstrs)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddrangeconstr", (gpointer *) &__symbolic_GRBaddrangeconstr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddrangeconstrs", (gpointer *) &__symbolic_GRBaddrangeconstrs)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddsos", (gpointer *) &__symbolic_GRBaddsos)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddvar", (gpointer *) &__symbolic_GRBaddvar)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBaddvars", (gpointer *) &__symbolic_GRBaddvars)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBcbcut", (gpointer *) &__symbolic_GRBcbcut)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBcbget", (gpointer *) &__symbolic_GRBcbget)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBcbsolution", (gpointer *) &__symbolic_GRBcbsolution)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBcheckmodel", (gpointer *) &__symbolic_GRBcheckmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBchgcoeffs", (gpointer *) &__symbolic_GRBchgcoeffs)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBcomputeIIS", (gpointer *) &__symbolic_GRBcomputeIIS)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBconverttofixed", (gpointer *) &__symbolic_GRBconverttofixed)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBcopymodel", (gpointer *) &__symbolic_GRBcopymodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBdelconstrs", (gpointer *) &__symbolic_GRBdelconstrs)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBdelsos", (gpointer *) &__symbolic_GRBdelsos)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBdelvars", (gpointer *) &__symbolic_GRBdelvars)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBfeasibility", (gpointer *) &__symbolic_GRBfeasibility)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBfixedmodel", (gpointer *) &__symbolic_GRBfixedmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBfreeenv", (gpointer *) &__symbolic_GRBfreeenv)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBfreemodel", (gpointer *) &__symbolic_GRBfreemodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetattrinfo", (gpointer *) &__symbolic_GRBgetattrinfo)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetcallbackfunc", (gpointer *) &__symbolic_GRBgetcallbackfunc)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetcbwhatinfo", (gpointer *) &__symbolic_GRBgetcbwhatinfo)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetcharattrarray", (gpointer *) &__symbolic_GRBgetcharattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetcharattrelement", (gpointer *) &__symbolic_GRBgetcharattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetcharattrlist", (gpointer *) &__symbolic_GRBgetcharattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetcoeff", (gpointer *) &__symbolic_GRBgetcoeff)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetconstrs", (gpointer *) &__symbolic_GRBgetconstrs)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetdblattr", (gpointer *) &__symbolic_GRBgetdblattr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetdblattrarray", (gpointer *) &__symbolic_GRBgetdblattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetdblattrelement", (gpointer *) &__symbolic_GRBgetdblattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetdblattrlist", (gpointer *) &__symbolic_GRBgetdblattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetdblparam", (gpointer *) &__symbolic_GRBgetdblparam)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetdblparaminfo", (gpointer *) &__symbolic_GRBgetdblparaminfo)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetenv", (gpointer *) &__symbolic_GRBgetenv)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgeterrormsg", (gpointer *) &__symbolic_GRBgeterrormsg)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetintattr", (gpointer *) &__symbolic_GRBgetintattr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetintattrarray", (gpointer *) &__symbolic_GRBgetintattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetintattrelement", (gpointer *) &__symbolic_GRBgetintattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetintattrlist", (gpointer *) &__symbolic_GRBgetintattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetintparam", (gpointer *) &__symbolic_GRBgetintparam)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetintparaminfo", (gpointer *) &__symbolic_GRBgetintparaminfo)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetlogfile", (gpointer *) &__symbolic_GRBgetlogfile)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetmerrormsg", (gpointer *) &__symbolic_GRBgetmerrormsg)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetnumparams", (gpointer *) &__symbolic_GRBgetnumparams)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetparamname", (gpointer *) &__symbolic_GRBgetparamname)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetparamtype", (gpointer *) &__symbolic_GRBgetparamtype)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetsos", (gpointer *) &__symbolic_GRBgetsos)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetstrattr", (gpointer *) &__symbolic_GRBgetstrattr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetstrattrarray", (gpointer *) &__symbolic_GRBgetstrattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetstrattrelement", (gpointer *) &__symbolic_GRBgetstrattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetstrattrlist", (gpointer *) &__symbolic_GRBgetstrattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetstrparam", (gpointer *) &__symbolic_GRBgetstrparam)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetstrparaminfo", (gpointer *) &__symbolic_GRBgetstrparaminfo)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBgetvars", (gpointer *) &__symbolic_GRBgetvars)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBiismodel", (gpointer *) &__symbolic_GRBiismodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBloadenv", (gpointer *) &__symbolic_GRBloadenv)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBloadmodel", (gpointer *) &__symbolic_GRBloadmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBmsg", (gpointer *) &__symbolic_GRBmsg)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBnewmodel", (gpointer *) &__symbolic_GRBnewmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBoptimize", (gpointer *) &__symbolic_GRBoptimize)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBplatform", (gpointer *) &__symbolic_GRBplatform)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBpresolvemodel", (gpointer *) &__symbolic_GRBpresolvemodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBread", (gpointer *) &__symbolic_GRBread)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBreadmodel", (gpointer *) &__symbolic_GRBreadmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBreadparams", (gpointer *) &__symbolic_GRBreadparams)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBrelaxmodel", (gpointer *) &__symbolic_GRBrelaxmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBresetmodel", (gpointer *) &__symbolic_GRBresetmodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBresetparams", (gpointer *) &__symbolic_GRBresetparams)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetcallbackfunc", (gpointer *) &__symbolic_GRBsetcallbackfunc)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetcharattrarray", (gpointer *) &__symbolic_GRBsetcharattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetcharattrelement", (gpointer *) &__symbolic_GRBsetcharattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetcharattrlist", (gpointer *) &__symbolic_GRBsetcharattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetdblattr", (gpointer *) &__symbolic_GRBsetdblattr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetdblattrarray", (gpointer *) &__symbolic_GRBsetdblattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetdblattrelement", (gpointer *) &__symbolic_GRBsetdblattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetdblattrlist", (gpointer *) &__symbolic_GRBsetdblattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetdblparam", (gpointer *) &__symbolic_GRBsetdblparam)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetintattr", (gpointer *) &__symbolic_GRBsetintattr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetintattrarray", (gpointer *) &__symbolic_GRBsetintattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetintattrelement", (gpointer *) &__symbolic_GRBsetintattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetintattrlist", (gpointer *) &__symbolic_GRBsetintattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetintparam", (gpointer *) &__symbolic_GRBsetintparam)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetlogfile", (gpointer *) &__symbolic_GRBsetlogfile)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetsignal", (gpointer *) &__symbolic_GRBsetsignal)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetstrattr", (gpointer *) &__symbolic_GRBsetstrattr)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetstrattrarray", (gpointer *) &__symbolic_GRBsetstrattrarray)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetstrattrelement", (gpointer *) &__symbolic_GRBsetstrattrelement)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetstrattrlist", (gpointer *) &__symbolic_GRBsetstrattrlist)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBsetstrparam", (gpointer *) &__symbolic_GRBsetstrparam)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBstrongbranch", (gpointer *) &__symbolic_GRBstrongbranch)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBterminate", (gpointer *) &__symbolic_GRBterminate)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBupdatemodel", (gpointer *) &__symbolic_GRBupdatemodel)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBversion", (gpointer *) &__symbolic_GRBversion)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBwrite", (gpointer *) &__symbolic_GRBwrite)) res = SYMBOL_MISSING;
+    if (!g_module_symbol(__gurobi_module, "GRBwriteparams", (gpointer *) &__symbolic_GRBwriteparams)) res = SYMBOL_MISSING;
 
     return res;
 }
@@ -244,10 +237,7 @@ void print_gurobi_missing_symbols() {
 
 int unload_gurobi_symbols() {
     /* unload library */
-    if (lt_dlclose (__gurobi_handle) != 0) return SYMBOL_UNLOAD_FAIL;
-
-    /* exit */
-    if (lt_dlexit() != 0) return SYMBOL_UNLOAD_FAIL;
+    if (!g_module_close (__gurobi_module)) return SYMBOL_UNLOAD_FAIL;
 
     return SYMBOL_UNLOAD_SUCCESS;
 }

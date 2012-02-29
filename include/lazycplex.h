@@ -3,7 +3,7 @@
 #ifndef LAZY_CPLEX_H
 #define LAZY_CPLEX_H
 
-#include <ltdl.h>
+#include <gmodule.h>
 #include "lazy_loading_status.h"
 
 #ifdef __cplusplus
@@ -21,7 +21,7 @@ extern "C" {
 #endif
 
 /* handle to the library */
-LLSL_DECL lt_dlhandle __cplex_handle;
+LLSL_DECL GModule *__cplex_module;
 /* loads the symbols */
 LLSL_DECL int load_cplex_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
