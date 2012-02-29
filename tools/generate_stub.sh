@@ -34,7 +34,7 @@ generate_header() {
     #ifndef LAZY_${capitalized_name}_H
     #define LAZY_${capitalized_name}_H
 
-    #include <ltdl.h>
+    #include <gmodule.h>
     #include \"lazy_loading_status.h\"
 
     #ifdef __cplusplus
@@ -52,7 +52,7 @@ generate_header() {
     #endif
 
     /* handle to the library */
-    LLSL_DECL lt_dlhandle __${solver_name}_handle;
+    LLSL_DECL GModule *__${solver_name}_module;
     /* loads the symbols */
     LLSL_DECL int load_${solver_name}_symbols();
     /* unloads the symbols (if called as many times as loadSymbols) */
@@ -99,15 +99,13 @@ versioned_library_names() {
             echo "        /* then try some versioned library names known to work (most recent first)*/"
             for i in 121 120 112 111 110 102 101 100 91 90 81 80 75 71 \
                 70 66 65 60 50 40 30 21 20; do
-                echo "        if (!__cplex_handle) __cplex_handle = lt_dlopenext(\"libcplex$i\");"
-                echo "        if (!__cplex_handle) __cplex_handle = lt_dlopenext(\"cplex$i\");"
+                echo "        if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, \"cplex$i\"), G_MODULE_BIND_LAZY);"
             done
             ;;
         gurobi)
             echo "        /* then try some versioned library names known to work (most recent first)*/"
             for i in 461 452 402 303; do
-                echo "        if (!__gurobi_handle) __gurobi_handle = lt_dlopenext(\"libgurobi$i\");"
-                echo "        if (!__gurobi_handle) __gurobi_handle = lt_dlopenext(\"gurobi$i\");"
+                echo "        if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, \"gurobi$i\"), G_MODULE_BIND_LAZY);"
             done
             ;;
     esac
@@ -124,29 +122,26 @@ generate_c_file() {
         int res;
         char *LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH; /* environment variable */
         LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH = NULL;
-        __${solver_name}_handle = NULL;
-
-        if (lt_dlinit () != 0) return SYMBOL_LOAD_FAIL;
+        __${solver_name}_module = NULL;
 
         /* first, try to read the path to load from the environment */
         LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH = getenv(\"LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH\");
         if (LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH != NULL) {
-            __${solver_name}_handle = lt_dlopen(LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH);
+            __${solver_name}_module = g_module_open(LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH, G_MODULE_BIND_LAZY);
         }
 
         /* if this failed, try to load libraries without version number */
-        if (!__${solver_name}_handle) __${solver_name}_handle = lt_dlopenext(\"lib${solver_name}\");
-        if (!__${solver_name}_handle) __${solver_name}_handle = lt_dlopenext(\"${solver_name}\");
+        if (!__${solver_name}_module) __${solver_name}_module = g_module_open(g_module_build_path(NULL, \"${solver_name}\"), G_MODULE_BIND_LAZY);
     " >> $cfile_prefix/$lazy_cfile
     versioned_library_names >> $cfile_prefix/$lazy_cfile
     echo "
         /* if everything failed, give up */
-        if (!__${solver_name}_handle) return SYMBOL_LOAD_FAIL;
+        if (!__${solver_name}_module) return SYMBOL_LOAD_FAIL;
 
         res = SYMBOL_LOAD_SUCCESS;
     " >> $cfile_prefix/$lazy_cfile
     for i in $symbols; do
-        echo "        if (!(__symbolic_$i = lt_dlsym(__${solver_name}_handle, \"$i\"))) res = SYMBOL_MISSING;" >> $cfile_prefix/$lazy_cfile
+        echo "        if (!g_module_symbol(__${solver_name}_module, \"$i\", (gpointer *) &__symbolic_$i)) res = SYMBOL_MISSING;" >> $cfile_prefix/$lazy_cfile
     done
     echo "
         return res;
@@ -162,10 +157,7 @@ generate_c_file() {
 
     int unload_${solver_name}_symbols() {
         /* unload library */
-        if (lt_dlclose (__${solver_name}_handle) != 0) return SYMBOL_UNLOAD_FAIL;
-
-        /* exit */
-        if (lt_dlexit() != 0) return SYMBOL_UNLOAD_FAIL;
+        if (!g_module_close (__${solver_name}_module)) return SYMBOL_UNLOAD_FAIL;
 
         return SYMBOL_UNLOAD_SUCCESS;
     }
