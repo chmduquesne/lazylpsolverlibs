@@ -13,6 +13,7 @@
 #endif
 #include "lazy_loading_status.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int test_lazysolver(int (*load)(), int(*solve)(), void (*print_missing)(), int (*unload)())
 {
@@ -52,10 +53,24 @@ int test_lazysolver(int (*load)(), int(*solve)(), void (*print_missing)(), int (
 int main(int argc, const char *argv[])
 {
     char buffer[256];
+    char *LAZYLPSOLVERLIBS_CPLEX_LIB_PATH;
+    char *LAZYLPSOLVERLIBS_XPRESS_LIB_PATH;
+    char *LAZYLPSOLVERLIBS_GUROBI_LIB_PATH;
+    char *LAZYLPSOLVERLIBS_GLPK_LIB_PATH;
+
+    LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = NULL;
+    LAZYLPSOLVERLIBS_XPRESS_LIB_PATH = NULL;
+    LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = NULL;
+    LAZYLPSOLVERLIBS_GLPK_LIB_PATH = NULL;
+
     printf("This program will now test wether it can reach different solvers.\n");
 
     printf("\nTesting cplex support...\n");
 #ifndef SKIP_CPLEX_SUPPORT
+    LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = getenv("LAZYLPSOLVERLIBS_CPLEX_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_CPLEX_LIB_PATH != NULL) {
+        fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_CPLEX_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_CPLEX_LIB_PATH);
+    }
     test_lazysolver(&load_cplex_symbols,
             &solve_cplex_example,
             &print_cplex_missing_symbols,
@@ -65,6 +80,10 @@ int main(int argc, const char *argv[])
 #endif
     printf("\nTesting xpress support...\n");
 #ifndef SKIP_XPRESS_SUPPORT
+    LAZYLPSOLVERLIBS_XPRESS_LIB_PATH = getenv("LAZYLPSOLVERLIBS_XPRESS_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_XPRESS_LIB_PATH != NULL) {
+        fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_XPRESS_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_XPRESS_LIB_PATH);
+    }
     test_lazysolver(&load_xprs_symbols,
             &solve_xprs_example,
             &print_xprs_missing_symbols,
@@ -74,6 +93,10 @@ int main(int argc, const char *argv[])
 #endif
     printf("\nTesting gurobi support...\n");
 #ifndef SKIP_GUROBI_SUPPORT
+    LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GUROBI_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_GUROBI_LIB_PATH != NULL) {
+        fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_GUROBI_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_GUROBI_LIB_PATH);
+    }
     test_lazysolver(&load_gurobi_symbols,
             &solve_gurobi_example,
             &print_gurobi_missing_symbols,
@@ -83,6 +106,10 @@ int main(int argc, const char *argv[])
 #endif
     printf("\nTesting glpk support...\n");
 #ifndef SKIP_GLPK_SUPPORT
+    LAZYLPSOLVERLIBS_GLPK_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GLPK_LIB_PATH");
+    if (LAZYLPSOLVERLIBS_GLPK_LIB_PATH != NULL) {
+        fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_GLPK_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_GLPK_LIB_PATH);
+    }
     test_lazysolver(&load_glpk_symbols,
             &solve_glpk_example,
             &print_glpk_missing_symbols,

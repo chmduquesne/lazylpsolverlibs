@@ -101,7 +101,7 @@ deb:
 	@$(MAKE) TARGET=LINUX
 	@rm -rf /tmp/installdir
 	@$(MAKE) install DESTDIR=/tmp/installdir PREFIX=/usr
-	@$(FPM) -s dir -t deb -n lazylpsolverlibs -v $(VERSION) -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.deb -d "libltdl-dev(>=0)"
+	@$(FPM) -s dir -t deb -n lazylpsolverlibs -v $(VERSION) -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.deb -d "libglib-2.0-dev(>=0)"
 	@mv lazylpsolverlibs-*.deb dist
 
 rpm:
@@ -110,7 +110,7 @@ rpm:
 	@$(MAKE) TARGET=LINUX
 	@rm -rf /tmp/installdir
 	@$(MAKE) install DESTDIR=/tmp/installdir PREFIX=/usr
-	@$(FPM) -s dir -t rpm -n lazylpsolverlibs -v $(VERSION) -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.rpm -d "libltdl-dev(>=0)"
+	@$(FPM) -s dir -t rpm -n lazylpsolverlibs -v $(VERSION) -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.rpm -d "libglib-2.0-dev(>=0)"
 	@mv lazylpsolverlibs-*.rpm dist
 
 nsis:
