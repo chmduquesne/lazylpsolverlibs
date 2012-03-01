@@ -15,22 +15,22 @@ dirs:
 
 # WINE
 lib/%.dll: src/%.c dirs
-	$(CC) -c -DBUILDING_LAZYLPSOLVERLIBS -DBUILD_CPXSTATIC -I include $< -o $(<:%.c=%.o) `pkg-config --cflags gmodule-2.0` $(CFLAGS)
-	$(CC) -shared -o $@ $(<:%.c=%.o) -Wl,--output-def,$(@:%.dll=%.def),--out-implib,$(@:lib/%.dll=lib/lib%.a) `pkg-config --libs gmodule-2.0` $(LDFLAGS)
+	$(CC) -c -DBUILDING_LAZYLPSOLVERLIBS -DBUILD_CPXSTATIC -I include $< -o $(<:%.c=%.o) $(shell $(PKGCONFIG) --cflags gmodule-2.0) $(CFLAGS)
+	$(CC) -shared -o $@ $(<:%.c=%.o) -Wl,--output-def,$(@:%.dll=%.def),--out-implib,$(@:lib/%.dll=lib/lib%.a) $(shell $(PKGCONFIG) --libs gmodule-2.0) $(LDFLAGS)
 
 bin/test_lazylpsolverlibs.exe: $(LIB) $(TST_OBJ) dirs
-	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs.exe `pkg-config --libs gmodule-2.0` lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll $(LDFLAGS)
+	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs.exe $(shell $(PKGCONFIG) --libs gmodule-2.0) lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll $(LDFLAGS)
 
 # LINUX
 lib/lib%.so: src/%.c dirs
-	$(CC) -shared -fPIC -I include $< -o $@ `pkg-config --cflags gmodule-2.0` $(CFLAGS)
+	$(CC) -shared -fPIC -I include $< -o $@ $(shell $(PKGCONFIG) --cflags gmodule-2.0) $(CFLAGS)
 
 bin/test_lazylpsolverlibs: $(LIB) $(TST_OBJ) dirs
-	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs `pkg-config --libs gmodule-2.0` -llazycplex -llazyxprs -llazygurobi -llazyglpk -Llib $(LDFLAGS)
+	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs $(shell $(PKGCONFIG) --libs gmodule-2.0) -llazycplex -llazyxprs -llazygurobi -llazyglpk -Llib $(LDFLAGS)
 
 # BOTH PLATFORMS
 %.o: %.c
-	$(CC) -I include -c  $< -o $@ `pkg-config --cflags gmodule-2.0` $(CFLAGS)
+	$(CC) -I include -c  $< -o $@ $(shell $(PKGCONFIG) --cflags gmodule-2.0) $(CFLAGS)
 
 # For your convenience, an archive of solver headers can be downloaded.
 download:
