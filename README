@@ -12,7 +12,7 @@ lazylpsolverlibs is hosted at https://code.google.com/p/lazylpsolverlibs/
 
 DEPENDENCIES
 ============
-- libltdl
+- glib-2.0
 - headers of gurobi, cplex, xpress and glpk
 
 INSTALLATION

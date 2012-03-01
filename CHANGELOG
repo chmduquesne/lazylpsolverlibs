@@ -18,3 +18,5 @@ version 0.1.0:
     - Switched from ltdl to glib for license compliance
     - Added feedback for the variables that are set in
       test_lazylpsolverlibs
+version 0.1.1:
+    - Updated the dependencies in the README and the INSTALL files
