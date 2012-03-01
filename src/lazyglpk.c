@@ -2,7 +2,50 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lazyglpk.h"
+
+GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
+    char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
+    GModule *res;
+
+    p = NULL;
+    dir = NULL;
+    res = NULL;
+
+#ifdef _WIN32
+    LIB_PATH = getenv("PATH");
+#define PATH_SEP ';'
+#else
+    LIB_PATH = getenv("LD_LIBRARY_PATH");
+#define PATH_SEP ':'
+#endif
+
+    res = g_module_open(g_module_build_path(NULL, name), flags);
+    if (res) {
+        return res;
+    }
+    if (LIB_PATH) {
+        LIB_PATH_COPY = malloc(strlen(LIB_PATH));
+        strncpy(LIB_PATH_COPY, LIB_PATH, strlen(LIB_PATH));
+        p = LIB_PATH_COPY;
+        dir = p;
+        while ((p = strchr(p, PATH_SEP))) {
+            *p = '\0';
+            p++;
+            res = g_module_open(g_module_build_path(dir, name), flags);
+            if (res) {
+                free(LIB_PATH_COPY);
+                return res;
+            }
+            dir = p;
+        }
+        res = g_module_open(g_module_build_path(dir, name), flags);
+        free(LIB_PATH_COPY);
+    }
+
+    return res;
+}
 
 int load_glpk_symbols() {
     int res;
@@ -17,7 +60,7 @@ int load_glpk_symbols() {
     }
 
     /* if this failed, try to load libraries without version number */
-    if (!__glpk_module) __glpk_module = g_module_open(g_module_build_path(NULL, "glpk"), G_MODULE_BIND_LAZY);
+    if (!__glpk_module) __glpk_module = g_module_open_all("glpk", G_MODULE_BIND_LAZY);
 
 
     /* if everything failed, give up */
