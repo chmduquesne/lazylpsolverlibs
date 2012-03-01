@@ -99,13 +99,13 @@ versioned_library_names() {
             echo "        /* then try some versioned library names known to work (most recent first)*/"
             for i in 121 120 112 111 110 102 101 100 91 90 81 80 75 71 \
                 70 66 65 60 50 40 30 21 20; do
-                echo "        if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, \"cplex$i\"), G_MODULE_BIND_LAZY);"
+                echo "        if (!__cplex_module) __cplex_module = g_module_open_all(\"cplex$i\", G_MODULE_BIND_LAZY);"
             done
             ;;
         gurobi)
             echo "        /* then try some versioned library names known to work (most recent first)*/"
             for i in 461 452 402 303; do
-                echo "        if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, \"gurobi$i\"), G_MODULE_BIND_LAZY);"
+                echo "        if (!__gurobi_module) __gurobi_module = g_module_open_all(\"gurobi$i\", G_MODULE_BIND_LAZY);"
             done
             ;;
     esac
@@ -116,7 +116,50 @@ generate_c_file() {
     echo "
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
     #include \"$lazy_header\"
+
+    GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
+        char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
+        GModule *res;
+
+        p = NULL;
+        dir = NULL;
+        res = NULL;
+
+    #ifdef _WIN32
+        LIB_PATH = getenv(\"PATH\");
+    #define PATH_SEP ';'
+    #else
+        LIB_PATH = getenv(\"LD_LIBRARY_PATH\");
+    #define PATH_SEP ':'
+    #endif
+
+        res = g_module_open(g_module_build_path(NULL, name), flags);
+        if (res) {
+            return res;
+        }
+        if (LIB_PATH) {
+            LIB_PATH_COPY = malloc(strlen(LIB_PATH));
+            strncpy(LIB_PATH_COPY, LIB_PATH, strlen(LIB_PATH));
+            p = LIB_PATH_COPY;
+            dir = p;
+            while ((p = strchr(p, PATH_SEP))) {
+                *p = '\\\0';
+                p++;
+                res = g_module_open(g_module_build_path(dir, name), flags);
+                if (res) {
+                    free(LIB_PATH_COPY);
+                    return res;
+                }
+                dir = p;
+            }
+            res = g_module_open(g_module_build_path(dir, name), flags);
+            free(LIB_PATH_COPY);
+        }
+
+        return res;
+    }
 
     int load_${solver_name}_symbols() {
         int res;
@@ -131,7 +174,7 @@ generate_c_file() {
         }
 
         /* if this failed, try to load libraries without version number */
-        if (!__${solver_name}_module) __${solver_name}_module = g_module_open(g_module_build_path(NULL, \"${solver_name}\"), G_MODULE_BIND_LAZY);
+        if (!__${solver_name}_module) __${solver_name}_module = g_module_open_all(\"${solver_name}\", G_MODULE_BIND_LAZY);
     " >> $cfile_prefix/$lazy_cfile
     versioned_library_names >> $cfile_prefix/$lazy_cfile
     echo "

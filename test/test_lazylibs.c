@@ -65,11 +65,19 @@ int main(int argc, const char *argv[])
 
     printf("This program will now test wether it can reach different solvers.\n");
 
+#ifdef _WIN32
+    fprintf(stdout, "Search path specified in PATH=%s\n", getenv("PATH"));
+#else
+    fprintf(stdout, "Search path specified in LD_LIBRARY_PATH=%s\n", getenv("LD_LIBRARY_PATH"));
+#endif
+
     printf("\nTesting cplex support...\n");
 #ifndef SKIP_CPLEX_SUPPORT
     LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = getenv("LAZYLPSOLVERLIBS_CPLEX_LIB_PATH");
     if (LAZYLPSOLVERLIBS_CPLEX_LIB_PATH != NULL) {
         fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_CPLEX_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_CPLEX_LIB_PATH);
+    } else {
+        printf("LAZYLPSOLVERLIBS_CPLEX_LIB_PATH is not set.\n");
     }
     test_lazysolver(&load_cplex_symbols,
             &solve_cplex_example,
@@ -83,6 +91,8 @@ int main(int argc, const char *argv[])
     LAZYLPSOLVERLIBS_XPRESS_LIB_PATH = getenv("LAZYLPSOLVERLIBS_XPRESS_LIB_PATH");
     if (LAZYLPSOLVERLIBS_XPRESS_LIB_PATH != NULL) {
         fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_XPRESS_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_XPRESS_LIB_PATH);
+    } else {
+        printf("LAZYLPSOLVERLIBS_XPRESS_LIB_PATH is not set.\n");
     }
     test_lazysolver(&load_xprs_symbols,
             &solve_xprs_example,
@@ -96,6 +106,8 @@ int main(int argc, const char *argv[])
     LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GUROBI_LIB_PATH");
     if (LAZYLPSOLVERLIBS_GUROBI_LIB_PATH != NULL) {
         fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_GUROBI_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_GUROBI_LIB_PATH);
+    } else {
+        printf("LAZYLPSOLVERLIBS_GUROBI_LIB_PATH is not set.\n");
     }
     test_lazysolver(&load_gurobi_symbols,
             &solve_gurobi_example,
@@ -109,6 +121,8 @@ int main(int argc, const char *argv[])
     LAZYLPSOLVERLIBS_GLPK_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GLPK_LIB_PATH");
     if (LAZYLPSOLVERLIBS_GLPK_LIB_PATH != NULL) {
         fprintf(stdout, "Trying to load LAZYLPSOLVERLIBS_GLPK_LIB_PATH=%s\n", LAZYLPSOLVERLIBS_GLPK_LIB_PATH);
+    } else {
+        printf("LAZYLPSOLVERLIBS_GLPK_LIB_PATH is not set.\n");
     }
     test_lazysolver(&load_glpk_symbols,
             &solve_glpk_example,

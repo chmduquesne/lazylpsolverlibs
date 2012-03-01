@@ -2,7 +2,50 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lazycplex.h"
+
+GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
+    char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
+    GModule *res;
+
+    p = NULL;
+    dir = NULL;
+    res = NULL;
+
+#ifdef _WIN32
+    LIB_PATH = getenv("PATH");
+#define PATH_SEP ';'
+#else
+    LIB_PATH = getenv("LD_LIBRARY_PATH");
+#define PATH_SEP ':'
+#endif
+
+    res = g_module_open(g_module_build_path(NULL, name), flags);
+    if (res) {
+        return res;
+    }
+    if (LIB_PATH) {
+        LIB_PATH_COPY = malloc(strlen(LIB_PATH));
+        strncpy(LIB_PATH_COPY, LIB_PATH, strlen(LIB_PATH));
+        p = LIB_PATH_COPY;
+        dir = p;
+        while ((p = strchr(p, PATH_SEP))) {
+            *p = '\0';
+            p++;
+            res = g_module_open(g_module_build_path(dir, name), flags);
+            if (res) {
+                free(LIB_PATH_COPY);
+                return res;
+            }
+            dir = p;
+        }
+        res = g_module_open(g_module_build_path(dir, name), flags);
+        free(LIB_PATH_COPY);
+    }
+
+    return res;
+}
 
 int load_cplex_symbols() {
     int res;
@@ -17,32 +60,32 @@ int load_cplex_symbols() {
     }
 
     /* if this failed, try to load libraries without version number */
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex"), G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex", G_MODULE_BIND_LAZY);
 
     /* then try some versioned library names known to work (most recent first)*/
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex121"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex120"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex112"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex111"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex110"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex102"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex101"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex100"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex91"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex90"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex81"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex80"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex75"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex71"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex70"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex66"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex65"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex60"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex50"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex40"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex30"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex21"), G_MODULE_BIND_LAZY);
-    if (!__cplex_module) __cplex_module = g_module_open(g_module_build_path(NULL, "cplex20"), G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex121", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex120", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex112", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex111", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex110", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex102", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex101", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex100", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex91", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex90", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex81", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex80", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex75", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex71", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex70", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex66", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex65", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex60", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex50", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex40", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex30", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex21", G_MODULE_BIND_LAZY);
+    if (!__cplex_module) __cplex_module = g_module_open_all("cplex20", G_MODULE_BIND_LAZY);
 
     /* if everything failed, give up */
     if (!__cplex_module) return SYMBOL_LOAD_FAIL;

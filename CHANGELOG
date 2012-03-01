@@ -14,3 +14,7 @@ version 0.0.3:
         Header renaming: lazy_cplex.h -> lazycplex.h
         Header renaming: lazy_xprs.h -> lazyxprs.h
         Header renaming: lazy_glpk.h -> lazyglpk.h
+version 0.1.0:
+    - Switched from ltdl to glib for license compliance
+    - Added feedback for the variables that are set in
+      test_lazylpsolverlibs

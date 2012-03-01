@@ -2,7 +2,50 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lazygurobi.h"
+
+GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
+    char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
+    GModule *res;
+
+    p = NULL;
+    dir = NULL;
+    res = NULL;
+
+#ifdef _WIN32
+    LIB_PATH = getenv("PATH");
+#define PATH_SEP ';'
+#else
+    LIB_PATH = getenv("LD_LIBRARY_PATH");
+#define PATH_SEP ':'
+#endif
+
+    res = g_module_open(g_module_build_path(NULL, name), flags);
+    if (res) {
+        return res;
+    }
+    if (LIB_PATH) {
+        LIB_PATH_COPY = malloc(strlen(LIB_PATH));
+        strncpy(LIB_PATH_COPY, LIB_PATH, strlen(LIB_PATH));
+        p = LIB_PATH_COPY;
+        dir = p;
+        while ((p = strchr(p, PATH_SEP))) {
+            *p = '\0';
+            p++;
+            res = g_module_open(g_module_build_path(dir, name), flags);
+            if (res) {
+                free(LIB_PATH_COPY);
+                return res;
+            }
+            dir = p;
+        }
+        res = g_module_open(g_module_build_path(dir, name), flags);
+        free(LIB_PATH_COPY);
+    }
+
+    return res;
+}
 
 int load_gurobi_symbols() {
     int res;
@@ -17,13 +60,13 @@ int load_gurobi_symbols() {
     }
 
     /* if this failed, try to load libraries without version number */
-    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi"), G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open_all("gurobi", G_MODULE_BIND_LAZY);
 
     /* then try some versioned library names known to work (most recent first)*/
-    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi461"), G_MODULE_BIND_LAZY);
-    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi452"), G_MODULE_BIND_LAZY);
-    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi402"), G_MODULE_BIND_LAZY);
-    if (!__gurobi_module) __gurobi_module = g_module_open(g_module_build_path(NULL, "gurobi303"), G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open_all("gurobi461", G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open_all("gurobi452", G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open_all("gurobi402", G_MODULE_BIND_LAZY);
+    if (!__gurobi_module) __gurobi_module = g_module_open_all("gurobi303", G_MODULE_BIND_LAZY);
 
     /* if everything failed, give up */
     if (!__gurobi_module) return SYMBOL_LOAD_FAIL;
