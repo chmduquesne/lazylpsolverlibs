@@ -1,6 +1,6 @@
 Dependencies:
 ============
-- libltdl (distributed with gnu-libtool)
+- glib-2.0
 - the header of each solvers you want support for.
 
 Important note:
