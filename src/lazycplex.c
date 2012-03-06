@@ -27,6 +27,9 @@
 #include <string.h>
 #include "lazycplex.h"
 
+/* handle to the library */
+LLSL_DECL GModule *__cplex_module = NULL;
+
 GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
     char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
     GModule *res;
@@ -73,7 +76,6 @@ int load_cplex_symbols() {
     int res;
     char *LAZYLPSOLVERLIBS_CPLEX_LIB_PATH; /* environment variable */
     LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = NULL;
-    __cplex_module = NULL;
 
     /* first, try to read the path to load from the environment */
     LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = getenv("LAZYLPSOLVERLIBS_CPLEX_LIB_PATH");
@@ -1160,6 +1162,7 @@ void print_cplex_missing_symbols() {
 int unload_cplex_symbols() {
     /* unload library */
     if (!g_module_close (__cplex_module)) return SYMBOL_UNLOAD_FAIL;
+    __cplex_module = NULL;
 
     return SYMBOL_UNLOAD_SUCCESS;
 }

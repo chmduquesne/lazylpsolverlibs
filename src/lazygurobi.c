@@ -27,6 +27,9 @@
 #include <string.h>
 #include "lazygurobi.h"
 
+/* handle to the library */
+LLSL_DECL GModule *__gurobi_module = NULL;
+
 GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
     char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
     GModule *res;
@@ -73,7 +76,6 @@ int load_gurobi_symbols() {
     int res;
     char *LAZYLPSOLVERLIBS_GUROBI_LIB_PATH; /* environment variable */
     LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = NULL;
-    __gurobi_module = NULL;
 
     /* first, try to read the path to load from the environment */
     LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GUROBI_LIB_PATH");
@@ -303,6 +305,7 @@ void print_gurobi_missing_symbols() {
 int unload_gurobi_symbols() {
     /* unload library */
     if (!g_module_close (__gurobi_module)) return SYMBOL_UNLOAD_FAIL;
+    __gurobi_module = NULL;
 
     return SYMBOL_UNLOAD_SUCCESS;
 }

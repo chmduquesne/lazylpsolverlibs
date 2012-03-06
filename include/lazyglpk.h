@@ -42,8 +42,6 @@ extern "C" {
 #define LLSL_DECL
 #endif
 
-/* handle to the library */
-LLSL_DECL GModule *__glpk_module;
 /* loads the symbols */
 LLSL_DECL int load_glpk_symbols();
 /* unloads the symbols (if called as many times as loadSymbols) */
