@@ -86,6 +86,13 @@ distclean: clean
 
 package: dist deb rpm nsis
 
+upload:
+	 googlecode_upload -s"Source distribution" -plazylpsolverlibs -lFeatured,Type-Source dist/lazylpsolverlibs-$(VERSION).tar.gz
+	 googlecode_upload -s"Debian Package" -plazylpsolverlibs -lFeatured,Type-Package dist/lazylpsolverlibs-$(VERSION)*.deb
+	 googlecode_upload -s"Fedora Package" -plazylpsolverlibs -lFeatured,Type-Package dist/lazylpsolverlibs-$(VERSION)*.rpm
+	 googlecode_upload -s"Windows installer" -plazylpsolverlibs -lFeatured,Type-Installer dist/lazylpsolverlibs-$(VERSION)_installer.exe
+
+
 dist: dirs
 	@echo creating dist tarball
 	@mkdir -p lazylpsolverlibs-$(VERSION)
