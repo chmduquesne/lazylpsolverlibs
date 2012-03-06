@@ -90,8 +90,6 @@ generate_header() {
     #define LLSL_DECL
     #endif
 
-    /* handle to the library */
-    LLSL_DECL GModule *__${solver_name}_module;
     /* loads the symbols */
     LLSL_DECL int load_${solver_name}_symbols();
     /* unloads the symbols (if called as many times as loadSymbols) */
@@ -180,6 +178,9 @@ generate_c_file() {
     #include <string.h>
     #include \"$lazy_header\"
 
+    /* handle to the library */
+    LLSL_DECL GModule *__${solver_name}_module = NULL;
+
     GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
         char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
         GModule *res;
@@ -226,7 +227,6 @@ generate_c_file() {
         int res;
         char *LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH; /* environment variable */
         LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH = NULL;
-        __${solver_name}_module = NULL;
 
         /* first, try to read the path to load from the environment */
         LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH = getenv(\"LAZYLPSOLVERLIBS_${capitalized_name}_LIB_PATH\");
@@ -262,6 +262,7 @@ generate_c_file() {
     int unload_${solver_name}_symbols() {
         /* unload library */
         if (!g_module_close (__${solver_name}_module)) return SYMBOL_UNLOAD_FAIL;
+        __${solver_name}_module = NULL;
 
         return SYMBOL_UNLOAD_SUCCESS;
     }
