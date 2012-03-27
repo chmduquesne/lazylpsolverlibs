@@ -5,12 +5,11 @@ include config.mk
 TST_SRC=$(wildcard test/*.c)
 TST_OBJ=$(TST_SRC:test/%.c=bin/%.o)
 
-# LIB and BIN must be specified in config.mk
+LIB = lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX)  \
+      lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX)   \
+      lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) \
+      lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX)
 
-LIB = lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX) \
-	  lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX)  \
-	  lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX)\
-	  lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX)
 BIN = bin/test_lazylpsolverlibs$(BINSUFFIX)
 
 all: $(LIB) $(BIN)
@@ -21,10 +20,10 @@ dirs:
 	@mkdir -p dist
 
 lib/%.o: src/%.c dirs
-	$(CC) $(BUILDLIB_CFLAGS) $(GMODULE_CFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(BUILDLIB_CFLAGS) $(CFLAGS)
 
 bin/%.o: test/%.c
-	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(LAZYLPSOLVERLIBS_CFLAGS) $(CFLAGS)
+	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(LLSL_CFLAGS) $(CFLAGS)
 
 lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX): lib/lazycplex.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX) lib/lazycplex.o $(GMODULE_LDFLAGS) $(LDFLAGS)
@@ -39,7 +38,7 @@ lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX): lib/lazyglpk.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX) lib/lazyglpk.o $(GMODULE_LDFLAGS) $(LDFLAGS)
 
 bin/test_lazylpsolverlibs$(BINSUFFIX): $(LIB) $(TST_OBJ) dirs
-	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs$(BINSUFFIX) $(GMODULE_LDFLAGS) $(LAZYLPSOLVERLIBS_LDFLAGS) $(LDFLAGS)
+	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs$(BINSUFFIX) $(GMODULE_LDFLAGS) $(LLSL_LDFLAGS) $(LDFLAGS)
 
 # For your convenience, an archive of solver headers can be downloaded.
 download:
@@ -101,12 +100,12 @@ upload:
 	 googlecode_upload -s"Fedora Package" -plazylpsolverlibs -lFeatured,Type-Package dist/lazylpsolverlibs-$(VERSION)*.rpm
 	 googlecode_upload -s"Windows installer" -plazylpsolverlibs -lFeatured,Type-Installer dist/lazylpsolverlibs-$(VERSION)_installer.exe
 
-
 dist: dirs
 	@echo creating dist tarball
 	@mkdir -p lazylpsolverlibs-$(VERSION)
 	@cp -R AUTHORS config.mk COPYING include INSTALL Makefile README ROADMAP CHANGELOG src test tools lazylpsolverlibs-$(VERSION)
 	@rm -rf lazylpsolverlibs-$(VERSION)/tools/include
+	@rm -rf lazylpsolverlibs-$(VERSION)/tools/wine
 	@tar cvzf lazylpsolverlibs-$(VERSION).tar.gz lazylpsolverlibs-$(VERSION)
 	@mv lazylpsolverlibs-$(VERSION).tar.gz dist
 	@rm -rf lazylpsolverlibs-$(VERSION)
