@@ -1,2 +1,2 @@
-build-x86_64
-build-win32
+tools/wine
+tools/include
