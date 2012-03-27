@@ -3,9 +3,16 @@
 include config.mk
 
 TST_SRC=$(wildcard test/*.c)
-TST_OBJ=$(TST_SRC:%.c=%.o)
+TST_OBJ=$(TST_SRC:test/%.c=bin/%.o)
 
 # LIB and BIN must be specified in config.mk
+
+LIB = lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX) \
+	  lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX)  \
+	  lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX)\
+	  lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX)
+BIN = bin/test_lazylpsolverlibs$(BINSUFFIX)
+
 all: $(LIB) $(BIN)
 
 dirs:
@@ -13,24 +20,26 @@ dirs:
 	@mkdir -p bin
 	@mkdir -p dist
 
-# WINE
-lib/%.dll: src/%.c dirs
-	$(CC) -c -DBUILDING_LAZYLPSOLVERLIBS -DBUILD_CPXSTATIC -I include $< -o $(<:%.c=%.o) $(shell $(PKGCONFIG) --cflags gmodule-2.0) $(CFLAGS)
-	$(CC) -shared -o $@ $(<:%.c=%.o) -Wl,--output-def,$(@:%.dll=%.def),--out-implib,$(@:lib/%.dll=lib/lib%.a) $(shell $(PKGCONFIG) --libs gmodule-2.0) $(LDFLAGS)
+lib/%.o: src/%.c dirs
+	$(CC) $(BUILDLIB_CFLAGS) $(GMODULE_CFLAGS) $(CFLAGS) -c $< -o $@
 
-bin/test_lazylpsolverlibs.exe: $(LIB) $(TST_OBJ) dirs
-	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs.exe $(shell $(PKGCONFIG) --libs gmodule-2.0) lib/lazycplex.dll lib/lazyxprs.dll lib/lazygurobi.dll lib/lazyglpk.dll $(LDFLAGS)
+bin/%.o: test/%.c
+	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(LAZYLPSOLVERLIBS_CFLAGS) $(CFLAGS)
 
-# LINUX
-lib/lib%.so: src/%.c dirs
-	$(CC) -shared -fPIC -I include $< -o $@ $(shell $(PKGCONFIG) --cflags gmodule-2.0) $(CFLAGS)
+lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX): lib/lazycplex.o
+	$(LINKCMD) -o lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX) lib/lazycplex.o $(GMODULE_LDFLAGS) $(LDFLAGS)
 
-bin/test_lazylpsolverlibs: $(LIB) $(TST_OBJ) dirs
-	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs $(shell $(PKGCONFIG) --libs gmodule-2.0) -llazycplex -llazyxprs -llazygurobi -llazyglpk -Llib $(LDFLAGS)
+lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX): lib/lazyxprs.o
+	$(LINKCMD) -o lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX) lib/lazyxprs.o $(GMODULE_LDFLAGS) $(LDFLAGS)
 
-# BOTH PLATFORMS
-%.o: %.c
-	$(CC) -I include -c  $< -o $@ $(shell $(PKGCONFIG) --cflags gmodule-2.0) $(CFLAGS)
+lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX): lib/lazygurobi.o
+	$(LINKCMD) -o lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) lib/lazygurobi.o $(GMODULE_LDFLAGS) $(LDFLAGS)
+
+lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX): lib/lazyglpk.o
+	$(LINKCMD) -o lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX) lib/lazyglpk.o $(GMODULE_LDFLAGS) $(LDFLAGS)
+
+bin/test_lazylpsolverlibs$(BINSUFFIX): $(LIB) $(TST_OBJ) dirs
+	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs$(BINSUFFIX) $(GMODULE_LDFLAGS) $(LAZYLPSOLVERLIBS_LDFLAGS) $(LDFLAGS)
 
 # For your convenience, an archive of solver headers can be downloaded.
 download:
@@ -120,7 +129,16 @@ rpm:
 	@$(FPM) -s dir -t rpm -n lazylpsolverlibs -v $(VERSION) -C /tmp/installdir -p lazylpsolverlibs-VERSION_ARCH.rpm -d "libglib2.0-dev(>=0)"
 	@mv lazylpsolverlibs-*.rpm dist
 
-nsis:
+tools/wine:
+	mkdir tools/wine
+	wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.28/glib-dev_2.28.8-1_win32.zip
+	unzip glib-dev_2.28.8-1_win32.zip -d tools/wine
+	rm glib-dev_2.28.8-1_win32.zip
+	wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-dev_0.18.1.1-2_win32.zip
+	unzip gettext-runtime-dev_0.18.1.1-2_win32.zip -d tools/wine
+	rm gettext-runtime-dev_0.18.1.1-2_win32.zip
+
+nsis: tools/wine
 	@$(MAKE) clean
 	@$(MAKE) TARGET=WINE
 	@cp tools/lazylpsolverlibs.nsi lazylpsolverlibs.nsi
