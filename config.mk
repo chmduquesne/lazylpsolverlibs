@@ -6,7 +6,6 @@ PREFIX = /usr/local
 
 TARGET = LINUX
 
-# flags for building a wine version (ubuntu)
 ifeq ($(TARGET),WINE)
   CFLAGS          = -g -Wall -O2 -I tools/include
   LDFLAGS         =
@@ -18,7 +17,7 @@ ifeq ($(TARGET),WINE)
   LINKCMD         = $(CC) -shared
   BUILDLIB_CFLAGS = -DBUILDING_LAZYLPSOLVERLIBS -DBUILD_CPXSTATIC -I include
 endif
-# flags for building a native version (ubuntu)
+
 ifeq ($(TARGET),LINUX)
   CFLAGS          = -g -Wall -O2 -I tools/include
   LDFLAGS         =
@@ -33,6 +32,6 @@ endif
 
 GMODULE_CFLAGS    = `$(PKGCONFIG) --cflags gmodule-2.0`
 GMODULE_LDFLAGS   = `$(PKGCONFIG) --libs gmodule-2.0`
-LAZYLPSOLVERLIBS_CFLAGS  = -I include
-LAZYLPSOLVERLIBS_LDFLAGS = -llazycplex -llazyxprs -llazygurobi -llazyglpk -Llib
+LLSL_CFLAGS       = -I include
+LLSL_LDFLAGS      = -llazycplex -llazyxprs -llazygurobi -llazyglpk -Llib
 FPM               = /var/lib/gems/1.8/gems/fpm-0.3.11/bin/fpm
