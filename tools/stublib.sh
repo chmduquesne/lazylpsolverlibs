@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# extract the function name from a function declaration
 func_name(){
     echo $@ | sed 's/ *(.*) *;/();/g' \
             | sed 's/ /\n/g' \
@@ -8,6 +9,7 @@ func_name(){
             | sed 's/\*//g'
 }
 
+# extract the arguments names from a function declaration
 func_args(){
     echo $@ | sed 's/[^(]*(\(.*\)) *;/\1)/g' \
             | sed 's/(\([^)]*\)) *([^)]*)/\1/g' \
@@ -24,20 +26,31 @@ func_args(){
             | sed 's/ *$//g'
 }
 
+# create a function from a function declaration. This function actually
+# imports the original symbol and passes its arguments to this symbol.
 make_func(){
     name=$(func_name "$*")
     symbol="__symbolic_$name"
     args=$(func_args "$*")
     echo "$*" | sed 's/;/{/g'
     echo "    if (!$symbol) {
-        if (!module)
-            load_module();
-        g_module_symbol(module, \"$name\", (gpointer *) &$symbol);
+        if (!module) {
+            if (!load_module()) {
+                fprintf(stderr,
+                \"lazylpsolverlibs: could not find the proper library\");
+            }
+        }
+        if (!g_module_symbol(module, \"$name\", (gpointer *) &$symbol)) {
+                fprintf(stderr,
+                \"lazylpsolverlibs: could not find $name\");
+        }
     }
     return $symbol($args);"
     echo "}"
 }
 
+# declare a symbol to import a function that matches the input function
+# declaration to
 make_symbol_decl(){
     name=$(func_name "$*")
     symbol="__symbolic_$name"
@@ -45,14 +58,16 @@ make_symbol_decl(){
                 | sed 's/;/ = NULL;/g'
 }
 
+# declare the necessary headers
 make_include_headers(){
     echo "#include <gmodule.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include $header"
+#include \"$header\""
 }
 
+# create the loading interface
 make_loading_interface(){
     libnames=$@
     echo "
@@ -146,12 +161,12 @@ NAME
     stublib - create a stub library from an header file
 
 SYNOPSIS
-    stublib [-l libnames]
+    stublib [-l libnames] header
 "
 }
 
 [ -z "$1" ] && usage && exit
-libnames="cplex10 cplex11"
+[ $1 == "-l" ] && libnames=$2 && header=$3
+[ $1 != "-l" ] && header=$1
 
-
-header_to_cfile $1
+header_to_cfile $header
