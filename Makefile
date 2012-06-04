@@ -48,10 +48,10 @@ download:
 
 # This target to regenerate the files. For maintenance only.
 generate_stubs:
-	sh tools/generate_stub.sh cplex ilcplex/cplex.h tools/cplex_symbols include src
-	sh tools/generate_stub.sh xprs xprs.h tools/xprs_symbols include src
-	sh tools/generate_stub.sh gurobi gurobi_c.h tools/gurobi_symbols include src
-	sh tools/generate_stub.sh glpk glpk.h tools/glpk_symbols include src
+	sh tools/stublib.sh tools/include/ilcplex/cplex.h > src/lazycplex.c
+	sh tools/stublib.sh tools/include/xprs.h > src/lazyxprs.c
+	sh tools/stublib.sh tools/include/gurobi_c.h > src/lazygurobi.c
+	sh tools/stublib.sh tools/include/glpk.h > src/lazyglpk.c
 
 install: all
 	@echo installing libraries to $(DESTDIR)$(PREFIX)/lib
