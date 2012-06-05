@@ -1,7 +1,4 @@
-#include "test_lazylibs.h"
-
-#ifndef SKIP_GUROBI_SUPPORT
-#include "lazygurobi.h"
+#include <gurobi_c.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -16,7 +13,7 @@
 */
 
 int
-solve_gurobi_example()
+main(int argc, const char *argv[])
 {
   GRBenv   *env   = NULL;
   GRBmodel *model = NULL;
@@ -124,4 +121,3 @@ QUIT:
 
   return 0;
 }
-#endif

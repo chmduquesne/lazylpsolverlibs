@@ -1,7 +1,4 @@
-#include "test_lazylibs.h"
-
-#ifndef SKIP_XPRESS_SUPPORT
-#include "lazyxprs.h"
+#include <xprs.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -41,8 +38,7 @@ XPRSprob probg;
 void XPRS_CC optimizermsg(XPRSprob prob, void* data, const char *sMsg,int nLen,int nMsgLvl);
 void errormsg(const char *sSubName,int nLineNo,int nErrorCode);
 
-
-int solve_xprs_example()
+int main()
 {
    int nReturn;                            /* Return value of Optimizer subroutine */
    int nOptimizerVersion;                  /* Optimizer version number */
@@ -226,4 +222,3 @@ void errormsg(const char *sSubName,int nLineNo,int nErrCode)
    XPRSfree();
    exit(nErrCode);
 }
-#endif

@@ -10,7 +10,10 @@ LIB = lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX)  \
       lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) \
       lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX)
 
-BIN = bin/test_lazylpsolverlibs$(BINSUFFIX)
+BIN = bin/test_lazycplex$(BINSUFFIX) \
+      bin/test_lazyxprs$(BINSUFFIX) \
+      bin/test_lazygurobi$(BINSUFFIX) \
+      bin/test_lazyglpk$(BINSUFFIX)
 
 all: $(LIB) $(BIN)
 
@@ -22,8 +25,8 @@ dirs:
 lib/%.o: src/%.c dirs
 	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(BUILDLIB_CFLAGS) $(CFLAGS)
 
-bin/%.o: test/%.c
-	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(LLSL_CFLAGS) $(CFLAGS)
+bin/%: test/%.c
+	$(CC) $< -o $@ $(GMODULE_CFLAGS) $(GMODULE_LDFLAGS) $(LLSL_CFLAGS) $(CFLAGS) -Llib -llazycplex -llazygurobi -llazyxprs -llazyglpk -lm
 
 lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX): lib/lazycplex.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX) lib/lazycplex.o $(GMODULE_LDFLAGS) $(LDFLAGS)
@@ -32,7 +35,7 @@ lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX): lib/lazyxprs.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX) lib/lazyxprs.o $(GMODULE_LDFLAGS) $(LDFLAGS)
 
 lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX): lib/lazygurobi.o
-	$(LINKCMD) -o lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) lib/lazygurobi.o $(GMODULE_LDFLAGS) $(LDFLAGS)
+	$(LINKCMD) -o lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) lib/lazygurobi.o -lm $(GMODULE_LDFLAGS) $(LDFLAGS)
 
 lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX): lib/lazyglpk.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX) lib/lazyglpk.o $(GMODULE_LDFLAGS) $(LDFLAGS)
@@ -48,10 +51,10 @@ download:
 
 # This target to regenerate the files. For maintenance only.
 generate_stubs:
-	sh tools/stublib.sh tools/include/ilcplex/cplex.h > src/lazycplex.c
-	sh tools/stublib.sh tools/include/xprs.h > src/lazyxprs.c
-	sh tools/stublib.sh tools/include/gurobi_c.h > src/lazygurobi.c
-	sh tools/stublib.sh tools/include/glpk.h > src/lazyglpk.c
+	sh tools/stublib.sh -l cplex123,cplex121,cplex120,cplex112,cplex111,cplex110,cplex102,cplex101,cplex100,cplex91,cplex90,cplex81,cplex80,cplex75,cplex71,cplex70,cplex66,cplex65,cplex60,cplex50,cplex40,cplex30,cplex21,cplex20 -e LAZYLPSOLVERLIBS_CPLEX_LIB_PATH -f /usr/lib/libcplex.so -i tools/include/ilcplex/cplex.h > src/lazycplex.c
+	sh tools/stublib.sh -l gurobi50,gurobi461,gurobi452,gurobi402,gurobi303 -e LAZYLPSOLVERLIBS_GUROBI_LIB_PATH -f /usr/lib/libgurobi.so -i tools/include/gurobi_c.h > src/lazygurobi.c
+	sh tools/stublib.sh -l xprs -e LAZYLPSOLVERLIBS_XPRS_LIB_PATH -f /usr/lib/libxprs.so -i tools/include/xprs.h > src/lazyxprs.c
+	sh tools/stublib.sh -l glpk -e LAZYLPSOLVERLIBS_GLPK_LIB_PATH -f /usr/lib/libglpk.so -i tools/include/glpk.h > src/lazyglpk.c
 
 install: all
 	@echo installing libraries to $(DESTDIR)$(PREFIX)/lib
