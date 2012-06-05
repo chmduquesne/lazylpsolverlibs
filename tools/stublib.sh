@@ -37,12 +37,12 @@ make_func(){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                \"lazylpsolverlibs: could not find the proper library\");
+                \"lazylpsolverlibs: could not find the proper library\\\n\");
             }
         }
         if (!g_module_symbol(module, \"$name\", (gpointer *) &$symbol)) {
                 fprintf(stderr,
-                \"lazylpsolverlibs: could not find $name\");
+                \"lazylpsolverlibs: could not find $name\\\n\");
         }
     }
     return $symbol($args);"
@@ -69,7 +69,6 @@ make_include_headers(){
 
 # create the loading interface
 make_loading_interface(){
-    libnames=$@
     echo "
 /* searches and loads a library from standard paths */
 GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
@@ -98,7 +97,7 @@ GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
         p = LIB_PATH_COPY;
         dir = p;
         while ((p = strchr(p, PATH_SEP))) {
-            *p = '\\0';
+            *p = '\\\0';
             p++;
             res = g_module_open(g_module_build_path(dir, name), flags);
             if (res) {
@@ -118,8 +117,21 @@ GModule *module = NULL;
 
 /* searches and loads the actual library */
 int load_module(){"
+if [ x"$environment_var" != x ]; then
+    echo "    /* environment variable */"
+    echo "    char *$environment_var;"
+    echo "    $environment_var = getenv(\"$environment_var\");"
+fi
+if [ x"$try_first" != x ]; then
+    echo "    if (!module) module = g_module_open(\"$try_first\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+fi
+if [ x"$environment_var" != x ]; then
+    echo "    if ($environment_var != NULL) {"
+    echo "        if (!module) module = g_module_open($environment_var, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "    }"
+fi
 for name in $libnames; do
-    echo "    if (!module) module = g_module_open_all(\"$name\", G_MODULE_BIND_LOCAL);"
+    echo "    if (!module) module = g_module_open_all(\"$name\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
 done
 echo "    return (module != NULL);
 }"
@@ -127,19 +139,19 @@ echo "    return (module != NULL);
 
 header_to_cfile(){
     func_decl=$(mktemp)
-    cat $1  | grep -v "#include" \
-            | cpp \
-            | tr '\n' ' ' \
-            | sed 's/{[^}]*}/{}/g' \
-            | sed 's/;/;\n/g' \
-            | grep '(' \
-            | sed 's/\s\+/ /g' \
-            | sed 's/^ *//g' \
-            | grep -v '^#' \
-            | grep -v 'typedef' \
-            > $func_decl
-    make_include_headers $header
-    make_loading_interface $libnames
+    cat $header | grep -v "#include" \
+                | cpp \
+                | grep -v '^#' \
+                | tr '\n' ' ' \
+                | sed 's/{[^}]*}/{}/g' \
+                | sed 's/;/;\n/g' \
+                | grep '(' \
+                | sed 's/\s\+/ /g' \
+                | sed 's/^ *//g' \
+                | grep -v 'typedef' \
+                > $func_decl
+    make_include_headers
+    make_loading_interface
     echo ""
     echo "/* imported functions */"
     echo ""
@@ -156,17 +168,42 @@ header_to_cfile(){
 }
 
 usage(){
-    echo "
-NAME
-    stublib - create a stub library from an header file
-
-SYNOPSIS
-    stublib [-l libnames] header
-"
+    echo "Usage: stublib.sh -i header -l libnames [-e environment_var] [-f try_first]"
+    echo ""
+    echo " - libnames has to be a coma-separated list, without the prefix lib nor the extension name .so"
+    echo " - try_first has to be a full path that will be tried first"
+    echo " - environment_var will be tried just after (interpreted as a full path as well)"
+    echo " - libnames will be tried in the order specified, in every directory of LD_LIBRARY_PATH (linux) or PATH (windows)"
 }
 
-[ -z "$1" ] && usage && exit
-[ $1 == "-l" ] && libnames=$2 && header=$3
-[ $1 != "-l" ] && header=$1
+while getopts "hi:l:e:f:" opt; do
+    case $opt in
+        h)
+            usage
+            ;;
+        i)
+            header=$OPTARG
+            test -f $header || (echo "$header: No such file or directory" >&2 && exit 1)
+            ;;
+        l)
+            libnames=$(echo $OPTARG | sed "s/,/ /g")
+            ;;
+        e)
+            environment_var=$OPTARG
+            ;;
+        f)
+            try_first=$OPTARG
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+            ;;
+    esac
+done
 
-header_to_cfile $header
+test -z $header && echo "You must provide an argument to -i" && usage && exit
+header_to_cfile

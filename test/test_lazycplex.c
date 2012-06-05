@@ -1,7 +1,4 @@
-#include "test_lazylibs.h"
-
-#ifndef SKIP_CPLEX_SUPPORT
-#include "lazycplex.h"
+#include <ilcplex/cplex.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -16,7 +13,7 @@
 static int populatebyrow (CPXENVptr env, CPXLPptr lp);
 static void free_and_null (char **ptr);
 
-int solve_cplex_example (int argc, char **argv) {
+int main (int argc, char **argv) {
     int      solstat;
     double   objval;
     double   *x = NULL;
@@ -148,4 +145,3 @@ TERMINATE:
     return (status);
 
 }  /* END populatebyrow */
-#endif
