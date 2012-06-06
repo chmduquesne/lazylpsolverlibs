@@ -1,5 +1,5 @@
 VERSION = 0.1.2
-DESTDIR = /usr/local
+DESTDIR =
 
 # paths
 PREFIX = /usr/local

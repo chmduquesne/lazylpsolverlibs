@@ -51,12 +51,20 @@ make_func(){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                \"lazylpsolverlibs: could not find the proper library\\\n\");
-            }
+                \"lazylpsolverlibs: could no load library. Suggestions:\\\n\");"
+    if [ x"$environment_var" != x ]; then
+        echo "                fprintf(stderr,
+                \" - point the $environment_var environment variable to the full path of the library\\\n\");"
+    fi
+    if [ x"$try_first" != x ]; then
+        echo "                fprintf(stderr,
+                \" - (if you are root) symlink $try_first to the full path of the library\\\n\");"
+    fi
+    echo "            }
         }
         if (!g_module_symbol(module, \"$name\", (gpointer *) &$symbol)) {
                 fprintf(stderr,
-                \"lazylpsolverlibs: could not find $name\\\n\");
+                \"lazylpsolverlibs: the symbol $name could not be found: expect a segfault\\\n\");
         }
     }
     return $symbol($args);"

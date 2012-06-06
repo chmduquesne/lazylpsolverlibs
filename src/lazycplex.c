@@ -612,12 +612,16 @@ CPXLPptr CPXcreateprob (CPXCENVptr env, int *status_p, const char *probname_str)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcreateprob", (gpointer *) &__symbolic_CPXcreateprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcreateprob\n");
+                "lazylpsolverlibs: the symbol CPXcreateprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcreateprob(env, status_p, probname_str);
@@ -627,12 +631,16 @@ CPXLPptr CPXcloneprob (CPXCENVptr env, CPXCLPptr lp, int *status_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcloneprob", (gpointer *) &__symbolic_CPXcloneprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcloneprob\n");
+                "lazylpsolverlibs: the symbol CPXcloneprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcloneprob(env, lp, status_p);
@@ -642,12 +650,16 @@ int CPXcopylpwnames (CPXCENVptr env, CPXLPptr lp, int numcols, int numrows, int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopylpwnames", (gpointer *) &__symbolic_CPXcopylpwnames)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopylpwnames\n");
+                "lazylpsolverlibs: the symbol CPXcopylpwnames could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopylpwnames(env, lp, numcols, numrows, objsense, objective, rhs, sense, matbeg, matcnt, matind, matval, lb, ub, rngval, colname, rowname);
@@ -657,12 +669,16 @@ int CPXcopylp (CPXCENVptr env, CPXLPptr lp, int numcols, int numrows, int objsen
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopylp", (gpointer *) &__symbolic_CPXcopylp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopylp\n");
+                "lazylpsolverlibs: the symbol CPXcopylp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopylp(env, lp, numcols, numrows, objsense, objective, rhs, sense, matbeg, matcnt, matind, matval, lb, ub, rngval);
@@ -672,12 +688,16 @@ int CPXcopyobjname (CPXCENVptr env, CPXLPptr lp, const char *objname_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopyobjname", (gpointer *) &__symbolic_CPXcopyobjname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopyobjname\n");
+                "lazylpsolverlibs: the symbol CPXcopyobjname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopyobjname(env, lp, objname_str);
@@ -687,12 +707,16 @@ int CPXcopybase (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rstat
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopybase", (gpointer *) &__symbolic_CPXcopybase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopybase\n");
+                "lazylpsolverlibs: the symbol CPXcopybase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopybase(env, lp, cstat, rstat);
@@ -702,12 +726,16 @@ int CPXcleanup (CPXCENVptr env, CPXLPptr lp, double eps){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcleanup", (gpointer *) &__symbolic_CPXcleanup)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcleanup\n");
+                "lazylpsolverlibs: the symbol CPXcleanup could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcleanup(env, lp, eps);
@@ -717,12 +745,16 @@ int CPXcopystart (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rsta
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopystart", (gpointer *) &__symbolic_CPXcopystart)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopystart\n");
+                "lazylpsolverlibs: the symbol CPXcopystart could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopystart(env, lp, cstat, rstat, cprim, rprim, cdual, rdual);
@@ -732,12 +764,16 @@ int CPXfreeprob (CPXCENVptr env, CPXLPptr *lp_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfreeprob", (gpointer *) &__symbolic_CPXfreeprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfreeprob\n");
+                "lazylpsolverlibs: the symbol CPXfreeprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfreeprob(env, lp_p);
@@ -747,12 +783,16 @@ int CPXcopynettolp (CPXCENVptr env, CPXLPptr lp, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopynettolp", (gpointer *) &__symbolic_CPXcopynettolp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopynettolp\n");
+                "lazylpsolverlibs: the symbol CPXcopynettolp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopynettolp(env, lp, net);
@@ -762,12 +802,16 @@ int CPXNETextract (CPXCENVptr env, CPXNETptr net, CPXCLPptr lp, int *colmap, int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETextract", (gpointer *) &__symbolic_CPXNETextract)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETextract\n");
+                "lazylpsolverlibs: the symbol CPXNETextract could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETextract(env, net, lp, colmap, rowmap);
@@ -777,12 +821,16 @@ int CPXlpopt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXlpopt", (gpointer *) &__symbolic_CPXlpopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXlpopt\n");
+                "lazylpsolverlibs: the symbol CPXlpopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXlpopt(env, lp);
@@ -792,12 +840,16 @@ int CPXconcurrentlpopt (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int P
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXconcurrentlpopt", (gpointer *) &__symbolic_CPXconcurrentlpopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXconcurrentlpopt\n");
+                "lazylpsolverlibs: the symbol CPXconcurrentlpopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXconcurrentlpopt(env, childenv, lp, P);
@@ -807,12 +859,16 @@ int CPXconcurrentmipopt (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXconcurrentmipopt", (gpointer *) &__symbolic_CPXconcurrentmipopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXconcurrentmipopt\n");
+                "lazylpsolverlibs: the symbol CPXconcurrentmipopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXconcurrentmipopt(env, childenv, lp, P);
@@ -822,12 +878,16 @@ int CPXprimopt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXprimopt", (gpointer *) &__symbolic_CPXprimopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXprimopt\n");
+                "lazylpsolverlibs: the symbol CPXprimopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXprimopt(env, lp);
@@ -837,12 +897,16 @@ int CPXdualopt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdualopt", (gpointer *) &__symbolic_CPXdualopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdualopt\n");
+                "lazylpsolverlibs: the symbol CPXdualopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdualopt(env, lp);
@@ -852,12 +916,16 @@ int CPXhybnetopt (CPXCENVptr env, CPXLPptr lp, int method){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXhybnetopt", (gpointer *) &__symbolic_CPXhybnetopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXhybnetopt\n");
+                "lazylpsolverlibs: the symbol CPXhybnetopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXhybnetopt(env, lp, method);
@@ -867,12 +935,16 @@ int CPXsiftopt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsiftopt", (gpointer *) &__symbolic_CPXsiftopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsiftopt\n");
+                "lazylpsolverlibs: the symbol CPXsiftopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsiftopt(env, lp);
@@ -882,12 +954,16 @@ int CPXpratio (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpratio", (gpointer *) &__symbolic_CPXpratio)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpratio\n");
+                "lazylpsolverlibs: the symbol CPXpratio could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpratio(env, lp, indices, cnt, downratio, upratio, downleave, upleave, downleavestatus, upleavestatus, downstatus, upstatus);
@@ -897,12 +973,16 @@ int CPXdratio (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdratio", (gpointer *) &__symbolic_CPXdratio)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdratio\n");
+                "lazylpsolverlibs: the symbol CPXdratio could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdratio(env, lp, indices, cnt, downratio, upratio, downenter, upenter, downstatus, upstatus);
@@ -912,12 +992,16 @@ int CPXpivot (CPXCENVptr env, CPXLPptr lp, int jenter, int jleave, int leavestat
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpivot", (gpointer *) &__symbolic_CPXpivot)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpivot\n");
+                "lazylpsolverlibs: the symbol CPXpivot could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpivot(env, lp, jenter, jleave, leavestat);
@@ -927,12 +1011,16 @@ int CPXsetphase2 (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetphase2", (gpointer *) &__symbolic_CPXsetphase2)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetphase2\n");
+                "lazylpsolverlibs: the symbol CPXsetphase2 could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetphase2(env, lp);
@@ -942,12 +1030,16 @@ int CPXcheckpfeas (CPXCENVptr env, CPXLPptr lp, int *infeas_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckpfeas", (gpointer *) &__symbolic_CPXcheckpfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckpfeas\n");
+                "lazylpsolverlibs: the symbol CPXcheckpfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckpfeas(env, lp, infeas_p);
@@ -957,12 +1049,16 @@ int CPXcheckdfeas (CPXCENVptr env, CPXLPptr lp, int *infeas_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckdfeas", (gpointer *) &__symbolic_CPXcheckdfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckdfeas\n");
+                "lazylpsolverlibs: the symbol CPXcheckdfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckdfeas(env, lp, infeas_p);
@@ -972,12 +1068,16 @@ int CPXchecksoln (CPXCENVptr env, CPXLPptr lp, int *lpstatus_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchecksoln", (gpointer *) &__symbolic_CPXchecksoln)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchecksoln\n");
+                "lazylpsolverlibs: the symbol CPXchecksoln could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchecksoln(env, lp, lpstatus_p);
@@ -987,12 +1087,16 @@ int CPXsolution (CPXCENVptr env, CPXCLPptr lp, int *lpstat_p, double *objval_p, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsolution", (gpointer *) &__symbolic_CPXsolution)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsolution\n");
+                "lazylpsolverlibs: the symbol CPXsolution could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsolution(env, lp, lpstat_p, objval_p, x, pi, slack, dj);
@@ -1002,12 +1106,16 @@ int CPXsolninfo (CPXCENVptr env, CPXCLPptr lp, int *solnmethod_p, int *solntype_
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsolninfo", (gpointer *) &__symbolic_CPXsolninfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsolninfo\n");
+                "lazylpsolverlibs: the symbol CPXsolninfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsolninfo(env, lp, solnmethod_p, solntype_p, pfeasind_p, dfeasind_p);
@@ -1017,12 +1125,16 @@ int CPXgetstat (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetstat", (gpointer *) &__symbolic_CPXgetstat)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetstat\n");
+                "lazylpsolverlibs: the symbol CPXgetstat could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetstat(env, lp);
@@ -1032,12 +1144,16 @@ CPXCHARptr CPXgetstatstring (CPXCENVptr env, int statind, char *buffer_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetstatstring", (gpointer *) &__symbolic_CPXgetstatstring)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetstatstring\n");
+                "lazylpsolverlibs: the symbol CPXgetstatstring could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetstatstring(env, statind, buffer_str);
@@ -1047,12 +1163,16 @@ int CPXgetmethod (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmethod", (gpointer *) &__symbolic_CPXgetmethod)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmethod\n");
+                "lazylpsolverlibs: the symbol CPXgetmethod could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmethod(env, lp);
@@ -1062,12 +1182,16 @@ int CPXgetobjval (CPXCENVptr env, CPXCLPptr lp, double *objval_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetobjval", (gpointer *) &__symbolic_CPXgetobjval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetobjval\n");
+                "lazylpsolverlibs: the symbol CPXgetobjval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetobjval(env, lp, objval_p);
@@ -1077,12 +1201,16 @@ int CPXgetx (CPXCENVptr env, CPXCLPptr lp, double *x, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetx", (gpointer *) &__symbolic_CPXgetx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetx\n");
+                "lazylpsolverlibs: the symbol CPXgetx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetx(env, lp, x, begin, end);
@@ -1092,12 +1220,16 @@ int CPXgetax (CPXCENVptr env, CPXCLPptr lp, double *x, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetax", (gpointer *) &__symbolic_CPXgetax)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetax\n");
+                "lazylpsolverlibs: the symbol CPXgetax could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetax(env, lp, x, begin, end);
@@ -1107,12 +1239,16 @@ int CPXgetpi (CPXCENVptr env, CPXCLPptr lp, double *pi, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetpi", (gpointer *) &__symbolic_CPXgetpi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetpi\n");
+                "lazylpsolverlibs: the symbol CPXgetpi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetpi(env, lp, pi, begin, end);
@@ -1122,12 +1258,16 @@ int CPXgetslack (CPXCENVptr env, CPXCLPptr lp, double *slack, int begin, int end
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetslack", (gpointer *) &__symbolic_CPXgetslack)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetslack\n");
+                "lazylpsolverlibs: the symbol CPXgetslack could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetslack(env, lp, slack, begin, end);
@@ -1137,12 +1277,16 @@ int CPXgetrowinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *infe
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetrowinfeas", (gpointer *) &__symbolic_CPXgetrowinfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetrowinfeas\n");
+                "lazylpsolverlibs: the symbol CPXgetrowinfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetrowinfeas(env, lp, x, infeasout, begin, end);
@@ -1152,12 +1296,16 @@ int CPXgetcolinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *infe
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcolinfeas", (gpointer *) &__symbolic_CPXgetcolinfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcolinfeas\n");
+                "lazylpsolverlibs: the symbol CPXgetcolinfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcolinfeas(env, lp, x, infeasout, begin, end);
@@ -1167,12 +1315,16 @@ int CPXgetdj (CPXCENVptr env, CPXCLPptr lp, double *dj, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetdj", (gpointer *) &__symbolic_CPXgetdj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetdj\n");
+                "lazylpsolverlibs: the symbol CPXgetdj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetdj(env, lp, dj, begin, end);
@@ -1182,12 +1334,16 @@ int CPXgetgrad (CPXCENVptr env, CPXCLPptr lp, int j, int *head, double *y){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetgrad", (gpointer *) &__symbolic_CPXgetgrad)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetgrad\n");
+                "lazylpsolverlibs: the symbol CPXgetgrad could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetgrad(env, lp, j, head, y);
@@ -1197,12 +1353,16 @@ int CPXgetijdiv (CPXCENVptr env, CPXCLPptr lp, int *idiv_p, int *jdiv_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetijdiv", (gpointer *) &__symbolic_CPXgetijdiv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetijdiv\n");
+                "lazylpsolverlibs: the symbol CPXgetijdiv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetijdiv(env, lp, idiv_p, jdiv_p);
@@ -1212,12 +1372,16 @@ int CPXgetbase (CPXCENVptr env, CPXCLPptr lp, int *cstat, int *rstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbase", (gpointer *) &__symbolic_CPXgetbase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbase\n");
+                "lazylpsolverlibs: the symbol CPXgetbase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbase(env, lp, cstat, rstat);
@@ -1227,12 +1391,16 @@ int CPXgetitcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetitcnt", (gpointer *) &__symbolic_CPXgetitcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetitcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetitcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetitcnt(env, lp);
@@ -1242,12 +1410,16 @@ int CPXgetphase1cnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetphase1cnt", (gpointer *) &__symbolic_CPXgetphase1cnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetphase1cnt\n");
+                "lazylpsolverlibs: the symbol CPXgetphase1cnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetphase1cnt(env, lp);
@@ -1257,12 +1429,16 @@ int CPXgetsiftitcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsiftitcnt", (gpointer *) &__symbolic_CPXgetsiftitcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsiftitcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetsiftitcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsiftitcnt(env, lp);
@@ -1272,12 +1448,16 @@ int CPXgetsiftphase1cnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsiftphase1cnt", (gpointer *) &__symbolic_CPXgetsiftphase1cnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsiftphase1cnt\n");
+                "lazylpsolverlibs: the symbol CPXgetsiftphase1cnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsiftphase1cnt(env, lp);
@@ -1287,12 +1467,16 @@ int CPXgetbaritcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbaritcnt", (gpointer *) &__symbolic_CPXgetbaritcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbaritcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetbaritcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbaritcnt(env, lp);
@@ -1302,12 +1486,16 @@ int CPXgetcrossppushcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcrossppushcnt", (gpointer *) &__symbolic_CPXgetcrossppushcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcrossppushcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetcrossppushcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcrossppushcnt(env, lp);
@@ -1317,12 +1505,16 @@ int CPXgetcrosspexchcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcrosspexchcnt", (gpointer *) &__symbolic_CPXgetcrosspexchcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcrosspexchcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetcrosspexchcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcrosspexchcnt(env, lp);
@@ -1332,12 +1524,16 @@ int CPXgetcrossdpushcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcrossdpushcnt", (gpointer *) &__symbolic_CPXgetcrossdpushcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcrossdpushcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetcrossdpushcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcrossdpushcnt(env, lp);
@@ -1347,12 +1543,16 @@ int CPXgetcrossdexchcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcrossdexchcnt", (gpointer *) &__symbolic_CPXgetcrossdexchcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcrossdexchcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetcrossdexchcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcrossdexchcnt(env, lp);
@@ -1362,12 +1562,16 @@ int CPXgetpsbcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetpsbcnt", (gpointer *) &__symbolic_CPXgetpsbcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetpsbcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetpsbcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetpsbcnt(env, lp);
@@ -1377,12 +1581,16 @@ int CPXgetdsbcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetdsbcnt", (gpointer *) &__symbolic_CPXgetdsbcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetdsbcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetdsbcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetdsbcnt(env, lp);
@@ -1392,12 +1600,16 @@ int CPXgetdblquality (CPXCENVptr env, CPXCLPptr lp, double *quality_p, int what)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetdblquality", (gpointer *) &__symbolic_CPXgetdblquality)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetdblquality\n");
+                "lazylpsolverlibs: the symbol CPXgetdblquality could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetdblquality(env, lp, quality_p, what);
@@ -1407,12 +1619,16 @@ int CPXgetsolnpooldblquality (CPXCENVptr env, CPXCLPptr lp, int soln, double *qu
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpooldblquality", (gpointer *) &__symbolic_CPXgetsolnpooldblquality)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpooldblquality\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpooldblquality could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpooldblquality(env, lp, soln, quality_p, what);
@@ -1422,12 +1638,16 @@ int CPXgetintquality (CPXCENVptr env, CPXCLPptr lp, int *quality_p, int what){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetintquality", (gpointer *) &__symbolic_CPXgetintquality)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetintquality\n");
+                "lazylpsolverlibs: the symbol CPXgetintquality could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetintquality(env, lp, quality_p, what);
@@ -1437,12 +1657,16 @@ int CPXgetsolnpoolintquality (CPXCENVptr env, CPXCLPptr lp, int soln, int *quali
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolintquality", (gpointer *) &__symbolic_CPXgetsolnpoolintquality)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolintquality\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolintquality could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolintquality(env, lp, soln, quality_p, what);
@@ -1452,12 +1676,16 @@ int CPXrhssa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrhssa", (gpointer *) &__symbolic_CPXrhssa)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrhssa\n");
+                "lazylpsolverlibs: the symbol CPXrhssa could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrhssa(env, lp, begin, end, lower, upper);
@@ -1467,12 +1695,16 @@ int CPXboundsa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lblowe
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXboundsa", (gpointer *) &__symbolic_CPXboundsa)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXboundsa\n");
+                "lazylpsolverlibs: the symbol CPXboundsa could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXboundsa(env, lp, begin, end, lblower, lbupper, ublower, ubupper);
@@ -1482,12 +1714,16 @@ int CPXobjsa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXobjsa", (gpointer *) &__symbolic_CPXobjsa)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXobjsa\n");
+                "lazylpsolverlibs: the symbol CPXobjsa could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXobjsa(env, lp, begin, end, lower, upper);
@@ -1497,12 +1733,16 @@ int CPXErangesa(CPXENVptr env, CPXLPptr lp, int begin, int end, double *lblower,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXErangesa", (gpointer *) &__symbolic_CPXErangesa)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXErangesa\n");
+                "lazylpsolverlibs: the symbol CPXErangesa could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXErangesa(env, lp, begin, end, lblower, lbupper, ublower, ubupper);
@@ -1512,12 +1752,16 @@ int CPXrefineconflict (CPXCENVptr env, CPXLPptr lp, int *confnumrows_p, int *con
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrefineconflict", (gpointer *) &__symbolic_CPXrefineconflict)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrefineconflict\n");
+                "lazylpsolverlibs: the symbol CPXrefineconflict could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrefineconflict(env, lp, confnumrows_p, confnumcols_p);
@@ -1527,12 +1771,16 @@ int CPXgetconflict (CPXCENVptr env, CPXCLPptr lp, int *confstat_p, int *rowind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetconflict", (gpointer *) &__symbolic_CPXgetconflict)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetconflict\n");
+                "lazylpsolverlibs: the symbol CPXgetconflict could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetconflict(env, lp, confstat_p, rowind, rowbdstat, confnumrows_p, colind, colbdstat, confnumcols_p);
@@ -1542,12 +1790,16 @@ int CPXrefineconflictext (CPXCENVptr env, CPXLPptr lp, int grpcnt, int concnt, c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrefineconflictext", (gpointer *) &__symbolic_CPXrefineconflictext)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrefineconflictext\n");
+                "lazylpsolverlibs: the symbol CPXrefineconflictext could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrefineconflictext(env, lp, grpcnt, concnt, grppref, grpbeg, grpind, grptype);
@@ -1557,12 +1809,16 @@ int CPXgetconflictext (CPXCENVptr env, CPXCLPptr lp, int *grpstat, int beg, int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetconflictext", (gpointer *) &__symbolic_CPXgetconflictext)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetconflictext\n");
+                "lazylpsolverlibs: the symbol CPXgetconflictext could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetconflictext(env, lp, grpstat, beg, end);
@@ -1572,12 +1828,16 @@ int CPXclpwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXclpwrite", (gpointer *) &__symbolic_CPXclpwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXclpwrite\n");
+                "lazylpsolverlibs: the symbol CPXclpwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXclpwrite(env, lp, filename_str);
@@ -1587,12 +1847,16 @@ int CPXrobustopt (CPXCENVptr env, CPXLPptr lp, CPXLPptr lblp, CPXLPptr ublp, dou
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrobustopt", (gpointer *) &__symbolic_CPXrobustopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrobustopt\n");
+                "lazylpsolverlibs: the symbol CPXrobustopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrobustopt(env, lp, lblp, ublp, objchg, maxchg);
@@ -1602,12 +1866,16 @@ int CPXfeasopt (CPXCENVptr env, CPXLPptr lp, const double *rhs, const double *rn
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfeasopt", (gpointer *) &__symbolic_CPXfeasopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfeasopt\n");
+                "lazylpsolverlibs: the symbol CPXfeasopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfeasopt(env, lp, rhs, rng, lb, ub);
@@ -1617,12 +1885,16 @@ int CPXEfeasopt (CPXCENVptr env, CPXLPptr lp, const double *rhs, const double *r
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEfeasopt", (gpointer *) &__symbolic_CPXEfeasopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEfeasopt\n");
+                "lazylpsolverlibs: the symbol CPXEfeasopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEfeasopt(env, lp, rhs, rng, lb, ub, qrhs);
@@ -1632,12 +1904,16 @@ int CPXfeasoptext (CPXCENVptr env, CPXLPptr lp, int grpcnt, int concnt, const do
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfeasoptext", (gpointer *) &__symbolic_CPXfeasoptext)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfeasoptext\n");
+                "lazylpsolverlibs: the symbol CPXfeasoptext could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfeasoptext(env, lp, grpcnt, concnt, grppref, grpbeg, grpind, grptype);
@@ -1647,12 +1923,16 @@ int CPXnewrows (CPXCENVptr env, CPXLPptr lp, int rcnt, const double *rhs, const 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXnewrows", (gpointer *) &__symbolic_CPXnewrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXnewrows\n");
+                "lazylpsolverlibs: the symbol CPXnewrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXnewrows(env, lp, rcnt, rhs, sense, rngval, rowname);
@@ -1662,12 +1942,16 @@ int CPXaddrows (CPXCENVptr env, CPXLPptr lp, int ccnt, int rcnt, int nzcnt, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddrows", (gpointer *) &__symbolic_CPXaddrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddrows\n");
+                "lazylpsolverlibs: the symbol CPXaddrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddrows(env, lp, ccnt, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, colname, rowname);
@@ -1677,12 +1961,16 @@ int CPXnewcols (CPXCENVptr env, CPXLPptr lp, int ccnt, const double *obj, const 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXnewcols", (gpointer *) &__symbolic_CPXnewcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXnewcols\n");
+                "lazylpsolverlibs: the symbol CPXnewcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXnewcols(env, lp, ccnt, obj, lb, ub, xctype, colname);
@@ -1692,12 +1980,16 @@ int CPXaddcols (CPXCENVptr env, CPXLPptr lp, int ccnt, int nzcnt, const double *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddcols", (gpointer *) &__symbolic_CPXaddcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddcols\n");
+                "lazylpsolverlibs: the symbol CPXaddcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddcols(env, lp, ccnt, nzcnt, obj, cmatbeg, cmatind, cmatval, lb, ub, colname);
@@ -1707,12 +1999,16 @@ int CPXdelrows (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelrows", (gpointer *) &__symbolic_CPXdelrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelrows\n");
+                "lazylpsolverlibs: the symbol CPXdelrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelrows(env, lp, begin, end);
@@ -1722,12 +2018,16 @@ int CPXdelsetrows (CPXCENVptr env, CPXLPptr lp, int *delstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsetrows", (gpointer *) &__symbolic_CPXdelsetrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsetrows\n");
+                "lazylpsolverlibs: the symbol CPXdelsetrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsetrows(env, lp, delstat);
@@ -1737,12 +2037,16 @@ int CPXdelcols (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelcols", (gpointer *) &__symbolic_CPXdelcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelcols\n");
+                "lazylpsolverlibs: the symbol CPXdelcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelcols(env, lp, begin, end);
@@ -1752,12 +2056,16 @@ int CPXdelsetcols (CPXCENVptr env, CPXLPptr lp, int *delstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsetcols", (gpointer *) &__symbolic_CPXdelsetcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsetcols\n");
+                "lazylpsolverlibs: the symbol CPXdelsetcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsetcols(env, lp, delstat);
@@ -1767,12 +2075,16 @@ int CPXchgname (CPXCENVptr env, CPXLPptr lp, int key, int ij, const char *newnam
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgname", (gpointer *) &__symbolic_CPXchgname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgname\n");
+                "lazylpsolverlibs: the symbol CPXchgname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgname(env, lp, key, ij, newname_str);
@@ -1782,12 +2094,16 @@ int CPXchgrowname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgrowname", (gpointer *) &__symbolic_CPXchgrowname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgrowname\n");
+                "lazylpsolverlibs: the symbol CPXchgrowname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgrowname(env, lp, cnt, indices, newname);
@@ -1797,12 +2113,16 @@ int CPXchgcolname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgcolname", (gpointer *) &__symbolic_CPXchgcolname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgcolname\n");
+                "lazylpsolverlibs: the symbol CPXchgcolname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgcolname(env, lp, cnt, indices, newname);
@@ -1812,12 +2132,16 @@ int CPXdelnames (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelnames", (gpointer *) &__symbolic_CPXdelnames)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelnames\n");
+                "lazylpsolverlibs: the symbol CPXdelnames could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelnames(env, lp);
@@ -1827,12 +2151,16 @@ int CPXchgprobname (CPXCENVptr env, CPXLPptr lp, const char *probname_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgprobname", (gpointer *) &__symbolic_CPXchgprobname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgprobname\n");
+                "lazylpsolverlibs: the symbol CPXchgprobname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgprobname(env, lp, probname_str);
@@ -1842,12 +2170,16 @@ int CPXchgcoef (CPXCENVptr env, CPXLPptr lp, int i, int j, double newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgcoef", (gpointer *) &__symbolic_CPXchgcoef)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgcoef\n");
+                "lazylpsolverlibs: the symbol CPXchgcoef could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgcoef(env, lp, i, j, newvalue);
@@ -1857,12 +2189,16 @@ int CPXchgcoeflist (CPXCENVptr env, CPXLPptr lp, int numcoefs, const int *rowlis
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgcoeflist", (gpointer *) &__symbolic_CPXchgcoeflist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgcoeflist\n");
+                "lazylpsolverlibs: the symbol CPXchgcoeflist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgcoeflist(env, lp, numcoefs, rowlist, collist, vallist);
@@ -1872,12 +2208,16 @@ int CPXchgbds (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgbds", (gpointer *) &__symbolic_CPXchgbds)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgbds\n");
+                "lazylpsolverlibs: the symbol CPXchgbds could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgbds(env, lp, cnt, indices, lu, bd);
@@ -1887,12 +2227,16 @@ int CPXchgobj (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgobj", (gpointer *) &__symbolic_CPXchgobj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgobj\n");
+                "lazylpsolverlibs: the symbol CPXchgobj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgobj(env, lp, cnt, indices, values);
@@ -1902,12 +2246,16 @@ int CPXchgrhs (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgrhs", (gpointer *) &__symbolic_CPXchgrhs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgrhs\n");
+                "lazylpsolverlibs: the symbol CPXchgrhs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgrhs(env, lp, cnt, indices, values);
@@ -1917,12 +2265,16 @@ int CPXchgrngval (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgrngval", (gpointer *) &__symbolic_CPXchgrngval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgrngval\n");
+                "lazylpsolverlibs: the symbol CPXchgrngval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgrngval(env, lp, cnt, indices, values);
@@ -1932,12 +2284,16 @@ int CPXchgsense (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgsense", (gpointer *) &__symbolic_CPXchgsense)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgsense\n");
+                "lazylpsolverlibs: the symbol CPXchgsense could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgsense(env, lp, cnt, indices, sense);
@@ -1947,12 +2303,16 @@ void CPXchgobjsen (CPXCENVptr env, CPXLPptr lp, int maxormin){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgobjsen", (gpointer *) &__symbolic_CPXchgobjsen)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgobjsen\n");
+                "lazylpsolverlibs: the symbol CPXchgobjsen could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgobjsen(env, lp, maxormin);
@@ -1962,12 +2322,16 @@ int CPXchgprobtype (CPXCENVptr env, CPXLPptr lp, int type){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgprobtype", (gpointer *) &__symbolic_CPXchgprobtype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgprobtype\n");
+                "lazylpsolverlibs: the symbol CPXchgprobtype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgprobtype(env, lp, type);
@@ -1977,12 +2341,16 @@ int CPXchgprobtypesolnpool (CPXCENVptr env, CPXLPptr lp, int type, int soln){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgprobtypesolnpool", (gpointer *) &__symbolic_CPXchgprobtypesolnpool)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgprobtypesolnpool\n");
+                "lazylpsolverlibs: the symbol CPXchgprobtypesolnpool could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgprobtypesolnpool(env, lp, type, soln);
@@ -1992,12 +2360,16 @@ int CPXcompletelp (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcompletelp", (gpointer *) &__symbolic_CPXcompletelp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcompletelp\n");
+                "lazylpsolverlibs: the symbol CPXcompletelp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcompletelp(env, lp);
@@ -2007,12 +2379,16 @@ int CPXpreaddrows (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, const doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpreaddrows", (gpointer *) &__symbolic_CPXpreaddrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpreaddrows\n");
+                "lazylpsolverlibs: the symbol CPXpreaddrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpreaddrows(env, lp, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, rowname);
@@ -2022,12 +2398,16 @@ int CPXprechgobj (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXprechgobj", (gpointer *) &__symbolic_CPXprechgobj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXprechgobj\n");
+                "lazylpsolverlibs: the symbol CPXprechgobj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXprechgobj(env, lp, cnt, indices, values);
@@ -2037,12 +2417,16 @@ int CPXgetnumcols (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumcols", (gpointer *) &__symbolic_CPXgetnumcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumcols\n");
+                "lazylpsolverlibs: the symbol CPXgetnumcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumcols(env, lp);
@@ -2052,12 +2436,16 @@ int CPXgetnumrows (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumrows", (gpointer *) &__symbolic_CPXgetnumrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumrows\n");
+                "lazylpsolverlibs: the symbol CPXgetnumrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumrows(env, lp);
@@ -2067,12 +2455,16 @@ int CPXgetnumnz (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumnz", (gpointer *) &__symbolic_CPXgetnumnz)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumnz\n");
+                "lazylpsolverlibs: the symbol CPXgetnumnz could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumnz(env, lp);
@@ -2082,12 +2474,16 @@ int CPXgetobjsen (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetobjsen", (gpointer *) &__symbolic_CPXgetobjsen)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetobjsen\n");
+                "lazylpsolverlibs: the symbol CPXgetobjsen could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetobjsen(env, lp);
@@ -2097,12 +2493,16 @@ int CPXgetobj (CPXCENVptr env, CPXCLPptr lp, double *obj, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetobj", (gpointer *) &__symbolic_CPXgetobj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetobj\n");
+                "lazylpsolverlibs: the symbol CPXgetobj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetobj(env, lp, obj, begin, end);
@@ -2112,12 +2512,16 @@ int CPXgetrhs (CPXCENVptr env, CPXCLPptr lp, double *rhs, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetrhs", (gpointer *) &__symbolic_CPXgetrhs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetrhs\n");
+                "lazylpsolverlibs: the symbol CPXgetrhs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetrhs(env, lp, rhs, begin, end);
@@ -2127,12 +2531,16 @@ int CPXgetsense (CPXCENVptr env, CPXCLPptr lp, char *sense, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsense", (gpointer *) &__symbolic_CPXgetsense)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsense\n");
+                "lazylpsolverlibs: the symbol CPXgetsense could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsense(env, lp, sense, begin, end);
@@ -2142,12 +2550,16 @@ int CPXgetcols (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *cmatbeg, int *c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcols", (gpointer *) &__symbolic_CPXgetcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcols\n");
+                "lazylpsolverlibs: the symbol CPXgetcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcols(env, lp, nzcnt_p, cmatbeg, cmatind, cmatval, cmatspace, surplus_p, begin, end);
@@ -2157,12 +2569,16 @@ int CPXgetrows (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *rmatbeg, int *r
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetrows", (gpointer *) &__symbolic_CPXgetrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetrows\n");
+                "lazylpsolverlibs: the symbol CPXgetrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetrows(env, lp, nzcnt_p, rmatbeg, rmatind, rmatval, rmatspace, surplus_p, begin, end);
@@ -2172,12 +2588,16 @@ int CPXgetlb (CPXCENVptr env, CPXCLPptr lp, double *lb, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetlb", (gpointer *) &__symbolic_CPXgetlb)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetlb\n");
+                "lazylpsolverlibs: the symbol CPXgetlb could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetlb(env, lp, lb, begin, end);
@@ -2187,12 +2607,16 @@ int CPXgetub (CPXCENVptr env, CPXCLPptr lp, double *ub, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetub", (gpointer *) &__symbolic_CPXgetub)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetub\n");
+                "lazylpsolverlibs: the symbol CPXgetub could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetub(env, lp, ub, begin, end);
@@ -2202,12 +2626,16 @@ int CPXgetrngval (CPXCENVptr env, CPXCLPptr lp, double *rngval, int begin, int e
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetrngval", (gpointer *) &__symbolic_CPXgetrngval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetrngval\n");
+                "lazylpsolverlibs: the symbol CPXgetrngval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetrngval(env, lp, rngval, begin, end);
@@ -2217,12 +2645,16 @@ int CPXgetprobname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspace, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetprobname", (gpointer *) &__symbolic_CPXgetprobname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetprobname\n");
+                "lazylpsolverlibs: the symbol CPXgetprobname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetprobname(env, lp, buf_str, bufspace, surplus_p);
@@ -2232,12 +2664,16 @@ int CPXgetobjname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspace, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetobjname", (gpointer *) &__symbolic_CPXgetobjname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetobjname\n");
+                "lazylpsolverlibs: the symbol CPXgetobjname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetobjname(env, lp, buf_str, bufspace, surplus_p);
@@ -2247,12 +2683,16 @@ int CPXgetcolname (CPXCENVptr env, CPXCLPptr lp, char **name, char *namestore, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcolname", (gpointer *) &__symbolic_CPXgetcolname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcolname\n");
+                "lazylpsolverlibs: the symbol CPXgetcolname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcolname(env, lp, name, namestore, storespace, surplus_p, begin, end);
@@ -2262,12 +2702,16 @@ int CPXgetrowname (CPXCENVptr env, CPXCLPptr lp, char **name, char *namestore, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetrowname", (gpointer *) &__symbolic_CPXgetrowname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetrowname\n");
+                "lazylpsolverlibs: the symbol CPXgetrowname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetrowname(env, lp, name, namestore, storespace, surplus_p, begin, end);
@@ -2277,12 +2721,16 @@ int CPXgetcoef (CPXCENVptr env, CPXCLPptr lp, int i, int j, double *coef_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcoef", (gpointer *) &__symbolic_CPXgetcoef)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcoef\n");
+                "lazylpsolverlibs: the symbol CPXgetcoef could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcoef(env, lp, i, j, coef_p);
@@ -2292,12 +2740,16 @@ int CPXgetrowindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int *in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetrowindex", (gpointer *) &__symbolic_CPXgetrowindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetrowindex\n");
+                "lazylpsolverlibs: the symbol CPXgetrowindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetrowindex(env, lp, lname_str, index_p);
@@ -2307,12 +2759,16 @@ int CPXgetcolindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int *in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcolindex", (gpointer *) &__symbolic_CPXgetcolindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcolindex\n");
+                "lazylpsolverlibs: the symbol CPXgetcolindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcolindex(env, lp, lname_str, index_p);
@@ -2322,12 +2778,16 @@ int CPXgetprobtype (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetprobtype", (gpointer *) &__symbolic_CPXgetprobtype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetprobtype\n");
+                "lazylpsolverlibs: the symbol CPXgetprobtype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetprobtype(env, lp);
@@ -2337,12 +2797,16 @@ int CPXreadcopyprob (CPXCENVptr env, CPXLPptr lp, const char *filename_str, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopyprob", (gpointer *) &__symbolic_CPXreadcopyprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopyprob\n");
+                "lazylpsolverlibs: the symbol CPXreadcopyprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopyprob(env, lp, filename_str, filetype_str);
@@ -2352,12 +2816,16 @@ int CPXreadcopybase (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopybase", (gpointer *) &__symbolic_CPXreadcopybase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopybase\n");
+                "lazylpsolverlibs: the symbol CPXreadcopybase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopybase(env, lp, filename_str);
@@ -2367,12 +2835,16 @@ int CPXreadcopysol (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopysol", (gpointer *) &__symbolic_CPXreadcopysol)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopysol\n");
+                "lazylpsolverlibs: the symbol CPXreadcopysol could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopysol(env, lp, filename_str);
@@ -2382,12 +2854,16 @@ int CPXwriteprob (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, const 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXwriteprob", (gpointer *) &__symbolic_CPXwriteprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXwriteprob\n");
+                "lazylpsolverlibs: the symbol CPXwriteprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXwriteprob(env, lp, filename_str, filetype_str);
@@ -2397,12 +2873,16 @@ int CPXmbasewrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmbasewrite", (gpointer *) &__symbolic_CPXmbasewrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmbasewrite\n");
+                "lazylpsolverlibs: the symbol CPXmbasewrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmbasewrite(env, lp, filename_str);
@@ -2412,12 +2892,16 @@ int CPXsolwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsolwrite", (gpointer *) &__symbolic_CPXsolwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsolwrite\n");
+                "lazylpsolverlibs: the symbol CPXsolwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsolwrite(env, lp, filename_str);
@@ -2427,12 +2911,16 @@ int CPXsolwritesolnpool (CPXCENVptr env, CPXCLPptr lp, int soln, const char *fil
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsolwritesolnpool", (gpointer *) &__symbolic_CPXsolwritesolnpool)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsolwritesolnpool\n");
+                "lazylpsolverlibs: the symbol CPXsolwritesolnpool could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsolwritesolnpool(env, lp, soln, filename_str);
@@ -2442,12 +2930,16 @@ int CPXsolwritesolnpoolall (CPXCENVptr env, CPXCLPptr lp, const char *filename_s
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsolwritesolnpoolall", (gpointer *) &__symbolic_CPXsolwritesolnpoolall)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsolwritesolnpoolall\n");
+                "lazylpsolverlibs: the symbol CPXsolwritesolnpoolall could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsolwritesolnpoolall(env, lp, filename_str);
@@ -2457,12 +2949,16 @@ int CPXembwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXembwrite", (gpointer *) &__symbolic_CPXembwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXembwrite\n");
+                "lazylpsolverlibs: the symbol CPXembwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXembwrite(env, lp, filename_str);
@@ -2472,12 +2968,16 @@ int CPXdperwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdperwrite", (gpointer *) &__symbolic_CPXdperwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdperwrite\n");
+                "lazylpsolverlibs: the symbol CPXdperwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdperwrite(env, lp, filename_str, epsilon);
@@ -2487,12 +2987,16 @@ int CPXpperwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpperwrite", (gpointer *) &__symbolic_CPXpperwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpperwrite\n");
+                "lazylpsolverlibs: the symbol CPXpperwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpperwrite(env, lp, filename_str, epsilon);
@@ -2502,12 +3006,16 @@ int CPXpreslvwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str, doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpreslvwrite", (gpointer *) &__symbolic_CPXpreslvwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpreslvwrite\n");
+                "lazylpsolverlibs: the symbol CPXpreslvwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpreslvwrite(env, lp, filename_str, objoff_p);
@@ -2517,12 +3025,16 @@ int CPXdualwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, double
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdualwrite", (gpointer *) &__symbolic_CPXdualwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdualwrite\n");
+                "lazylpsolverlibs: the symbol CPXdualwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdualwrite(env, lp, filename_str, objshift_p);
@@ -2532,12 +3044,16 @@ int CPXsetdefaults (CPXENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetdefaults", (gpointer *) &__symbolic_CPXsetdefaults)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetdefaults\n");
+                "lazylpsolverlibs: the symbol CPXsetdefaults could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetdefaults(env);
@@ -2547,12 +3063,16 @@ int CPXsetintparam (CPXENVptr env, int whichparam, int newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetintparam", (gpointer *) &__symbolic_CPXsetintparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetintparam\n");
+                "lazylpsolverlibs: the symbol CPXsetintparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetintparam(env, whichparam, newvalue);
@@ -2562,12 +3082,16 @@ int CPXsetdblparam (CPXENVptr env, int whichparam, double newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetdblparam", (gpointer *) &__symbolic_CPXsetdblparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetdblparam\n");
+                "lazylpsolverlibs: the symbol CPXsetdblparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetdblparam(env, whichparam, newvalue);
@@ -2577,12 +3101,16 @@ int CPXsetstrparam (CPXENVptr env, int whichparam, const char *newvalue_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetstrparam", (gpointer *) &__symbolic_CPXsetstrparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetstrparam\n");
+                "lazylpsolverlibs: the symbol CPXsetstrparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetstrparam(env, whichparam, newvalue_str);
@@ -2592,12 +3120,16 @@ int CPXgetintparam (CPXCENVptr env, int whichparam, int *value_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetintparam", (gpointer *) &__symbolic_CPXgetintparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetintparam\n");
+                "lazylpsolverlibs: the symbol CPXgetintparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetintparam(env, whichparam, value_p);
@@ -2607,12 +3139,16 @@ int CPXgetdblparam (CPXCENVptr env, int whichparam, double *value_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetdblparam", (gpointer *) &__symbolic_CPXgetdblparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetdblparam\n");
+                "lazylpsolverlibs: the symbol CPXgetdblparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetdblparam(env, whichparam, value_p);
@@ -2622,12 +3158,16 @@ int CPXgetstrparam (CPXCENVptr env, int whichparam, char *value_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetstrparam", (gpointer *) &__symbolic_CPXgetstrparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetstrparam\n");
+                "lazylpsolverlibs: the symbol CPXgetstrparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetstrparam(env, whichparam, value_str);
@@ -2637,12 +3177,16 @@ int CPXinfointparam (CPXCENVptr env, int whichparam, int *defvalue_p, int *minva
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXinfointparam", (gpointer *) &__symbolic_CPXinfointparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXinfointparam\n");
+                "lazylpsolverlibs: the symbol CPXinfointparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXinfointparam(env, whichparam, defvalue_p, minvalue_p, maxvalue_p);
@@ -2652,12 +3196,16 @@ int CPXinfodblparam (CPXCENVptr env, int whichparam, double *defvalue_p, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXinfodblparam", (gpointer *) &__symbolic_CPXinfodblparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXinfodblparam\n");
+                "lazylpsolverlibs: the symbol CPXinfodblparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXinfodblparam(env, whichparam, defvalue_p, minvalue_p, maxvalue_p);
@@ -2667,12 +3215,16 @@ int CPXinfostrparam (CPXCENVptr env, int whichparam, char *defvalue_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXinfostrparam", (gpointer *) &__symbolic_CPXinfostrparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXinfostrparam\n");
+                "lazylpsolverlibs: the symbol CPXinfostrparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXinfostrparam(env, whichparam, defvalue_str);
@@ -2682,12 +3234,16 @@ int CPXgetparamname (CPXCENVptr env, int whichparam, char *name_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetparamname", (gpointer *) &__symbolic_CPXgetparamname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetparamname\n");
+                "lazylpsolverlibs: the symbol CPXgetparamname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetparamname(env, whichparam, name_str);
@@ -2697,12 +3253,16 @@ int CPXgetparamnum (CPXCENVptr env, const char *name_str, int *whichparam_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetparamnum", (gpointer *) &__symbolic_CPXgetparamnum)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetparamnum\n");
+                "lazylpsolverlibs: the symbol CPXgetparamnum could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetparamnum(env, name_str, whichparam_p);
@@ -2712,12 +3272,16 @@ int CPXgetparamtype (CPXCENVptr env, int whichparam, int *paramtype){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetparamtype", (gpointer *) &__symbolic_CPXgetparamtype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetparamtype\n");
+                "lazylpsolverlibs: the symbol CPXgetparamtype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetparamtype(env, whichparam, paramtype);
@@ -2727,12 +3291,16 @@ int CPXreadcopyparam (CPXENVptr env, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopyparam", (gpointer *) &__symbolic_CPXreadcopyparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopyparam\n");
+                "lazylpsolverlibs: the symbol CPXreadcopyparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopyparam(env, filename_str);
@@ -2742,12 +3310,16 @@ int CPXwriteparam (CPXCENVptr env, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXwriteparam", (gpointer *) &__symbolic_CPXwriteparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXwriteparam\n");
+                "lazylpsolverlibs: the symbol CPXwriteparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXwriteparam(env, filename_str);
@@ -2757,12 +3329,16 @@ int CPXgetchgparam (CPXCENVptr env, int *cnt_p, int *paramnum, int pspace, int *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetchgparam", (gpointer *) &__symbolic_CPXgetchgparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetchgparam\n");
+                "lazylpsolverlibs: the symbol CPXgetchgparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetchgparam(env, cnt_p, paramnum, pspace, surplus_p);
@@ -2772,12 +3348,16 @@ int CPXtuneparam (CPXENVptr env, CPXLPptr lp, int intcnt, const int *intnum, con
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXtuneparam", (gpointer *) &__symbolic_CPXtuneparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXtuneparam\n");
+                "lazylpsolverlibs: the symbol CPXtuneparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXtuneparam(env, lp, intcnt, intnum, intval, dblcnt, dblnum, dblval, strcnt, strnum, strval, tunestat_p);
@@ -2787,12 +3367,16 @@ int CPXtuneparamprobset (CPXENVptr env, int filecnt, char **filename, char **fil
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXtuneparamprobset", (gpointer *) &__symbolic_CPXtuneparamprobset)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXtuneparamprobset\n");
+                "lazylpsolverlibs: the symbol CPXtuneparamprobset could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXtuneparamprobset(env, filecnt, filename, filetype, intcnt, intind, intval, dblcnt, dblind, dblval, strcnt, strind, strval, tunestat_p);
@@ -2802,12 +3386,16 @@ CPXCCHARptr CPXversion (CPXCENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXversion", (gpointer *) &__symbolic_CPXversion)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXversion\n");
+                "lazylpsolverlibs: the symbol CPXversion could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXversion(env);
@@ -2817,12 +3405,16 @@ CPXENVptr CPXopenCPLEX (int *status_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXopenCPLEX", (gpointer *) &__symbolic_CPXopenCPLEX)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXopenCPLEX\n");
+                "lazylpsolverlibs: the symbol CPXopenCPLEX could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXopenCPLEX(status_p);
@@ -2832,12 +3424,16 @@ CPXENVptr CPXopenCPLEXruntime (int *status_p, int serialnum, const char *licenvs
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXopenCPLEXruntime", (gpointer *) &__symbolic_CPXopenCPLEXruntime)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXopenCPLEXruntime\n");
+                "lazylpsolverlibs: the symbol CPXopenCPLEXruntime could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXopenCPLEXruntime(status_p, serialnum, licenvstring_str);
@@ -2847,12 +3443,16 @@ int CPXcloseCPLEX (CPXENVptr *env_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcloseCPLEX", (gpointer *) &__symbolic_CPXcloseCPLEX)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcloseCPLEX\n");
+                "lazylpsolverlibs: the symbol CPXcloseCPLEX could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcloseCPLEX(env_p);
@@ -2862,12 +3462,16 @@ int CPXsetstaringsol (const char *ilm_license_str, int ilm_license_signature){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetstaringsol", (gpointer *) &__symbolic_CPXsetstaringsol)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetstaringsol\n");
+                "lazylpsolverlibs: the symbol CPXsetstaringsol could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetstaringsol(ilm_license_str, ilm_license_signature);
@@ -2877,12 +3481,16 @@ CPXENVptr CPXparenv (CPXENVptr env, int *status_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXparenv", (gpointer *) &__symbolic_CPXparenv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXparenv\n");
+                "lazylpsolverlibs: the symbol CPXparenv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXparenv(env, status_p);
@@ -2892,12 +3500,16 @@ int CPXfreeparenv (CPXENVptr env, CPXENVptr *child_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfreeparenv", (gpointer *) &__symbolic_CPXfreeparenv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfreeparenv\n");
+                "lazylpsolverlibs: the symbol CPXfreeparenv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfreeparenv(env, child_p);
@@ -2907,12 +3519,16 @@ int CPXcheckcopylp (CPXCENVptr env, CPXCLPptr lp, int numcols, int numrows, int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckcopylp", (gpointer *) &__symbolic_CPXcheckcopylp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckcopylp\n");
+                "lazylpsolverlibs: the symbol CPXcheckcopylp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckcopylp(env, lp, numcols, numrows, objsen, obj, rhs, sense, matbeg, matcnt, matind, matval, lb, ub, rngval);
@@ -2922,12 +3538,16 @@ int CPXcheckcopylpwnames (CPXCENVptr env, CPXCLPptr lp, int numcols, int numrows
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckcopylpwnames", (gpointer *) &__symbolic_CPXcheckcopylpwnames)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckcopylpwnames\n");
+                "lazylpsolverlibs: the symbol CPXcheckcopylpwnames could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckcopylpwnames(env, lp, numcols, numrows, objsen, obj, rhs, sense, matbeg, matcnt, matind, matval, lb, ub, rngval, colname, rowname);
@@ -2937,12 +3557,16 @@ int CPXcheckaddcols (CPXCENVptr env, CPXCLPptr lp, int ccnt, int nzcnt, const do
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckaddcols", (gpointer *) &__symbolic_CPXcheckaddcols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckaddcols\n");
+                "lazylpsolverlibs: the symbol CPXcheckaddcols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckaddcols(env, lp, ccnt, nzcnt, obj, cmatbeg, cmatind, cmatval, lb, ub, colname);
@@ -2952,12 +3576,16 @@ int CPXcheckaddrows (CPXCENVptr env, CPXCLPptr lp, int ccnt, int rcnt, int nzcnt
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckaddrows", (gpointer *) &__symbolic_CPXcheckaddrows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckaddrows\n");
+                "lazylpsolverlibs: the symbol CPXcheckaddrows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckaddrows(env, lp, ccnt, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, colname, rowname);
@@ -2967,12 +3595,16 @@ int CPXcheckchgcoeflist (CPXCENVptr env, CPXCLPptr lp, int numcoefs, const int *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckchgcoeflist", (gpointer *) &__symbolic_CPXcheckchgcoeflist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckchgcoeflist\n");
+                "lazylpsolverlibs: the symbol CPXcheckchgcoeflist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckchgcoeflist(env, lp, numcoefs, rowlist, collist, vallist);
@@ -2982,12 +3614,16 @@ int CPXcheckvals (CPXCENVptr env, CPXCLPptr lp, int cnt, const int *rowind, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckvals", (gpointer *) &__symbolic_CPXcheckvals)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckvals\n");
+                "lazylpsolverlibs: the symbol CPXcheckvals could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckvals(env, lp, cnt, rowind, colind, values);
@@ -2997,12 +3633,16 @@ int CPXgetchannels (CPXCENVptr env, CPXCHANNELptr *cpxresults_p, CPXCHANNELptr *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetchannels", (gpointer *) &__symbolic_CPXgetchannels)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetchannels\n");
+                "lazylpsolverlibs: the symbol CPXgetchannels could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetchannels(env, cpxresults_p, cpxwarning_p, cpxerror_p, cpxlog_p);
@@ -3012,12 +3652,16 @@ int CPXsetlogfile (CPXENVptr env, CPXFILEptr lfile){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetlogfile", (gpointer *) &__symbolic_CPXsetlogfile)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetlogfile\n");
+                "lazylpsolverlibs: the symbol CPXsetlogfile could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetlogfile(env, lfile);
@@ -3027,12 +3671,16 @@ int CPXgetlogfile (CPXCENVptr env, CPXFILEptr *logfile_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetlogfile", (gpointer *) &__symbolic_CPXgetlogfile)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetlogfile\n");
+                "lazylpsolverlibs: the symbol CPXgetlogfile could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetlogfile(env, logfile_p);
@@ -3042,12 +3690,16 @@ int CPXmsg (CPXCHANNELptr channel, const char *format, ...){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmsg", (gpointer *) &__symbolic_CPXmsg)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmsg\n");
+                "lazylpsolverlibs: the symbol CPXmsg could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmsg(channel, format);
@@ -3057,12 +3709,16 @@ int CPXmsgstr (CPXCHANNELptr channel, const char *msg_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmsgstr", (gpointer *) &__symbolic_CPXmsgstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmsgstr\n");
+                "lazylpsolverlibs: the symbol CPXmsgstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmsgstr(channel, msg_str);
@@ -3072,12 +3728,16 @@ void CPXflushchannel (CPXCENVptr env, CPXCHANNELptr channel){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXflushchannel", (gpointer *) &__symbolic_CPXflushchannel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXflushchannel\n");
+                "lazylpsolverlibs: the symbol CPXflushchannel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXflushchannel(env, channel);
@@ -3087,12 +3747,16 @@ int CPXflushstdchannels (CPXCENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXflushstdchannels", (gpointer *) &__symbolic_CPXflushstdchannels)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXflushstdchannels\n");
+                "lazylpsolverlibs: the symbol CPXflushstdchannels could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXflushstdchannels(env);
@@ -3102,12 +3766,16 @@ CPXCHANNELptr CPXaddchannel (CPXENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddchannel", (gpointer *) &__symbolic_CPXaddchannel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddchannel\n");
+                "lazylpsolverlibs: the symbol CPXaddchannel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddchannel(env);
@@ -3117,12 +3785,16 @@ int CPXaddfpdest (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddfpdest", (gpointer *) &__symbolic_CPXaddfpdest)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddfpdest\n");
+                "lazylpsolverlibs: the symbol CPXaddfpdest could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddfpdest(env, channel, fileptr);
@@ -3132,12 +3804,16 @@ int CPXdelfpdest (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelfpdest", (gpointer *) &__symbolic_CPXdelfpdest)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelfpdest\n");
+                "lazylpsolverlibs: the symbol CPXdelfpdest could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelfpdest(env, channel, fileptr);
@@ -3147,12 +3823,16 @@ int CPXaddfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddfuncdest", (gpointer *) &__symbolic_CPXaddfuncdest)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddfuncdest\n");
+                "lazylpsolverlibs: the symbol CPXaddfuncdest could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddfuncdest(env, channel, handle, msgfunction);
@@ -3162,12 +3842,16 @@ int CPXdelfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelfuncdest", (gpointer *) &__symbolic_CPXdelfuncdest)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelfuncdest\n");
+                "lazylpsolverlibs: the symbol CPXdelfuncdest could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelfuncdest(env, channel, handle, msgfunction);
@@ -3177,12 +3861,16 @@ void CPXdelchannel (CPXENVptr env, CPXCHANNELptr *channel_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelchannel", (gpointer *) &__symbolic_CPXdelchannel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelchannel\n");
+                "lazylpsolverlibs: the symbol CPXdelchannel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelchannel(env, channel_p);
@@ -3192,12 +3880,16 @@ void CPXdisconnectchannel (CPXCENVptr env, CPXCHANNELptr channel){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdisconnectchannel", (gpointer *) &__symbolic_CPXdisconnectchannel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdisconnectchannel\n");
+                "lazylpsolverlibs: the symbol CPXdisconnectchannel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdisconnectchannel(env, channel);
@@ -3207,12 +3899,16 @@ CPXCCHARptr CPXgeterrorstring (CPXCENVptr env, int errcode, char *buffer_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgeterrorstring", (gpointer *) &__symbolic_CPXgeterrorstring)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgeterrorstring\n");
+                "lazylpsolverlibs: the symbol CPXgeterrorstring could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgeterrorstring(env, errcode, buffer_str);
@@ -3222,12 +3918,16 @@ int CPXsetlpcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetlpcallbackfunc", (gpointer *) &__symbolic_CPXsetlpcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetlpcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetlpcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetlpcallbackfunc(env, callback, cbhandle);
@@ -3237,12 +3937,16 @@ int CPXsetnetcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetnetcallbackfunc", (gpointer *) &__symbolic_CPXsetnetcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetnetcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetnetcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetnetcallbackfunc(env, callback, cbhandle);
@@ -3252,12 +3956,16 @@ int CPXsettuningcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsettuningcallbackfunc", (gpointer *) &__symbolic_CPXsettuningcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsettuningcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsettuningcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsettuningcallbackfunc(env, callback, cbhandle);
@@ -3267,12 +3975,16 @@ int CPXgetcallbackinfo (CPXCENVptr env, void *cbdata, int wherefrom, int whichin
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackinfo", (gpointer *) &__symbolic_CPXgetcallbackinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackinfo\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackinfo(env, cbdata, wherefrom, whichinfo, result_p);
@@ -3282,12 +3994,16 @@ int CPXgetlpcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetlpcallbackfunc", (gpointer *) &__symbolic_CPXgetlpcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetlpcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetlpcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetlpcallbackfunc(env, callback_p, cbhandle_p);
@@ -3297,12 +4013,16 @@ int CPXgetnetcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnetcallbackfunc", (gpointer *) &__symbolic_CPXgetnetcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnetcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetnetcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnetcallbackfunc(env, callback_p, cbhandle_p);
@@ -3312,12 +4032,16 @@ int CPXgettuningcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, vo
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgettuningcallbackfunc", (gpointer *) &__symbolic_CPXgettuningcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgettuningcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgettuningcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgettuningcallbackfunc(env, callback_p, cbhandle_p);
@@ -3327,12 +4051,16 @@ int CPXsetprofcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, int, voi
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetprofcallbackfunc", (gpointer *) &__symbolic_CPXsetprofcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetprofcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetprofcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetprofcallbackfunc(env, callback, cbhandle);
@@ -3342,12 +4070,16 @@ CPXFILEptr CPXfopen (const char *filename_str, const char *type_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfopen", (gpointer *) &__symbolic_CPXfopen)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfopen\n");
+                "lazylpsolverlibs: the symbol CPXfopen could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfopen(filename_str, type_str);
@@ -3357,12 +4089,16 @@ int CPXfclose (CPXFILEptr stream){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfclose", (gpointer *) &__symbolic_CPXfclose)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfclose\n");
+                "lazylpsolverlibs: the symbol CPXfclose could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfclose(stream);
@@ -3372,12 +4108,16 @@ int CPXfputs (const char *s_str, CPXFILEptr stream){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfputs", (gpointer *) &__symbolic_CPXfputs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfputs\n");
+                "lazylpsolverlibs: the symbol CPXfputs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfputs(s_str, stream);
@@ -3387,12 +4127,16 @@ CPXVOIDptr CPXmalloc (size_t size){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmalloc", (gpointer *) &__symbolic_CPXmalloc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmalloc\n");
+                "lazylpsolverlibs: the symbol CPXmalloc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmalloc(size);
@@ -3402,12 +4146,16 @@ CPXVOIDptr CPXrealloc (void *ptr, size_t size){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrealloc", (gpointer *) &__symbolic_CPXrealloc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrealloc\n");
+                "lazylpsolverlibs: the symbol CPXrealloc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrealloc(ptr, size);
@@ -3417,12 +4165,16 @@ CPXVOIDptr CPXmemcpy (void *s1, void *s2, size_t n){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmemcpy", (gpointer *) &__symbolic_CPXmemcpy)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmemcpy\n");
+                "lazylpsolverlibs: the symbol CPXmemcpy could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmemcpy(s1, s2, n);
@@ -3432,12 +4184,16 @@ void CPXfree (void *ptr){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfree", (gpointer *) &__symbolic_CPXfree)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfree\n");
+                "lazylpsolverlibs: the symbol CPXfree could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfree(ptr);
@@ -3447,12 +4203,16 @@ int CPXstrlen (const char *s_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXstrlen", (gpointer *) &__symbolic_CPXstrlen)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXstrlen\n");
+                "lazylpsolverlibs: the symbol CPXstrlen could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXstrlen(s_str);
@@ -3462,12 +4222,16 @@ CPXCHARptr CPXstrcpy (char *dest_str, const char *src_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXstrcpy", (gpointer *) &__symbolic_CPXstrcpy)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXstrcpy\n");
+                "lazylpsolverlibs: the symbol CPXstrcpy could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXstrcpy(dest_str, src_str);
@@ -3477,12 +4241,16 @@ int CPXputenv (const char *envsetting_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXputenv", (gpointer *) &__symbolic_CPXputenv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXputenv\n");
+                "lazylpsolverlibs: the symbol CPXputenv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXputenv(envsetting_str);
@@ -3492,12 +4260,16 @@ void CPXEisort (int n, int *a, int *perm){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEisort", (gpointer *) &__symbolic_CPXEisort)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEisort\n");
+                "lazylpsolverlibs: the symbol CPXEisort could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEisort(n, a, perm);
@@ -3507,12 +4279,16 @@ void CPXEinsort (int n, int *a){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEinsort", (gpointer *) &__symbolic_CPXEinsort)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEinsort\n");
+                "lazylpsolverlibs: the symbol CPXEinsort could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEinsort(n, a);
@@ -3522,12 +4298,16 @@ int CPXEgetThreadNumber (CPXCENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetThreadNumber", (gpointer *) &__symbolic_CPXEgetThreadNumber)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetThreadNumber\n");
+                "lazylpsolverlibs: the symbol CPXEgetThreadNumber could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetThreadNumber(env);
@@ -3537,12 +4317,16 @@ int CPXEgetmaxthreads (CPXCENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetmaxthreads", (gpointer *) &__symbolic_CPXEgetmaxthreads)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetmaxthreads\n");
+                "lazylpsolverlibs: the symbol CPXEgetmaxthreads could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetmaxthreads(env);
@@ -3552,12 +4336,16 @@ int CPXEsetJNI (CPXENVptr env, CPXVOIDptr jni){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEsetJNI", (gpointer *) &__symbolic_CPXEsetJNI)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEsetJNI\n");
+                "lazylpsolverlibs: the symbol CPXEsetJNI could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEsetJNI(env, jni);
@@ -3567,12 +4355,16 @@ CPXVOIDptr CPXEgetJNI (CPXCENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetJNI", (gpointer *) &__symbolic_CPXEgetJNI)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetJNI\n");
+                "lazylpsolverlibs: the symbol CPXEgetJNI could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetJNI(env);
@@ -3582,12 +4374,16 @@ int CPXEsetnamefunctions (CPXENVptr env, void* userdata, const char* ( *getcname
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEsetnamefunctions", (gpointer *) &__symbolic_CPXEsetnamefunctions)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEsetnamefunctions\n");
+                "lazylpsolverlibs: the symbol CPXEsetnamefunctions could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEsetnamefunctions(env, userdata, getcname, getrname, getqname, getiname, getsname);
@@ -3597,12 +4393,16 @@ int CPXEsetnamedef (CPXENVptr env, const char *def_str, int deftype){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEsetnamedef", (gpointer *) &__symbolic_CPXEsetnamedef)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEsetnamedef\n");
+                "lazylpsolverlibs: the symbol CPXEsetnamedef could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEsetnamedef(env, def_str, deftype);
@@ -3612,12 +4412,16 @@ int CPXEdelnames (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEdelnames", (gpointer *) &__symbolic_CPXEdelnames)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEdelnames\n");
+                "lazylpsolverlibs: the symbol CPXEdelnames could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEdelnames(env, lp);
@@ -3627,12 +4431,16 @@ CPXVOIDptr CPXEgetCache (CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetCache", (gpointer *) &__symbolic_CPXEgetCache)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetCache\n");
+                "lazylpsolverlibs: the symbol CPXEgetCache could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetCache(lp);
@@ -3642,12 +4450,16 @@ int CPXEcacheNewCols (CPXCENVptr env, CPXLPptr lp, int ccnt, const double *zobj,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEcacheNewCols", (gpointer *) &__symbolic_CPXEcacheNewCols)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEcacheNewCols\n");
+                "lazylpsolverlibs: the symbol CPXEcacheNewCols could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEcacheNewCols(env, lp, ccnt, zobj, zlb, zub, zctype, zcname);
@@ -3657,12 +4469,16 @@ int CPXEcacheNewRows (CPXCENVptr env, CPXLPptr lp, int rcnt, const double *zrhs,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEcacheNewRows", (gpointer *) &__symbolic_CPXEcacheNewRows)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEcacheNewRows\n");
+                "lazylpsolverlibs: the symbol CPXEcacheNewRows could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEcacheNewRows(env, lp, rcnt, zrhs, zsense, rngval, zrname);
@@ -3672,12 +4488,16 @@ int CPXEcacheNewNZsByNZ (CPXCENVptr env, CPXLPptr lp, int nzcnt, const int *rowl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEcacheNewNZsByNZ", (gpointer *) &__symbolic_CPXEcacheNewNZsByNZ)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEcacheNewNZsByNZ\n");
+                "lazylpsolverlibs: the symbol CPXEcacheNewNZsByNZ could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEcacheNewNZsByNZ(env, lp, nzcnt, rowlist, collist, vallist);
@@ -3687,12 +4507,16 @@ int CPXEgetorigcolind (CPXCENVptr env, CPXCLPptr lp, int j){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetorigcolind", (gpointer *) &__symbolic_CPXEgetorigcolind)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetorigcolind\n");
+                "lazylpsolverlibs: the symbol CPXEgetorigcolind could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetorigcolind(env, lp, j);
@@ -3702,12 +4526,16 @@ int CPXEgetorigrowind (CPXCENVptr env, CPXCLPptr lp, int i){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetorigrowind", (gpointer *) &__symbolic_CPXEgetorigrowind)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetorigrowind\n");
+                "lazylpsolverlibs: the symbol CPXEgetorigrowind could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetorigrowind(env, lp, i);
@@ -3717,12 +4545,16 @@ double CPXEgetbigreal (CPXCENVptr env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetbigreal", (gpointer *) &__symbolic_CPXEgetbigreal)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetbigreal\n");
+                "lazylpsolverlibs: the symbol CPXEgetbigreal could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetbigreal(env);
@@ -3732,12 +4564,16 @@ int CPXEispromotion (CPXCENVptr env, int rspace, int cspace, int ispace){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEispromotion", (gpointer *) &__symbolic_CPXEispromotion)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEispromotion\n");
+                "lazylpsolverlibs: the symbol CPXEispromotion could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEispromotion(env, rspace, cspace, ispace);
@@ -3747,12 +4583,16 @@ int CPXEgetnumrownz (CPXCENVptr env, CPXCLPptr lp, int* mark){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetnumrownz", (gpointer *) &__symbolic_CPXEgetnumrownz)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetnumrownz\n");
+                "lazylpsolverlibs: the symbol CPXEgetnumrownz could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetnumrownz(env, lp, mark);
@@ -3762,12 +4602,16 @@ int CPXEcangetbase (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEcangetbase", (gpointer *) &__symbolic_CPXEcangetbase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEcangetbase\n");
+                "lazylpsolverlibs: the symbol CPXEcangetbase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEcangetbase(env, lp);
@@ -3777,12 +4621,16 @@ int CPXEwriteparam (CPXCENVptr env, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEwriteparam", (gpointer *) &__symbolic_CPXEwriteparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEwriteparam\n");
+                "lazylpsolverlibs: the symbol CPXEwriteparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEwriteparam(env, filename_str);
@@ -3792,12 +4640,16 @@ int CPXsetterminate (CPXENVptr env, volatile int *terminate_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetterminate", (gpointer *) &__symbolic_CPXsetterminate)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetterminate\n");
+                "lazylpsolverlibs: the symbol CPXsetterminate could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetterminate(env, terminate_p);
@@ -3807,12 +4659,16 @@ void CPXEsetterminatefunc (CPXENVptr env, int ( *terminatefunc)(CPXCENVptr) ){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEsetterminatefunc", (gpointer *) &__symbolic_CPXEsetterminatefunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEsetterminatefunc\n");
+                "lazylpsolverlibs: the symbol CPXEsetterminatefunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEsetterminatefunc(env, terminatefunc);
@@ -3822,12 +4678,16 @@ int CPXEnsAddNames (struct cpxnameset* nset, int n, const char *const *name){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEnsAddNames", (gpointer *) &__symbolic_CPXEnsAddNames)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEnsAddNames\n");
+                "lazylpsolverlibs: the symbol CPXEnsAddNames could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEnsAddNames(nset, n, name);
@@ -3837,12 +4697,16 @@ int CPXgetbhead (CPXCENVptr env, CPXCLPptr lp, int *head, double *x){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbhead", (gpointer *) &__symbolic_CPXgetbhead)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbhead\n");
+                "lazylpsolverlibs: the symbol CPXgetbhead could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbhead(env, lp, head, x);
@@ -3852,12 +4716,16 @@ int CPXbinvcol (CPXCENVptr env, CPXCLPptr lp, int j, double *x){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbinvcol", (gpointer *) &__symbolic_CPXbinvcol)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbinvcol\n");
+                "lazylpsolverlibs: the symbol CPXbinvcol could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbinvcol(env, lp, j, x);
@@ -3867,12 +4735,16 @@ int CPXbinvrow (CPXCENVptr env, CPXCLPptr lp, int i, double *y){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbinvrow", (gpointer *) &__symbolic_CPXbinvrow)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbinvrow\n");
+                "lazylpsolverlibs: the symbol CPXbinvrow could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbinvrow(env, lp, i, y);
@@ -3882,12 +4754,16 @@ int CPXbinvacol (CPXCENVptr env, CPXCLPptr lp, int j, double *x){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbinvacol", (gpointer *) &__symbolic_CPXbinvacol)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbinvacol\n");
+                "lazylpsolverlibs: the symbol CPXbinvacol could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbinvacol(env, lp, j, x);
@@ -3897,12 +4773,16 @@ int CPXbinvarow (CPXCENVptr env, CPXCLPptr lp, int i, double *z){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbinvarow", (gpointer *) &__symbolic_CPXbinvarow)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbinvarow\n");
+                "lazylpsolverlibs: the symbol CPXbinvarow could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbinvarow(env, lp, i, z);
@@ -3912,12 +4792,16 @@ int CPXftran (CPXCENVptr env, CPXCLPptr lp, double *x){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXftran", (gpointer *) &__symbolic_CPXftran)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXftran\n");
+                "lazylpsolverlibs: the symbol CPXftran could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXftran(env, lp, x);
@@ -3927,12 +4811,16 @@ int CPXbtran (CPXCENVptr env, CPXCLPptr lp, double *y){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbtran", (gpointer *) &__symbolic_CPXbtran)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbtran\n");
+                "lazylpsolverlibs: the symbol CPXbtran could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbtran(env, lp, y);
@@ -3942,12 +4830,16 @@ int CPXgetijrow (CPXCENVptr env, CPXCLPptr lp, int i, int j, int *row_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetijrow", (gpointer *) &__symbolic_CPXgetijrow)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetijrow\n");
+                "lazylpsolverlibs: the symbol CPXgetijrow could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetijrow(env, lp, i, j, row_p);
@@ -3957,12 +4849,16 @@ int CPXgetray (CPXCENVptr env, CPXCLPptr lp, double *z){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetray", (gpointer *) &__symbolic_CPXgetray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetray\n");
+                "lazylpsolverlibs: the symbol CPXgetray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetray(env, lp, z);
@@ -3972,12 +4868,16 @@ int CPXgetweight (CPXCENVptr env, CPXCLPptr lp, int rcnt, const int *rmatbeg, co
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetweight", (gpointer *) &__symbolic_CPXgetweight)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetweight\n");
+                "lazylpsolverlibs: the symbol CPXgetweight could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetweight(env, lp, rcnt, rmatbeg, rmatind, rmatval, weight, dpriind);
@@ -3987,12 +4887,16 @@ int CPXmdleave (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, double
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmdleave", (gpointer *) &__symbolic_CPXmdleave)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmdleave\n");
+                "lazylpsolverlibs: the symbol CPXmdleave could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmdleave(env, lp, indices, cnt, downratio, upratio);
@@ -4002,12 +4906,16 @@ int CPXstrongbranch (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXstrongbranch", (gpointer *) &__symbolic_CPXstrongbranch)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXstrongbranch\n");
+                "lazylpsolverlibs: the symbol CPXstrongbranch could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXstrongbranch(env, lp, indices, cnt, downobj, upobj, itlim);
@@ -4017,12 +4925,16 @@ int CPXdualfarkas (CPXCENVptr env, CPXCLPptr lp, double *y, double *proof_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdualfarkas", (gpointer *) &__symbolic_CPXdualfarkas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdualfarkas\n");
+                "lazylpsolverlibs: the symbol CPXdualfarkas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdualfarkas(env, lp, y, proof_p);
@@ -4032,12 +4944,16 @@ int CPXgetobjoffset (CPXCENVptr env, CPXCLPptr lp, double *objoffset_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetobjoffset", (gpointer *) &__symbolic_CPXgetobjoffset)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetobjoffset\n");
+                "lazylpsolverlibs: the symbol CPXgetobjoffset could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetobjoffset(env, lp, objoffset_p);
@@ -4047,12 +4963,16 @@ int CPXcopypartialbase (CPXCENVptr env, CPXLPptr lp, int ccnt, const int *cindic
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopypartialbase", (gpointer *) &__symbolic_CPXcopypartialbase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopypartialbase\n");
+                "lazylpsolverlibs: the symbol CPXcopypartialbase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopypartialbase(env, lp, ccnt, cindices, cstat, rcnt, rindices, rstat);
@@ -4062,12 +4982,16 @@ int CPXgetbasednorms (CPXCENVptr env, CPXCLPptr lp, int *cstat, int *rstat, doub
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbasednorms", (gpointer *) &__symbolic_CPXgetbasednorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbasednorms\n");
+                "lazylpsolverlibs: the symbol CPXgetbasednorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbasednorms(env, lp, cstat, rstat, dnorm);
@@ -4077,12 +5001,16 @@ int CPXcopybasednorms (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopybasednorms", (gpointer *) &__symbolic_CPXcopybasednorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopybasednorms\n");
+                "lazylpsolverlibs: the symbol CPXcopybasednorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopybasednorms(env, lp, cstat, rstat, dnorm);
@@ -4092,12 +5020,16 @@ int CPXgetdnorms (CPXCENVptr env, CPXCLPptr lp, double *norm, int *head, int *le
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetdnorms", (gpointer *) &__symbolic_CPXgetdnorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetdnorms\n");
+                "lazylpsolverlibs: the symbol CPXgetdnorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetdnorms(env, lp, norm, head, len_p);
@@ -4107,12 +5039,16 @@ int CPXcopydnorms (CPXCENVptr env, CPXLPptr lp, const double *norm, const int *h
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopydnorms", (gpointer *) &__symbolic_CPXcopydnorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopydnorms\n");
+                "lazylpsolverlibs: the symbol CPXcopydnorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopydnorms(env, lp, norm, head, len);
@@ -4122,12 +5058,16 @@ void CPXkilldnorms (CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXkilldnorms", (gpointer *) &__symbolic_CPXkilldnorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXkilldnorms\n");
+                "lazylpsolverlibs: the symbol CPXkilldnorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXkilldnorms(lp);
@@ -4137,12 +5077,16 @@ int CPXgetpnorms (CPXCENVptr env, CPXCLPptr lp, double *cnorm, double *rnorm, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetpnorms", (gpointer *) &__symbolic_CPXgetpnorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetpnorms\n");
+                "lazylpsolverlibs: the symbol CPXgetpnorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetpnorms(env, lp, cnorm, rnorm, len_p);
@@ -4152,12 +5096,16 @@ int CPXcopypnorms (CPXCENVptr env, CPXLPptr lp, const double *cnorm, const doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopypnorms", (gpointer *) &__symbolic_CPXcopypnorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopypnorms\n");
+                "lazylpsolverlibs: the symbol CPXcopypnorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopypnorms(env, lp, cnorm, rnorm, len);
@@ -4167,12 +5115,16 @@ void CPXkillpnorms (CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXkillpnorms", (gpointer *) &__symbolic_CPXkillpnorms)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXkillpnorms\n");
+                "lazylpsolverlibs: the symbol CPXkillpnorms could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXkillpnorms(lp);
@@ -4182,12 +5134,16 @@ int CPXpivotin (CPXCENVptr env, CPXLPptr lp, const int *rlist, int rlen){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpivotin", (gpointer *) &__symbolic_CPXpivotin)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpivotin\n");
+                "lazylpsolverlibs: the symbol CPXpivotin could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpivotin(env, lp, rlist, rlen);
@@ -4197,12 +5153,16 @@ int CPXpivotout (CPXCENVptr env, CPXLPptr lp, const int *clist, int clen){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpivotout", (gpointer *) &__symbolic_CPXpivotout)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpivotout\n");
+                "lazylpsolverlibs: the symbol CPXpivotout could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpivotout(env, lp, clist, clen);
@@ -4212,12 +5172,16 @@ int CPXunscaleprob (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXunscaleprob", (gpointer *) &__symbolic_CPXunscaleprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXunscaleprob\n");
+                "lazylpsolverlibs: the symbol CPXunscaleprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXunscaleprob(env, lp);
@@ -4227,12 +5191,16 @@ int CPXtightenbds (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, con
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXtightenbds", (gpointer *) &__symbolic_CPXtightenbds)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXtightenbds\n");
+                "lazylpsolverlibs: the symbol CPXtightenbds could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXtightenbds(env, lp, cnt, indices, lu, bd);
@@ -4242,12 +5210,16 @@ int CPXpresolve (CPXCENVptr env, CPXLPptr lp, int method){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpresolve", (gpointer *) &__symbolic_CPXpresolve)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpresolve\n");
+                "lazylpsolverlibs: the symbol CPXpresolve could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpresolve(env, lp, method);
@@ -4257,12 +5229,16 @@ int CPXbasicpresolve (CPXCENVptr env, CPXLPptr lp, double *redlb, double *redub,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbasicpresolve", (gpointer *) &__symbolic_CPXbasicpresolve)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbasicpresolve\n");
+                "lazylpsolverlibs: the symbol CPXbasicpresolve could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbasicpresolve(env, lp, redlb, redub, rstat);
@@ -4272,12 +5248,16 @@ int CPXslackfromx (CPXCENVptr env, CPXCLPptr lp, const double *x, double *slack)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXslackfromx", (gpointer *) &__symbolic_CPXslackfromx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXslackfromx\n");
+                "lazylpsolverlibs: the symbol CPXslackfromx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXslackfromx(env, lp, x, slack);
@@ -4287,12 +5267,16 @@ int CPXdjfrompi (CPXCENVptr env, CPXCLPptr lp, const double *pi, double *dj){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdjfrompi", (gpointer *) &__symbolic_CPXdjfrompi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdjfrompi\n");
+                "lazylpsolverlibs: the symbol CPXdjfrompi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdjfrompi(env, lp, pi, dj);
@@ -4302,12 +5286,16 @@ int CPXqpdjfrompi (CPXCENVptr env, CPXCLPptr lp, const double *pi, const double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXqpdjfrompi", (gpointer *) &__symbolic_CPXqpdjfrompi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXqpdjfrompi\n");
+                "lazylpsolverlibs: the symbol CPXqpdjfrompi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXqpdjfrompi(env, lp, pi, x, dj);
@@ -4317,12 +5305,16 @@ int CPXfreepresolve (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfreepresolve", (gpointer *) &__symbolic_CPXfreepresolve)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfreepresolve\n");
+                "lazylpsolverlibs: the symbol CPXfreepresolve could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfreepresolve(env, lp);
@@ -4332,12 +5324,16 @@ int CPXgetredlp (CPXCENVptr env, CPXCLPptr lp, CPXCLPptr *redlp_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetredlp", (gpointer *) &__symbolic_CPXgetredlp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetredlp\n");
+                "lazylpsolverlibs: the symbol CPXgetredlp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetredlp(env, lp, redlp_p);
@@ -4347,12 +5343,16 @@ int CPXcrushx (CPXCENVptr env, CPXCLPptr lp, const double *x, double *prex){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcrushx", (gpointer *) &__symbolic_CPXcrushx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcrushx\n");
+                "lazylpsolverlibs: the symbol CPXcrushx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcrushx(env, lp, x, prex);
@@ -4362,12 +5362,16 @@ int CPXuncrushx (CPXCENVptr env, CPXCLPptr lp, double *x, const double *prex){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXuncrushx", (gpointer *) &__symbolic_CPXuncrushx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXuncrushx\n");
+                "lazylpsolverlibs: the symbol CPXuncrushx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXuncrushx(env, lp, x, prex);
@@ -4377,12 +5381,16 @@ int CPXcrushpi (CPXCENVptr env, CPXCLPptr lp, const double *pi, double *prepi){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcrushpi", (gpointer *) &__symbolic_CPXcrushpi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcrushpi\n");
+                "lazylpsolverlibs: the symbol CPXcrushpi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcrushpi(env, lp, pi, prepi);
@@ -4392,12 +5400,16 @@ int CPXuncrushpi (CPXCENVptr env, CPXCLPptr lp, double *pi, const double *prepi)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXuncrushpi", (gpointer *) &__symbolic_CPXuncrushpi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXuncrushpi\n");
+                "lazylpsolverlibs: the symbol CPXuncrushpi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXuncrushpi(env, lp, pi, prepi);
@@ -4407,12 +5419,16 @@ int CPXqpuncrushpi (CPXCENVptr env, CPXCLPptr lp, double *pi, const double *prep
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXqpuncrushpi", (gpointer *) &__symbolic_CPXqpuncrushpi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXqpuncrushpi\n");
+                "lazylpsolverlibs: the symbol CPXqpuncrushpi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXqpuncrushpi(env, lp, pi, prepi, x);
@@ -4422,12 +5438,16 @@ int CPXcrushform (CPXCENVptr env, CPXCLPptr lp, int len, const int *ind, const d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcrushform", (gpointer *) &__symbolic_CPXcrushform)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcrushform\n");
+                "lazylpsolverlibs: the symbol CPXcrushform could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcrushform(env, lp, len, ind, val, plen_p, poffset_p, pind, pval);
@@ -4437,12 +5457,16 @@ int CPXuncrushform (CPXCENVptr env, CPXCLPptr lp, int plen, const int *pind, con
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXuncrushform", (gpointer *) &__symbolic_CPXuncrushform)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXuncrushform\n");
+                "lazylpsolverlibs: the symbol CPXuncrushform could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXuncrushform(env, lp, plen, pind, pval, len_p, offset_p, ind, val);
@@ -4452,12 +5476,16 @@ int CPXgetprestat (CPXCENVptr env, CPXCLPptr lp, int *prestat_p, int *pcstat, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetprestat", (gpointer *) &__symbolic_CPXgetprestat)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetprestat\n");
+                "lazylpsolverlibs: the symbol CPXgetprestat could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetprestat(env, lp, prestat_p, pcstat, prstat, ocstat, orstat);
@@ -4467,12 +5495,16 @@ int CPXcopyprotected (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopyprotected", (gpointer *) &__symbolic_CPXcopyprotected)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopyprotected\n");
+                "lazylpsolverlibs: the symbol CPXcopyprotected could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopyprotected(env, lp, cnt, indices);
@@ -4482,12 +5514,16 @@ int CPXgetprotected (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetprotected", (gpointer *) &__symbolic_CPXgetprotected)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetprotected\n");
+                "lazylpsolverlibs: the symbol CPXgetprotected could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetprotected(env, lp, cnt_p, indices, pspace, surplus_p);
@@ -4497,12 +5533,16 @@ int CPXEaggregatevars (CPXCENVptr env, CPXLPptr lp, int start, int end, const ch
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaggregatevars", (gpointer *) &__symbolic_CPXEaggregatevars)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaggregatevars\n");
+                "lazylpsolverlibs: the symbol CPXEaggregatevars could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaggregatevars(env, lp, start, end, protectrow);
@@ -4512,12 +5552,16 @@ int CPXgettime(CPXCENVptr env, double* timestamp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgettime", (gpointer *) &__symbolic_CPXgettime)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgettime\n");
+                "lazylpsolverlibs: the symbol CPXgettime could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgettime(env, timestamp);
@@ -4527,12 +5571,16 @@ int CPXlpwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXlpwrite", (gpointer *) &__symbolic_CPXlpwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXlpwrite\n");
+                "lazylpsolverlibs: the symbol CPXlpwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXlpwrite(env, lp, filename_str);
@@ -4542,12 +5590,16 @@ int CPXlprewrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXlprewrite", (gpointer *) &__symbolic_CPXlprewrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXlprewrite\n");
+                "lazylpsolverlibs: the symbol CPXlprewrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXlprewrite(env, lp, filename_str);
@@ -4557,12 +5609,16 @@ int CPXmpswrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmpswrite", (gpointer *) &__symbolic_CPXmpswrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmpswrite\n");
+                "lazylpsolverlibs: the symbol CPXmpswrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmpswrite(env, lp, filename_str);
@@ -4572,12 +5628,16 @@ int CPXmpsrewrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmpsrewrite", (gpointer *) &__symbolic_CPXmpsrewrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmpsrewrite\n");
+                "lazylpsolverlibs: the symbol CPXmpsrewrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmpsrewrite(env, lp, filename_str);
@@ -4587,12 +5647,16 @@ int CPXsavwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsavwrite", (gpointer *) &__symbolic_CPXsavwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsavwrite\n");
+                "lazylpsolverlibs: the symbol CPXsavwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsavwrite(env, lp, filename_str);
@@ -4602,12 +5666,16 @@ int CPXreadcopyvec (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopyvec", (gpointer *) &__symbolic_CPXreadcopyvec)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopyvec\n");
+                "lazylpsolverlibs: the symbol CPXreadcopyvec could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopyvec(env, lp, filename_str);
@@ -4617,12 +5685,16 @@ int CPXvecwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXvecwrite", (gpointer *) &__symbolic_CPXvecwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXvecwrite\n");
+                "lazylpsolverlibs: the symbol CPXvecwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXvecwrite(env, lp, filename_str);
@@ -4632,12 +5704,16 @@ int CPXbinsolwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbinsolwrite", (gpointer *) &__symbolic_CPXbinsolwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbinsolwrite\n");
+                "lazylpsolverlibs: the symbol CPXbinsolwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbinsolwrite(env, lp, filename_str);
@@ -4647,12 +5723,16 @@ int CPXtxtsolwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXtxtsolwrite", (gpointer *) &__symbolic_CPXtxtsolwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXtxtsolwrite\n");
+                "lazylpsolverlibs: the symbol CPXtxtsolwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXtxtsolwrite(env, lp, filename_str);
@@ -4662,12 +5742,16 @@ int CPXwritesol (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, const c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXwritesol", (gpointer *) &__symbolic_CPXwritesol)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXwritesol\n");
+                "lazylpsolverlibs: the symbol CPXwritesol could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXwritesol(env, lp, filename_str, filetype_str);
@@ -4677,12 +5761,16 @@ int CPXgetiis (CPXCENVptr env, CPXCLPptr lp, int *iisstat_p, int *rowind, int *r
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetiis", (gpointer *) &__symbolic_CPXgetiis)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetiis\n");
+                "lazylpsolverlibs: the symbol CPXgetiis could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetiis(env, lp, iisstat_p, rowind, rowbdstat, iisnumrows_p, colind, colbdstat, iisnumcols_p);
@@ -4692,12 +5780,16 @@ int CPXfindiis (CPXCENVptr env, CPXLPptr lp, int *iisnumrows_p, int *iisnumcols_
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfindiis", (gpointer *) &__symbolic_CPXfindiis)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfindiis\n");
+                "lazylpsolverlibs: the symbol CPXfindiis could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfindiis(env, lp, iisnumrows_p, iisnumcols_p);
@@ -4707,12 +5799,16 @@ int CPXdisplayiis (CPXCENVptr env, CPXCLPptr lp, CPXCHANNELptr channel, int disp
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdisplayiis", (gpointer *) &__symbolic_CPXdisplayiis)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdisplayiis\n");
+                "lazylpsolverlibs: the symbol CPXdisplayiis could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdisplayiis(env, lp, channel, display);
@@ -4722,12 +5818,16 @@ int CPXiiswrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXiiswrite", (gpointer *) &__symbolic_CPXiiswrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXiiswrite\n");
+                "lazylpsolverlibs: the symbol CPXiiswrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXiiswrite(env, lp, filename_str);
@@ -4737,12 +5837,16 @@ int CPXhybbaropt (CPXCENVptr env, CPXLPptr lp, int method){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXhybbaropt", (gpointer *) &__symbolic_CPXhybbaropt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXhybbaropt\n");
+                "lazylpsolverlibs: the symbol CPXhybbaropt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXhybbaropt(env, lp, method);
@@ -4752,12 +5856,16 @@ int CPXbaropt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbaropt", (gpointer *) &__symbolic_CPXbaropt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbaropt\n");
+                "lazylpsolverlibs: the symbol CPXbaropt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbaropt(env, lp);
@@ -4767,12 +5875,16 @@ void CPXEgeneric_lock (volatile int *lock){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgeneric_lock", (gpointer *) &__symbolic_CPXEgeneric_lock)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgeneric_lock\n");
+                "lazylpsolverlibs: the symbol CPXEgeneric_lock could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgeneric_lock(lock);
@@ -4782,12 +5894,16 @@ void CPXEgeneric_unlock (volatile int *lock){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgeneric_unlock", (gpointer *) &__symbolic_CPXEgeneric_unlock)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgeneric_unlock\n");
+                "lazylpsolverlibs: the symbol CPXEgeneric_unlock could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgeneric_unlock(lock);
@@ -4797,12 +5913,16 @@ int CPXsetorderhookfunc (CPXENVptr env, int ( *orderhook)(CPXCENVptr, int, int *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetorderhookfunc", (gpointer *) &__symbolic_CPXsetorderhookfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetorderhookfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetorderhookfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetorderhookfunc(env, orderhook);
@@ -4812,12 +5932,16 @@ void CPXgetorderhookfunc (CPXCENVptr env, int ( **orderhook_p)(CPXCENVptr, int, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetorderhookfunc", (gpointer *) &__symbolic_CPXgetorderhookfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetorderhookfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetorderhookfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetorderhookfunc(env, orderhook_p);
@@ -4827,12 +5951,16 @@ int CPXcopyctype (CPXCENVptr env, CPXLPptr lp, const char *xctype){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopyctype", (gpointer *) &__symbolic_CPXcopyctype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopyctype\n");
+                "lazylpsolverlibs: the symbol CPXcopyctype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopyctype(env, lp, xctype);
@@ -4842,12 +5970,16 @@ int CPXcopyorder (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopyorder", (gpointer *) &__symbolic_CPXcopyorder)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopyorder\n");
+                "lazylpsolverlibs: the symbol CPXcopyorder could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopyorder(env, lp, cnt, indices, priority, direction);
@@ -4857,12 +5989,16 @@ int CPXcopysos (CPXCENVptr env, CPXLPptr lp, int numsos, int numsosnz, const cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopysos", (gpointer *) &__symbolic_CPXcopysos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopysos\n");
+                "lazylpsolverlibs: the symbol CPXcopysos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopysos(env, lp, numsos, numsosnz, sostype, sosbeg, sosind, soswt, sosname);
@@ -4872,12 +6008,16 @@ int CPXcopymipstart (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopymipstart", (gpointer *) &__symbolic_CPXcopymipstart)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopymipstart\n");
+                "lazylpsolverlibs: the symbol CPXcopymipstart could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopymipstart(env, lp, cnt, indices, values);
@@ -4887,12 +6027,16 @@ int CPXchgmipstart (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, co
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgmipstart", (gpointer *) &__symbolic_CPXchgmipstart)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgmipstart\n");
+                "lazylpsolverlibs: the symbol CPXchgmipstart could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgmipstart(env, lp, cnt, indices, values);
@@ -4902,12 +6046,16 @@ int CPXchgmipstarts (CPXCENVptr env, CPXLPptr lp, int mcnt, const int *mipstarti
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgmipstarts", (gpointer *) &__symbolic_CPXchgmipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgmipstarts\n");
+                "lazylpsolverlibs: the symbol CPXchgmipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgmipstarts(env, lp, mcnt, mipstartindices, nzcnt, beg, varindices, values, effortlevel);
@@ -4917,12 +6065,16 @@ int CPXaddmipstarts (CPXCENVptr env, CPXLPptr lp, int mcnt, int nzcnt, const int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddmipstarts", (gpointer *) &__symbolic_CPXaddmipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddmipstarts\n");
+                "lazylpsolverlibs: the symbol CPXaddmipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddmipstarts(env, lp, mcnt, nzcnt, beg, varindices, values, effortlevel, mipstartname);
@@ -4932,12 +6084,16 @@ int CPXdelmipstarts (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelmipstarts", (gpointer *) &__symbolic_CPXdelmipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelmipstarts\n");
+                "lazylpsolverlibs: the symbol CPXdelmipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelmipstarts(env, lp, begin, end);
@@ -4947,12 +6103,16 @@ int CPXdelsetmipstarts (CPXCENVptr env, CPXLPptr lp, int *delstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsetmipstarts", (gpointer *) &__symbolic_CPXdelsetmipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsetmipstarts\n");
+                "lazylpsolverlibs: the symbol CPXdelsetmipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsetmipstarts(env, lp, delstat);
@@ -4962,12 +6122,16 @@ int CPXrefinemipstartconflict (CPXCENVptr env, CPXLPptr lp, int mipstartindex, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrefinemipstartconflict", (gpointer *) &__symbolic_CPXrefinemipstartconflict)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrefinemipstartconflict\n");
+                "lazylpsolverlibs: the symbol CPXrefinemipstartconflict could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrefinemipstartconflict(env, lp, mipstartindex, confnumrows_p, confnumcols_p);
@@ -4977,12 +6141,16 @@ int CPXrefinemipstartconflictext(CPXCENVptr env, CPXLPptr lp, int mipstartindex,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXrefinemipstartconflictext", (gpointer *) &__symbolic_CPXrefinemipstartconflictext)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXrefinemipstartconflictext\n");
+                "lazylpsolverlibs: the symbol CPXrefinemipstartconflictext could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXrefinemipstartconflictext(env, lp, mipstartindex, grpcnt, concnt, grppref, grpbeg, grpind, grptype);
@@ -4992,12 +6160,16 @@ int CPXmipopt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmipopt", (gpointer *) &__symbolic_CPXmipopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmipopt\n");
+                "lazylpsolverlibs: the symbol CPXmipopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmipopt(env, lp);
@@ -5007,12 +6179,16 @@ int CPXgetmipitcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmipitcnt", (gpointer *) &__symbolic_CPXgetmipitcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmipitcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetmipitcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmipitcnt(env, lp);
@@ -5022,12 +6198,16 @@ int CPXgetbestobjval (CPXCENVptr env, CPXCLPptr lp, double *objval_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbestobjval", (gpointer *) &__symbolic_CPXgetbestobjval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbestobjval\n");
+                "lazylpsolverlibs: the symbol CPXgetbestobjval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbestobjval(env, lp, objval_p);
@@ -5037,12 +6217,16 @@ int CPXgetmiprelgap (CPXCENVptr env, CPXCLPptr lp, double *gap_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmiprelgap", (gpointer *) &__symbolic_CPXgetmiprelgap)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmiprelgap\n");
+                "lazylpsolverlibs: the symbol CPXgetmiprelgap could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmiprelgap(env, lp, gap_p);
@@ -5052,12 +6236,16 @@ int CPXgetcutoff (CPXCENVptr env, CPXCLPptr lp, double *cutoff_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcutoff", (gpointer *) &__symbolic_CPXgetcutoff)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcutoff\n");
+                "lazylpsolverlibs: the symbol CPXgetcutoff could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcutoff(env, lp, cutoff_p);
@@ -5067,12 +6255,16 @@ int CPXgetnodecnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnodecnt", (gpointer *) &__symbolic_CPXgetnodecnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnodecnt\n");
+                "lazylpsolverlibs: the symbol CPXgetnodecnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnodecnt(env, lp);
@@ -5082,12 +6274,16 @@ int CPXgetnodeleftcnt (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnodeleftcnt", (gpointer *) &__symbolic_CPXgetnodeleftcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnodeleftcnt\n");
+                "lazylpsolverlibs: the symbol CPXgetnodeleftcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnodeleftcnt(env, lp);
@@ -5097,12 +6293,16 @@ int CPXgetnodeint (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnodeint", (gpointer *) &__symbolic_CPXgetnodeint)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnodeint\n");
+                "lazylpsolverlibs: the symbol CPXgetnodeint could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnodeint(env, lp);
@@ -5112,12 +6312,16 @@ int CPXgetnumcuts (CPXCENVptr env, CPXCLPptr lp, int cuttype, int *num_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumcuts", (gpointer *) &__symbolic_CPXgetnumcuts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumcuts\n");
+                "lazylpsolverlibs: the symbol CPXgetnumcuts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumcuts(env, lp, cuttype, num_p);
@@ -5127,12 +6331,16 @@ int CPXgetnummipstarts (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnummipstarts", (gpointer *) &__symbolic_CPXgetnummipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnummipstarts\n");
+                "lazylpsolverlibs: the symbol CPXgetnummipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnummipstarts(env, lp);
@@ -5142,12 +6350,16 @@ int CPXgetmipstart (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, doub
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmipstart", (gpointer *) &__symbolic_CPXgetmipstart)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmipstart\n");
+                "lazylpsolverlibs: the symbol CPXgetmipstart could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmipstart(env, lp, cnt_p, indices, value, mipstartspace, surplus_p);
@@ -5157,12 +6369,16 @@ int CPXgetmipstarts (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *beg, int *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmipstarts", (gpointer *) &__symbolic_CPXgetmipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmipstarts\n");
+                "lazylpsolverlibs: the symbol CPXgetmipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmipstarts(env, lp, nzcnt_p, beg, varindices, values, effortlevel, startspace, surplus_p, begin, end);
@@ -5172,12 +6388,16 @@ int CPXgetmipstartname (CPXCENVptr env, CPXCLPptr lp, char **name, char *store, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmipstartname", (gpointer *) &__symbolic_CPXgetmipstartname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmipstartname\n");
+                "lazylpsolverlibs: the symbol CPXgetmipstartname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmipstartname(env, lp, name, store, storesz, surplus_p, begin, end);
@@ -5187,12 +6407,16 @@ int CPXgetmipstartindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmipstartindex", (gpointer *) &__symbolic_CPXgetmipstartindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmipstartindex\n");
+                "lazylpsolverlibs: the symbol CPXgetmipstartindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmipstartindex(env, lp, lname_str, index_p);
@@ -5202,12 +6426,16 @@ int CPXgetsolnpoolmipstart (CPXCENVptr env, CPXCLPptr lp, int soln, int *cnt_p, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolmipstart", (gpointer *) &__symbolic_CPXgetsolnpoolmipstart)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolmipstart\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolmipstart could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolmipstart(env, lp, soln, cnt_p, indices, value, mipstartspace, surplus_p);
@@ -5217,12 +6445,16 @@ int CPXgetsolnpoolnummipstarts (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolnummipstarts", (gpointer *) &__symbolic_CPXgetsolnpoolnummipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolnummipstarts\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolnummipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolnummipstarts(env, lp);
@@ -5232,12 +6464,16 @@ int CPXgetsubstat (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsubstat", (gpointer *) &__symbolic_CPXgetsubstat)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsubstat\n");
+                "lazylpsolverlibs: the symbol CPXgetsubstat could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsubstat(env, lp);
@@ -5247,12 +6483,16 @@ int CPXgetsubmethod (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsubmethod", (gpointer *) &__symbolic_CPXgetsubmethod)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsubmethod\n");
+                "lazylpsolverlibs: the symbol CPXgetsubmethod could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsubmethod(env, lp);
@@ -5262,12 +6502,16 @@ int CPXchgctype (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgctype", (gpointer *) &__symbolic_CPXchgctype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgctype\n");
+                "lazylpsolverlibs: the symbol CPXchgctype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgctype(env, lp, cnt, indices, xctype);
@@ -5277,12 +6521,16 @@ int CPXaddsos (CPXCENVptr env, CPXLPptr lp, int numsos, int numsosnz, const char
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddsos", (gpointer *) &__symbolic_CPXaddsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddsos\n");
+                "lazylpsolverlibs: the symbol CPXaddsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddsos(env, lp, numsos, numsosnz, sostype, sosbeg, sosind, soswt, sosname);
@@ -5292,12 +6540,16 @@ int CPXdelsetsos (CPXCENVptr env, CPXLPptr lp, int *delset){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsetsos", (gpointer *) &__symbolic_CPXdelsetsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsetsos\n");
+                "lazylpsolverlibs: the symbol CPXdelsetsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsetsos(env, lp, delset);
@@ -5307,12 +6559,16 @@ int CPXgetctype (CPXCENVptr env, CPXCLPptr lp, char *xctype, int begin, int end)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetctype", (gpointer *) &__symbolic_CPXgetctype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetctype\n");
+                "lazylpsolverlibs: the symbol CPXgetctype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetctype(env, lp, xctype, begin, end);
@@ -5322,12 +6578,16 @@ int CPXgetnumsos (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumsos", (gpointer *) &__symbolic_CPXgetnumsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumsos\n");
+                "lazylpsolverlibs: the symbol CPXgetnumsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumsos(env, lp);
@@ -5337,12 +6597,16 @@ int CPXgetsos (CPXCENVptr env, CPXCLPptr lp, int *numsosnz_p, char *sostype, int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsos", (gpointer *) &__symbolic_CPXgetsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsos\n");
+                "lazylpsolverlibs: the symbol CPXgetsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsos(env, lp, numsosnz_p, sostype, sosbeg, sosind, soswt, sosspace, surplus_p, begin, end);
@@ -5352,12 +6616,16 @@ int CPXgetsosname (CPXCENVptr env, CPXCLPptr lp, char **name, char *namestore, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsosname", (gpointer *) &__symbolic_CPXgetsosname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsosname\n");
+                "lazylpsolverlibs: the symbol CPXgetsosname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsosname(env, lp, name, namestore, storespace, surplus_p, begin, end);
@@ -5367,12 +6635,16 @@ int CPXgetsosindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int *in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsosindex", (gpointer *) &__symbolic_CPXgetsosindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsosindex\n");
+                "lazylpsolverlibs: the symbol CPXgetsosindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsosindex(env, lp, lname_str, index_p);
@@ -5382,12 +6654,16 @@ int CPXgetsosinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *infe
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsosinfeas", (gpointer *) &__symbolic_CPXgetsosinfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsosinfeas\n");
+                "lazylpsolverlibs: the symbol CPXgetsosinfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsosinfeas(env, lp, x, infeasout, begin, end);
@@ -5397,12 +6673,16 @@ int CPXgetnumindconstrs (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumindconstrs", (gpointer *) &__symbolic_CPXgetnumindconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumindconstrs\n");
+                "lazylpsolverlibs: the symbol CPXgetnumindconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumindconstrs(env, lp);
@@ -5412,12 +6692,16 @@ int CPXgetindconstr (CPXCENVptr env, CPXCLPptr lp, int *indvar_p, int *complemen
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetindconstr", (gpointer *) &__symbolic_CPXgetindconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetindconstr\n");
+                "lazylpsolverlibs: the symbol CPXgetindconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetindconstr(env, lp, indvar_p, complemented_p, nzcnt_p, rhs_p, sense_p, linind, linval, space, surplus_p, which);
@@ -5427,12 +6711,16 @@ int CPXEgetindicator (CPXCENVptr env, CPXCLPptr lp, int *indvar_p, int *compleme
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetindicator", (gpointer *) &__symbolic_CPXEgetindicator)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetindicator\n");
+                "lazylpsolverlibs: the symbol CPXEgetindicator could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetindicator(env, lp, indvar_p, complemented_p, nzcnt_p, rhs_p, sense_p, ind, val, space, surplus_p, type_p, which);
@@ -5442,12 +6730,16 @@ int CPXgetindconstrindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetindconstrindex", (gpointer *) &__symbolic_CPXgetindconstrindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetindconstrindex\n");
+                "lazylpsolverlibs: the symbol CPXgetindconstrindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetindconstrindex(env, lp, lname_str, index_p);
@@ -5457,12 +6749,16 @@ int CPXgetindconstrname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspa
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetindconstrname", (gpointer *) &__symbolic_CPXgetindconstrname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetindconstrname\n");
+                "lazylpsolverlibs: the symbol CPXgetindconstrname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetindconstrname(env, lp, buf_str, bufspace, surplus_p, which);
@@ -5472,12 +6768,16 @@ int CPXgetindconstrslack (CPXCENVptr env, CPXCLPptr lp, double *indslack, int be
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetindconstrslack", (gpointer *) &__symbolic_CPXgetindconstrslack)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetindconstrslack\n");
+                "lazylpsolverlibs: the symbol CPXgetindconstrslack could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetindconstrslack(env, lp, indslack, begin, end);
@@ -5487,12 +6787,16 @@ int CPXindconstrslackfromx (CPXCENVptr env, CPXCLPptr lp, const double *x, doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXindconstrslackfromx", (gpointer *) &__symbolic_CPXindconstrslackfromx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXindconstrslackfromx\n");
+                "lazylpsolverlibs: the symbol CPXindconstrslackfromx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXindconstrslackfromx(env, lp, x, indslack);
@@ -5502,12 +6806,16 @@ int CPXgetindconstrinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetindconstrinfeas", (gpointer *) &__symbolic_CPXgetindconstrinfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetindconstrinfeas\n");
+                "lazylpsolverlibs: the symbol CPXgetindconstrinfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetindconstrinfeas(env, lp, x, infeasout, begin, end);
@@ -5517,12 +6825,16 @@ int CPXdelindconstrs (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelindconstrs", (gpointer *) &__symbolic_CPXdelindconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelindconstrs\n");
+                "lazylpsolverlibs: the symbol CPXdelindconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelindconstrs(env, lp, begin, end);
@@ -5532,12 +6844,16 @@ int CPXgetnumint (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumint", (gpointer *) &__symbolic_CPXgetnumint)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumint\n");
+                "lazylpsolverlibs: the symbol CPXgetnumint could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumint(env, lp);
@@ -5547,12 +6863,16 @@ int CPXgetnumbin (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumbin", (gpointer *) &__symbolic_CPXgetnumbin)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumbin\n");
+                "lazylpsolverlibs: the symbol CPXgetnumbin could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumbin(env, lp);
@@ -5562,12 +6882,16 @@ int CPXgetnumsemicont (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumsemicont", (gpointer *) &__symbolic_CPXgetnumsemicont)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumsemicont\n");
+                "lazylpsolverlibs: the symbol CPXgetnumsemicont could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumsemicont(env, lp);
@@ -5577,12 +6901,16 @@ int CPXgetnumsemiint (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumsemiint", (gpointer *) &__symbolic_CPXgetnumsemiint)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumsemiint\n");
+                "lazylpsolverlibs: the symbol CPXgetnumsemiint could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumsemiint(env, lp);
@@ -5592,12 +6920,16 @@ int CPXgetorder (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, int *pr
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetorder", (gpointer *) &__symbolic_CPXgetorder)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetorder\n");
+                "lazylpsolverlibs: the symbol CPXgetorder could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetorder(env, lp, cnt_p, indices, priority, direction, ordspace, surplus_p);
@@ -5607,12 +6939,16 @@ int CPXpopulate (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXpopulate", (gpointer *) &__symbolic_CPXpopulate)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXpopulate\n");
+                "lazylpsolverlibs: the symbol CPXpopulate could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXpopulate(env, lp);
@@ -5622,12 +6958,16 @@ int CPXgetsolnpoolnumfilters (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolnumfilters", (gpointer *) &__symbolic_CPXgetsolnpoolnumfilters)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolnumfilters\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolnumfilters could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolnumfilters(env, lp);
@@ -5637,12 +6977,16 @@ int CPXaddsolnpooldivfilter (CPXCENVptr env, CPXLPptr lp, double lower_bound, do
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddsolnpooldivfilter", (gpointer *) &__symbolic_CPXaddsolnpooldivfilter)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddsolnpooldivfilter\n");
+                "lazylpsolverlibs: the symbol CPXaddsolnpooldivfilter could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddsolnpooldivfilter(env, lp, lower_bound, upper_bound, nzcnt, ind, weight, refval, lname_str);
@@ -5652,12 +6996,16 @@ int CPXaddsolnpoolrngfilter (CPXCENVptr env, CPXLPptr lp, double lb, double ub, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddsolnpoolrngfilter", (gpointer *) &__symbolic_CPXaddsolnpoolrngfilter)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddsolnpoolrngfilter\n");
+                "lazylpsolverlibs: the symbol CPXaddsolnpoolrngfilter could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddsolnpoolrngfilter(env, lp, lb, ub, nzcnt, ind, val, lname_str);
@@ -5667,12 +7015,16 @@ int CPXgetsolnpoolfiltertype (CPXCENVptr env, CPXCLPptr lp, int *ftype_p, int wh
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolfiltertype", (gpointer *) &__symbolic_CPXgetsolnpoolfiltertype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolfiltertype\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolfiltertype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolfiltertype(env, lp, ftype_p, which);
@@ -5682,12 +7034,16 @@ int CPXgetsolnpooldivfilter (CPXCENVptr env, CPXCLPptr lp, double *lowercutoff_p
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpooldivfilter", (gpointer *) &__symbolic_CPXgetsolnpooldivfilter)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpooldivfilter\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpooldivfilter could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpooldivfilter(env, lp, lowercutoff_p, upper_cutoff_p, nzcnt_p, ind, val, refval, space, surplus_p, which);
@@ -5697,12 +7053,16 @@ int CPXgetsolnpoolfilter (CPXCENVptr env, CPXCLPptr lp, int *ftype_p, double *lo
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolfilter", (gpointer *) &__symbolic_CPXgetsolnpoolfilter)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolfilter\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolfilter could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolfilter(env, lp, ftype_p, lowercutoff_p, upper_cutoff_p, nzcnt_p, ind, val, refval, space, surplus_p, which);
@@ -5712,12 +7072,16 @@ int CPXgetsolnpoolrngfilter (CPXCENVptr env, CPXCLPptr lp, double *lb_p, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolrngfilter", (gpointer *) &__symbolic_CPXgetsolnpoolrngfilter)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolrngfilter\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolrngfilter could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolrngfilter(env, lp, lb_p, ub_p, nzcnt_p, ind, val, space, surplus_p, which);
@@ -5727,12 +7091,16 @@ int CPXgetsolnpoolfiltername (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int b
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolfiltername", (gpointer *) &__symbolic_CPXgetsolnpoolfiltername)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolfiltername\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolfiltername could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolfiltername(env, lp, buf_str, bufspace, surplus_p, which);
@@ -5742,12 +7110,16 @@ int CPXgetsolnpoolfilterindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_s
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolfilterindex", (gpointer *) &__symbolic_CPXgetsolnpoolfilterindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolfilterindex\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolfilterindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolfilterindex(env, lp, lname_str, index_p);
@@ -5757,12 +7129,16 @@ int CPXdelsolnpoolfilters (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsolnpoolfilters", (gpointer *) &__symbolic_CPXdelsolnpoolfilters)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsolnpoolfilters\n");
+                "lazylpsolverlibs: the symbol CPXdelsolnpoolfilters could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsolnpoolfilters(env, lp, begin, end);
@@ -5772,12 +7148,16 @@ int CPXdelsetsolnpoolfilters (CPXCENVptr env, CPXLPptr lp, int *delstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsetsolnpoolfilters", (gpointer *) &__symbolic_CPXdelsetsolnpoolfilters)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsetsolnpoolfilters\n");
+                "lazylpsolverlibs: the symbol CPXdelsetsolnpoolfilters could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsetsolnpoolfilters(env, lp, delstat);
@@ -5787,12 +7167,16 @@ int CPXgetsolnpoolnumsolns (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolnumsolns", (gpointer *) &__symbolic_CPXgetsolnpoolnumsolns)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolnumsolns\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolnumsolns could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolnumsolns(env, lp);
@@ -5802,12 +7186,16 @@ int CPXgetsolnpoolnumreplaced (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolnumreplaced", (gpointer *) &__symbolic_CPXgetsolnpoolnumreplaced)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolnumreplaced\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolnumreplaced could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolnumreplaced(env, lp);
@@ -5817,12 +7205,16 @@ int CPXgetsolnpoolmeanobjval (CPXCENVptr env, CPXCLPptr lp, double *meanobjval_p
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolmeanobjval", (gpointer *) &__symbolic_CPXgetsolnpoolmeanobjval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolmeanobjval\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolmeanobjval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolmeanobjval(env, lp, meanobjval_p);
@@ -5832,12 +7224,16 @@ int CPXgetsolnpoolobjval (CPXCENVptr env, CPXCLPptr lp, int soln, double *objval
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolobjval", (gpointer *) &__symbolic_CPXgetsolnpoolobjval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolobjval\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolobjval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolobjval(env, lp, soln, objval_p);
@@ -5847,12 +7243,16 @@ int CPXgetsolnpoolx (CPXCENVptr env, CPXCLPptr lp, int soln, double *x, int begi
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolx", (gpointer *) &__symbolic_CPXgetsolnpoolx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolx\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolx(env, lp, soln, x, begin, end);
@@ -5862,12 +7262,16 @@ int CPXgetsolnpoolslack (CPXCENVptr env, CPXCLPptr lp, int soln, double *slack, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolslack", (gpointer *) &__symbolic_CPXgetsolnpoolslack)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolslack\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolslack could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolslack(env, lp, soln, slack, begin, end);
@@ -5877,12 +7281,16 @@ int CPXgetsolnpoolqconstrslack (CPXCENVptr env, CPXCLPptr lp, int soln, double *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolqconstrslack", (gpointer *) &__symbolic_CPXgetsolnpoolqconstrslack)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolqconstrslack\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolqconstrslack could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolqconstrslack(env, lp, soln, qcslack, begin, end);
@@ -5892,12 +7300,16 @@ int CPXgetsolnpoolsolnname (CPXCENVptr env, CPXCLPptr lp, char *store, int store
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolsolnname", (gpointer *) &__symbolic_CPXgetsolnpoolsolnname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolsolnname\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolsolnname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolsolnname(env, lp, store, storesz, surplus_p, which);
@@ -5907,12 +7319,16 @@ int CPXgetsolnpoolsolnindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolnpoolsolnindex", (gpointer *) &__symbolic_CPXgetsolnpoolsolnindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolnpoolsolnindex\n");
+                "lazylpsolverlibs: the symbol CPXgetsolnpoolsolnindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolnpoolsolnindex(env, lp, lname_str, index_p);
@@ -5922,12 +7338,16 @@ int CPXdelsolnpoolsolns (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsolnpoolsolns", (gpointer *) &__symbolic_CPXdelsolnpoolsolns)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsolnpoolsolns\n");
+                "lazylpsolverlibs: the symbol CPXdelsolnpoolsolns could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsolnpoolsolns(env, lp, begin, end);
@@ -5937,12 +7357,16 @@ int CPXdelsetsolnpoolsolns (CPXCENVptr env, CPXLPptr lp, int *delstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelsetsolnpoolsolns", (gpointer *) &__symbolic_CPXdelsetsolnpoolsolns)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelsetsolnpoolsolns\n");
+                "lazylpsolverlibs: the symbol CPXdelsetsolnpoolsolns could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelsetsolnpoolsolns(env, lp, delstat);
@@ -5952,12 +7376,16 @@ int CPXreadcopyorder (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopyorder", (gpointer *) &__symbolic_CPXreadcopyorder)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopyorder\n");
+                "lazylpsolverlibs: the symbol CPXreadcopyorder could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopyorder(env, lp, filename_str);
@@ -5967,12 +7395,16 @@ int CPXreadcopysolnpoolfilters (CPXCENVptr env, CPXLPptr lp, const char *filenam
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopysolnpoolfilters", (gpointer *) &__symbolic_CPXreadcopysolnpoolfilters)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopysolnpoolfilters\n");
+                "lazylpsolverlibs: the symbol CPXreadcopysolnpoolfilters could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopysolnpoolfilters(env, lp, filename_str);
@@ -5982,12 +7414,16 @@ int CPXreadcopymipstart (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopymipstart", (gpointer *) &__symbolic_CPXreadcopymipstart)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopymipstart\n");
+                "lazylpsolverlibs: the symbol CPXreadcopymipstart could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopymipstart(env, lp, filename_str);
@@ -5997,12 +7433,16 @@ int CPXreadcopymipstarts (CPXCENVptr env, CPXLPptr lp, const char *filename_str)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXreadcopymipstarts", (gpointer *) &__symbolic_CPXreadcopymipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXreadcopymipstarts\n");
+                "lazylpsolverlibs: the symbol CPXreadcopymipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXreadcopymipstarts(env, lp, filename_str);
@@ -6012,12 +7452,16 @@ int CPXordwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXordwrite", (gpointer *) &__symbolic_CPXordwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXordwrite\n");
+                "lazylpsolverlibs: the symbol CPXordwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXordwrite(env, lp, filename_str);
@@ -6027,12 +7471,16 @@ int CPXmstwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmstwrite", (gpointer *) &__symbolic_CPXmstwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmstwrite\n");
+                "lazylpsolverlibs: the symbol CPXmstwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmstwrite(env, lp, filename_str);
@@ -6042,12 +7490,16 @@ int CPXwritemipstarts (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXwritemipstarts", (gpointer *) &__symbolic_CPXwritemipstarts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXwritemipstarts\n");
+                "lazylpsolverlibs: the symbol CPXwritemipstarts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXwritemipstarts(env, lp, filename_str, begin, end);
@@ -6057,12 +7509,16 @@ int CPXmstwritesolnpool (CPXCENVptr env, CPXCLPptr lp, int soln, const char *fil
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmstwritesolnpool", (gpointer *) &__symbolic_CPXmstwritesolnpool)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmstwritesolnpool\n");
+                "lazylpsolverlibs: the symbol CPXmstwritesolnpool could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmstwritesolnpool(env, lp, soln, filename_str);
@@ -6072,12 +7528,16 @@ int CPXmstwritesolnpoolall (CPXCENVptr env, CPXCLPptr lp, const char *filename_s
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXmstwritesolnpoolall", (gpointer *) &__symbolic_CPXmstwritesolnpoolall)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXmstwritesolnpoolall\n");
+                "lazylpsolverlibs: the symbol CPXmstwritesolnpoolall could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXmstwritesolnpoolall(env, lp, filename_str);
@@ -6087,12 +7547,16 @@ int CPXfltwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfltwrite", (gpointer *) &__symbolic_CPXfltwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfltwrite\n");
+                "lazylpsolverlibs: the symbol CPXfltwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfltwrite(env, lp, filename_str);
@@ -6102,12 +7566,16 @@ int CPXcheckcopyctype (CPXCENVptr env, CPXCLPptr lp, const char *xctype){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckcopyctype", (gpointer *) &__symbolic_CPXcheckcopyctype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckcopyctype\n");
+                "lazylpsolverlibs: the symbol CPXcheckcopyctype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckcopyctype(env, lp, xctype);
@@ -6117,12 +7585,16 @@ int CPXcheckcopysos (CPXCENVptr env, CPXCLPptr lp, int numsos, int numsosnz, con
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckcopysos", (gpointer *) &__symbolic_CPXcheckcopysos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckcopysos\n");
+                "lazylpsolverlibs: the symbol CPXcheckcopysos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckcopysos(env, lp, numsos, numsosnz, sostype, sosbeg, sosind, soswt, sosname);
@@ -6132,12 +7604,16 @@ int CPXEchgsosname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, ch
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEchgsosname", (gpointer *) &__symbolic_CPXEchgsosname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEchgsosname\n");
+                "lazylpsolverlibs: the symbol CPXEchgsosname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEchgsosname(env, lp, cnt, indices, newname);
@@ -6147,12 +7623,16 @@ int CPXsetinfocallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetinfocallbackfunc", (gpointer *) &__symbolic_CPXsetinfocallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetinfocallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetinfocallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetinfocallbackfunc(env, callback, cbhandle);
@@ -6162,12 +7642,16 @@ int CPXgetinfocallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetinfocallbackfunc", (gpointer *) &__symbolic_CPXgetinfocallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetinfocallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetinfocallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetinfocallbackfunc(env, callback_p, cbhandle_p);
@@ -6177,12 +7661,16 @@ int CPXsetmipcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetmipcallbackfunc", (gpointer *) &__symbolic_CPXsetmipcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetmipcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetmipcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetmipcallbackfunc(env, callback, cbhandle);
@@ -6192,12 +7680,16 @@ int CPXgetmipcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetmipcallbackfunc", (gpointer *) &__symbolic_CPXgetmipcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetmipcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetmipcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetmipcallbackfunc(env, callback_p, cbhandle_p);
@@ -6207,12 +7699,16 @@ int CPXsetbranchcallbackfunc (CPXENVptr env, int ( *branchcallback) (CPXCENVptr 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetbranchcallbackfunc", (gpointer *) &__symbolic_CPXsetbranchcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetbranchcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetbranchcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetbranchcallbackfunc(env, branchcallback, cbhandle);
@@ -6222,12 +7718,16 @@ int CPXsetbranchnosolncallbackfunc (CPXENVptr env, int ( *branchnosolncallback) 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetbranchnosolncallbackfunc", (gpointer *) &__symbolic_CPXsetbranchnosolncallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetbranchnosolncallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetbranchnosolncallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetbranchnosolncallbackfunc(env, branchnosolncallback, cbhandle);
@@ -6237,12 +7737,16 @@ int CPXsetcutcallbackfunc (CPXENVptr env, int ( *cutcallback) (CPXCENVptr xenv, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetcutcallbackfunc", (gpointer *) &__symbolic_CPXsetcutcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetcutcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetcutcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetcutcallbackfunc(env, cutcallback, cbhandle);
@@ -6252,12 +7756,16 @@ int CPXsetnodecallbackfunc (CPXENVptr env, int ( *nodecallback) (CPXCENVptr xenv
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetnodecallbackfunc", (gpointer *) &__symbolic_CPXsetnodecallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetnodecallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetnodecallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetnodecallbackfunc(env, nodecallback, cbhandle);
@@ -6267,12 +7775,16 @@ int CPXsetheuristiccallbackfunc (CPXENVptr env, int ( *heuristiccallback) (CPXCE
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetheuristiccallbackfunc", (gpointer *) &__symbolic_CPXsetheuristiccallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetheuristiccallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetheuristiccallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetheuristiccallbackfunc(env, heuristiccallback, cbhandle);
@@ -6282,12 +7794,16 @@ int CPXsetincumbentcallbackfunc (CPXENVptr env, int ( *incumbentcallback) (CPXCE
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetincumbentcallbackfunc", (gpointer *) &__symbolic_CPXsetincumbentcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetincumbentcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetincumbentcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetincumbentcallbackfunc(env, incumbentcallback, cbhandle);
@@ -6297,12 +7813,16 @@ int CPXsetsolvecallbackfunc (CPXENVptr env, int ( *solvecallback) (CPXCENVptr xe
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetsolvecallbackfunc", (gpointer *) &__symbolic_CPXsetsolvecallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetsolvecallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetsolvecallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetsolvecallbackfunc(env, solvecallback, cbhandle);
@@ -6312,12 +7832,16 @@ int CPXsetdeletenodecallbackfunc(CPXENVptr env, void ( *deletecallback) (CPXCENV
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXsetdeletenodecallbackfunc", (gpointer *) &__symbolic_CPXsetdeletenodecallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXsetdeletenodecallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXsetdeletenodecallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXsetdeletenodecallbackfunc(env, deletecallback, cbhandle);
@@ -6327,12 +7851,16 @@ void CPXgetbranchcallbackfunc (CPXCENVptr env, int ( **branchcallback_p) (CPXCEN
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbranchcallbackfunc", (gpointer *) &__symbolic_CPXgetbranchcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbranchcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetbranchcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbranchcallbackfunc(env, branchcallback_p, cbhandle_p);
@@ -6342,12 +7870,16 @@ void CPXgetbranchnosolncallbackfunc (CPXCENVptr env, int ( **branchnosolncallbac
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetbranchnosolncallbackfunc", (gpointer *) &__symbolic_CPXgetbranchnosolncallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetbranchnosolncallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetbranchnosolncallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetbranchnosolncallbackfunc(env, branchnosolncallback_p, cbhandle_p);
@@ -6357,12 +7889,16 @@ void CPXgetcutcallbackfunc (CPXCENVptr env, int ( **cutcallback_p) (CPXCENVptr x
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcutcallbackfunc", (gpointer *) &__symbolic_CPXgetcutcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcutcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetcutcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcutcallbackfunc(env, cutcallback_p, cbhandle_p);
@@ -6372,12 +7908,16 @@ void CPXgetnodecallbackfunc (CPXCENVptr env, int ( **nodecallback_p) (CPXCENVptr
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnodecallbackfunc", (gpointer *) &__symbolic_CPXgetnodecallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnodecallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetnodecallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnodecallbackfunc(env, nodecallback_p, cbhandle_p);
@@ -6387,12 +7927,16 @@ void CPXgetheuristiccallbackfunc (CPXCENVptr env, int ( **heuristiccallback_p) (
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetheuristiccallbackfunc", (gpointer *) &__symbolic_CPXgetheuristiccallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetheuristiccallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetheuristiccallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetheuristiccallbackfunc(env, heuristiccallback_p, cbhandle_p);
@@ -6402,12 +7946,16 @@ void CPXgetincumbentcallbackfunc (CPXCENVptr env, int ( **incumbentcallback_p) (
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetincumbentcallbackfunc", (gpointer *) &__symbolic_CPXgetincumbentcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetincumbentcallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetincumbentcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetincumbentcallbackfunc(env, incumbentcallback_p, cbhandle_p);
@@ -6417,12 +7965,16 @@ void CPXgetsolvecallbackfunc (CPXCENVptr env, int ( **solvecallback_p) (CPXCENVp
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetsolvecallbackfunc", (gpointer *) &__symbolic_CPXgetsolvecallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetsolvecallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetsolvecallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetsolvecallbackfunc(env, solvecallback_p, cbhandle_p);
@@ -6432,12 +7984,16 @@ void CPXgetdeletenodecallbackfunc(CPXCENVptr env, void ( **deletecallback_p) (CP
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetdeletenodecallbackfunc", (gpointer *) &__symbolic_CPXgetdeletenodecallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetdeletenodecallbackfunc\n");
+                "lazylpsolverlibs: the symbol CPXgetdeletenodecallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetdeletenodecallbackfunc(env, deletecallback_p, cbhandle_p);
@@ -6447,12 +8003,16 @@ int CPXgetcallbacknodelp (CPXCENVptr env, void *cbdata, int wherefrom, CPXLPptr 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodelp", (gpointer *) &__symbolic_CPXgetcallbacknodelp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodelp\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodelp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodelp(env, cbdata, wherefrom, nodelp_p);
@@ -6462,12 +8022,16 @@ int CPXgetcallbacknodeinfo (CPXCENVptr env, void *cbdata, int wherefrom, int nod
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodeinfo", (gpointer *) &__symbolic_CPXgetcallbacknodeinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodeinfo\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodeinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodeinfo(env, cbdata, wherefrom, nodeindex, whichinfo, result_p);
@@ -6477,12 +8041,16 @@ int CPXgetcallbackseqinfo (CPXCENVptr env, void *cbdata, int wherefrom, int seqi
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackseqinfo", (gpointer *) &__symbolic_CPXgetcallbackseqinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackseqinfo\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackseqinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackseqinfo(env, cbdata, wherefrom, seqid, whichinfo, result_p);
@@ -6492,12 +8060,16 @@ int CPXgetcallbacksosinfo (CPXCENVptr env, void *cbdata, int wherefrom, int sosi
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacksosinfo", (gpointer *) &__symbolic_CPXgetcallbacksosinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacksosinfo\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacksosinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacksosinfo(env, cbdata, wherefrom, sosindex, member, whichinfo, result_p);
@@ -6507,12 +8079,16 @@ int CPXgetcallbackindicatorinfo (CPXCENVptr env, void *cbdata, int wherefrom, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackindicatorinfo", (gpointer *) &__symbolic_CPXgetcallbackindicatorinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackindicatorinfo\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackindicatorinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackindicatorinfo(env, cbdata, wherefrom, iindex, whichinfo, result_p);
@@ -6522,12 +8098,16 @@ int CPXcutcallbackadd (CPXCENVptr env, void *cbdata, int wherefrom, int nzcnt, d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcutcallbackadd", (gpointer *) &__symbolic_CPXcutcallbackadd)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcutcallbackadd\n");
+                "lazylpsolverlibs: the symbol CPXcutcallbackadd could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcutcallbackadd(env, cbdata, wherefrom, nzcnt, rhs, sense, cutind, cutval, purgeable);
@@ -6537,12 +8117,16 @@ int CPXcutcallbackaddlocal (CPXCENVptr env, void *cbdata, int wherefrom, int nzc
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcutcallbackaddlocal", (gpointer *) &__symbolic_CPXcutcallbackaddlocal)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcutcallbackaddlocal\n");
+                "lazylpsolverlibs: the symbol CPXcutcallbackaddlocal could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcutcallbackaddlocal(env, cbdata, wherefrom, nzcnt, rhs, sense, cutind, cutval);
@@ -6552,12 +8136,16 @@ int CPXbranchcallbackbranchbds (CPXCENVptr env, void *cbdata, int wherefrom, dou
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbranchcallbackbranchbds", (gpointer *) &__symbolic_CPXbranchcallbackbranchbds)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbranchcallbackbranchbds\n");
+                "lazylpsolverlibs: the symbol CPXbranchcallbackbranchbds could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbranchcallbackbranchbds(env, cbdata, wherefrom, nodeest, cnt, indices, lu, bd, userhandle, seqnum_p);
@@ -6567,12 +8155,16 @@ int CPXbranchcallbackbranchgeneral (CPXCENVptr env, void *cbdata, int wherefrom,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbranchcallbackbranchgeneral", (gpointer *) &__symbolic_CPXbranchcallbackbranchgeneral)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbranchcallbackbranchgeneral\n");
+                "lazylpsolverlibs: the symbol CPXbranchcallbackbranchgeneral could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbranchcallbackbranchgeneral(env, cbdata, wherefrom, nodeest, varcnt, varind, varlu, varbd, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, userhandle, seqnum_p);
@@ -6582,12 +8174,16 @@ int CPXbranchcallbackbranchconstraints (CPXCENVptr env, void *cbdata, int wheref
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXbranchcallbackbranchconstraints", (gpointer *) &__symbolic_CPXbranchcallbackbranchconstraints)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXbranchcallbackbranchconstraints\n");
+                "lazylpsolverlibs: the symbol CPXbranchcallbackbranchconstraints could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXbranchcallbackbranchconstraints(env, cbdata, wherefrom, nodeest, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, userhandle, seqnum_p);
@@ -6597,12 +8193,16 @@ int CPXgetcallbacknodex (CPXCENVptr env, void *cbdata, int wherefrom, double *x,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodex", (gpointer *) &__symbolic_CPXgetcallbacknodex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodex\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodex(env, cbdata, wherefrom, x, begin, end);
@@ -6612,12 +8212,16 @@ int CPXgetcallbacknodeobjval (CPXCENVptr env, void *cbdata, int wherefrom, doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodeobjval", (gpointer *) &__symbolic_CPXgetcallbacknodeobjval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodeobjval\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodeobjval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodeobjval(env, cbdata, wherefrom, objval_p);
@@ -6627,12 +8231,16 @@ int CPXgetcallbackctype (CPXCENVptr env, void *cbdata, int wherefrom, char *xcty
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackctype", (gpointer *) &__symbolic_CPXgetcallbackctype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackctype\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackctype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackctype(env, cbdata, wherefrom, xctype, begin, end);
@@ -6642,12 +8250,16 @@ int CPXgetcallbackorder (CPXCENVptr env, void *cbdata, int wherefrom, int *prior
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackorder", (gpointer *) &__symbolic_CPXgetcallbackorder)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackorder\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackorder could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackorder(env, cbdata, wherefrom, priority, direction, begin, end);
@@ -6657,12 +8269,16 @@ int CPXgetcallbackpseudocosts (CPXCENVptr env, void *cbdata, int wherefrom, doub
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackpseudocosts", (gpointer *) &__symbolic_CPXgetcallbackpseudocosts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackpseudocosts\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackpseudocosts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackpseudocosts(env, cbdata, wherefrom, uppc, downpc, begin, end);
@@ -6672,12 +8288,16 @@ int CPXgetcallbackincumbent (CPXCENVptr env, void *cbdata, int wherefrom, double
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackincumbent", (gpointer *) &__symbolic_CPXgetcallbackincumbent)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackincumbent\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackincumbent could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackincumbent(env, cbdata, wherefrom, x, begin, end);
@@ -6687,12 +8307,16 @@ int CPXgetcallbacknodeintfeas (CPXCENVptr env, void *cbdata, int wherefrom, int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodeintfeas", (gpointer *) &__symbolic_CPXgetcallbacknodeintfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodeintfeas\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodeintfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodeintfeas(env, cbdata, wherefrom, feas, begin, end);
@@ -6702,12 +8326,16 @@ int CPXgetcallbackgloballb (CPXCENVptr env, void *cbdata, int wherefrom, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackgloballb", (gpointer *) &__symbolic_CPXgetcallbackgloballb)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackgloballb\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackgloballb could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackgloballb(env, cbdata, wherefrom, lb, begin, end);
@@ -6717,12 +8345,16 @@ int CPXgetcallbackglobalub (CPXCENVptr env, void *cbdata, int wherefrom, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackglobalub", (gpointer *) &__symbolic_CPXgetcallbackglobalub)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackglobalub\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackglobalub could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackglobalub(env, cbdata, wherefrom, ub, begin, end);
@@ -6732,12 +8364,16 @@ int CPXgetcallbacknodelb (CPXCENVptr env, void *cbdata, int wherefrom, double *l
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodelb", (gpointer *) &__symbolic_CPXgetcallbacknodelb)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodelb\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodelb could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodelb(env, cbdata, wherefrom, lb, begin, end);
@@ -6747,12 +8383,16 @@ int CPXgetcallbacknodeub (CPXCENVptr env, void *cbdata, int wherefrom, double *u
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodeub", (gpointer *) &__symbolic_CPXgetcallbacknodeub)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodeub\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodeub could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodeub(env, cbdata, wherefrom, ub, begin, end);
@@ -6762,12 +8402,16 @@ int CPXgetcallbacklp (CPXCENVptr env, void *cbdata, int wherefrom, CPXCLPptr *lp
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacklp", (gpointer *) &__symbolic_CPXgetcallbacklp)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacklp\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacklp could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacklp(env, cbdata, wherefrom, lp_p);
@@ -6777,12 +8421,16 @@ int CPXgetcallbacknodestat (CPXCENVptr env, void *cbdata, int wherefrom, int *no
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbacknodestat", (gpointer *) &__symbolic_CPXgetcallbacknodestat)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbacknodestat\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbacknodestat could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbacknodestat(env, cbdata, wherefrom, nodestat_p);
@@ -6792,12 +8440,16 @@ int CPXgetcallbackbranchconstraints (CPXCENVptr env, void *cbdata, int wherefrom
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetcallbackbranchconstraints", (gpointer *) &__symbolic_CPXgetcallbackbranchconstraints)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetcallbackbranchconstraints\n");
+                "lazylpsolverlibs: the symbol CPXgetcallbackbranchconstraints could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetcallbackbranchconstraints(env, cbdata, wherefrom, which, cuts_p, nzcnt_p, rhs, sense, rmatbeg, rmatind, rmatval, rmatsz, surplus_p);
@@ -6807,12 +8459,16 @@ int CPXaddusercuts (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, const doub
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddusercuts", (gpointer *) &__symbolic_CPXaddusercuts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddusercuts\n");
+                "lazylpsolverlibs: the symbol CPXaddusercuts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddusercuts(env, lp, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, rowname);
@@ -6822,12 +8478,16 @@ int CPXaddlazyconstraints (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, con
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddlazyconstraints", (gpointer *) &__symbolic_CPXaddlazyconstraints)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddlazyconstraints\n");
+                "lazylpsolverlibs: the symbol CPXaddlazyconstraints could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddlazyconstraints(env, lp, rcnt, nzcnt, rhs, sense, rmatbeg, rmatind, rmatval, rowname);
@@ -6837,12 +8497,16 @@ int CPXfreeusercuts (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfreeusercuts", (gpointer *) &__symbolic_CPXfreeusercuts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfreeusercuts\n");
+                "lazylpsolverlibs: the symbol CPXfreeusercuts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfreeusercuts(env, lp);
@@ -6852,12 +8516,16 @@ int CPXfreelazyconstraints (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXfreelazyconstraints", (gpointer *) &__symbolic_CPXfreelazyconstraints)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXfreelazyconstraints\n");
+                "lazylpsolverlibs: the symbol CPXfreelazyconstraints could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXfreelazyconstraints(env, lp);
@@ -6867,12 +8535,16 @@ int CPXEgetusercuts (CPXCENVptr env, CPXCLPptr lp, int *rcnt_p, int *nzcnt_p, do
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetusercuts", (gpointer *) &__symbolic_CPXEgetusercuts)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetusercuts\n");
+                "lazylpsolverlibs: the symbol CPXEgetusercuts could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetusercuts(env, lp, rcnt_p, nzcnt_p, zrhs_p, zsense_p, rmatbeg_p, rmatind_p, rmatval_p);
@@ -6882,12 +8554,16 @@ int CPXEgetusercutname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspac
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetusercutname", (gpointer *) &__symbolic_CPXEgetusercutname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetusercutname\n");
+                "lazylpsolverlibs: the symbol CPXEgetusercutname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetusercutname(env, lp, buf_str, bufspace, surplus_p, which);
@@ -6897,12 +8573,16 @@ int CPXEgetlazyconstraints (CPXCENVptr env, CPXCLPptr lp, int *rcnt_p, int *nzcn
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetlazyconstraints", (gpointer *) &__symbolic_CPXEgetlazyconstraints)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetlazyconstraints\n");
+                "lazylpsolverlibs: the symbol CPXEgetlazyconstraints could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetlazyconstraints(env, lp, rcnt_p, nzcnt_p, zrhs_p, zsense_p, rmatbeg_p, rmatind_p, rmatval_p);
@@ -6912,12 +8592,16 @@ int CPXEgetlazyconstraintname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetlazyconstraintname", (gpointer *) &__symbolic_CPXEgetlazyconstraintname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetlazyconstraintname\n");
+                "lazylpsolverlibs: the symbol CPXEgetlazyconstraintname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetlazyconstraintname(env, lp, buf_str, bufspace, surplus_p, which);
@@ -6927,12 +8611,16 @@ int CPXordread (CPXCENVptr env, const char *filename_str, int numcols, char **co
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXordread", (gpointer *) &__symbolic_CPXordread)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXordread\n");
+                "lazylpsolverlibs: the symbol CPXordread could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXordread(env, filename_str, numcols, colname, cnt_p, indices, priority, direction);
@@ -6942,12 +8630,16 @@ int CPXaddindconstr (CPXCENVptr env, CPXLPptr lp, int indvar, int complemented, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddindconstr", (gpointer *) &__symbolic_CPXaddindconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddindconstr\n");
+                "lazylpsolverlibs: the symbol CPXaddindconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddindconstr(env, lp, indvar, complemented, nzcnt, rhs, sense, linind, linval, indname_str);
@@ -6957,12 +8649,16 @@ int CPXEgetnumgconstrs (CPXCENVptr env, CPXCLPptr lp, int contype){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetnumgconstrs", (gpointer *) &__symbolic_CPXEgetnumgconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetnumgconstrs\n");
+                "lazylpsolverlibs: the symbol CPXEgetnumgconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetnumgconstrs(env, lp, contype);
@@ -6972,12 +8668,16 @@ int CPXEdelgconstrs (CPXCENVptr env, CPXLPptr lp, int contype, int beg, int end)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEdelgconstrs", (gpointer *) &__symbolic_CPXEdelgconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEdelgconstrs\n");
+                "lazylpsolverlibs: the symbol CPXEdelgconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEdelgconstrs(env, lp, contype, beg, end);
@@ -6987,12 +8687,16 @@ int CPXEaddindconstr (CPXCENVptr env, CPXLPptr lp, int indicator, int complement
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddindconstr", (gpointer *) &__symbolic_CPXEaddindconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddindconstr\n");
+                "lazylpsolverlibs: the symbol CPXEaddindconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddindconstr(env, lp, indicator, complemented, linnzcnt, rhs, sense, linind, linval, type, lname_str);
@@ -7002,12 +8706,16 @@ int CPXEaddminexpr (CPXCENVptr env, CPXLPptr lp, int y, double constant, int nex
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddminexpr", (gpointer *) &__symbolic_CPXEaddminexpr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddminexpr\n");
+                "lazylpsolverlibs: the symbol CPXEaddminexpr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddminexpr(env, lp, y, constant, nexpr, nnz, matbeg, matind, matval, lname_str);
@@ -7017,12 +8725,16 @@ int CPXEaddmaxexpr (CPXCENVptr env, CPXLPptr lp, int y, double constant, int nex
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddmaxexpr", (gpointer *) &__symbolic_CPXEaddmaxexpr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddmaxexpr\n");
+                "lazylpsolverlibs: the symbol CPXEaddmaxexpr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddmaxexpr(env, lp, y, constant, nexpr, nnz, matbeg, matind, matval, lname_str);
@@ -7032,12 +8744,16 @@ int CPXEaddpwl (CPXCENVptr env, CPXLPptr lp, int y, int npoints, double *point, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddpwl", (gpointer *) &__symbolic_CPXEaddpwl)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddpwl\n");
+                "lazylpsolverlibs: the symbol CPXEaddpwl could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddpwl(env, lp, y, npoints, point, nslopes, slope, a, b, x, lname_str);
@@ -7047,12 +8763,16 @@ int CPXEaddabs (CPXCENVptr env, CPXLPptr lp, int y, int x, const char *lname_str
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddabs", (gpointer *) &__symbolic_CPXEaddabs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddabs\n");
+                "lazylpsolverlibs: the symbol CPXEaddabs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddabs(env, lp, y, x, lname_str);
@@ -7062,12 +8782,16 @@ int CPXEaddsetvar (CPXCENVptr env, CPXLPptr lp, const int npvalues, const double
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvar", (gpointer *) &__symbolic_CPXEaddsetvar)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvar\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvar could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvar(env, lp, npvalues, pvalues, nrvalues, rvalues, lname_str);
@@ -7077,12 +8801,16 @@ int CPXEchgsetvar (CPXCENVptr env, CPXLPptr lp, const int setvarid, const int np
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEchgsetvar", (gpointer *) &__symbolic_CPXEchgsetvar)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEchgsetvar\n");
+                "lazylpsolverlibs: the symbol CPXEchgsetvar could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEchgsetvar(env, lp, setvarid, npvalues, pvalues, nrvalues, rvalues);
@@ -7092,12 +8820,16 @@ int CPXEgetsetvarvalues (CPXCENVptr env, CPXLPptr lp, const int setvarid, const 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEgetsetvarvalues", (gpointer *) &__symbolic_CPXEgetsetvarvalues)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEgetsetvarvalues\n");
+                "lazylpsolverlibs: the symbol CPXEgetsetvarvalues could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEgetsetvarvalues(env, lp, setvarid, nvalues, values, soln);
@@ -7107,12 +8839,16 @@ int CPXEaddsetvarmember (CPXCENVptr env, CPXLPptr lp, const int indvarid, const 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarmember", (gpointer *) &__symbolic_CPXEaddsetvarmember)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarmember\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarmember could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarmember(env, lp, indvarid, setvarid, value, lname_str);
@@ -7122,12 +8858,16 @@ int CPXEaddsetvarcard (CPXCENVptr env, CPXLPptr lp, const int cardvarid, const i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarcard", (gpointer *) &__symbolic_CPXEaddsetvarcard)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarcard\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarcard could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarcard(env, lp, cardvarid, setvarid, lname_str);
@@ -7137,12 +8877,16 @@ int CPXEaddsetvarsum (CPXCENVptr env, CPXLPptr lp, const int sumvarid, const int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarsum", (gpointer *) &__symbolic_CPXEaddsetvarsum)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarsum\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarsum could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarsum(env, lp, sumvarid, setvarid, nvalues, vals, lname_str);
@@ -7152,12 +8896,16 @@ int CPXEaddsetvarmin (CPXCENVptr env, CPXLPptr lp, const int minvarid, const int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarmin", (gpointer *) &__symbolic_CPXEaddsetvarmin)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarmin\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarmin could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarmin(env, lp, minvarid, setvarid, nvalues, vals, lname_str);
@@ -7167,12 +8915,16 @@ int CPXEaddsetvarmax (CPXCENVptr env, CPXLPptr lp, const int maxvarid, const int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarmax", (gpointer *) &__symbolic_CPXEaddsetvarmax)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarmax\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarmax could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarmax(env, lp, maxvarid, setvarid, nvalues, vals, lname_str);
@@ -7182,12 +8934,16 @@ int CPXEaddsetvarsubset (CPXCENVptr env, CPXLPptr lp, const int setvar1, const i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarsubset", (gpointer *) &__symbolic_CPXEaddsetvarsubset)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarsubset\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarsubset could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarsubset(env, lp, setvar1, setvar2, strict, lname_str);
@@ -7197,12 +8953,16 @@ int CPXEaddsetvardomain (CPXCENVptr env, CPXLPptr lp, const int setvar, const in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvardomain", (gpointer *) &__symbolic_CPXEaddsetvardomain)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvardomain\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvardomain could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvardomain(env, lp, setvar, nvalues, values, possible, required, forbidden, strict, lname_str);
@@ -7212,12 +8972,16 @@ int CPXEaddsetvarunion (CPXCENVptr env, CPXLPptr lp, const int unionsetvar, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarunion", (gpointer *) &__symbolic_CPXEaddsetvarunion)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarunion\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarunion could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarunion(env, lp, unionsetvar, servar1, setvar2, lname_str);
@@ -7227,12 +8991,16 @@ int CPXEaddsetvarintersection (CPXCENVptr env, CPXLPptr lp, const int unionsetva
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarintersection", (gpointer *) &__symbolic_CPXEaddsetvarintersection)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarintersection\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarintersection could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarintersection(env, lp, unionsetvar, servar1, setvar2, lname_str);
@@ -7242,12 +9010,16 @@ int CPXEaddsetvarnullintersect (CPXCENVptr env, CPXLPptr lp, const int servar1, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarnullintersect", (gpointer *) &__symbolic_CPXEaddsetvarnullintersect)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarnullintersect\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarnullintersect could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarnullintersect(env, lp, servar1, setvar2, lname_str);
@@ -7257,12 +9029,16 @@ int CPXEaddsetvarintersect (CPXCENVptr env, CPXLPptr lp, const int servar1, cons
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarintersect", (gpointer *) &__symbolic_CPXEaddsetvarintersect)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarintersect\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarintersect could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarintersect(env, lp, servar1, setvar2, lname_str);
@@ -7272,12 +9048,16 @@ int CPXEaddsetvareq (CPXCENVptr env, CPXLPptr lp, const int servar1, const int s
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvareq", (gpointer *) &__symbolic_CPXEaddsetvareq)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvareq\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvareq could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvareq(env, lp, servar1, setvar2, lname_str);
@@ -7287,12 +9067,16 @@ int CPXEaddsetvarneq (CPXCENVptr env, CPXLPptr lp, const int servar1, const int 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarneq", (gpointer *) &__symbolic_CPXEaddsetvarneq)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarneq\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarneq could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarneq(env, lp, servar1, setvar2, lname_str);
@@ -7302,12 +9086,16 @@ int CPXEaddsetvarneqcst (CPXCENVptr env, CPXLPptr lp, const int servar1, const i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEaddsetvarneqcst", (gpointer *) &__symbolic_CPXEaddsetvarneqcst)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEaddsetvarneqcst\n");
+                "lazylpsolverlibs: the symbol CPXEaddsetvarneqcst could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEaddsetvarneqcst(env, lp, servar1, nvalues, values, lname_str);
@@ -7317,12 +9105,16 @@ CPXNETptr CPXNETcreateprob (CPXENVptr env, int *status_p, const char *name_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETcreateprob", (gpointer *) &__symbolic_CPXNETcreateprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETcreateprob\n");
+                "lazylpsolverlibs: the symbol CPXNETcreateprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETcreateprob(env, status_p, name_str);
@@ -7332,12 +9124,16 @@ int CPXNETfreeprob (CPXENVptr env, CPXNETptr *net_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETfreeprob", (gpointer *) &__symbolic_CPXNETfreeprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETfreeprob\n");
+                "lazylpsolverlibs: the symbol CPXNETfreeprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETfreeprob(env, net_p);
@@ -7347,12 +9143,16 @@ int CPXNETcopynet (CPXCENVptr env, CPXNETptr net, int objsen, int nnodes, const 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETcopynet", (gpointer *) &__symbolic_CPXNETcopynet)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETcopynet\n");
+                "lazylpsolverlibs: the symbol CPXNETcopynet could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETcopynet(env, net, objsen, nnodes, supply, nnames, narcs, fromnode, tonode, low, up, obj, anames);
@@ -7362,12 +9162,16 @@ int CPXNETcopybase (CPXCENVptr env, CPXNETptr net, const int *astat, const int *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETcopybase", (gpointer *) &__symbolic_CPXNETcopybase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETcopybase\n");
+                "lazylpsolverlibs: the symbol CPXNETcopybase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETcopybase(env, net, astat, nstat);
@@ -7377,12 +9181,16 @@ int CPXNETaddnodes (CPXCENVptr env, CPXNETptr net, int nnodes, const double *sup
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETaddnodes", (gpointer *) &__symbolic_CPXNETaddnodes)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETaddnodes\n");
+                "lazylpsolverlibs: the symbol CPXNETaddnodes could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETaddnodes(env, net, nnodes, supply, name);
@@ -7392,12 +9200,16 @@ int CPXNETaddarcs (CPXCENVptr env, CPXNETptr net, int narcs, const int *fromnode
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETaddarcs", (gpointer *) &__symbolic_CPXNETaddarcs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETaddarcs\n");
+                "lazylpsolverlibs: the symbol CPXNETaddarcs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETaddarcs(env, net, narcs, fromnode, tonode, low, up, obj, anames);
@@ -7407,12 +9219,16 @@ int CPXNETdelnodes (CPXCENVptr env, CPXNETptr net, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETdelnodes", (gpointer *) &__symbolic_CPXNETdelnodes)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETdelnodes\n");
+                "lazylpsolverlibs: the symbol CPXNETdelnodes could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETdelnodes(env, net, begin, end);
@@ -7422,12 +9238,16 @@ int CPXNETdelarcs (CPXCENVptr env, CPXNETptr net, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETdelarcs", (gpointer *) &__symbolic_CPXNETdelarcs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETdelarcs\n");
+                "lazylpsolverlibs: the symbol CPXNETdelarcs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETdelarcs(env, net, begin, end);
@@ -7437,12 +9257,16 @@ int CPXNETdelset (CPXCENVptr env, CPXNETptr net, int *whichnodes, int *whicharcs
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETdelset", (gpointer *) &__symbolic_CPXNETdelset)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETdelset\n");
+                "lazylpsolverlibs: the symbol CPXNETdelset could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETdelset(env, net, whichnodes, whicharcs);
@@ -7452,12 +9276,16 @@ int CPXNETprimopt (CPXCENVptr env, CPXNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETprimopt", (gpointer *) &__symbolic_CPXNETprimopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETprimopt\n");
+                "lazylpsolverlibs: the symbol CPXNETprimopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETprimopt(env, net);
@@ -7467,12 +9295,16 @@ int CPXNETgetstat (CPXCENVptr env, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetstat", (gpointer *) &__symbolic_CPXNETgetstat)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetstat\n");
+                "lazylpsolverlibs: the symbol CPXNETgetstat could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetstat(env, net);
@@ -7482,12 +9314,16 @@ int CPXNETgetobjval (CPXCENVptr env, CPXCNETptr net, double *objval_p){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetobjval", (gpointer *) &__symbolic_CPXNETgetobjval)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetobjval\n");
+                "lazylpsolverlibs: the symbol CPXNETgetobjval could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetobjval(env, net, objval_p);
@@ -7497,12 +9333,16 @@ int CPXNETgetx (CPXCENVptr env, CPXCNETptr net, double *x, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetx", (gpointer *) &__symbolic_CPXNETgetx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetx\n");
+                "lazylpsolverlibs: the symbol CPXNETgetx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetx(env, net, x, begin, end);
@@ -7512,12 +9352,16 @@ int CPXNETgetpi (CPXCENVptr env, CPXCNETptr net, double *pi, int begin, int end)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetpi", (gpointer *) &__symbolic_CPXNETgetpi)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetpi\n");
+                "lazylpsolverlibs: the symbol CPXNETgetpi could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetpi(env, net, pi, begin, end);
@@ -7527,12 +9371,16 @@ int CPXNETgetslack (CPXCENVptr env, CPXCNETptr net, double *slack, int begin, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetslack", (gpointer *) &__symbolic_CPXNETgetslack)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetslack\n");
+                "lazylpsolverlibs: the symbol CPXNETgetslack could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetslack(env, net, slack, begin, end);
@@ -7542,12 +9390,16 @@ int CPXNETgetdj (CPXCENVptr env, CPXCNETptr net, double *dj, int begin, int end)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetdj", (gpointer *) &__symbolic_CPXNETgetdj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetdj\n");
+                "lazylpsolverlibs: the symbol CPXNETgetdj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetdj(env, net, dj, begin, end);
@@ -7557,12 +9409,16 @@ int CPXNETgetitcnt (CPXCENVptr env, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetitcnt", (gpointer *) &__symbolic_CPXNETgetitcnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetitcnt\n");
+                "lazylpsolverlibs: the symbol CPXNETgetitcnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetitcnt(env, net);
@@ -7572,12 +9428,16 @@ int CPXNETgetphase1cnt (CPXCENVptr env, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetphase1cnt", (gpointer *) &__symbolic_CPXNETgetphase1cnt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetphase1cnt\n");
+                "lazylpsolverlibs: the symbol CPXNETgetphase1cnt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetphase1cnt(env, net);
@@ -7587,12 +9447,16 @@ int CPXNETgetbase (CPXCENVptr env, CPXCNETptr net, int *astat, int *nstat){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetbase", (gpointer *) &__symbolic_CPXNETgetbase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetbase\n");
+                "lazylpsolverlibs: the symbol CPXNETgetbase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetbase(env, net, astat, nstat);
@@ -7602,12 +9466,16 @@ int CPXNETsolution (CPXCENVptr env, CPXCNETptr net, int *netstat_p, double *objv
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETsolution", (gpointer *) &__symbolic_CPXNETsolution)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETsolution\n");
+                "lazylpsolverlibs: the symbol CPXNETsolution could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETsolution(env, net, netstat_p, objval_p, x, pi, slack, dj);
@@ -7617,12 +9485,16 @@ int CPXNETsolninfo (CPXCENVptr env, CPXCNETptr net, int *pfeasind_p, int *dfeasi
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETsolninfo", (gpointer *) &__symbolic_CPXNETsolninfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETsolninfo\n");
+                "lazylpsolverlibs: the symbol CPXNETsolninfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETsolninfo(env, net, pfeasind_p, dfeasind_p);
@@ -7632,12 +9504,16 @@ int CPXNETchgname (CPXCENVptr env, CPXNETptr net, int key, int vindex, const cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgname", (gpointer *) &__symbolic_CPXNETchgname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgname\n");
+                "lazylpsolverlibs: the symbol CPXNETchgname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgname(env, net, key, vindex, name_str);
@@ -7647,12 +9523,16 @@ int CPXNETchgarcname (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgarcname", (gpointer *) &__symbolic_CPXNETchgarcname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgarcname\n");
+                "lazylpsolverlibs: the symbol CPXNETchgarcname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgarcname(env, net, cnt, indices, newname);
@@ -7662,12 +9542,16 @@ int CPXNETchgnodename (CPXCENVptr env, CPXNETptr net, int cnt, const int *indice
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgnodename", (gpointer *) &__symbolic_CPXNETchgnodename)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgnodename\n");
+                "lazylpsolverlibs: the symbol CPXNETchgnodename could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgnodename(env, net, cnt, indices, newname);
@@ -7677,12 +9561,16 @@ int CPXNETchgobjsen (CPXCENVptr env, CPXNETptr net, int maxormin){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgobjsen", (gpointer *) &__symbolic_CPXNETchgobjsen)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgobjsen\n");
+                "lazylpsolverlibs: the symbol CPXNETchgobjsen could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgobjsen(env, net, maxormin);
@@ -7692,12 +9580,16 @@ int CPXNETchgbds (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices, co
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgbds", (gpointer *) &__symbolic_CPXNETchgbds)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgbds\n");
+                "lazylpsolverlibs: the symbol CPXNETchgbds could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgbds(env, net, cnt, indices, lu, bd);
@@ -7707,12 +9599,16 @@ int CPXNETchgarcnodes (CPXCENVptr env, CPXNETptr net, int cnt, const int *indice
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgarcnodes", (gpointer *) &__symbolic_CPXNETchgarcnodes)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgarcnodes\n");
+                "lazylpsolverlibs: the symbol CPXNETchgarcnodes could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgarcnodes(env, net, cnt, indices, fromnode, tonode);
@@ -7722,12 +9618,16 @@ int CPXNETchgobj (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices, co
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgobj", (gpointer *) &__symbolic_CPXNETchgobj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgobj\n");
+                "lazylpsolverlibs: the symbol CPXNETchgobj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgobj(env, net, cnt, indices, obj);
@@ -7737,12 +9637,16 @@ int CPXNETchgsupply (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETchgsupply", (gpointer *) &__symbolic_CPXNETchgsupply)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETchgsupply\n");
+                "lazylpsolverlibs: the symbol CPXNETchgsupply could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETchgsupply(env, net, cnt, indices, supply);
@@ -7752,12 +9656,16 @@ int CPXNETgetobjsen (CPXCENVptr env, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetobjsen", (gpointer *) &__symbolic_CPXNETgetobjsen)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetobjsen\n");
+                "lazylpsolverlibs: the symbol CPXNETgetobjsen could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetobjsen(env, net);
@@ -7767,12 +9675,16 @@ int CPXNETgetsupply (CPXCENVptr env, CPXCNETptr net, double *supply, int begin, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetsupply", (gpointer *) &__symbolic_CPXNETgetsupply)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetsupply\n");
+                "lazylpsolverlibs: the symbol CPXNETgetsupply could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetsupply(env, net, supply, begin, end);
@@ -7782,12 +9694,16 @@ int CPXNETgetprobname (CPXCENVptr env, CPXCNETptr net, char *buf_str, int bufspa
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetprobname", (gpointer *) &__symbolic_CPXNETgetprobname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetprobname\n");
+                "lazylpsolverlibs: the symbol CPXNETgetprobname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetprobname(env, net, buf_str, bufspace, surplus_p);
@@ -7797,12 +9713,16 @@ int CPXNETgetnodename (CPXCENVptr env, CPXCNETptr net, char **nnames, char *name
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetnodename", (gpointer *) &__symbolic_CPXNETgetnodename)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetnodename\n");
+                "lazylpsolverlibs: the symbol CPXNETgetnodename could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetnodename(env, net, nnames, namestore, namespc, surplus_p, begin, end);
@@ -7812,12 +9732,16 @@ int CPXNETgetarcname (CPXCENVptr env, CPXCNETptr net, char **nnames, char *names
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetarcname", (gpointer *) &__symbolic_CPXNETgetarcname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetarcname\n");
+                "lazylpsolverlibs: the symbol CPXNETgetarcname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetarcname(env, net, nnames, namestore, namespc, surplus_p, begin, end);
@@ -7827,12 +9751,16 @@ int CPXNETgetlb (CPXCENVptr env, CPXCNETptr net, double *low, int begin, int end
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetlb", (gpointer *) &__symbolic_CPXNETgetlb)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetlb\n");
+                "lazylpsolverlibs: the symbol CPXNETgetlb could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetlb(env, net, low, begin, end);
@@ -7842,12 +9770,16 @@ int CPXNETgetub (CPXCENVptr env, CPXCNETptr net, double *up, int begin, int end)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetub", (gpointer *) &__symbolic_CPXNETgetub)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetub\n");
+                "lazylpsolverlibs: the symbol CPXNETgetub could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetub(env, net, up, begin, end);
@@ -7857,12 +9789,16 @@ int CPXNETgetobj (CPXCENVptr env, CPXCNETptr net, double *obj, int begin, int en
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetobj", (gpointer *) &__symbolic_CPXNETgetobj)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetobj\n");
+                "lazylpsolverlibs: the symbol CPXNETgetobj could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetobj(env, net, obj, begin, end);
@@ -7872,12 +9808,16 @@ int CPXNETgetarcnodes (CPXCENVptr env, CPXCNETptr net, int* fromnode, int *tonod
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetarcnodes", (gpointer *) &__symbolic_CPXNETgetarcnodes)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetarcnodes\n");
+                "lazylpsolverlibs: the symbol CPXNETgetarcnodes could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetarcnodes(env, net, fromnode, tonode, begin, end);
@@ -7887,12 +9827,16 @@ int CPXNETgetnodearcs (CPXCENVptr env, CPXCNETptr net, int *arccnt_p, int* arcbe
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetnodearcs", (gpointer *) &__symbolic_CPXNETgetnodearcs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetnodearcs\n");
+                "lazylpsolverlibs: the symbol CPXNETgetnodearcs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetnodearcs(env, net, arccnt_p, arcbeg, arc, arcspace, surplus_p, begin, end);
@@ -7902,12 +9846,16 @@ int CPXNETgetnumnodes (CPXCENVptr env, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetnumnodes", (gpointer *) &__symbolic_CPXNETgetnumnodes)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetnumnodes\n");
+                "lazylpsolverlibs: the symbol CPXNETgetnumnodes could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetnumnodes(env, net);
@@ -7917,12 +9865,16 @@ int CPXNETgetnumarcs (CPXCENVptr env, CPXCNETptr net){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetnumarcs", (gpointer *) &__symbolic_CPXNETgetnumarcs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetnumarcs\n");
+                "lazylpsolverlibs: the symbol CPXNETgetnumarcs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetnumarcs(env, net);
@@ -7932,12 +9884,16 @@ int CPXNETgetnodeindex (CPXCENVptr env, CPXCNETptr net, const char *lname_str, i
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetnodeindex", (gpointer *) &__symbolic_CPXNETgetnodeindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetnodeindex\n");
+                "lazylpsolverlibs: the symbol CPXNETgetnodeindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetnodeindex(env, net, lname_str, index_p);
@@ -7947,12 +9903,16 @@ int CPXNETgetarcindex (CPXCENVptr env, CPXCNETptr net, const char *lname_str, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETgetarcindex", (gpointer *) &__symbolic_CPXNETgetarcindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETgetarcindex\n");
+                "lazylpsolverlibs: the symbol CPXNETgetarcindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETgetarcindex(env, net, lname_str, index_p);
@@ -7962,12 +9922,16 @@ int CPXNETreadcopyprob (CPXCENVptr env, CPXNETptr net, const char *filename_str)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETreadcopyprob", (gpointer *) &__symbolic_CPXNETreadcopyprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETreadcopyprob\n");
+                "lazylpsolverlibs: the symbol CPXNETreadcopyprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETreadcopyprob(env, net, filename_str);
@@ -7977,12 +9941,16 @@ int CPXNETreadcopybase (CPXCENVptr env, CPXNETptr net, const char *filename_str)
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETreadcopybase", (gpointer *) &__symbolic_CPXNETreadcopybase)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETreadcopybase\n");
+                "lazylpsolverlibs: the symbol CPXNETreadcopybase could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETreadcopybase(env, net, filename_str);
@@ -7992,12 +9960,16 @@ int CPXNETwriteprob (CPXCENVptr env, CPXCNETptr net, const char *filename_str, c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETwriteprob", (gpointer *) &__symbolic_CPXNETwriteprob)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETwriteprob\n");
+                "lazylpsolverlibs: the symbol CPXNETwriteprob could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETwriteprob(env, net, filename_str, format_str);
@@ -8007,12 +9979,16 @@ int CPXNETbasewrite (CPXCENVptr env, CPXCNETptr net, const char *filename_str){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETbasewrite", (gpointer *) &__symbolic_CPXNETbasewrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETbasewrite\n");
+                "lazylpsolverlibs: the symbol CPXNETbasewrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETbasewrite(env, net, filename_str);
@@ -8022,12 +9998,16 @@ int CPXNETcheckcopynet (CPXCENVptr env, CPXNETptr net, int objsen, int nnodes, c
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXNETcheckcopynet", (gpointer *) &__symbolic_CPXNETcheckcopynet)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXNETcheckcopynet\n");
+                "lazylpsolverlibs: the symbol CPXNETcheckcopynet could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXNETcheckcopynet(env, net, objsen, nnodes, supply, nnames, narcs, fromnode, tonode, low, up, obj, aname);
@@ -8037,12 +10017,16 @@ int CPXcopyquad (CPXCENVptr env, CPXLPptr lp, const int *qmatbeg, const int *qma
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopyquad", (gpointer *) &__symbolic_CPXcopyquad)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopyquad\n");
+                "lazylpsolverlibs: the symbol CPXcopyquad could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopyquad(env, lp, qmatbeg, qmatcnt, qmatind, qmatval);
@@ -8052,12 +10036,16 @@ int CPXcopyqpsep (CPXCENVptr env, CPXLPptr lp, const double *qsepvec){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcopyqpsep", (gpointer *) &__symbolic_CPXcopyqpsep)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcopyqpsep\n");
+                "lazylpsolverlibs: the symbol CPXcopyqpsep could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcopyqpsep(env, lp, qsepvec);
@@ -8067,12 +10055,16 @@ int CPXchgqpcoef (CPXCENVptr env, CPXLPptr lp, int i, int j, double newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXchgqpcoef", (gpointer *) &__symbolic_CPXchgqpcoef)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXchgqpcoef\n");
+                "lazylpsolverlibs: the symbol CPXchgqpcoef could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXchgqpcoef(env, lp, i, j, newvalue);
@@ -8082,12 +10074,16 @@ int CPXgetnumqpnz (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumqpnz", (gpointer *) &__symbolic_CPXgetnumqpnz)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumqpnz\n");
+                "lazylpsolverlibs: the symbol CPXgetnumqpnz could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumqpnz(env, lp);
@@ -8097,12 +10093,16 @@ int CPXgetnumquad (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumquad", (gpointer *) &__symbolic_CPXgetnumquad)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumquad\n");
+                "lazylpsolverlibs: the symbol CPXgetnumquad could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumquad(env, lp);
@@ -8112,12 +10112,16 @@ int CPXgetqpcoef (CPXCENVptr env, CPXCLPptr lp, int rownum, int colnum, double *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetqpcoef", (gpointer *) &__symbolic_CPXgetqpcoef)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetqpcoef\n");
+                "lazylpsolverlibs: the symbol CPXgetqpcoef could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetqpcoef(env, lp, rownum, colnum, coef_p);
@@ -8127,12 +10131,16 @@ int CPXgetquad (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *qmatbeg, int *q
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetquad", (gpointer *) &__symbolic_CPXgetquad)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetquad\n");
+                "lazylpsolverlibs: the symbol CPXgetquad could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetquad(env, lp, nzcnt_p, qmatbeg, qmatind, qmatval, qmatspace, surplus_p, begin, end);
@@ -8142,12 +10150,16 @@ int CPXqpindefcertificate (CPXCENVptr env, CPXCLPptr lp, double *x){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXqpindefcertificate", (gpointer *) &__symbolic_CPXqpindefcertificate)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXqpindefcertificate\n");
+                "lazylpsolverlibs: the symbol CPXqpindefcertificate could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXqpindefcertificate(env, lp, x);
@@ -8157,12 +10169,16 @@ int CPXcheckcopyqpsep (CPXCENVptr env, CPXCLPptr lp, const double *qsepvec){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckcopyqpsep", (gpointer *) &__symbolic_CPXcheckcopyqpsep)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckcopyqpsep\n");
+                "lazylpsolverlibs: the symbol CPXcheckcopyqpsep could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckcopyqpsep(env, lp, qsepvec);
@@ -8172,12 +10188,16 @@ int CPXcheckcopyquad (CPXCENVptr env, CPXCLPptr lp, const int *qmatbeg, const in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXcheckcopyquad", (gpointer *) &__symbolic_CPXcheckcopyquad)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXcheckcopyquad\n");
+                "lazylpsolverlibs: the symbol CPXcheckcopyquad could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXcheckcopyquad(env, lp, qmatbeg, qmatcnt, qmatind, qmatval);
@@ -8187,12 +10207,16 @@ int CPXqpopt (CPXCENVptr env, CPXLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXqpopt", (gpointer *) &__symbolic_CPXqpopt)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXqpopt\n");
+                "lazylpsolverlibs: the symbol CPXqpopt could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXqpopt(env, lp);
@@ -8202,12 +10226,16 @@ int CPXaddqconstr (CPXCENVptr env, CPXLPptr lp, int linnzcnt, int quadnzcnt, dou
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXaddqconstr", (gpointer *) &__symbolic_CPXaddqconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXaddqconstr\n");
+                "lazylpsolverlibs: the symbol CPXaddqconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXaddqconstr(env, lp, linnzcnt, quadnzcnt, rhs, sense, linind, linval, quadrow, quadcol, quadval, lname_str);
@@ -8217,12 +10245,16 @@ int CPXdelqconstrs (CPXCENVptr env, CPXLPptr lp, int begin, int end){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXdelqconstrs", (gpointer *) &__symbolic_CPXdelqconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXdelqconstrs\n");
+                "lazylpsolverlibs: the symbol CPXdelqconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXdelqconstrs(env, lp, begin, end);
@@ -8232,12 +10264,16 @@ int CPXgetnumqconstrs (CPXCENVptr env, CPXCLPptr lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetnumqconstrs", (gpointer *) &__symbolic_CPXgetnumqconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetnumqconstrs\n");
+                "lazylpsolverlibs: the symbol CPXgetnumqconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetnumqconstrs(env, lp);
@@ -8247,12 +10283,16 @@ int CPXgetqconstrindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetqconstrindex", (gpointer *) &__symbolic_CPXgetqconstrindex)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetqconstrindex\n");
+                "lazylpsolverlibs: the symbol CPXgetqconstrindex could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetqconstrindex(env, lp, lname_str, index_p);
@@ -8262,12 +10302,16 @@ int CPXgetqconstr (CPXCENVptr env, CPXCLPptr lp, int *linnzcnt_p, int *quadnzcnt
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetqconstr", (gpointer *) &__symbolic_CPXgetqconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetqconstr\n");
+                "lazylpsolverlibs: the symbol CPXgetqconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetqconstr(env, lp, linnzcnt_p, quadnzcnt_p, rhs_p, sense_p, linind, linval, linspace, linsurplus_p, quadrow, quadcol, quadval, quadspace, quadsurplus_p, which);
@@ -8277,12 +10321,16 @@ int CPXgetqconstrname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspace
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetqconstrname", (gpointer *) &__symbolic_CPXgetqconstrname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetqconstrname\n");
+                "lazylpsolverlibs: the symbol CPXgetqconstrname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetqconstrname(env, lp, buf_str, bufspace, surplus_p, which);
@@ -8292,12 +10340,16 @@ int CPXgetqconstrslack (CPXCENVptr env, CPXCLPptr lp, double *qcslack, int begin
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetqconstrslack", (gpointer *) &__symbolic_CPXgetqconstrslack)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetqconstrslack\n");
+                "lazylpsolverlibs: the symbol CPXgetqconstrslack could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetqconstrslack(env, lp, qcslack, begin, end);
@@ -8307,12 +10359,16 @@ int CPXqconstrslackfromx (CPXCENVptr env, CPXCLPptr lp, const double *x, double 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXqconstrslackfromx", (gpointer *) &__symbolic_CPXqconstrslackfromx)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXqconstrslackfromx\n");
+                "lazylpsolverlibs: the symbol CPXqconstrslackfromx could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXqconstrslackfromx(env, lp, x, qcslack);
@@ -8322,12 +10378,16 @@ int CPXgetqconstrinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetqconstrinfeas", (gpointer *) &__symbolic_CPXgetqconstrinfeas)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetqconstrinfeas\n");
+                "lazylpsolverlibs: the symbol CPXgetqconstrinfeas could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetqconstrinfeas(env, lp, x, infeasout, begin, end);
@@ -8337,12 +10397,16 @@ int CPXgetxqxax (CPXCENVptr env, CPXCLPptr lp, double *xqxax, int begin, int end
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXgetxqxax", (gpointer *) &__symbolic_CPXgetxqxax)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXgetxqxax\n");
+                "lazylpsolverlibs: the symbol CPXgetxqxax could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXgetxqxax(env, lp, xqxax, begin, end);
@@ -8352,12 +10416,16 @@ int CPXEchgqcname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "CPXEchgqcname", (gpointer *) &__symbolic_CPXEchgqcname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find CPXEchgqcname\n");
+                "lazylpsolverlibs: the symbol CPXEchgqcname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_CPXEchgqcname(env, lp, cnt, indices, newname);
