@@ -35,7 +35,7 @@ lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX): lib/lazyxprs.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazyxprs$(LIBSUFFIX) lib/lazyxprs.o $(GMODULE_LDFLAGS) $(LDFLAGS)
 
 lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX): lib/lazygurobi.o
-	$(LINKCMD) -o lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) lib/lazygurobi.o -lm $(GMODULE_LDFLAGS) $(LDFLAGS)
+	$(LINKCMD) -o lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX) lib/lazygurobi.o -Wl,--no-as-needed -lm $(GMODULE_LDFLAGS) $(LDFLAGS)
 
 lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX): lib/lazyglpk.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX) lib/lazyglpk.o $(GMODULE_LDFLAGS) $(LDFLAGS)
