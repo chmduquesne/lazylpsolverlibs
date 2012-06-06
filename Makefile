@@ -25,8 +25,8 @@ dirs:
 lib/%.o: src/%.c dirs
 	$(CC) -c $< -o $@ $(GMODULE_CFLAGS) $(BUILDLIB_CFLAGS) $(CFLAGS)
 
-bin/%: test/%.c
-	$(CC) $< -o $@ $(GMODULE_CFLAGS) $(GMODULE_LDFLAGS) $(LLSL_CFLAGS) $(CFLAGS) -Llib -llazycplex -llazygurobi -llazyxprs -llazyglpk -lm
+bin/%$(BINSUFFIX): test/%.c
+	$(CC) $< -o $@ $(GMODULE_CFLAGS) $(GMODULE_LDFLAGS) $(LLSL_CFLAGS) $(CFLAGS) $(LLSL_LDFLAGS) $(LDFLAGS)
 
 lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX): lib/lazycplex.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazycplex$(LIBSUFFIX) lib/lazycplex.o $(GMODULE_LDFLAGS) $(LDFLAGS)
@@ -40,9 +40,6 @@ lib/$(LIBPREFIX)lazygurobi$(LIBSUFFIX): lib/lazygurobi.o
 lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX): lib/lazyglpk.o
 	$(LINKCMD) -o lib/$(LIBPREFIX)lazyglpk$(LIBSUFFIX) lib/lazyglpk.o $(GMODULE_LDFLAGS) $(LDFLAGS)
 
-bin/test_lazylpsolverlibs$(BINSUFFIX): $(LIB) $(TST_OBJ) dirs
-	$(CC) $(TST_OBJ) -o bin/test_lazylpsolverlibs$(BINSUFFIX) $(GMODULE_LDFLAGS) $(LLSL_LDFLAGS) $(LDFLAGS)
-
 # For your convenience, an archive of solver headers can be downloaded.
 download:
 	wget -c https://lazylpsolverlibs.googlecode.com/files/solver_headers.tar.gz
@@ -51,10 +48,10 @@ download:
 
 # This target to regenerate the files. For maintenance only.
 generate_stubs:
-	sh tools/stublib.sh -l cplex123,cplex121,cplex120,cplex112,cplex111,cplex110,cplex102,cplex101,cplex100,cplex91,cplex90,cplex81,cplex80,cplex75,cplex71,cplex70,cplex66,cplex65,cplex60,cplex50,cplex40,cplex30,cplex21,cplex20 -e LAZYLPSOLVERLIBS_CPLEX_LIB_PATH -f /usr/lib/libcplex.so -i tools/include/ilcplex/cplex.h > src/lazycplex.c
-	sh tools/stublib.sh -l gurobi50,gurobi461,gurobi452,gurobi402,gurobi303 -e LAZYLPSOLVERLIBS_GUROBI_LIB_PATH -f /usr/lib/libgurobi.so -i tools/include/gurobi_c.h > src/lazygurobi.c
-	sh tools/stublib.sh -l xprs -e LAZYLPSOLVERLIBS_XPRS_LIB_PATH -f /usr/lib/libxprs.so -i tools/include/xprs.h > src/lazyxprs.c
-	sh tools/stublib.sh -l glpk -e LAZYLPSOLVERLIBS_GLPK_LIB_PATH -f /usr/lib/libglpk.so -i tools/include/glpk.h > src/lazyglpk.c
+	sh tools/stublib.sh -l cplex123,cplex121,cplex120,cplex112,cplex111,cplex110,cplex102,cplex101,cplex100,cplex91,cplex90,cplex81,cplex80,cplex75,cplex71,cplex70,cplex66,cplex65,cplex60,cplex50,cplex40,cplex30,cplex21,cplex20 -e LAZYLPSOLVERLIBS_CPLEX_LIB_PATH -f /usr/lib/libcplex.so -i tools/include/ilcplex/cplex.h -d"<ilcplex/cplex.h>" -c$(PREPROCESSOR) > src/lazycplex.c
+	sh tools/stublib.sh -l gurobi50,gurobi461,gurobi452,gurobi402,gurobi303 -e LAZYLPSOLVERLIBS_GUROBI_LIB_PATH -f /usr/lib/libgurobi.so -i tools/include/gurobi_c.h -d"<gurobi_c.h>" -c$(PREPROCESSOR) > src/lazygurobi.c
+	sh tools/stublib.sh -l xprs -e LAZYLPSOLVERLIBS_XPRS_LIB_PATH -f /usr/lib/libxprs.so -i tools/include/xprs.h -d"<xprs.h>" -c$(PREPROCESSOR) > src/lazyxprs.c
+	sh tools/stublib.sh -l glpk -e LAZYLPSOLVERLIBS_GLPK_LIB_PATH -f /usr/lib/libglpk.so -i tools/include/glpk.h -d"<glpk.h>" -c$(PREPROCESSOR) > src/lazyglpk.c
 
 install: all
 	@echo installing libraries to $(DESTDIR)$(PREFIX)/lib
@@ -63,16 +60,8 @@ install: all
 	@install -Dm644 lib/liblazyxprs.so $(DESTDIR)$(PREFIX)/lib/liblazyxprs.so
 	@install -Dm644 lib/liblazygurobi.so $(DESTDIR)$(PREFIX)/lib/liblazygurobi.so
 	@install -Dm644 lib/liblazyglpk.so $(DESTDIR)$(PREFIX)/lib/liblazyglpk.so
-	@echo installing headers to $(DESTDIR)$(PREFIX)/include
-	@mkdir -p $(DESTDIR)$(PREFIX)/include
-	@install -Dm644 include/lazycplex.h $(DESTDIR)$(PREFIX)/include/lazycplex.h
-	@install -Dm644 include/lazyxprs.h $(DESTDIR)$(PREFIX)/include/lazyxprs.h
-	@install -Dm644 include/lazygurobi.h $(DESTDIR)$(PREFIX)/include/lazygurobi.h
-	@install -Dm644 include/lazyglpk.h $(DESTDIR)$(PREFIX)/include/lazyglpk.h
-	@install -Dm644 include/lazy_loading_status.h $(DESTDIR)$(PREFIX)/include/lazy_loading_status.h
-	@echo installing binary to $(DESTDIR)$(PREFIX)/bin
+	@echo installing binaries to $(DESTDIR)$(PREFIX)/bin
 	@mkdir -p $(DESTDIR)$(PREFIX)/bin
-	@install -Dm755 bin/test_lazylpsolverlibs $(DESTDIR)$(PREFIX)/bin/test_lazylpsolverlibs
 
 uninstall:
 	@echo removing libraries from $(DESTDIR)$(PREFIX)/lib
@@ -80,12 +69,6 @@ uninstall:
 	@rm -f $(DESTDIR)$(PREFIX)/lib/liblazyxprs.so
 	@rm -f $(DESTDIR)$(PREFIX)/lib/liblazygurobi.so
 	@rm -f $(DESTDIR)$(PREFIX)/lib/liblazyglpk.so
-	@echo removing headers from $(DESTDIR)$(PREFIX)/include
-	@rm -f $(DESTDIR)$(PREFIX)/include/lazycplex.h
-	@rm -f $(DESTDIR)$(PREFIX)/include/lazyxprs.h
-	@rm -f $(DESTDIR)$(PREFIX)/include/lazygurobi.h
-	@rm -f $(DESTDIR)$(PREFIX)/include/lazyglpk.h
-	@rm -f $(DESTDIR)$(PREFIX)/include/lazy_loading_status.h
 	@echo removing headers from $(DESTDIR)$(PREFIX)/bin
 	@rm -f $(DESTDIR)$(PREFIX)/bin/test_lazylpsolverlibs
 
