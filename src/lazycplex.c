@@ -58,6 +58,7 @@ int load_module(){
     if (LAZYLPSOLVERLIBS_CPLEX_LIB_PATH != NULL) {
         if (!module) module = g_module_open(LAZYLPSOLVERLIBS_CPLEX_LIB_PATH, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     }
+    if (!module) module = g_module_open_all("cplex123", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     if (!module) module = g_module_open_all("cplex121", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     if (!module) module = g_module_open_all("cplex120", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     if (!module) module = g_module_open_all("cplex112", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);

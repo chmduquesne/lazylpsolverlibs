@@ -2,7 +2,14 @@
 
 # extract the function name from a function declaration
 func_name(){
-    echo $@ | sed 's/ *(.*) *;/();/g' \
+    echo $@ | sed 's/__attribute__((__stdcall__))//g' \
+            | sed 's/__attribute__((__cdecl__))//g' \
+            | sed 's/__attribute__//g' \
+            | sed 's/__cdecl__//g' \
+            | sed 's/__stdcall__//g' \
+            | sed 's/__stdcall//g' \
+            | sed 's/__cdecl//g' \
+            | sed 's/ *(.*) *;/();/g' \
             | sed 's/ /\n/g' \
             | grep '(' \
             | sed 's/();//g' \
@@ -11,7 +18,14 @@ func_name(){
 
 # extract the arguments names from a function declaration
 func_args(){
-    echo $@ | sed 's/[^(]*(\(.*\)) *;/\1)/g' \
+    echo $@ | sed 's/__attribute__((__stdcall__))//g' \
+            | sed 's/__attribute__((__cdecl__))//g' \
+            | sed 's/__attribute__//g' \
+            | sed 's/__cdecl__//g' \
+            | sed 's/__stdcall__//g' \
+            | sed 's/__stdcall//g' \
+            | sed 's/__cdecl//g' \
+            | sed 's/[^(]*(\(.*\)) *;/\1)/g' \
             | sed 's/(\([^)]*\)) *([^)]*)/\1/g' \
             | sed 's/, *\.\.\.//g' \
             | sed 's/ *, */, /g' \
@@ -54,17 +68,21 @@ make_func(){
 make_symbol_decl(){
     name=$(func_name "$*")
     symbol="__symbolic_$name"
-    echo "$*"  | sed "s/\<$name\>/(*$symbol)/g" \
+    echo "$*"   | sed "s/\<$name\>/(*$symbol)/g" \
                 | sed 's/;/ = NULL;/g'
 }
 
 # declare the necessary headers
 make_include_headers(){
-    echo "#include <gmodule.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include \"$header\""
+    echo "#include <gmodule.h>"
+    echo "#include <stdio.h>"
+    echo "#include <stdlib.h>"
+    echo "#include <string.h>"
+    if [ x"$declared_header" != x ]; then
+        echo "#include $declared_header"
+    else
+        echo "#include $header"
+    fi
 }
 
 # create the loading interface
@@ -140,7 +158,7 @@ echo "    return (module != NULL);
 header_to_cfile(){
     func_decl=$(mktemp)
     cat $header | grep -v "#include" \
-                | cpp \
+                | $cpp \
                 | grep -v '^#' \
                 | tr '\n' ' ' \
                 | sed 's/{[^}]*}/{}/g' \
@@ -168,15 +186,18 @@ header_to_cfile(){
 }
 
 usage(){
-    echo "Usage: stublib.sh -i header -l libnames [-e environment_var] [-f try_first]"
+    echo "Usage: stublib.sh -i header -l libnames [-e environment_var] [-f try_first] [-d declared_header] [-c c_preprocessor]"
     echo ""
     echo " - libnames has to be a coma-separated list, without the prefix lib nor the extension name .so"
     echo " - try_first has to be a full path that will be tried first"
     echo " - environment_var will be tried just after (interpreted as a full path as well)"
     echo " - libnames will be tried in the order specified, in every directory of LD_LIBRARY_PATH (linux) or PATH (windows)"
+    echo " - declared_header will be used instead of header if specified"
+    echo " - c_preprocessor will be used instead of cpp if specified"
 }
 
-while getopts "hi:l:e:f:" opt; do
+cpp=cpp
+while getopts "hi:l:e:f:d:c:" opt; do
     case $opt in
         h)
             usage
@@ -193,6 +214,12 @@ while getopts "hi:l:e:f:" opt; do
             ;;
         f)
             try_first=$OPTARG
+            ;;
+        d)
+            declared_header=$OPTARG
+            ;;
+        c)
+            cpp=$OPTARG
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
