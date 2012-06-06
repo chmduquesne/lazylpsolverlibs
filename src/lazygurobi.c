@@ -174,12 +174,16 @@ int GRBgetattrinfo(GRBmodel *model, const char *attrname, int *datatypeP, int *s
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetattrinfo", (gpointer *) &__symbolic_GRBgetattrinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetattrinfo\n");
+                "lazylpsolverlibs: the symbol GRBgetattrinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetattrinfo(model, attrname, datatypeP, sizeP, settableP);
@@ -189,12 +193,16 @@ int GRBgetintattr(GRBmodel *model, const char *attrname, int *valueP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetintattr", (gpointer *) &__symbolic_GRBgetintattr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetintattr\n");
+                "lazylpsolverlibs: the symbol GRBgetintattr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetintattr(model, attrname, valueP);
@@ -204,12 +212,16 @@ int GRBsetintattr(GRBmodel *model, const char *attrname, int newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetintattr", (gpointer *) &__symbolic_GRBsetintattr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetintattr\n");
+                "lazylpsolverlibs: the symbol GRBsetintattr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetintattr(model, attrname, newvalue);
@@ -219,12 +231,16 @@ int GRBgetintattrelement(GRBmodel *model, const char *attrname, int element, int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetintattrelement", (gpointer *) &__symbolic_GRBgetintattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetintattrelement\n");
+                "lazylpsolverlibs: the symbol GRBgetintattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetintattrelement(model, attrname, element, valueP);
@@ -234,12 +250,16 @@ int GRBsetintattrelement(GRBmodel *model, const char *attrname, int element, int
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetintattrelement", (gpointer *) &__symbolic_GRBsetintattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetintattrelement\n");
+                "lazylpsolverlibs: the symbol GRBsetintattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetintattrelement(model, attrname, element, newvalue);
@@ -249,12 +269,16 @@ int GRBgetintattrarray(GRBmodel *model, const char *attrname, int first, int len
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetintattrarray", (gpointer *) &__symbolic_GRBgetintattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetintattrarray\n");
+                "lazylpsolverlibs: the symbol GRBgetintattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetintattrarray(model, attrname, first, len, values);
@@ -264,12 +288,16 @@ int GRBsetintattrarray(GRBmodel *model, const char *attrname, int first, int len
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetintattrarray", (gpointer *) &__symbolic_GRBsetintattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetintattrarray\n");
+                "lazylpsolverlibs: the symbol GRBsetintattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetintattrarray(model, attrname, first, len, newvalues);
@@ -279,12 +307,16 @@ int GRBgetintattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetintattrlist", (gpointer *) &__symbolic_GRBgetintattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetintattrlist\n");
+                "lazylpsolverlibs: the symbol GRBgetintattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetintattrlist(model, attrname, len, ind, values);
@@ -294,12 +326,16 @@ int GRBsetintattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetintattrlist", (gpointer *) &__symbolic_GRBsetintattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetintattrlist\n");
+                "lazylpsolverlibs: the symbol GRBsetintattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetintattrlist(model, attrname, len, ind, newvalues);
@@ -309,12 +345,16 @@ int GRBgetcharattrelement(GRBmodel *model, const char *attrname, int element, ch
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetcharattrelement", (gpointer *) &__symbolic_GRBgetcharattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetcharattrelement\n");
+                "lazylpsolverlibs: the symbol GRBgetcharattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetcharattrelement(model, attrname, element, valueP);
@@ -324,12 +364,16 @@ int GRBsetcharattrelement(GRBmodel *model, const char *attrname, int element, ch
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetcharattrelement", (gpointer *) &__symbolic_GRBsetcharattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetcharattrelement\n");
+                "lazylpsolverlibs: the symbol GRBsetcharattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetcharattrelement(model, attrname, element, newvalue);
@@ -339,12 +383,16 @@ int GRBgetcharattrarray(GRBmodel *model, const char *attrname, int first, int le
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetcharattrarray", (gpointer *) &__symbolic_GRBgetcharattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetcharattrarray\n");
+                "lazylpsolverlibs: the symbol GRBgetcharattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetcharattrarray(model, attrname, first, len, values);
@@ -354,12 +402,16 @@ int GRBsetcharattrarray(GRBmodel *model, const char *attrname, int first, int le
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetcharattrarray", (gpointer *) &__symbolic_GRBsetcharattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetcharattrarray\n");
+                "lazylpsolverlibs: the symbol GRBsetcharattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetcharattrarray(model, attrname, first, len, newvalues);
@@ -369,12 +421,16 @@ int GRBgetcharattrlist(GRBmodel *model, const char *attrname, int len, int *ind,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetcharattrlist", (gpointer *) &__symbolic_GRBgetcharattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetcharattrlist\n");
+                "lazylpsolverlibs: the symbol GRBgetcharattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetcharattrlist(model, attrname, len, ind, values);
@@ -384,12 +440,16 @@ int GRBsetcharattrlist(GRBmodel *model, const char *attrname, int len, int *ind,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetcharattrlist", (gpointer *) &__symbolic_GRBsetcharattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetcharattrlist\n");
+                "lazylpsolverlibs: the symbol GRBsetcharattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetcharattrlist(model, attrname, len, ind, newvalues);
@@ -399,12 +459,16 @@ int GRBgetdblattr(GRBmodel *model, const char *attrname, double *valueP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetdblattr", (gpointer *) &__symbolic_GRBgetdblattr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetdblattr\n");
+                "lazylpsolverlibs: the symbol GRBgetdblattr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetdblattr(model, attrname, valueP);
@@ -414,12 +478,16 @@ int GRBsetdblattr(GRBmodel *model, const char *attrname, double newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetdblattr", (gpointer *) &__symbolic_GRBsetdblattr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetdblattr\n");
+                "lazylpsolverlibs: the symbol GRBsetdblattr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetdblattr(model, attrname, newvalue);
@@ -429,12 +497,16 @@ int GRBgetdblattrelement(GRBmodel *model, const char *attrname, int element, dou
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetdblattrelement", (gpointer *) &__symbolic_GRBgetdblattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetdblattrelement\n");
+                "lazylpsolverlibs: the symbol GRBgetdblattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetdblattrelement(model, attrname, element, valueP);
@@ -444,12 +516,16 @@ int GRBsetdblattrelement(GRBmodel *model, const char *attrname, int element, dou
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetdblattrelement", (gpointer *) &__symbolic_GRBsetdblattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetdblattrelement\n");
+                "lazylpsolverlibs: the symbol GRBsetdblattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetdblattrelement(model, attrname, element, newvalue);
@@ -459,12 +535,16 @@ int GRBgetdblattrarray(GRBmodel *model, const char *attrname, int first, int len
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetdblattrarray", (gpointer *) &__symbolic_GRBgetdblattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetdblattrarray\n");
+                "lazylpsolverlibs: the symbol GRBgetdblattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetdblattrarray(model, attrname, first, len, values);
@@ -474,12 +554,16 @@ int GRBsetdblattrarray(GRBmodel *model, const char *attrname, int first, int len
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetdblattrarray", (gpointer *) &__symbolic_GRBsetdblattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetdblattrarray\n");
+                "lazylpsolverlibs: the symbol GRBsetdblattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetdblattrarray(model, attrname, first, len, newvalues);
@@ -489,12 +573,16 @@ int GRBgetdblattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetdblattrlist", (gpointer *) &__symbolic_GRBgetdblattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetdblattrlist\n");
+                "lazylpsolverlibs: the symbol GRBgetdblattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetdblattrlist(model, attrname, len, ind, values);
@@ -504,12 +592,16 @@ int GRBsetdblattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetdblattrlist", (gpointer *) &__symbolic_GRBsetdblattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetdblattrlist\n");
+                "lazylpsolverlibs: the symbol GRBsetdblattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetdblattrlist(model, attrname, len, ind, newvalues);
@@ -519,12 +611,16 @@ int GRBgetstrattr(GRBmodel *model, const char *attrname, char **valueP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetstrattr", (gpointer *) &__symbolic_GRBgetstrattr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetstrattr\n");
+                "lazylpsolverlibs: the symbol GRBgetstrattr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetstrattr(model, attrname, valueP);
@@ -534,12 +630,16 @@ int GRBsetstrattr(GRBmodel *model, const char *attrname, char *newvalue){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetstrattr", (gpointer *) &__symbolic_GRBsetstrattr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetstrattr\n");
+                "lazylpsolverlibs: the symbol GRBsetstrattr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetstrattr(model, attrname, newvalue);
@@ -549,12 +649,16 @@ int GRBgetstrattrelement(GRBmodel *model, const char *attrname, int element, cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetstrattrelement", (gpointer *) &__symbolic_GRBgetstrattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetstrattrelement\n");
+                "lazylpsolverlibs: the symbol GRBgetstrattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetstrattrelement(model, attrname, element, valueP);
@@ -564,12 +668,16 @@ int GRBsetstrattrelement(GRBmodel *model, const char *attrname, int element, cha
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetstrattrelement", (gpointer *) &__symbolic_GRBsetstrattrelement)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetstrattrelement\n");
+                "lazylpsolverlibs: the symbol GRBsetstrattrelement could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetstrattrelement(model, attrname, element, newvalue);
@@ -579,12 +687,16 @@ int GRBgetstrattrarray(GRBmodel *model, const char *attrname, int first, int len
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetstrattrarray", (gpointer *) &__symbolic_GRBgetstrattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetstrattrarray\n");
+                "lazylpsolverlibs: the symbol GRBgetstrattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetstrattrarray(model, attrname, first, len, values);
@@ -594,12 +706,16 @@ int GRBsetstrattrarray(GRBmodel *model, const char *attrname, int first, int len
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetstrattrarray", (gpointer *) &__symbolic_GRBsetstrattrarray)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetstrattrarray\n");
+                "lazylpsolverlibs: the symbol GRBsetstrattrarray could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetstrattrarray(model, attrname, first, len, newvalues);
@@ -609,12 +725,16 @@ int GRBgetstrattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetstrattrlist", (gpointer *) &__symbolic_GRBgetstrattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetstrattrlist\n");
+                "lazylpsolverlibs: the symbol GRBgetstrattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetstrattrlist(model, attrname, len, ind, values);
@@ -624,12 +744,16 @@ int GRBsetstrattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetstrattrlist", (gpointer *) &__symbolic_GRBsetstrattrlist)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetstrattrlist\n");
+                "lazylpsolverlibs: the symbol GRBsetstrattrlist could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetstrattrlist(model, attrname, len, ind, newvalues);
@@ -639,12 +763,16 @@ int GRBsetcallbackfunc(GRBmodel *model, int ( *cb)(GRBmodel *model, void *cbdata
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetcallbackfunc", (gpointer *) &__symbolic_GRBsetcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetcallbackfunc\n");
+                "lazylpsolverlibs: the symbol GRBsetcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetcallbackfunc(model, cb, usrdata);
@@ -654,12 +782,16 @@ int GRBgetcallbackfunc(GRBmodel *model, int ( **cbP)(GRBmodel *model, void *cbda
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetcallbackfunc", (gpointer *) &__symbolic_GRBgetcallbackfunc)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetcallbackfunc\n");
+                "lazylpsolverlibs: the symbol GRBgetcallbackfunc could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetcallbackfunc(model, cbP);
@@ -669,12 +801,16 @@ int GRBcbget(void *cbdata, int where, int what, void *resultP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBcbget", (gpointer *) &__symbolic_GRBcbget)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBcbget\n");
+                "lazylpsolverlibs: the symbol GRBcbget could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBcbget(cbdata, where, what, resultP);
@@ -684,12 +820,16 @@ int GRBcbsolution(void *cbdata, const double *solution){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBcbsolution", (gpointer *) &__symbolic_GRBcbsolution)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBcbsolution\n");
+                "lazylpsolverlibs: the symbol GRBcbsolution could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBcbsolution(cbdata, solution);
@@ -699,12 +839,16 @@ int GRBcbcut(void *cbdata, int cutlen, const int *cutind, const double *cutval, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBcbcut", (gpointer *) &__symbolic_GRBcbcut)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBcbcut\n");
+                "lazylpsolverlibs: the symbol GRBcbcut could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBcbcut(cbdata, cutlen, cutind, cutval, cutsense, cutrhs);
@@ -714,12 +858,16 @@ int GRBgetcoeff(GRBmodel *model, int constr, int var, double *valP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetcoeff", (gpointer *) &__symbolic_GRBgetcoeff)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetcoeff\n");
+                "lazylpsolverlibs: the symbol GRBgetcoeff could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetcoeff(model, constr, var, valP);
@@ -729,12 +877,16 @@ int GRBgetconstrs(GRBmodel *model, int *numnzP, int *cbeg, int *cind, double *cv
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetconstrs", (gpointer *) &__symbolic_GRBgetconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetconstrs\n");
+                "lazylpsolverlibs: the symbol GRBgetconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetconstrs(model, numnzP, cbeg, cind, cval, start, len);
@@ -744,12 +896,16 @@ int GRBgetvars(GRBmodel *model, int *numnzP, int *vbeg, int *vind, double *vval,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetvars", (gpointer *) &__symbolic_GRBgetvars)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetvars\n");
+                "lazylpsolverlibs: the symbol GRBgetvars could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetvars(model, numnzP, vbeg, vind, vval, start, len);
@@ -759,12 +915,16 @@ int GRBgetsos(GRBmodel *model, int *nummembersP, int *sostype, int *beg, int *in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetsos", (gpointer *) &__symbolic_GRBgetsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetsos\n");
+                "lazylpsolverlibs: the symbol GRBgetsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetsos(model, nummembersP, sostype, beg, ind, weight, start, len);
@@ -774,12 +934,16 @@ int GRBoptimize(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBoptimize", (gpointer *) &__symbolic_GRBoptimize)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBoptimize\n");
+                "lazylpsolverlibs: the symbol GRBoptimize could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBoptimize(model);
@@ -789,12 +953,16 @@ GRBmodel * GRBcopymodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBcopymodel", (gpointer *) &__symbolic_GRBcopymodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBcopymodel\n");
+                "lazylpsolverlibs: the symbol GRBcopymodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBcopymodel(model);
@@ -804,12 +972,16 @@ GRBmodel * GRBfixedmodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBfixedmodel", (gpointer *) &__symbolic_GRBfixedmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBfixedmodel\n");
+                "lazylpsolverlibs: the symbol GRBfixedmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBfixedmodel(model);
@@ -819,12 +991,16 @@ int GRBgetcbwhatinfo(void *cbdata, int what, int *typeP, int *sizeP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetcbwhatinfo", (gpointer *) &__symbolic_GRBgetcbwhatinfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetcbwhatinfo\n");
+                "lazylpsolverlibs: the symbol GRBgetcbwhatinfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetcbwhatinfo(cbdata, what, typeP, sizeP);
@@ -834,12 +1010,16 @@ GRBmodel * GRBrelaxmodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBrelaxmodel", (gpointer *) &__symbolic_GRBrelaxmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBrelaxmodel\n");
+                "lazylpsolverlibs: the symbol GRBrelaxmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBrelaxmodel(model);
@@ -849,12 +1029,16 @@ int GRBconverttofixed(GRBmodel *lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBconverttofixed", (gpointer *) &__symbolic_GRBconverttofixed)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBconverttofixed\n");
+                "lazylpsolverlibs: the symbol GRBconverttofixed could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBconverttofixed(lp);
@@ -864,12 +1048,16 @@ GRBmodel * GRBpresolvemodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBpresolvemodel", (gpointer *) &__symbolic_GRBpresolvemodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBpresolvemodel\n");
+                "lazylpsolverlibs: the symbol GRBpresolvemodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBpresolvemodel(model);
@@ -879,12 +1067,16 @@ GRBmodel * GRBiismodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBiismodel", (gpointer *) &__symbolic_GRBiismodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBiismodel\n");
+                "lazylpsolverlibs: the symbol GRBiismodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBiismodel(model);
@@ -894,12 +1086,16 @@ GRBmodel * GRBfeasibility(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBfeasibility", (gpointer *) &__symbolic_GRBfeasibility)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBfeasibility\n");
+                "lazylpsolverlibs: the symbol GRBfeasibility could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBfeasibility(model);
@@ -909,12 +1105,16 @@ int GRBreadmodel(GRBenv *env, const char *filename, GRBmodel **modelP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBreadmodel", (gpointer *) &__symbolic_GRBreadmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBreadmodel\n");
+                "lazylpsolverlibs: the symbol GRBreadmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBreadmodel(env, filename, modelP);
@@ -924,12 +1124,16 @@ int GRBread(GRBmodel *model, const char *filename){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBread", (gpointer *) &__symbolic_GRBread)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBread\n");
+                "lazylpsolverlibs: the symbol GRBread could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBread(model, filename);
@@ -939,12 +1143,16 @@ int GRBwrite(GRBmodel *model, const char *filename){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBwrite", (gpointer *) &__symbolic_GRBwrite)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBwrite\n");
+                "lazylpsolverlibs: the symbol GRBwrite could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBwrite(model, filename);
@@ -954,12 +1162,16 @@ int GRBnewmodel(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars, 
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBnewmodel", (gpointer *) &__symbolic_GRBnewmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBnewmodel\n");
+                "lazylpsolverlibs: the symbol GRBnewmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBnewmodel(env, modelP, Pname, numvars, obj, lb, ub, vtype, varnames);
@@ -969,12 +1181,16 @@ int GRBloadmodel(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBloadmodel", (gpointer *) &__symbolic_GRBloadmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBloadmodel\n");
+                "lazylpsolverlibs: the symbol GRBloadmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBloadmodel(env, modelP, Pname, numvars, numconstrs, objsense, objcon, obj, sense, rhs, vbeg, vlen, vind, vval, lb, ub, vtype, varnames, constrnames);
@@ -984,12 +1200,16 @@ int GRBaddvar(GRBmodel *model, int numnz, int *vind, double *vval, double obj, d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddvar", (gpointer *) &__symbolic_GRBaddvar)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddvar\n");
+                "lazylpsolverlibs: the symbol GRBaddvar could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddvar(model, numnz, vind, vval, obj, lb, ub, vtype, varname);
@@ -999,12 +1219,16 @@ int GRBaddvars(GRBmodel *model, int numvars, int numnz, int *vbeg, int *vind, do
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddvars", (gpointer *) &__symbolic_GRBaddvars)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddvars\n");
+                "lazylpsolverlibs: the symbol GRBaddvars could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddvars(model, numvars, numnz, vbeg, vind, vval, obj, lb, ub, vtype, varnames);
@@ -1014,12 +1238,16 @@ int GRBaddconstr(GRBmodel *model, int numnz, int *cind, double *cval, char sense
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddconstr", (gpointer *) &__symbolic_GRBaddconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddconstr\n");
+                "lazylpsolverlibs: the symbol GRBaddconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddconstr(model, numnz, cind, cval, sense, rhs, constrnames);
@@ -1029,12 +1257,16 @@ int GRBaddconstrs(GRBmodel *model, int numconstrs, int numnz, int *cbeg, int *ci
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddconstrs", (gpointer *) &__symbolic_GRBaddconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddconstrs\n");
+                "lazylpsolverlibs: the symbol GRBaddconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddconstrs(model, numconstrs, numnz, cbeg, cind, cval, sense, rhs, constrnames);
@@ -1044,12 +1276,16 @@ int GRBaddrangeconstr(GRBmodel *model, int numnz, int *cind, double *cval, doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddrangeconstr", (gpointer *) &__symbolic_GRBaddrangeconstr)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddrangeconstr\n");
+                "lazylpsolverlibs: the symbol GRBaddrangeconstr could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddrangeconstr(model, numnz, cind, cval, lower, upper, constrnames);
@@ -1059,12 +1295,16 @@ int GRBaddrangeconstrs(GRBmodel *model, int numconstrs, int numnz, int *cbeg, in
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddrangeconstrs", (gpointer *) &__symbolic_GRBaddrangeconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddrangeconstrs\n");
+                "lazylpsolverlibs: the symbol GRBaddrangeconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddrangeconstrs(model, numconstrs, numnz, cbeg, cind, cval, lower, upper, constrnames);
@@ -1074,12 +1314,16 @@ int GRBaddsos(GRBmodel *model, int numsos, int nummembers, int *types, int *beg,
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBaddsos", (gpointer *) &__symbolic_GRBaddsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBaddsos\n");
+                "lazylpsolverlibs: the symbol GRBaddsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBaddsos(model, numsos, nummembers, types, beg, ind, weight);
@@ -1089,12 +1333,16 @@ int GRBdelvars(GRBmodel *model, int len, int *ind){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBdelvars", (gpointer *) &__symbolic_GRBdelvars)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBdelvars\n");
+                "lazylpsolverlibs: the symbol GRBdelvars could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBdelvars(model, len, ind);
@@ -1104,12 +1352,16 @@ int GRBdelconstrs(GRBmodel *model, int len, int *ind){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBdelconstrs", (gpointer *) &__symbolic_GRBdelconstrs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBdelconstrs\n");
+                "lazylpsolverlibs: the symbol GRBdelconstrs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBdelconstrs(model, len, ind);
@@ -1119,12 +1371,16 @@ int GRBdelsos(GRBmodel *model, int len, int *ind){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBdelsos", (gpointer *) &__symbolic_GRBdelsos)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBdelsos\n");
+                "lazylpsolverlibs: the symbol GRBdelsos could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBdelsos(model, len, ind);
@@ -1134,12 +1390,16 @@ int GRBchgcoeffs(GRBmodel *model, int cnt, int *cind, int *vind, double *val){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBchgcoeffs", (gpointer *) &__symbolic_GRBchgcoeffs)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBchgcoeffs\n");
+                "lazylpsolverlibs: the symbol GRBchgcoeffs could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBchgcoeffs(model, cnt, cind, vind, val);
@@ -1149,12 +1409,16 @@ int GRBupdatemodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBupdatemodel", (gpointer *) &__symbolic_GRBupdatemodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBupdatemodel\n");
+                "lazylpsolverlibs: the symbol GRBupdatemodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBupdatemodel(model);
@@ -1164,12 +1428,16 @@ int GRBresetmodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBresetmodel", (gpointer *) &__symbolic_GRBresetmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBresetmodel\n");
+                "lazylpsolverlibs: the symbol GRBresetmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBresetmodel(model);
@@ -1179,12 +1447,16 @@ int GRBfreemodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBfreemodel", (gpointer *) &__symbolic_GRBfreemodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBfreemodel\n");
+                "lazylpsolverlibs: the symbol GRBfreemodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBfreemodel(model);
@@ -1194,12 +1466,16 @@ int GRBcomputeIIS(GRBmodel *lp){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBcomputeIIS", (gpointer *) &__symbolic_GRBcomputeIIS)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBcomputeIIS\n");
+                "lazylpsolverlibs: the symbol GRBcomputeIIS could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBcomputeIIS(lp);
@@ -1209,12 +1485,16 @@ int GRBstrongbranch(GRBmodel *model, int num, int *cand, double *downobjbd, doub
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBstrongbranch", (gpointer *) &__symbolic_GRBstrongbranch)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBstrongbranch\n");
+                "lazylpsolverlibs: the symbol GRBstrongbranch could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBstrongbranch(model, num, cand, downobjbd, upobjbd, statusP);
@@ -1224,12 +1504,16 @@ int GRBcheckmodel(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBcheckmodel", (gpointer *) &__symbolic_GRBcheckmodel)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBcheckmodel\n");
+                "lazylpsolverlibs: the symbol GRBcheckmodel could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBcheckmodel(model);
@@ -1239,12 +1523,16 @@ void GRBsetsignal(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetsignal", (gpointer *) &__symbolic_GRBsetsignal)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetsignal\n");
+                "lazylpsolverlibs: the symbol GRBsetsignal could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetsignal(model);
@@ -1254,12 +1542,16 @@ void GRBterminate(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBterminate", (gpointer *) &__symbolic_GRBterminate)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBterminate\n");
+                "lazylpsolverlibs: the symbol GRBterminate could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBterminate(model);
@@ -1269,12 +1561,16 @@ void GRBmsg(GRBenv *env, const char *message){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBmsg", (gpointer *) &__symbolic_GRBmsg)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBmsg\n");
+                "lazylpsolverlibs: the symbol GRBmsg could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBmsg(env, message);
@@ -1284,12 +1580,16 @@ int GRBgetlogfile(GRBenv *env, FILE **logfileP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetlogfile", (gpointer *) &__symbolic_GRBgetlogfile)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetlogfile\n");
+                "lazylpsolverlibs: the symbol GRBgetlogfile could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetlogfile(env, logfileP);
@@ -1299,12 +1599,16 @@ int GRBsetlogfile(GRBenv *env, FILE *logfile){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetlogfile", (gpointer *) &__symbolic_GRBsetlogfile)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetlogfile\n");
+                "lazylpsolverlibs: the symbol GRBsetlogfile could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetlogfile(env, logfile);
@@ -1314,12 +1618,16 @@ int GRBgetintparam(GRBenv *env, const char *paramname, int *valueP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetintparam", (gpointer *) &__symbolic_GRBgetintparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetintparam\n");
+                "lazylpsolverlibs: the symbol GRBgetintparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetintparam(env, paramname, valueP);
@@ -1329,12 +1637,16 @@ int GRBgetdblparam(GRBenv *env, const char *paramname, double *valueP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetdblparam", (gpointer *) &__symbolic_GRBgetdblparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetdblparam\n");
+                "lazylpsolverlibs: the symbol GRBgetdblparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetdblparam(env, paramname, valueP);
@@ -1344,12 +1656,16 @@ int GRBgetstrparam(GRBenv *env, const char *paramname, char *valueP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetstrparam", (gpointer *) &__symbolic_GRBgetstrparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetstrparam\n");
+                "lazylpsolverlibs: the symbol GRBgetstrparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetstrparam(env, paramname, valueP);
@@ -1359,12 +1675,16 @@ int GRBgetintparaminfo(GRBenv *env, const char *paramname, int *valueP, int *min
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetintparaminfo", (gpointer *) &__symbolic_GRBgetintparaminfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetintparaminfo\n");
+                "lazylpsolverlibs: the symbol GRBgetintparaminfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetintparaminfo(env, paramname, valueP, minP, maxP, defP);
@@ -1374,12 +1694,16 @@ int GRBgetdblparaminfo(GRBenv *env, const char *paramname, double *valueP, doubl
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetdblparaminfo", (gpointer *) &__symbolic_GRBgetdblparaminfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetdblparaminfo\n");
+                "lazylpsolverlibs: the symbol GRBgetdblparaminfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetdblparaminfo(env, paramname, valueP, minP, maxP, defP);
@@ -1389,12 +1713,16 @@ int GRBgetstrparaminfo(GRBenv *env, const char *paramname, char *valueP, char *d
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetstrparaminfo", (gpointer *) &__symbolic_GRBgetstrparaminfo)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetstrparaminfo\n");
+                "lazylpsolverlibs: the symbol GRBgetstrparaminfo could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetstrparaminfo(env, paramname, valueP, defP);
@@ -1404,12 +1732,16 @@ int GRBsetintparam(GRBenv *env, const char *paramname, int value){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetintparam", (gpointer *) &__symbolic_GRBsetintparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetintparam\n");
+                "lazylpsolverlibs: the symbol GRBsetintparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetintparam(env, paramname, value);
@@ -1419,12 +1751,16 @@ int GRBsetdblparam(GRBenv *env, const char *paramname, double value){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetdblparam", (gpointer *) &__symbolic_GRBsetdblparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetdblparam\n");
+                "lazylpsolverlibs: the symbol GRBsetdblparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetdblparam(env, paramname, value);
@@ -1434,12 +1770,16 @@ int GRBsetstrparam(GRBenv *env, const char *paramname, const char *value){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBsetstrparam", (gpointer *) &__symbolic_GRBsetstrparam)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBsetstrparam\n");
+                "lazylpsolverlibs: the symbol GRBsetstrparam could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBsetstrparam(env, paramname, value);
@@ -1449,12 +1789,16 @@ int GRBgetparamtype(GRBenv *env, const char *paramname){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetparamtype", (gpointer *) &__symbolic_GRBgetparamtype)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetparamtype\n");
+                "lazylpsolverlibs: the symbol GRBgetparamtype could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetparamtype(env, paramname);
@@ -1464,12 +1808,16 @@ int GRBresetparams(GRBenv *env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBresetparams", (gpointer *) &__symbolic_GRBresetparams)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBresetparams\n");
+                "lazylpsolverlibs: the symbol GRBresetparams could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBresetparams(env);
@@ -1479,12 +1827,16 @@ int GRBwriteparams(GRBenv *env, const char *filename){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBwriteparams", (gpointer *) &__symbolic_GRBwriteparams)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBwriteparams\n");
+                "lazylpsolverlibs: the symbol GRBwriteparams could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBwriteparams(env, filename);
@@ -1494,12 +1846,16 @@ int GRBreadparams(GRBenv *env, const char *filename){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBreadparams", (gpointer *) &__symbolic_GRBreadparams)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBreadparams\n");
+                "lazylpsolverlibs: the symbol GRBreadparams could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBreadparams(env, filename);
@@ -1509,12 +1865,16 @@ int GRBgetnumparams(GRBenv *env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetnumparams", (gpointer *) &__symbolic_GRBgetnumparams)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetnumparams\n");
+                "lazylpsolverlibs: the symbol GRBgetnumparams could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetnumparams(env);
@@ -1524,12 +1884,16 @@ int GRBgetparamname(GRBenv *env, int i, char **paramnameP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetparamname", (gpointer *) &__symbolic_GRBgetparamname)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetparamname\n");
+                "lazylpsolverlibs: the symbol GRBgetparamname could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetparamname(env, i, paramnameP);
@@ -1539,12 +1903,16 @@ int GRBloadenv(GRBenv **envP, const char *logfilename){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBloadenv", (gpointer *) &__symbolic_GRBloadenv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBloadenv\n");
+                "lazylpsolverlibs: the symbol GRBloadenv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBloadenv(envP, logfilename);
@@ -1554,12 +1922,16 @@ GRBenv * GRBgetenv(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetenv", (gpointer *) &__symbolic_GRBgetenv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetenv\n");
+                "lazylpsolverlibs: the symbol GRBgetenv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetenv(model);
@@ -1569,12 +1941,16 @@ void GRBfreeenv(GRBenv *env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBfreeenv", (gpointer *) &__symbolic_GRBfreeenv)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBfreeenv\n");
+                "lazylpsolverlibs: the symbol GRBfreeenv could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBfreeenv(env);
@@ -1584,12 +1960,16 @@ const char * GRBgeterrormsg(GRBenv *env){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgeterrormsg", (gpointer *) &__symbolic_GRBgeterrormsg)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgeterrormsg\n");
+                "lazylpsolverlibs: the symbol GRBgeterrormsg could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgeterrormsg(env);
@@ -1599,12 +1979,16 @@ const char * GRBgetmerrormsg(GRBmodel *model){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBgetmerrormsg", (gpointer *) &__symbolic_GRBgetmerrormsg)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBgetmerrormsg\n");
+                "lazylpsolverlibs: the symbol GRBgetmerrormsg could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBgetmerrormsg(model);
@@ -1614,12 +1998,16 @@ void GRBversion(int *majorP, int *minorP, int *technicalP){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBversion", (gpointer *) &__symbolic_GRBversion)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBversion\n");
+                "lazylpsolverlibs: the symbol GRBversion could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBversion(majorP, minorP, technicalP);
@@ -1629,12 +2017,16 @@ char * GRBplatform(void){
         if (!module) {
             if (!load_module()) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find the proper library\n");
+                "lazylpsolverlibs: could no load library. Suggestions:\n");
+                fprintf(stderr,
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                fprintf(stderr,
+                " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
         }
         if (!g_module_symbol(module, "GRBplatform", (gpointer *) &__symbolic_GRBplatform)) {
                 fprintf(stderr,
-                "lazylpsolverlibs: could not find GRBplatform\n");
+                "lazylpsolverlibs: the symbol GRBplatform could not be found: expect a segfault\n");
         }
     }
     return __symbolic_GRBplatform();
