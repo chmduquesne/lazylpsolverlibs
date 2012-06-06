@@ -12,18 +12,15 @@ installDir $PROGRAMFILES\GnuWin32
 !insertmacro MUI_LANGUAGE "English"
 
 section
-setOutPath "$INSTDIR\include"
-file include\lazy_loading_status.h
-file include\lazycplex.h
-file include\lazyglpk.h
-file include\lazygurobi.h
-file include\lazyxprs.h
 setOutPath "$INSTDIR\bin"
 file bin\lazycplex.dll
 file bin\lazyglpk.dll
 file bin\lazygurobi.dll
 file bin\lazyxprs.dll
-file bin\test_lazylpsolverlibs.exe
+file bin\test_lazycplex.exe
+file bin\test_lazyglpk.exe
+file bin\test_lazygurobi.exe
+file bin\test_lazyxprs.exe
 writeUninstaller "$INSTDIR\uninstall\lazylpsolverlibs-VERSION_uninstaller.exe"
 createDirectory "$SMPROGRAMS\GnuWin32"
 createDirectory "$SMPROGRAMS\GnuWin32\lazylpsolverlibs"
@@ -34,17 +31,14 @@ sectionEnd
 section "Uninstall"
 delete "$INSTDIR\..\uninstall\lazylpsolverlibs-VERSION_uninstaller.exe"
 rmdir  "$INSTDIR\..\uninstall"
-delete "$INSTDIR\..\include\lazy_loading_status.h"
-delete "$INSTDIR\..\include\lazycplex.h"
-delete "$INSTDIR\..\include\lazyglpk.h"
-delete "$INSTDIR\..\include\lazygurobi.h"
-delete "$INSTDIR\..\include\lazyxprs.h"
-rmdir  "$INSTDIR\..\include"
 delete "$INSTDIR\..\bin\lazycplex.dll"
 delete "$INSTDIR\..\bin\lazyglpk.dll"
 delete "$INSTDIR\..\bin\lazygurobi.dll"
 delete "$INSTDIR\..\bin\lazyxprs.dll"
-delete "$INSTDIR\..\bin\test_lazylpsolverlibs.exe"
+delete "$INSTDIR\..\bin\test_lazycplex.exe"
+delete "$INSTDIR\..\bin\test_lazyglpk.exe"
+delete "$INSTDIR\..\bin\test_lazygurobi.exe"
+delete "$INSTDIR\..\bin\test_lazyxprs.exe"
 rmdir  "$INSTDIR\..\bin"
 rmdir  "$INSTDIR\..\..\GnuWin32"
 delete "$SMPROGRAMS\GnuWin32\lazylpsolverlibs\test lazylpsolverlibs VERSION.lnk"

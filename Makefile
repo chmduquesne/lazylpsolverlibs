@@ -62,6 +62,10 @@ install: all
 	@install -Dm644 lib/liblazyglpk.so $(DESTDIR)$(PREFIX)/lib/liblazyglpk.so
 	@echo installing binaries to $(DESTDIR)$(PREFIX)/bin
 	@mkdir -p $(DESTDIR)$(PREFIX)/bin
+	@install -Dm755 bin/test_lazycplex $(DESTDIR)$(PREFIX)/bin/test_lazycplex
+	@install -Dm755 bin/test_lazyxprs $(DESTDIR)$(PREFIX)/bin/test_lazyxprs
+	@install -Dm755 bin/test_lazygurobi $(DESTDIR)$(PREFIX)/bin/test_lazygurobi
+	@install -Dm755 bin/test_lazyglpk $(DESTDIR)$(PREFIX)/bin/test_lazyglpk
 
 uninstall:
 	@echo removing libraries from $(DESTDIR)$(PREFIX)/lib
@@ -70,7 +74,10 @@ uninstall:
 	@rm -f $(DESTDIR)$(PREFIX)/lib/liblazygurobi.so
 	@rm -f $(DESTDIR)$(PREFIX)/lib/liblazyglpk.so
 	@echo removing headers from $(DESTDIR)$(PREFIX)/bin
-	@rm -f $(DESTDIR)$(PREFIX)/bin/test_lazylpsolverlibs
+	@rm -f $(DESTDIR)$(PREFIX)/bin/test_lazycplex
+	@rm -f $(DESTDIR)$(PREFIX)/bin/test_lazyxprs
+	@rm -f $(DESTDIR)$(PREFIX)/bin/test_lazygurobi
+	@rm -f $(DESTDIR)$(PREFIX)/bin/test_lazyglpk
 
 clean:
 	rm -rf lib bin test/*.o src/*.o
@@ -125,6 +132,7 @@ tools/wine:
 
 nsis: tools/wine
 	@$(MAKE) clean
+	@$(MAKE) generate_stubs TARGET=WINE
 	@$(MAKE) TARGET=WINE
 	@cp tools/lazylpsolverlibs.nsi lazylpsolverlibs.nsi
 	@sed -i "s/VERSION/$(VERSION)/g" lazylpsolverlibs.nsi
@@ -139,3 +147,4 @@ nsis: tools/wine
 	@rm bin/lazygurobi.dll
 	@rm bin/lazyglpk.dll
 	@mv lazylpsolverlibs-$(VERSION)_installer.exe dist
+	@$(MAKE) generate_stubs
