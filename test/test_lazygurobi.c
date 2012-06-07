@@ -75,11 +75,6 @@ main(int argc, const char *argv[])
   error = GRBoptimize(model);
   if (error) goto QUIT;
 
-  /* Write model to 'mip1.lp' */
-
-  error = GRBwrite(model, "mip1.lp");
-  if (error) goto QUIT;
-
   /* Capture solution information */
 
   error = GRBgetintattr(model, GRB_INT_ATTR_STATUS, &optimstatus);
@@ -90,17 +85,6 @@ main(int argc, const char *argv[])
 
   error = GRBgetdblattrarray(model, GRB_DBL_ATTR_X, 0, 3, sol);
   if (error) goto QUIT;
-
-  printf("\nOptimization complete\n");
-  if (optimstatus == GRB_OPTIMAL) {
-    printf("Optimal objective: %.4e\n", objval);
-
-    printf("  x=%.0f, y=%.0f, z=%.0f\n", sol[0], sol[1], sol[2]);
-  } else if (optimstatus == GRB_INF_OR_UNBD) {
-    printf("Model is infeasible or unbounded\n");
-  } else {
-    printf("Optimization was stopped early\n");
-  }
 
 QUIT:
 
@@ -118,6 +102,8 @@ QUIT:
   /* Free environment */
 
   GRBfreeenv(env);
+
+  printf("gurobi: solved a problem sucessfully.\n");
 
   return 0;
 }
