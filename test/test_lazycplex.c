@@ -141,6 +141,7 @@ populatebyrow (CPXENVptr env, CPXLPptr lp)
     if ( status )  goto TERMINATE;
 
 TERMINATE:
+    printf("cplex: solved a problem sucessfully.\n");
 
     return (status);
 

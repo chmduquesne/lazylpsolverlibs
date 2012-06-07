@@ -1,11 +1,13 @@
 #include <glpk.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <float.h>
 
 int main(int argc, const char *argv[]) {
     glp_prob *lp;
     int ia[1+1000], ja[1+1000];
-    double ar[1+1000], z, x1, x2, x3;
+    double ar[1+1000];
     lp = glp_create_prob();
     glp_set_prob_name(lp, "sample");
     glp_set_obj_dir(lp, GLP_MAX);
@@ -36,13 +38,26 @@ int main(int argc, const char *argv[]) {
     ia[8] = 2, ja[8] = 3, ar[8] =  5.0; /* a[2,3] =  5 */
     ia[9] = 3, ja[9] = 3, ar[9] =  6.0; /* a[3,3] =  6 */
     glp_load_matrix(lp, 9, ia, ja, ar);
-    glp_simplex(lp, NULL);
-    z = glp_get_obj_val(lp);
-    x1 = glp_get_col_prim(lp, 1);
-    x2 = glp_get_col_prim(lp, 2);
-    x3 = glp_get_col_prim(lp, 3);
-    /*  printf("\nz = %g; x1 = %g; x2 = %g; x3 = %g\n",
-        z, x1, x2, x3);*/
+    glp_smcp params;
+    {
+        params.msg_lev = GLP_MSG_OFF;
+        params.meth = GLP_PRIMAL;
+        params.pricing = GLP_PT_STD;
+        params.r_test = GLP_RT_STD;
+        params.tol_bnd = 1e-7;
+        params.tol_dj = 1e-7;
+        params.tol_piv = 1e-10;
+        params.obj_ll = -DBL_MAX;
+        params.obj_ul = +DBL_MAX;
+        params.it_lim = INT_MAX;
+        params.tm_lim = INT_MAX;
+        params.out_frq = 500;
+        params.out_dly = 0;
+        params.presolve = GLP_OFF;
+    }
+    if (glp_simplex(lp, &params) == 0) {
+        printf("glpk: solved a problem sucessfully.\n");
+    }
     glp_delete_prob(lp);
     return 0;
 }

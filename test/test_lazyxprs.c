@@ -159,6 +159,8 @@ int main()
    if ((nReturn=XPRSdestroyprob(probg))) errormsg("XPRSdestroyprob",__LINE__,nReturn);
    if ((nReturn=XPRSfree())) errormsg("XPRSfree",__LINE__,nReturn);
 
+   printf("xpress: solved a problem sucessfully.\n");
+
    return 0;
 }
 
