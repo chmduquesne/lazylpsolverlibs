@@ -3,8 +3,10 @@ LAZYLPSOLVERLIBS README
 
 OVERVIEW
 ========
-lazylpsolverlibs intends to give you runtime library loading access to
-various commercial lp solvers.
+lazylpsolverlibs provides libraries that can replace at link time those of
+commercial lp solvers, and that act as runtime as these libraries (if they
+can be found on the system). It has been designed to make the packagers
+life easier.
 
 PROJECT PAGE
 ============
@@ -17,22 +19,59 @@ DEPENDENCIES
 
 INSTALLATION
 ============
-Read the INSTALL File
+./configure
+make download
+make generate_stubs
+make
+make install
+
+BUILDING THE WINDOWS VERSION
+============================
+You need mingw32. Install it, then find out the path of the compiler, and
+adapt "--host=" in the following "./configure" snippet
+
+./configure --prefix=/tmp/win32 \
+            --host=i586-mingw32msvc \
+            PKG_CONFIG_LIBDIR=tools/wine/lib/pkgconfig \
+            CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32"
+make download
+make tools/wine
+make generate_stubs
+make
+make install
+make nsis
+
+then grab the generated .exe from /tmp/win32
+
+INSTALLING THE WINDOWS VERSION
+==============================
+For example, to test with glpk:
+- Install glpk from http://gnuwin32.sourceforge.net/packages/glpk.htm
+  (using the setup link, "Complete package, except sources") It will
+  normally install itself to Program Files\GnuWin32
+- You also need gmodule-2.0 (in glib). The easiest way to get it is to
+  download the all-in-one bundle on http://www.gtk.org/download/win32.php
+  Extract it to C:\Program Files\GnuWin32
+- Now install lazylpsolverlibs through the setup file, and try to run
+  test_lazyglpk.exe: It should tell you that it succesfully solved a
+  problem.
 
 TESTING
 =======
-Run the test_lazylpsolverlibs executable
+You must have the related solver. Run:
+    test_lazycplex
+    test_lazyglpk
+    test_lazygurobi
+    test_lazyxprs
 
 USING
 =====
-Look at test_lazy{solver}.c, or take inspiration from the host page, which
-gives a pretty detailed explanation for glpk (the same applies for every
-solvers).
-
-ADDING TESTS
-============
-Tests should be added modifying test_lazy{solver}.c
+Instead of linking to cplex/xpress/gurobi/glpk, link to the related
+lazylpsolverlib library. You now have a program that is not linked to
+cplex/xpress/gurobi/glpk. You may distribute this program easily, and a
+new user will be able to use it without recompiling, just by setting a
+symlink or an environment variable.
 
 BUGS
 ====
-Report them to <chm.duquesne@gmail.com>
+Report them to <chmd@chmd.fr>
