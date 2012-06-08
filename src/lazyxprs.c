@@ -6,12 +6,20 @@
 
 /* searches and loads a library from standard paths */
 GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
-    char *LIB_PATH, *LIB_PATH_COPY, *p, *dir;
+    char *LIB_PATH, *LIB_PATH_COPY, *p, *dir, *path, *_name;
     GModule *res;
 
     p = NULL;
     dir = NULL;
     res = NULL;
+    path = NULL;
+
+    /* workaround https://bugzilla.gnome.org/show_bug.cgi?id=671212 */
+#ifdef _WIN32
+    _name = g_strconcat(name, ".dll", NULL);
+#else
+    _name = g_strconcat(name, NULL);
+#endif
 
 #ifdef _WIN32
     LIB_PATH = getenv("PATH");
@@ -21,8 +29,12 @@ GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
 #define PATH_SEP ':'
 #endif
 
-    res = g_module_open(g_module_build_path(NULL, name), flags);
+    path = g_module_build_path(NULL, _name);
+    res = g_module_open(path, flags);
+    g_free(path);
+
     if (res) {
+        g_free(_name);
         return res;
     }
     if (LIB_PATH) {
@@ -33,13 +45,17 @@ GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
         while ((p = strchr(p, PATH_SEP))) {
             *p = '\0';
             p++;
-            res = g_module_open(g_module_build_path(dir, name), flags);
+            path = g_module_build_path(dir, _name);
+            res = g_module_open(path, flags);
+            g_free(path);
             if (res) {
+                g_free(_name);
                 free(LIB_PATH_COPY);
                 return res;
             }
             dir = p;
         }
+        g_free(_name);
         res = g_module_open(g_module_build_path(dir, name), flags);
         free(LIB_PATH_COPY);
     }
