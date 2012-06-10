@@ -1,17 +1,5 @@
 #!/bin/sh
 
-#deb: install
-#    fpm -s dir -t deb -n lazylpsolverlibs -v $(VERSION) -C $(DESTDIR) -p lazylpsolverlibs-VERSION_ARCH.deb -d "libglib2.0-dev(>=0)"
-#
-#rpm: install
-#    fpm -s dir -t rpm -n lazylpsolverlibs -v $(VERSION) -C $(DESTDIR) -p lazylpsolverlibs-VERSION_ARCH.rpm -d "libglib2.0-dev(>=0)"
-#
-#nsis: install
-#    cp tools/lazylpsolverlibs.nsi $(DESTDIR)
-#    sed -i "s/VERSION/$(VERSION)/g" lazylpsolverlibs.nsi
-#    cp COPYING $(DESTDIR)
-#    cd $(DESTDIR) && makensis
-
 version(){
     echo $package_archive | sed "s/lazylpsolverlibs-\(.*\).tar.gz/\1/g"
 }
@@ -20,9 +8,10 @@ compile_linux(){
     mkdir -p /tmp/packaging/linux
     tar xvzf $package_archive -C /tmp/packaging/linux
     cd /tmp/packaging/linux/lazylpsolverlibs-$(version)
-    ./configure --prefix=/tmp/packaging/linux/install
-    mkdir tools
-    make download
+    ./get.headers
+    ./configure --prefix=/tmp/packaging/linux/install \
+        CFLAGS="-g -O2 -Itools/include" \
+        CPPFLAGS="-Itools/include"
     make
     make install
     cd -
@@ -44,11 +33,12 @@ compile_windows(){
     tar xvzf $package_archive -C /tmp/packaging/windows
     cd /tmp/packaging/windows/lazylpsolverlibs-$(version)
     get_wine_build_deps
+    ./get.headers
     ./configure --prefix=/tmp/packaging/windows/install \
-                --host=i586-mingw32msvc \
+                --host=i486-mingw32 \
                 PKG_CONFIG_LIBDIR=tools/wine/lib/pkgconfig \
-                CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32"
-    make download
+                CFLAGS="-Itools/include" \
+                CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32 -Itools/include"
     make generate_stubs
     make
     make install
