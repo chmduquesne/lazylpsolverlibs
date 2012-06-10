@@ -59,15 +59,9 @@ bin_test_lazyglpk_SOURCES = test/test_lazyglpk.c
 bin_test_lazyglpk_LDFLAGS = lib/liblazyglpk.la
 endif
 
-dist_data_DATA = tools/stublib.sh
+dist_data_DATA = get.headers tools/stublib.sh
 
 # additionnal targets
-
-# For your convenience, an archive of solver headers can be downloaded.
-download:
-	wget -c https://lazylpsolverlibs.googlecode.com/files/solver_headers.tar.gz
-	tar xzf solver_headers.tar.gz -C tools
-	rm solver_headers.tar.gz
 
 # This target to regenerate the files. For maintenance only.
 generate_stubs:
