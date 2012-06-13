@@ -7,5 +7,5 @@ Name: lazycplex
 Description: a loader for cplex
 Requires: gmodule-2.0
 Version: @PACKAGE_VERSION@
-Libs: -L${libdir} -llazycplex
-Cflags:
+Libs: -L${libdir} -llazycplex -pthread
+Cflags: -I${includedir}/lazylpsolverlibs

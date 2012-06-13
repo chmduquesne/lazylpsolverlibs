@@ -111,12 +111,12 @@ int (*__symbolic_CPXcopyobjname) (CPXCENVptr env, CPXLPptr lp, const char *objna
 int (*__symbolic_CPXcopybase) (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rstat) = NULL;
 int (*__symbolic_CPXcleanup) (CPXCENVptr env, CPXLPptr lp, double eps) = NULL;
 int (*__symbolic_CPXcopystart) (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rstat, const double *cprim, const double *rprim, const double *cdual, const double *rdual) = NULL;
-int (*__symbolic_CPXfreeprob) (CPXCENVptr env, CPXLPptr *lp_p) = NULL;
+int (*__symbolic_CPXfreeprob) (CPXCENVptr env, CPXLPptr * lp_p) = NULL;
 int (*__symbolic_CPXcopynettolp) (CPXCENVptr env, CPXLPptr lp, CPXCNETptr net) = NULL;
 int (*__symbolic_CPXNETextract) (CPXCENVptr env, CPXNETptr net, CPXCLPptr lp, int *colmap, int *rowmap) = NULL;
 int (*__symbolic_CPXlpopt) (CPXCENVptr env, CPXLPptr lp) = NULL;
-int (*__symbolic_CPXconcurrentlpopt) (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int P) = NULL;
-int (*__symbolic_CPXconcurrentmipopt) (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int P) = NULL;
+int (*__symbolic_CPXconcurrentlpopt) (CPXCENVptr env, CPXCENVptr * childenv, CPXLPptr lp, int P) = NULL;
+int (*__symbolic_CPXconcurrentmipopt) (CPXCENVptr env, CPXCENVptr * childenv, CPXLPptr lp, int P) = NULL;
 int (*__symbolic_CPXprimopt) (CPXCENVptr env, CPXLPptr lp) = NULL;
 int (*__symbolic_CPXdualopt) (CPXCENVptr env, CPXLPptr lp) = NULL;
 int (*__symbolic_CPXhybnetopt) (CPXCENVptr env, CPXLPptr lp, int method) = NULL;
@@ -162,7 +162,7 @@ int (*__symbolic_CPXgetsolnpoolintquality) (CPXCENVptr env, CPXCLPptr lp, int so
 int (*__symbolic_CPXrhssa) (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, double *upper) = NULL;
 int (*__symbolic_CPXboundsa) (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lblower, double *lbupper, double *ublower, double *ubupper) = NULL;
 int (*__symbolic_CPXobjsa) (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, double *upper) = NULL;
-int (*__symbolic_CPXErangesa)(CPXENVptr env, CPXLPptr lp, int begin, int end, double *lblower, double *lbupper, double *ublower, double *ubupper) = NULL;
+int (*__symbolic_CPXErangesa) (CPXENVptr env, CPXLPptr lp, int begin, int end, double *lblower, double *lbupper, double *ublower, double *ubupper) = NULL;
 int (*__symbolic_CPXrefineconflict) (CPXCENVptr env, CPXLPptr lp, int *confnumrows_p, int *confnumcols_p) = NULL;
 int (*__symbolic_CPXgetconflict) (CPXCENVptr env, CPXCLPptr lp, int *confstat_p, int *rowind, int *rowbdstat, int *confnumrows_p, int *colind, int *colbdstat, int *confnumcols_p) = NULL;
 int (*__symbolic_CPXrefineconflictext) (CPXCENVptr env, CPXLPptr lp, int grpcnt, int concnt, const double *grppref, const int *grpbeg, const int *grpind, const char *grptype) = NULL;
@@ -252,19 +252,19 @@ int (*__symbolic_CPXtuneparamprobset) (CPXENVptr env, int filecnt, char **filena
 CPXCCHARptr (*__symbolic_CPXversion) (CPXCENVptr env) = NULL;
 CPXENVptr (*__symbolic_CPXopenCPLEX) (int *status_p) = NULL;
 CPXENVptr (*__symbolic_CPXopenCPLEXruntime) (int *status_p, int serialnum, const char *licenvstring_str) = NULL;
-int (*__symbolic_CPXcloseCPLEX) (CPXENVptr *env_p) = NULL;
+int (*__symbolic_CPXcloseCPLEX) (CPXENVptr * env_p) = NULL;
 int (*__symbolic_CPXsetstaringsol) (const char *ilm_license_str, int ilm_license_signature) = NULL;
 CPXENVptr (*__symbolic_CPXparenv) (CPXENVptr env, int *status_p) = NULL;
-int (*__symbolic_CPXfreeparenv) (CPXENVptr env, CPXENVptr *child_p) = NULL;
+int (*__symbolic_CPXfreeparenv) (CPXENVptr env, CPXENVptr * child_p) = NULL;
 int (*__symbolic_CPXcheckcopylp) (CPXCENVptr env, CPXCLPptr lp, int numcols, int numrows, int objsen, const double *obj, const double *rhs, const char *sense, const int *matbeg, const int *matcnt, const int *matind, const double *matval, const double *lb, const double *ub, const double *rngval) = NULL;
 int (*__symbolic_CPXcheckcopylpwnames) (CPXCENVptr env, CPXCLPptr lp, int numcols, int numrows, int objsen, const double *obj, const double *rhs, const char *sense, const int *matbeg, const int *matcnt, const int *matind, const double *matval, const double *lb, const double *ub, const double *rngval, char **colname, char **rowname) = NULL;
 int (*__symbolic_CPXcheckaddcols) (CPXCENVptr env, CPXCLPptr lp, int ccnt, int nzcnt, const double *obj, const int *cmatbeg, const int *cmatind, const double *cmatval, const double *lb, const double *ub, char **colname) = NULL;
 int (*__symbolic_CPXcheckaddrows) (CPXCENVptr env, CPXCLPptr lp, int ccnt, int rcnt, int nzcnt, const double *rhs, const char *sense, const int *rmatbeg, const int *rmatind, const double *rmatval, char **colname, char **rowname) = NULL;
 int (*__symbolic_CPXcheckchgcoeflist) (CPXCENVptr env, CPXCLPptr lp, int numcoefs, const int *rowlist, const int *collist, const double *vallist) = NULL;
 int (*__symbolic_CPXcheckvals) (CPXCENVptr env, CPXCLPptr lp, int cnt, const int *rowind, const int *colind, const double *values) = NULL;
-int (*__symbolic_CPXgetchannels) (CPXCENVptr env, CPXCHANNELptr *cpxresults_p, CPXCHANNELptr *cpxwarning_p, CPXCHANNELptr *cpxerror_p, CPXCHANNELptr *cpxlog_p) = NULL;
+int (*__symbolic_CPXgetchannels) (CPXCENVptr env, CPXCHANNELptr * cpxresults_p, CPXCHANNELptr * cpxwarning_p, CPXCHANNELptr * cpxerror_p, CPXCHANNELptr * cpxlog_p) = NULL;
 int (*__symbolic_CPXsetlogfile) (CPXENVptr env, CPXFILEptr lfile) = NULL;
-int (*__symbolic_CPXgetlogfile) (CPXCENVptr env, CPXFILEptr *logfile_p) = NULL;
+int (*__symbolic_CPXgetlogfile) (CPXCENVptr env, CPXFILEptr * logfile_p) = NULL;
 int (*__symbolic_CPXmsg) (CPXCHANNELptr channel, const char *format, ...) = NULL;
 int (*__symbolic_CPXmsgstr) (CPXCHANNELptr channel, const char *msg_str) = NULL;
 void (*__symbolic_CPXflushchannel) (CPXCENVptr env, CPXCHANNELptr channel) = NULL;
@@ -272,19 +272,19 @@ int (*__symbolic_CPXflushstdchannels) (CPXCENVptr env) = NULL;
 CPXCHANNELptr (*__symbolic_CPXaddchannel) (CPXENVptr env) = NULL;
 int (*__symbolic_CPXaddfpdest) (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr) = NULL;
 int (*__symbolic_CPXdelfpdest) (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr) = NULL;
-int (*__symbolic_CPXaddfuncdest) (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( *msgfunction)(void *, const char *)) = NULL;
-int (*__symbolic_CPXdelfuncdest) (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( *msgfunction)(void *, const char *)) = NULL;
-void (*__symbolic_CPXdelchannel) (CPXENVptr env, CPXCHANNELptr *channel_p) = NULL;
+int (*__symbolic_CPXaddfuncdest) (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( * msgfunction) (void *, const char *)) = NULL;
+int (*__symbolic_CPXdelfuncdest) (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( * msgfunction) (void *, const char *)) = NULL;
+void (*__symbolic_CPXdelchannel) (CPXENVptr env, CPXCHANNELptr * channel_p) = NULL;
 void (*__symbolic_CPXdisconnectchannel) (CPXCENVptr env, CPXCHANNELptr channel) = NULL;
 CPXCCHARptr (*__symbolic_CPXgeterrorstring) (CPXCENVptr env, int errcode, char *buffer_str) = NULL;
-int (*__symbolic_CPXsetlpcallbackfunc) (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetnetcallbackfunc) (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
-int (*__symbolic_CPXsettuningcallbackfunc) (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetlpcallbackfunc) (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetnetcallbackfunc) (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
+int (*__symbolic_CPXsettuningcallbackfunc) (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
 int (*__symbolic_CPXgetcallbackinfo) (CPXCENVptr env, void *cbdata, int wherefrom, int whichinfo, void *result_p) = NULL;
-int (*__symbolic_CPXgetlpcallbackfunc) (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
-int (*__symbolic_CPXgetnetcallbackfunc) (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
-int (*__symbolic_CPXgettuningcallbackfunc) (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
-int (*__symbolic_CPXsetprofcallbackfunc) (CPXENVptr env, int ( *callback)(CPXCENVptr, int, void *), void *cbhandle) = NULL;
+int (*__symbolic_CPXgetlpcallbackfunc) (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
+int (*__symbolic_CPXgetnetcallbackfunc) (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
+int (*__symbolic_CPXgettuningcallbackfunc) (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
+int (*__symbolic_CPXsetprofcallbackfunc) (CPXENVptr env, int ( * callback) (CPXCENVptr, int, void *), void *cbhandle) = NULL;
 CPXFILEptr (*__symbolic_CPXfopen) (const char *filename_str, const char *type_str) = NULL;
 int (*__symbolic_CPXfclose) (CPXFILEptr stream) = NULL;
 int (*__symbolic_CPXfputs) (const char *s_str, CPXFILEptr stream) = NULL;
@@ -301,7 +301,7 @@ int (*__symbolic_CPXEgetThreadNumber) (CPXCENVptr env) = NULL;
 int (*__symbolic_CPXEgetmaxthreads) (CPXCENVptr env) = NULL;
 int (*__symbolic_CPXEsetJNI) (CPXENVptr env, CPXVOIDptr jni) = NULL;
 CPXVOIDptr (*__symbolic_CPXEgetJNI) (CPXCENVptr env) = NULL;
-int (*__symbolic_CPXEsetnamefunctions) (CPXENVptr env, void* userdata, const char* ( *getcname)(void*, int, char*), const char* ( *getrname)(void*, int, char*), const char* ( *getqname)(void*, int, char*), const char* ( *getiname)(void*, int, char*), const char* ( *getsname)(void*, int, char*)) = NULL;
+int (*__symbolic_CPXEsetnamefunctions) (CPXENVptr env, void *userdata, const char *( * getcname) (void *, int, char *), const char *( * getrname) (void *, int, char *), const char *( * getqname) (void *, int, char *), const char *( * getiname) (void *, int, char *), const char *( * getsname) (void *, int, char *)) = NULL;
 int (*__symbolic_CPXEsetnamedef) (CPXENVptr env, const char *def_str, int deftype) = NULL;
 int (*__symbolic_CPXEdelnames) (CPXCENVptr env, CPXLPptr lp) = NULL;
 CPXVOIDptr (*__symbolic_CPXEgetCache) (CPXLPptr lp) = NULL;
@@ -312,12 +312,12 @@ int (*__symbolic_CPXEgetorigcolind) (CPXCENVptr env, CPXCLPptr lp, int j) = NULL
 int (*__symbolic_CPXEgetorigrowind) (CPXCENVptr env, CPXCLPptr lp, int i) = NULL;
 double (*__symbolic_CPXEgetbigreal) (CPXCENVptr env) = NULL;
 int (*__symbolic_CPXEispromotion) (CPXCENVptr env, int rspace, int cspace, int ispace) = NULL;
-int (*__symbolic_CPXEgetnumrownz) (CPXCENVptr env, CPXCLPptr lp, int* mark) = NULL;
+int (*__symbolic_CPXEgetnumrownz) (CPXCENVptr env, CPXCLPptr lp, int *mark) = NULL;
 int (*__symbolic_CPXEcangetbase) (CPXCENVptr env, CPXCLPptr lp) = NULL;
 int (*__symbolic_CPXEwriteparam) (CPXCENVptr env, const char *filename_str) = NULL;
 int (*__symbolic_CPXsetterminate) (CPXENVptr env, volatile int *terminate_p) = NULL;
-void (*__symbolic_CPXEsetterminatefunc) (CPXENVptr env, int ( *terminatefunc)(CPXCENVptr) ) = NULL;
-int (*__symbolic_CPXEnsAddNames) (struct cpxnameset* nset, int n, const char *const *name) = NULL;
+void (*__symbolic_CPXEsetterminatefunc) (CPXENVptr env, int ( * terminatefunc) (CPXCENVptr)) = NULL;
+int (*__symbolic_CPXEnsAddNames) (struct cpxnameset *nset, int n, const char *const *name) = NULL;
 int (*__symbolic_CPXgetbhead) (CPXCENVptr env, CPXCLPptr lp, int *head, double *x) = NULL;
 int (*__symbolic_CPXbinvcol) (CPXCENVptr env, CPXCLPptr lp, int j, double *x) = NULL;
 int (*__symbolic_CPXbinvrow) (CPXCENVptr env, CPXCLPptr lp, int i, double *y) = NULL;
@@ -351,7 +351,7 @@ int (*__symbolic_CPXslackfromx) (CPXCENVptr env, CPXCLPptr lp, const double *x, 
 int (*__symbolic_CPXdjfrompi) (CPXCENVptr env, CPXCLPptr lp, const double *pi, double *dj) = NULL;
 int (*__symbolic_CPXqpdjfrompi) (CPXCENVptr env, CPXCLPptr lp, const double *pi, const double *x, double *dj) = NULL;
 int (*__symbolic_CPXfreepresolve) (CPXCENVptr env, CPXLPptr lp) = NULL;
-int (*__symbolic_CPXgetredlp) (CPXCENVptr env, CPXCLPptr lp, CPXCLPptr *redlp_p) = NULL;
+int (*__symbolic_CPXgetredlp) (CPXCENVptr env, CPXCLPptr lp, CPXCLPptr * redlp_p) = NULL;
 int (*__symbolic_CPXcrushx) (CPXCENVptr env, CPXCLPptr lp, const double *x, double *prex) = NULL;
 int (*__symbolic_CPXuncrushx) (CPXCENVptr env, CPXCLPptr lp, double *x, const double *prex) = NULL;
 int (*__symbolic_CPXcrushpi) (CPXCENVptr env, CPXCLPptr lp, const double *pi, double *prepi) = NULL;
@@ -363,7 +363,7 @@ int (*__symbolic_CPXgetprestat) (CPXCENVptr env, CPXCLPptr lp, int *prestat_p, i
 int (*__symbolic_CPXcopyprotected) (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices) = NULL;
 int (*__symbolic_CPXgetprotected) (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, int pspace, int *surplus_p) = NULL;
 int (*__symbolic_CPXEaggregatevars) (CPXCENVptr env, CPXLPptr lp, int start, int end, const char *protectrow) = NULL;
-int (*__symbolic_CPXgettime)(CPXCENVptr env, double* timestamp) = NULL;
+int (*__symbolic_CPXgettime) (CPXCENVptr env, double *timestamp) = NULL;
 int (*__symbolic_CPXlpwrite) (CPXCENVptr env, CPXCLPptr lp, const char *filename_str) = NULL;
 int (*__symbolic_CPXlprewrite) (CPXCENVptr env, CPXCLPptr lp, const char *filename_str) = NULL;
 int (*__symbolic_CPXmpswrite) (CPXCENVptr env, CPXCLPptr lp, const char *filename_str) = NULL;
@@ -382,8 +382,8 @@ int (*__symbolic_CPXhybbaropt) (CPXCENVptr env, CPXLPptr lp, int method) = NULL;
 int (*__symbolic_CPXbaropt) (CPXCENVptr env, CPXLPptr lp) = NULL;
 void (*__symbolic_CPXEgeneric_lock) (volatile int *lock) = NULL;
 void (*__symbolic_CPXEgeneric_unlock) (volatile int *lock) = NULL;
-int (*__symbolic_CPXsetorderhookfunc) (CPXENVptr env, int ( *orderhook)(CPXCENVptr, int, int *, int **, int *)) = NULL;
-void (*__symbolic_CPXgetorderhookfunc) (CPXCENVptr env, int ( **orderhook_p)(CPXCENVptr, int, int *, int **, int *)) = NULL;
+int (*__symbolic_CPXsetorderhookfunc) (CPXENVptr env, int ( * orderhook) (CPXCENVptr, int, int *, int **, int *)) = NULL;
+void (*__symbolic_CPXgetorderhookfunc) (CPXCENVptr env, int ( ** orderhook_p) (CPXCENVptr, int, int *, int **, int *)) = NULL;
 int (*__symbolic_CPXcopyctype) (CPXCENVptr env, CPXLPptr lp, const char *xctype) = NULL;
 int (*__symbolic_CPXcopyorder) (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const int *priority, const int *direction) = NULL;
 int (*__symbolic_CPXcopysos) (CPXCENVptr env, CPXLPptr lp, int numsos, int numsosnz, const char *sostype, const int *sosbeg, const int *sosind, const double *soswt, char **sosname) = NULL;
@@ -394,7 +394,7 @@ int (*__symbolic_CPXaddmipstarts) (CPXCENVptr env, CPXLPptr lp, int mcnt, int nz
 int (*__symbolic_CPXdelmipstarts) (CPXCENVptr env, CPXLPptr lp, int begin, int end) = NULL;
 int (*__symbolic_CPXdelsetmipstarts) (CPXCENVptr env, CPXLPptr lp, int *delstat) = NULL;
 int (*__symbolic_CPXrefinemipstartconflict) (CPXCENVptr env, CPXLPptr lp, int mipstartindex, int *confnumrows_p, int *confnumcols_p) = NULL;
-int (*__symbolic_CPXrefinemipstartconflictext)(CPXCENVptr env, CPXLPptr lp, int mipstartindex, int grpcnt, int concnt, const double *grppref, const int *grpbeg, const int *grpind, const char *grptype) = NULL;
+int (*__symbolic_CPXrefinemipstartconflictext) (CPXCENVptr env, CPXLPptr lp, int mipstartindex, int grpcnt, int concnt, const double *grppref, const int *grpbeg, const int *grpind, const char *grptype) = NULL;
 int (*__symbolic_CPXmipopt) (CPXCENVptr env, CPXLPptr lp) = NULL;
 int (*__symbolic_CPXgetmipitcnt) (CPXCENVptr env, CPXCLPptr lp) = NULL;
 int (*__symbolic_CPXgetbestobjval) (CPXCENVptr env, CPXCLPptr lp, double *objval_p) = NULL;
@@ -472,27 +472,27 @@ int (*__symbolic_CPXfltwrite) (CPXCENVptr env, CPXCLPptr lp, const char *filenam
 int (*__symbolic_CPXcheckcopyctype) (CPXCENVptr env, CPXCLPptr lp, const char *xctype) = NULL;
 int (*__symbolic_CPXcheckcopysos) (CPXCENVptr env, CPXCLPptr lp, int numsos, int numsosnz, const char *sostype, const int *sosbeg, const int *sosind, const double *soswt, char **sosname) = NULL;
 int (*__symbolic_CPXEchgsosname) (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, char **newname) = NULL;
-int (*__symbolic_CPXsetinfocallbackfunc) (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
-int (*__symbolic_CPXgetinfocallbackfunc) (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
-int (*__symbolic_CPXsetmipcallbackfunc) (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
-int (*__symbolic_CPXgetmipcallbackfunc) (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
-int (*__symbolic_CPXsetbranchcallbackfunc) (CPXENVptr env, int ( *branchcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetbranchnosolncallbackfunc) (CPXENVptr env, int ( *branchnosolncallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetcutcallbackfunc) (CPXENVptr env, int ( *cutcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetnodecallbackfunc) (CPXENVptr env, int ( *nodecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetheuristiccallbackfunc) (CPXENVptr env, int ( *heuristiccallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetincumbentcallbackfunc) (CPXENVptr env, int ( *incumbentcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetsolvecallbackfunc) (CPXENVptr env, int ( *solvecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void *cbhandle) = NULL;
-int (*__symbolic_CPXsetdeletenodecallbackfunc)(CPXENVptr env, void ( *deletecallback) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void *cbhandle) = NULL;
-void (*__symbolic_CPXgetbranchcallbackfunc) (CPXCENVptr env, int ( **branchcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetbranchnosolncallbackfunc) (CPXCENVptr env, int ( **branchnosolncallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetcutcallbackfunc) (CPXCENVptr env, int ( **cutcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetnodecallbackfunc) (CPXCENVptr env, int ( **nodecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetheuristiccallbackfunc) (CPXCENVptr env, int ( **heuristiccallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetincumbentcallbackfunc) (CPXCENVptr env, int ( **incumbentcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetsolvecallbackfunc) (CPXCENVptr env, int ( **solvecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void **cbhandle_p) = NULL;
-void (*__symbolic_CPXgetdeletenodecallbackfunc)(CPXCENVptr env, void ( **deletecallback_p) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void **cbhandle_p) = NULL;
-int (*__symbolic_CPXgetcallbacknodelp) (CPXCENVptr env, void *cbdata, int wherefrom, CPXLPptr *nodelp_p) = NULL;
+int (*__symbolic_CPXsetinfocallbackfunc) (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
+int (*__symbolic_CPXgetinfocallbackfunc) (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
+int (*__symbolic_CPXsetmipcallbackfunc) (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle) = NULL;
+int (*__symbolic_CPXgetmipcallbackfunc) (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p) = NULL;
+int (*__symbolic_CPXsetbranchcallbackfunc) (CPXENVptr env, int ( * branchcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetbranchnosolncallbackfunc) (CPXENVptr env, int ( * branchnosolncallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetcutcallbackfunc) (CPXENVptr env, int ( * cutcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetnodecallbackfunc) (CPXENVptr env, int ( * nodecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetheuristiccallbackfunc) (CPXENVptr env, int ( * heuristiccallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetincumbentcallbackfunc) (CPXENVptr env, int ( * incumbentcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetsolvecallbackfunc) (CPXENVptr env, int ( * solvecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void *cbhandle) = NULL;
+int (*__symbolic_CPXsetdeletenodecallbackfunc) (CPXENVptr env, void ( * deletecallback) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void *cbhandle) = NULL;
+void (*__symbolic_CPXgetbranchcallbackfunc) (CPXCENVptr env, int ( ** branchcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetbranchnosolncallbackfunc) (CPXCENVptr env, int ( ** branchnosolncallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetcutcallbackfunc) (CPXCENVptr env, int ( ** cutcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetnodecallbackfunc) (CPXCENVptr env, int ( ** nodecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetheuristiccallbackfunc) (CPXCENVptr env, int ( ** heuristiccallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetincumbentcallbackfunc) (CPXCENVptr env, int ( ** incumbentcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetsolvecallbackfunc) (CPXCENVptr env, int ( ** solvecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void **cbhandle_p) = NULL;
+void (*__symbolic_CPXgetdeletenodecallbackfunc) (CPXCENVptr env, void ( ** deletecallback_p) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void **cbhandle_p) = NULL;
+int (*__symbolic_CPXgetcallbacknodelp) (CPXCENVptr env, void *cbdata, int wherefrom, CPXLPptr * nodelp_p) = NULL;
 int (*__symbolic_CPXgetcallbacknodeinfo) (CPXCENVptr env, void *cbdata, int wherefrom, int nodeindex, int whichinfo, void *result_p) = NULL;
 int (*__symbolic_CPXgetcallbackseqinfo) (CPXCENVptr env, void *cbdata, int wherefrom, int seqid, int whichinfo, void *result_p) = NULL;
 int (*__symbolic_CPXgetcallbacksosinfo) (CPXCENVptr env, void *cbdata, int wherefrom, int sosindex, int member, int whichinfo, void *result_p) = NULL;
@@ -513,7 +513,7 @@ int (*__symbolic_CPXgetcallbackgloballb) (CPXCENVptr env, void *cbdata, int wher
 int (*__symbolic_CPXgetcallbackglobalub) (CPXCENVptr env, void *cbdata, int wherefrom, double *ub, int begin, int end) = NULL;
 int (*__symbolic_CPXgetcallbacknodelb) (CPXCENVptr env, void *cbdata, int wherefrom, double *lb, int begin, int end) = NULL;
 int (*__symbolic_CPXgetcallbacknodeub) (CPXCENVptr env, void *cbdata, int wherefrom, double *ub, int begin, int end) = NULL;
-int (*__symbolic_CPXgetcallbacklp) (CPXCENVptr env, void *cbdata, int wherefrom, CPXCLPptr *lp_p) = NULL;
+int (*__symbolic_CPXgetcallbacklp) (CPXCENVptr env, void *cbdata, int wherefrom, CPXCLPptr * lp_p) = NULL;
 int (*__symbolic_CPXgetcallbacknodestat) (CPXCENVptr env, void *cbdata, int wherefrom, int *nodestat_p) = NULL;
 int (*__symbolic_CPXgetcallbackbranchconstraints) (CPXCENVptr env, void *cbdata, int wherefrom, int which, int *cuts_p, int *nzcnt_p, double *rhs, char *sense, int *rmatbeg, int *rmatind, double *rmatval, int rmatsz, int *surplus_p) = NULL;
 int (*__symbolic_CPXaddusercuts) (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, const double *rhs, const char *sense, const int *rmatbeg, const int *rmatind, const double *rmatval, char **rowname) = NULL;
@@ -551,7 +551,7 @@ int (*__symbolic_CPXEaddsetvareq) (CPXCENVptr env, CPXLPptr lp, const int servar
 int (*__symbolic_CPXEaddsetvarneq) (CPXCENVptr env, CPXLPptr lp, const int servar1, const int setvar2, const char *lname_str) = NULL;
 int (*__symbolic_CPXEaddsetvarneqcst) (CPXCENVptr env, CPXLPptr lp, const int servar1, const int nvalues, const double *values, const char *lname_str) = NULL;
 CPXNETptr (*__symbolic_CPXNETcreateprob) (CPXENVptr env, int *status_p, const char *name_str) = NULL;
-int (*__symbolic_CPXNETfreeprob) (CPXENVptr env, CPXNETptr *net_p) = NULL;
+int (*__symbolic_CPXNETfreeprob) (CPXENVptr env, CPXNETptr * net_p) = NULL;
 int (*__symbolic_CPXNETcopynet) (CPXCENVptr env, CPXNETptr net, int objsen, int nnodes, const double *supply, char **nnames, int narcs, const int *fromnode, const int *tonode, const double *low, const double *up, const double *obj, char **anames) = NULL;
 int (*__symbolic_CPXNETcopybase) (CPXCENVptr env, CPXNETptr net, const int *astat, const int *nstat) = NULL;
 int (*__symbolic_CPXNETaddnodes) (CPXCENVptr env, CPXNETptr net, int nnodes, const double *supply, char **name) = NULL;
@@ -587,8 +587,8 @@ int (*__symbolic_CPXNETgetarcname) (CPXCENVptr env, CPXCNETptr net, char **nname
 int (*__symbolic_CPXNETgetlb) (CPXCENVptr env, CPXCNETptr net, double *low, int begin, int end) = NULL;
 int (*__symbolic_CPXNETgetub) (CPXCENVptr env, CPXCNETptr net, double *up, int begin, int end) = NULL;
 int (*__symbolic_CPXNETgetobj) (CPXCENVptr env, CPXCNETptr net, double *obj, int begin, int end) = NULL;
-int (*__symbolic_CPXNETgetarcnodes) (CPXCENVptr env, CPXCNETptr net, int* fromnode, int *tonode, int begin, int end) = NULL;
-int (*__symbolic_CPXNETgetnodearcs) (CPXCENVptr env, CPXCNETptr net, int *arccnt_p, int* arcbeg, int *arc, int arcspace, int *surplus_p, int begin, int end) = NULL;
+int (*__symbolic_CPXNETgetarcnodes) (CPXCENVptr env, CPXCNETptr net, int *fromnode, int *tonode, int begin, int end) = NULL;
+int (*__symbolic_CPXNETgetnodearcs) (CPXCENVptr env, CPXCNETptr net, int *arccnt_p, int *arcbeg, int *arc, int arcspace, int *surplus_p, int begin, int end) = NULL;
 int (*__symbolic_CPXNETgetnumnodes) (CPXCENVptr env, CPXCNETptr net) = NULL;
 int (*__symbolic_CPXNETgetnumarcs) (CPXCENVptr env, CPXCNETptr net) = NULL;
 int (*__symbolic_CPXNETgetnodeindex) (CPXCENVptr env, CPXCNETptr net, const char *lname_str, int *index_p) = NULL;
@@ -775,7 +775,7 @@ int CPXcopystart (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rsta
     }
     return __symbolic_CPXcopystart(env, lp, cstat, rstat, cprim, rprim, cdual, rdual);
 }
-int CPXfreeprob (CPXCENVptr env, CPXLPptr *lp_p){
+int CPXfreeprob (CPXCENVptr env, CPXLPptr * lp_p){
     if (!__symbolic_CPXfreeprob) {
         if (!module) {
             if (!load_module()) {
@@ -851,7 +851,7 @@ int CPXlpopt (CPXCENVptr env, CPXLPptr lp){
     }
     return __symbolic_CPXlpopt(env, lp);
 }
-int CPXconcurrentlpopt (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int P){
+int CPXconcurrentlpopt (CPXCENVptr env, CPXCENVptr * childenv, CPXLPptr lp, int P){
     if (!__symbolic_CPXconcurrentlpopt) {
         if (!module) {
             if (!load_module()) {
@@ -870,7 +870,7 @@ int CPXconcurrentlpopt (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int P
     }
     return __symbolic_CPXconcurrentlpopt(env, childenv, lp, P);
 }
-int CPXconcurrentmipopt (CPXCENVptr env, CPXCENVptr *childenv, CPXLPptr lp, int P){
+int CPXconcurrentmipopt (CPXCENVptr env, CPXCENVptr * childenv, CPXLPptr lp, int P){
     if (!__symbolic_CPXconcurrentmipopt) {
         if (!module) {
             if (!load_module()) {
@@ -1744,7 +1744,7 @@ int CPXobjsa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, d
     }
     return __symbolic_CPXobjsa(env, lp, begin, end, lower, upper);
 }
-int CPXErangesa(CPXENVptr env, CPXLPptr lp, int begin, int end, double *lblower, double *lbupper, double *ublower, double *ubupper){
+int CPXErangesa (CPXENVptr env, CPXLPptr lp, int begin, int end, double *lblower, double *lbupper, double *ublower, double *ubupper){
     if (!__symbolic_CPXErangesa) {
         if (!module) {
             if (!load_module()) {
@@ -3454,7 +3454,7 @@ CPXENVptr CPXopenCPLEXruntime (int *status_p, int serialnum, const char *licenvs
     }
     return __symbolic_CPXopenCPLEXruntime(status_p, serialnum, licenvstring_str);
 }
-int CPXcloseCPLEX (CPXENVptr *env_p){
+int CPXcloseCPLEX (CPXENVptr * env_p){
     if (!__symbolic_CPXcloseCPLEX) {
         if (!module) {
             if (!load_module()) {
@@ -3511,7 +3511,7 @@ CPXENVptr CPXparenv (CPXENVptr env, int *status_p){
     }
     return __symbolic_CPXparenv(env, status_p);
 }
-int CPXfreeparenv (CPXENVptr env, CPXENVptr *child_p){
+int CPXfreeparenv (CPXENVptr env, CPXENVptr * child_p){
     if (!__symbolic_CPXfreeparenv) {
         if (!module) {
             if (!load_module()) {
@@ -3644,7 +3644,7 @@ int CPXcheckvals (CPXCENVptr env, CPXCLPptr lp, int cnt, const int *rowind, cons
     }
     return __symbolic_CPXcheckvals(env, lp, cnt, rowind, colind, values);
 }
-int CPXgetchannels (CPXCENVptr env, CPXCHANNELptr *cpxresults_p, CPXCHANNELptr *cpxwarning_p, CPXCHANNELptr *cpxerror_p, CPXCHANNELptr *cpxlog_p){
+int CPXgetchannels (CPXCENVptr env, CPXCHANNELptr * cpxresults_p, CPXCHANNELptr * cpxwarning_p, CPXCHANNELptr * cpxerror_p, CPXCHANNELptr * cpxlog_p){
     if (!__symbolic_CPXgetchannels) {
         if (!module) {
             if (!load_module()) {
@@ -3682,7 +3682,7 @@ int CPXsetlogfile (CPXENVptr env, CPXFILEptr lfile){
     }
     return __symbolic_CPXsetlogfile(env, lfile);
 }
-int CPXgetlogfile (CPXCENVptr env, CPXFILEptr *logfile_p){
+int CPXgetlogfile (CPXCENVptr env, CPXFILEptr * logfile_p){
     if (!__symbolic_CPXgetlogfile) {
         if (!module) {
             if (!load_module()) {
@@ -3834,7 +3834,7 @@ int CPXdelfpdest (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr){
     }
     return __symbolic_CPXdelfpdest(env, channel, fileptr);
 }
-int CPXaddfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( *msgfunction)(void *, const char *)){
+int CPXaddfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( * msgfunction) (void *, const char *)){
     if (!__symbolic_CPXaddfuncdest) {
         if (!module) {
             if (!load_module()) {
@@ -3853,7 +3853,7 @@ int CPXaddfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( 
     }
     return __symbolic_CPXaddfuncdest(env, channel, handle, msgfunction);
 }
-int CPXdelfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( *msgfunction)(void *, const char *)){
+int CPXdelfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( * msgfunction) (void *, const char *)){
     if (!__symbolic_CPXdelfuncdest) {
         if (!module) {
             if (!load_module()) {
@@ -3872,7 +3872,7 @@ int CPXdelfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( 
     }
     return __symbolic_CPXdelfuncdest(env, channel, handle, msgfunction);
 }
-void CPXdelchannel (CPXENVptr env, CPXCHANNELptr *channel_p){
+void CPXdelchannel (CPXENVptr env, CPXCHANNELptr * channel_p){
     if (!__symbolic_CPXdelchannel) {
         if (!module) {
             if (!load_module()) {
@@ -3929,7 +3929,7 @@ CPXCCHARptr CPXgeterrorstring (CPXCENVptr env, int errcode, char *buffer_str){
     }
     return __symbolic_CPXgeterrorstring(env, errcode, buffer_str);
 }
-int CPXsetlpcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle){
+int CPXsetlpcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle){
     if (!__symbolic_CPXsetlpcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -3948,7 +3948,7 @@ int CPXsetlpcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, in
     }
     return __symbolic_CPXsetlpcallbackfunc(env, callback, cbhandle);
 }
-int CPXsetnetcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle){
+int CPXsetnetcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle){
     if (!__symbolic_CPXsetnetcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -3967,7 +3967,7 @@ int CPXsetnetcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, i
     }
     return __symbolic_CPXsetnetcallbackfunc(env, callback, cbhandle);
 }
-int CPXsettuningcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle){
+int CPXsettuningcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle){
     if (!__symbolic_CPXsettuningcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -4005,7 +4005,7 @@ int CPXgetcallbackinfo (CPXCENVptr env, void *cbdata, int wherefrom, int whichin
     }
     return __symbolic_CPXgetcallbackinfo(env, cbdata, wherefrom, whichinfo, result_p);
 }
-int CPXgetlpcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p){
+int CPXgetlpcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p){
     if (!__symbolic_CPXgetlpcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -4024,7 +4024,7 @@ int CPXgetlpcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *
     }
     return __symbolic_CPXgetlpcallbackfunc(env, callback_p, cbhandle_p);
 }
-int CPXgetnetcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p){
+int CPXgetnetcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p){
     if (!__symbolic_CPXgetnetcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -4043,7 +4043,7 @@ int CPXgetnetcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void 
     }
     return __symbolic_CPXgetnetcallbackfunc(env, callback_p, cbhandle_p);
 }
-int CPXgettuningcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p){
+int CPXgettuningcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p){
     if (!__symbolic_CPXgettuningcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -4062,7 +4062,7 @@ int CPXgettuningcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, vo
     }
     return __symbolic_CPXgettuningcallbackfunc(env, callback_p, cbhandle_p);
 }
-int CPXsetprofcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, int, void *), void *cbhandle){
+int CPXsetprofcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, int, void *), void *cbhandle){
     if (!__symbolic_CPXsetprofcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -4385,7 +4385,7 @@ CPXVOIDptr CPXEgetJNI (CPXCENVptr env){
     }
     return __symbolic_CPXEgetJNI(env);
 }
-int CPXEsetnamefunctions (CPXENVptr env, void* userdata, const char* ( *getcname)(void*, int, char*), const char* ( *getrname)(void*, int, char*), const char* ( *getqname)(void*, int, char*), const char* ( *getiname)(void*, int, char*), const char* ( *getsname)(void*, int, char*)){
+int CPXEsetnamefunctions (CPXENVptr env, void *userdata, const char *( * getcname) (void *, int, char *), const char *( * getrname) (void *, int, char *), const char *( * getqname) (void *, int, char *), const char *( * getiname) (void *, int, char *), const char *( * getsname) (void *, int, char *)){
     if (!__symbolic_CPXEsetnamefunctions) {
         if (!module) {
             if (!load_module()) {
@@ -4594,7 +4594,7 @@ int CPXEispromotion (CPXCENVptr env, int rspace, int cspace, int ispace){
     }
     return __symbolic_CPXEispromotion(env, rspace, cspace, ispace);
 }
-int CPXEgetnumrownz (CPXCENVptr env, CPXCLPptr lp, int* mark){
+int CPXEgetnumrownz (CPXCENVptr env, CPXCLPptr lp, int *mark){
     if (!__symbolic_CPXEgetnumrownz) {
         if (!module) {
             if (!load_module()) {
@@ -4670,7 +4670,7 @@ int CPXsetterminate (CPXENVptr env, volatile int *terminate_p){
     }
     return __symbolic_CPXsetterminate(env, terminate_p);
 }
-void CPXEsetterminatefunc (CPXENVptr env, int ( *terminatefunc)(CPXCENVptr) ){
+void CPXEsetterminatefunc (CPXENVptr env, int ( * terminatefunc) (CPXCENVptr)){
     if (!__symbolic_CPXEsetterminatefunc) {
         if (!module) {
             if (!load_module()) {
@@ -4689,7 +4689,7 @@ void CPXEsetterminatefunc (CPXENVptr env, int ( *terminatefunc)(CPXCENVptr) ){
     }
     return __symbolic_CPXEsetterminatefunc(env, terminatefunc);
 }
-int CPXEnsAddNames (struct cpxnameset* nset, int n, const char *const *name){
+int CPXEnsAddNames (struct cpxnameset *nset, int n, const char *const *name){
     if (!__symbolic_CPXEnsAddNames) {
         if (!module) {
             if (!load_module()) {
@@ -5335,7 +5335,7 @@ int CPXfreepresolve (CPXCENVptr env, CPXLPptr lp){
     }
     return __symbolic_CPXfreepresolve(env, lp);
 }
-int CPXgetredlp (CPXCENVptr env, CPXCLPptr lp, CPXCLPptr *redlp_p){
+int CPXgetredlp (CPXCENVptr env, CPXCLPptr lp, CPXCLPptr * redlp_p){
     if (!__symbolic_CPXgetredlp) {
         if (!module) {
             if (!load_module()) {
@@ -5563,7 +5563,7 @@ int CPXEaggregatevars (CPXCENVptr env, CPXLPptr lp, int start, int end, const ch
     }
     return __symbolic_CPXEaggregatevars(env, lp, start, end, protectrow);
 }
-int CPXgettime(CPXCENVptr env, double* timestamp){
+int CPXgettime (CPXCENVptr env, double *timestamp){
     if (!__symbolic_CPXgettime) {
         if (!module) {
             if (!load_module()) {
@@ -5924,7 +5924,7 @@ void CPXEgeneric_unlock (volatile int *lock){
     }
     return __symbolic_CPXEgeneric_unlock(lock);
 }
-int CPXsetorderhookfunc (CPXENVptr env, int ( *orderhook)(CPXCENVptr, int, int *, int **, int *)){
+int CPXsetorderhookfunc (CPXENVptr env, int ( * orderhook) (CPXCENVptr, int, int *, int **, int *)){
     if (!__symbolic_CPXsetorderhookfunc) {
         if (!module) {
             if (!load_module()) {
@@ -5943,7 +5943,7 @@ int CPXsetorderhookfunc (CPXENVptr env, int ( *orderhook)(CPXCENVptr, int, int *
     }
     return __symbolic_CPXsetorderhookfunc(env, orderhook);
 }
-void CPXgetorderhookfunc (CPXCENVptr env, int ( **orderhook_p)(CPXCENVptr, int, int *, int **, int *)){
+void CPXgetorderhookfunc (CPXCENVptr env, int ( ** orderhook_p) (CPXCENVptr, int, int *, int **, int *)){
     if (!__symbolic_CPXgetorderhookfunc) {
         if (!module) {
             if (!load_module()) {
@@ -6152,7 +6152,7 @@ int CPXrefinemipstartconflict (CPXCENVptr env, CPXLPptr lp, int mipstartindex, i
     }
     return __symbolic_CPXrefinemipstartconflict(env, lp, mipstartindex, confnumrows_p, confnumcols_p);
 }
-int CPXrefinemipstartconflictext(CPXCENVptr env, CPXLPptr lp, int mipstartindex, int grpcnt, int concnt, const double *grppref, const int *grpbeg, const int *grpind, const char *grptype){
+int CPXrefinemipstartconflictext (CPXCENVptr env, CPXLPptr lp, int mipstartindex, int grpcnt, int concnt, const double *grppref, const int *grpbeg, const int *grpind, const char *grptype){
     if (!__symbolic_CPXrefinemipstartconflictext) {
         if (!module) {
             if (!load_module()) {
@@ -7634,7 +7634,7 @@ int CPXEchgsosname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, ch
     }
     return __symbolic_CPXEchgsosname(env, lp, cnt, indices, newname);
 }
-int CPXsetinfocallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle){
+int CPXsetinfocallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle){
     if (!__symbolic_CPXsetinfocallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7653,7 +7653,7 @@ int CPXsetinfocallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, 
     }
     return __symbolic_CPXsetinfocallbackfunc(env, callback, cbhandle);
 }
-int CPXgetinfocallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p){
+int CPXgetinfocallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p){
     if (!__symbolic_CPXgetinfocallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7672,7 +7672,7 @@ int CPXgetinfocallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void
     }
     return __symbolic_CPXgetinfocallbackfunc(env, callback_p, cbhandle_p);
 }
-int CPXsetmipcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, int, void *), void *cbhandle){
+int CPXsetmipcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, int, void *), void *cbhandle){
     if (!__symbolic_CPXsetmipcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7691,7 +7691,7 @@ int CPXsetmipcallbackfunc (CPXENVptr env, int ( *callback)(CPXCENVptr, void *, i
     }
     return __symbolic_CPXsetmipcallbackfunc(env, callback, cbhandle);
 }
-int CPXgetmipcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void *, int, void *), void **cbhandle_p){
+int CPXgetmipcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void *, int, void *), void **cbhandle_p){
     if (!__symbolic_CPXgetmipcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7710,7 +7710,7 @@ int CPXgetmipcallbackfunc (CPXCENVptr env, int ( **callback_p)(CPXCENVptr, void 
     }
     return __symbolic_CPXgetmipcallbackfunc(env, callback_p, cbhandle_p);
 }
-int CPXsetbranchcallbackfunc (CPXENVptr env, int ( *branchcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle){
+int CPXsetbranchcallbackfunc (CPXENVptr env, int ( * branchcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle){
     if (!__symbolic_CPXsetbranchcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7729,7 +7729,7 @@ int CPXsetbranchcallbackfunc (CPXENVptr env, int ( *branchcallback) (CPXCENVptr 
     }
     return __symbolic_CPXsetbranchcallbackfunc(env, branchcallback, cbhandle);
 }
-int CPXsetbranchnosolncallbackfunc (CPXENVptr env, int ( *branchnosolncallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle){
+int CPXsetbranchnosolncallbackfunc (CPXENVptr env, int ( * branchnosolncallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void *cbhandle){
     if (!__symbolic_CPXsetbranchnosolncallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7748,7 +7748,7 @@ int CPXsetbranchnosolncallbackfunc (CPXENVptr env, int ( *branchnosolncallback) 
     }
     return __symbolic_CPXsetbranchnosolncallbackfunc(env, branchnosolncallback, cbhandle);
 }
-int CPXsetcutcallbackfunc (CPXENVptr env, int ( *cutcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void *cbhandle){
+int CPXsetcutcallbackfunc (CPXENVptr env, int ( * cutcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void *cbhandle){
     if (!__symbolic_CPXsetcutcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7767,7 +7767,7 @@ int CPXsetcutcallbackfunc (CPXENVptr env, int ( *cutcallback) (CPXCENVptr xenv, 
     }
     return __symbolic_CPXsetcutcallbackfunc(env, cutcallback, cbhandle);
 }
-int CPXsetnodecallbackfunc (CPXENVptr env, int ( *nodecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void *cbhandle){
+int CPXsetnodecallbackfunc (CPXENVptr env, int ( * nodecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void *cbhandle){
     if (!__symbolic_CPXsetnodecallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7786,7 +7786,7 @@ int CPXsetnodecallbackfunc (CPXENVptr env, int ( *nodecallback) (CPXCENVptr xenv
     }
     return __symbolic_CPXsetnodecallbackfunc(env, nodecallback, cbhandle);
 }
-int CPXsetheuristiccallbackfunc (CPXENVptr env, int ( *heuristiccallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void *cbhandle){
+int CPXsetheuristiccallbackfunc (CPXENVptr env, int ( * heuristiccallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void *cbhandle){
     if (!__symbolic_CPXsetheuristiccallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7805,7 +7805,7 @@ int CPXsetheuristiccallbackfunc (CPXENVptr env, int ( *heuristiccallback) (CPXCE
     }
     return __symbolic_CPXsetheuristiccallbackfunc(env, heuristiccallback, cbhandle);
 }
-int CPXsetincumbentcallbackfunc (CPXENVptr env, int ( *incumbentcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void *cbhandle){
+int CPXsetincumbentcallbackfunc (CPXENVptr env, int ( * incumbentcallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void *cbhandle){
     if (!__symbolic_CPXsetincumbentcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7824,7 +7824,7 @@ int CPXsetincumbentcallbackfunc (CPXENVptr env, int ( *incumbentcallback) (CPXCE
     }
     return __symbolic_CPXsetincumbentcallbackfunc(env, incumbentcallback, cbhandle);
 }
-int CPXsetsolvecallbackfunc (CPXENVptr env, int ( *solvecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void *cbhandle){
+int CPXsetsolvecallbackfunc (CPXENVptr env, int ( * solvecallback) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void *cbhandle){
     if (!__symbolic_CPXsetsolvecallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7843,7 +7843,7 @@ int CPXsetsolvecallbackfunc (CPXENVptr env, int ( *solvecallback) (CPXCENVptr xe
     }
     return __symbolic_CPXsetsolvecallbackfunc(env, solvecallback, cbhandle);
 }
-int CPXsetdeletenodecallbackfunc(CPXENVptr env, void ( *deletecallback) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void *cbhandle){
+int CPXsetdeletenodecallbackfunc (CPXENVptr env, void ( * deletecallback) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void *cbhandle){
     if (!__symbolic_CPXsetdeletenodecallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7862,7 +7862,7 @@ int CPXsetdeletenodecallbackfunc(CPXENVptr env, void ( *deletecallback) (CPXCENV
     }
     return __symbolic_CPXsetdeletenodecallbackfunc(env, deletecallback, cbhandle);
 }
-void CPXgetbranchcallbackfunc (CPXCENVptr env, int ( **branchcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p){
+void CPXgetbranchcallbackfunc (CPXCENVptr env, int ( ** branchcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p){
     if (!__symbolic_CPXgetbranchcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7881,7 +7881,7 @@ void CPXgetbranchcallbackfunc (CPXCENVptr env, int ( **branchcallback_p) (CPXCEN
     }
     return __symbolic_CPXgetbranchcallbackfunc(env, branchcallback_p, cbhandle_p);
 }
-void CPXgetbranchnosolncallbackfunc (CPXCENVptr env, int ( **branchnosolncallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p){
+void CPXgetbranchnosolncallbackfunc (CPXCENVptr env, int ( ** branchnosolncallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int brtype, int brset, int nodecnt, int bdcnt, const double *nodeest, const int *nodebeg, const int *xindex, const char *lu, const int *bd, int *useraction_p), void **cbhandle_p){
     if (!__symbolic_CPXgetbranchnosolncallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7900,7 +7900,7 @@ void CPXgetbranchnosolncallbackfunc (CPXCENVptr env, int ( **branchnosolncallbac
     }
     return __symbolic_CPXgetbranchnosolncallbackfunc(env, branchnosolncallback_p, cbhandle_p);
 }
-void CPXgetcutcallbackfunc (CPXCENVptr env, int ( **cutcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void **cbhandle_p){
+void CPXgetcutcallbackfunc (CPXCENVptr env, int ( ** cutcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction_p), void **cbhandle_p){
     if (!__symbolic_CPXgetcutcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7919,7 +7919,7 @@ void CPXgetcutcallbackfunc (CPXCENVptr env, int ( **cutcallback_p) (CPXCENVptr x
     }
     return __symbolic_CPXgetcutcallbackfunc(env, cutcallback_p, cbhandle_p);
 }
-void CPXgetnodecallbackfunc (CPXCENVptr env, int ( **nodecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void **cbhandle_p){
+void CPXgetnodecallbackfunc (CPXCENVptr env, int ( ** nodecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *nodeindex, int *useraction), void **cbhandle_p){
     if (!__symbolic_CPXgetnodecallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7938,7 +7938,7 @@ void CPXgetnodecallbackfunc (CPXCENVptr env, int ( **nodecallback_p) (CPXCENVptr
     }
     return __symbolic_CPXgetnodecallbackfunc(env, nodecallback_p, cbhandle_p);
 }
-void CPXgetheuristiccallbackfunc (CPXCENVptr env, int ( **heuristiccallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void **cbhandle_p){
+void CPXgetheuristiccallbackfunc (CPXCENVptr env, int ( ** heuristiccallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double *objval_p, double *x, int *checkfeas_p, int *useraction_p), void **cbhandle_p){
     if (!__symbolic_CPXgetheuristiccallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7957,7 +7957,7 @@ void CPXgetheuristiccallbackfunc (CPXCENVptr env, int ( **heuristiccallback_p) (
     }
     return __symbolic_CPXgetheuristiccallbackfunc(env, heuristiccallback_p, cbhandle_p);
 }
-void CPXgetincumbentcallbackfunc (CPXCENVptr env, int ( **incumbentcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void **cbhandle_p){
+void CPXgetincumbentcallbackfunc (CPXCENVptr env, int ( ** incumbentcallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, double objval, double *x, int *isfeas_p, int *useraction_p), void **cbhandle_p){
     if (!__symbolic_CPXgetincumbentcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7976,7 +7976,7 @@ void CPXgetincumbentcallbackfunc (CPXCENVptr env, int ( **incumbentcallback_p) (
     }
     return __symbolic_CPXgetincumbentcallbackfunc(env, incumbentcallback_p, cbhandle_p);
 }
-void CPXgetsolvecallbackfunc (CPXCENVptr env, int ( **solvecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void **cbhandle_p){
+void CPXgetsolvecallbackfunc (CPXCENVptr env, int ( ** solvecallback_p) (CPXCENVptr xenv, void *cbdata, int wherefrom, void *cbhandle, int *useraction), void **cbhandle_p){
     if (!__symbolic_CPXgetsolvecallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -7995,7 +7995,7 @@ void CPXgetsolvecallbackfunc (CPXCENVptr env, int ( **solvecallback_p) (CPXCENVp
     }
     return __symbolic_CPXgetsolvecallbackfunc(env, solvecallback_p, cbhandle_p);
 }
-void CPXgetdeletenodecallbackfunc(CPXCENVptr env, void ( **deletecallback_p) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void **cbhandle_p){
+void CPXgetdeletenodecallbackfunc (CPXCENVptr env, void ( ** deletecallback_p) (CPXCENVptr xenv, int wherefrom, void *cbhandle, int seqnum, void *handle), void **cbhandle_p){
     if (!__symbolic_CPXgetdeletenodecallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -8014,7 +8014,7 @@ void CPXgetdeletenodecallbackfunc(CPXCENVptr env, void ( **deletecallback_p) (CP
     }
     return __symbolic_CPXgetdeletenodecallbackfunc(env, deletecallback_p, cbhandle_p);
 }
-int CPXgetcallbacknodelp (CPXCENVptr env, void *cbdata, int wherefrom, CPXLPptr *nodelp_p){
+int CPXgetcallbacknodelp (CPXCENVptr env, void *cbdata, int wherefrom, CPXLPptr * nodelp_p){
     if (!__symbolic_CPXgetcallbacknodelp) {
         if (!module) {
             if (!load_module()) {
@@ -8413,7 +8413,7 @@ int CPXgetcallbacknodeub (CPXCENVptr env, void *cbdata, int wherefrom, double *u
     }
     return __symbolic_CPXgetcallbacknodeub(env, cbdata, wherefrom, ub, begin, end);
 }
-int CPXgetcallbacklp (CPXCENVptr env, void *cbdata, int wherefrom, CPXCLPptr *lp_p){
+int CPXgetcallbacklp (CPXCENVptr env, void *cbdata, int wherefrom, CPXCLPptr * lp_p){
     if (!__symbolic_CPXgetcallbacklp) {
         if (!module) {
             if (!load_module()) {
@@ -9135,7 +9135,7 @@ CPXNETptr CPXNETcreateprob (CPXENVptr env, int *status_p, const char *name_str){
     }
     return __symbolic_CPXNETcreateprob(env, status_p, name_str);
 }
-int CPXNETfreeprob (CPXENVptr env, CPXNETptr *net_p){
+int CPXNETfreeprob (CPXENVptr env, CPXNETptr * net_p){
     if (!__symbolic_CPXNETfreeprob) {
         if (!module) {
             if (!load_module()) {
@@ -9819,7 +9819,7 @@ int CPXNETgetobj (CPXCENVptr env, CPXCNETptr net, double *obj, int begin, int en
     }
     return __symbolic_CPXNETgetobj(env, net, obj, begin, end);
 }
-int CPXNETgetarcnodes (CPXCENVptr env, CPXCNETptr net, int* fromnode, int *tonode, int begin, int end){
+int CPXNETgetarcnodes (CPXCENVptr env, CPXCNETptr net, int *fromnode, int *tonode, int begin, int end){
     if (!__symbolic_CPXNETgetarcnodes) {
         if (!module) {
             if (!load_module()) {
@@ -9838,7 +9838,7 @@ int CPXNETgetarcnodes (CPXCENVptr env, CPXCNETptr net, int* fromnode, int *tonod
     }
     return __symbolic_CPXNETgetarcnodes(env, net, fromnode, tonode, begin, end);
 }
-int CPXNETgetnodearcs (CPXCENVptr env, CPXCNETptr net, int *arccnt_p, int* arcbeg, int *arc, int arcspace, int *surplus_p, int begin, int end){
+int CPXNETgetnodearcs (CPXCENVptr env, CPXCNETptr net, int *arccnt_p, int *arcbeg, int *arc, int arcspace, int *surplus_p, int begin, int end){
     if (!__symbolic_CPXNETgetnodearcs) {
         if (!module) {
             if (!load_module()) {

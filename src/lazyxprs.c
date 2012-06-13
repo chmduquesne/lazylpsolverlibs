@@ -80,314 +80,314 @@ int load_module(){
 
 /* imported functions */
 
-int (*__symbolic_XPRScopycallbacks)(XPRSprob dest, XPRSprob src) = NULL;
-int (*__symbolic_XPRScopycontrols)(XPRSprob dest, XPRSprob src) = NULL;
-int (*__symbolic_XPRScopyprob)(XPRSprob dest, XPRSprob src, const char* probname) = NULL;
-int (*__symbolic_XPRScreateprob)(XPRSprob* _probholder) = NULL;
-int (*__symbolic_XPRSdestroyprob)(XPRSprob _prob) = NULL;
-int (*__symbolic_XPRSinit)(const char* path) = NULL;
-int (*__symbolic_XPRSfree)(void) = NULL;
-int (*__symbolic_XPRSgetbanner)(char* banner) = NULL;
-int (*__symbolic_XPRSgetversion)(char* version) = NULL;
-int (*__symbolic_XPRSgetdaysleft)(int* daysleft) = NULL;
-int (*__symbolic_XPRSlicense)(int* _i1, char* _c1) = NULL;
-int (*__symbolic_XPRSbeginlicensing)(int* r_dontAlreadyHaveLicense) = NULL;
-int (*__symbolic_XPRSendlicensing)(void) = NULL;
-int (*__symbolic_XPRSgetlicerrmsg)(char* msg, int len) = NULL;
-int (*__symbolic_XPRSsetlogfile)(XPRSprob prob, const char* logname) = NULL;
-int (*__symbolic_XPRSsetintcontrol)(XPRSprob prob, int _index, int _ivalue) = NULL;
-int (*__symbolic_XPRSsetdblcontrol)(XPRSprob prob, int _index, double _dvalue) = NULL;
-int (*__symbolic_XPRSinterrupt)(XPRSprob prob, int reason) = NULL;
-int (*__symbolic_XPRSgetprobname)(XPRSprob prob, char* _svalue) = NULL;
-int (*__symbolic_XPRSgetqobj)(XPRSprob prob, int _icol, int _jcol, double* _dval) = NULL;
-int (*__symbolic_XPRSsetprobname)(XPRSprob prob, const char* _svalue) = NULL;
-int (*__symbolic_XPRSsetstrcontrol)(XPRSprob prob, int _index, const char* _svalue) = NULL;
-int (*__symbolic_XPRSgetintcontrol)(XPRSprob prob, int _index, int* _ivalue) = NULL;
-int (*__symbolic_XPRSgetdblcontrol)(XPRSprob prob, int _index, double* _dvalue) = NULL;
-int (*__symbolic_XPRSgetstrcontrol)(XPRSprob prob, int _index, char* _svalue) = NULL;
-int (*__symbolic_XPRSgetintattrib)(XPRSprob prob, int _index, int* _ivalue) = NULL;
-int (*__symbolic_XPRSgetstrattrib)(XPRSprob prob, int _index, char* _cvalue) = NULL;
-int (*__symbolic_XPRSgetdblattrib)(XPRSprob prob, int _index, double* _dvalue) = NULL;
-int (*__symbolic_XPRSsetdefaultcontrol)(XPRSprob prob, int _index) = NULL;
-int (*__symbolic_XPRSsetdefaults)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSgoal)(XPRSprob prob, const char* _filename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSreadprob)(XPRSprob prob, const char* _sprobname, const char* _sflags) = NULL;
-int (*__symbolic_XPRSloadlp)(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]) = NULL;
-int (*__symbolic_XPRSloadqp)(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]) = NULL;
-int (*__symbolic_XPRSloadqglobal)(XPRSprob prob, const char* probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], const int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
-int (*__symbolic_XPRSfixglobal)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSfixglobals)(XPRSprob prob, int ifround) = NULL;
-int (*__symbolic_XPRSloadmodelcuts)(XPRSprob prob, int nmodcuts, const int _mrows[]) = NULL;
-int (*__symbolic_XPRSloaddelayedrows)(XPRSprob prob, int nrows, const int _mrows[]) = NULL;
-int (*__symbolic_XPRSloaddirs)(XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]) = NULL;
-int (*__symbolic_XPRSloadbranchdirs)(XPRSprob prob, int ndirs, const int _mcols[], const int _mbranch[]) = NULL;
-int (*__symbolic_XPRSloadpresolvedirs)(XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]) = NULL;
-int (*__symbolic_XPRSgetdirs)(XPRSprob prob, int* ndirs, int _mcols[], int _mpri[], char _sbr[], double dupc[], double ddpc[]) = NULL;
-int (*__symbolic_XPRSloadglobal)(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const int _msstart[], const int _mscols[], const double _dref[]) = NULL;
-int (*__symbolic_XPRSaddnames)(XPRSprob prob, int _itype, const char _sname[], int first, int last) = NULL;
-int (*__symbolic_XPRSaddsetnames)(XPRSprob prob, const char _sname[], int first, int last) = NULL;
-int (*__symbolic_XPRSscale)(XPRSprob prob, const int mrscal[], const int mcscal[]) = NULL;
-int (*__symbolic_XPRSreaddirs)(XPRSprob prob, const char* _sfilename) = NULL;
-int (*__symbolic_XPRSwritedirs)(XPRSprob prob, const char* _sfilename) = NULL;
-int (*__symbolic_XPRSsetindicators)(XPRSprob prob, int nrows, const int _mrows[], const int _inds[], const int _comps[]) = NULL;
-int (*__symbolic_XPRSgetindicators)(XPRSprob prob, int _inds[], int _comps[], int first, int last) = NULL;
-int (*__symbolic_XPRSdelindicators)(XPRSprob prob, int first, int last) = NULL;
-int (*__symbolic_XPRSminim)(XPRSprob prob, const char* _sflags) = NULL;
-int (*__symbolic_XPRSmaxim)(XPRSprob prob, const char* _sflags) = NULL;
-int (*__symbolic_XPRSlpoptimize)(XPRSprob prob, const char* _sflags) = NULL;
-int (*__symbolic_XPRSmipoptimize)(XPRSprob prob, const char* _sflags) = NULL;
-int (*__symbolic_XPRSrange)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSgetrowrange)(XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[]) = NULL;
-int (*__symbolic_XPRSgetcolrange)(XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[], double _ucost[], double _lcost[]) = NULL;
-int (*__symbolic_XPRSgetpivotorder)(XPRSprob prob, int mpiv[]) = NULL;
-int (*__symbolic_XPRSgetpresolvemap)(XPRSprob prob, int rowmap[], int colmap[]) = NULL;
-int (*__symbolic_XPRSreadbasis)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSwritebasis)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSglobal)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSinitglobal)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSwriteprtsol)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSalter)(XPRSprob prob, const char* _sfilename) = NULL;
-int (*__symbolic_XPRSwritesol)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSwritebinsol)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSreadbinsol)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSwriteslxsol)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSreadslxsol)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSwriteprtrange)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSwriterange)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSgetsol)(XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]) = NULL;
-int (*__symbolic_XPRSgetpresolvesol)(XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]) = NULL;
-int (*__symbolic_XPRSgetinfeas)(XPRSprob prob, int* npv, int* nps, int* nds, int* ndv, int mx[], int mslack[], int mdual[], int mdj[]) = NULL;
-int (*__symbolic_XPRSgetscaledinfeas)(XPRSprob prob, int* npv, int* nps, int* nds, int* ndv, int mx[], int mslack[], int mdual[], int mdj[]) = NULL;
-int (*__symbolic_XPRSgetunbvec)(XPRSprob prob, int* icol) = NULL;
-int (*__symbolic_XPRSbtran)(XPRSprob prob, double dwork[]) = NULL;
-int (*__symbolic_XPRSftran)(XPRSprob prob, double dwork[]) = NULL;
-int (*__symbolic_XPRSgetobj)(XPRSprob prob, double _dobj[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetrhs)(XPRSprob prob, double _drhs[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetrhsrange)(XPRSprob prob, double _drng[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetlb)(XPRSprob prob, double _dbdl[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetub)(XPRSprob prob, double _dbdu[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetcols)(XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[], int maxcoeffs, int* ncoeffs, int first, int last) = NULL;
-int (*__symbolic_XPRSgetrows)(XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], int maxcoeffs, int* ncoeffs, int first, int last) = NULL;
-int (*__symbolic_XPRSgetcoef)(XPRSprob prob, int _irow, int _icol, double* _dval) = NULL;
-int (*__symbolic_XPRSgetmqobj)(XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[], int maxcoeffs, int* ncoeffs, int first, int last) = NULL;
-int (*__symbolic_XPRSiisclear)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSiisfirst)(XPRSprob prob, int ifiis, int* status_code) = NULL;
-int (*__symbolic_XPRSiisnext)(XPRSprob prob, int* status_code) = NULL;
-int (*__symbolic_XPRSiisstatus)(XPRSprob prob, int* iiscount, int rowsizes[], int colsizes[], double suminfeas[], int numinfeas[]) = NULL;
-int (*__symbolic_XPRSiisall)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSiiswrite)(XPRSprob prob, int number, const char* fn, int filetype, const char* typeflags) = NULL;
-int (*__symbolic_XPRSiisisolations)(XPRSprob prob, int number) = NULL;
-int (*__symbolic_XPRSgetiisdata)(XPRSprob prob, int number, int* rownumber, int* colnumber, int miisrow[], int miiscol[], char constrainttype[], char colbndtype[], double duals[], double rdcs[], char isolationrows[], char isolationcols[]) = NULL;
-int (*__symbolic_XPRSgetiis)(XPRSprob prob, int* ncols, int* nrows, int _miiscol[], int _miisrow[]) = NULL;
-int (*__symbolic_XPRSgetpresolvebasis)(XPRSprob prob, int _mrowstatus[], int _mcolstatus[]) = NULL;
-int (*__symbolic_XPRSloadpresolvebasis)(XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]) = NULL;
-int (*__symbolic_XPRSgetglobal)(XPRSprob prob, int* ngents, int* nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], int _msstart[], int _mscols[], double _dref[]) = NULL;
-int (*__symbolic_XPRSwriteprob)(XPRSprob prob, const char* _sfilename, const char* _sflags) = NULL;
-int (*__symbolic_XPRSgetnames)(XPRSprob prob, int _itype, char _sbuff[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetrowtype)(XPRSprob prob, char _srowtype[], int first, int last) = NULL;
-int (*__symbolic_XPRSloadsecurevecs)(XPRSprob prob, int nrows, int ncols, const int mrow[], const int mcol[]) = NULL;
-int (*__symbolic_XPRSgetcoltype)(XPRSprob prob, char _coltype[], int first, int last) = NULL;
-int (*__symbolic_XPRSgetbasis)(XPRSprob prob, int _mrowstatus[], int _mcolstatus[]) = NULL;
-int (*__symbolic_XPRSloadbasis)(XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]) = NULL;
-int (*__symbolic_XPRSgetindex)(XPRSprob prob, int _itype, const char* _sname, int* _iseq) = NULL;
-int (*__symbolic_XPRSaddrows)(XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const int _mstart[], const int _mclind[], const double _dmatval[]) = NULL;
-int (*__symbolic_XPRSdelrows)(XPRSprob prob, int nrows, const int _mindex[]) = NULL;
-int (*__symbolic_XPRSdelnode)(XPRSprob prob, int _inode, int ifboth) = NULL;
-int (*__symbolic_XPRSaddcols)(XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], const int _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]) = NULL;
-int (*__symbolic_XPRSdelcols)(XPRSprob prob, int ncols, const int _mindex[]) = NULL;
-int (*__symbolic_XPRSchgcoltype)(XPRSprob prob, int ncols, const int _mindex[], const char _coltype[]) = NULL;
-int (*__symbolic_XPRSchgrowtype)(XPRSprob prob, int nrows, const int _mindex[], const char _srowtype[]) = NULL;
-int (*__symbolic_XPRSchgbounds)(XPRSprob prob, int nbnds, const int _mindex[], const char _sboundtype[], const double _dbnd[]) = NULL;
-int (*__symbolic_XPRSchgobj)(XPRSprob prob, int ncols, const int _mindex[], const double _dobj[]) = NULL;
-int (*__symbolic_XPRSchgcoef)(XPRSprob prob, int _irow, int _icol, double _dval) = NULL;
-int (*__symbolic_XPRSchgmcoef)(XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]) = NULL;
-int (*__symbolic_XPRSchgmqobj)(XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[], const double _dval[]) = NULL;
-int (*__symbolic_XPRSchgqobj)(XPRSprob prob, int _icol, int _jcol, double _dval) = NULL;
-int (*__symbolic_XPRSchgrhs)(XPRSprob prob, int nrows, const int _mindex[], const double _drhs[]) = NULL;
-int (*__symbolic_XPRSchgrhsrange)(XPRSprob prob, int nrows, const int _mindex[], const double _drng[]) = NULL;
-int (*__symbolic_XPRSchgobjsense)(XPRSprob prob, int objsense) = NULL;
-int (*__symbolic_XPRSsave)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSrestore)(XPRSprob prob, const char* _sprobname, const char* _force) = NULL;
-int (*__symbolic_XPRSpivot)(XPRSprob prob, int _in, int _out) = NULL;
-int (*__symbolic_XPRSgetpivots)(XPRSprob prob, int _in, int _mout[], double _dout[], double* _dobjo, int* npiv, int maxpiv) = NULL;
-int (*__symbolic_XPRSsetcblplog)(XPRSprob prob, int ( *f_lplog)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbgloballog)(XPRSprob prob, int ( *f_globallog)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbcutlog)(XPRSprob prob, int ( *f_cutlog)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbbarlog)(XPRSprob prob, int ( *f_barlog)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbcutmgr)(XPRSprob prob, int ( *f_cutmgr)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbchgnode)(XPRSprob prob, void ( *f_chgnode)(XPRSprob prob, void* vContext, int* nodnum), void* p) = NULL;
-int (*__symbolic_XPRSsetcboptnode)(XPRSprob prob, void ( *f_optnode)(XPRSprob prob, void* vContext, int* feas), void* p) = NULL;
-int (*__symbolic_XPRSsetcbprenode)(XPRSprob prob, void ( *f_prenode)(XPRSprob prob, void* vContext, int* nodinfeas), void* p) = NULL;
-int (*__symbolic_XPRSsetcbinfnode)(XPRSprob prob, void ( *f_infnode)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbnewnode)(XPRSprob prob, void ( *f_newnode)(XPRSprob prob, void* vContext, int parentnode, int newnode, int branch), void* p) = NULL;
-int (*__symbolic_XPRSsetcbnodecutoff)(XPRSprob prob, void ( *f_nodecutoff)(XPRSprob prob, void* vContext, int nodnum), void* p) = NULL;
-int (*__symbolic_XPRSsetcbpreintsol)(XPRSprob prob, void ( *f_preintsol)(XPRSprob prob, void* vContext, int isheuristic, int* ifreject, double* cutoff), void* p) = NULL;
-int (*__symbolic_XPRSsetcbintsol)(XPRSprob prob, void ( *f_intsol)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSsetcbchgbranch)(XPRSprob prob, void ( *f_chgbranch)(XPRSprob prob, void* vContext, int* entity, int* up, double* estdeg), void* p) = NULL;
-int (*__symbolic_XPRSsetcbchgbranchobject)(XPRSprob prob, void ( *f_chgbranchobject)(XPRSprob prob, void* vContext, XPRSbranchobject obranch, XPRSbranchobject* p_newobject), void* p) = NULL;
-int (*__symbolic_XPRSsetcbestimate)(XPRSprob prob, int ( *f_estimate)(XPRSprob prob, void* vContext, int* iglsel, int* iprio, double* degbest, double* degworst, double* curval, int* ifupx, int* nglinf, double* degsum, int* nbr), void* p) = NULL;
-int (*__symbolic_XPRSsetcbsepnode)(XPRSprob prob, int ( *f_sepnode)(XPRSprob prob, void* vContext, int ibr, int iglsel, int ifup, double curval), void* p) = NULL;
-int (*__symbolic_XPRSsetcbmessage)(XPRSprob prob, void ( *f_message)(XPRSprob prob, void* vContext, const char* msg, int len, int msgtype), void* p) = NULL;
-int (*__symbolic_XPRSsetcbmipthread)(XPRSprob prob, void ( *f_mipthread)(XPRSprob master_prob, void* vContext, XPRSprob prob), void* p) = NULL;
-int (*__symbolic_XPRSsetcbdestroymt)(XPRSprob prob, void ( *f_destroymt)(XPRSprob prob, void* vContext), void* p) = NULL;
-int (*__symbolic_XPRSgetcblplog)(XPRSprob prob, int ( **f_lplog)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbgloballog)(XPRSprob prob, int ( **f_globallog)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbcutlog)(XPRSprob prob, int ( **f_cutlog)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbbarlog)(XPRSprob prob, int ( **f_barlog)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbcutmgr)(XPRSprob prob, int ( **f_cutmgr)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbchgnode)(XPRSprob prob, void ( **f_chgnode)(XPRSprob prob, void* vContext, int* nodnum), void** p) = NULL;
-int (*__symbolic_XPRSgetcboptnode)(XPRSprob prob, void ( **f_optnode)(XPRSprob prob, void* vContext, int* feas), void** p) = NULL;
-int (*__symbolic_XPRSgetcbprenode)(XPRSprob prob, void ( **f_prenode)(XPRSprob prob, void* vContext, int* nodinfeas), void** p) = NULL;
-int (*__symbolic_XPRSgetcbinfnode)(XPRSprob prob, void ( **f_infnode)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbnewnode)(XPRSprob prob, void ( **f_newnode)(XPRSprob prob, void* vContext, int parentnode, int newnode, int branch), void** p) = NULL;
-int (*__symbolic_XPRSgetcbnodecutoff)(XPRSprob prob, void ( **f_nodecutoff)(XPRSprob prob, void* vContext, int nodnum), void** p) = NULL;
-int (*__symbolic_XPRSgetcbpreintsol)(XPRSprob prob, void ( **f_preintsol)(XPRSprob prob, void* vContext, int isheuristic, int* ifreject, double* cutoff), void** p) = NULL;
-int (*__symbolic_XPRSgetcbintsol)(XPRSprob prob, void ( **f_intsol)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSgetcbchgbranch)(XPRSprob prob, void ( **f_chgbranch)(XPRSprob prob, void* vContext, int* entity, int* up, double* estdeg), void** p) = NULL;
-int (*__symbolic_XPRSgetcbchgbranchobject)(XPRSprob prob, void ( **f_chgbranchobject)(XPRSprob prob, void* vContext, XPRSbranchobject obranch, XPRSbranchobject* p_newobject), void** p) = NULL;
-int (*__symbolic_XPRSgetcbestimate)(XPRSprob prob, int ( **f_estimate)(XPRSprob prob, void* vContext, int* iglsel, int* iprio, double* degbest, double* degworst, double* curval, int* ifupx, int* nglinf, double* degsum, int* nbr), void** p) = NULL;
-int (*__symbolic_XPRSgetcbsepnode)(XPRSprob prob, int ( **f_sepnode)(XPRSprob prob, void* vContext, int ibr, int iglsel, int ifup, double curval), void** p) = NULL;
-int (*__symbolic_XPRSgetcbmessage)(XPRSprob prob, void ( **f_message)(XPRSprob prob, void* vContext, const char* msg, int len, int msgtype), void** p) = NULL;
-int (*__symbolic_XPRSgetcbmipthread)(XPRSprob prob, void ( **f_mipthread)(XPRSprob master_prob, void* vContext, XPRSprob prob), void** p) = NULL;
-int (*__symbolic_XPRSgetcbdestroymt)(XPRSprob prob, void ( **f_destroymt)(XPRSprob prob, void* vContext), void** p) = NULL;
-int (*__symbolic_XPRSaddcuts)(XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], const int mcols[], const double dmatval[]) = NULL;
-int (*__symbolic_XPRSdelcuts)(XPRSprob prob, int ibasis, int itype, int interp, double delta, int ncuts, const XPRScut mcutind[]) = NULL;
-int (*__symbolic_XPRSdelcpcuts)(XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]) = NULL;
-int (*__symbolic_XPRSgetcutlist)(XPRSprob prob, int itype, int interp, int* ncuts, int maxcuts, XPRScut mcutind[]) = NULL;
-int (*__symbolic_XPRSgetcpcutlist)(XPRSprob prob, int itype, int interp, double delta, int* ncuts, int maxcuts, XPRScut mcutind[], double dviol[]) = NULL;
-int (*__symbolic_XPRSgetcpcuts)(XPRSprob prob, const XPRScut mindex[], int ncuts, int size, int mtype[], char qrtype[], int mstart[], int mcols[], double dmatval[], double drhs[]) = NULL;
-int (*__symbolic_XPRSloadcuts)(XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]) = NULL;
-int (*__symbolic_XPRSstorecuts)(XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]) = NULL;
-int (*__symbolic_XPRSpresolverow)(XPRSprob prob, char qrtype, int nzo, const int mcolso[], const double dvalo[], double drhso, int maxcoeffs, int* nzp, int mcolsp[], double dvalp[], double* drhsp, int* status) = NULL;
-int (*__symbolic_XPRSloadmipsol)(XPRSprob prob, const double dsol[], int* status) = NULL;
-int (*__symbolic_XPRSstorebounds)(XPRSprob prob, int nbnds, const int mcols[], const char qbtype[], const double dbnd[], void** mindex) = NULL;
-int (*__symbolic_XPRSsetbranchcuts)(XPRSprob prob, int nbcuts, const XPRScut mindex[]) = NULL;
-int (*__symbolic_XPRSsetbranchbounds)(XPRSprob prob, void* mindex) = NULL;
-int (*__symbolic_XPRSgetlasterror)(XPRSprob prob, char* errmsg) = NULL;
-int (*__symbolic_XPRSbasiscondition)(XPRSprob prob, double* condnum, double* scondnum) = NULL;
-int (*__symbolic_XPRSgetmipsol)(XPRSprob prob, double _dx[], double _dslack[]) = NULL;
-int (*__symbolic_XPRSgetlpsol)(XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]) = NULL;
-int (*__symbolic_XPRSpostsolve)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSdelsets)(XPRSprob prob, int nsets, const int msindex[]) = NULL;
-int (*__symbolic_XPRSaddsets)(XPRSprob prob, int newsets, int newnz, const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
-int (*__symbolic_XPRSsetmessagestatus)(XPRSprob prob, int errcode, int bEnabledStatus) = NULL;
-int (*__symbolic_XPRSgetmessagestatus)(XPRSprob prob, int errcode, int* bEnabledStatus) = NULL;
-int (*__symbolic_XPRSrepairweightedinfeas)(XPRSprob prob, int* scode, const double lrp_array[], const double grp_array[], const double lbp_array[], const double ubp_array[], char second_phase, double delta, const char* optflags) = NULL;
-int (*__symbolic_XPRSrepairinfeas)(XPRSprob prob, int* scode, char ptype, char phase2, char globalflags, double lrp, double grp, double lbp, double ubp, double delta) = NULL;
-int (*__symbolic_XPRSgetcutslack)(XPRSprob prob, XPRScut cut, double* dslack) = NULL;
-int (*__symbolic_XPRSgetcutmap)(XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[]) = NULL;
-int (*__symbolic_XPRSgetnamelist)(XPRSprob prob, int _itype, char _sbuff[], int names_len, int* names_len_reqd, int first, int last) = NULL;
-int (*__symbolic_XPRSgetnamelistobject)(XPRSprob prob, int _itype, XPRSnamelist* r_nl) = NULL;
-int (*__symbolic_XPRSlogfilehandler)(XPRSobject obj, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode) = NULL;
-int (*__symbolic_XPRSgetobjecttypename)(XPRSobject obj, const char** sObjectName) = NULL;
-int (*__symbolic_XPRSobjsa)(XPRSprob prob, int ncols, const int mindex[], double lower[], double upper[]) = NULL;
-int (*__symbolic_XPRSrhssa)(XPRSprob prob, int nrows, const int mindex[], double lower[], double upper[]) = NULL;
-int (*__symbolic_XPRS_ge_setcbmsghandler)(int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p) = NULL;
-int (*__symbolic_XPRS_ge_getlasterror)(int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_msp_create)(XPRSmipsolpool* msp) = NULL;
-int (*__symbolic_XPRS_msp_destroy)(XPRSmipsolpool msp) = NULL;
-int (*__symbolic_XPRS_msp_probattach)(XPRSmipsolpool msp, XPRSprob prob) = NULL;
-int (*__symbolic_XPRS_msp_probdetach)(XPRSmipsolpool msp, XPRSprob prob) = NULL;
-int (*__symbolic_XPRS_msp_setcbmsghandler)(XPRSmipsolpool msp, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p) = NULL;
-int (*__symbolic_XPRS_msp_getsollist)(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds_Zb[], int* nReturnedSolIds, int* nSols) = NULL;
-int (*__symbolic_XPRS_msp_getsollist2)(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int bUseUserBitFilter, int iUserBitMask, int iUserBitPattern, int bUseInternalBitFilter, int iInternalBitMask, int iInternalBitPattern, int iSolutionIds_Zb[], int* nReturnedSolIds, int* nSols) = NULL;
-int (*__symbolic_XPRS_msp_getsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, double x[], int iColFirst, int iColLast, int* nValuesReturned) = NULL;
-int (*__symbolic_XPRS_msp_loadsol)(XPRSmipsolpool msp, int* iSolutionId, const double x[], int nCols, const char* sSolutionName, int* bNameModifiedForUniqueness, int* iSolutionIdOfExistingDuplicatePreventedLoad) = NULL;
-int (*__symbolic_XPRS_msp_delsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_) = NULL;
-int (*__symbolic_XPRS_msp_getintattribprobsol)(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, int* Dst) = NULL;
-int (*__symbolic_XPRS_msp_getdblattribprobsol)(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, double* Dst) = NULL;
-int (*__symbolic_XPRS_msp_getintattribprob)(XPRSmipsolpool msp, XPRSprob prob, int iAttribId, int* Dst) = NULL;
-int (*__symbolic_XPRS_msp_getdblattribprob)(XPRSmipsolpool msp, XPRSprob prob, int iAttribId, double* Dst) = NULL;
-int (*__symbolic_XPRS_msp_getintattribsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, int* Dst) = NULL;
-int (*__symbolic_XPRS_msp_getdblattribsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, double* Dst) = NULL;
-int (*__symbolic_XPRS_msp_getintcontrolsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, int* Val) = NULL;
-int (*__symbolic_XPRS_msp_getdblcontrolsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, double* Val) = NULL;
-int (*__symbolic_XPRS_msp_setintcontrolsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, int Val) = NULL;
-int (*__symbolic_XPRS_msp_setdblcontrolsol)(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, double Val) = NULL;
-int (*__symbolic_XPRS_msp_getintattribprobextreme)(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int* iSolutionId, int iAttribId, int* ExtremeVal) = NULL;
-int (*__symbolic_XPRS_msp_getdblattribprobextreme)(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int* iSolutionId, int iAttribId, double* ExtremeVal) = NULL;
-int (*__symbolic_XPRS_msp_getintattrib)(XPRSmipsolpool msp, int iAttribId, int* Val) = NULL;
-int (*__symbolic_XPRS_msp_getdblattrib)(XPRSmipsolpool msp, int iAttribId, double* Val) = NULL;
-int (*__symbolic_XPRS_msp_getintcontrol)(XPRSmipsolpool msp, int iControlId, int* Val) = NULL;
-int (*__symbolic_XPRS_msp_getdblcontrol)(XPRSmipsolpool msp, int iControlId, double* Val) = NULL;
-int (*__symbolic_XPRS_msp_setintcontrol)(XPRSmipsolpool msp, int iControlId, int Val) = NULL;
-int (*__symbolic_XPRS_msp_setdblcontrol)(XPRSmipsolpool msp, int iControlId, double Val) = NULL;
-int (*__symbolic_XPRS_msp_setsolname)(XPRSmipsolpool msp, int iSolutionId, const char* sNewSolutionBaseName, int* bNameModifiedForUniqueness, int* iSolutionIdStatus_) = NULL;
-int (*__symbolic_XPRS_msp_getsolname)(XPRSmipsolpool msp, int iSolutionId, char* _sname, int _iStringBufferBytes, int* _iBytesInInternalString, int* iSolutionIdStatus_) = NULL;
-int (*__symbolic_XPRS_msp_findsolbyname)(XPRSmipsolpool msp, const char* sSolutionName, int* iSolutionId) = NULL;
-int (*__symbolic_XPRS_msp_writeslxsol)(XPRSmipsolpool msp, XPRSprob prob_context, int iSolutionId, int* iSolutionIdStatus_, const char* sFileName, const char* sFlags) = NULL;
-int (*__symbolic_XPRS_msp_readslxsol)(XPRSmipsolpool msp, XPRSnamelist col_name_list, const char* sFileName, const char* sFlags, int* iSolutionId_Beg, int* iSolutionId_End) = NULL;
-int (*__symbolic_XPRS_msp_getlasterror)(XPRSmipsolpool msp, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_nml_create)(XPRSnamelist* r_nl) = NULL;
-int (*__symbolic_XPRS_nml_destroy)(XPRSnamelist nml) = NULL;
-int (*__symbolic_XPRS_nml_getnamecount)(XPRSnamelist nml, int* count) = NULL;
-int (*__symbolic_XPRS_nml_getmaxnamelen)(XPRSnamelist nml, int* namlen) = NULL;
-int (*__symbolic_XPRS_nml_getnames)(XPRSnamelist nml, int padlen, char buf[], int buflen, int* r_buflen_reqd, int firstIndex, int lastIndex) = NULL;
-int (*__symbolic_XPRS_nml_addnames)(XPRSnamelist nml, const char buf[], int firstIndex, int lastIndex) = NULL;
-int (*__symbolic_XPRS_nml_removenames)(XPRSnamelist nml, int firstIndex, int lastIndex) = NULL;
-int (*__symbolic_XPRS_nml_findname)(XPRSnamelist nml, const char* name, int* r_index) = NULL;
-int (*__symbolic_XPRS_nml_copynames)(XPRSnamelist dst, XPRSnamelist src) = NULL;
-int (*__symbolic_XPRS_nml_getlasterror)(XPRSnamelist nml, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_nml_setcbmsghandler)(XPRSnamelist nml, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p) = NULL;
-int (*__symbolic_XPRSgetqrowcoeff)(XPRSprob prob, int irow, int icol, int jcol, double* dval) = NULL;
-int (*__symbolic_XPRSgetqrowqmatrix)(XPRSprob prob, int irow, int mstart[], int mclind[], double dobjval[], int maxcoeffs, int* ncoeffs, int first, int last) = NULL;
-int (*__symbolic_XPRSgetqrowqmatrixtriplets)(XPRSprob prob, int irow, int* nqelem, int mqcol1[], int mqcol2[], double dqe[]) = NULL;
-int (*__symbolic_XPRSchgqrowcoeff)(XPRSprob prob, int irow, int icol, int jcol, double dval) = NULL;
-int (*__symbolic_XPRSgetqrows)(XPRSprob prob, int* qmn, int qcrows[]) = NULL;
-int (*__symbolic_XPRSaddqmatrix)(XPRSprob prob, int irow, int nqtr, const int mqc1[], const int mqc2[], const double dqew[]) = NULL;
-int (*__symbolic_XPRSdelqmatrix)(XPRSprob prob, int irow) = NULL;
-int (*__symbolic_XPRSloadqcqp)(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]) = NULL;
-int (*__symbolic_XPRSloadqcqpglobal)(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
-int (*__symbolic_XPRS_mse_create)(XPRSmipsolenum* mse) = NULL;
-int (*__symbolic_XPRS_mse_destroy)(XPRSmipsolenum mse) = NULL;
-int (*__symbolic_XPRS_mse_getsollist)(XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds[], int* nReturnedSolIds, int* nSols) = NULL;
-int (*__symbolic_XPRS_mse_getsolmetric)(XPRSmipsolenum mse, int iSolutionId, int* iSolutionIdStatus, int iMetricId, double* dMetric) = NULL;
-int (*__symbolic_XPRS_mse_getcullchoice)(XPRSmipsolenum mse, int iMetricId, int cull_sol_id_list[], int nMaxSolsToCull, int* nSolsToCull, double dNewSolMetric, const double x[], int nCols, int* bRejectSoln) = NULL;
-int (*__symbolic_XPRS_mse_minim)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f_mse_handler)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void* vContext, int* nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double* dModifiedObject, int* bRejectSoln, int* bUpdateMipAbsCutOffOnCurrentSet), void* p, int* nMaxSols) = NULL;
-int (*__symbolic_XPRS_mse_maxim)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f_mse_handler)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void* vContext, int* nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double* dModifiedObject, int* bRejectSoln, int* bUpdateMipAbsCutOffOnCurrentSet), void* p, int* nMaxSols) = NULL;
-int (*__symbolic_XPRS_mse_opt)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f_mse_handler)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void* vContext, int* nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double* dModifiedObject, int* bRejectSoln, int* bUpdateMipAbsCutOffOnCurrentSet), void* p, int* nMaxSols) = NULL;
-int (*__symbolic_XPRS_mse_getintattrib)(XPRSmipsolenum mse, int iAttribId, int* Val) = NULL;
-int (*__symbolic_XPRS_mse_getdblattrib)(XPRSmipsolenum mse, int iAttribId, double* Val) = NULL;
-int (*__symbolic_XPRS_mse_getintcontrol)(XPRSmipsolenum mse, int iAttribId, int* Val) = NULL;
-int (*__symbolic_XPRS_mse_getdblcontrol)(XPRSmipsolenum mse, int iAttribId, double* Val) = NULL;
-int (*__symbolic_XPRS_mse_setintcontrol)(XPRSmipsolenum mse, int iAttribId, int Val) = NULL;
-int (*__symbolic_XPRS_mse_setdblcontrol)(XPRSmipsolenum mse, int iAttribId, double Val) = NULL;
-int (*__symbolic_XPRS_mse_getlasterror)(XPRSmipsolenum mse, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_mse_setcbmsghandler)(XPRSmipsolenum mse, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p) = NULL;
-int (*__symbolic_XPRS_mse_setsolbasename)(XPRSmipsolenum mse, const char* sSolutionBaseName) = NULL;
-int (*__symbolic_XPRS_mse_getsolbasename)(XPRSmipsolenum mse, char* _sname, int _iStringBufferBytes, int* _iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_mse_setcbgetsolutiondiff)(XPRSmipsolenum mse, int ( *f_mse_getsolutiondiff)(XPRSmipsolenum mse, void* vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double* dDiffMetric), void* p) = NULL;
-int (*__symbolic_XPRS_mse_getcbgetsolutiondiff)(XPRSmipsolenum mse, int ( **f_mse_getsolutiondiff)(XPRSmipsolenum mse, void* vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double* dDiffMetric), void** p) = NULL;
-int (*__symbolic_XPRSinitializenlphessian)(XPRSprob prob, const int mstart[], const int mcol[]) = NULL;
-int (*__symbolic_XPRSinitializenlphessian_indexpairs)(XPRSprob prob, int nqcelem, const int mcol1[], const int mcol2[]) = NULL;
-int (*__symbolic_XPRSsetcbnlpevaluate)(XPRSprob prob, void ( *f_evaluate)(XPRSprob prob, void* vContext, const double x[], double* v), void* p) = NULL;
-int (*__symbolic_XPRSsetcbnlpgradient)(XPRSprob prob, void ( *f_gradient)(XPRSprob prob, void* vContext, const double x[], double g[]), void* p) = NULL;
-int (*__symbolic_XPRSsetcbnlphessian)(XPRSprob prob, void ( *f_hessian)(XPRSprob prob, void* vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void* p) = NULL;
-int (*__symbolic_XPRSgetcbnlpevaluate)(XPRSprob prob, void ( **f_evaluate)(XPRSprob prob, void* vContext, const double x[], double* v), void** p) = NULL;
-int (*__symbolic_XPRSgetcbnlpgradient)(XPRSprob prob, void ( **f_gradient)(XPRSprob prob, void* vContext, const double x[], double g[]), void** p) = NULL;
-int (*__symbolic_XPRSgetcbnlphessian)(XPRSprob prob, void ( **f_hessian)(XPRSprob prob, void* vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void** p) = NULL;
-int (*__symbolic_XPRSresetnlp)(XPRSprob prob) = NULL;
-int (*__symbolic_XPRSsetcbbariteration)(XPRSprob prob, void ( *f_evaluate)(XPRSprob prob, void* vContext, int* barrier_action), void* p) = NULL;
-int (*__symbolic_XPRSgetcbbariteration)(XPRSprob prob, void ( **f_evaluate)(XPRSprob prob, void* vContext, int* barrier_action), void** p) = NULL;
-int (*__symbolic_XPRS_bo_create)(XPRSbranchobject* p_object, XPRSprob prob, int isoriginal) = NULL;
-int (*__symbolic_XPRS_bo_destroy)(XPRSbranchobject obranch) = NULL;
-int (*__symbolic_XPRS_bo_store)(XPRSbranchobject obranch, int* p_status) = NULL;
-int (*__symbolic_XPRS_bo_addbranches)(XPRSbranchobject obranch, int nbranches) = NULL;
-int (*__symbolic_XPRS_bo_getbranches)(XPRSbranchobject obranch, int* p_nbranches) = NULL;
-int (*__symbolic_XPRS_bo_setpriority)(XPRSbranchobject obranch, int ipriority) = NULL;
-int (*__symbolic_XPRS_bo_setpreferredbranch)(XPRSbranchobject obranch, int ibranch) = NULL;
-int (*__symbolic_XPRS_bo_addbounds)(XPRSbranchobject obranch, int ibranch, int nbounds, const char cbndtype[], const int mbndcol[], const double dbndval[]) = NULL;
-int (*__symbolic_XPRS_bo_getbounds)(XPRSbranchobject obranch, int ibranch, int* p_nbounds, int nbounds_size, char cbndtype[], int mbndcol[], double dbndval[]) = NULL;
-int (*__symbolic_XPRS_bo_addrows)(XPRSbranchobject obranch, int ibranch, int nrows, int nelems, const char crtype[], const double drrhs[], const int mrbeg[], const int mcol[], const double dval[]) = NULL;
-int (*__symbolic_XPRS_bo_getrows)(XPRSbranchobject obranch, int ibranch, int* p_nrows, int nrows_size, int* p_nelems, int nelems_size, char crtype[], double drrhs[], int mrbeg[], int mcol[], double dval[]) = NULL;
-int (*__symbolic_XPRS_bo_addcuts)(XPRSbranchobject obranch, int ibranch, int ncuts, const XPRScut mcutind[]) = NULL;
-int (*__symbolic_XPRS_bo_getid)(XPRSbranchobject obranch, int* p_id) = NULL;
-int (*__symbolic_XPRS_bo_setcbmsghandler)(XPRSbranchobject obranch, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p) = NULL;
-int (*__symbolic_XPRS_bo_getlasterror)(XPRSbranchobject obranch, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString) = NULL;
+int (*__symbolic_XPRScopycallbacks) (XPRSprob dest, XPRSprob src) = NULL;
+int (*__symbolic_XPRScopycontrols) (XPRSprob dest, XPRSprob src) = NULL;
+int (*__symbolic_XPRScopyprob) (XPRSprob dest, XPRSprob src, const char *probname) = NULL;
+int (*__symbolic_XPRScreateprob) (XPRSprob * _probholder) = NULL;
+int (*__symbolic_XPRSdestroyprob) (XPRSprob _prob) = NULL;
+int (*__symbolic_XPRSinit) (const char *path) = NULL;
+int (*__symbolic_XPRSfree) (void) = NULL;
+int (*__symbolic_XPRSgetbanner) (char *banner) = NULL;
+int (*__symbolic_XPRSgetversion) (char *version) = NULL;
+int (*__symbolic_XPRSgetdaysleft) (int *daysleft) = NULL;
+int (*__symbolic_XPRSlicense) (int *_i1, char *_c1) = NULL;
+int (*__symbolic_XPRSbeginlicensing) (int *r_dontAlreadyHaveLicense) = NULL;
+int (*__symbolic_XPRSendlicensing) (void) = NULL;
+int (*__symbolic_XPRSgetlicerrmsg) (char *msg, int len) = NULL;
+int (*__symbolic_XPRSsetlogfile) (XPRSprob prob, const char *logname) = NULL;
+int (*__symbolic_XPRSsetintcontrol) (XPRSprob prob, int _index, int _ivalue) = NULL;
+int (*__symbolic_XPRSsetdblcontrol) (XPRSprob prob, int _index, double _dvalue) = NULL;
+int (*__symbolic_XPRSinterrupt) (XPRSprob prob, int reason) = NULL;
+int (*__symbolic_XPRSgetprobname) (XPRSprob prob, char *_svalue) = NULL;
+int (*__symbolic_XPRSgetqobj) (XPRSprob prob, int _icol, int _jcol, double *_dval) = NULL;
+int (*__symbolic_XPRSsetprobname) (XPRSprob prob, const char *_svalue) = NULL;
+int (*__symbolic_XPRSsetstrcontrol) (XPRSprob prob, int _index, const char *_svalue) = NULL;
+int (*__symbolic_XPRSgetintcontrol) (XPRSprob prob, int _index, int *_ivalue) = NULL;
+int (*__symbolic_XPRSgetdblcontrol) (XPRSprob prob, int _index, double *_dvalue) = NULL;
+int (*__symbolic_XPRSgetstrcontrol) (XPRSprob prob, int _index, char *_svalue) = NULL;
+int (*__symbolic_XPRSgetintattrib) (XPRSprob prob, int _index, int *_ivalue) = NULL;
+int (*__symbolic_XPRSgetstrattrib) (XPRSprob prob, int _index, char *_cvalue) = NULL;
+int (*__symbolic_XPRSgetdblattrib) (XPRSprob prob, int _index, double *_dvalue) = NULL;
+int (*__symbolic_XPRSsetdefaultcontrol) (XPRSprob prob, int _index) = NULL;
+int (*__symbolic_XPRSsetdefaults) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSgoal) (XPRSprob prob, const char *_filename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSreadprob) (XPRSprob prob, const char *_sprobname, const char *_sflags) = NULL;
+int (*__symbolic_XPRSloadlp) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]) = NULL;
+int (*__symbolic_XPRSloadqp) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]) = NULL;
+int (*__symbolic_XPRSloadqglobal) (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], const int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSfixglobal) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSfixglobals) (XPRSprob prob, int ifround) = NULL;
+int (*__symbolic_XPRSloadmodelcuts) (XPRSprob prob, int nmodcuts, const int _mrows[]) = NULL;
+int (*__symbolic_XPRSloaddelayedrows) (XPRSprob prob, int nrows, const int _mrows[]) = NULL;
+int (*__symbolic_XPRSloaddirs) (XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]) = NULL;
+int (*__symbolic_XPRSloadbranchdirs) (XPRSprob prob, int ndirs, const int _mcols[], const int _mbranch[]) = NULL;
+int (*__symbolic_XPRSloadpresolvedirs) (XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]) = NULL;
+int (*__symbolic_XPRSgetdirs) (XPRSprob prob, int *ndirs, int _mcols[], int _mpri[], char _sbr[], double dupc[], double ddpc[]) = NULL;
+int (*__symbolic_XPRSloadglobal) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const int _msstart[], const int _mscols[], const double _dref[]) = NULL;
+int (*__symbolic_XPRSaddnames) (XPRSprob prob, int _itype, const char _sname[], int first, int last) = NULL;
+int (*__symbolic_XPRSaddsetnames) (XPRSprob prob, const char _sname[], int first, int last) = NULL;
+int (*__symbolic_XPRSscale) (XPRSprob prob, const int mrscal[], const int mcscal[]) = NULL;
+int (*__symbolic_XPRSreaddirs) (XPRSprob prob, const char *_sfilename) = NULL;
+int (*__symbolic_XPRSwritedirs) (XPRSprob prob, const char *_sfilename) = NULL;
+int (*__symbolic_XPRSsetindicators) (XPRSprob prob, int nrows, const int _mrows[], const int _inds[], const int _comps[]) = NULL;
+int (*__symbolic_XPRSgetindicators) (XPRSprob prob, int _inds[], int _comps[], int first, int last) = NULL;
+int (*__symbolic_XPRSdelindicators) (XPRSprob prob, int first, int last) = NULL;
+int (*__symbolic_XPRSminim) (XPRSprob prob, const char *_sflags) = NULL;
+int (*__symbolic_XPRSmaxim) (XPRSprob prob, const char *_sflags) = NULL;
+int (*__symbolic_XPRSlpoptimize) (XPRSprob prob, const char *_sflags) = NULL;
+int (*__symbolic_XPRSmipoptimize) (XPRSprob prob, const char *_sflags) = NULL;
+int (*__symbolic_XPRSrange) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSgetrowrange) (XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[]) = NULL;
+int (*__symbolic_XPRSgetcolrange) (XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[], double _ucost[], double _lcost[]) = NULL;
+int (*__symbolic_XPRSgetpivotorder) (XPRSprob prob, int mpiv[]) = NULL;
+int (*__symbolic_XPRSgetpresolvemap) (XPRSprob prob, int rowmap[], int colmap[]) = NULL;
+int (*__symbolic_XPRSreadbasis) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSwritebasis) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSglobal) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSinitglobal) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSwriteprtsol) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSalter) (XPRSprob prob, const char *_sfilename) = NULL;
+int (*__symbolic_XPRSwritesol) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSwritebinsol) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSreadbinsol) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSwriteslxsol) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSreadslxsol) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSwriteprtrange) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSwriterange) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSgetsol) (XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]) = NULL;
+int (*__symbolic_XPRSgetpresolvesol) (XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]) = NULL;
+int (*__symbolic_XPRSgetinfeas) (XPRSprob prob, int *npv, int *nps, int *nds, int *ndv, int mx[], int mslack[], int mdual[], int mdj[]) = NULL;
+int (*__symbolic_XPRSgetscaledinfeas) (XPRSprob prob, int *npv, int *nps, int *nds, int *ndv, int mx[], int mslack[], int mdual[], int mdj[]) = NULL;
+int (*__symbolic_XPRSgetunbvec) (XPRSprob prob, int *icol) = NULL;
+int (*__symbolic_XPRSbtran) (XPRSprob prob, double dwork[]) = NULL;
+int (*__symbolic_XPRSftran) (XPRSprob prob, double dwork[]) = NULL;
+int (*__symbolic_XPRSgetobj) (XPRSprob prob, double _dobj[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetrhs) (XPRSprob prob, double _drhs[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetrhsrange) (XPRSprob prob, double _drng[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetlb) (XPRSprob prob, double _dbdl[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetub) (XPRSprob prob, double _dbdu[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetcols) (XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSgetrows) (XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSgetcoef) (XPRSprob prob, int _irow, int _icol, double *_dval) = NULL;
+int (*__symbolic_XPRSgetmqobj) (XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSiisclear) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSiisfirst) (XPRSprob prob, int ifiis, int *status_code) = NULL;
+int (*__symbolic_XPRSiisnext) (XPRSprob prob, int *status_code) = NULL;
+int (*__symbolic_XPRSiisstatus) (XPRSprob prob, int *iiscount, int rowsizes[], int colsizes[], double suminfeas[], int numinfeas[]) = NULL;
+int (*__symbolic_XPRSiisall) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSiiswrite) (XPRSprob prob, int number, const char *fn, int filetype, const char *typeflags) = NULL;
+int (*__symbolic_XPRSiisisolations) (XPRSprob prob, int number) = NULL;
+int (*__symbolic_XPRSgetiisdata) (XPRSprob prob, int number, int *rownumber, int *colnumber, int miisrow[], int miiscol[], char constrainttype[], char colbndtype[], double duals[], double rdcs[], char isolationrows[], char isolationcols[]) = NULL;
+int (*__symbolic_XPRSgetiis) (XPRSprob prob, int *ncols, int *nrows, int _miiscol[], int _miisrow[]) = NULL;
+int (*__symbolic_XPRSgetpresolvebasis) (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]) = NULL;
+int (*__symbolic_XPRSloadpresolvebasis) (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]) = NULL;
+int (*__symbolic_XPRSgetglobal) (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], int _msstart[], int _mscols[], double _dref[]) = NULL;
+int (*__symbolic_XPRSwriteprob) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
+int (*__symbolic_XPRSgetnames) (XPRSprob prob, int _itype, char _sbuff[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetrowtype) (XPRSprob prob, char _srowtype[], int first, int last) = NULL;
+int (*__symbolic_XPRSloadsecurevecs) (XPRSprob prob, int nrows, int ncols, const int mrow[], const int mcol[]) = NULL;
+int (*__symbolic_XPRSgetcoltype) (XPRSprob prob, char _coltype[], int first, int last) = NULL;
+int (*__symbolic_XPRSgetbasis) (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]) = NULL;
+int (*__symbolic_XPRSloadbasis) (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]) = NULL;
+int (*__symbolic_XPRSgetindex) (XPRSprob prob, int _itype, const char *_sname, int *_iseq) = NULL;
+int (*__symbolic_XPRSaddrows) (XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const int _mstart[], const int _mclind[], const double _dmatval[]) = NULL;
+int (*__symbolic_XPRSdelrows) (XPRSprob prob, int nrows, const int _mindex[]) = NULL;
+int (*__symbolic_XPRSdelnode) (XPRSprob prob, int _inode, int ifboth) = NULL;
+int (*__symbolic_XPRSaddcols) (XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], const int _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]) = NULL;
+int (*__symbolic_XPRSdelcols) (XPRSprob prob, int ncols, const int _mindex[]) = NULL;
+int (*__symbolic_XPRSchgcoltype) (XPRSprob prob, int ncols, const int _mindex[], const char _coltype[]) = NULL;
+int (*__symbolic_XPRSchgrowtype) (XPRSprob prob, int nrows, const int _mindex[], const char _srowtype[]) = NULL;
+int (*__symbolic_XPRSchgbounds) (XPRSprob prob, int nbnds, const int _mindex[], const char _sboundtype[], const double _dbnd[]) = NULL;
+int (*__symbolic_XPRSchgobj) (XPRSprob prob, int ncols, const int _mindex[], const double _dobj[]) = NULL;
+int (*__symbolic_XPRSchgcoef) (XPRSprob prob, int _irow, int _icol, double _dval) = NULL;
+int (*__symbolic_XPRSchgmcoef) (XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]) = NULL;
+int (*__symbolic_XPRSchgmqobj) (XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[], const double _dval[]) = NULL;
+int (*__symbolic_XPRSchgqobj) (XPRSprob prob, int _icol, int _jcol, double _dval) = NULL;
+int (*__symbolic_XPRSchgrhs) (XPRSprob prob, int nrows, const int _mindex[], const double _drhs[]) = NULL;
+int (*__symbolic_XPRSchgrhsrange) (XPRSprob prob, int nrows, const int _mindex[], const double _drng[]) = NULL;
+int (*__symbolic_XPRSchgobjsense) (XPRSprob prob, int objsense) = NULL;
+int (*__symbolic_XPRSsave) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSrestore) (XPRSprob prob, const char *_sprobname, const char *_force) = NULL;
+int (*__symbolic_XPRSpivot) (XPRSprob prob, int _in, int _out) = NULL;
+int (*__symbolic_XPRSgetpivots) (XPRSprob prob, int _in, int _mout[], double _dout[], double *_dobjo, int *npiv, int maxpiv) = NULL;
+int (*__symbolic_XPRSsetcblplog) (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbgloballog) (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbcutlog) (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbbarlog) (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbcutmgr) (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbchgnode) (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p) = NULL;
+int (*__symbolic_XPRSsetcboptnode) (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p) = NULL;
+int (*__symbolic_XPRSsetcbprenode) (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p) = NULL;
+int (*__symbolic_XPRSsetcbinfnode) (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbnewnode) (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p) = NULL;
+int (*__symbolic_XPRSsetcbnodecutoff) (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p) = NULL;
+int (*__symbolic_XPRSsetcbpreintsol) (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p) = NULL;
+int (*__symbolic_XPRSsetcbintsol) (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbchgbranch) (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p) = NULL;
+int (*__symbolic_XPRSsetcbchgbranchobject) (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p) = NULL;
+int (*__symbolic_XPRSsetcbestimate) (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p) = NULL;
+int (*__symbolic_XPRSsetcbsepnode) (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p) = NULL;
+int (*__symbolic_XPRSsetcbmessage) (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p) = NULL;
+int (*__symbolic_XPRSsetcbmipthread) (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p) = NULL;
+int (*__symbolic_XPRSsetcbdestroymt) (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcblplog) (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbgloballog) (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbcutlog) (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbbarlog) (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbcutmgr) (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbchgnode) (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void **p) = NULL;
+int (*__symbolic_XPRSgetcboptnode) (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *vContext, int *feas), void **p) = NULL;
+int (*__symbolic_XPRSgetcbprenode) (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void **p) = NULL;
+int (*__symbolic_XPRSgetcbinfnode) (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbnewnode) (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void **p) = NULL;
+int (*__symbolic_XPRSgetcbnodecutoff) (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void **p) = NULL;
+int (*__symbolic_XPRSgetcbpreintsol) (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void **p) = NULL;
+int (*__symbolic_XPRSgetcbintsol) (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSgetcbchgbranch) (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void **p) = NULL;
+int (*__symbolic_XPRSgetcbchgbranchobject) (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void **p) = NULL;
+int (*__symbolic_XPRSgetcbestimate) (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void **p) = NULL;
+int (*__symbolic_XPRSgetcbsepnode) (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void **p) = NULL;
+int (*__symbolic_XPRSgetcbmessage) (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void **p) = NULL;
+int (*__symbolic_XPRSgetcbmipthread) (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void **p) = NULL;
+int (*__symbolic_XPRSgetcbdestroymt) (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcuts) (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], const int mcols[], const double dmatval[]) = NULL;
+int (*__symbolic_XPRSdelcuts) (XPRSprob prob, int ibasis, int itype, int interp, double delta, int ncuts, const XPRScut mcutind[]) = NULL;
+int (*__symbolic_XPRSdelcpcuts) (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]) = NULL;
+int (*__symbolic_XPRSgetcutlist) (XPRSprob prob, int itype, int interp, int *ncuts, int maxcuts, XPRScut mcutind[]) = NULL;
+int (*__symbolic_XPRSgetcpcutlist) (XPRSprob prob, int itype, int interp, double delta, int *ncuts, int maxcuts, XPRScut mcutind[], double dviol[]) = NULL;
+int (*__symbolic_XPRSgetcpcuts) (XPRSprob prob, const XPRScut mindex[], int ncuts, int size, int mtype[], char qrtype[], int mstart[], int mcols[], double dmatval[], double drhs[]) = NULL;
+int (*__symbolic_XPRSloadcuts) (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]) = NULL;
+int (*__symbolic_XPRSstorecuts) (XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]) = NULL;
+int (*__symbolic_XPRSpresolverow) (XPRSprob prob, char qrtype, int nzo, const int mcolso[], const double dvalo[], double drhso, int maxcoeffs, int *nzp, int mcolsp[], double dvalp[], double *drhsp, int *status) = NULL;
+int (*__symbolic_XPRSloadmipsol) (XPRSprob prob, const double dsol[], int *status) = NULL;
+int (*__symbolic_XPRSstorebounds) (XPRSprob prob, int nbnds, const int mcols[], const char qbtype[], const double dbnd[], void **mindex) = NULL;
+int (*__symbolic_XPRSsetbranchcuts) (XPRSprob prob, int nbcuts, const XPRScut mindex[]) = NULL;
+int (*__symbolic_XPRSsetbranchbounds) (XPRSprob prob, void *mindex) = NULL;
+int (*__symbolic_XPRSgetlasterror) (XPRSprob prob, char *errmsg) = NULL;
+int (*__symbolic_XPRSbasiscondition) (XPRSprob prob, double *condnum, double *scondnum) = NULL;
+int (*__symbolic_XPRSgetmipsol) (XPRSprob prob, double _dx[], double _dslack[]) = NULL;
+int (*__symbolic_XPRSgetlpsol) (XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]) = NULL;
+int (*__symbolic_XPRSpostsolve) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSdelsets) (XPRSprob prob, int nsets, const int msindex[]) = NULL;
+int (*__symbolic_XPRSaddsets) (XPRSprob prob, int newsets, int newnz, const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSsetmessagestatus) (XPRSprob prob, int errcode, int bEnabledStatus) = NULL;
+int (*__symbolic_XPRSgetmessagestatus) (XPRSprob prob, int errcode, int *bEnabledStatus) = NULL;
+int (*__symbolic_XPRSrepairweightedinfeas) (XPRSprob prob, int *scode, const double lrp_array[], const double grp_array[], const double lbp_array[], const double ubp_array[], char second_phase, double delta, const char *optflags) = NULL;
+int (*__symbolic_XPRSrepairinfeas) (XPRSprob prob, int *scode, char ptype, char phase2, char globalflags, double lrp, double grp, double lbp, double ubp, double delta) = NULL;
+int (*__symbolic_XPRSgetcutslack) (XPRSprob prob, XPRScut cut, double *dslack) = NULL;
+int (*__symbolic_XPRSgetcutmap) (XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[]) = NULL;
+int (*__symbolic_XPRSgetnamelist) (XPRSprob prob, int _itype, char _sbuff[], int names_len, int *names_len_reqd, int first, int last) = NULL;
+int (*__symbolic_XPRSgetnamelistobject) (XPRSprob prob, int _itype, XPRSnamelist * r_nl) = NULL;
+int (*__symbolic_XPRSlogfilehandler) (XPRSobject obj, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode) = NULL;
+int (*__symbolic_XPRSgetobjecttypename) (XPRSobject obj, const char **sObjectName) = NULL;
+int (*__symbolic_XPRSobjsa) (XPRSprob prob, int ncols, const int mindex[], double lower[], double upper[]) = NULL;
+int (*__symbolic_XPRSrhssa) (XPRSprob prob, int nrows, const int mindex[], double lower[], double upper[]) = NULL;
+int (*__symbolic_XPRS_ge_setcbmsghandler) (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_ge_getlasterror) (int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
+int (*__symbolic_XPRS_msp_create) (XPRSmipsolpool * msp) = NULL;
+int (*__symbolic_XPRS_msp_destroy) (XPRSmipsolpool msp) = NULL;
+int (*__symbolic_XPRS_msp_probattach) (XPRSmipsolpool msp, XPRSprob prob) = NULL;
+int (*__symbolic_XPRS_msp_probdetach) (XPRSmipsolpool msp, XPRSprob prob) = NULL;
+int (*__symbolic_XPRS_msp_setcbmsghandler) (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_msp_getsollist) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols) = NULL;
+int (*__symbolic_XPRS_msp_getsollist2) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int bUseUserBitFilter, int iUserBitMask, int iUserBitPattern, int bUseInternalBitFilter, int iInternalBitMask, int iInternalBitPattern, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols) = NULL;
+int (*__symbolic_XPRS_msp_getsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, double x[], int iColFirst, int iColLast, int *nValuesReturned) = NULL;
+int (*__symbolic_XPRS_msp_loadsol) (XPRSmipsolpool msp, int *iSolutionId, const double x[], int nCols, const char *sSolutionName, int *bNameModifiedForUniqueness, int *iSolutionIdOfExistingDuplicatePreventedLoad) = NULL;
+int (*__symbolic_XPRS_msp_delsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_) = NULL;
+int (*__symbolic_XPRS_msp_getintattribprobsol) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, int *Dst) = NULL;
+int (*__symbolic_XPRS_msp_getdblattribprobsol) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, double *Dst) = NULL;
+int (*__symbolic_XPRS_msp_getintattribprob) (XPRSmipsolpool msp, XPRSprob prob, int iAttribId, int *Dst) = NULL;
+int (*__symbolic_XPRS_msp_getdblattribprob) (XPRSmipsolpool msp, XPRSprob prob, int iAttribId, double *Dst) = NULL;
+int (*__symbolic_XPRS_msp_getintattribsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, int *Dst) = NULL;
+int (*__symbolic_XPRS_msp_getdblattribsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, double *Dst) = NULL;
+int (*__symbolic_XPRS_msp_getintcontrolsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, int *Val) = NULL;
+int (*__symbolic_XPRS_msp_getdblcontrolsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, double *Val) = NULL;
+int (*__symbolic_XPRS_msp_setintcontrolsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, int Val) = NULL;
+int (*__symbolic_XPRS_msp_setdblcontrolsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, double Val) = NULL;
+int (*__symbolic_XPRS_msp_getintattribprobextreme) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int *iSolutionId, int iAttribId, int *ExtremeVal) = NULL;
+int (*__symbolic_XPRS_msp_getdblattribprobextreme) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int *iSolutionId, int iAttribId, double *ExtremeVal) = NULL;
+int (*__symbolic_XPRS_msp_getintattrib) (XPRSmipsolpool msp, int iAttribId, int *Val) = NULL;
+int (*__symbolic_XPRS_msp_getdblattrib) (XPRSmipsolpool msp, int iAttribId, double *Val) = NULL;
+int (*__symbolic_XPRS_msp_getintcontrol) (XPRSmipsolpool msp, int iControlId, int *Val) = NULL;
+int (*__symbolic_XPRS_msp_getdblcontrol) (XPRSmipsolpool msp, int iControlId, double *Val) = NULL;
+int (*__symbolic_XPRS_msp_setintcontrol) (XPRSmipsolpool msp, int iControlId, int Val) = NULL;
+int (*__symbolic_XPRS_msp_setdblcontrol) (XPRSmipsolpool msp, int iControlId, double Val) = NULL;
+int (*__symbolic_XPRS_msp_setsolname) (XPRSmipsolpool msp, int iSolutionId, const char *sNewSolutionBaseName, int *bNameModifiedForUniqueness, int *iSolutionIdStatus_) = NULL;
+int (*__symbolic_XPRS_msp_getsolname) (XPRSmipsolpool msp, int iSolutionId, char *_sname, int _iStringBufferBytes, int *_iBytesInInternalString, int *iSolutionIdStatus_) = NULL;
+int (*__symbolic_XPRS_msp_findsolbyname) (XPRSmipsolpool msp, const char *sSolutionName, int *iSolutionId) = NULL;
+int (*__symbolic_XPRS_msp_writeslxsol) (XPRSmipsolpool msp, XPRSprob prob_context, int iSolutionId, int *iSolutionIdStatus_, const char *sFileName, const char *sFlags) = NULL;
+int (*__symbolic_XPRS_msp_readslxsol) (XPRSmipsolpool msp, XPRSnamelist col_name_list, const char *sFileName, const char *sFlags, int *iSolutionId_Beg, int *iSolutionId_End) = NULL;
+int (*__symbolic_XPRS_msp_getlasterror) (XPRSmipsolpool msp, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
+int (*__symbolic_XPRS_nml_create) (XPRSnamelist * r_nl) = NULL;
+int (*__symbolic_XPRS_nml_destroy) (XPRSnamelist nml) = NULL;
+int (*__symbolic_XPRS_nml_getnamecount) (XPRSnamelist nml, int *count) = NULL;
+int (*__symbolic_XPRS_nml_getmaxnamelen) (XPRSnamelist nml, int *namlen) = NULL;
+int (*__symbolic_XPRS_nml_getnames) (XPRSnamelist nml, int padlen, char buf[], int buflen, int *r_buflen_reqd, int firstIndex, int lastIndex) = NULL;
+int (*__symbolic_XPRS_nml_addnames) (XPRSnamelist nml, const char buf[], int firstIndex, int lastIndex) = NULL;
+int (*__symbolic_XPRS_nml_removenames) (XPRSnamelist nml, int firstIndex, int lastIndex) = NULL;
+int (*__symbolic_XPRS_nml_findname) (XPRSnamelist nml, const char *name, int *r_index) = NULL;
+int (*__symbolic_XPRS_nml_copynames) (XPRSnamelist dst, XPRSnamelist src) = NULL;
+int (*__symbolic_XPRS_nml_getlasterror) (XPRSnamelist nml, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
+int (*__symbolic_XPRS_nml_setcbmsghandler) (XPRSnamelist nml, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRSgetqrowcoeff) (XPRSprob prob, int irow, int icol, int jcol, double *dval) = NULL;
+int (*__symbolic_XPRSgetqrowqmatrix) (XPRSprob prob, int irow, int mstart[], int mclind[], double dobjval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSgetqrowqmatrixtriplets) (XPRSprob prob, int irow, int *nqelem, int mqcol1[], int mqcol2[], double dqe[]) = NULL;
+int (*__symbolic_XPRSchgqrowcoeff) (XPRSprob prob, int irow, int icol, int jcol, double dval) = NULL;
+int (*__symbolic_XPRSgetqrows) (XPRSprob prob, int *qmn, int qcrows[]) = NULL;
+int (*__symbolic_XPRSaddqmatrix) (XPRSprob prob, int irow, int nqtr, const int mqc1[], const int mqc2[], const double dqew[]) = NULL;
+int (*__symbolic_XPRSdelqmatrix) (XPRSprob prob, int irow) = NULL;
+int (*__symbolic_XPRSloadqcqp) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]) = NULL;
+int (*__symbolic_XPRSloadqcqpglobal) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRS_mse_create) (XPRSmipsolenum * mse) = NULL;
+int (*__symbolic_XPRS_mse_destroy) (XPRSmipsolenum mse) = NULL;
+int (*__symbolic_XPRS_mse_getsollist) (XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds[], int *nReturnedSolIds, int *nSols) = NULL;
+int (*__symbolic_XPRS_mse_getsolmetric) (XPRSmipsolenum mse, int iSolutionId, int *iSolutionIdStatus, int iMetricId, double *dMetric) = NULL;
+int (*__symbolic_XPRS_mse_getcullchoice) (XPRSmipsolenum mse, int iMetricId, int cull_sol_id_list[], int nMaxSolsToCull, int *nSolsToCull, double dNewSolMetric, const double x[], int nCols, int *bRejectSoln) = NULL;
+int (*__symbolic_XPRS_mse_minim) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( * f_mse_handler) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void *vContext, int *nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double *dModifiedObject, int *bRejectSoln, int *bUpdateMipAbsCutOffOnCurrentSet), void *p, int *nMaxSols) = NULL;
+int (*__symbolic_XPRS_mse_maxim) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( * f_mse_handler) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void *vContext, int *nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double *dModifiedObject, int *bRejectSoln, int *bUpdateMipAbsCutOffOnCurrentSet), void *p, int *nMaxSols) = NULL;
+int (*__symbolic_XPRS_mse_opt) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( * f_mse_handler) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void *vContext, int *nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double *dModifiedObject, int *bRejectSoln, int *bUpdateMipAbsCutOffOnCurrentSet), void *p, int *nMaxSols) = NULL;
+int (*__symbolic_XPRS_mse_getintattrib) (XPRSmipsolenum mse, int iAttribId, int *Val) = NULL;
+int (*__symbolic_XPRS_mse_getdblattrib) (XPRSmipsolenum mse, int iAttribId, double *Val) = NULL;
+int (*__symbolic_XPRS_mse_getintcontrol) (XPRSmipsolenum mse, int iAttribId, int *Val) = NULL;
+int (*__symbolic_XPRS_mse_getdblcontrol) (XPRSmipsolenum mse, int iAttribId, double *Val) = NULL;
+int (*__symbolic_XPRS_mse_setintcontrol) (XPRSmipsolenum mse, int iAttribId, int Val) = NULL;
+int (*__symbolic_XPRS_mse_setdblcontrol) (XPRSmipsolenum mse, int iAttribId, double Val) = NULL;
+int (*__symbolic_XPRS_mse_getlasterror) (XPRSmipsolenum mse, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
+int (*__symbolic_XPRS_mse_setcbmsghandler) (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_mse_setsolbasename) (XPRSmipsolenum mse, const char *sSolutionBaseName) = NULL;
+int (*__symbolic_XPRS_mse_getsolbasename) (XPRSmipsolenum mse, char *_sname, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
+int (*__symbolic_XPRS_mse_setcbgetsolutiondiff) (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p) = NULL;
+int (*__symbolic_XPRS_mse_getcbgetsolutiondiff) (XPRSmipsolenum mse, int ( ** f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void **p) = NULL;
+int (*__symbolic_XPRSinitializenlphessian) (XPRSprob prob, const int mstart[], const int mcol[]) = NULL;
+int (*__symbolic_XPRSinitializenlphessian_indexpairs) (XPRSprob prob, int nqcelem, const int mcol1[], const int mcol2[]) = NULL;
+int (*__symbolic_XPRSsetcbnlpevaluate) (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void *p) = NULL;
+int (*__symbolic_XPRSsetcbnlpgradient) (XPRSprob prob, void ( * f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void *p) = NULL;
+int (*__symbolic_XPRSsetcbnlphessian) (XPRSprob prob, void ( * f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void *p) = NULL;
+int (*__symbolic_XPRSgetcbnlpevaluate) (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void **p) = NULL;
+int (*__symbolic_XPRSgetcbnlpgradient) (XPRSprob prob, void ( ** f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void **p) = NULL;
+int (*__symbolic_XPRSgetcbnlphessian) (XPRSprob prob, void ( ** f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void **p) = NULL;
+int (*__symbolic_XPRSresetnlp) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSsetcbbariteration) (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void *p) = NULL;
+int (*__symbolic_XPRSgetcbbariteration) (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void **p) = NULL;
+int (*__symbolic_XPRS_bo_create) (XPRSbranchobject * p_object, XPRSprob prob, int isoriginal) = NULL;
+int (*__symbolic_XPRS_bo_destroy) (XPRSbranchobject obranch) = NULL;
+int (*__symbolic_XPRS_bo_store) (XPRSbranchobject obranch, int *p_status) = NULL;
+int (*__symbolic_XPRS_bo_addbranches) (XPRSbranchobject obranch, int nbranches) = NULL;
+int (*__symbolic_XPRS_bo_getbranches) (XPRSbranchobject obranch, int *p_nbranches) = NULL;
+int (*__symbolic_XPRS_bo_setpriority) (XPRSbranchobject obranch, int ipriority) = NULL;
+int (*__symbolic_XPRS_bo_setpreferredbranch) (XPRSbranchobject obranch, int ibranch) = NULL;
+int (*__symbolic_XPRS_bo_addbounds) (XPRSbranchobject obranch, int ibranch, int nbounds, const char cbndtype[], const int mbndcol[], const double dbndval[]) = NULL;
+int (*__symbolic_XPRS_bo_getbounds) (XPRSbranchobject obranch, int ibranch, int *p_nbounds, int nbounds_size, char cbndtype[], int mbndcol[], double dbndval[]) = NULL;
+int (*__symbolic_XPRS_bo_addrows) (XPRSbranchobject obranch, int ibranch, int nrows, int nelems, const char crtype[], const double drrhs[], const int mrbeg[], const int mcol[], const double dval[]) = NULL;
+int (*__symbolic_XPRS_bo_getrows) (XPRSbranchobject obranch, int ibranch, int *p_nrows, int nrows_size, int *p_nelems, int nelems_size, char crtype[], double drrhs[], int mrbeg[], int mcol[], double dval[]) = NULL;
+int (*__symbolic_XPRS_bo_addcuts) (XPRSbranchobject obranch, int ibranch, int ncuts, const XPRScut mcutind[]) = NULL;
+int (*__symbolic_XPRS_bo_getid) (XPRSbranchobject obranch, int *p_id) = NULL;
+int (*__symbolic_XPRS_bo_setcbmsghandler) (XPRSbranchobject obranch, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_bo_getlasterror) (XPRSbranchobject obranch, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
 
 /* hijacked functions */
 
-int XPRScopycallbacks(XPRSprob dest, XPRSprob src){
+int XPRScopycallbacks (XPRSprob dest, XPRSprob src){
     if (!__symbolic_XPRScopycallbacks) {
         if (!module) {
             if (!load_module()) {
@@ -406,7 +406,7 @@ int XPRScopycallbacks(XPRSprob dest, XPRSprob src){
     }
     return __symbolic_XPRScopycallbacks(dest, src);
 }
-int XPRScopycontrols(XPRSprob dest, XPRSprob src){
+int XPRScopycontrols (XPRSprob dest, XPRSprob src){
     if (!__symbolic_XPRScopycontrols) {
         if (!module) {
             if (!load_module()) {
@@ -425,7 +425,7 @@ int XPRScopycontrols(XPRSprob dest, XPRSprob src){
     }
     return __symbolic_XPRScopycontrols(dest, src);
 }
-int XPRScopyprob(XPRSprob dest, XPRSprob src, const char* probname){
+int XPRScopyprob (XPRSprob dest, XPRSprob src, const char *probname){
     if (!__symbolic_XPRScopyprob) {
         if (!module) {
             if (!load_module()) {
@@ -444,7 +444,7 @@ int XPRScopyprob(XPRSprob dest, XPRSprob src, const char* probname){
     }
     return __symbolic_XPRScopyprob(dest, src, probname);
 }
-int XPRScreateprob(XPRSprob* _probholder){
+int XPRScreateprob (XPRSprob * _probholder){
     if (!__symbolic_XPRScreateprob) {
         if (!module) {
             if (!load_module()) {
@@ -463,7 +463,7 @@ int XPRScreateprob(XPRSprob* _probholder){
     }
     return __symbolic_XPRScreateprob(_probholder);
 }
-int XPRSdestroyprob(XPRSprob _prob){
+int XPRSdestroyprob (XPRSprob _prob){
     if (!__symbolic_XPRSdestroyprob) {
         if (!module) {
             if (!load_module()) {
@@ -482,7 +482,7 @@ int XPRSdestroyprob(XPRSprob _prob){
     }
     return __symbolic_XPRSdestroyprob(_prob);
 }
-int XPRSinit(const char* path){
+int XPRSinit (const char *path){
     if (!__symbolic_XPRSinit) {
         if (!module) {
             if (!load_module()) {
@@ -501,7 +501,7 @@ int XPRSinit(const char* path){
     }
     return __symbolic_XPRSinit(path);
 }
-int XPRSfree(void){
+int XPRSfree (void){
     if (!__symbolic_XPRSfree) {
         if (!module) {
             if (!load_module()) {
@@ -520,7 +520,7 @@ int XPRSfree(void){
     }
     return __symbolic_XPRSfree();
 }
-int XPRSgetbanner(char* banner){
+int XPRSgetbanner (char *banner){
     if (!__symbolic_XPRSgetbanner) {
         if (!module) {
             if (!load_module()) {
@@ -539,7 +539,7 @@ int XPRSgetbanner(char* banner){
     }
     return __symbolic_XPRSgetbanner(banner);
 }
-int XPRSgetversion(char* version){
+int XPRSgetversion (char *version){
     if (!__symbolic_XPRSgetversion) {
         if (!module) {
             if (!load_module()) {
@@ -558,7 +558,7 @@ int XPRSgetversion(char* version){
     }
     return __symbolic_XPRSgetversion(version);
 }
-int XPRSgetdaysleft(int* daysleft){
+int XPRSgetdaysleft (int *daysleft){
     if (!__symbolic_XPRSgetdaysleft) {
         if (!module) {
             if (!load_module()) {
@@ -577,7 +577,7 @@ int XPRSgetdaysleft(int* daysleft){
     }
     return __symbolic_XPRSgetdaysleft(daysleft);
 }
-int XPRSlicense(int* _i1, char* _c1){
+int XPRSlicense (int *_i1, char *_c1){
     if (!__symbolic_XPRSlicense) {
         if (!module) {
             if (!load_module()) {
@@ -596,7 +596,7 @@ int XPRSlicense(int* _i1, char* _c1){
     }
     return __symbolic_XPRSlicense(_i1, _c1);
 }
-int XPRSbeginlicensing(int* r_dontAlreadyHaveLicense){
+int XPRSbeginlicensing (int *r_dontAlreadyHaveLicense){
     if (!__symbolic_XPRSbeginlicensing) {
         if (!module) {
             if (!load_module()) {
@@ -615,7 +615,7 @@ int XPRSbeginlicensing(int* r_dontAlreadyHaveLicense){
     }
     return __symbolic_XPRSbeginlicensing(r_dontAlreadyHaveLicense);
 }
-int XPRSendlicensing(void){
+int XPRSendlicensing (void){
     if (!__symbolic_XPRSendlicensing) {
         if (!module) {
             if (!load_module()) {
@@ -634,7 +634,7 @@ int XPRSendlicensing(void){
     }
     return __symbolic_XPRSendlicensing();
 }
-int XPRSgetlicerrmsg(char* msg, int len){
+int XPRSgetlicerrmsg (char *msg, int len){
     if (!__symbolic_XPRSgetlicerrmsg) {
         if (!module) {
             if (!load_module()) {
@@ -653,7 +653,7 @@ int XPRSgetlicerrmsg(char* msg, int len){
     }
     return __symbolic_XPRSgetlicerrmsg(msg, len);
 }
-int XPRSsetlogfile(XPRSprob prob, const char* logname){
+int XPRSsetlogfile (XPRSprob prob, const char *logname){
     if (!__symbolic_XPRSsetlogfile) {
         if (!module) {
             if (!load_module()) {
@@ -672,7 +672,7 @@ int XPRSsetlogfile(XPRSprob prob, const char* logname){
     }
     return __symbolic_XPRSsetlogfile(prob, logname);
 }
-int XPRSsetintcontrol(XPRSprob prob, int _index, int _ivalue){
+int XPRSsetintcontrol (XPRSprob prob, int _index, int _ivalue){
     if (!__symbolic_XPRSsetintcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -691,7 +691,7 @@ int XPRSsetintcontrol(XPRSprob prob, int _index, int _ivalue){
     }
     return __symbolic_XPRSsetintcontrol(prob, _index, _ivalue);
 }
-int XPRSsetdblcontrol(XPRSprob prob, int _index, double _dvalue){
+int XPRSsetdblcontrol (XPRSprob prob, int _index, double _dvalue){
     if (!__symbolic_XPRSsetdblcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -710,7 +710,7 @@ int XPRSsetdblcontrol(XPRSprob prob, int _index, double _dvalue){
     }
     return __symbolic_XPRSsetdblcontrol(prob, _index, _dvalue);
 }
-int XPRSinterrupt(XPRSprob prob, int reason){
+int XPRSinterrupt (XPRSprob prob, int reason){
     if (!__symbolic_XPRSinterrupt) {
         if (!module) {
             if (!load_module()) {
@@ -729,7 +729,7 @@ int XPRSinterrupt(XPRSprob prob, int reason){
     }
     return __symbolic_XPRSinterrupt(prob, reason);
 }
-int XPRSgetprobname(XPRSprob prob, char* _svalue){
+int XPRSgetprobname (XPRSprob prob, char *_svalue){
     if (!__symbolic_XPRSgetprobname) {
         if (!module) {
             if (!load_module()) {
@@ -748,7 +748,7 @@ int XPRSgetprobname(XPRSprob prob, char* _svalue){
     }
     return __symbolic_XPRSgetprobname(prob, _svalue);
 }
-int XPRSgetqobj(XPRSprob prob, int _icol, int _jcol, double* _dval){
+int XPRSgetqobj (XPRSprob prob, int _icol, int _jcol, double *_dval){
     if (!__symbolic_XPRSgetqobj) {
         if (!module) {
             if (!load_module()) {
@@ -767,7 +767,7 @@ int XPRSgetqobj(XPRSprob prob, int _icol, int _jcol, double* _dval){
     }
     return __symbolic_XPRSgetqobj(prob, _icol, _jcol, _dval);
 }
-int XPRSsetprobname(XPRSprob prob, const char* _svalue){
+int XPRSsetprobname (XPRSprob prob, const char *_svalue){
     if (!__symbolic_XPRSsetprobname) {
         if (!module) {
             if (!load_module()) {
@@ -786,7 +786,7 @@ int XPRSsetprobname(XPRSprob prob, const char* _svalue){
     }
     return __symbolic_XPRSsetprobname(prob, _svalue);
 }
-int XPRSsetstrcontrol(XPRSprob prob, int _index, const char* _svalue){
+int XPRSsetstrcontrol (XPRSprob prob, int _index, const char *_svalue){
     if (!__symbolic_XPRSsetstrcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -805,7 +805,7 @@ int XPRSsetstrcontrol(XPRSprob prob, int _index, const char* _svalue){
     }
     return __symbolic_XPRSsetstrcontrol(prob, _index, _svalue);
 }
-int XPRSgetintcontrol(XPRSprob prob, int _index, int* _ivalue){
+int XPRSgetintcontrol (XPRSprob prob, int _index, int *_ivalue){
     if (!__symbolic_XPRSgetintcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -824,7 +824,7 @@ int XPRSgetintcontrol(XPRSprob prob, int _index, int* _ivalue){
     }
     return __symbolic_XPRSgetintcontrol(prob, _index, _ivalue);
 }
-int XPRSgetdblcontrol(XPRSprob prob, int _index, double* _dvalue){
+int XPRSgetdblcontrol (XPRSprob prob, int _index, double *_dvalue){
     if (!__symbolic_XPRSgetdblcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -843,7 +843,7 @@ int XPRSgetdblcontrol(XPRSprob prob, int _index, double* _dvalue){
     }
     return __symbolic_XPRSgetdblcontrol(prob, _index, _dvalue);
 }
-int XPRSgetstrcontrol(XPRSprob prob, int _index, char* _svalue){
+int XPRSgetstrcontrol (XPRSprob prob, int _index, char *_svalue){
     if (!__symbolic_XPRSgetstrcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -862,7 +862,7 @@ int XPRSgetstrcontrol(XPRSprob prob, int _index, char* _svalue){
     }
     return __symbolic_XPRSgetstrcontrol(prob, _index, _svalue);
 }
-int XPRSgetintattrib(XPRSprob prob, int _index, int* _ivalue){
+int XPRSgetintattrib (XPRSprob prob, int _index, int *_ivalue){
     if (!__symbolic_XPRSgetintattrib) {
         if (!module) {
             if (!load_module()) {
@@ -881,7 +881,7 @@ int XPRSgetintattrib(XPRSprob prob, int _index, int* _ivalue){
     }
     return __symbolic_XPRSgetintattrib(prob, _index, _ivalue);
 }
-int XPRSgetstrattrib(XPRSprob prob, int _index, char* _cvalue){
+int XPRSgetstrattrib (XPRSprob prob, int _index, char *_cvalue){
     if (!__symbolic_XPRSgetstrattrib) {
         if (!module) {
             if (!load_module()) {
@@ -900,7 +900,7 @@ int XPRSgetstrattrib(XPRSprob prob, int _index, char* _cvalue){
     }
     return __symbolic_XPRSgetstrattrib(prob, _index, _cvalue);
 }
-int XPRSgetdblattrib(XPRSprob prob, int _index, double* _dvalue){
+int XPRSgetdblattrib (XPRSprob prob, int _index, double *_dvalue){
     if (!__symbolic_XPRSgetdblattrib) {
         if (!module) {
             if (!load_module()) {
@@ -919,7 +919,7 @@ int XPRSgetdblattrib(XPRSprob prob, int _index, double* _dvalue){
     }
     return __symbolic_XPRSgetdblattrib(prob, _index, _dvalue);
 }
-int XPRSsetdefaultcontrol(XPRSprob prob, int _index){
+int XPRSsetdefaultcontrol (XPRSprob prob, int _index){
     if (!__symbolic_XPRSsetdefaultcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -938,7 +938,7 @@ int XPRSsetdefaultcontrol(XPRSprob prob, int _index){
     }
     return __symbolic_XPRSsetdefaultcontrol(prob, _index);
 }
-int XPRSsetdefaults(XPRSprob prob){
+int XPRSsetdefaults (XPRSprob prob){
     if (!__symbolic_XPRSsetdefaults) {
         if (!module) {
             if (!load_module()) {
@@ -957,7 +957,7 @@ int XPRSsetdefaults(XPRSprob prob){
     }
     return __symbolic_XPRSsetdefaults(prob);
 }
-int XPRSgoal(XPRSprob prob, const char* _filename, const char* _sflags){
+int XPRSgoal (XPRSprob prob, const char *_filename, const char *_sflags){
     if (!__symbolic_XPRSgoal) {
         if (!module) {
             if (!load_module()) {
@@ -976,7 +976,7 @@ int XPRSgoal(XPRSprob prob, const char* _filename, const char* _sflags){
     }
     return __symbolic_XPRSgoal(prob, _filename, _sflags);
 }
-int XPRSreadprob(XPRSprob prob, const char* _sprobname, const char* _sflags){
+int XPRSreadprob (XPRSprob prob, const char *_sprobname, const char *_sflags){
     if (!__symbolic_XPRSreadprob) {
         if (!module) {
             if (!load_module()) {
@@ -995,7 +995,7 @@ int XPRSreadprob(XPRSprob prob, const char* _sprobname, const char* _sflags){
     }
     return __symbolic_XPRSreadprob(prob, _sprobname, _sflags);
 }
-int XPRSloadlp(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]){
+int XPRSloadlp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]){
     if (!__symbolic_XPRSloadlp) {
         if (!module) {
             if (!load_module()) {
@@ -1014,7 +1014,7 @@ int XPRSloadlp(XPRSprob prob, const char* _sprobname, int ncols, int nrows, cons
     }
     return __symbolic_XPRSloadlp(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub);
 }
-int XPRSloadqp(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]){
+int XPRSloadqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]){
     if (!__symbolic_XPRSloadqp) {
         if (!module) {
             if (!load_module()) {
@@ -1033,7 +1033,7 @@ int XPRSloadqp(XPRSprob prob, const char* _sprobname, int ncols, int nrows, cons
     }
     return __symbolic_XPRSloadqp(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval);
 }
-int XPRSloadqglobal(XPRSprob prob, const char* probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], const int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
+int XPRSloadqglobal (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], const int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
     if (!__symbolic_XPRSloadqglobal) {
         if (!module) {
             if (!load_module()) {
@@ -1052,7 +1052,7 @@ int XPRSloadqglobal(XPRSprob prob, const char* probname, int ncols, int nrows, c
     }
     return __symbolic_XPRSloadqglobal(prob, probname, ncols, nrows, qsenx, rhsx, range, objx, matbeg, matcnt, matind, dmtval, bndl, bndu, nquads, mqcol1, mqcol2, dqval, ngents, nsets, qgtype, mgcols, dlim, qstype, msstart, mscols, dref);
 }
-int XPRSfixglobal(XPRSprob prob){
+int XPRSfixglobal (XPRSprob prob){
     if (!__symbolic_XPRSfixglobal) {
         if (!module) {
             if (!load_module()) {
@@ -1071,7 +1071,7 @@ int XPRSfixglobal(XPRSprob prob){
     }
     return __symbolic_XPRSfixglobal(prob);
 }
-int XPRSfixglobals(XPRSprob prob, int ifround){
+int XPRSfixglobals (XPRSprob prob, int ifround){
     if (!__symbolic_XPRSfixglobals) {
         if (!module) {
             if (!load_module()) {
@@ -1090,7 +1090,7 @@ int XPRSfixglobals(XPRSprob prob, int ifround){
     }
     return __symbolic_XPRSfixglobals(prob, ifround);
 }
-int XPRSloadmodelcuts(XPRSprob prob, int nmodcuts, const int _mrows[]){
+int XPRSloadmodelcuts (XPRSprob prob, int nmodcuts, const int _mrows[]){
     if (!__symbolic_XPRSloadmodelcuts) {
         if (!module) {
             if (!load_module()) {
@@ -1109,7 +1109,7 @@ int XPRSloadmodelcuts(XPRSprob prob, int nmodcuts, const int _mrows[]){
     }
     return __symbolic_XPRSloadmodelcuts(prob, nmodcuts, _mrows);
 }
-int XPRSloaddelayedrows(XPRSprob prob, int nrows, const int _mrows[]){
+int XPRSloaddelayedrows (XPRSprob prob, int nrows, const int _mrows[]){
     if (!__symbolic_XPRSloaddelayedrows) {
         if (!module) {
             if (!load_module()) {
@@ -1128,7 +1128,7 @@ int XPRSloaddelayedrows(XPRSprob prob, int nrows, const int _mrows[]){
     }
     return __symbolic_XPRSloaddelayedrows(prob, nrows, _mrows);
 }
-int XPRSloaddirs(XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]){
+int XPRSloaddirs (XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]){
     if (!__symbolic_XPRSloaddirs) {
         if (!module) {
             if (!load_module()) {
@@ -1147,7 +1147,7 @@ int XPRSloaddirs(XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[]
     }
     return __symbolic_XPRSloaddirs(prob, ndirs, _mcols, _mpri, _sbr, dupc, ddpc);
 }
-int XPRSloadbranchdirs(XPRSprob prob, int ndirs, const int _mcols[], const int _mbranch[]){
+int XPRSloadbranchdirs (XPRSprob prob, int ndirs, const int _mcols[], const int _mbranch[]){
     if (!__symbolic_XPRSloadbranchdirs) {
         if (!module) {
             if (!load_module()) {
@@ -1166,7 +1166,7 @@ int XPRSloadbranchdirs(XPRSprob prob, int ndirs, const int _mcols[], const int _
     }
     return __symbolic_XPRSloadbranchdirs(prob, ndirs, _mcols, _mbranch);
 }
-int XPRSloadpresolvedirs(XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]){
+int XPRSloadpresolvedirs (XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]){
     if (!__symbolic_XPRSloadpresolvedirs) {
         if (!module) {
             if (!load_module()) {
@@ -1185,7 +1185,7 @@ int XPRSloadpresolvedirs(XPRSprob prob, int ndirs, const int _mcols[], const int
     }
     return __symbolic_XPRSloadpresolvedirs(prob, ndirs, _mcols, _mpri, _sbr, dupc, ddpc);
 }
-int XPRSgetdirs(XPRSprob prob, int* ndirs, int _mcols[], int _mpri[], char _sbr[], double dupc[], double ddpc[]){
+int XPRSgetdirs (XPRSprob prob, int *ndirs, int _mcols[], int _mpri[], char _sbr[], double dupc[], double ddpc[]){
     if (!__symbolic_XPRSgetdirs) {
         if (!module) {
             if (!load_module()) {
@@ -1204,7 +1204,7 @@ int XPRSgetdirs(XPRSprob prob, int* ndirs, int _mcols[], int _mpri[], char _sbr[
     }
     return __symbolic_XPRSgetdirs(prob, ndirs, _mcols, _mpri, _sbr, dupc, ddpc);
 }
-int XPRSloadglobal(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const int _msstart[], const int _mscols[], const double _dref[]){
+int XPRSloadglobal (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const int _msstart[], const int _mscols[], const double _dref[]){
     if (!__symbolic_XPRSloadglobal) {
         if (!module) {
             if (!load_module()) {
@@ -1223,7 +1223,7 @@ int XPRSloadglobal(XPRSprob prob, const char* _sprobname, int ncols, int nrows, 
     }
     return __symbolic_XPRSloadglobal(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, ngents, nsets, _qgtype, _mgcols, _dlim, _stype, _msstart, _mscols, _dref);
 }
-int XPRSaddnames(XPRSprob prob, int _itype, const char _sname[], int first, int last){
+int XPRSaddnames (XPRSprob prob, int _itype, const char _sname[], int first, int last){
     if (!__symbolic_XPRSaddnames) {
         if (!module) {
             if (!load_module()) {
@@ -1242,7 +1242,7 @@ int XPRSaddnames(XPRSprob prob, int _itype, const char _sname[], int first, int 
     }
     return __symbolic_XPRSaddnames(prob, _itype, _sname, first, last);
 }
-int XPRSaddsetnames(XPRSprob prob, const char _sname[], int first, int last){
+int XPRSaddsetnames (XPRSprob prob, const char _sname[], int first, int last){
     if (!__symbolic_XPRSaddsetnames) {
         if (!module) {
             if (!load_module()) {
@@ -1261,7 +1261,7 @@ int XPRSaddsetnames(XPRSprob prob, const char _sname[], int first, int last){
     }
     return __symbolic_XPRSaddsetnames(prob, _sname, first, last);
 }
-int XPRSscale(XPRSprob prob, const int mrscal[], const int mcscal[]){
+int XPRSscale (XPRSprob prob, const int mrscal[], const int mcscal[]){
     if (!__symbolic_XPRSscale) {
         if (!module) {
             if (!load_module()) {
@@ -1280,7 +1280,7 @@ int XPRSscale(XPRSprob prob, const int mrscal[], const int mcscal[]){
     }
     return __symbolic_XPRSscale(prob, mrscal, mcscal);
 }
-int XPRSreaddirs(XPRSprob prob, const char* _sfilename){
+int XPRSreaddirs (XPRSprob prob, const char *_sfilename){
     if (!__symbolic_XPRSreaddirs) {
         if (!module) {
             if (!load_module()) {
@@ -1299,7 +1299,7 @@ int XPRSreaddirs(XPRSprob prob, const char* _sfilename){
     }
     return __symbolic_XPRSreaddirs(prob, _sfilename);
 }
-int XPRSwritedirs(XPRSprob prob, const char* _sfilename){
+int XPRSwritedirs (XPRSprob prob, const char *_sfilename){
     if (!__symbolic_XPRSwritedirs) {
         if (!module) {
             if (!load_module()) {
@@ -1318,7 +1318,7 @@ int XPRSwritedirs(XPRSprob prob, const char* _sfilename){
     }
     return __symbolic_XPRSwritedirs(prob, _sfilename);
 }
-int XPRSsetindicators(XPRSprob prob, int nrows, const int _mrows[], const int _inds[], const int _comps[]){
+int XPRSsetindicators (XPRSprob prob, int nrows, const int _mrows[], const int _inds[], const int _comps[]){
     if (!__symbolic_XPRSsetindicators) {
         if (!module) {
             if (!load_module()) {
@@ -1337,7 +1337,7 @@ int XPRSsetindicators(XPRSprob prob, int nrows, const int _mrows[], const int _i
     }
     return __symbolic_XPRSsetindicators(prob, nrows, _mrows, _inds, _comps);
 }
-int XPRSgetindicators(XPRSprob prob, int _inds[], int _comps[], int first, int last){
+int XPRSgetindicators (XPRSprob prob, int _inds[], int _comps[], int first, int last){
     if (!__symbolic_XPRSgetindicators) {
         if (!module) {
             if (!load_module()) {
@@ -1356,7 +1356,7 @@ int XPRSgetindicators(XPRSprob prob, int _inds[], int _comps[], int first, int l
     }
     return __symbolic_XPRSgetindicators(prob, _inds, _comps, first, last);
 }
-int XPRSdelindicators(XPRSprob prob, int first, int last){
+int XPRSdelindicators (XPRSprob prob, int first, int last){
     if (!__symbolic_XPRSdelindicators) {
         if (!module) {
             if (!load_module()) {
@@ -1375,7 +1375,7 @@ int XPRSdelindicators(XPRSprob prob, int first, int last){
     }
     return __symbolic_XPRSdelindicators(prob, first, last);
 }
-int XPRSminim(XPRSprob prob, const char* _sflags){
+int XPRSminim (XPRSprob prob, const char *_sflags){
     if (!__symbolic_XPRSminim) {
         if (!module) {
             if (!load_module()) {
@@ -1394,7 +1394,7 @@ int XPRSminim(XPRSprob prob, const char* _sflags){
     }
     return __symbolic_XPRSminim(prob, _sflags);
 }
-int XPRSmaxim(XPRSprob prob, const char* _sflags){
+int XPRSmaxim (XPRSprob prob, const char *_sflags){
     if (!__symbolic_XPRSmaxim) {
         if (!module) {
             if (!load_module()) {
@@ -1413,7 +1413,7 @@ int XPRSmaxim(XPRSprob prob, const char* _sflags){
     }
     return __symbolic_XPRSmaxim(prob, _sflags);
 }
-int XPRSlpoptimize(XPRSprob prob, const char* _sflags){
+int XPRSlpoptimize (XPRSprob prob, const char *_sflags){
     if (!__symbolic_XPRSlpoptimize) {
         if (!module) {
             if (!load_module()) {
@@ -1432,7 +1432,7 @@ int XPRSlpoptimize(XPRSprob prob, const char* _sflags){
     }
     return __symbolic_XPRSlpoptimize(prob, _sflags);
 }
-int XPRSmipoptimize(XPRSprob prob, const char* _sflags){
+int XPRSmipoptimize (XPRSprob prob, const char *_sflags){
     if (!__symbolic_XPRSmipoptimize) {
         if (!module) {
             if (!load_module()) {
@@ -1451,7 +1451,7 @@ int XPRSmipoptimize(XPRSprob prob, const char* _sflags){
     }
     return __symbolic_XPRSmipoptimize(prob, _sflags);
 }
-int XPRSrange(XPRSprob prob){
+int XPRSrange (XPRSprob prob){
     if (!__symbolic_XPRSrange) {
         if (!module) {
             if (!load_module()) {
@@ -1470,7 +1470,7 @@ int XPRSrange(XPRSprob prob){
     }
     return __symbolic_XPRSrange(prob);
 }
-int XPRSgetrowrange(XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[]){
+int XPRSgetrowrange (XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[]){
     if (!__symbolic_XPRSgetrowrange) {
         if (!module) {
             if (!load_module()) {
@@ -1489,7 +1489,7 @@ int XPRSgetrowrange(XPRSprob prob, double _upact[], double _loact[], double _uup
     }
     return __symbolic_XPRSgetrowrange(prob, _upact, _loact, _uup, _udn);
 }
-int XPRSgetcolrange(XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[], double _ucost[], double _lcost[]){
+int XPRSgetcolrange (XPRSprob prob, double _upact[], double _loact[], double _uup[], double _udn[], double _ucost[], double _lcost[]){
     if (!__symbolic_XPRSgetcolrange) {
         if (!module) {
             if (!load_module()) {
@@ -1508,7 +1508,7 @@ int XPRSgetcolrange(XPRSprob prob, double _upact[], double _loact[], double _uup
     }
     return __symbolic_XPRSgetcolrange(prob, _upact, _loact, _uup, _udn, _ucost, _lcost);
 }
-int XPRSgetpivotorder(XPRSprob prob, int mpiv[]){
+int XPRSgetpivotorder (XPRSprob prob, int mpiv[]){
     if (!__symbolic_XPRSgetpivotorder) {
         if (!module) {
             if (!load_module()) {
@@ -1527,7 +1527,7 @@ int XPRSgetpivotorder(XPRSprob prob, int mpiv[]){
     }
     return __symbolic_XPRSgetpivotorder(prob, mpiv);
 }
-int XPRSgetpresolvemap(XPRSprob prob, int rowmap[], int colmap[]){
+int XPRSgetpresolvemap (XPRSprob prob, int rowmap[], int colmap[]){
     if (!__symbolic_XPRSgetpresolvemap) {
         if (!module) {
             if (!load_module()) {
@@ -1546,7 +1546,7 @@ int XPRSgetpresolvemap(XPRSprob prob, int rowmap[], int colmap[]){
     }
     return __symbolic_XPRSgetpresolvemap(prob, rowmap, colmap);
 }
-int XPRSreadbasis(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSreadbasis (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSreadbasis) {
         if (!module) {
             if (!load_module()) {
@@ -1565,7 +1565,7 @@ int XPRSreadbasis(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSreadbasis(prob, _sfilename, _sflags);
 }
-int XPRSwritebasis(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwritebasis (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwritebasis) {
         if (!module) {
             if (!load_module()) {
@@ -1584,7 +1584,7 @@ int XPRSwritebasis(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwritebasis(prob, _sfilename, _sflags);
 }
-int XPRSglobal(XPRSprob prob){
+int XPRSglobal (XPRSprob prob){
     if (!__symbolic_XPRSglobal) {
         if (!module) {
             if (!load_module()) {
@@ -1603,7 +1603,7 @@ int XPRSglobal(XPRSprob prob){
     }
     return __symbolic_XPRSglobal(prob);
 }
-int XPRSinitglobal(XPRSprob prob){
+int XPRSinitglobal (XPRSprob prob){
     if (!__symbolic_XPRSinitglobal) {
         if (!module) {
             if (!load_module()) {
@@ -1622,7 +1622,7 @@ int XPRSinitglobal(XPRSprob prob){
     }
     return __symbolic_XPRSinitglobal(prob);
 }
-int XPRSwriteprtsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwriteprtsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwriteprtsol) {
         if (!module) {
             if (!load_module()) {
@@ -1641,7 +1641,7 @@ int XPRSwriteprtsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwriteprtsol(prob, _sfilename, _sflags);
 }
-int XPRSalter(XPRSprob prob, const char* _sfilename){
+int XPRSalter (XPRSprob prob, const char *_sfilename){
     if (!__symbolic_XPRSalter) {
         if (!module) {
             if (!load_module()) {
@@ -1660,7 +1660,7 @@ int XPRSalter(XPRSprob prob, const char* _sfilename){
     }
     return __symbolic_XPRSalter(prob, _sfilename);
 }
-int XPRSwritesol(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwritesol (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwritesol) {
         if (!module) {
             if (!load_module()) {
@@ -1679,7 +1679,7 @@ int XPRSwritesol(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwritesol(prob, _sfilename, _sflags);
 }
-int XPRSwritebinsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwritebinsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwritebinsol) {
         if (!module) {
             if (!load_module()) {
@@ -1698,7 +1698,7 @@ int XPRSwritebinsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwritebinsol(prob, _sfilename, _sflags);
 }
-int XPRSreadbinsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSreadbinsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSreadbinsol) {
         if (!module) {
             if (!load_module()) {
@@ -1717,7 +1717,7 @@ int XPRSreadbinsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSreadbinsol(prob, _sfilename, _sflags);
 }
-int XPRSwriteslxsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwriteslxsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwriteslxsol) {
         if (!module) {
             if (!load_module()) {
@@ -1736,7 +1736,7 @@ int XPRSwriteslxsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwriteslxsol(prob, _sfilename, _sflags);
 }
-int XPRSreadslxsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSreadslxsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSreadslxsol) {
         if (!module) {
             if (!load_module()) {
@@ -1755,7 +1755,7 @@ int XPRSreadslxsol(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSreadslxsol(prob, _sfilename, _sflags);
 }
-int XPRSwriteprtrange(XPRSprob prob){
+int XPRSwriteprtrange (XPRSprob prob){
     if (!__symbolic_XPRSwriteprtrange) {
         if (!module) {
             if (!load_module()) {
@@ -1774,7 +1774,7 @@ int XPRSwriteprtrange(XPRSprob prob){
     }
     return __symbolic_XPRSwriteprtrange(prob);
 }
-int XPRSwriterange(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwriterange (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwriterange) {
         if (!module) {
             if (!load_module()) {
@@ -1793,7 +1793,7 @@ int XPRSwriterange(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwriterange(prob, _sfilename, _sflags);
 }
-int XPRSgetsol(XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]){
+int XPRSgetsol (XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]){
     if (!__symbolic_XPRSgetsol) {
         if (!module) {
             if (!load_module()) {
@@ -1812,7 +1812,7 @@ int XPRSgetsol(XPRSprob prob, double _dx[], double _dslack[], double _dual[], do
     }
     return __symbolic_XPRSgetsol(prob, _dx, _dslack, _dual, _dj);
 }
-int XPRSgetpresolvesol(XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]){
+int XPRSgetpresolvesol (XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]){
     if (!__symbolic_XPRSgetpresolvesol) {
         if (!module) {
             if (!load_module()) {
@@ -1831,7 +1831,7 @@ int XPRSgetpresolvesol(XPRSprob prob, double _dx[], double _dslack[], double _du
     }
     return __symbolic_XPRSgetpresolvesol(prob, _dx, _dslack, _dual, _dj);
 }
-int XPRSgetinfeas(XPRSprob prob, int* npv, int* nps, int* nds, int* ndv, int mx[], int mslack[], int mdual[], int mdj[]){
+int XPRSgetinfeas (XPRSprob prob, int *npv, int *nps, int *nds, int *ndv, int mx[], int mslack[], int mdual[], int mdj[]){
     if (!__symbolic_XPRSgetinfeas) {
         if (!module) {
             if (!load_module()) {
@@ -1850,7 +1850,7 @@ int XPRSgetinfeas(XPRSprob prob, int* npv, int* nps, int* nds, int* ndv, int mx[
     }
     return __symbolic_XPRSgetinfeas(prob, npv, nps, nds, ndv, mx, mslack, mdual, mdj);
 }
-int XPRSgetscaledinfeas(XPRSprob prob, int* npv, int* nps, int* nds, int* ndv, int mx[], int mslack[], int mdual[], int mdj[]){
+int XPRSgetscaledinfeas (XPRSprob prob, int *npv, int *nps, int *nds, int *ndv, int mx[], int mslack[], int mdual[], int mdj[]){
     if (!__symbolic_XPRSgetscaledinfeas) {
         if (!module) {
             if (!load_module()) {
@@ -1869,7 +1869,7 @@ int XPRSgetscaledinfeas(XPRSprob prob, int* npv, int* nps, int* nds, int* ndv, i
     }
     return __symbolic_XPRSgetscaledinfeas(prob, npv, nps, nds, ndv, mx, mslack, mdual, mdj);
 }
-int XPRSgetunbvec(XPRSprob prob, int* icol){
+int XPRSgetunbvec (XPRSprob prob, int *icol){
     if (!__symbolic_XPRSgetunbvec) {
         if (!module) {
             if (!load_module()) {
@@ -1888,7 +1888,7 @@ int XPRSgetunbvec(XPRSprob prob, int* icol){
     }
     return __symbolic_XPRSgetunbvec(prob, icol);
 }
-int XPRSbtran(XPRSprob prob, double dwork[]){
+int XPRSbtran (XPRSprob prob, double dwork[]){
     if (!__symbolic_XPRSbtran) {
         if (!module) {
             if (!load_module()) {
@@ -1907,7 +1907,7 @@ int XPRSbtran(XPRSprob prob, double dwork[]){
     }
     return __symbolic_XPRSbtran(prob, dwork);
 }
-int XPRSftran(XPRSprob prob, double dwork[]){
+int XPRSftran (XPRSprob prob, double dwork[]){
     if (!__symbolic_XPRSftran) {
         if (!module) {
             if (!load_module()) {
@@ -1926,7 +1926,7 @@ int XPRSftran(XPRSprob prob, double dwork[]){
     }
     return __symbolic_XPRSftran(prob, dwork);
 }
-int XPRSgetobj(XPRSprob prob, double _dobj[], int first, int last){
+int XPRSgetobj (XPRSprob prob, double _dobj[], int first, int last){
     if (!__symbolic_XPRSgetobj) {
         if (!module) {
             if (!load_module()) {
@@ -1945,7 +1945,7 @@ int XPRSgetobj(XPRSprob prob, double _dobj[], int first, int last){
     }
     return __symbolic_XPRSgetobj(prob, _dobj, first, last);
 }
-int XPRSgetrhs(XPRSprob prob, double _drhs[], int first, int last){
+int XPRSgetrhs (XPRSprob prob, double _drhs[], int first, int last){
     if (!__symbolic_XPRSgetrhs) {
         if (!module) {
             if (!load_module()) {
@@ -1964,7 +1964,7 @@ int XPRSgetrhs(XPRSprob prob, double _drhs[], int first, int last){
     }
     return __symbolic_XPRSgetrhs(prob, _drhs, first, last);
 }
-int XPRSgetrhsrange(XPRSprob prob, double _drng[], int first, int last){
+int XPRSgetrhsrange (XPRSprob prob, double _drng[], int first, int last){
     if (!__symbolic_XPRSgetrhsrange) {
         if (!module) {
             if (!load_module()) {
@@ -1983,7 +1983,7 @@ int XPRSgetrhsrange(XPRSprob prob, double _drng[], int first, int last){
     }
     return __symbolic_XPRSgetrhsrange(prob, _drng, first, last);
 }
-int XPRSgetlb(XPRSprob prob, double _dbdl[], int first, int last){
+int XPRSgetlb (XPRSprob prob, double _dbdl[], int first, int last){
     if (!__symbolic_XPRSgetlb) {
         if (!module) {
             if (!load_module()) {
@@ -2002,7 +2002,7 @@ int XPRSgetlb(XPRSprob prob, double _dbdl[], int first, int last){
     }
     return __symbolic_XPRSgetlb(prob, _dbdl, first, last);
 }
-int XPRSgetub(XPRSprob prob, double _dbdu[], int first, int last){
+int XPRSgetub (XPRSprob prob, double _dbdu[], int first, int last){
     if (!__symbolic_XPRSgetub) {
         if (!module) {
             if (!load_module()) {
@@ -2021,7 +2021,7 @@ int XPRSgetub(XPRSprob prob, double _dbdu[], int first, int last){
     }
     return __symbolic_XPRSgetub(prob, _dbdu, first, last);
 }
-int XPRSgetcols(XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[], int maxcoeffs, int* ncoeffs, int first, int last){
+int XPRSgetcols (XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last){
     if (!__symbolic_XPRSgetcols) {
         if (!module) {
             if (!load_module()) {
@@ -2040,7 +2040,7 @@ int XPRSgetcols(XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[], 
     }
     return __symbolic_XPRSgetcols(prob, _mstart, _mrwind, _dmatval, maxcoeffs, ncoeffs, first, last);
 }
-int XPRSgetrows(XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], int maxcoeffs, int* ncoeffs, int first, int last){
+int XPRSgetrows (XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last){
     if (!__symbolic_XPRSgetrows) {
         if (!module) {
             if (!load_module()) {
@@ -2059,7 +2059,7 @@ int XPRSgetrows(XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], 
     }
     return __symbolic_XPRSgetrows(prob, _mstart, _mclind, _dmatval, maxcoeffs, ncoeffs, first, last);
 }
-int XPRSgetcoef(XPRSprob prob, int _irow, int _icol, double* _dval){
+int XPRSgetcoef (XPRSprob prob, int _irow, int _icol, double *_dval){
     if (!__symbolic_XPRSgetcoef) {
         if (!module) {
             if (!load_module()) {
@@ -2078,7 +2078,7 @@ int XPRSgetcoef(XPRSprob prob, int _irow, int _icol, double* _dval){
     }
     return __symbolic_XPRSgetcoef(prob, _irow, _icol, _dval);
 }
-int XPRSgetmqobj(XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[], int maxcoeffs, int* ncoeffs, int first, int last){
+int XPRSgetmqobj (XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[], int maxcoeffs, int *ncoeffs, int first, int last){
     if (!__symbolic_XPRSgetmqobj) {
         if (!module) {
             if (!load_module()) {
@@ -2097,7 +2097,7 @@ int XPRSgetmqobj(XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[],
     }
     return __symbolic_XPRSgetmqobj(prob, _mstart, _mclind, _dobjval, maxcoeffs, ncoeffs, first, last);
 }
-int XPRSiisclear(XPRSprob prob){
+int XPRSiisclear (XPRSprob prob){
     if (!__symbolic_XPRSiisclear) {
         if (!module) {
             if (!load_module()) {
@@ -2116,7 +2116,7 @@ int XPRSiisclear(XPRSprob prob){
     }
     return __symbolic_XPRSiisclear(prob);
 }
-int XPRSiisfirst(XPRSprob prob, int ifiis, int* status_code){
+int XPRSiisfirst (XPRSprob prob, int ifiis, int *status_code){
     if (!__symbolic_XPRSiisfirst) {
         if (!module) {
             if (!load_module()) {
@@ -2135,7 +2135,7 @@ int XPRSiisfirst(XPRSprob prob, int ifiis, int* status_code){
     }
     return __symbolic_XPRSiisfirst(prob, ifiis, status_code);
 }
-int XPRSiisnext(XPRSprob prob, int* status_code){
+int XPRSiisnext (XPRSprob prob, int *status_code){
     if (!__symbolic_XPRSiisnext) {
         if (!module) {
             if (!load_module()) {
@@ -2154,7 +2154,7 @@ int XPRSiisnext(XPRSprob prob, int* status_code){
     }
     return __symbolic_XPRSiisnext(prob, status_code);
 }
-int XPRSiisstatus(XPRSprob prob, int* iiscount, int rowsizes[], int colsizes[], double suminfeas[], int numinfeas[]){
+int XPRSiisstatus (XPRSprob prob, int *iiscount, int rowsizes[], int colsizes[], double suminfeas[], int numinfeas[]){
     if (!__symbolic_XPRSiisstatus) {
         if (!module) {
             if (!load_module()) {
@@ -2173,7 +2173,7 @@ int XPRSiisstatus(XPRSprob prob, int* iiscount, int rowsizes[], int colsizes[], 
     }
     return __symbolic_XPRSiisstatus(prob, iiscount, rowsizes, colsizes, suminfeas, numinfeas);
 }
-int XPRSiisall(XPRSprob prob){
+int XPRSiisall (XPRSprob prob){
     if (!__symbolic_XPRSiisall) {
         if (!module) {
             if (!load_module()) {
@@ -2192,7 +2192,7 @@ int XPRSiisall(XPRSprob prob){
     }
     return __symbolic_XPRSiisall(prob);
 }
-int XPRSiiswrite(XPRSprob prob, int number, const char* fn, int filetype, const char* typeflags){
+int XPRSiiswrite (XPRSprob prob, int number, const char *fn, int filetype, const char *typeflags){
     if (!__symbolic_XPRSiiswrite) {
         if (!module) {
             if (!load_module()) {
@@ -2211,7 +2211,7 @@ int XPRSiiswrite(XPRSprob prob, int number, const char* fn, int filetype, const 
     }
     return __symbolic_XPRSiiswrite(prob, number, fn, filetype, typeflags);
 }
-int XPRSiisisolations(XPRSprob prob, int number){
+int XPRSiisisolations (XPRSprob prob, int number){
     if (!__symbolic_XPRSiisisolations) {
         if (!module) {
             if (!load_module()) {
@@ -2230,7 +2230,7 @@ int XPRSiisisolations(XPRSprob prob, int number){
     }
     return __symbolic_XPRSiisisolations(prob, number);
 }
-int XPRSgetiisdata(XPRSprob prob, int number, int* rownumber, int* colnumber, int miisrow[], int miiscol[], char constrainttype[], char colbndtype[], double duals[], double rdcs[], char isolationrows[], char isolationcols[]){
+int XPRSgetiisdata (XPRSprob prob, int number, int *rownumber, int *colnumber, int miisrow[], int miiscol[], char constrainttype[], char colbndtype[], double duals[], double rdcs[], char isolationrows[], char isolationcols[]){
     if (!__symbolic_XPRSgetiisdata) {
         if (!module) {
             if (!load_module()) {
@@ -2249,7 +2249,7 @@ int XPRSgetiisdata(XPRSprob prob, int number, int* rownumber, int* colnumber, in
     }
     return __symbolic_XPRSgetiisdata(prob, number, rownumber, colnumber, miisrow, miiscol, constrainttype, colbndtype, duals, rdcs, isolationrows, isolationcols);
 }
-int XPRSgetiis(XPRSprob prob, int* ncols, int* nrows, int _miiscol[], int _miisrow[]){
+int XPRSgetiis (XPRSprob prob, int *ncols, int *nrows, int _miiscol[], int _miisrow[]){
     if (!__symbolic_XPRSgetiis) {
         if (!module) {
             if (!load_module()) {
@@ -2268,7 +2268,7 @@ int XPRSgetiis(XPRSprob prob, int* ncols, int* nrows, int _miiscol[], int _miisr
     }
     return __symbolic_XPRSgetiis(prob, ncols, nrows, _miiscol, _miisrow);
 }
-int XPRSgetpresolvebasis(XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
+int XPRSgetpresolvebasis (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
     if (!__symbolic_XPRSgetpresolvebasis) {
         if (!module) {
             if (!load_module()) {
@@ -2287,7 +2287,7 @@ int XPRSgetpresolvebasis(XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
     }
     return __symbolic_XPRSgetpresolvebasis(prob, _mrowstatus, _mcolstatus);
 }
-int XPRSloadpresolvebasis(XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]){
+int XPRSloadpresolvebasis (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]){
     if (!__symbolic_XPRSloadpresolvebasis) {
         if (!module) {
             if (!load_module()) {
@@ -2306,7 +2306,7 @@ int XPRSloadpresolvebasis(XPRSprob prob, const int _mrowstatus[], const int _mco
     }
     return __symbolic_XPRSloadpresolvebasis(prob, _mrowstatus, _mcolstatus);
 }
-int XPRSgetglobal(XPRSprob prob, int* ngents, int* nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], int _msstart[], int _mscols[], double _dref[]){
+int XPRSgetglobal (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], int _msstart[], int _mscols[], double _dref[]){
     if (!__symbolic_XPRSgetglobal) {
         if (!module) {
             if (!load_module()) {
@@ -2325,7 +2325,7 @@ int XPRSgetglobal(XPRSprob prob, int* ngents, int* nsets, char _sgtype[], int _m
     }
     return __symbolic_XPRSgetglobal(prob, ngents, nsets, _sgtype, _mgcols, _dlim, _sstype, _msstart, _mscols, _dref);
 }
-int XPRSwriteprob(XPRSprob prob, const char* _sfilename, const char* _sflags){
+int XPRSwriteprob (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwriteprob) {
         if (!module) {
             if (!load_module()) {
@@ -2344,7 +2344,7 @@ int XPRSwriteprob(XPRSprob prob, const char* _sfilename, const char* _sflags){
     }
     return __symbolic_XPRSwriteprob(prob, _sfilename, _sflags);
 }
-int XPRSgetnames(XPRSprob prob, int _itype, char _sbuff[], int first, int last){
+int XPRSgetnames (XPRSprob prob, int _itype, char _sbuff[], int first, int last){
     if (!__symbolic_XPRSgetnames) {
         if (!module) {
             if (!load_module()) {
@@ -2363,7 +2363,7 @@ int XPRSgetnames(XPRSprob prob, int _itype, char _sbuff[], int first, int last){
     }
     return __symbolic_XPRSgetnames(prob, _itype, _sbuff, first, last);
 }
-int XPRSgetrowtype(XPRSprob prob, char _srowtype[], int first, int last){
+int XPRSgetrowtype (XPRSprob prob, char _srowtype[], int first, int last){
     if (!__symbolic_XPRSgetrowtype) {
         if (!module) {
             if (!load_module()) {
@@ -2382,7 +2382,7 @@ int XPRSgetrowtype(XPRSprob prob, char _srowtype[], int first, int last){
     }
     return __symbolic_XPRSgetrowtype(prob, _srowtype, first, last);
 }
-int XPRSloadsecurevecs(XPRSprob prob, int nrows, int ncols, const int mrow[], const int mcol[]){
+int XPRSloadsecurevecs (XPRSprob prob, int nrows, int ncols, const int mrow[], const int mcol[]){
     if (!__symbolic_XPRSloadsecurevecs) {
         if (!module) {
             if (!load_module()) {
@@ -2401,7 +2401,7 @@ int XPRSloadsecurevecs(XPRSprob prob, int nrows, int ncols, const int mrow[], co
     }
     return __symbolic_XPRSloadsecurevecs(prob, nrows, ncols, mrow, mcol);
 }
-int XPRSgetcoltype(XPRSprob prob, char _coltype[], int first, int last){
+int XPRSgetcoltype (XPRSprob prob, char _coltype[], int first, int last){
     if (!__symbolic_XPRSgetcoltype) {
         if (!module) {
             if (!load_module()) {
@@ -2420,7 +2420,7 @@ int XPRSgetcoltype(XPRSprob prob, char _coltype[], int first, int last){
     }
     return __symbolic_XPRSgetcoltype(prob, _coltype, first, last);
 }
-int XPRSgetbasis(XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
+int XPRSgetbasis (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
     if (!__symbolic_XPRSgetbasis) {
         if (!module) {
             if (!load_module()) {
@@ -2439,7 +2439,7 @@ int XPRSgetbasis(XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
     }
     return __symbolic_XPRSgetbasis(prob, _mrowstatus, _mcolstatus);
 }
-int XPRSloadbasis(XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]){
+int XPRSloadbasis (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]){
     if (!__symbolic_XPRSloadbasis) {
         if (!module) {
             if (!load_module()) {
@@ -2458,7 +2458,7 @@ int XPRSloadbasis(XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[
     }
     return __symbolic_XPRSloadbasis(prob, _mrowstatus, _mcolstatus);
 }
-int XPRSgetindex(XPRSprob prob, int _itype, const char* _sname, int* _iseq){
+int XPRSgetindex (XPRSprob prob, int _itype, const char *_sname, int *_iseq){
     if (!__symbolic_XPRSgetindex) {
         if (!module) {
             if (!load_module()) {
@@ -2477,7 +2477,7 @@ int XPRSgetindex(XPRSprob prob, int _itype, const char* _sname, int* _iseq){
     }
     return __symbolic_XPRSgetindex(prob, _itype, _sname, _iseq);
 }
-int XPRSaddrows(XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const int _mstart[], const int _mclind[], const double _dmatval[]){
+int XPRSaddrows (XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const int _mstart[], const int _mclind[], const double _dmatval[]){
     if (!__symbolic_XPRSaddrows) {
         if (!module) {
             if (!load_module()) {
@@ -2496,7 +2496,7 @@ int XPRSaddrows(XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], c
     }
     return __symbolic_XPRSaddrows(prob, nrows, ncoeffs, _srowtype, _drhs, _drng, _mstart, _mclind, _dmatval);
 }
-int XPRSdelrows(XPRSprob prob, int nrows, const int _mindex[]){
+int XPRSdelrows (XPRSprob prob, int nrows, const int _mindex[]){
     if (!__symbolic_XPRSdelrows) {
         if (!module) {
             if (!load_module()) {
@@ -2515,7 +2515,7 @@ int XPRSdelrows(XPRSprob prob, int nrows, const int _mindex[]){
     }
     return __symbolic_XPRSdelrows(prob, nrows, _mindex);
 }
-int XPRSdelnode(XPRSprob prob, int _inode, int ifboth){
+int XPRSdelnode (XPRSprob prob, int _inode, int ifboth){
     if (!__symbolic_XPRSdelnode) {
         if (!module) {
             if (!load_module()) {
@@ -2534,7 +2534,7 @@ int XPRSdelnode(XPRSprob prob, int _inode, int ifboth){
     }
     return __symbolic_XPRSdelnode(prob, _inode, ifboth);
 }
-int XPRSaddcols(XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], const int _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]){
+int XPRSaddcols (XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], const int _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]){
     if (!__symbolic_XPRSaddcols) {
         if (!module) {
             if (!load_module()) {
@@ -2553,7 +2553,7 @@ int XPRSaddcols(XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], con
     }
     return __symbolic_XPRSaddcols(prob, ncols, ncoeffs, _dobj, _mstart, _mrwind, _dmatval, _dbdl, _dbdu);
 }
-int XPRSdelcols(XPRSprob prob, int ncols, const int _mindex[]){
+int XPRSdelcols (XPRSprob prob, int ncols, const int _mindex[]){
     if (!__symbolic_XPRSdelcols) {
         if (!module) {
             if (!load_module()) {
@@ -2572,7 +2572,7 @@ int XPRSdelcols(XPRSprob prob, int ncols, const int _mindex[]){
     }
     return __symbolic_XPRSdelcols(prob, ncols, _mindex);
 }
-int XPRSchgcoltype(XPRSprob prob, int ncols, const int _mindex[], const char _coltype[]){
+int XPRSchgcoltype (XPRSprob prob, int ncols, const int _mindex[], const char _coltype[]){
     if (!__symbolic_XPRSchgcoltype) {
         if (!module) {
             if (!load_module()) {
@@ -2591,7 +2591,7 @@ int XPRSchgcoltype(XPRSprob prob, int ncols, const int _mindex[], const char _co
     }
     return __symbolic_XPRSchgcoltype(prob, ncols, _mindex, _coltype);
 }
-int XPRSchgrowtype(XPRSprob prob, int nrows, const int _mindex[], const char _srowtype[]){
+int XPRSchgrowtype (XPRSprob prob, int nrows, const int _mindex[], const char _srowtype[]){
     if (!__symbolic_XPRSchgrowtype) {
         if (!module) {
             if (!load_module()) {
@@ -2610,7 +2610,7 @@ int XPRSchgrowtype(XPRSprob prob, int nrows, const int _mindex[], const char _sr
     }
     return __symbolic_XPRSchgrowtype(prob, nrows, _mindex, _srowtype);
 }
-int XPRSchgbounds(XPRSprob prob, int nbnds, const int _mindex[], const char _sboundtype[], const double _dbnd[]){
+int XPRSchgbounds (XPRSprob prob, int nbnds, const int _mindex[], const char _sboundtype[], const double _dbnd[]){
     if (!__symbolic_XPRSchgbounds) {
         if (!module) {
             if (!load_module()) {
@@ -2629,7 +2629,7 @@ int XPRSchgbounds(XPRSprob prob, int nbnds, const int _mindex[], const char _sbo
     }
     return __symbolic_XPRSchgbounds(prob, nbnds, _mindex, _sboundtype, _dbnd);
 }
-int XPRSchgobj(XPRSprob prob, int ncols, const int _mindex[], const double _dobj[]){
+int XPRSchgobj (XPRSprob prob, int ncols, const int _mindex[], const double _dobj[]){
     if (!__symbolic_XPRSchgobj) {
         if (!module) {
             if (!load_module()) {
@@ -2648,7 +2648,7 @@ int XPRSchgobj(XPRSprob prob, int ncols, const int _mindex[], const double _dobj
     }
     return __symbolic_XPRSchgobj(prob, ncols, _mindex, _dobj);
 }
-int XPRSchgcoef(XPRSprob prob, int _irow, int _icol, double _dval){
+int XPRSchgcoef (XPRSprob prob, int _irow, int _icol, double _dval){
     if (!__symbolic_XPRSchgcoef) {
         if (!module) {
             if (!load_module()) {
@@ -2667,7 +2667,7 @@ int XPRSchgcoef(XPRSprob prob, int _irow, int _icol, double _dval){
     }
     return __symbolic_XPRSchgcoef(prob, _irow, _icol, _dval);
 }
-int XPRSchgmcoef(XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]){
+int XPRSchgmcoef (XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]){
     if (!__symbolic_XPRSchgmcoef) {
         if (!module) {
             if (!load_module()) {
@@ -2686,7 +2686,7 @@ int XPRSchgmcoef(XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol[
     }
     return __symbolic_XPRSchgmcoef(prob, ncoeffs, _mrow, _mcol, _dval);
 }
-int XPRSchgmqobj(XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[], const double _dval[]){
+int XPRSchgmqobj (XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[], const double _dval[]){
     if (!__symbolic_XPRSchgmqobj) {
         if (!module) {
             if (!load_module()) {
@@ -2705,7 +2705,7 @@ int XPRSchgmqobj(XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[
     }
     return __symbolic_XPRSchgmqobj(prob, ncols, _mcol1, _mcol2, _dval);
 }
-int XPRSchgqobj(XPRSprob prob, int _icol, int _jcol, double _dval){
+int XPRSchgqobj (XPRSprob prob, int _icol, int _jcol, double _dval){
     if (!__symbolic_XPRSchgqobj) {
         if (!module) {
             if (!load_module()) {
@@ -2724,7 +2724,7 @@ int XPRSchgqobj(XPRSprob prob, int _icol, int _jcol, double _dval){
     }
     return __symbolic_XPRSchgqobj(prob, _icol, _jcol, _dval);
 }
-int XPRSchgrhs(XPRSprob prob, int nrows, const int _mindex[], const double _drhs[]){
+int XPRSchgrhs (XPRSprob prob, int nrows, const int _mindex[], const double _drhs[]){
     if (!__symbolic_XPRSchgrhs) {
         if (!module) {
             if (!load_module()) {
@@ -2743,7 +2743,7 @@ int XPRSchgrhs(XPRSprob prob, int nrows, const int _mindex[], const double _drhs
     }
     return __symbolic_XPRSchgrhs(prob, nrows, _mindex, _drhs);
 }
-int XPRSchgrhsrange(XPRSprob prob, int nrows, const int _mindex[], const double _drng[]){
+int XPRSchgrhsrange (XPRSprob prob, int nrows, const int _mindex[], const double _drng[]){
     if (!__symbolic_XPRSchgrhsrange) {
         if (!module) {
             if (!load_module()) {
@@ -2762,7 +2762,7 @@ int XPRSchgrhsrange(XPRSprob prob, int nrows, const int _mindex[], const double 
     }
     return __symbolic_XPRSchgrhsrange(prob, nrows, _mindex, _drng);
 }
-int XPRSchgobjsense(XPRSprob prob, int objsense){
+int XPRSchgobjsense (XPRSprob prob, int objsense){
     if (!__symbolic_XPRSchgobjsense) {
         if (!module) {
             if (!load_module()) {
@@ -2781,7 +2781,7 @@ int XPRSchgobjsense(XPRSprob prob, int objsense){
     }
     return __symbolic_XPRSchgobjsense(prob, objsense);
 }
-int XPRSsave(XPRSprob prob){
+int XPRSsave (XPRSprob prob){
     if (!__symbolic_XPRSsave) {
         if (!module) {
             if (!load_module()) {
@@ -2800,7 +2800,7 @@ int XPRSsave(XPRSprob prob){
     }
     return __symbolic_XPRSsave(prob);
 }
-int XPRSrestore(XPRSprob prob, const char* _sprobname, const char* _force){
+int XPRSrestore (XPRSprob prob, const char *_sprobname, const char *_force){
     if (!__symbolic_XPRSrestore) {
         if (!module) {
             if (!load_module()) {
@@ -2819,7 +2819,7 @@ int XPRSrestore(XPRSprob prob, const char* _sprobname, const char* _force){
     }
     return __symbolic_XPRSrestore(prob, _sprobname, _force);
 }
-int XPRSpivot(XPRSprob prob, int _in, int _out){
+int XPRSpivot (XPRSprob prob, int _in, int _out){
     if (!__symbolic_XPRSpivot) {
         if (!module) {
             if (!load_module()) {
@@ -2838,7 +2838,7 @@ int XPRSpivot(XPRSprob prob, int _in, int _out){
     }
     return __symbolic_XPRSpivot(prob, _in, _out);
 }
-int XPRSgetpivots(XPRSprob prob, int _in, int _mout[], double _dout[], double* _dobjo, int* npiv, int maxpiv){
+int XPRSgetpivots (XPRSprob prob, int _in, int _mout[], double _dout[], double *_dobjo, int *npiv, int maxpiv){
     if (!__symbolic_XPRSgetpivots) {
         if (!module) {
             if (!load_module()) {
@@ -2857,7 +2857,7 @@ int XPRSgetpivots(XPRSprob prob, int _in, int _mout[], double _dout[], double* _
     }
     return __symbolic_XPRSgetpivots(prob, _in, _mout, _dout, _dobjo, npiv, maxpiv);
 }
-int XPRSsetcblplog(XPRSprob prob, int ( *f_lplog)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcblplog (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcblplog) {
         if (!module) {
             if (!load_module()) {
@@ -2876,7 +2876,7 @@ int XPRSsetcblplog(XPRSprob prob, int ( *f_lplog)(XPRSprob prob, void* vContext)
     }
     return __symbolic_XPRSsetcblplog(prob, f_lplog, p);
 }
-int XPRSsetcbgloballog(XPRSprob prob, int ( *f_globallog)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbgloballog (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbgloballog) {
         if (!module) {
             if (!load_module()) {
@@ -2895,7 +2895,7 @@ int XPRSsetcbgloballog(XPRSprob prob, int ( *f_globallog)(XPRSprob prob, void* v
     }
     return __symbolic_XPRSsetcbgloballog(prob, f_globallog, p);
 }
-int XPRSsetcbcutlog(XPRSprob prob, int ( *f_cutlog)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbcutlog (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbcutlog) {
         if (!module) {
             if (!load_module()) {
@@ -2914,7 +2914,7 @@ int XPRSsetcbcutlog(XPRSprob prob, int ( *f_cutlog)(XPRSprob prob, void* vContex
     }
     return __symbolic_XPRSsetcbcutlog(prob, f_cutlog, p);
 }
-int XPRSsetcbbarlog(XPRSprob prob, int ( *f_barlog)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbbarlog (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbbarlog) {
         if (!module) {
             if (!load_module()) {
@@ -2933,7 +2933,7 @@ int XPRSsetcbbarlog(XPRSprob prob, int ( *f_barlog)(XPRSprob prob, void* vContex
     }
     return __symbolic_XPRSsetcbbarlog(prob, f_barlog, p);
 }
-int XPRSsetcbcutmgr(XPRSprob prob, int ( *f_cutmgr)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbcutmgr (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbcutmgr) {
         if (!module) {
             if (!load_module()) {
@@ -2952,7 +2952,7 @@ int XPRSsetcbcutmgr(XPRSprob prob, int ( *f_cutmgr)(XPRSprob prob, void* vContex
     }
     return __symbolic_XPRSsetcbcutmgr(prob, f_cutmgr, p);
 }
-int XPRSsetcbchgnode(XPRSprob prob, void ( *f_chgnode)(XPRSprob prob, void* vContext, int* nodnum), void* p){
+int XPRSsetcbchgnode (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p){
     if (!__symbolic_XPRSsetcbchgnode) {
         if (!module) {
             if (!load_module()) {
@@ -2971,7 +2971,7 @@ int XPRSsetcbchgnode(XPRSprob prob, void ( *f_chgnode)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSsetcbchgnode(prob, f_chgnode, p);
 }
-int XPRSsetcboptnode(XPRSprob prob, void ( *f_optnode)(XPRSprob prob, void* vContext, int* feas), void* p){
+int XPRSsetcboptnode (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p){
     if (!__symbolic_XPRSsetcboptnode) {
         if (!module) {
             if (!load_module()) {
@@ -2990,7 +2990,7 @@ int XPRSsetcboptnode(XPRSprob prob, void ( *f_optnode)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSsetcboptnode(prob, f_optnode, p);
 }
-int XPRSsetcbprenode(XPRSprob prob, void ( *f_prenode)(XPRSprob prob, void* vContext, int* nodinfeas), void* p){
+int XPRSsetcbprenode (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p){
     if (!__symbolic_XPRSsetcbprenode) {
         if (!module) {
             if (!load_module()) {
@@ -3009,7 +3009,7 @@ int XPRSsetcbprenode(XPRSprob prob, void ( *f_prenode)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSsetcbprenode(prob, f_prenode, p);
 }
-int XPRSsetcbinfnode(XPRSprob prob, void ( *f_infnode)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbinfnode (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbinfnode) {
         if (!module) {
             if (!load_module()) {
@@ -3028,7 +3028,7 @@ int XPRSsetcbinfnode(XPRSprob prob, void ( *f_infnode)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSsetcbinfnode(prob, f_infnode, p);
 }
-int XPRSsetcbnewnode(XPRSprob prob, void ( *f_newnode)(XPRSprob prob, void* vContext, int parentnode, int newnode, int branch), void* p){
+int XPRSsetcbnewnode (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p){
     if (!__symbolic_XPRSsetcbnewnode) {
         if (!module) {
             if (!load_module()) {
@@ -3047,7 +3047,7 @@ int XPRSsetcbnewnode(XPRSprob prob, void ( *f_newnode)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSsetcbnewnode(prob, f_newnode, p);
 }
-int XPRSsetcbnodecutoff(XPRSprob prob, void ( *f_nodecutoff)(XPRSprob prob, void* vContext, int nodnum), void* p){
+int XPRSsetcbnodecutoff (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p){
     if (!__symbolic_XPRSsetcbnodecutoff) {
         if (!module) {
             if (!load_module()) {
@@ -3066,7 +3066,7 @@ int XPRSsetcbnodecutoff(XPRSprob prob, void ( *f_nodecutoff)(XPRSprob prob, void
     }
     return __symbolic_XPRSsetcbnodecutoff(prob, f_nodecutoff, p);
 }
-int XPRSsetcbpreintsol(XPRSprob prob, void ( *f_preintsol)(XPRSprob prob, void* vContext, int isheuristic, int* ifreject, double* cutoff), void* p){
+int XPRSsetcbpreintsol (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p){
     if (!__symbolic_XPRSsetcbpreintsol) {
         if (!module) {
             if (!load_module()) {
@@ -3085,7 +3085,7 @@ int XPRSsetcbpreintsol(XPRSprob prob, void ( *f_preintsol)(XPRSprob prob, void* 
     }
     return __symbolic_XPRSsetcbpreintsol(prob, f_preintsol, p);
 }
-int XPRSsetcbintsol(XPRSprob prob, void ( *f_intsol)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbintsol (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbintsol) {
         if (!module) {
             if (!load_module()) {
@@ -3104,7 +3104,7 @@ int XPRSsetcbintsol(XPRSprob prob, void ( *f_intsol)(XPRSprob prob, void* vConte
     }
     return __symbolic_XPRSsetcbintsol(prob, f_intsol, p);
 }
-int XPRSsetcbchgbranch(XPRSprob prob, void ( *f_chgbranch)(XPRSprob prob, void* vContext, int* entity, int* up, double* estdeg), void* p){
+int XPRSsetcbchgbranch (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p){
     if (!__symbolic_XPRSsetcbchgbranch) {
         if (!module) {
             if (!load_module()) {
@@ -3123,7 +3123,7 @@ int XPRSsetcbchgbranch(XPRSprob prob, void ( *f_chgbranch)(XPRSprob prob, void* 
     }
     return __symbolic_XPRSsetcbchgbranch(prob, f_chgbranch, p);
 }
-int XPRSsetcbchgbranchobject(XPRSprob prob, void ( *f_chgbranchobject)(XPRSprob prob, void* vContext, XPRSbranchobject obranch, XPRSbranchobject* p_newobject), void* p){
+int XPRSsetcbchgbranchobject (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p){
     if (!__symbolic_XPRSsetcbchgbranchobject) {
         if (!module) {
             if (!load_module()) {
@@ -3142,7 +3142,7 @@ int XPRSsetcbchgbranchobject(XPRSprob prob, void ( *f_chgbranchobject)(XPRSprob 
     }
     return __symbolic_XPRSsetcbchgbranchobject(prob, f_chgbranchobject, p);
 }
-int XPRSsetcbestimate(XPRSprob prob, int ( *f_estimate)(XPRSprob prob, void* vContext, int* iglsel, int* iprio, double* degbest, double* degworst, double* curval, int* ifupx, int* nglinf, double* degsum, int* nbr), void* p){
+int XPRSsetcbestimate (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p){
     if (!__symbolic_XPRSsetcbestimate) {
         if (!module) {
             if (!load_module()) {
@@ -3161,7 +3161,7 @@ int XPRSsetcbestimate(XPRSprob prob, int ( *f_estimate)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSsetcbestimate(prob, f_estimate, p);
 }
-int XPRSsetcbsepnode(XPRSprob prob, int ( *f_sepnode)(XPRSprob prob, void* vContext, int ibr, int iglsel, int ifup, double curval), void* p){
+int XPRSsetcbsepnode (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p){
     if (!__symbolic_XPRSsetcbsepnode) {
         if (!module) {
             if (!load_module()) {
@@ -3180,7 +3180,7 @@ int XPRSsetcbsepnode(XPRSprob prob, int ( *f_sepnode)(XPRSprob prob, void* vCont
     }
     return __symbolic_XPRSsetcbsepnode(prob, f_sepnode, p);
 }
-int XPRSsetcbmessage(XPRSprob prob, void ( *f_message)(XPRSprob prob, void* vContext, const char* msg, int len, int msgtype), void* p){
+int XPRSsetcbmessage (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p){
     if (!__symbolic_XPRSsetcbmessage) {
         if (!module) {
             if (!load_module()) {
@@ -3199,7 +3199,7 @@ int XPRSsetcbmessage(XPRSprob prob, void ( *f_message)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSsetcbmessage(prob, f_message, p);
 }
-int XPRSsetcbmipthread(XPRSprob prob, void ( *f_mipthread)(XPRSprob master_prob, void* vContext, XPRSprob prob), void* p){
+int XPRSsetcbmipthread (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p){
     if (!__symbolic_XPRSsetcbmipthread) {
         if (!module) {
             if (!load_module()) {
@@ -3218,7 +3218,7 @@ int XPRSsetcbmipthread(XPRSprob prob, void ( *f_mipthread)(XPRSprob master_prob,
     }
     return __symbolic_XPRSsetcbmipthread(prob, f_mipthread, p);
 }
-int XPRSsetcbdestroymt(XPRSprob prob, void ( *f_destroymt)(XPRSprob prob, void* vContext), void* p){
+int XPRSsetcbdestroymt (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p){
     if (!__symbolic_XPRSsetcbdestroymt) {
         if (!module) {
             if (!load_module()) {
@@ -3237,7 +3237,7 @@ int XPRSsetcbdestroymt(XPRSprob prob, void ( *f_destroymt)(XPRSprob prob, void* 
     }
     return __symbolic_XPRSsetcbdestroymt(prob, f_destroymt, p);
 }
-int XPRSgetcblplog(XPRSprob prob, int ( **f_lplog)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcblplog (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcblplog) {
         if (!module) {
             if (!load_module()) {
@@ -3256,7 +3256,7 @@ int XPRSgetcblplog(XPRSprob prob, int ( **f_lplog)(XPRSprob prob, void* vContext
     }
     return __symbolic_XPRSgetcblplog(prob, f_lplog, p);
 }
-int XPRSgetcbgloballog(XPRSprob prob, int ( **f_globallog)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbgloballog (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbgloballog) {
         if (!module) {
             if (!load_module()) {
@@ -3275,7 +3275,7 @@ int XPRSgetcbgloballog(XPRSprob prob, int ( **f_globallog)(XPRSprob prob, void* 
     }
     return __symbolic_XPRSgetcbgloballog(prob, f_globallog, p);
 }
-int XPRSgetcbcutlog(XPRSprob prob, int ( **f_cutlog)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbcutlog (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbcutlog) {
         if (!module) {
             if (!load_module()) {
@@ -3294,7 +3294,7 @@ int XPRSgetcbcutlog(XPRSprob prob, int ( **f_cutlog)(XPRSprob prob, void* vConte
     }
     return __symbolic_XPRSgetcbcutlog(prob, f_cutlog, p);
 }
-int XPRSgetcbbarlog(XPRSprob prob, int ( **f_barlog)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbbarlog (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbbarlog) {
         if (!module) {
             if (!load_module()) {
@@ -3313,7 +3313,7 @@ int XPRSgetcbbarlog(XPRSprob prob, int ( **f_barlog)(XPRSprob prob, void* vConte
     }
     return __symbolic_XPRSgetcbbarlog(prob, f_barlog, p);
 }
-int XPRSgetcbcutmgr(XPRSprob prob, int ( **f_cutmgr)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbcutmgr (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbcutmgr) {
         if (!module) {
             if (!load_module()) {
@@ -3332,7 +3332,7 @@ int XPRSgetcbcutmgr(XPRSprob prob, int ( **f_cutmgr)(XPRSprob prob, void* vConte
     }
     return __symbolic_XPRSgetcbcutmgr(prob, f_cutmgr, p);
 }
-int XPRSgetcbchgnode(XPRSprob prob, void ( **f_chgnode)(XPRSprob prob, void* vContext, int* nodnum), void** p){
+int XPRSgetcbchgnode (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void **p){
     if (!__symbolic_XPRSgetcbchgnode) {
         if (!module) {
             if (!load_module()) {
@@ -3351,7 +3351,7 @@ int XPRSgetcbchgnode(XPRSprob prob, void ( **f_chgnode)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSgetcbchgnode(prob, f_chgnode, p);
 }
-int XPRSgetcboptnode(XPRSprob prob, void ( **f_optnode)(XPRSprob prob, void* vContext, int* feas), void** p){
+int XPRSgetcboptnode (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *vContext, int *feas), void **p){
     if (!__symbolic_XPRSgetcboptnode) {
         if (!module) {
             if (!load_module()) {
@@ -3370,7 +3370,7 @@ int XPRSgetcboptnode(XPRSprob prob, void ( **f_optnode)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSgetcboptnode(prob, f_optnode, p);
 }
-int XPRSgetcbprenode(XPRSprob prob, void ( **f_prenode)(XPRSprob prob, void* vContext, int* nodinfeas), void** p){
+int XPRSgetcbprenode (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void **p){
     if (!__symbolic_XPRSgetcbprenode) {
         if (!module) {
             if (!load_module()) {
@@ -3389,7 +3389,7 @@ int XPRSgetcbprenode(XPRSprob prob, void ( **f_prenode)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSgetcbprenode(prob, f_prenode, p);
 }
-int XPRSgetcbinfnode(XPRSprob prob, void ( **f_infnode)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbinfnode (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbinfnode) {
         if (!module) {
             if (!load_module()) {
@@ -3408,7 +3408,7 @@ int XPRSgetcbinfnode(XPRSprob prob, void ( **f_infnode)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSgetcbinfnode(prob, f_infnode, p);
 }
-int XPRSgetcbnewnode(XPRSprob prob, void ( **f_newnode)(XPRSprob prob, void* vContext, int parentnode, int newnode, int branch), void** p){
+int XPRSgetcbnewnode (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void **p){
     if (!__symbolic_XPRSgetcbnewnode) {
         if (!module) {
             if (!load_module()) {
@@ -3427,7 +3427,7 @@ int XPRSgetcbnewnode(XPRSprob prob, void ( **f_newnode)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSgetcbnewnode(prob, f_newnode, p);
 }
-int XPRSgetcbnodecutoff(XPRSprob prob, void ( **f_nodecutoff)(XPRSprob prob, void* vContext, int nodnum), void** p){
+int XPRSgetcbnodecutoff (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void **p){
     if (!__symbolic_XPRSgetcbnodecutoff) {
         if (!module) {
             if (!load_module()) {
@@ -3446,7 +3446,7 @@ int XPRSgetcbnodecutoff(XPRSprob prob, void ( **f_nodecutoff)(XPRSprob prob, voi
     }
     return __symbolic_XPRSgetcbnodecutoff(prob, f_nodecutoff, p);
 }
-int XPRSgetcbpreintsol(XPRSprob prob, void ( **f_preintsol)(XPRSprob prob, void* vContext, int isheuristic, int* ifreject, double* cutoff), void** p){
+int XPRSgetcbpreintsol (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void **p){
     if (!__symbolic_XPRSgetcbpreintsol) {
         if (!module) {
             if (!load_module()) {
@@ -3465,7 +3465,7 @@ int XPRSgetcbpreintsol(XPRSprob prob, void ( **f_preintsol)(XPRSprob prob, void*
     }
     return __symbolic_XPRSgetcbpreintsol(prob, f_preintsol, p);
 }
-int XPRSgetcbintsol(XPRSprob prob, void ( **f_intsol)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbintsol (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbintsol) {
         if (!module) {
             if (!load_module()) {
@@ -3484,7 +3484,7 @@ int XPRSgetcbintsol(XPRSprob prob, void ( **f_intsol)(XPRSprob prob, void* vCont
     }
     return __symbolic_XPRSgetcbintsol(prob, f_intsol, p);
 }
-int XPRSgetcbchgbranch(XPRSprob prob, void ( **f_chgbranch)(XPRSprob prob, void* vContext, int* entity, int* up, double* estdeg), void** p){
+int XPRSgetcbchgbranch (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void **p){
     if (!__symbolic_XPRSgetcbchgbranch) {
         if (!module) {
             if (!load_module()) {
@@ -3503,7 +3503,7 @@ int XPRSgetcbchgbranch(XPRSprob prob, void ( **f_chgbranch)(XPRSprob prob, void*
     }
     return __symbolic_XPRSgetcbchgbranch(prob, f_chgbranch, p);
 }
-int XPRSgetcbchgbranchobject(XPRSprob prob, void ( **f_chgbranchobject)(XPRSprob prob, void* vContext, XPRSbranchobject obranch, XPRSbranchobject* p_newobject), void** p){
+int XPRSgetcbchgbranchobject (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void **p){
     if (!__symbolic_XPRSgetcbchgbranchobject) {
         if (!module) {
             if (!load_module()) {
@@ -3522,7 +3522,7 @@ int XPRSgetcbchgbranchobject(XPRSprob prob, void ( **f_chgbranchobject)(XPRSprob
     }
     return __symbolic_XPRSgetcbchgbranchobject(prob, f_chgbranchobject, p);
 }
-int XPRSgetcbestimate(XPRSprob prob, int ( **f_estimate)(XPRSprob prob, void* vContext, int* iglsel, int* iprio, double* degbest, double* degworst, double* curval, int* ifupx, int* nglinf, double* degsum, int* nbr), void** p){
+int XPRSgetcbestimate (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void **p){
     if (!__symbolic_XPRSgetcbestimate) {
         if (!module) {
             if (!load_module()) {
@@ -3541,7 +3541,7 @@ int XPRSgetcbestimate(XPRSprob prob, int ( **f_estimate)(XPRSprob prob, void* vC
     }
     return __symbolic_XPRSgetcbestimate(prob, f_estimate, p);
 }
-int XPRSgetcbsepnode(XPRSprob prob, int ( **f_sepnode)(XPRSprob prob, void* vContext, int ibr, int iglsel, int ifup, double curval), void** p){
+int XPRSgetcbsepnode (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void **p){
     if (!__symbolic_XPRSgetcbsepnode) {
         if (!module) {
             if (!load_module()) {
@@ -3560,7 +3560,7 @@ int XPRSgetcbsepnode(XPRSprob prob, int ( **f_sepnode)(XPRSprob prob, void* vCon
     }
     return __symbolic_XPRSgetcbsepnode(prob, f_sepnode, p);
 }
-int XPRSgetcbmessage(XPRSprob prob, void ( **f_message)(XPRSprob prob, void* vContext, const char* msg, int len, int msgtype), void** p){
+int XPRSgetcbmessage (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void **p){
     if (!__symbolic_XPRSgetcbmessage) {
         if (!module) {
             if (!load_module()) {
@@ -3579,7 +3579,7 @@ int XPRSgetcbmessage(XPRSprob prob, void ( **f_message)(XPRSprob prob, void* vCo
     }
     return __symbolic_XPRSgetcbmessage(prob, f_message, p);
 }
-int XPRSgetcbmipthread(XPRSprob prob, void ( **f_mipthread)(XPRSprob master_prob, void* vContext, XPRSprob prob), void** p){
+int XPRSgetcbmipthread (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void **p){
     if (!__symbolic_XPRSgetcbmipthread) {
         if (!module) {
             if (!load_module()) {
@@ -3598,7 +3598,7 @@ int XPRSgetcbmipthread(XPRSprob prob, void ( **f_mipthread)(XPRSprob master_prob
     }
     return __symbolic_XPRSgetcbmipthread(prob, f_mipthread, p);
 }
-int XPRSgetcbdestroymt(XPRSprob prob, void ( **f_destroymt)(XPRSprob prob, void* vContext), void** p){
+int XPRSgetcbdestroymt (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, void *vContext), void **p){
     if (!__symbolic_XPRSgetcbdestroymt) {
         if (!module) {
             if (!load_module()) {
@@ -3617,7 +3617,7 @@ int XPRSgetcbdestroymt(XPRSprob prob, void ( **f_destroymt)(XPRSprob prob, void*
     }
     return __symbolic_XPRSgetcbdestroymt(prob, f_destroymt, p);
 }
-int XPRSaddcuts(XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], const int mcols[], const double dmatval[]){
+int XPRSaddcuts (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], const int mcols[], const double dmatval[]){
     if (!__symbolic_XPRSaddcuts) {
         if (!module) {
             if (!load_module()) {
@@ -3636,7 +3636,7 @@ int XPRSaddcuts(XPRSprob prob, int ncuts, const int mtype[], const char qrtype[]
     }
     return __symbolic_XPRSaddcuts(prob, ncuts, mtype, qrtype, drhs, mstart, mcols, dmatval);
 }
-int XPRSdelcuts(XPRSprob prob, int ibasis, int itype, int interp, double delta, int ncuts, const XPRScut mcutind[]){
+int XPRSdelcuts (XPRSprob prob, int ibasis, int itype, int interp, double delta, int ncuts, const XPRScut mcutind[]){
     if (!__symbolic_XPRSdelcuts) {
         if (!module) {
             if (!load_module()) {
@@ -3655,7 +3655,7 @@ int XPRSdelcuts(XPRSprob prob, int ibasis, int itype, int interp, double delta, 
     }
     return __symbolic_XPRSdelcuts(prob, ibasis, itype, interp, delta, ncuts, mcutind);
 }
-int XPRSdelcpcuts(XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]){
+int XPRSdelcpcuts (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]){
     if (!__symbolic_XPRSdelcpcuts) {
         if (!module) {
             if (!load_module()) {
@@ -3674,7 +3674,7 @@ int XPRSdelcpcuts(XPRSprob prob, int itype, int interp, int ncuts, const XPRScut
     }
     return __symbolic_XPRSdelcpcuts(prob, itype, interp, ncuts, mcutind);
 }
-int XPRSgetcutlist(XPRSprob prob, int itype, int interp, int* ncuts, int maxcuts, XPRScut mcutind[]){
+int XPRSgetcutlist (XPRSprob prob, int itype, int interp, int *ncuts, int maxcuts, XPRScut mcutind[]){
     if (!__symbolic_XPRSgetcutlist) {
         if (!module) {
             if (!load_module()) {
@@ -3693,7 +3693,7 @@ int XPRSgetcutlist(XPRSprob prob, int itype, int interp, int* ncuts, int maxcuts
     }
     return __symbolic_XPRSgetcutlist(prob, itype, interp, ncuts, maxcuts, mcutind);
 }
-int XPRSgetcpcutlist(XPRSprob prob, int itype, int interp, double delta, int* ncuts, int maxcuts, XPRScut mcutind[], double dviol[]){
+int XPRSgetcpcutlist (XPRSprob prob, int itype, int interp, double delta, int *ncuts, int maxcuts, XPRScut mcutind[], double dviol[]){
     if (!__symbolic_XPRSgetcpcutlist) {
         if (!module) {
             if (!load_module()) {
@@ -3712,7 +3712,7 @@ int XPRSgetcpcutlist(XPRSprob prob, int itype, int interp, double delta, int* nc
     }
     return __symbolic_XPRSgetcpcutlist(prob, itype, interp, delta, ncuts, maxcuts, mcutind, dviol);
 }
-int XPRSgetcpcuts(XPRSprob prob, const XPRScut mindex[], int ncuts, int size, int mtype[], char qrtype[], int mstart[], int mcols[], double dmatval[], double drhs[]){
+int XPRSgetcpcuts (XPRSprob prob, const XPRScut mindex[], int ncuts, int size, int mtype[], char qrtype[], int mstart[], int mcols[], double dmatval[], double drhs[]){
     if (!__symbolic_XPRSgetcpcuts) {
         if (!module) {
             if (!load_module()) {
@@ -3731,7 +3731,7 @@ int XPRSgetcpcuts(XPRSprob prob, const XPRScut mindex[], int ncuts, int size, in
     }
     return __symbolic_XPRSgetcpcuts(prob, mindex, ncuts, size, mtype, qrtype, mstart, mcols, dmatval, drhs);
 }
-int XPRSloadcuts(XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]){
+int XPRSloadcuts (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]){
     if (!__symbolic_XPRSloadcuts) {
         if (!module) {
             if (!load_module()) {
@@ -3750,7 +3750,7 @@ int XPRSloadcuts(XPRSprob prob, int itype, int interp, int ncuts, const XPRScut 
     }
     return __symbolic_XPRSloadcuts(prob, itype, interp, ncuts, mcutind);
 }
-int XPRSstorecuts(XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]){
+int XPRSstorecuts (XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]){
     if (!__symbolic_XPRSstorecuts) {
         if (!module) {
             if (!load_module()) {
@@ -3769,7 +3769,7 @@ int XPRSstorecuts(XPRSprob prob, int ncuts, int nodupl, const int mtype[], const
     }
     return __symbolic_XPRSstorecuts(prob, ncuts, nodupl, mtype, qrtype, drhs, mstart, mindex, mcols, dmatval);
 }
-int XPRSpresolverow(XPRSprob prob, char qrtype, int nzo, const int mcolso[], const double dvalo[], double drhso, int maxcoeffs, int* nzp, int mcolsp[], double dvalp[], double* drhsp, int* status){
+int XPRSpresolverow (XPRSprob prob, char qrtype, int nzo, const int mcolso[], const double dvalo[], double drhso, int maxcoeffs, int *nzp, int mcolsp[], double dvalp[], double *drhsp, int *status){
     if (!__symbolic_XPRSpresolverow) {
         if (!module) {
             if (!load_module()) {
@@ -3788,7 +3788,7 @@ int XPRSpresolverow(XPRSprob prob, char qrtype, int nzo, const int mcolso[], con
     }
     return __symbolic_XPRSpresolverow(prob, qrtype, nzo, mcolso, dvalo, drhso, maxcoeffs, nzp, mcolsp, dvalp, drhsp, status);
 }
-int XPRSloadmipsol(XPRSprob prob, const double dsol[], int* status){
+int XPRSloadmipsol (XPRSprob prob, const double dsol[], int *status){
     if (!__symbolic_XPRSloadmipsol) {
         if (!module) {
             if (!load_module()) {
@@ -3807,7 +3807,7 @@ int XPRSloadmipsol(XPRSprob prob, const double dsol[], int* status){
     }
     return __symbolic_XPRSloadmipsol(prob, dsol, status);
 }
-int XPRSstorebounds(XPRSprob prob, int nbnds, const int mcols[], const char qbtype[], const double dbnd[], void** mindex){
+int XPRSstorebounds (XPRSprob prob, int nbnds, const int mcols[], const char qbtype[], const double dbnd[], void **mindex){
     if (!__symbolic_XPRSstorebounds) {
         if (!module) {
             if (!load_module()) {
@@ -3826,7 +3826,7 @@ int XPRSstorebounds(XPRSprob prob, int nbnds, const int mcols[], const char qbty
     }
     return __symbolic_XPRSstorebounds(prob, nbnds, mcols, qbtype, dbnd, mindex);
 }
-int XPRSsetbranchcuts(XPRSprob prob, int nbcuts, const XPRScut mindex[]){
+int XPRSsetbranchcuts (XPRSprob prob, int nbcuts, const XPRScut mindex[]){
     if (!__symbolic_XPRSsetbranchcuts) {
         if (!module) {
             if (!load_module()) {
@@ -3845,7 +3845,7 @@ int XPRSsetbranchcuts(XPRSprob prob, int nbcuts, const XPRScut mindex[]){
     }
     return __symbolic_XPRSsetbranchcuts(prob, nbcuts, mindex);
 }
-int XPRSsetbranchbounds(XPRSprob prob, void* mindex){
+int XPRSsetbranchbounds (XPRSprob prob, void *mindex){
     if (!__symbolic_XPRSsetbranchbounds) {
         if (!module) {
             if (!load_module()) {
@@ -3864,7 +3864,7 @@ int XPRSsetbranchbounds(XPRSprob prob, void* mindex){
     }
     return __symbolic_XPRSsetbranchbounds(prob, mindex);
 }
-int XPRSgetlasterror(XPRSprob prob, char* errmsg){
+int XPRSgetlasterror (XPRSprob prob, char *errmsg){
     if (!__symbolic_XPRSgetlasterror) {
         if (!module) {
             if (!load_module()) {
@@ -3883,7 +3883,7 @@ int XPRSgetlasterror(XPRSprob prob, char* errmsg){
     }
     return __symbolic_XPRSgetlasterror(prob, errmsg);
 }
-int XPRSbasiscondition(XPRSprob prob, double* condnum, double* scondnum){
+int XPRSbasiscondition (XPRSprob prob, double *condnum, double *scondnum){
     if (!__symbolic_XPRSbasiscondition) {
         if (!module) {
             if (!load_module()) {
@@ -3902,7 +3902,7 @@ int XPRSbasiscondition(XPRSprob prob, double* condnum, double* scondnum){
     }
     return __symbolic_XPRSbasiscondition(prob, condnum, scondnum);
 }
-int XPRSgetmipsol(XPRSprob prob, double _dx[], double _dslack[]){
+int XPRSgetmipsol (XPRSprob prob, double _dx[], double _dslack[]){
     if (!__symbolic_XPRSgetmipsol) {
         if (!module) {
             if (!load_module()) {
@@ -3921,7 +3921,7 @@ int XPRSgetmipsol(XPRSprob prob, double _dx[], double _dslack[]){
     }
     return __symbolic_XPRSgetmipsol(prob, _dx, _dslack);
 }
-int XPRSgetlpsol(XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]){
+int XPRSgetlpsol (XPRSprob prob, double _dx[], double _dslack[], double _dual[], double _dj[]){
     if (!__symbolic_XPRSgetlpsol) {
         if (!module) {
             if (!load_module()) {
@@ -3940,7 +3940,7 @@ int XPRSgetlpsol(XPRSprob prob, double _dx[], double _dslack[], double _dual[], 
     }
     return __symbolic_XPRSgetlpsol(prob, _dx, _dslack, _dual, _dj);
 }
-int XPRSpostsolve(XPRSprob prob){
+int XPRSpostsolve (XPRSprob prob){
     if (!__symbolic_XPRSpostsolve) {
         if (!module) {
             if (!load_module()) {
@@ -3959,7 +3959,7 @@ int XPRSpostsolve(XPRSprob prob){
     }
     return __symbolic_XPRSpostsolve(prob);
 }
-int XPRSdelsets(XPRSprob prob, int nsets, const int msindex[]){
+int XPRSdelsets (XPRSprob prob, int nsets, const int msindex[]){
     if (!__symbolic_XPRSdelsets) {
         if (!module) {
             if (!load_module()) {
@@ -3978,7 +3978,7 @@ int XPRSdelsets(XPRSprob prob, int nsets, const int msindex[]){
     }
     return __symbolic_XPRSdelsets(prob, nsets, msindex);
 }
-int XPRSaddsets(XPRSprob prob, int newsets, int newnz, const char qstype[], const int msstart[], const int mscols[], const double dref[]){
+int XPRSaddsets (XPRSprob prob, int newsets, int newnz, const char qstype[], const int msstart[], const int mscols[], const double dref[]){
     if (!__symbolic_XPRSaddsets) {
         if (!module) {
             if (!load_module()) {
@@ -3997,7 +3997,7 @@ int XPRSaddsets(XPRSprob prob, int newsets, int newnz, const char qstype[], cons
     }
     return __symbolic_XPRSaddsets(prob, newsets, newnz, qstype, msstart, mscols, dref);
 }
-int XPRSsetmessagestatus(XPRSprob prob, int errcode, int bEnabledStatus){
+int XPRSsetmessagestatus (XPRSprob prob, int errcode, int bEnabledStatus){
     if (!__symbolic_XPRSsetmessagestatus) {
         if (!module) {
             if (!load_module()) {
@@ -4016,7 +4016,7 @@ int XPRSsetmessagestatus(XPRSprob prob, int errcode, int bEnabledStatus){
     }
     return __symbolic_XPRSsetmessagestatus(prob, errcode, bEnabledStatus);
 }
-int XPRSgetmessagestatus(XPRSprob prob, int errcode, int* bEnabledStatus){
+int XPRSgetmessagestatus (XPRSprob prob, int errcode, int *bEnabledStatus){
     if (!__symbolic_XPRSgetmessagestatus) {
         if (!module) {
             if (!load_module()) {
@@ -4035,7 +4035,7 @@ int XPRSgetmessagestatus(XPRSprob prob, int errcode, int* bEnabledStatus){
     }
     return __symbolic_XPRSgetmessagestatus(prob, errcode, bEnabledStatus);
 }
-int XPRSrepairweightedinfeas(XPRSprob prob, int* scode, const double lrp_array[], const double grp_array[], const double lbp_array[], const double ubp_array[], char second_phase, double delta, const char* optflags){
+int XPRSrepairweightedinfeas (XPRSprob prob, int *scode, const double lrp_array[], const double grp_array[], const double lbp_array[], const double ubp_array[], char second_phase, double delta, const char *optflags){
     if (!__symbolic_XPRSrepairweightedinfeas) {
         if (!module) {
             if (!load_module()) {
@@ -4054,7 +4054,7 @@ int XPRSrepairweightedinfeas(XPRSprob prob, int* scode, const double lrp_array[]
     }
     return __symbolic_XPRSrepairweightedinfeas(prob, scode, lrp_array, grp_array, lbp_array, ubp_array, second_phase, delta, optflags);
 }
-int XPRSrepairinfeas(XPRSprob prob, int* scode, char ptype, char phase2, char globalflags, double lrp, double grp, double lbp, double ubp, double delta){
+int XPRSrepairinfeas (XPRSprob prob, int *scode, char ptype, char phase2, char globalflags, double lrp, double grp, double lbp, double ubp, double delta){
     if (!__symbolic_XPRSrepairinfeas) {
         if (!module) {
             if (!load_module()) {
@@ -4073,7 +4073,7 @@ int XPRSrepairinfeas(XPRSprob prob, int* scode, char ptype, char phase2, char gl
     }
     return __symbolic_XPRSrepairinfeas(prob, scode, ptype, phase2, globalflags, lrp, grp, lbp, ubp, delta);
 }
-int XPRSgetcutslack(XPRSprob prob, XPRScut cut, double* dslack){
+int XPRSgetcutslack (XPRSprob prob, XPRScut cut, double *dslack){
     if (!__symbolic_XPRSgetcutslack) {
         if (!module) {
             if (!load_module()) {
@@ -4092,7 +4092,7 @@ int XPRSgetcutslack(XPRSprob prob, XPRScut cut, double* dslack){
     }
     return __symbolic_XPRSgetcutslack(prob, cut, dslack);
 }
-int XPRSgetcutmap(XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[]){
+int XPRSgetcutmap (XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[]){
     if (!__symbolic_XPRSgetcutmap) {
         if (!module) {
             if (!load_module()) {
@@ -4111,7 +4111,7 @@ int XPRSgetcutmap(XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[]){
     }
     return __symbolic_XPRSgetcutmap(prob, ncuts, cuts, cutmap);
 }
-int XPRSgetnamelist(XPRSprob prob, int _itype, char _sbuff[], int names_len, int* names_len_reqd, int first, int last){
+int XPRSgetnamelist (XPRSprob prob, int _itype, char _sbuff[], int names_len, int *names_len_reqd, int first, int last){
     if (!__symbolic_XPRSgetnamelist) {
         if (!module) {
             if (!load_module()) {
@@ -4130,7 +4130,7 @@ int XPRSgetnamelist(XPRSprob prob, int _itype, char _sbuff[], int names_len, int
     }
     return __symbolic_XPRSgetnamelist(prob, _itype, _sbuff, names_len, names_len_reqd, first, last);
 }
-int XPRSgetnamelistobject(XPRSprob prob, int _itype, XPRSnamelist* r_nl){
+int XPRSgetnamelistobject (XPRSprob prob, int _itype, XPRSnamelist * r_nl){
     if (!__symbolic_XPRSgetnamelistobject) {
         if (!module) {
             if (!load_module()) {
@@ -4149,7 +4149,7 @@ int XPRSgetnamelistobject(XPRSprob prob, int _itype, XPRSnamelist* r_nl){
     }
     return __symbolic_XPRSgetnamelistobject(prob, _itype, r_nl);
 }
-int XPRSlogfilehandler(XPRSobject obj, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode){
+int XPRSlogfilehandler (XPRSobject obj, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode){
     if (!__symbolic_XPRSlogfilehandler) {
         if (!module) {
             if (!load_module()) {
@@ -4168,7 +4168,7 @@ int XPRSlogfilehandler(XPRSobject obj, void* vUserContext, void* vSystemThreadId
     }
     return __symbolic_XPRSlogfilehandler(obj, vUserContext, vSystemThreadId, sMsg, iMsgType, iMsgCode);
 }
-int XPRSgetobjecttypename(XPRSobject obj, const char** sObjectName){
+int XPRSgetobjecttypename (XPRSobject obj, const char **sObjectName){
     if (!__symbolic_XPRSgetobjecttypename) {
         if (!module) {
             if (!load_module()) {
@@ -4187,7 +4187,7 @@ int XPRSgetobjecttypename(XPRSobject obj, const char** sObjectName){
     }
     return __symbolic_XPRSgetobjecttypename(obj, sObjectName);
 }
-int XPRSobjsa(XPRSprob prob, int ncols, const int mindex[], double lower[], double upper[]){
+int XPRSobjsa (XPRSprob prob, int ncols, const int mindex[], double lower[], double upper[]){
     if (!__symbolic_XPRSobjsa) {
         if (!module) {
             if (!load_module()) {
@@ -4206,7 +4206,7 @@ int XPRSobjsa(XPRSprob prob, int ncols, const int mindex[], double lower[], doub
     }
     return __symbolic_XPRSobjsa(prob, ncols, mindex, lower, upper);
 }
-int XPRSrhssa(XPRSprob prob, int nrows, const int mindex[], double lower[], double upper[]){
+int XPRSrhssa (XPRSprob prob, int nrows, const int mindex[], double lower[], double upper[]){
     if (!__symbolic_XPRSrhssa) {
         if (!module) {
             if (!load_module()) {
@@ -4225,7 +4225,7 @@ int XPRSrhssa(XPRSprob prob, int nrows, const int mindex[], double lower[], doub
     }
     return __symbolic_XPRSrhssa(prob, nrows, mindex, lower, upper);
 }
-int XPRS_ge_setcbmsghandler(int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p){
+int XPRS_ge_setcbmsghandler (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
     if (!__symbolic_XPRS_ge_setcbmsghandler) {
         if (!module) {
             if (!load_module()) {
@@ -4244,7 +4244,7 @@ int XPRS_ge_setcbmsghandler(int ( *f_msghandler)(XPRSobject vXPRSObject, void* v
     }
     return __symbolic_XPRS_ge_setcbmsghandler(f_msghandler, p);
 }
-int XPRS_ge_getlasterror(int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString){
+int XPRS_ge_getlasterror (int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_ge_getlasterror) {
         if (!module) {
             if (!load_module()) {
@@ -4263,7 +4263,7 @@ int XPRS_ge_getlasterror(int* iMsgCode, char* _msg, int _iStringBufferBytes, int
     }
     return __symbolic_XPRS_ge_getlasterror(iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_msp_create(XPRSmipsolpool* msp){
+int XPRS_msp_create (XPRSmipsolpool * msp){
     if (!__symbolic_XPRS_msp_create) {
         if (!module) {
             if (!load_module()) {
@@ -4282,7 +4282,7 @@ int XPRS_msp_create(XPRSmipsolpool* msp){
     }
     return __symbolic_XPRS_msp_create(msp);
 }
-int XPRS_msp_destroy(XPRSmipsolpool msp){
+int XPRS_msp_destroy (XPRSmipsolpool msp){
     if (!__symbolic_XPRS_msp_destroy) {
         if (!module) {
             if (!load_module()) {
@@ -4301,7 +4301,7 @@ int XPRS_msp_destroy(XPRSmipsolpool msp){
     }
     return __symbolic_XPRS_msp_destroy(msp);
 }
-int XPRS_msp_probattach(XPRSmipsolpool msp, XPRSprob prob){
+int XPRS_msp_probattach (XPRSmipsolpool msp, XPRSprob prob){
     if (!__symbolic_XPRS_msp_probattach) {
         if (!module) {
             if (!load_module()) {
@@ -4320,7 +4320,7 @@ int XPRS_msp_probattach(XPRSmipsolpool msp, XPRSprob prob){
     }
     return __symbolic_XPRS_msp_probattach(msp, prob);
 }
-int XPRS_msp_probdetach(XPRSmipsolpool msp, XPRSprob prob){
+int XPRS_msp_probdetach (XPRSmipsolpool msp, XPRSprob prob){
     if (!__symbolic_XPRS_msp_probdetach) {
         if (!module) {
             if (!load_module()) {
@@ -4339,7 +4339,7 @@ int XPRS_msp_probdetach(XPRSmipsolpool msp, XPRSprob prob){
     }
     return __symbolic_XPRS_msp_probdetach(msp, prob);
 }
-int XPRS_msp_setcbmsghandler(XPRSmipsolpool msp, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p){
+int XPRS_msp_setcbmsghandler (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
     if (!__symbolic_XPRS_msp_setcbmsghandler) {
         if (!module) {
             if (!load_module()) {
@@ -4358,7 +4358,7 @@ int XPRS_msp_setcbmsghandler(XPRSmipsolpool msp, int ( *f_msghandler)(XPRSobject
     }
     return __symbolic_XPRS_msp_setcbmsghandler(msp, f_msghandler, p);
 }
-int XPRS_msp_getsollist(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds_Zb[], int* nReturnedSolIds, int* nSols){
+int XPRS_msp_getsollist (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols){
     if (!__symbolic_XPRS_msp_getsollist) {
         if (!module) {
             if (!load_module()) {
@@ -4377,7 +4377,7 @@ int XPRS_msp_getsollist(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int i
     }
     return __symbolic_XPRS_msp_getsollist(msp, prob_to_rank_against, iRankAttrib, bRankAscending, iRankFirstIndex_Ob, iRankLastIndex_Ob, iSolutionIds_Zb, nReturnedSolIds, nSols);
 }
-int XPRS_msp_getsollist2(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int bUseUserBitFilter, int iUserBitMask, int iUserBitPattern, int bUseInternalBitFilter, int iInternalBitMask, int iInternalBitPattern, int iSolutionIds_Zb[], int* nReturnedSolIds, int* nSols){
+int XPRS_msp_getsollist2 (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int bUseUserBitFilter, int iUserBitMask, int iUserBitPattern, int bUseInternalBitFilter, int iInternalBitMask, int iInternalBitPattern, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols){
     if (!__symbolic_XPRS_msp_getsollist2) {
         if (!module) {
             if (!load_module()) {
@@ -4396,7 +4396,7 @@ int XPRS_msp_getsollist2(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int 
     }
     return __symbolic_XPRS_msp_getsollist2(msp, prob_to_rank_against, iRankAttrib, bRankAscending, iRankFirstIndex_Ob, iRankLastIndex_Ob, bUseUserBitFilter, iUserBitMask, iUserBitPattern, bUseInternalBitFilter, iInternalBitMask, iInternalBitPattern, iSolutionIds_Zb, nReturnedSolIds, nSols);
 }
-int XPRS_msp_getsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, double x[], int iColFirst, int iColLast, int* nValuesReturned){
+int XPRS_msp_getsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, double x[], int iColFirst, int iColLast, int *nValuesReturned){
     if (!__symbolic_XPRS_msp_getsol) {
         if (!module) {
             if (!load_module()) {
@@ -4415,7 +4415,7 @@ int XPRS_msp_getsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_
     }
     return __symbolic_XPRS_msp_getsol(msp, iSolutionId, iSolutionIdStatus_, x, iColFirst, iColLast, nValuesReturned);
 }
-int XPRS_msp_loadsol(XPRSmipsolpool msp, int* iSolutionId, const double x[], int nCols, const char* sSolutionName, int* bNameModifiedForUniqueness, int* iSolutionIdOfExistingDuplicatePreventedLoad){
+int XPRS_msp_loadsol (XPRSmipsolpool msp, int *iSolutionId, const double x[], int nCols, const char *sSolutionName, int *bNameModifiedForUniqueness, int *iSolutionIdOfExistingDuplicatePreventedLoad){
     if (!__symbolic_XPRS_msp_loadsol) {
         if (!module) {
             if (!load_module()) {
@@ -4434,7 +4434,7 @@ int XPRS_msp_loadsol(XPRSmipsolpool msp, int* iSolutionId, const double x[], int
     }
     return __symbolic_XPRS_msp_loadsol(msp, iSolutionId, x, nCols, sSolutionName, bNameModifiedForUniqueness, iSolutionIdOfExistingDuplicatePreventedLoad);
 }
-int XPRS_msp_delsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_){
+int XPRS_msp_delsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_){
     if (!__symbolic_XPRS_msp_delsol) {
         if (!module) {
             if (!load_module()) {
@@ -4453,7 +4453,7 @@ int XPRS_msp_delsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_
     }
     return __symbolic_XPRS_msp_delsol(msp, iSolutionId, iSolutionIdStatus_);
 }
-int XPRS_msp_getintattribprobsol(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, int* Dst){
+int XPRS_msp_getintattribprobsol (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, int *Dst){
     if (!__symbolic_XPRS_msp_getintattribprobsol) {
         if (!module) {
             if (!load_module()) {
@@ -4472,7 +4472,7 @@ int XPRS_msp_getintattribprobsol(XPRSmipsolpool msp, XPRSprob prob_to_rank_again
     }
     return __symbolic_XPRS_msp_getintattribprobsol(msp, prob_to_rank_against, iSolutionId, iSolutionIdStatus_, iAttribId, Dst);
 }
-int XPRS_msp_getdblattribprobsol(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, double* Dst){
+int XPRS_msp_getdblattribprobsol (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, double *Dst){
     if (!__symbolic_XPRS_msp_getdblattribprobsol) {
         if (!module) {
             if (!load_module()) {
@@ -4491,7 +4491,7 @@ int XPRS_msp_getdblattribprobsol(XPRSmipsolpool msp, XPRSprob prob_to_rank_again
     }
     return __symbolic_XPRS_msp_getdblattribprobsol(msp, prob_to_rank_against, iSolutionId, iSolutionIdStatus_, iAttribId, Dst);
 }
-int XPRS_msp_getintattribprob(XPRSmipsolpool msp, XPRSprob prob, int iAttribId, int* Dst){
+int XPRS_msp_getintattribprob (XPRSmipsolpool msp, XPRSprob prob, int iAttribId, int *Dst){
     if (!__symbolic_XPRS_msp_getintattribprob) {
         if (!module) {
             if (!load_module()) {
@@ -4510,7 +4510,7 @@ int XPRS_msp_getintattribprob(XPRSmipsolpool msp, XPRSprob prob, int iAttribId, 
     }
     return __symbolic_XPRS_msp_getintattribprob(msp, prob, iAttribId, Dst);
 }
-int XPRS_msp_getdblattribprob(XPRSmipsolpool msp, XPRSprob prob, int iAttribId, double* Dst){
+int XPRS_msp_getdblattribprob (XPRSmipsolpool msp, XPRSprob prob, int iAttribId, double *Dst){
     if (!__symbolic_XPRS_msp_getdblattribprob) {
         if (!module) {
             if (!load_module()) {
@@ -4529,7 +4529,7 @@ int XPRS_msp_getdblattribprob(XPRSmipsolpool msp, XPRSprob prob, int iAttribId, 
     }
     return __symbolic_XPRS_msp_getdblattribprob(msp, prob, iAttribId, Dst);
 }
-int XPRS_msp_getintattribsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, int* Dst){
+int XPRS_msp_getintattribsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, int *Dst){
     if (!__symbolic_XPRS_msp_getintattribsol) {
         if (!module) {
             if (!load_module()) {
@@ -4548,7 +4548,7 @@ int XPRS_msp_getintattribsol(XPRSmipsolpool msp, int iSolutionId, int* iSolution
     }
     return __symbolic_XPRS_msp_getintattribsol(msp, iSolutionId, iSolutionIdStatus_, iAttribId, Dst);
 }
-int XPRS_msp_getdblattribsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iAttribId, double* Dst){
+int XPRS_msp_getdblattribsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, double *Dst){
     if (!__symbolic_XPRS_msp_getdblattribsol) {
         if (!module) {
             if (!load_module()) {
@@ -4567,7 +4567,7 @@ int XPRS_msp_getdblattribsol(XPRSmipsolpool msp, int iSolutionId, int* iSolution
     }
     return __symbolic_XPRS_msp_getdblattribsol(msp, iSolutionId, iSolutionIdStatus_, iAttribId, Dst);
 }
-int XPRS_msp_getintcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, int* Val){
+int XPRS_msp_getintcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, int *Val){
     if (!__symbolic_XPRS_msp_getintcontrolsol) {
         if (!module) {
             if (!load_module()) {
@@ -4586,7 +4586,7 @@ int XPRS_msp_getintcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutio
     }
     return __symbolic_XPRS_msp_getintcontrolsol(msp, iSolutionId, iSolutionIdStatus_, iControlId, Val);
 }
-int XPRS_msp_getdblcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, double* Val){
+int XPRS_msp_getdblcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, double *Val){
     if (!__symbolic_XPRS_msp_getdblcontrolsol) {
         if (!module) {
             if (!load_module()) {
@@ -4605,7 +4605,7 @@ int XPRS_msp_getdblcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutio
     }
     return __symbolic_XPRS_msp_getdblcontrolsol(msp, iSolutionId, iSolutionIdStatus_, iControlId, Val);
 }
-int XPRS_msp_setintcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, int Val){
+int XPRS_msp_setintcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, int Val){
     if (!__symbolic_XPRS_msp_setintcontrolsol) {
         if (!module) {
             if (!load_module()) {
@@ -4624,7 +4624,7 @@ int XPRS_msp_setintcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutio
     }
     return __symbolic_XPRS_msp_setintcontrolsol(msp, iSolutionId, iSolutionIdStatus_, iControlId, Val);
 }
-int XPRS_msp_setdblcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutionIdStatus_, int iControlId, double Val){
+int XPRS_msp_setdblcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, int iControlId, double Val){
     if (!__symbolic_XPRS_msp_setdblcontrolsol) {
         if (!module) {
             if (!load_module()) {
@@ -4643,7 +4643,7 @@ int XPRS_msp_setdblcontrolsol(XPRSmipsolpool msp, int iSolutionId, int* iSolutio
     }
     return __symbolic_XPRS_msp_setdblcontrolsol(msp, iSolutionId, iSolutionIdStatus_, iControlId, Val);
 }
-int XPRS_msp_getintattribprobextreme(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int* iSolutionId, int iAttribId, int* ExtremeVal){
+int XPRS_msp_getintattribprobextreme (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int *iSolutionId, int iAttribId, int *ExtremeVal){
     if (!__symbolic_XPRS_msp_getintattribprobextreme) {
         if (!module) {
             if (!load_module()) {
@@ -4662,7 +4662,7 @@ int XPRS_msp_getintattribprobextreme(XPRSmipsolpool msp, XPRSprob prob_to_rank_a
     }
     return __symbolic_XPRS_msp_getintattribprobextreme(msp, prob_to_rank_against, bGet_Max_Otherwise_Min, iSolutionId, iAttribId, ExtremeVal);
 }
-int XPRS_msp_getdblattribprobextreme(XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int* iSolutionId, int iAttribId, double* ExtremeVal){
+int XPRS_msp_getdblattribprobextreme (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int bGet_Max_Otherwise_Min, int *iSolutionId, int iAttribId, double *ExtremeVal){
     if (!__symbolic_XPRS_msp_getdblattribprobextreme) {
         if (!module) {
             if (!load_module()) {
@@ -4681,7 +4681,7 @@ int XPRS_msp_getdblattribprobextreme(XPRSmipsolpool msp, XPRSprob prob_to_rank_a
     }
     return __symbolic_XPRS_msp_getdblattribprobextreme(msp, prob_to_rank_against, bGet_Max_Otherwise_Min, iSolutionId, iAttribId, ExtremeVal);
 }
-int XPRS_msp_getintattrib(XPRSmipsolpool msp, int iAttribId, int* Val){
+int XPRS_msp_getintattrib (XPRSmipsolpool msp, int iAttribId, int *Val){
     if (!__symbolic_XPRS_msp_getintattrib) {
         if (!module) {
             if (!load_module()) {
@@ -4700,7 +4700,7 @@ int XPRS_msp_getintattrib(XPRSmipsolpool msp, int iAttribId, int* Val){
     }
     return __symbolic_XPRS_msp_getintattrib(msp, iAttribId, Val);
 }
-int XPRS_msp_getdblattrib(XPRSmipsolpool msp, int iAttribId, double* Val){
+int XPRS_msp_getdblattrib (XPRSmipsolpool msp, int iAttribId, double *Val){
     if (!__symbolic_XPRS_msp_getdblattrib) {
         if (!module) {
             if (!load_module()) {
@@ -4719,7 +4719,7 @@ int XPRS_msp_getdblattrib(XPRSmipsolpool msp, int iAttribId, double* Val){
     }
     return __symbolic_XPRS_msp_getdblattrib(msp, iAttribId, Val);
 }
-int XPRS_msp_getintcontrol(XPRSmipsolpool msp, int iControlId, int* Val){
+int XPRS_msp_getintcontrol (XPRSmipsolpool msp, int iControlId, int *Val){
     if (!__symbolic_XPRS_msp_getintcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -4738,7 +4738,7 @@ int XPRS_msp_getintcontrol(XPRSmipsolpool msp, int iControlId, int* Val){
     }
     return __symbolic_XPRS_msp_getintcontrol(msp, iControlId, Val);
 }
-int XPRS_msp_getdblcontrol(XPRSmipsolpool msp, int iControlId, double* Val){
+int XPRS_msp_getdblcontrol (XPRSmipsolpool msp, int iControlId, double *Val){
     if (!__symbolic_XPRS_msp_getdblcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -4757,7 +4757,7 @@ int XPRS_msp_getdblcontrol(XPRSmipsolpool msp, int iControlId, double* Val){
     }
     return __symbolic_XPRS_msp_getdblcontrol(msp, iControlId, Val);
 }
-int XPRS_msp_setintcontrol(XPRSmipsolpool msp, int iControlId, int Val){
+int XPRS_msp_setintcontrol (XPRSmipsolpool msp, int iControlId, int Val){
     if (!__symbolic_XPRS_msp_setintcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -4776,7 +4776,7 @@ int XPRS_msp_setintcontrol(XPRSmipsolpool msp, int iControlId, int Val){
     }
     return __symbolic_XPRS_msp_setintcontrol(msp, iControlId, Val);
 }
-int XPRS_msp_setdblcontrol(XPRSmipsolpool msp, int iControlId, double Val){
+int XPRS_msp_setdblcontrol (XPRSmipsolpool msp, int iControlId, double Val){
     if (!__symbolic_XPRS_msp_setdblcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -4795,7 +4795,7 @@ int XPRS_msp_setdblcontrol(XPRSmipsolpool msp, int iControlId, double Val){
     }
     return __symbolic_XPRS_msp_setdblcontrol(msp, iControlId, Val);
 }
-int XPRS_msp_setsolname(XPRSmipsolpool msp, int iSolutionId, const char* sNewSolutionBaseName, int* bNameModifiedForUniqueness, int* iSolutionIdStatus_){
+int XPRS_msp_setsolname (XPRSmipsolpool msp, int iSolutionId, const char *sNewSolutionBaseName, int *bNameModifiedForUniqueness, int *iSolutionIdStatus_){
     if (!__symbolic_XPRS_msp_setsolname) {
         if (!module) {
             if (!load_module()) {
@@ -4814,7 +4814,7 @@ int XPRS_msp_setsolname(XPRSmipsolpool msp, int iSolutionId, const char* sNewSol
     }
     return __symbolic_XPRS_msp_setsolname(msp, iSolutionId, sNewSolutionBaseName, bNameModifiedForUniqueness, iSolutionIdStatus_);
 }
-int XPRS_msp_getsolname(XPRSmipsolpool msp, int iSolutionId, char* _sname, int _iStringBufferBytes, int* _iBytesInInternalString, int* iSolutionIdStatus_){
+int XPRS_msp_getsolname (XPRSmipsolpool msp, int iSolutionId, char *_sname, int _iStringBufferBytes, int *_iBytesInInternalString, int *iSolutionIdStatus_){
     if (!__symbolic_XPRS_msp_getsolname) {
         if (!module) {
             if (!load_module()) {
@@ -4833,7 +4833,7 @@ int XPRS_msp_getsolname(XPRSmipsolpool msp, int iSolutionId, char* _sname, int _
     }
     return __symbolic_XPRS_msp_getsolname(msp, iSolutionId, _sname, _iStringBufferBytes, _iBytesInInternalString, iSolutionIdStatus_);
 }
-int XPRS_msp_findsolbyname(XPRSmipsolpool msp, const char* sSolutionName, int* iSolutionId){
+int XPRS_msp_findsolbyname (XPRSmipsolpool msp, const char *sSolutionName, int *iSolutionId){
     if (!__symbolic_XPRS_msp_findsolbyname) {
         if (!module) {
             if (!load_module()) {
@@ -4852,7 +4852,7 @@ int XPRS_msp_findsolbyname(XPRSmipsolpool msp, const char* sSolutionName, int* i
     }
     return __symbolic_XPRS_msp_findsolbyname(msp, sSolutionName, iSolutionId);
 }
-int XPRS_msp_writeslxsol(XPRSmipsolpool msp, XPRSprob prob_context, int iSolutionId, int* iSolutionIdStatus_, const char* sFileName, const char* sFlags){
+int XPRS_msp_writeslxsol (XPRSmipsolpool msp, XPRSprob prob_context, int iSolutionId, int *iSolutionIdStatus_, const char *sFileName, const char *sFlags){
     if (!__symbolic_XPRS_msp_writeslxsol) {
         if (!module) {
             if (!load_module()) {
@@ -4871,7 +4871,7 @@ int XPRS_msp_writeslxsol(XPRSmipsolpool msp, XPRSprob prob_context, int iSolutio
     }
     return __symbolic_XPRS_msp_writeslxsol(msp, prob_context, iSolutionId, iSolutionIdStatus_, sFileName, sFlags);
 }
-int XPRS_msp_readslxsol(XPRSmipsolpool msp, XPRSnamelist col_name_list, const char* sFileName, const char* sFlags, int* iSolutionId_Beg, int* iSolutionId_End){
+int XPRS_msp_readslxsol (XPRSmipsolpool msp, XPRSnamelist col_name_list, const char *sFileName, const char *sFlags, int *iSolutionId_Beg, int *iSolutionId_End){
     if (!__symbolic_XPRS_msp_readslxsol) {
         if (!module) {
             if (!load_module()) {
@@ -4890,7 +4890,7 @@ int XPRS_msp_readslxsol(XPRSmipsolpool msp, XPRSnamelist col_name_list, const ch
     }
     return __symbolic_XPRS_msp_readslxsol(msp, col_name_list, sFileName, sFlags, iSolutionId_Beg, iSolutionId_End);
 }
-int XPRS_msp_getlasterror(XPRSmipsolpool msp, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString){
+int XPRS_msp_getlasterror (XPRSmipsolpool msp, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_msp_getlasterror) {
         if (!module) {
             if (!load_module()) {
@@ -4909,7 +4909,7 @@ int XPRS_msp_getlasterror(XPRSmipsolpool msp, int* iMsgCode, char* _msg, int _iS
     }
     return __symbolic_XPRS_msp_getlasterror(msp, iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_nml_create(XPRSnamelist* r_nl){
+int XPRS_nml_create (XPRSnamelist * r_nl){
     if (!__symbolic_XPRS_nml_create) {
         if (!module) {
             if (!load_module()) {
@@ -4928,7 +4928,7 @@ int XPRS_nml_create(XPRSnamelist* r_nl){
     }
     return __symbolic_XPRS_nml_create(r_nl);
 }
-int XPRS_nml_destroy(XPRSnamelist nml){
+int XPRS_nml_destroy (XPRSnamelist nml){
     if (!__symbolic_XPRS_nml_destroy) {
         if (!module) {
             if (!load_module()) {
@@ -4947,7 +4947,7 @@ int XPRS_nml_destroy(XPRSnamelist nml){
     }
     return __symbolic_XPRS_nml_destroy(nml);
 }
-int XPRS_nml_getnamecount(XPRSnamelist nml, int* count){
+int XPRS_nml_getnamecount (XPRSnamelist nml, int *count){
     if (!__symbolic_XPRS_nml_getnamecount) {
         if (!module) {
             if (!load_module()) {
@@ -4966,7 +4966,7 @@ int XPRS_nml_getnamecount(XPRSnamelist nml, int* count){
     }
     return __symbolic_XPRS_nml_getnamecount(nml, count);
 }
-int XPRS_nml_getmaxnamelen(XPRSnamelist nml, int* namlen){
+int XPRS_nml_getmaxnamelen (XPRSnamelist nml, int *namlen){
     if (!__symbolic_XPRS_nml_getmaxnamelen) {
         if (!module) {
             if (!load_module()) {
@@ -4985,7 +4985,7 @@ int XPRS_nml_getmaxnamelen(XPRSnamelist nml, int* namlen){
     }
     return __symbolic_XPRS_nml_getmaxnamelen(nml, namlen);
 }
-int XPRS_nml_getnames(XPRSnamelist nml, int padlen, char buf[], int buflen, int* r_buflen_reqd, int firstIndex, int lastIndex){
+int XPRS_nml_getnames (XPRSnamelist nml, int padlen, char buf[], int buflen, int *r_buflen_reqd, int firstIndex, int lastIndex){
     if (!__symbolic_XPRS_nml_getnames) {
         if (!module) {
             if (!load_module()) {
@@ -5004,7 +5004,7 @@ int XPRS_nml_getnames(XPRSnamelist nml, int padlen, char buf[], int buflen, int*
     }
     return __symbolic_XPRS_nml_getnames(nml, padlen, buf, buflen, r_buflen_reqd, firstIndex, lastIndex);
 }
-int XPRS_nml_addnames(XPRSnamelist nml, const char buf[], int firstIndex, int lastIndex){
+int XPRS_nml_addnames (XPRSnamelist nml, const char buf[], int firstIndex, int lastIndex){
     if (!__symbolic_XPRS_nml_addnames) {
         if (!module) {
             if (!load_module()) {
@@ -5023,7 +5023,7 @@ int XPRS_nml_addnames(XPRSnamelist nml, const char buf[], int firstIndex, int la
     }
     return __symbolic_XPRS_nml_addnames(nml, buf, firstIndex, lastIndex);
 }
-int XPRS_nml_removenames(XPRSnamelist nml, int firstIndex, int lastIndex){
+int XPRS_nml_removenames (XPRSnamelist nml, int firstIndex, int lastIndex){
     if (!__symbolic_XPRS_nml_removenames) {
         if (!module) {
             if (!load_module()) {
@@ -5042,7 +5042,7 @@ int XPRS_nml_removenames(XPRSnamelist nml, int firstIndex, int lastIndex){
     }
     return __symbolic_XPRS_nml_removenames(nml, firstIndex, lastIndex);
 }
-int XPRS_nml_findname(XPRSnamelist nml, const char* name, int* r_index){
+int XPRS_nml_findname (XPRSnamelist nml, const char *name, int *r_index){
     if (!__symbolic_XPRS_nml_findname) {
         if (!module) {
             if (!load_module()) {
@@ -5061,7 +5061,7 @@ int XPRS_nml_findname(XPRSnamelist nml, const char* name, int* r_index){
     }
     return __symbolic_XPRS_nml_findname(nml, name, r_index);
 }
-int XPRS_nml_copynames(XPRSnamelist dst, XPRSnamelist src){
+int XPRS_nml_copynames (XPRSnamelist dst, XPRSnamelist src){
     if (!__symbolic_XPRS_nml_copynames) {
         if (!module) {
             if (!load_module()) {
@@ -5080,7 +5080,7 @@ int XPRS_nml_copynames(XPRSnamelist dst, XPRSnamelist src){
     }
     return __symbolic_XPRS_nml_copynames(dst, src);
 }
-int XPRS_nml_getlasterror(XPRSnamelist nml, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString){
+int XPRS_nml_getlasterror (XPRSnamelist nml, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_nml_getlasterror) {
         if (!module) {
             if (!load_module()) {
@@ -5099,7 +5099,7 @@ int XPRS_nml_getlasterror(XPRSnamelist nml, int* iMsgCode, char* _msg, int _iStr
     }
     return __symbolic_XPRS_nml_getlasterror(nml, iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_nml_setcbmsghandler(XPRSnamelist nml, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p){
+int XPRS_nml_setcbmsghandler (XPRSnamelist nml, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
     if (!__symbolic_XPRS_nml_setcbmsghandler) {
         if (!module) {
             if (!load_module()) {
@@ -5118,7 +5118,7 @@ int XPRS_nml_setcbmsghandler(XPRSnamelist nml, int ( *f_msghandler)(XPRSobject v
     }
     return __symbolic_XPRS_nml_setcbmsghandler(nml, f_msghandler, p);
 }
-int XPRSgetqrowcoeff(XPRSprob prob, int irow, int icol, int jcol, double* dval){
+int XPRSgetqrowcoeff (XPRSprob prob, int irow, int icol, int jcol, double *dval){
     if (!__symbolic_XPRSgetqrowcoeff) {
         if (!module) {
             if (!load_module()) {
@@ -5137,7 +5137,7 @@ int XPRSgetqrowcoeff(XPRSprob prob, int irow, int icol, int jcol, double* dval){
     }
     return __symbolic_XPRSgetqrowcoeff(prob, irow, icol, jcol, dval);
 }
-int XPRSgetqrowqmatrix(XPRSprob prob, int irow, int mstart[], int mclind[], double dobjval[], int maxcoeffs, int* ncoeffs, int first, int last){
+int XPRSgetqrowqmatrix (XPRSprob prob, int irow, int mstart[], int mclind[], double dobjval[], int maxcoeffs, int *ncoeffs, int first, int last){
     if (!__symbolic_XPRSgetqrowqmatrix) {
         if (!module) {
             if (!load_module()) {
@@ -5156,7 +5156,7 @@ int XPRSgetqrowqmatrix(XPRSprob prob, int irow, int mstart[], int mclind[], doub
     }
     return __symbolic_XPRSgetqrowqmatrix(prob, irow, mstart, mclind, dobjval, maxcoeffs, ncoeffs, first, last);
 }
-int XPRSgetqrowqmatrixtriplets(XPRSprob prob, int irow, int* nqelem, int mqcol1[], int mqcol2[], double dqe[]){
+int XPRSgetqrowqmatrixtriplets (XPRSprob prob, int irow, int *nqelem, int mqcol1[], int mqcol2[], double dqe[]){
     if (!__symbolic_XPRSgetqrowqmatrixtriplets) {
         if (!module) {
             if (!load_module()) {
@@ -5175,7 +5175,7 @@ int XPRSgetqrowqmatrixtriplets(XPRSprob prob, int irow, int* nqelem, int mqcol1[
     }
     return __symbolic_XPRSgetqrowqmatrixtriplets(prob, irow, nqelem, mqcol1, mqcol2, dqe);
 }
-int XPRSchgqrowcoeff(XPRSprob prob, int irow, int icol, int jcol, double dval){
+int XPRSchgqrowcoeff (XPRSprob prob, int irow, int icol, int jcol, double dval){
     if (!__symbolic_XPRSchgqrowcoeff) {
         if (!module) {
             if (!load_module()) {
@@ -5194,7 +5194,7 @@ int XPRSchgqrowcoeff(XPRSprob prob, int irow, int icol, int jcol, double dval){
     }
     return __symbolic_XPRSchgqrowcoeff(prob, irow, icol, jcol, dval);
 }
-int XPRSgetqrows(XPRSprob prob, int* qmn, int qcrows[]){
+int XPRSgetqrows (XPRSprob prob, int *qmn, int qcrows[]){
     if (!__symbolic_XPRSgetqrows) {
         if (!module) {
             if (!load_module()) {
@@ -5213,7 +5213,7 @@ int XPRSgetqrows(XPRSprob prob, int* qmn, int qcrows[]){
     }
     return __symbolic_XPRSgetqrows(prob, qmn, qcrows);
 }
-int XPRSaddqmatrix(XPRSprob prob, int irow, int nqtr, const int mqc1[], const int mqc2[], const double dqew[]){
+int XPRSaddqmatrix (XPRSprob prob, int irow, int nqtr, const int mqc1[], const int mqc2[], const double dqew[]){
     if (!__symbolic_XPRSaddqmatrix) {
         if (!module) {
             if (!load_module()) {
@@ -5232,7 +5232,7 @@ int XPRSaddqmatrix(XPRSprob prob, int irow, int nqtr, const int mqc1[], const in
     }
     return __symbolic_XPRSaddqmatrix(prob, irow, nqtr, mqc1, mqc2, dqew);
 }
-int XPRSdelqmatrix(XPRSprob prob, int irow){
+int XPRSdelqmatrix (XPRSprob prob, int irow){
     if (!__symbolic_XPRSdelqmatrix) {
         if (!module) {
             if (!load_module()) {
@@ -5251,7 +5251,7 @@ int XPRSdelqmatrix(XPRSprob prob, int irow){
     }
     return __symbolic_XPRSdelqmatrix(prob, irow);
 }
-int XPRSloadqcqp(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]){
+int XPRSloadqcqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]){
     if (!__symbolic_XPRSloadqcqp) {
         if (!module) {
             if (!load_module()) {
@@ -5270,7 +5270,7 @@ int XPRSloadqcqp(XPRSprob prob, const char* _sprobname, int ncols, int nrows, co
     }
     return __symbolic_XPRSloadqcqp(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval, qmn, qcrows, qcnquads, qcmqcol1, qcmqcol2, qcdqval);
 }
-int XPRSloadqcqpglobal(XPRSprob prob, const char* _sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
+int XPRSloadqcqpglobal (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
     if (!__symbolic_XPRSloadqcqpglobal) {
         if (!module) {
             if (!load_module()) {
@@ -5289,7 +5289,7 @@ int XPRSloadqcqpglobal(XPRSprob prob, const char* _sprobname, int ncols, int nro
     }
     return __symbolic_XPRSloadqcqpglobal(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _matbeg, _matcnt, _matrow, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval, qmn, qcrows, qcnquads, qcmqcol1, qcmqcol2, qcdqval, ngents, nsets, qgtype, mgcols, dlim, qstype, msstart, mscols, dref);
 }
-int XPRS_mse_create(XPRSmipsolenum* mse){
+int XPRS_mse_create (XPRSmipsolenum * mse){
     if (!__symbolic_XPRS_mse_create) {
         if (!module) {
             if (!load_module()) {
@@ -5308,7 +5308,7 @@ int XPRS_mse_create(XPRSmipsolenum* mse){
     }
     return __symbolic_XPRS_mse_create(mse);
 }
-int XPRS_mse_destroy(XPRSmipsolenum mse){
+int XPRS_mse_destroy (XPRSmipsolenum mse){
     if (!__symbolic_XPRS_mse_destroy) {
         if (!module) {
             if (!load_module()) {
@@ -5327,7 +5327,7 @@ int XPRS_mse_destroy(XPRSmipsolenum mse){
     }
     return __symbolic_XPRS_mse_destroy(mse);
 }
-int XPRS_mse_getsollist(XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds[], int* nReturnedSolIds, int* nSols){
+int XPRS_mse_getsollist (XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds[], int *nReturnedSolIds, int *nSols){
     if (!__symbolic_XPRS_mse_getsollist) {
         if (!module) {
             if (!load_module()) {
@@ -5346,7 +5346,7 @@ int XPRS_mse_getsollist(XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_O
     }
     return __symbolic_XPRS_mse_getsollist(mse, iMetricId, iRankFirstIndex_Ob, iRankLastIndex_Ob, iSolutionIds, nReturnedSolIds, nSols);
 }
-int XPRS_mse_getsolmetric(XPRSmipsolenum mse, int iSolutionId, int* iSolutionIdStatus, int iMetricId, double* dMetric){
+int XPRS_mse_getsolmetric (XPRSmipsolenum mse, int iSolutionId, int *iSolutionIdStatus, int iMetricId, double *dMetric){
     if (!__symbolic_XPRS_mse_getsolmetric) {
         if (!module) {
             if (!load_module()) {
@@ -5365,7 +5365,7 @@ int XPRS_mse_getsolmetric(XPRSmipsolenum mse, int iSolutionId, int* iSolutionIdS
     }
     return __symbolic_XPRS_mse_getsolmetric(mse, iSolutionId, iSolutionIdStatus, iMetricId, dMetric);
 }
-int XPRS_mse_getcullchoice(XPRSmipsolenum mse, int iMetricId, int cull_sol_id_list[], int nMaxSolsToCull, int* nSolsToCull, double dNewSolMetric, const double x[], int nCols, int* bRejectSoln){
+int XPRS_mse_getcullchoice (XPRSmipsolenum mse, int iMetricId, int cull_sol_id_list[], int nMaxSolsToCull, int *nSolsToCull, double dNewSolMetric, const double x[], int nCols, int *bRejectSoln){
     if (!__symbolic_XPRS_mse_getcullchoice) {
         if (!module) {
             if (!load_module()) {
@@ -5384,7 +5384,7 @@ int XPRS_mse_getcullchoice(XPRSmipsolenum mse, int iMetricId, int cull_sol_id_li
     }
     return __symbolic_XPRS_mse_getcullchoice(mse, iMetricId, cull_sol_id_list, nMaxSolsToCull, nSolsToCull, dNewSolMetric, x, nCols, bRejectSoln);
 }
-int XPRS_mse_minim(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f_mse_handler)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void* vContext, int* nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double* dModifiedObject, int* bRejectSoln, int* bUpdateMipAbsCutOffOnCurrentSet), void* p, int* nMaxSols){
+int XPRS_mse_minim (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( * f_mse_handler) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void *vContext, int *nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double *dModifiedObject, int *bRejectSoln, int *bUpdateMipAbsCutOffOnCurrentSet), void *p, int *nMaxSols){
     if (!__symbolic_XPRS_mse_minim) {
         if (!module) {
             if (!load_module()) {
@@ -5403,7 +5403,7 @@ int XPRS_mse_minim(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( 
     }
     return __symbolic_XPRS_mse_minim(mse, prob, msp, f_mse_handler, p, nMaxSols);
 }
-int XPRS_mse_maxim(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f_mse_handler)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void* vContext, int* nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double* dModifiedObject, int* bRejectSoln, int* bUpdateMipAbsCutOffOnCurrentSet), void* p, int* nMaxSols){
+int XPRS_mse_maxim (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( * f_mse_handler) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void *vContext, int *nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double *dModifiedObject, int *bRejectSoln, int *bUpdateMipAbsCutOffOnCurrentSet), void *p, int *nMaxSols){
     if (!__symbolic_XPRS_mse_maxim) {
         if (!module) {
             if (!load_module()) {
@@ -5422,7 +5422,7 @@ int XPRS_mse_maxim(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( 
     }
     return __symbolic_XPRS_mse_maxim(mse, prob, msp, f_mse_handler, p, nMaxSols);
 }
-int XPRS_mse_opt(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f_mse_handler)(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void* vContext, int* nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double* dModifiedObject, int* bRejectSoln, int* bUpdateMipAbsCutOffOnCurrentSet), void* p, int* nMaxSols){
+int XPRS_mse_opt (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( * f_mse_handler) (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, void *vContext, int *nMaxSols, const double x_Zb[], const int nCols, const double dMipObject, double *dModifiedObject, int *bRejectSoln, int *bUpdateMipAbsCutOffOnCurrentSet), void *p, int *nMaxSols){
     if (!__symbolic_XPRS_mse_opt) {
         if (!module) {
             if (!load_module()) {
@@ -5441,7 +5441,7 @@ int XPRS_mse_opt(XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *f
     }
     return __symbolic_XPRS_mse_opt(mse, prob, msp, f_mse_handler, p, nMaxSols);
 }
-int XPRS_mse_getintattrib(XPRSmipsolenum mse, int iAttribId, int* Val){
+int XPRS_mse_getintattrib (XPRSmipsolenum mse, int iAttribId, int *Val){
     if (!__symbolic_XPRS_mse_getintattrib) {
         if (!module) {
             if (!load_module()) {
@@ -5460,7 +5460,7 @@ int XPRS_mse_getintattrib(XPRSmipsolenum mse, int iAttribId, int* Val){
     }
     return __symbolic_XPRS_mse_getintattrib(mse, iAttribId, Val);
 }
-int XPRS_mse_getdblattrib(XPRSmipsolenum mse, int iAttribId, double* Val){
+int XPRS_mse_getdblattrib (XPRSmipsolenum mse, int iAttribId, double *Val){
     if (!__symbolic_XPRS_mse_getdblattrib) {
         if (!module) {
             if (!load_module()) {
@@ -5479,7 +5479,7 @@ int XPRS_mse_getdblattrib(XPRSmipsolenum mse, int iAttribId, double* Val){
     }
     return __symbolic_XPRS_mse_getdblattrib(mse, iAttribId, Val);
 }
-int XPRS_mse_getintcontrol(XPRSmipsolenum mse, int iAttribId, int* Val){
+int XPRS_mse_getintcontrol (XPRSmipsolenum mse, int iAttribId, int *Val){
     if (!__symbolic_XPRS_mse_getintcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -5498,7 +5498,7 @@ int XPRS_mse_getintcontrol(XPRSmipsolenum mse, int iAttribId, int* Val){
     }
     return __symbolic_XPRS_mse_getintcontrol(mse, iAttribId, Val);
 }
-int XPRS_mse_getdblcontrol(XPRSmipsolenum mse, int iAttribId, double* Val){
+int XPRS_mse_getdblcontrol (XPRSmipsolenum mse, int iAttribId, double *Val){
     if (!__symbolic_XPRS_mse_getdblcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -5517,7 +5517,7 @@ int XPRS_mse_getdblcontrol(XPRSmipsolenum mse, int iAttribId, double* Val){
     }
     return __symbolic_XPRS_mse_getdblcontrol(mse, iAttribId, Val);
 }
-int XPRS_mse_setintcontrol(XPRSmipsolenum mse, int iAttribId, int Val){
+int XPRS_mse_setintcontrol (XPRSmipsolenum mse, int iAttribId, int Val){
     if (!__symbolic_XPRS_mse_setintcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -5536,7 +5536,7 @@ int XPRS_mse_setintcontrol(XPRSmipsolenum mse, int iAttribId, int Val){
     }
     return __symbolic_XPRS_mse_setintcontrol(mse, iAttribId, Val);
 }
-int XPRS_mse_setdblcontrol(XPRSmipsolenum mse, int iAttribId, double Val){
+int XPRS_mse_setdblcontrol (XPRSmipsolenum mse, int iAttribId, double Val){
     if (!__symbolic_XPRS_mse_setdblcontrol) {
         if (!module) {
             if (!load_module()) {
@@ -5555,7 +5555,7 @@ int XPRS_mse_setdblcontrol(XPRSmipsolenum mse, int iAttribId, double Val){
     }
     return __symbolic_XPRS_mse_setdblcontrol(mse, iAttribId, Val);
 }
-int XPRS_mse_getlasterror(XPRSmipsolenum mse, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString){
+int XPRS_mse_getlasterror (XPRSmipsolenum mse, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_mse_getlasterror) {
         if (!module) {
             if (!load_module()) {
@@ -5574,7 +5574,7 @@ int XPRS_mse_getlasterror(XPRSmipsolenum mse, int* iMsgCode, char* _msg, int _iS
     }
     return __symbolic_XPRS_mse_getlasterror(mse, iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_mse_setcbmsghandler(XPRSmipsolenum mse, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p){
+int XPRS_mse_setcbmsghandler (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
     if (!__symbolic_XPRS_mse_setcbmsghandler) {
         if (!module) {
             if (!load_module()) {
@@ -5593,7 +5593,7 @@ int XPRS_mse_setcbmsghandler(XPRSmipsolenum mse, int ( *f_msghandler)(XPRSobject
     }
     return __symbolic_XPRS_mse_setcbmsghandler(mse, f_msghandler, p);
 }
-int XPRS_mse_setsolbasename(XPRSmipsolenum mse, const char* sSolutionBaseName){
+int XPRS_mse_setsolbasename (XPRSmipsolenum mse, const char *sSolutionBaseName){
     if (!__symbolic_XPRS_mse_setsolbasename) {
         if (!module) {
             if (!load_module()) {
@@ -5612,7 +5612,7 @@ int XPRS_mse_setsolbasename(XPRSmipsolenum mse, const char* sSolutionBaseName){
     }
     return __symbolic_XPRS_mse_setsolbasename(mse, sSolutionBaseName);
 }
-int XPRS_mse_getsolbasename(XPRSmipsolenum mse, char* _sname, int _iStringBufferBytes, int* _iBytesInInternalString){
+int XPRS_mse_getsolbasename (XPRSmipsolenum mse, char *_sname, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_mse_getsolbasename) {
         if (!module) {
             if (!load_module()) {
@@ -5631,7 +5631,7 @@ int XPRS_mse_getsolbasename(XPRSmipsolenum mse, char* _sname, int _iStringBuffer
     }
     return __symbolic_XPRS_mse_getsolbasename(mse, _sname, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_mse_setcbgetsolutiondiff(XPRSmipsolenum mse, int ( *f_mse_getsolutiondiff)(XPRSmipsolenum mse, void* vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double* dDiffMetric), void* p){
+int XPRS_mse_setcbgetsolutiondiff (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p){
     if (!__symbolic_XPRS_mse_setcbgetsolutiondiff) {
         if (!module) {
             if (!load_module()) {
@@ -5650,7 +5650,7 @@ int XPRS_mse_setcbgetsolutiondiff(XPRSmipsolenum mse, int ( *f_mse_getsolutiondi
     }
     return __symbolic_XPRS_mse_setcbgetsolutiondiff(mse, f_mse_getsolutiondiff, p);
 }
-int XPRS_mse_getcbgetsolutiondiff(XPRSmipsolenum mse, int ( **f_mse_getsolutiondiff)(XPRSmipsolenum mse, void* vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double* dDiffMetric), void** p){
+int XPRS_mse_getcbgetsolutiondiff (XPRSmipsolenum mse, int ( ** f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void **p){
     if (!__symbolic_XPRS_mse_getcbgetsolutiondiff) {
         if (!module) {
             if (!load_module()) {
@@ -5669,7 +5669,7 @@ int XPRS_mse_getcbgetsolutiondiff(XPRSmipsolenum mse, int ( **f_mse_getsolutiond
     }
     return __symbolic_XPRS_mse_getcbgetsolutiondiff(mse, f_mse_getsolutiondiff, p);
 }
-int XPRSinitializenlphessian(XPRSprob prob, const int mstart[], const int mcol[]){
+int XPRSinitializenlphessian (XPRSprob prob, const int mstart[], const int mcol[]){
     if (!__symbolic_XPRSinitializenlphessian) {
         if (!module) {
             if (!load_module()) {
@@ -5688,7 +5688,7 @@ int XPRSinitializenlphessian(XPRSprob prob, const int mstart[], const int mcol[]
     }
     return __symbolic_XPRSinitializenlphessian(prob, mstart, mcol);
 }
-int XPRSinitializenlphessian_indexpairs(XPRSprob prob, int nqcelem, const int mcol1[], const int mcol2[]){
+int XPRSinitializenlphessian_indexpairs (XPRSprob prob, int nqcelem, const int mcol1[], const int mcol2[]){
     if (!__symbolic_XPRSinitializenlphessian_indexpairs) {
         if (!module) {
             if (!load_module()) {
@@ -5707,7 +5707,7 @@ int XPRSinitializenlphessian_indexpairs(XPRSprob prob, int nqcelem, const int mc
     }
     return __symbolic_XPRSinitializenlphessian_indexpairs(prob, nqcelem, mcol1, mcol2);
 }
-int XPRSsetcbnlpevaluate(XPRSprob prob, void ( *f_evaluate)(XPRSprob prob, void* vContext, const double x[], double* v), void* p){
+int XPRSsetcbnlpevaluate (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void *p){
     if (!__symbolic_XPRSsetcbnlpevaluate) {
         if (!module) {
             if (!load_module()) {
@@ -5726,7 +5726,7 @@ int XPRSsetcbnlpevaluate(XPRSprob prob, void ( *f_evaluate)(XPRSprob prob, void*
     }
     return __symbolic_XPRSsetcbnlpevaluate(prob, f_evaluate, p);
 }
-int XPRSsetcbnlpgradient(XPRSprob prob, void ( *f_gradient)(XPRSprob prob, void* vContext, const double x[], double g[]), void* p){
+int XPRSsetcbnlpgradient (XPRSprob prob, void ( * f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void *p){
     if (!__symbolic_XPRSsetcbnlpgradient) {
         if (!module) {
             if (!load_module()) {
@@ -5745,7 +5745,7 @@ int XPRSsetcbnlpgradient(XPRSprob prob, void ( *f_gradient)(XPRSprob prob, void*
     }
     return __symbolic_XPRSsetcbnlpgradient(prob, f_gradient, p);
 }
-int XPRSsetcbnlphessian(XPRSprob prob, void ( *f_hessian)(XPRSprob prob, void* vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void* p){
+int XPRSsetcbnlphessian (XPRSprob prob, void ( * f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void *p){
     if (!__symbolic_XPRSsetcbnlphessian) {
         if (!module) {
             if (!load_module()) {
@@ -5764,7 +5764,7 @@ int XPRSsetcbnlphessian(XPRSprob prob, void ( *f_hessian)(XPRSprob prob, void* v
     }
     return __symbolic_XPRSsetcbnlphessian(prob, f_hessian, p);
 }
-int XPRSgetcbnlpevaluate(XPRSprob prob, void ( **f_evaluate)(XPRSprob prob, void* vContext, const double x[], double* v), void** p){
+int XPRSgetcbnlpevaluate (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void **p){
     if (!__symbolic_XPRSgetcbnlpevaluate) {
         if (!module) {
             if (!load_module()) {
@@ -5783,7 +5783,7 @@ int XPRSgetcbnlpevaluate(XPRSprob prob, void ( **f_evaluate)(XPRSprob prob, void
     }
     return __symbolic_XPRSgetcbnlpevaluate(prob, f_evaluate, p);
 }
-int XPRSgetcbnlpgradient(XPRSprob prob, void ( **f_gradient)(XPRSprob prob, void* vContext, const double x[], double g[]), void** p){
+int XPRSgetcbnlpgradient (XPRSprob prob, void ( ** f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void **p){
     if (!__symbolic_XPRSgetcbnlpgradient) {
         if (!module) {
             if (!load_module()) {
@@ -5802,7 +5802,7 @@ int XPRSgetcbnlpgradient(XPRSprob prob, void ( **f_gradient)(XPRSprob prob, void
     }
     return __symbolic_XPRSgetcbnlpgradient(prob, f_gradient, p);
 }
-int XPRSgetcbnlphessian(XPRSprob prob, void ( **f_hessian)(XPRSprob prob, void* vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void** p){
+int XPRSgetcbnlphessian (XPRSprob prob, void ( ** f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void **p){
     if (!__symbolic_XPRSgetcbnlphessian) {
         if (!module) {
             if (!load_module()) {
@@ -5821,7 +5821,7 @@ int XPRSgetcbnlphessian(XPRSprob prob, void ( **f_hessian)(XPRSprob prob, void* 
     }
     return __symbolic_XPRSgetcbnlphessian(prob, f_hessian, p);
 }
-int XPRSresetnlp(XPRSprob prob){
+int XPRSresetnlp (XPRSprob prob){
     if (!__symbolic_XPRSresetnlp) {
         if (!module) {
             if (!load_module()) {
@@ -5840,7 +5840,7 @@ int XPRSresetnlp(XPRSprob prob){
     }
     return __symbolic_XPRSresetnlp(prob);
 }
-int XPRSsetcbbariteration(XPRSprob prob, void ( *f_evaluate)(XPRSprob prob, void* vContext, int* barrier_action), void* p){
+int XPRSsetcbbariteration (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void *p){
     if (!__symbolic_XPRSsetcbbariteration) {
         if (!module) {
             if (!load_module()) {
@@ -5859,7 +5859,7 @@ int XPRSsetcbbariteration(XPRSprob prob, void ( *f_evaluate)(XPRSprob prob, void
     }
     return __symbolic_XPRSsetcbbariteration(prob, f_evaluate, p);
 }
-int XPRSgetcbbariteration(XPRSprob prob, void ( **f_evaluate)(XPRSprob prob, void* vContext, int* barrier_action), void** p){
+int XPRSgetcbbariteration (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void **p){
     if (!__symbolic_XPRSgetcbbariteration) {
         if (!module) {
             if (!load_module()) {
@@ -5878,7 +5878,7 @@ int XPRSgetcbbariteration(XPRSprob prob, void ( **f_evaluate)(XPRSprob prob, voi
     }
     return __symbolic_XPRSgetcbbariteration(prob, f_evaluate, p);
 }
-int XPRS_bo_create(XPRSbranchobject* p_object, XPRSprob prob, int isoriginal){
+int XPRS_bo_create (XPRSbranchobject * p_object, XPRSprob prob, int isoriginal){
     if (!__symbolic_XPRS_bo_create) {
         if (!module) {
             if (!load_module()) {
@@ -5897,7 +5897,7 @@ int XPRS_bo_create(XPRSbranchobject* p_object, XPRSprob prob, int isoriginal){
     }
     return __symbolic_XPRS_bo_create(p_object, prob, isoriginal);
 }
-int XPRS_bo_destroy(XPRSbranchobject obranch){
+int XPRS_bo_destroy (XPRSbranchobject obranch){
     if (!__symbolic_XPRS_bo_destroy) {
         if (!module) {
             if (!load_module()) {
@@ -5916,7 +5916,7 @@ int XPRS_bo_destroy(XPRSbranchobject obranch){
     }
     return __symbolic_XPRS_bo_destroy(obranch);
 }
-int XPRS_bo_store(XPRSbranchobject obranch, int* p_status){
+int XPRS_bo_store (XPRSbranchobject obranch, int *p_status){
     if (!__symbolic_XPRS_bo_store) {
         if (!module) {
             if (!load_module()) {
@@ -5935,7 +5935,7 @@ int XPRS_bo_store(XPRSbranchobject obranch, int* p_status){
     }
     return __symbolic_XPRS_bo_store(obranch, p_status);
 }
-int XPRS_bo_addbranches(XPRSbranchobject obranch, int nbranches){
+int XPRS_bo_addbranches (XPRSbranchobject obranch, int nbranches){
     if (!__symbolic_XPRS_bo_addbranches) {
         if (!module) {
             if (!load_module()) {
@@ -5954,7 +5954,7 @@ int XPRS_bo_addbranches(XPRSbranchobject obranch, int nbranches){
     }
     return __symbolic_XPRS_bo_addbranches(obranch, nbranches);
 }
-int XPRS_bo_getbranches(XPRSbranchobject obranch, int* p_nbranches){
+int XPRS_bo_getbranches (XPRSbranchobject obranch, int *p_nbranches){
     if (!__symbolic_XPRS_bo_getbranches) {
         if (!module) {
             if (!load_module()) {
@@ -5973,7 +5973,7 @@ int XPRS_bo_getbranches(XPRSbranchobject obranch, int* p_nbranches){
     }
     return __symbolic_XPRS_bo_getbranches(obranch, p_nbranches);
 }
-int XPRS_bo_setpriority(XPRSbranchobject obranch, int ipriority){
+int XPRS_bo_setpriority (XPRSbranchobject obranch, int ipriority){
     if (!__symbolic_XPRS_bo_setpriority) {
         if (!module) {
             if (!load_module()) {
@@ -5992,7 +5992,7 @@ int XPRS_bo_setpriority(XPRSbranchobject obranch, int ipriority){
     }
     return __symbolic_XPRS_bo_setpriority(obranch, ipriority);
 }
-int XPRS_bo_setpreferredbranch(XPRSbranchobject obranch, int ibranch){
+int XPRS_bo_setpreferredbranch (XPRSbranchobject obranch, int ibranch){
     if (!__symbolic_XPRS_bo_setpreferredbranch) {
         if (!module) {
             if (!load_module()) {
@@ -6011,7 +6011,7 @@ int XPRS_bo_setpreferredbranch(XPRSbranchobject obranch, int ibranch){
     }
     return __symbolic_XPRS_bo_setpreferredbranch(obranch, ibranch);
 }
-int XPRS_bo_addbounds(XPRSbranchobject obranch, int ibranch, int nbounds, const char cbndtype[], const int mbndcol[], const double dbndval[]){
+int XPRS_bo_addbounds (XPRSbranchobject obranch, int ibranch, int nbounds, const char cbndtype[], const int mbndcol[], const double dbndval[]){
     if (!__symbolic_XPRS_bo_addbounds) {
         if (!module) {
             if (!load_module()) {
@@ -6030,7 +6030,7 @@ int XPRS_bo_addbounds(XPRSbranchobject obranch, int ibranch, int nbounds, const 
     }
     return __symbolic_XPRS_bo_addbounds(obranch, ibranch, nbounds, cbndtype, mbndcol, dbndval);
 }
-int XPRS_bo_getbounds(XPRSbranchobject obranch, int ibranch, int* p_nbounds, int nbounds_size, char cbndtype[], int mbndcol[], double dbndval[]){
+int XPRS_bo_getbounds (XPRSbranchobject obranch, int ibranch, int *p_nbounds, int nbounds_size, char cbndtype[], int mbndcol[], double dbndval[]){
     if (!__symbolic_XPRS_bo_getbounds) {
         if (!module) {
             if (!load_module()) {
@@ -6049,7 +6049,7 @@ int XPRS_bo_getbounds(XPRSbranchobject obranch, int ibranch, int* p_nbounds, int
     }
     return __symbolic_XPRS_bo_getbounds(obranch, ibranch, p_nbounds, nbounds_size, cbndtype, mbndcol, dbndval);
 }
-int XPRS_bo_addrows(XPRSbranchobject obranch, int ibranch, int nrows, int nelems, const char crtype[], const double drrhs[], const int mrbeg[], const int mcol[], const double dval[]){
+int XPRS_bo_addrows (XPRSbranchobject obranch, int ibranch, int nrows, int nelems, const char crtype[], const double drrhs[], const int mrbeg[], const int mcol[], const double dval[]){
     if (!__symbolic_XPRS_bo_addrows) {
         if (!module) {
             if (!load_module()) {
@@ -6068,7 +6068,7 @@ int XPRS_bo_addrows(XPRSbranchobject obranch, int ibranch, int nrows, int nelems
     }
     return __symbolic_XPRS_bo_addrows(obranch, ibranch, nrows, nelems, crtype, drrhs, mrbeg, mcol, dval);
 }
-int XPRS_bo_getrows(XPRSbranchobject obranch, int ibranch, int* p_nrows, int nrows_size, int* p_nelems, int nelems_size, char crtype[], double drrhs[], int mrbeg[], int mcol[], double dval[]){
+int XPRS_bo_getrows (XPRSbranchobject obranch, int ibranch, int *p_nrows, int nrows_size, int *p_nelems, int nelems_size, char crtype[], double drrhs[], int mrbeg[], int mcol[], double dval[]){
     if (!__symbolic_XPRS_bo_getrows) {
         if (!module) {
             if (!load_module()) {
@@ -6087,7 +6087,7 @@ int XPRS_bo_getrows(XPRSbranchobject obranch, int ibranch, int* p_nrows, int nro
     }
     return __symbolic_XPRS_bo_getrows(obranch, ibranch, p_nrows, nrows_size, p_nelems, nelems_size, crtype, drrhs, mrbeg, mcol, dval);
 }
-int XPRS_bo_addcuts(XPRSbranchobject obranch, int ibranch, int ncuts, const XPRScut mcutind[]){
+int XPRS_bo_addcuts (XPRSbranchobject obranch, int ibranch, int ncuts, const XPRScut mcutind[]){
     if (!__symbolic_XPRS_bo_addcuts) {
         if (!module) {
             if (!load_module()) {
@@ -6106,7 +6106,7 @@ int XPRS_bo_addcuts(XPRSbranchobject obranch, int ibranch, int ncuts, const XPRS
     }
     return __symbolic_XPRS_bo_addcuts(obranch, ibranch, ncuts, mcutind);
 }
-int XPRS_bo_getid(XPRSbranchobject obranch, int* p_id){
+int XPRS_bo_getid (XPRSbranchobject obranch, int *p_id){
     if (!__symbolic_XPRS_bo_getid) {
         if (!module) {
             if (!load_module()) {
@@ -6125,7 +6125,7 @@ int XPRS_bo_getid(XPRSbranchobject obranch, int* p_id){
     }
     return __symbolic_XPRS_bo_getid(obranch, p_id);
 }
-int XPRS_bo_setcbmsghandler(XPRSbranchobject obranch, int ( *f_msghandler)(XPRSobject vXPRSObject, void* vUserContext, void* vSystemThreadId, const char* sMsg, int iMsgType, int iMsgCode), void* p){
+int XPRS_bo_setcbmsghandler (XPRSbranchobject obranch, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
     if (!__symbolic_XPRS_bo_setcbmsghandler) {
         if (!module) {
             if (!load_module()) {
@@ -6144,7 +6144,7 @@ int XPRS_bo_setcbmsghandler(XPRSbranchobject obranch, int ( *f_msghandler)(XPRSo
     }
     return __symbolic_XPRS_bo_setcbmsghandler(obranch, f_msghandler, p);
 }
-int XPRS_bo_getlasterror(XPRSbranchobject obranch, int* iMsgCode, char* _msg, int _iStringBufferBytes, int* _iBytesInInternalString){
+int XPRS_bo_getlasterror (XPRSbranchobject obranch, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_bo_getlasterror) {
         if (!module) {
             if (!load_module()) {

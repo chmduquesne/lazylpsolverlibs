@@ -1,5 +1,0 @@
-#!/bin/sh
-
-wget -c https://lazylpsolverlibs.googlecode.com/files/solver_headers.tar.gz
-tar xzf solver_headers.tar.gz -C tools
-rm solver_headers.tar.gz

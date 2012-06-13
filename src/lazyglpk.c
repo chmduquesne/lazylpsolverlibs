@@ -80,340 +80,340 @@ int load_module(){
 
 /* imported functions */
 
-glp_prob *(*__symbolic_glp_create_prob)(void) = NULL;
-void (*__symbolic_glp_set_prob_name)(glp_prob *P, const char *name) = NULL;
-void (*__symbolic_glp_set_obj_name)(glp_prob *P, const char *name) = NULL;
-void (*__symbolic_glp_set_obj_dir)(glp_prob *P, int dir) = NULL;
-int (*__symbolic_glp_add_rows)(glp_prob *P, int nrs) = NULL;
-int (*__symbolic_glp_add_cols)(glp_prob *P, int ncs) = NULL;
-void (*__symbolic_glp_set_row_name)(glp_prob *P, int i, const char *name) = NULL;
-void (*__symbolic_glp_set_col_name)(glp_prob *P, int j, const char *name) = NULL;
-void (*__symbolic_glp_set_row_bnds)(glp_prob *P, int i, int type, double lb, double ub) = NULL;
-void (*__symbolic_glp_set_col_bnds)(glp_prob *P, int j, int type, double lb, double ub) = NULL;
-void (*__symbolic_glp_set_obj_coef)(glp_prob *P, int j, double coef) = NULL;
-void (*__symbolic_glp_set_mat_row)(glp_prob *P, int i, int len, const int ind[], const double val[]) = NULL;
-void (*__symbolic_glp_set_mat_col)(glp_prob *P, int j, int len, const int ind[], const double val[]) = NULL;
-void (*__symbolic_glp_load_matrix)(glp_prob *P, int ne, const int ia[], const int ja[], const double ar[]) = NULL;
-int (*__symbolic_glp_check_dup)(int m, int n, int ne, const int ia[], const int ja[]) = NULL;
-void (*__symbolic_glp_sort_matrix)(glp_prob *P) = NULL;
-void (*__symbolic_glp_del_rows)(glp_prob *P, int nrs, const int num[]) = NULL;
-void (*__symbolic_glp_del_cols)(glp_prob *P, int ncs, const int num[]) = NULL;
-void (*__symbolic_glp_copy_prob)(glp_prob *dest, glp_prob *prob, int names) = NULL;
-void (*__symbolic_glp_erase_prob)(glp_prob *P) = NULL;
-void (*__symbolic_glp_delete_prob)(glp_prob *P) = NULL;
-const char *(*__symbolic_glp_get_prob_name)(glp_prob *P) = NULL;
-const char *(*__symbolic_glp_get_obj_name)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_obj_dir)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_num_rows)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_num_cols)(glp_prob *P) = NULL;
-const char *(*__symbolic_glp_get_row_name)(glp_prob *P, int i) = NULL;
-const char *(*__symbolic_glp_get_col_name)(glp_prob *P, int j) = NULL;
-int (*__symbolic_glp_get_row_type)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_get_row_lb)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_get_row_ub)(glp_prob *P, int i) = NULL;
-int (*__symbolic_glp_get_col_type)(glp_prob *P, int j) = NULL;
-double (*__symbolic_glp_get_col_lb)(glp_prob *P, int j) = NULL;
-double (*__symbolic_glp_get_col_ub)(glp_prob *P, int j) = NULL;
-double (*__symbolic_glp_get_obj_coef)(glp_prob *P, int j) = NULL;
-int (*__symbolic_glp_get_num_nz)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_mat_row)(glp_prob *P, int i, int ind[], double val[]) = NULL;
-int (*__symbolic_glp_get_mat_col)(glp_prob *P, int j, int ind[], double val[]) = NULL;
-void (*__symbolic_glp_create_index)(glp_prob *P) = NULL;
-int (*__symbolic_glp_find_row)(glp_prob *P, const char *name) = NULL;
-int (*__symbolic_glp_find_col)(glp_prob *P, const char *name) = NULL;
-void (*__symbolic_glp_delete_index)(glp_prob *P) = NULL;
-void (*__symbolic_glp_set_rii)(glp_prob *P, int i, double rii) = NULL;
-void (*__symbolic_glp_set_sjj)(glp_prob *P, int j, double sjj) = NULL;
-double (*__symbolic_glp_get_rii)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_get_sjj)(glp_prob *P, int j) = NULL;
-void (*__symbolic_glp_scale_prob)(glp_prob *P, int flags) = NULL;
-void (*__symbolic_glp_unscale_prob)(glp_prob *P) = NULL;
-void (*__symbolic_glp_set_row_stat)(glp_prob *P, int i, int stat) = NULL;
-void (*__symbolic_glp_set_col_stat)(glp_prob *P, int j, int stat) = NULL;
-void (*__symbolic_glp_std_basis)(glp_prob *P) = NULL;
-void (*__symbolic_glp_adv_basis)(glp_prob *P, int flags) = NULL;
-void (*__symbolic_glp_cpx_basis)(glp_prob *P) = NULL;
-int (*__symbolic_glp_simplex)(glp_prob *P, const glp_smcp *parm) = NULL;
-int (*__symbolic_glp_exact)(glp_prob *P, const glp_smcp *parm) = NULL;
-void (*__symbolic_glp_init_smcp)(glp_smcp *parm) = NULL;
-int (*__symbolic_glp_get_status)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_prim_stat)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_dual_stat)(glp_prob *P) = NULL;
-double (*__symbolic_glp_get_obj_val)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_row_stat)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_get_row_prim)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_get_row_dual)(glp_prob *P, int i) = NULL;
-int (*__symbolic_glp_get_col_stat)(glp_prob *P, int j) = NULL;
-double (*__symbolic_glp_get_col_prim)(glp_prob *P, int j) = NULL;
-double (*__symbolic_glp_get_col_dual)(glp_prob *P, int j) = NULL;
-int (*__symbolic_glp_get_unbnd_ray)(glp_prob *P) = NULL;
-int (*__symbolic_glp_interior)(glp_prob *P, const glp_iptcp *parm) = NULL;
-void (*__symbolic_glp_init_iptcp)(glp_iptcp *parm) = NULL;
-int (*__symbolic_glp_ipt_status)(glp_prob *P) = NULL;
-double (*__symbolic_glp_ipt_obj_val)(glp_prob *P) = NULL;
-double (*__symbolic_glp_ipt_row_prim)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_ipt_row_dual)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_ipt_col_prim)(glp_prob *P, int j) = NULL;
-double (*__symbolic_glp_ipt_col_dual)(glp_prob *P, int j) = NULL;
-void (*__symbolic_glp_set_col_kind)(glp_prob *P, int j, int kind) = NULL;
-int (*__symbolic_glp_get_col_kind)(glp_prob *P, int j) = NULL;
-int (*__symbolic_glp_get_num_int)(glp_prob *P) = NULL;
-int (*__symbolic_glp_get_num_bin)(glp_prob *P) = NULL;
-int (*__symbolic_glp_intopt)(glp_prob *P, const glp_iocp *parm) = NULL;
-void (*__symbolic_glp_init_iocp)(glp_iocp *parm) = NULL;
-int (*__symbolic_glp_mip_status)(glp_prob *P) = NULL;
-double (*__symbolic_glp_mip_obj_val)(glp_prob *P) = NULL;
-double (*__symbolic_glp_mip_row_val)(glp_prob *P, int i) = NULL;
-double (*__symbolic_glp_mip_col_val)(glp_prob *P, int j) = NULL;
-int (*__symbolic_glp_print_sol)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_read_sol)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_write_sol)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_print_ranges)(glp_prob *P, int len, const int list[], int flags, const char *fname) = NULL;
-int (*__symbolic_glp_print_ipt)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_read_ipt)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_write_ipt)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_print_mip)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_read_mip)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_write_mip)(glp_prob *P, const char *fname) = NULL;
-int (*__symbolic_glp_bf_exists)(glp_prob *P) = NULL;
-int (*__symbolic_glp_factorize)(glp_prob *P) = NULL;
-int (*__symbolic_glp_bf_updated)(glp_prob *P) = NULL;
-void (*__symbolic_glp_get_bfcp)(glp_prob *P, glp_bfcp *parm) = NULL;
-void (*__symbolic_glp_set_bfcp)(glp_prob *P, const glp_bfcp *parm) = NULL;
-int (*__symbolic_glp_get_bhead)(glp_prob *P, int k) = NULL;
-int (*__symbolic_glp_get_row_bind)(glp_prob *P, int i) = NULL;
-int (*__symbolic_glp_get_col_bind)(glp_prob *P, int j) = NULL;
-void (*__symbolic_glp_ftran)(glp_prob *P, double x[]) = NULL;
-void (*__symbolic_glp_btran)(glp_prob *P, double x[]) = NULL;
-int (*__symbolic_glp_warm_up)(glp_prob *P) = NULL;
-int (*__symbolic_glp_eval_tab_row)(glp_prob *P, int k, int ind[], double val[]) = NULL;
-int (*__symbolic_glp_eval_tab_col)(glp_prob *P, int k, int ind[], double val[]) = NULL;
-int (*__symbolic_glp_transform_row)(glp_prob *P, int len, int ind[], double val[]) = NULL;
-int (*__symbolic_glp_transform_col)(glp_prob *P, int len, int ind[], double val[]) = NULL;
-int (*__symbolic_glp_prim_rtest)(glp_prob *P, int len, const int ind[], const double val[], int dir, double eps) = NULL;
-int (*__symbolic_glp_dual_rtest)(glp_prob *P, int len, const int ind[], const double val[], int dir, double eps) = NULL;
-void (*__symbolic_glp_analyze_bound)(glp_prob *P, int k, double *value1, int *var1, double *value2, int *var2) = NULL;
-void (*__symbolic_glp_analyze_coef)(glp_prob *P, int k, double *coef1, int *var1, double *value1, double *coef2, int *var2, double *value2) = NULL;
-int (*__symbolic_glp_ios_reason)(glp_tree *T) = NULL;
-glp_prob *(*__symbolic_glp_ios_get_prob)(glp_tree *T) = NULL;
-void (*__symbolic_glp_ios_tree_size)(glp_tree *T, int *a_cnt, int *n_cnt, int *t_cnt) = NULL;
-int (*__symbolic_glp_ios_curr_node)(glp_tree *T) = NULL;
-int (*__symbolic_glp_ios_next_node)(glp_tree *T, int p) = NULL;
-int (*__symbolic_glp_ios_prev_node)(glp_tree *T, int p) = NULL;
-int (*__symbolic_glp_ios_up_node)(glp_tree *T, int p) = NULL;
-int (*__symbolic_glp_ios_node_level)(glp_tree *T, int p) = NULL;
-double (*__symbolic_glp_ios_node_bound)(glp_tree *T, int p) = NULL;
-int (*__symbolic_glp_ios_best_node)(glp_tree *T) = NULL;
-double (*__symbolic_glp_ios_mip_gap)(glp_tree *T) = NULL;
-void *(*__symbolic_glp_ios_node_data)(glp_tree *T, int p) = NULL;
-void (*__symbolic_glp_ios_row_attr)(glp_tree *T, int i, glp_attr *attr) = NULL;
-int (*__symbolic_glp_ios_pool_size)(glp_tree *T) = NULL;
-int (*__symbolic_glp_ios_add_row)(glp_tree *T, const char *name, int klass, int flags, int len, const int ind[], const double val[], int type, double rhs) = NULL;
-void (*__symbolic_glp_ios_del_row)(glp_tree *T, int i) = NULL;
-void (*__symbolic_glp_ios_clear_pool)(glp_tree *T) = NULL;
-int (*__symbolic_glp_ios_can_branch)(glp_tree *T, int j) = NULL;
-void (*__symbolic_glp_ios_branch_upon)(glp_tree *T, int j, int sel) = NULL;
-void (*__symbolic_glp_ios_select_node)(glp_tree *T, int p) = NULL;
-int (*__symbolic_glp_ios_heur_sol)(glp_tree *T, const double x[]) = NULL;
-void (*__symbolic_glp_ios_terminate)(glp_tree *T) = NULL;
-void (*__symbolic_glp_init_mpscp)(glp_mpscp *parm) = NULL;
-int (*__symbolic_glp_read_mps)(glp_prob *P, int fmt, const glp_mpscp *parm, const char *fname) = NULL;
-int (*__symbolic_glp_write_mps)(glp_prob *P, int fmt, const glp_mpscp *parm, const char *fname) = NULL;
-void (*__symbolic_glp_init_cpxcp)(glp_cpxcp *parm) = NULL;
-int (*__symbolic_glp_read_lp)(glp_prob *P, const glp_cpxcp *parm, const char *fname) = NULL;
-int (*__symbolic_glp_write_lp)(glp_prob *P, const glp_cpxcp *parm, const char *fname) = NULL;
-int (*__symbolic_glp_read_prob)(glp_prob *P, int flags, const char *fname) = NULL;
-int (*__symbolic_glp_write_prob)(glp_prob *P, int flags, const char *fname) = NULL;
-glp_tran *(*__symbolic_glp_mpl_alloc_wksp)(void) = NULL;
-int (*__symbolic_glp_mpl_read_model)(glp_tran *tran, const char *fname, int skip) = NULL;
-int (*__symbolic_glp_mpl_read_data)(glp_tran *tran, const char *fname) = NULL;
-int (*__symbolic_glp_mpl_generate)(glp_tran *tran, const char *fname) = NULL;
-void (*__symbolic_glp_mpl_build_prob)(glp_tran *tran, glp_prob *prob) = NULL;
-int (*__symbolic_glp_mpl_postsolve)(glp_tran *tran, glp_prob *prob, int sol) = NULL;
-void (*__symbolic_glp_mpl_free_wksp)(glp_tran *tran) = NULL;
-int (*__symbolic_glp_main)(int argc, const char *argv[]) = NULL;
-int (*__symbolic_glp_init_env)(void) = NULL;
-const char *(*__symbolic_glp_version)(void) = NULL;
-int (*__symbolic_glp_free_env)(void) = NULL;
-void (*__symbolic_glp_printf)(const char *fmt, ...) = NULL;
-void (*__symbolic_glp_vprintf)(const char *fmt, va_list arg) = NULL;
-int (*__symbolic_glp_term_out)(int flag) = NULL;
-void (*__symbolic_glp_term_hook)(int (*func)(void *info, const char *s), void *info) = NULL;
-int (*__symbolic_glp_open_tee)(const char *fname) = NULL;
-int (*__symbolic_glp_close_tee)(void) = NULL;
-_glp_error (*__symbolic_glp_error_)(const char *file, int line) = NULL;
-void (*__symbolic_glp_assert_)(const char *expr, const char *file, int line) = NULL;
-void (*__symbolic_glp_error_hook)(void (*func)(void *info), void *info) = NULL;
-void *(*__symbolic_glp_malloc)(int size) = NULL;
-void *(*__symbolic_glp_calloc)(int n, int size) = NULL;
-void (*__symbolic_glp_free)(void *ptr) = NULL;
-void (*__symbolic_glp_mem_limit)(int limit) = NULL;
-void (*__symbolic_glp_mem_usage)(int *count, int *cpeak, glp_long *total, glp_long *tpeak) = NULL;
-glp_long (*__symbolic_glp_time)(void) = NULL;
-double (*__symbolic_glp_difftime)(glp_long t1, glp_long t0) = NULL;
-glp_data *(*__symbolic_glp_sdf_open_file)(const char *fname) = NULL;
-void (*__symbolic_glp_sdf_set_jump)(glp_data *data, void *jump) = NULL;
-void (*__symbolic_glp_sdf_error)(glp_data *data, const char *fmt, ...) = NULL;
-void (*__symbolic_glp_sdf_warning)(glp_data *data, const char *fmt, ...) = NULL;
-int (*__symbolic_glp_sdf_read_int)(glp_data *data) = NULL;
-double (*__symbolic_glp_sdf_read_num)(glp_data *data) = NULL;
-const char *(*__symbolic_glp_sdf_read_item)(glp_data *data) = NULL;
-const char *(*__symbolic_glp_sdf_read_text)(glp_data *data) = NULL;
-int (*__symbolic_glp_sdf_line)(glp_data *data) = NULL;
-void (*__symbolic_glp_sdf_close_file)(glp_data *data) = NULL;
-glp_graph *(*__symbolic_glp_create_graph)(int v_size, int a_size) = NULL;
-void (*__symbolic_glp_set_graph_name)(glp_graph *G, const char *name) = NULL;
-int (*__symbolic_glp_add_vertices)(glp_graph *G, int nadd) = NULL;
-void (*__symbolic_glp_set_vertex_name)(glp_graph *G, int i, const char *name) = NULL;
-glp_arc *(*__symbolic_glp_add_arc)(glp_graph *G, int i, int j) = NULL;
-void (*__symbolic_glp_del_vertices)(glp_graph *G, int ndel, const int num[]) = NULL;
-void (*__symbolic_glp_del_arc)(glp_graph *G, glp_arc *a) = NULL;
-void (*__symbolic_glp_erase_graph)(glp_graph *G, int v_size, int a_size) = NULL;
-void (*__symbolic_glp_delete_graph)(glp_graph *G) = NULL;
-void (*__symbolic_glp_create_v_index)(glp_graph *G) = NULL;
-int (*__symbolic_glp_find_vertex)(glp_graph *G, const char *name) = NULL;
-void (*__symbolic_glp_delete_v_index)(glp_graph *G) = NULL;
-int (*__symbolic_glp_read_graph)(glp_graph *G, const char *fname) = NULL;
-int (*__symbolic_glp_write_graph)(glp_graph *G, const char *fname) = NULL;
-void (*__symbolic_glp_mincost_lp)(glp_prob *P, glp_graph *G, int names, int v_rhs, int a_low, int a_cap, int a_cost) = NULL;
-int (*__symbolic_glp_mincost_okalg)(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, double *sol, int a_x, int v_pi) = NULL;
-void (*__symbolic_glp_maxflow_lp)(glp_prob *P, glp_graph *G, int names, int s, int t, int a_cap) = NULL;
-int (*__symbolic_glp_maxflow_ffalg)(glp_graph *G, int s, int t, int a_cap, double *sol, int a_x, int v_cut) = NULL;
-int (*__symbolic_glp_check_asnprob)(glp_graph *G, int v_set) = NULL;
-int (*__symbolic_glp_asnprob_lp)(glp_prob *P, int form, glp_graph *G, int names, int v_set, int a_cost) = NULL;
-int (*__symbolic_glp_asnprob_okalg)(int form, glp_graph *G, int v_set, int a_cost, double *sol, int a_x) = NULL;
-int (*__symbolic_glp_asnprob_hall)(glp_graph *G, int v_set, int a_x) = NULL;
-int (*__symbolic_glp_read_mincost)(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname) = NULL;
-int (*__symbolic_glp_write_mincost)(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname) = NULL;
-int (*__symbolic_glp_read_maxflow)(glp_graph *G, int *s, int *t, int a_cap, const char *fname) = NULL;
-int (*__symbolic_glp_write_maxflow)(glp_graph *G, int s, int t, int a_cap, const char *fname) = NULL;
-int (*__symbolic_glp_read_asnprob)(glp_graph *G, int v_set, int a_cost, const char *fname) = NULL;
-int (*__symbolic_glp_write_asnprob)(glp_graph *G, int v_set, int a_cost, const char *fname) = NULL;
-int (*__symbolic_glp_read_ccdata)(glp_graph *G, int v_wgt, const char *fname) = NULL;
-int (*__symbolic_glp_write_ccdata)(glp_graph *G, int v_wgt, const char *fname) = NULL;
-int (*__symbolic_glp_netgen)(glp_graph *G, int v_rhs, int a_cap, int a_cost, const int parm[1+15]) = NULL;
-int (*__symbolic_glp_gridgen)(glp_graph *G, int v_rhs, int a_cap, int a_cost, const int parm[1+14]) = NULL;
-int (*__symbolic_glp_rmfgen)(glp_graph *G, int *s, int *t, int a_cap, const int parm[1+5]) = NULL;
-int (*__symbolic_glp_weak_comp)(glp_graph *G, int v_num) = NULL;
-int (*__symbolic_glp_strong_comp)(glp_graph *G, int v_num) = NULL;
-int (*__symbolic_glp_top_sort)(glp_graph *G, int v_num) = NULL;
-int (*__symbolic_glp_wclique_exact)(glp_graph *G, int v_wgt, double *sol, int v_set) = NULL;
-glp_prob *(*__symbolic__glp_lpx_create_prob)(void) = NULL;
-void (*__symbolic__glp_lpx_set_prob_name)(glp_prob *lp, const char *name) = NULL;
-void (*__symbolic__glp_lpx_set_obj_name)(glp_prob *lp, const char *name) = NULL;
-void (*__symbolic__glp_lpx_set_obj_dir)(glp_prob *lp, int dir) = NULL;
-int (*__symbolic__glp_lpx_add_rows)(glp_prob *lp, int nrs) = NULL;
-int (*__symbolic__glp_lpx_add_cols)(glp_prob *lp, int ncs) = NULL;
-void (*__symbolic__glp_lpx_set_row_name)(glp_prob *lp, int i, const char *name) = NULL;
-void (*__symbolic__glp_lpx_set_col_name)(glp_prob *lp, int j, const char *name) = NULL;
-void (*__symbolic__glp_lpx_set_row_bnds)(glp_prob *lp, int i, int type, double lb, double ub) = NULL;
-void (*__symbolic__glp_lpx_set_col_bnds)(glp_prob *lp, int j, int type, double lb, double ub) = NULL;
-void (*__symbolic__glp_lpx_set_obj_coef)(glp_prob *lp, int j, double coef) = NULL;
-void (*__symbolic__glp_lpx_set_mat_row)(glp_prob *lp, int i, int len, const int ind[], const double val[]) = NULL;
-void (*__symbolic__glp_lpx_set_mat_col)(glp_prob *lp, int j, int len, const int ind[], const double val[]) = NULL;
-void (*__symbolic__glp_lpx_load_matrix)(glp_prob *lp, int ne, const int ia[], const int ja[], const double ar[]) = NULL;
-void (*__symbolic__glp_lpx_del_rows)(glp_prob *lp, int nrs, const int num[]) = NULL;
-void (*__symbolic__glp_lpx_del_cols)(glp_prob *lp, int ncs, const int num[]) = NULL;
-void (*__symbolic__glp_lpx_delete_prob)(glp_prob *lp) = NULL;
-const char *(*__symbolic__glp_lpx_get_prob_name)(glp_prob *lp) = NULL;
-const char *(*__symbolic__glp_lpx_get_obj_name)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_obj_dir)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_num_rows)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_num_cols)(glp_prob *lp) = NULL;
-const char *(*__symbolic__glp_lpx_get_row_name)(glp_prob *lp, int i) = NULL;
-const char *(*__symbolic__glp_lpx_get_col_name)(glp_prob *lp, int j) = NULL;
-int (*__symbolic__glp_lpx_get_row_type)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_get_row_lb)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_get_row_ub)(glp_prob *lp, int i) = NULL;
-void (*__symbolic__glp_lpx_get_row_bnds)(glp_prob *lp, int i, int *typx, double *lb, double *ub) = NULL;
-int (*__symbolic__glp_lpx_get_col_type)(glp_prob *lp, int j) = NULL;
-double (*__symbolic__glp_lpx_get_col_lb)(glp_prob *lp, int j) = NULL;
-double (*__symbolic__glp_lpx_get_col_ub)(glp_prob *lp, int j) = NULL;
-void (*__symbolic__glp_lpx_get_col_bnds)(glp_prob *lp, int j, int *typx, double *lb, double *ub) = NULL;
-double (*__symbolic__glp_lpx_get_obj_coef)(glp_prob *lp, int j) = NULL;
-int (*__symbolic__glp_lpx_get_num_nz)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_mat_row)(glp_prob *lp, int i, int ind[], double val[]) = NULL;
-int (*__symbolic__glp_lpx_get_mat_col)(glp_prob *lp, int j, int ind[], double val[]) = NULL;
-void (*__symbolic__glp_lpx_create_index)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_find_row)(glp_prob *lp, const char *name) = NULL;
-int (*__symbolic__glp_lpx_find_col)(glp_prob *lp, const char *name) = NULL;
-void (*__symbolic__glp_lpx_delete_index)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_scale_prob)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_unscale_prob)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_set_row_stat)(glp_prob *lp, int i, int stat) = NULL;
-void (*__symbolic__glp_lpx_set_col_stat)(glp_prob *lp, int j, int stat) = NULL;
-void (*__symbolic__glp_lpx_std_basis)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_adv_basis)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_cpx_basis)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_simplex)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_exact)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_status)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_prim_stat)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_dual_stat)(glp_prob *lp) = NULL;
-double (*__symbolic__glp_lpx_get_obj_val)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_row_stat)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_get_row_prim)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_get_row_dual)(glp_prob *lp, int i) = NULL;
-void (*__symbolic__glp_lpx_get_row_info)(glp_prob *lp, int i, int *tagx, double *vx, double *dx) = NULL;
-int (*__symbolic__glp_lpx_get_col_stat)(glp_prob *lp, int j) = NULL;
-double (*__symbolic__glp_lpx_get_col_prim)(glp_prob *lp, int j) = NULL;
-double (*__symbolic__glp_lpx_get_col_dual)(glp_prob *lp, int j) = NULL;
-void (*__symbolic__glp_lpx_get_col_info)(glp_prob *lp, int j, int *tagx, double *vx, double *dx) = NULL;
-int (*__symbolic__glp_lpx_get_ray_info)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_check_kkt)(glp_prob *lp, int scaled, LPXKKT *kkt) = NULL;
-int (*__symbolic__glp_lpx_warm_up)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_eval_tab_row)(glp_prob *lp, int k, int ind[], double val[]) = NULL;
-int (*__symbolic__glp_lpx_eval_tab_col)(glp_prob *lp, int k, int ind[], double val[]) = NULL;
-int (*__symbolic__glp_lpx_transform_row)(glp_prob *lp, int len, int ind[], double val[]) = NULL;
-int (*__symbolic__glp_lpx_transform_col)(glp_prob *lp, int len, int ind[], double val[]) = NULL;
-int (*__symbolic__glp_lpx_prim_ratio_test)(glp_prob *lp, int len, const int ind[], const double val[], int how, double tol) = NULL;
-int (*__symbolic__glp_lpx_dual_ratio_test)(glp_prob *lp, int len, const int ind[], const double val[], int how, double tol) = NULL;
-int (*__symbolic__glp_lpx_interior)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_ipt_status)(glp_prob *lp) = NULL;
-double (*__symbolic__glp_lpx_ipt_obj_val)(glp_prob *lp) = NULL;
-double (*__symbolic__glp_lpx_ipt_row_prim)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_ipt_row_dual)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_ipt_col_prim)(glp_prob *lp, int j) = NULL;
-double (*__symbolic__glp_lpx_ipt_col_dual)(glp_prob *lp, int j) = NULL;
-void (*__symbolic__glp_lpx_set_class)(glp_prob *lp, int klass) = NULL;
-int (*__symbolic__glp_lpx_get_class)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_set_col_kind)(glp_prob *lp, int j, int kind) = NULL;
-int (*__symbolic__glp_lpx_get_col_kind)(glp_prob *lp, int j) = NULL;
-int (*__symbolic__glp_lpx_get_num_int)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_get_num_bin)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_integer)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_intopt)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_mip_status)(glp_prob *lp) = NULL;
-double (*__symbolic__glp_lpx_mip_obj_val)(glp_prob *lp) = NULL;
-double (*__symbolic__glp_lpx_mip_row_val)(glp_prob *lp, int i) = NULL;
-double (*__symbolic__glp_lpx_mip_col_val)(glp_prob *lp, int j) = NULL;
-void (*__symbolic__glp_lpx_check_int)(glp_prob *lp, LPXKKT *kkt) = NULL;
-void (*__symbolic__glp_lpx_reset_parms)(glp_prob *lp) = NULL;
-void (*__symbolic__glp_lpx_set_int_parm)(glp_prob *lp, int parm, int val) = NULL;
-int (*__symbolic__glp_lpx_get_int_parm)(glp_prob *lp, int parm) = NULL;
-void (*__symbolic__glp_lpx_set_real_parm)(glp_prob *lp, int parm, double val) = NULL;
-double (*__symbolic__glp_lpx_get_real_parm)(glp_prob *lp, int parm) = NULL;
-glp_prob *(*__symbolic__glp_lpx_read_mps)(const char *fname) = NULL;
-int (*__symbolic__glp_lpx_write_mps)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_read_bas)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_write_bas)(glp_prob *lp, const char *fname) = NULL;
-glp_prob *(*__symbolic__glp_lpx_read_freemps)(const char *fname) = NULL;
-int (*__symbolic__glp_lpx_write_freemps)(glp_prob *lp, const char *fname) = NULL;
-glp_prob *(*__symbolic__glp_lpx_read_cpxlp)(const char *fname) = NULL;
-int (*__symbolic__glp_lpx_write_cpxlp)(glp_prob *lp, const char *fname) = NULL;
-glp_prob *(*__symbolic__glp_lpx_read_model)(const char *model, const char *data, const char *output) = NULL;
-int (*__symbolic__glp_lpx_print_prob)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_print_sol)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_print_sens_bnds)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_print_ips)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_print_mip)(glp_prob *lp, const char *fname) = NULL;
-int (*__symbolic__glp_lpx_is_b_avail)(glp_prob *lp) = NULL;
-int (*__symbolic__glp_lpx_write_pb)(glp_prob *lp, const char *fname, int normalized, int binarize) = NULL;
-int (*__symbolic__glp_lpx_main)(int argc, const char *argv[]) = NULL;
+glp_prob *(*__symbolic_glp_create_prob) (void) = NULL;
+void (*__symbolic_glp_set_prob_name) (glp_prob * P, const char *name) = NULL;
+void (*__symbolic_glp_set_obj_name) (glp_prob * P, const char *name) = NULL;
+void (*__symbolic_glp_set_obj_dir) (glp_prob * P, int dir) = NULL;
+int (*__symbolic_glp_add_rows) (glp_prob * P, int nrs) = NULL;
+int (*__symbolic_glp_add_cols) (glp_prob * P, int ncs) = NULL;
+void (*__symbolic_glp_set_row_name) (glp_prob * P, int i, const char *name) = NULL;
+void (*__symbolic_glp_set_col_name) (glp_prob * P, int j, const char *name) = NULL;
+void (*__symbolic_glp_set_row_bnds) (glp_prob * P, int i, int type, double lb, double ub) = NULL;
+void (*__symbolic_glp_set_col_bnds) (glp_prob * P, int j, int type, double lb, double ub) = NULL;
+void (*__symbolic_glp_set_obj_coef) (glp_prob * P, int j, double coef) = NULL;
+void (*__symbolic_glp_set_mat_row) (glp_prob * P, int i, int len, const int ind[], const double val[]) = NULL;
+void (*__symbolic_glp_set_mat_col) (glp_prob * P, int j, int len, const int ind[], const double val[]) = NULL;
+void (*__symbolic_glp_load_matrix) (glp_prob * P, int ne, const int ia[], const int ja[], const double ar[]) = NULL;
+int (*__symbolic_glp_check_dup) (int m, int n, int ne, const int ia[], const int ja[]) = NULL;
+void (*__symbolic_glp_sort_matrix) (glp_prob * P) = NULL;
+void (*__symbolic_glp_del_rows) (glp_prob * P, int nrs, const int num[]) = NULL;
+void (*__symbolic_glp_del_cols) (glp_prob * P, int ncs, const int num[]) = NULL;
+void (*__symbolic_glp_copy_prob) (glp_prob * dest, glp_prob * prob, int names) = NULL;
+void (*__symbolic_glp_erase_prob) (glp_prob * P) = NULL;
+void (*__symbolic_glp_delete_prob) (glp_prob * P) = NULL;
+const char *(*__symbolic_glp_get_prob_name) (glp_prob * P) = NULL;
+const char *(*__symbolic_glp_get_obj_name) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_obj_dir) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_num_rows) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_num_cols) (glp_prob * P) = NULL;
+const char *(*__symbolic_glp_get_row_name) (glp_prob * P, int i) = NULL;
+const char *(*__symbolic_glp_get_col_name) (glp_prob * P, int j) = NULL;
+int (*__symbolic_glp_get_row_type) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_get_row_lb) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_get_row_ub) (glp_prob * P, int i) = NULL;
+int (*__symbolic_glp_get_col_type) (glp_prob * P, int j) = NULL;
+double (*__symbolic_glp_get_col_lb) (glp_prob * P, int j) = NULL;
+double (*__symbolic_glp_get_col_ub) (glp_prob * P, int j) = NULL;
+double (*__symbolic_glp_get_obj_coef) (glp_prob * P, int j) = NULL;
+int (*__symbolic_glp_get_num_nz) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_mat_row) (glp_prob * P, int i, int ind[], double val[]) = NULL;
+int (*__symbolic_glp_get_mat_col) (glp_prob * P, int j, int ind[], double val[]) = NULL;
+void (*__symbolic_glp_create_index) (glp_prob * P) = NULL;
+int (*__symbolic_glp_find_row) (glp_prob * P, const char *name) = NULL;
+int (*__symbolic_glp_find_col) (glp_prob * P, const char *name) = NULL;
+void (*__symbolic_glp_delete_index) (glp_prob * P) = NULL;
+void (*__symbolic_glp_set_rii) (glp_prob * P, int i, double rii) = NULL;
+void (*__symbolic_glp_set_sjj) (glp_prob * P, int j, double sjj) = NULL;
+double (*__symbolic_glp_get_rii) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_get_sjj) (glp_prob * P, int j) = NULL;
+void (*__symbolic_glp_scale_prob) (glp_prob * P, int flags) = NULL;
+void (*__symbolic_glp_unscale_prob) (glp_prob * P) = NULL;
+void (*__symbolic_glp_set_row_stat) (glp_prob * P, int i, int stat) = NULL;
+void (*__symbolic_glp_set_col_stat) (glp_prob * P, int j, int stat) = NULL;
+void (*__symbolic_glp_std_basis) (glp_prob * P) = NULL;
+void (*__symbolic_glp_adv_basis) (glp_prob * P, int flags) = NULL;
+void (*__symbolic_glp_cpx_basis) (glp_prob * P) = NULL;
+int (*__symbolic_glp_simplex) (glp_prob * P, const glp_smcp * parm) = NULL;
+int (*__symbolic_glp_exact) (glp_prob * P, const glp_smcp * parm) = NULL;
+void (*__symbolic_glp_init_smcp) (glp_smcp * parm) = NULL;
+int (*__symbolic_glp_get_status) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_prim_stat) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_dual_stat) (glp_prob * P) = NULL;
+double (*__symbolic_glp_get_obj_val) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_row_stat) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_get_row_prim) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_get_row_dual) (glp_prob * P, int i) = NULL;
+int (*__symbolic_glp_get_col_stat) (glp_prob * P, int j) = NULL;
+double (*__symbolic_glp_get_col_prim) (glp_prob * P, int j) = NULL;
+double (*__symbolic_glp_get_col_dual) (glp_prob * P, int j) = NULL;
+int (*__symbolic_glp_get_unbnd_ray) (glp_prob * P) = NULL;
+int (*__symbolic_glp_interior) (glp_prob * P, const glp_iptcp * parm) = NULL;
+void (*__symbolic_glp_init_iptcp) (glp_iptcp * parm) = NULL;
+int (*__symbolic_glp_ipt_status) (glp_prob * P) = NULL;
+double (*__symbolic_glp_ipt_obj_val) (glp_prob * P) = NULL;
+double (*__symbolic_glp_ipt_row_prim) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_ipt_row_dual) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_ipt_col_prim) (glp_prob * P, int j) = NULL;
+double (*__symbolic_glp_ipt_col_dual) (glp_prob * P, int j) = NULL;
+void (*__symbolic_glp_set_col_kind) (glp_prob * P, int j, int kind) = NULL;
+int (*__symbolic_glp_get_col_kind) (glp_prob * P, int j) = NULL;
+int (*__symbolic_glp_get_num_int) (glp_prob * P) = NULL;
+int (*__symbolic_glp_get_num_bin) (glp_prob * P) = NULL;
+int (*__symbolic_glp_intopt) (glp_prob * P, const glp_iocp * parm) = NULL;
+void (*__symbolic_glp_init_iocp) (glp_iocp * parm) = NULL;
+int (*__symbolic_glp_mip_status) (glp_prob * P) = NULL;
+double (*__symbolic_glp_mip_obj_val) (glp_prob * P) = NULL;
+double (*__symbolic_glp_mip_row_val) (glp_prob * P, int i) = NULL;
+double (*__symbolic_glp_mip_col_val) (glp_prob * P, int j) = NULL;
+int (*__symbolic_glp_print_sol) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_read_sol) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_write_sol) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_print_ranges) (glp_prob * P, int len, const int list[], int flags, const char *fname) = NULL;
+int (*__symbolic_glp_print_ipt) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_read_ipt) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_write_ipt) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_print_mip) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_read_mip) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_write_mip) (glp_prob * P, const char *fname) = NULL;
+int (*__symbolic_glp_bf_exists) (glp_prob * P) = NULL;
+int (*__symbolic_glp_factorize) (glp_prob * P) = NULL;
+int (*__symbolic_glp_bf_updated) (glp_prob * P) = NULL;
+void (*__symbolic_glp_get_bfcp) (glp_prob * P, glp_bfcp * parm) = NULL;
+void (*__symbolic_glp_set_bfcp) (glp_prob * P, const glp_bfcp * parm) = NULL;
+int (*__symbolic_glp_get_bhead) (glp_prob * P, int k) = NULL;
+int (*__symbolic_glp_get_row_bind) (glp_prob * P, int i) = NULL;
+int (*__symbolic_glp_get_col_bind) (glp_prob * P, int j) = NULL;
+void (*__symbolic_glp_ftran) (glp_prob * P, double x[]) = NULL;
+void (*__symbolic_glp_btran) (glp_prob * P, double x[]) = NULL;
+int (*__symbolic_glp_warm_up) (glp_prob * P) = NULL;
+int (*__symbolic_glp_eval_tab_row) (glp_prob * P, int k, int ind[], double val[]) = NULL;
+int (*__symbolic_glp_eval_tab_col) (glp_prob * P, int k, int ind[], double val[]) = NULL;
+int (*__symbolic_glp_transform_row) (glp_prob * P, int len, int ind[], double val[]) = NULL;
+int (*__symbolic_glp_transform_col) (glp_prob * P, int len, int ind[], double val[]) = NULL;
+int (*__symbolic_glp_prim_rtest) (glp_prob * P, int len, const int ind[], const double val[], int dir, double eps) = NULL;
+int (*__symbolic_glp_dual_rtest) (glp_prob * P, int len, const int ind[], const double val[], int dir, double eps) = NULL;
+void (*__symbolic_glp_analyze_bound) (glp_prob * P, int k, double *value1, int *var1, double *value2, int *var2) = NULL;
+void (*__symbolic_glp_analyze_coef) (glp_prob * P, int k, double *coef1, int *var1, double *value1, double *coef2, int *var2, double *value2) = NULL;
+int (*__symbolic_glp_ios_reason) (glp_tree * T) = NULL;
+glp_prob *(*__symbolic_glp_ios_get_prob) (glp_tree * T) = NULL;
+void (*__symbolic_glp_ios_tree_size) (glp_tree * T, int *a_cnt, int *n_cnt, int *t_cnt) = NULL;
+int (*__symbolic_glp_ios_curr_node) (glp_tree * T) = NULL;
+int (*__symbolic_glp_ios_next_node) (glp_tree * T, int p) = NULL;
+int (*__symbolic_glp_ios_prev_node) (glp_tree * T, int p) = NULL;
+int (*__symbolic_glp_ios_up_node) (glp_tree * T, int p) = NULL;
+int (*__symbolic_glp_ios_node_level) (glp_tree * T, int p) = NULL;
+double (*__symbolic_glp_ios_node_bound) (glp_tree * T, int p) = NULL;
+int (*__symbolic_glp_ios_best_node) (glp_tree * T) = NULL;
+double (*__symbolic_glp_ios_mip_gap) (glp_tree * T) = NULL;
+void *(*__symbolic_glp_ios_node_data) (glp_tree * T, int p) = NULL;
+void (*__symbolic_glp_ios_row_attr) (glp_tree * T, int i, glp_attr * attr) = NULL;
+int (*__symbolic_glp_ios_pool_size) (glp_tree * T) = NULL;
+int (*__symbolic_glp_ios_add_row) (glp_tree * T, const char *name, int klass, int flags, int len, const int ind[], const double val[], int type, double rhs) = NULL;
+void (*__symbolic_glp_ios_del_row) (glp_tree * T, int i) = NULL;
+void (*__symbolic_glp_ios_clear_pool) (glp_tree * T) = NULL;
+int (*__symbolic_glp_ios_can_branch) (glp_tree * T, int j) = NULL;
+void (*__symbolic_glp_ios_branch_upon) (glp_tree * T, int j, int sel) = NULL;
+void (*__symbolic_glp_ios_select_node) (glp_tree * T, int p) = NULL;
+int (*__symbolic_glp_ios_heur_sol) (glp_tree * T, const double x[]) = NULL;
+void (*__symbolic_glp_ios_terminate) (glp_tree * T) = NULL;
+void (*__symbolic_glp_init_mpscp) (glp_mpscp * parm) = NULL;
+int (*__symbolic_glp_read_mps) (glp_prob * P, int fmt, const glp_mpscp * parm, const char *fname) = NULL;
+int (*__symbolic_glp_write_mps) (glp_prob * P, int fmt, const glp_mpscp * parm, const char *fname) = NULL;
+void (*__symbolic_glp_init_cpxcp) (glp_cpxcp * parm) = NULL;
+int (*__symbolic_glp_read_lp) (glp_prob * P, const glp_cpxcp * parm, const char *fname) = NULL;
+int (*__symbolic_glp_write_lp) (glp_prob * P, const glp_cpxcp * parm, const char *fname) = NULL;
+int (*__symbolic_glp_read_prob) (glp_prob * P, int flags, const char *fname) = NULL;
+int (*__symbolic_glp_write_prob) (glp_prob * P, int flags, const char *fname) = NULL;
+glp_tran *(*__symbolic_glp_mpl_alloc_wksp) (void) = NULL;
+int (*__symbolic_glp_mpl_read_model) (glp_tran * tran, const char *fname, int skip) = NULL;
+int (*__symbolic_glp_mpl_read_data) (glp_tran * tran, const char *fname) = NULL;
+int (*__symbolic_glp_mpl_generate) (glp_tran * tran, const char *fname) = NULL;
+void (*__symbolic_glp_mpl_build_prob) (glp_tran * tran, glp_prob * prob) = NULL;
+int (*__symbolic_glp_mpl_postsolve) (glp_tran * tran, glp_prob * prob, int sol) = NULL;
+void (*__symbolic_glp_mpl_free_wksp) (glp_tran * tran) = NULL;
+int (*__symbolic_glp_main) (int argc, const char *argv[]) = NULL;
+int (*__symbolic_glp_init_env) (void) = NULL;
+const char *(*__symbolic_glp_version) (void) = NULL;
+int (*__symbolic_glp_free_env) (void) = NULL;
+void (*__symbolic_glp_printf) (const char *fmt, ...) = NULL;
+void (*__symbolic_glp_vprintf) (const char *fmt, va_list arg) = NULL;
+int (*__symbolic_glp_term_out) (int flag) = NULL;
+void (*__symbolic_glp_term_hook) (int (*func) (void *info, const char *s), void *info) = NULL;
+int (*__symbolic_glp_open_tee) (const char *fname) = NULL;
+int (*__symbolic_glp_close_tee) (void) = NULL;
+_glp_error (*__symbolic_glp_error_) (const char *file, int line) = NULL;
+void (*__symbolic_glp_assert_) (const char *expr, const char *file, int line) = NULL;
+void (*__symbolic_glp_error_hook) (void (*func) (void *info), void *info) = NULL;
+void *(*__symbolic_glp_malloc) (int size) = NULL;
+void *(*__symbolic_glp_calloc) (int n, int size) = NULL;
+void (*__symbolic_glp_free) (void *ptr) = NULL;
+void (*__symbolic_glp_mem_limit) (int limit) = NULL;
+void (*__symbolic_glp_mem_usage) (int *count, int *cpeak, glp_long * total, glp_long * tpeak) = NULL;
+glp_long (*__symbolic_glp_time) (void) = NULL;
+double (*__symbolic_glp_difftime) (glp_long t1, glp_long t0) = NULL;
+glp_data *(*__symbolic_glp_sdf_open_file) (const char *fname) = NULL;
+void (*__symbolic_glp_sdf_set_jump) (glp_data * data, void *jump) = NULL;
+void (*__symbolic_glp_sdf_error) (glp_data * data, const char *fmt, ...) = NULL;
+void (*__symbolic_glp_sdf_warning) (glp_data * data, const char *fmt, ...) = NULL;
+int (*__symbolic_glp_sdf_read_int) (glp_data * data) = NULL;
+double (*__symbolic_glp_sdf_read_num) (glp_data * data) = NULL;
+const char *(*__symbolic_glp_sdf_read_item) (glp_data * data) = NULL;
+const char *(*__symbolic_glp_sdf_read_text) (glp_data * data) = NULL;
+int (*__symbolic_glp_sdf_line) (glp_data * data) = NULL;
+void (*__symbolic_glp_sdf_close_file) (glp_data * data) = NULL;
+glp_graph *(*__symbolic_glp_create_graph) (int v_size, int a_size) = NULL;
+void (*__symbolic_glp_set_graph_name) (glp_graph * G, const char *name) = NULL;
+int (*__symbolic_glp_add_vertices) (glp_graph * G, int nadd) = NULL;
+void (*__symbolic_glp_set_vertex_name) (glp_graph * G, int i, const char *name) = NULL;
+glp_arc *(*__symbolic_glp_add_arc) (glp_graph * G, int i, int j) = NULL;
+void (*__symbolic_glp_del_vertices) (glp_graph * G, int ndel, const int num[]) = NULL;
+void (*__symbolic_glp_del_arc) (glp_graph * G, glp_arc * a) = NULL;
+void (*__symbolic_glp_erase_graph) (glp_graph * G, int v_size, int a_size) = NULL;
+void (*__symbolic_glp_delete_graph) (glp_graph * G) = NULL;
+void (*__symbolic_glp_create_v_index) (glp_graph * G) = NULL;
+int (*__symbolic_glp_find_vertex) (glp_graph * G, const char *name) = NULL;
+void (*__symbolic_glp_delete_v_index) (glp_graph * G) = NULL;
+int (*__symbolic_glp_read_graph) (glp_graph * G, const char *fname) = NULL;
+int (*__symbolic_glp_write_graph) (glp_graph * G, const char *fname) = NULL;
+void (*__symbolic_glp_mincost_lp) (glp_prob * P, glp_graph * G, int names, int v_rhs, int a_low, int a_cap, int a_cost) = NULL;
+int (*__symbolic_glp_mincost_okalg) (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost, double *sol, int a_x, int v_pi) = NULL;
+void (*__symbolic_glp_maxflow_lp) (glp_prob * P, glp_graph * G, int names, int s, int t, int a_cap) = NULL;
+int (*__symbolic_glp_maxflow_ffalg) (glp_graph * G, int s, int t, int a_cap, double *sol, int a_x, int v_cut) = NULL;
+int (*__symbolic_glp_check_asnprob) (glp_graph * G, int v_set) = NULL;
+int (*__symbolic_glp_asnprob_lp) (glp_prob * P, int form, glp_graph * G, int names, int v_set, int a_cost) = NULL;
+int (*__symbolic_glp_asnprob_okalg) (int form, glp_graph * G, int v_set, int a_cost, double *sol, int a_x) = NULL;
+int (*__symbolic_glp_asnprob_hall) (glp_graph * G, int v_set, int a_x) = NULL;
+int (*__symbolic_glp_read_mincost) (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname) = NULL;
+int (*__symbolic_glp_write_mincost) (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname) = NULL;
+int (*__symbolic_glp_read_maxflow) (glp_graph * G, int *s, int *t, int a_cap, const char *fname) = NULL;
+int (*__symbolic_glp_write_maxflow) (glp_graph * G, int s, int t, int a_cap, const char *fname) = NULL;
+int (*__symbolic_glp_read_asnprob) (glp_graph * G, int v_set, int a_cost, const char *fname) = NULL;
+int (*__symbolic_glp_write_asnprob) (glp_graph * G, int v_set, int a_cost, const char *fname) = NULL;
+int (*__symbolic_glp_read_ccdata) (glp_graph * G, int v_wgt, const char *fname) = NULL;
+int (*__symbolic_glp_write_ccdata) (glp_graph * G, int v_wgt, const char *fname) = NULL;
+int (*__symbolic_glp_netgen) (glp_graph * G, int v_rhs, int a_cap, int a_cost, const int parm[1 + 15]) = NULL;
+int (*__symbolic_glp_gridgen) (glp_graph * G, int v_rhs, int a_cap, int a_cost, const int parm[1 + 14]) = NULL;
+int (*__symbolic_glp_rmfgen) (glp_graph * G, int *s, int *t, int a_cap, const int parm[1 + 5]) = NULL;
+int (*__symbolic_glp_weak_comp) (glp_graph * G, int v_num) = NULL;
+int (*__symbolic_glp_strong_comp) (glp_graph * G, int v_num) = NULL;
+int (*__symbolic_glp_top_sort) (glp_graph * G, int v_num) = NULL;
+int (*__symbolic_glp_wclique_exact) (glp_graph * G, int v_wgt, double *sol, int v_set) = NULL;
+glp_prob *(*__symbolic__glp_lpx_create_prob) (void) = NULL;
+void (*__symbolic__glp_lpx_set_prob_name) (glp_prob * lp, const char *name) = NULL;
+void (*__symbolic__glp_lpx_set_obj_name) (glp_prob * lp, const char *name) = NULL;
+void (*__symbolic__glp_lpx_set_obj_dir) (glp_prob * lp, int dir) = NULL;
+int (*__symbolic__glp_lpx_add_rows) (glp_prob * lp, int nrs) = NULL;
+int (*__symbolic__glp_lpx_add_cols) (glp_prob * lp, int ncs) = NULL;
+void (*__symbolic__glp_lpx_set_row_name) (glp_prob * lp, int i, const char *name) = NULL;
+void (*__symbolic__glp_lpx_set_col_name) (glp_prob * lp, int j, const char *name) = NULL;
+void (*__symbolic__glp_lpx_set_row_bnds) (glp_prob * lp, int i, int type, double lb, double ub) = NULL;
+void (*__symbolic__glp_lpx_set_col_bnds) (glp_prob * lp, int j, int type, double lb, double ub) = NULL;
+void (*__symbolic__glp_lpx_set_obj_coef) (glp_prob * lp, int j, double coef) = NULL;
+void (*__symbolic__glp_lpx_set_mat_row) (glp_prob * lp, int i, int len, const int ind[], const double val[]) = NULL;
+void (*__symbolic__glp_lpx_set_mat_col) (glp_prob * lp, int j, int len, const int ind[], const double val[]) = NULL;
+void (*__symbolic__glp_lpx_load_matrix) (glp_prob * lp, int ne, const int ia[], const int ja[], const double ar[]) = NULL;
+void (*__symbolic__glp_lpx_del_rows) (glp_prob * lp, int nrs, const int num[]) = NULL;
+void (*__symbolic__glp_lpx_del_cols) (glp_prob * lp, int ncs, const int num[]) = NULL;
+void (*__symbolic__glp_lpx_delete_prob) (glp_prob * lp) = NULL;
+const char *(*__symbolic__glp_lpx_get_prob_name) (glp_prob * lp) = NULL;
+const char *(*__symbolic__glp_lpx_get_obj_name) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_obj_dir) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_num_rows) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_num_cols) (glp_prob * lp) = NULL;
+const char *(*__symbolic__glp_lpx_get_row_name) (glp_prob * lp, int i) = NULL;
+const char *(*__symbolic__glp_lpx_get_col_name) (glp_prob * lp, int j) = NULL;
+int (*__symbolic__glp_lpx_get_row_type) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_get_row_lb) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_get_row_ub) (glp_prob * lp, int i) = NULL;
+void (*__symbolic__glp_lpx_get_row_bnds) (glp_prob * lp, int i, int *typx, double *lb, double *ub) = NULL;
+int (*__symbolic__glp_lpx_get_col_type) (glp_prob * lp, int j) = NULL;
+double (*__symbolic__glp_lpx_get_col_lb) (glp_prob * lp, int j) = NULL;
+double (*__symbolic__glp_lpx_get_col_ub) (glp_prob * lp, int j) = NULL;
+void (*__symbolic__glp_lpx_get_col_bnds) (glp_prob * lp, int j, int *typx, double *lb, double *ub) = NULL;
+double (*__symbolic__glp_lpx_get_obj_coef) (glp_prob * lp, int j) = NULL;
+int (*__symbolic__glp_lpx_get_num_nz) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_mat_row) (glp_prob * lp, int i, int ind[], double val[]) = NULL;
+int (*__symbolic__glp_lpx_get_mat_col) (glp_prob * lp, int j, int ind[], double val[]) = NULL;
+void (*__symbolic__glp_lpx_create_index) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_find_row) (glp_prob * lp, const char *name) = NULL;
+int (*__symbolic__glp_lpx_find_col) (glp_prob * lp, const char *name) = NULL;
+void (*__symbolic__glp_lpx_delete_index) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_scale_prob) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_unscale_prob) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_set_row_stat) (glp_prob * lp, int i, int stat) = NULL;
+void (*__symbolic__glp_lpx_set_col_stat) (glp_prob * lp, int j, int stat) = NULL;
+void (*__symbolic__glp_lpx_std_basis) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_adv_basis) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_cpx_basis) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_simplex) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_exact) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_status) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_prim_stat) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_dual_stat) (glp_prob * lp) = NULL;
+double (*__symbolic__glp_lpx_get_obj_val) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_row_stat) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_get_row_prim) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_get_row_dual) (glp_prob * lp, int i) = NULL;
+void (*__symbolic__glp_lpx_get_row_info) (glp_prob * lp, int i, int *tagx, double *vx, double *dx) = NULL;
+int (*__symbolic__glp_lpx_get_col_stat) (glp_prob * lp, int j) = NULL;
+double (*__symbolic__glp_lpx_get_col_prim) (glp_prob * lp, int j) = NULL;
+double (*__symbolic__glp_lpx_get_col_dual) (glp_prob * lp, int j) = NULL;
+void (*__symbolic__glp_lpx_get_col_info) (glp_prob * lp, int j, int *tagx, double *vx, double *dx) = NULL;
+int (*__symbolic__glp_lpx_get_ray_info) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_check_kkt) (glp_prob * lp, int scaled, LPXKKT * kkt) = NULL;
+int (*__symbolic__glp_lpx_warm_up) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_eval_tab_row) (glp_prob * lp, int k, int ind[], double val[]) = NULL;
+int (*__symbolic__glp_lpx_eval_tab_col) (glp_prob * lp, int k, int ind[], double val[]) = NULL;
+int (*__symbolic__glp_lpx_transform_row) (glp_prob * lp, int len, int ind[], double val[]) = NULL;
+int (*__symbolic__glp_lpx_transform_col) (glp_prob * lp, int len, int ind[], double val[]) = NULL;
+int (*__symbolic__glp_lpx_prim_ratio_test) (glp_prob * lp, int len, const int ind[], const double val[], int how, double tol) = NULL;
+int (*__symbolic__glp_lpx_dual_ratio_test) (glp_prob * lp, int len, const int ind[], const double val[], int how, double tol) = NULL;
+int (*__symbolic__glp_lpx_interior) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_ipt_status) (glp_prob * lp) = NULL;
+double (*__symbolic__glp_lpx_ipt_obj_val) (glp_prob * lp) = NULL;
+double (*__symbolic__glp_lpx_ipt_row_prim) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_ipt_row_dual) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_ipt_col_prim) (glp_prob * lp, int j) = NULL;
+double (*__symbolic__glp_lpx_ipt_col_dual) (glp_prob * lp, int j) = NULL;
+void (*__symbolic__glp_lpx_set_class) (glp_prob * lp, int klass) = NULL;
+int (*__symbolic__glp_lpx_get_class) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_set_col_kind) (glp_prob * lp, int j, int kind) = NULL;
+int (*__symbolic__glp_lpx_get_col_kind) (glp_prob * lp, int j) = NULL;
+int (*__symbolic__glp_lpx_get_num_int) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_get_num_bin) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_integer) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_intopt) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_mip_status) (glp_prob * lp) = NULL;
+double (*__symbolic__glp_lpx_mip_obj_val) (glp_prob * lp) = NULL;
+double (*__symbolic__glp_lpx_mip_row_val) (glp_prob * lp, int i) = NULL;
+double (*__symbolic__glp_lpx_mip_col_val) (glp_prob * lp, int j) = NULL;
+void (*__symbolic__glp_lpx_check_int) (glp_prob * lp, LPXKKT * kkt) = NULL;
+void (*__symbolic__glp_lpx_reset_parms) (glp_prob * lp) = NULL;
+void (*__symbolic__glp_lpx_set_int_parm) (glp_prob * lp, int parm, int val) = NULL;
+int (*__symbolic__glp_lpx_get_int_parm) (glp_prob * lp, int parm) = NULL;
+void (*__symbolic__glp_lpx_set_real_parm) (glp_prob * lp, int parm, double val) = NULL;
+double (*__symbolic__glp_lpx_get_real_parm) (glp_prob * lp, int parm) = NULL;
+glp_prob *(*__symbolic__glp_lpx_read_mps) (const char *fname) = NULL;
+int (*__symbolic__glp_lpx_write_mps) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_read_bas) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_write_bas) (glp_prob * lp, const char *fname) = NULL;
+glp_prob *(*__symbolic__glp_lpx_read_freemps) (const char *fname) = NULL;
+int (*__symbolic__glp_lpx_write_freemps) (glp_prob * lp, const char *fname) = NULL;
+glp_prob *(*__symbolic__glp_lpx_read_cpxlp) (const char *fname) = NULL;
+int (*__symbolic__glp_lpx_write_cpxlp) (glp_prob * lp, const char *fname) = NULL;
+glp_prob *(*__symbolic__glp_lpx_read_model) (const char *model, const char *data, const char *output) = NULL;
+int (*__symbolic__glp_lpx_print_prob) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_print_sol) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_print_sens_bnds) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_print_ips) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_print_mip) (glp_prob * lp, const char *fname) = NULL;
+int (*__symbolic__glp_lpx_is_b_avail) (glp_prob * lp) = NULL;
+int (*__symbolic__glp_lpx_write_pb) (glp_prob * lp, const char *fname, int normalized, int binarize) = NULL;
+int (*__symbolic__glp_lpx_main) (int argc, const char *argv[]) = NULL;
 
 /* hijacked functions */
 
-glp_prob *glp_create_prob(void){
+glp_prob *glp_create_prob (void){
     if (!__symbolic_glp_create_prob) {
         if (!module) {
             if (!load_module()) {
@@ -432,7 +432,7 @@ glp_prob *glp_create_prob(void){
     }
     return __symbolic_glp_create_prob();
 }
-void glp_set_prob_name(glp_prob *P, const char *name){
+void glp_set_prob_name (glp_prob * P, const char *name){
     if (!__symbolic_glp_set_prob_name) {
         if (!module) {
             if (!load_module()) {
@@ -451,7 +451,7 @@ void glp_set_prob_name(glp_prob *P, const char *name){
     }
     return __symbolic_glp_set_prob_name(P, name);
 }
-void glp_set_obj_name(glp_prob *P, const char *name){
+void glp_set_obj_name (glp_prob * P, const char *name){
     if (!__symbolic_glp_set_obj_name) {
         if (!module) {
             if (!load_module()) {
@@ -470,7 +470,7 @@ void glp_set_obj_name(glp_prob *P, const char *name){
     }
     return __symbolic_glp_set_obj_name(P, name);
 }
-void glp_set_obj_dir(glp_prob *P, int dir){
+void glp_set_obj_dir (glp_prob * P, int dir){
     if (!__symbolic_glp_set_obj_dir) {
         if (!module) {
             if (!load_module()) {
@@ -489,7 +489,7 @@ void glp_set_obj_dir(glp_prob *P, int dir){
     }
     return __symbolic_glp_set_obj_dir(P, dir);
 }
-int glp_add_rows(glp_prob *P, int nrs){
+int glp_add_rows (glp_prob * P, int nrs){
     if (!__symbolic_glp_add_rows) {
         if (!module) {
             if (!load_module()) {
@@ -508,7 +508,7 @@ int glp_add_rows(glp_prob *P, int nrs){
     }
     return __symbolic_glp_add_rows(P, nrs);
 }
-int glp_add_cols(glp_prob *P, int ncs){
+int glp_add_cols (glp_prob * P, int ncs){
     if (!__symbolic_glp_add_cols) {
         if (!module) {
             if (!load_module()) {
@@ -527,7 +527,7 @@ int glp_add_cols(glp_prob *P, int ncs){
     }
     return __symbolic_glp_add_cols(P, ncs);
 }
-void glp_set_row_name(glp_prob *P, int i, const char *name){
+void glp_set_row_name (glp_prob * P, int i, const char *name){
     if (!__symbolic_glp_set_row_name) {
         if (!module) {
             if (!load_module()) {
@@ -546,7 +546,7 @@ void glp_set_row_name(glp_prob *P, int i, const char *name){
     }
     return __symbolic_glp_set_row_name(P, i, name);
 }
-void glp_set_col_name(glp_prob *P, int j, const char *name){
+void glp_set_col_name (glp_prob * P, int j, const char *name){
     if (!__symbolic_glp_set_col_name) {
         if (!module) {
             if (!load_module()) {
@@ -565,7 +565,7 @@ void glp_set_col_name(glp_prob *P, int j, const char *name){
     }
     return __symbolic_glp_set_col_name(P, j, name);
 }
-void glp_set_row_bnds(glp_prob *P, int i, int type, double lb, double ub){
+void glp_set_row_bnds (glp_prob * P, int i, int type, double lb, double ub){
     if (!__symbolic_glp_set_row_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -584,7 +584,7 @@ void glp_set_row_bnds(glp_prob *P, int i, int type, double lb, double ub){
     }
     return __symbolic_glp_set_row_bnds(P, i, type, lb, ub);
 }
-void glp_set_col_bnds(glp_prob *P, int j, int type, double lb, double ub){
+void glp_set_col_bnds (glp_prob * P, int j, int type, double lb, double ub){
     if (!__symbolic_glp_set_col_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -603,7 +603,7 @@ void glp_set_col_bnds(glp_prob *P, int j, int type, double lb, double ub){
     }
     return __symbolic_glp_set_col_bnds(P, j, type, lb, ub);
 }
-void glp_set_obj_coef(glp_prob *P, int j, double coef){
+void glp_set_obj_coef (glp_prob * P, int j, double coef){
     if (!__symbolic_glp_set_obj_coef) {
         if (!module) {
             if (!load_module()) {
@@ -622,7 +622,7 @@ void glp_set_obj_coef(glp_prob *P, int j, double coef){
     }
     return __symbolic_glp_set_obj_coef(P, j, coef);
 }
-void glp_set_mat_row(glp_prob *P, int i, int len, const int ind[], const double val[]){
+void glp_set_mat_row (glp_prob * P, int i, int len, const int ind[], const double val[]){
     if (!__symbolic_glp_set_mat_row) {
         if (!module) {
             if (!load_module()) {
@@ -641,7 +641,7 @@ void glp_set_mat_row(glp_prob *P, int i, int len, const int ind[], const double 
     }
     return __symbolic_glp_set_mat_row(P, i, len, ind, val);
 }
-void glp_set_mat_col(glp_prob *P, int j, int len, const int ind[], const double val[]){
+void glp_set_mat_col (glp_prob * P, int j, int len, const int ind[], const double val[]){
     if (!__symbolic_glp_set_mat_col) {
         if (!module) {
             if (!load_module()) {
@@ -660,7 +660,7 @@ void glp_set_mat_col(glp_prob *P, int j, int len, const int ind[], const double 
     }
     return __symbolic_glp_set_mat_col(P, j, len, ind, val);
 }
-void glp_load_matrix(glp_prob *P, int ne, const int ia[], const int ja[], const double ar[]){
+void glp_load_matrix (glp_prob * P, int ne, const int ia[], const int ja[], const double ar[]){
     if (!__symbolic_glp_load_matrix) {
         if (!module) {
             if (!load_module()) {
@@ -679,7 +679,7 @@ void glp_load_matrix(glp_prob *P, int ne, const int ia[], const int ja[], const 
     }
     return __symbolic_glp_load_matrix(P, ne, ia, ja, ar);
 }
-int glp_check_dup(int m, int n, int ne, const int ia[], const int ja[]){
+int glp_check_dup (int m, int n, int ne, const int ia[], const int ja[]){
     if (!__symbolic_glp_check_dup) {
         if (!module) {
             if (!load_module()) {
@@ -698,7 +698,7 @@ int glp_check_dup(int m, int n, int ne, const int ia[], const int ja[]){
     }
     return __symbolic_glp_check_dup(m, n, ne, ia, ja);
 }
-void glp_sort_matrix(glp_prob *P){
+void glp_sort_matrix (glp_prob * P){
     if (!__symbolic_glp_sort_matrix) {
         if (!module) {
             if (!load_module()) {
@@ -717,7 +717,7 @@ void glp_sort_matrix(glp_prob *P){
     }
     return __symbolic_glp_sort_matrix(P);
 }
-void glp_del_rows(glp_prob *P, int nrs, const int num[]){
+void glp_del_rows (glp_prob * P, int nrs, const int num[]){
     if (!__symbolic_glp_del_rows) {
         if (!module) {
             if (!load_module()) {
@@ -736,7 +736,7 @@ void glp_del_rows(glp_prob *P, int nrs, const int num[]){
     }
     return __symbolic_glp_del_rows(P, nrs, num);
 }
-void glp_del_cols(glp_prob *P, int ncs, const int num[]){
+void glp_del_cols (glp_prob * P, int ncs, const int num[]){
     if (!__symbolic_glp_del_cols) {
         if (!module) {
             if (!load_module()) {
@@ -755,7 +755,7 @@ void glp_del_cols(glp_prob *P, int ncs, const int num[]){
     }
     return __symbolic_glp_del_cols(P, ncs, num);
 }
-void glp_copy_prob(glp_prob *dest, glp_prob *prob, int names){
+void glp_copy_prob (glp_prob * dest, glp_prob * prob, int names){
     if (!__symbolic_glp_copy_prob) {
         if (!module) {
             if (!load_module()) {
@@ -774,7 +774,7 @@ void glp_copy_prob(glp_prob *dest, glp_prob *prob, int names){
     }
     return __symbolic_glp_copy_prob(dest, prob, names);
 }
-void glp_erase_prob(glp_prob *P){
+void glp_erase_prob (glp_prob * P){
     if (!__symbolic_glp_erase_prob) {
         if (!module) {
             if (!load_module()) {
@@ -793,7 +793,7 @@ void glp_erase_prob(glp_prob *P){
     }
     return __symbolic_glp_erase_prob(P);
 }
-void glp_delete_prob(glp_prob *P){
+void glp_delete_prob (glp_prob * P){
     if (!__symbolic_glp_delete_prob) {
         if (!module) {
             if (!load_module()) {
@@ -812,7 +812,7 @@ void glp_delete_prob(glp_prob *P){
     }
     return __symbolic_glp_delete_prob(P);
 }
-const char *glp_get_prob_name(glp_prob *P){
+const char *glp_get_prob_name (glp_prob * P){
     if (!__symbolic_glp_get_prob_name) {
         if (!module) {
             if (!load_module()) {
@@ -831,7 +831,7 @@ const char *glp_get_prob_name(glp_prob *P){
     }
     return __symbolic_glp_get_prob_name(P);
 }
-const char *glp_get_obj_name(glp_prob *P){
+const char *glp_get_obj_name (glp_prob * P){
     if (!__symbolic_glp_get_obj_name) {
         if (!module) {
             if (!load_module()) {
@@ -850,7 +850,7 @@ const char *glp_get_obj_name(glp_prob *P){
     }
     return __symbolic_glp_get_obj_name(P);
 }
-int glp_get_obj_dir(glp_prob *P){
+int glp_get_obj_dir (glp_prob * P){
     if (!__symbolic_glp_get_obj_dir) {
         if (!module) {
             if (!load_module()) {
@@ -869,7 +869,7 @@ int glp_get_obj_dir(glp_prob *P){
     }
     return __symbolic_glp_get_obj_dir(P);
 }
-int glp_get_num_rows(glp_prob *P){
+int glp_get_num_rows (glp_prob * P){
     if (!__symbolic_glp_get_num_rows) {
         if (!module) {
             if (!load_module()) {
@@ -888,7 +888,7 @@ int glp_get_num_rows(glp_prob *P){
     }
     return __symbolic_glp_get_num_rows(P);
 }
-int glp_get_num_cols(glp_prob *P){
+int glp_get_num_cols (glp_prob * P){
     if (!__symbolic_glp_get_num_cols) {
         if (!module) {
             if (!load_module()) {
@@ -907,7 +907,7 @@ int glp_get_num_cols(glp_prob *P){
     }
     return __symbolic_glp_get_num_cols(P);
 }
-const char *glp_get_row_name(glp_prob *P, int i){
+const char *glp_get_row_name (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_name) {
         if (!module) {
             if (!load_module()) {
@@ -926,7 +926,7 @@ const char *glp_get_row_name(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_name(P, i);
 }
-const char *glp_get_col_name(glp_prob *P, int j){
+const char *glp_get_col_name (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_name) {
         if (!module) {
             if (!load_module()) {
@@ -945,7 +945,7 @@ const char *glp_get_col_name(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_name(P, j);
 }
-int glp_get_row_type(glp_prob *P, int i){
+int glp_get_row_type (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_type) {
         if (!module) {
             if (!load_module()) {
@@ -964,7 +964,7 @@ int glp_get_row_type(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_type(P, i);
 }
-double glp_get_row_lb(glp_prob *P, int i){
+double glp_get_row_lb (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_lb) {
         if (!module) {
             if (!load_module()) {
@@ -983,7 +983,7 @@ double glp_get_row_lb(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_lb(P, i);
 }
-double glp_get_row_ub(glp_prob *P, int i){
+double glp_get_row_ub (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_ub) {
         if (!module) {
             if (!load_module()) {
@@ -1002,7 +1002,7 @@ double glp_get_row_ub(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_ub(P, i);
 }
-int glp_get_col_type(glp_prob *P, int j){
+int glp_get_col_type (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_type) {
         if (!module) {
             if (!load_module()) {
@@ -1021,7 +1021,7 @@ int glp_get_col_type(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_type(P, j);
 }
-double glp_get_col_lb(glp_prob *P, int j){
+double glp_get_col_lb (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_lb) {
         if (!module) {
             if (!load_module()) {
@@ -1040,7 +1040,7 @@ double glp_get_col_lb(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_lb(P, j);
 }
-double glp_get_col_ub(glp_prob *P, int j){
+double glp_get_col_ub (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_ub) {
         if (!module) {
             if (!load_module()) {
@@ -1059,7 +1059,7 @@ double glp_get_col_ub(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_ub(P, j);
 }
-double glp_get_obj_coef(glp_prob *P, int j){
+double glp_get_obj_coef (glp_prob * P, int j){
     if (!__symbolic_glp_get_obj_coef) {
         if (!module) {
             if (!load_module()) {
@@ -1078,7 +1078,7 @@ double glp_get_obj_coef(glp_prob *P, int j){
     }
     return __symbolic_glp_get_obj_coef(P, j);
 }
-int glp_get_num_nz(glp_prob *P){
+int glp_get_num_nz (glp_prob * P){
     if (!__symbolic_glp_get_num_nz) {
         if (!module) {
             if (!load_module()) {
@@ -1097,7 +1097,7 @@ int glp_get_num_nz(glp_prob *P){
     }
     return __symbolic_glp_get_num_nz(P);
 }
-int glp_get_mat_row(glp_prob *P, int i, int ind[], double val[]){
+int glp_get_mat_row (glp_prob * P, int i, int ind[], double val[]){
     if (!__symbolic_glp_get_mat_row) {
         if (!module) {
             if (!load_module()) {
@@ -1116,7 +1116,7 @@ int glp_get_mat_row(glp_prob *P, int i, int ind[], double val[]){
     }
     return __symbolic_glp_get_mat_row(P, i, ind, val);
 }
-int glp_get_mat_col(glp_prob *P, int j, int ind[], double val[]){
+int glp_get_mat_col (glp_prob * P, int j, int ind[], double val[]){
     if (!__symbolic_glp_get_mat_col) {
         if (!module) {
             if (!load_module()) {
@@ -1135,7 +1135,7 @@ int glp_get_mat_col(glp_prob *P, int j, int ind[], double val[]){
     }
     return __symbolic_glp_get_mat_col(P, j, ind, val);
 }
-void glp_create_index(glp_prob *P){
+void glp_create_index (glp_prob * P){
     if (!__symbolic_glp_create_index) {
         if (!module) {
             if (!load_module()) {
@@ -1154,7 +1154,7 @@ void glp_create_index(glp_prob *P){
     }
     return __symbolic_glp_create_index(P);
 }
-int glp_find_row(glp_prob *P, const char *name){
+int glp_find_row (glp_prob * P, const char *name){
     if (!__symbolic_glp_find_row) {
         if (!module) {
             if (!load_module()) {
@@ -1173,7 +1173,7 @@ int glp_find_row(glp_prob *P, const char *name){
     }
     return __symbolic_glp_find_row(P, name);
 }
-int glp_find_col(glp_prob *P, const char *name){
+int glp_find_col (glp_prob * P, const char *name){
     if (!__symbolic_glp_find_col) {
         if (!module) {
             if (!load_module()) {
@@ -1192,7 +1192,7 @@ int glp_find_col(glp_prob *P, const char *name){
     }
     return __symbolic_glp_find_col(P, name);
 }
-void glp_delete_index(glp_prob *P){
+void glp_delete_index (glp_prob * P){
     if (!__symbolic_glp_delete_index) {
         if (!module) {
             if (!load_module()) {
@@ -1211,7 +1211,7 @@ void glp_delete_index(glp_prob *P){
     }
     return __symbolic_glp_delete_index(P);
 }
-void glp_set_rii(glp_prob *P, int i, double rii){
+void glp_set_rii (glp_prob * P, int i, double rii){
     if (!__symbolic_glp_set_rii) {
         if (!module) {
             if (!load_module()) {
@@ -1230,7 +1230,7 @@ void glp_set_rii(glp_prob *P, int i, double rii){
     }
     return __symbolic_glp_set_rii(P, i, rii);
 }
-void glp_set_sjj(glp_prob *P, int j, double sjj){
+void glp_set_sjj (glp_prob * P, int j, double sjj){
     if (!__symbolic_glp_set_sjj) {
         if (!module) {
             if (!load_module()) {
@@ -1249,7 +1249,7 @@ void glp_set_sjj(glp_prob *P, int j, double sjj){
     }
     return __symbolic_glp_set_sjj(P, j, sjj);
 }
-double glp_get_rii(glp_prob *P, int i){
+double glp_get_rii (glp_prob * P, int i){
     if (!__symbolic_glp_get_rii) {
         if (!module) {
             if (!load_module()) {
@@ -1268,7 +1268,7 @@ double glp_get_rii(glp_prob *P, int i){
     }
     return __symbolic_glp_get_rii(P, i);
 }
-double glp_get_sjj(glp_prob *P, int j){
+double glp_get_sjj (glp_prob * P, int j){
     if (!__symbolic_glp_get_sjj) {
         if (!module) {
             if (!load_module()) {
@@ -1287,7 +1287,7 @@ double glp_get_sjj(glp_prob *P, int j){
     }
     return __symbolic_glp_get_sjj(P, j);
 }
-void glp_scale_prob(glp_prob *P, int flags){
+void glp_scale_prob (glp_prob * P, int flags){
     if (!__symbolic_glp_scale_prob) {
         if (!module) {
             if (!load_module()) {
@@ -1306,7 +1306,7 @@ void glp_scale_prob(glp_prob *P, int flags){
     }
     return __symbolic_glp_scale_prob(P, flags);
 }
-void glp_unscale_prob(glp_prob *P){
+void glp_unscale_prob (glp_prob * P){
     if (!__symbolic_glp_unscale_prob) {
         if (!module) {
             if (!load_module()) {
@@ -1325,7 +1325,7 @@ void glp_unscale_prob(glp_prob *P){
     }
     return __symbolic_glp_unscale_prob(P);
 }
-void glp_set_row_stat(glp_prob *P, int i, int stat){
+void glp_set_row_stat (glp_prob * P, int i, int stat){
     if (!__symbolic_glp_set_row_stat) {
         if (!module) {
             if (!load_module()) {
@@ -1344,7 +1344,7 @@ void glp_set_row_stat(glp_prob *P, int i, int stat){
     }
     return __symbolic_glp_set_row_stat(P, i, stat);
 }
-void glp_set_col_stat(glp_prob *P, int j, int stat){
+void glp_set_col_stat (glp_prob * P, int j, int stat){
     if (!__symbolic_glp_set_col_stat) {
         if (!module) {
             if (!load_module()) {
@@ -1363,7 +1363,7 @@ void glp_set_col_stat(glp_prob *P, int j, int stat){
     }
     return __symbolic_glp_set_col_stat(P, j, stat);
 }
-void glp_std_basis(glp_prob *P){
+void glp_std_basis (glp_prob * P){
     if (!__symbolic_glp_std_basis) {
         if (!module) {
             if (!load_module()) {
@@ -1382,7 +1382,7 @@ void glp_std_basis(glp_prob *P){
     }
     return __symbolic_glp_std_basis(P);
 }
-void glp_adv_basis(glp_prob *P, int flags){
+void glp_adv_basis (glp_prob * P, int flags){
     if (!__symbolic_glp_adv_basis) {
         if (!module) {
             if (!load_module()) {
@@ -1401,7 +1401,7 @@ void glp_adv_basis(glp_prob *P, int flags){
     }
     return __symbolic_glp_adv_basis(P, flags);
 }
-void glp_cpx_basis(glp_prob *P){
+void glp_cpx_basis (glp_prob * P){
     if (!__symbolic_glp_cpx_basis) {
         if (!module) {
             if (!load_module()) {
@@ -1420,7 +1420,7 @@ void glp_cpx_basis(glp_prob *P){
     }
     return __symbolic_glp_cpx_basis(P);
 }
-int glp_simplex(glp_prob *P, const glp_smcp *parm){
+int glp_simplex (glp_prob * P, const glp_smcp * parm){
     if (!__symbolic_glp_simplex) {
         if (!module) {
             if (!load_module()) {
@@ -1439,7 +1439,7 @@ int glp_simplex(glp_prob *P, const glp_smcp *parm){
     }
     return __symbolic_glp_simplex(P, parm);
 }
-int glp_exact(glp_prob *P, const glp_smcp *parm){
+int glp_exact (glp_prob * P, const glp_smcp * parm){
     if (!__symbolic_glp_exact) {
         if (!module) {
             if (!load_module()) {
@@ -1458,7 +1458,7 @@ int glp_exact(glp_prob *P, const glp_smcp *parm){
     }
     return __symbolic_glp_exact(P, parm);
 }
-void glp_init_smcp(glp_smcp *parm){
+void glp_init_smcp (glp_smcp * parm){
     if (!__symbolic_glp_init_smcp) {
         if (!module) {
             if (!load_module()) {
@@ -1477,7 +1477,7 @@ void glp_init_smcp(glp_smcp *parm){
     }
     return __symbolic_glp_init_smcp(parm);
 }
-int glp_get_status(glp_prob *P){
+int glp_get_status (glp_prob * P){
     if (!__symbolic_glp_get_status) {
         if (!module) {
             if (!load_module()) {
@@ -1496,7 +1496,7 @@ int glp_get_status(glp_prob *P){
     }
     return __symbolic_glp_get_status(P);
 }
-int glp_get_prim_stat(glp_prob *P){
+int glp_get_prim_stat (glp_prob * P){
     if (!__symbolic_glp_get_prim_stat) {
         if (!module) {
             if (!load_module()) {
@@ -1515,7 +1515,7 @@ int glp_get_prim_stat(glp_prob *P){
     }
     return __symbolic_glp_get_prim_stat(P);
 }
-int glp_get_dual_stat(glp_prob *P){
+int glp_get_dual_stat (glp_prob * P){
     if (!__symbolic_glp_get_dual_stat) {
         if (!module) {
             if (!load_module()) {
@@ -1534,7 +1534,7 @@ int glp_get_dual_stat(glp_prob *P){
     }
     return __symbolic_glp_get_dual_stat(P);
 }
-double glp_get_obj_val(glp_prob *P){
+double glp_get_obj_val (glp_prob * P){
     if (!__symbolic_glp_get_obj_val) {
         if (!module) {
             if (!load_module()) {
@@ -1553,7 +1553,7 @@ double glp_get_obj_val(glp_prob *P){
     }
     return __symbolic_glp_get_obj_val(P);
 }
-int glp_get_row_stat(glp_prob *P, int i){
+int glp_get_row_stat (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_stat) {
         if (!module) {
             if (!load_module()) {
@@ -1572,7 +1572,7 @@ int glp_get_row_stat(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_stat(P, i);
 }
-double glp_get_row_prim(glp_prob *P, int i){
+double glp_get_row_prim (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_prim) {
         if (!module) {
             if (!load_module()) {
@@ -1591,7 +1591,7 @@ double glp_get_row_prim(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_prim(P, i);
 }
-double glp_get_row_dual(glp_prob *P, int i){
+double glp_get_row_dual (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_dual) {
         if (!module) {
             if (!load_module()) {
@@ -1610,7 +1610,7 @@ double glp_get_row_dual(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_dual(P, i);
 }
-int glp_get_col_stat(glp_prob *P, int j){
+int glp_get_col_stat (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_stat) {
         if (!module) {
             if (!load_module()) {
@@ -1629,7 +1629,7 @@ int glp_get_col_stat(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_stat(P, j);
 }
-double glp_get_col_prim(glp_prob *P, int j){
+double glp_get_col_prim (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_prim) {
         if (!module) {
             if (!load_module()) {
@@ -1648,7 +1648,7 @@ double glp_get_col_prim(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_prim(P, j);
 }
-double glp_get_col_dual(glp_prob *P, int j){
+double glp_get_col_dual (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_dual) {
         if (!module) {
             if (!load_module()) {
@@ -1667,7 +1667,7 @@ double glp_get_col_dual(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_dual(P, j);
 }
-int glp_get_unbnd_ray(glp_prob *P){
+int glp_get_unbnd_ray (glp_prob * P){
     if (!__symbolic_glp_get_unbnd_ray) {
         if (!module) {
             if (!load_module()) {
@@ -1686,7 +1686,7 @@ int glp_get_unbnd_ray(glp_prob *P){
     }
     return __symbolic_glp_get_unbnd_ray(P);
 }
-int glp_interior(glp_prob *P, const glp_iptcp *parm){
+int glp_interior (glp_prob * P, const glp_iptcp * parm){
     if (!__symbolic_glp_interior) {
         if (!module) {
             if (!load_module()) {
@@ -1705,7 +1705,7 @@ int glp_interior(glp_prob *P, const glp_iptcp *parm){
     }
     return __symbolic_glp_interior(P, parm);
 }
-void glp_init_iptcp(glp_iptcp *parm){
+void glp_init_iptcp (glp_iptcp * parm){
     if (!__symbolic_glp_init_iptcp) {
         if (!module) {
             if (!load_module()) {
@@ -1724,7 +1724,7 @@ void glp_init_iptcp(glp_iptcp *parm){
     }
     return __symbolic_glp_init_iptcp(parm);
 }
-int glp_ipt_status(glp_prob *P){
+int glp_ipt_status (glp_prob * P){
     if (!__symbolic_glp_ipt_status) {
         if (!module) {
             if (!load_module()) {
@@ -1743,7 +1743,7 @@ int glp_ipt_status(glp_prob *P){
     }
     return __symbolic_glp_ipt_status(P);
 }
-double glp_ipt_obj_val(glp_prob *P){
+double glp_ipt_obj_val (glp_prob * P){
     if (!__symbolic_glp_ipt_obj_val) {
         if (!module) {
             if (!load_module()) {
@@ -1762,7 +1762,7 @@ double glp_ipt_obj_val(glp_prob *P){
     }
     return __symbolic_glp_ipt_obj_val(P);
 }
-double glp_ipt_row_prim(glp_prob *P, int i){
+double glp_ipt_row_prim (glp_prob * P, int i){
     if (!__symbolic_glp_ipt_row_prim) {
         if (!module) {
             if (!load_module()) {
@@ -1781,7 +1781,7 @@ double glp_ipt_row_prim(glp_prob *P, int i){
     }
     return __symbolic_glp_ipt_row_prim(P, i);
 }
-double glp_ipt_row_dual(glp_prob *P, int i){
+double glp_ipt_row_dual (glp_prob * P, int i){
     if (!__symbolic_glp_ipt_row_dual) {
         if (!module) {
             if (!load_module()) {
@@ -1800,7 +1800,7 @@ double glp_ipt_row_dual(glp_prob *P, int i){
     }
     return __symbolic_glp_ipt_row_dual(P, i);
 }
-double glp_ipt_col_prim(glp_prob *P, int j){
+double glp_ipt_col_prim (glp_prob * P, int j){
     if (!__symbolic_glp_ipt_col_prim) {
         if (!module) {
             if (!load_module()) {
@@ -1819,7 +1819,7 @@ double glp_ipt_col_prim(glp_prob *P, int j){
     }
     return __symbolic_glp_ipt_col_prim(P, j);
 }
-double glp_ipt_col_dual(glp_prob *P, int j){
+double glp_ipt_col_dual (glp_prob * P, int j){
     if (!__symbolic_glp_ipt_col_dual) {
         if (!module) {
             if (!load_module()) {
@@ -1838,7 +1838,7 @@ double glp_ipt_col_dual(glp_prob *P, int j){
     }
     return __symbolic_glp_ipt_col_dual(P, j);
 }
-void glp_set_col_kind(glp_prob *P, int j, int kind){
+void glp_set_col_kind (glp_prob * P, int j, int kind){
     if (!__symbolic_glp_set_col_kind) {
         if (!module) {
             if (!load_module()) {
@@ -1857,7 +1857,7 @@ void glp_set_col_kind(glp_prob *P, int j, int kind){
     }
     return __symbolic_glp_set_col_kind(P, j, kind);
 }
-int glp_get_col_kind(glp_prob *P, int j){
+int glp_get_col_kind (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_kind) {
         if (!module) {
             if (!load_module()) {
@@ -1876,7 +1876,7 @@ int glp_get_col_kind(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_kind(P, j);
 }
-int glp_get_num_int(glp_prob *P){
+int glp_get_num_int (glp_prob * P){
     if (!__symbolic_glp_get_num_int) {
         if (!module) {
             if (!load_module()) {
@@ -1895,7 +1895,7 @@ int glp_get_num_int(glp_prob *P){
     }
     return __symbolic_glp_get_num_int(P);
 }
-int glp_get_num_bin(glp_prob *P){
+int glp_get_num_bin (glp_prob * P){
     if (!__symbolic_glp_get_num_bin) {
         if (!module) {
             if (!load_module()) {
@@ -1914,7 +1914,7 @@ int glp_get_num_bin(glp_prob *P){
     }
     return __symbolic_glp_get_num_bin(P);
 }
-int glp_intopt(glp_prob *P, const glp_iocp *parm){
+int glp_intopt (glp_prob * P, const glp_iocp * parm){
     if (!__symbolic_glp_intopt) {
         if (!module) {
             if (!load_module()) {
@@ -1933,7 +1933,7 @@ int glp_intopt(glp_prob *P, const glp_iocp *parm){
     }
     return __symbolic_glp_intopt(P, parm);
 }
-void glp_init_iocp(glp_iocp *parm){
+void glp_init_iocp (glp_iocp * parm){
     if (!__symbolic_glp_init_iocp) {
         if (!module) {
             if (!load_module()) {
@@ -1952,7 +1952,7 @@ void glp_init_iocp(glp_iocp *parm){
     }
     return __symbolic_glp_init_iocp(parm);
 }
-int glp_mip_status(glp_prob *P){
+int glp_mip_status (glp_prob * P){
     if (!__symbolic_glp_mip_status) {
         if (!module) {
             if (!load_module()) {
@@ -1971,7 +1971,7 @@ int glp_mip_status(glp_prob *P){
     }
     return __symbolic_glp_mip_status(P);
 }
-double glp_mip_obj_val(glp_prob *P){
+double glp_mip_obj_val (glp_prob * P){
     if (!__symbolic_glp_mip_obj_val) {
         if (!module) {
             if (!load_module()) {
@@ -1990,7 +1990,7 @@ double glp_mip_obj_val(glp_prob *P){
     }
     return __symbolic_glp_mip_obj_val(P);
 }
-double glp_mip_row_val(glp_prob *P, int i){
+double glp_mip_row_val (glp_prob * P, int i){
     if (!__symbolic_glp_mip_row_val) {
         if (!module) {
             if (!load_module()) {
@@ -2009,7 +2009,7 @@ double glp_mip_row_val(glp_prob *P, int i){
     }
     return __symbolic_glp_mip_row_val(P, i);
 }
-double glp_mip_col_val(glp_prob *P, int j){
+double glp_mip_col_val (glp_prob * P, int j){
     if (!__symbolic_glp_mip_col_val) {
         if (!module) {
             if (!load_module()) {
@@ -2028,7 +2028,7 @@ double glp_mip_col_val(glp_prob *P, int j){
     }
     return __symbolic_glp_mip_col_val(P, j);
 }
-int glp_print_sol(glp_prob *P, const char *fname){
+int glp_print_sol (glp_prob * P, const char *fname){
     if (!__symbolic_glp_print_sol) {
         if (!module) {
             if (!load_module()) {
@@ -2047,7 +2047,7 @@ int glp_print_sol(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_print_sol(P, fname);
 }
-int glp_read_sol(glp_prob *P, const char *fname){
+int glp_read_sol (glp_prob * P, const char *fname){
     if (!__symbolic_glp_read_sol) {
         if (!module) {
             if (!load_module()) {
@@ -2066,7 +2066,7 @@ int glp_read_sol(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_read_sol(P, fname);
 }
-int glp_write_sol(glp_prob *P, const char *fname){
+int glp_write_sol (glp_prob * P, const char *fname){
     if (!__symbolic_glp_write_sol) {
         if (!module) {
             if (!load_module()) {
@@ -2085,7 +2085,7 @@ int glp_write_sol(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_write_sol(P, fname);
 }
-int glp_print_ranges(glp_prob *P, int len, const int list[], int flags, const char *fname){
+int glp_print_ranges (glp_prob * P, int len, const int list[], int flags, const char *fname){
     if (!__symbolic_glp_print_ranges) {
         if (!module) {
             if (!load_module()) {
@@ -2104,7 +2104,7 @@ int glp_print_ranges(glp_prob *P, int len, const int list[], int flags, const ch
     }
     return __symbolic_glp_print_ranges(P, len, list, flags, fname);
 }
-int glp_print_ipt(glp_prob *P, const char *fname){
+int glp_print_ipt (glp_prob * P, const char *fname){
     if (!__symbolic_glp_print_ipt) {
         if (!module) {
             if (!load_module()) {
@@ -2123,7 +2123,7 @@ int glp_print_ipt(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_print_ipt(P, fname);
 }
-int glp_read_ipt(glp_prob *P, const char *fname){
+int glp_read_ipt (glp_prob * P, const char *fname){
     if (!__symbolic_glp_read_ipt) {
         if (!module) {
             if (!load_module()) {
@@ -2142,7 +2142,7 @@ int glp_read_ipt(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_read_ipt(P, fname);
 }
-int glp_write_ipt(glp_prob *P, const char *fname){
+int glp_write_ipt (glp_prob * P, const char *fname){
     if (!__symbolic_glp_write_ipt) {
         if (!module) {
             if (!load_module()) {
@@ -2161,7 +2161,7 @@ int glp_write_ipt(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_write_ipt(P, fname);
 }
-int glp_print_mip(glp_prob *P, const char *fname){
+int glp_print_mip (glp_prob * P, const char *fname){
     if (!__symbolic_glp_print_mip) {
         if (!module) {
             if (!load_module()) {
@@ -2180,7 +2180,7 @@ int glp_print_mip(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_print_mip(P, fname);
 }
-int glp_read_mip(glp_prob *P, const char *fname){
+int glp_read_mip (glp_prob * P, const char *fname){
     if (!__symbolic_glp_read_mip) {
         if (!module) {
             if (!load_module()) {
@@ -2199,7 +2199,7 @@ int glp_read_mip(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_read_mip(P, fname);
 }
-int glp_write_mip(glp_prob *P, const char *fname){
+int glp_write_mip (glp_prob * P, const char *fname){
     if (!__symbolic_glp_write_mip) {
         if (!module) {
             if (!load_module()) {
@@ -2218,7 +2218,7 @@ int glp_write_mip(glp_prob *P, const char *fname){
     }
     return __symbolic_glp_write_mip(P, fname);
 }
-int glp_bf_exists(glp_prob *P){
+int glp_bf_exists (glp_prob * P){
     if (!__symbolic_glp_bf_exists) {
         if (!module) {
             if (!load_module()) {
@@ -2237,7 +2237,7 @@ int glp_bf_exists(glp_prob *P){
     }
     return __symbolic_glp_bf_exists(P);
 }
-int glp_factorize(glp_prob *P){
+int glp_factorize (glp_prob * P){
     if (!__symbolic_glp_factorize) {
         if (!module) {
             if (!load_module()) {
@@ -2256,7 +2256,7 @@ int glp_factorize(glp_prob *P){
     }
     return __symbolic_glp_factorize(P);
 }
-int glp_bf_updated(glp_prob *P){
+int glp_bf_updated (glp_prob * P){
     if (!__symbolic_glp_bf_updated) {
         if (!module) {
             if (!load_module()) {
@@ -2275,7 +2275,7 @@ int glp_bf_updated(glp_prob *P){
     }
     return __symbolic_glp_bf_updated(P);
 }
-void glp_get_bfcp(glp_prob *P, glp_bfcp *parm){
+void glp_get_bfcp (glp_prob * P, glp_bfcp * parm){
     if (!__symbolic_glp_get_bfcp) {
         if (!module) {
             if (!load_module()) {
@@ -2294,7 +2294,7 @@ void glp_get_bfcp(glp_prob *P, glp_bfcp *parm){
     }
     return __symbolic_glp_get_bfcp(P, parm);
 }
-void glp_set_bfcp(glp_prob *P, const glp_bfcp *parm){
+void glp_set_bfcp (glp_prob * P, const glp_bfcp * parm){
     if (!__symbolic_glp_set_bfcp) {
         if (!module) {
             if (!load_module()) {
@@ -2313,7 +2313,7 @@ void glp_set_bfcp(glp_prob *P, const glp_bfcp *parm){
     }
     return __symbolic_glp_set_bfcp(P, parm);
 }
-int glp_get_bhead(glp_prob *P, int k){
+int glp_get_bhead (glp_prob * P, int k){
     if (!__symbolic_glp_get_bhead) {
         if (!module) {
             if (!load_module()) {
@@ -2332,7 +2332,7 @@ int glp_get_bhead(glp_prob *P, int k){
     }
     return __symbolic_glp_get_bhead(P, k);
 }
-int glp_get_row_bind(glp_prob *P, int i){
+int glp_get_row_bind (glp_prob * P, int i){
     if (!__symbolic_glp_get_row_bind) {
         if (!module) {
             if (!load_module()) {
@@ -2351,7 +2351,7 @@ int glp_get_row_bind(glp_prob *P, int i){
     }
     return __symbolic_glp_get_row_bind(P, i);
 }
-int glp_get_col_bind(glp_prob *P, int j){
+int glp_get_col_bind (glp_prob * P, int j){
     if (!__symbolic_glp_get_col_bind) {
         if (!module) {
             if (!load_module()) {
@@ -2370,7 +2370,7 @@ int glp_get_col_bind(glp_prob *P, int j){
     }
     return __symbolic_glp_get_col_bind(P, j);
 }
-void glp_ftran(glp_prob *P, double x[]){
+void glp_ftran (glp_prob * P, double x[]){
     if (!__symbolic_glp_ftran) {
         if (!module) {
             if (!load_module()) {
@@ -2389,7 +2389,7 @@ void glp_ftran(glp_prob *P, double x[]){
     }
     return __symbolic_glp_ftran(P, x);
 }
-void glp_btran(glp_prob *P, double x[]){
+void glp_btran (glp_prob * P, double x[]){
     if (!__symbolic_glp_btran) {
         if (!module) {
             if (!load_module()) {
@@ -2408,7 +2408,7 @@ void glp_btran(glp_prob *P, double x[]){
     }
     return __symbolic_glp_btran(P, x);
 }
-int glp_warm_up(glp_prob *P){
+int glp_warm_up (glp_prob * P){
     if (!__symbolic_glp_warm_up) {
         if (!module) {
             if (!load_module()) {
@@ -2427,7 +2427,7 @@ int glp_warm_up(glp_prob *P){
     }
     return __symbolic_glp_warm_up(P);
 }
-int glp_eval_tab_row(glp_prob *P, int k, int ind[], double val[]){
+int glp_eval_tab_row (glp_prob * P, int k, int ind[], double val[]){
     if (!__symbolic_glp_eval_tab_row) {
         if (!module) {
             if (!load_module()) {
@@ -2446,7 +2446,7 @@ int glp_eval_tab_row(glp_prob *P, int k, int ind[], double val[]){
     }
     return __symbolic_glp_eval_tab_row(P, k, ind, val);
 }
-int glp_eval_tab_col(glp_prob *P, int k, int ind[], double val[]){
+int glp_eval_tab_col (glp_prob * P, int k, int ind[], double val[]){
     if (!__symbolic_glp_eval_tab_col) {
         if (!module) {
             if (!load_module()) {
@@ -2465,7 +2465,7 @@ int glp_eval_tab_col(glp_prob *P, int k, int ind[], double val[]){
     }
     return __symbolic_glp_eval_tab_col(P, k, ind, val);
 }
-int glp_transform_row(glp_prob *P, int len, int ind[], double val[]){
+int glp_transform_row (glp_prob * P, int len, int ind[], double val[]){
     if (!__symbolic_glp_transform_row) {
         if (!module) {
             if (!load_module()) {
@@ -2484,7 +2484,7 @@ int glp_transform_row(glp_prob *P, int len, int ind[], double val[]){
     }
     return __symbolic_glp_transform_row(P, len, ind, val);
 }
-int glp_transform_col(glp_prob *P, int len, int ind[], double val[]){
+int glp_transform_col (glp_prob * P, int len, int ind[], double val[]){
     if (!__symbolic_glp_transform_col) {
         if (!module) {
             if (!load_module()) {
@@ -2503,7 +2503,7 @@ int glp_transform_col(glp_prob *P, int len, int ind[], double val[]){
     }
     return __symbolic_glp_transform_col(P, len, ind, val);
 }
-int glp_prim_rtest(glp_prob *P, int len, const int ind[], const double val[], int dir, double eps){
+int glp_prim_rtest (glp_prob * P, int len, const int ind[], const double val[], int dir, double eps){
     if (!__symbolic_glp_prim_rtest) {
         if (!module) {
             if (!load_module()) {
@@ -2522,7 +2522,7 @@ int glp_prim_rtest(glp_prob *P, int len, const int ind[], const double val[], in
     }
     return __symbolic_glp_prim_rtest(P, len, ind, val, dir, eps);
 }
-int glp_dual_rtest(glp_prob *P, int len, const int ind[], const double val[], int dir, double eps){
+int glp_dual_rtest (glp_prob * P, int len, const int ind[], const double val[], int dir, double eps){
     if (!__symbolic_glp_dual_rtest) {
         if (!module) {
             if (!load_module()) {
@@ -2541,7 +2541,7 @@ int glp_dual_rtest(glp_prob *P, int len, const int ind[], const double val[], in
     }
     return __symbolic_glp_dual_rtest(P, len, ind, val, dir, eps);
 }
-void glp_analyze_bound(glp_prob *P, int k, double *value1, int *var1, double *value2, int *var2){
+void glp_analyze_bound (glp_prob * P, int k, double *value1, int *var1, double *value2, int *var2){
     if (!__symbolic_glp_analyze_bound) {
         if (!module) {
             if (!load_module()) {
@@ -2560,7 +2560,7 @@ void glp_analyze_bound(glp_prob *P, int k, double *value1, int *var1, double *va
     }
     return __symbolic_glp_analyze_bound(P, k, value1, var1, value2, var2);
 }
-void glp_analyze_coef(glp_prob *P, int k, double *coef1, int *var1, double *value1, double *coef2, int *var2, double *value2){
+void glp_analyze_coef (glp_prob * P, int k, double *coef1, int *var1, double *value1, double *coef2, int *var2, double *value2){
     if (!__symbolic_glp_analyze_coef) {
         if (!module) {
             if (!load_module()) {
@@ -2579,7 +2579,7 @@ void glp_analyze_coef(glp_prob *P, int k, double *coef1, int *var1, double *valu
     }
     return __symbolic_glp_analyze_coef(P, k, coef1, var1, value1, coef2, var2, value2);
 }
-int glp_ios_reason(glp_tree *T){
+int glp_ios_reason (glp_tree * T){
     if (!__symbolic_glp_ios_reason) {
         if (!module) {
             if (!load_module()) {
@@ -2598,7 +2598,7 @@ int glp_ios_reason(glp_tree *T){
     }
     return __symbolic_glp_ios_reason(T);
 }
-glp_prob *glp_ios_get_prob(glp_tree *T){
+glp_prob *glp_ios_get_prob (glp_tree * T){
     if (!__symbolic_glp_ios_get_prob) {
         if (!module) {
             if (!load_module()) {
@@ -2617,7 +2617,7 @@ glp_prob *glp_ios_get_prob(glp_tree *T){
     }
     return __symbolic_glp_ios_get_prob(T);
 }
-void glp_ios_tree_size(glp_tree *T, int *a_cnt, int *n_cnt, int *t_cnt){
+void glp_ios_tree_size (glp_tree * T, int *a_cnt, int *n_cnt, int *t_cnt){
     if (!__symbolic_glp_ios_tree_size) {
         if (!module) {
             if (!load_module()) {
@@ -2636,7 +2636,7 @@ void glp_ios_tree_size(glp_tree *T, int *a_cnt, int *n_cnt, int *t_cnt){
     }
     return __symbolic_glp_ios_tree_size(T, a_cnt, n_cnt, t_cnt);
 }
-int glp_ios_curr_node(glp_tree *T){
+int glp_ios_curr_node (glp_tree * T){
     if (!__symbolic_glp_ios_curr_node) {
         if (!module) {
             if (!load_module()) {
@@ -2655,7 +2655,7 @@ int glp_ios_curr_node(glp_tree *T){
     }
     return __symbolic_glp_ios_curr_node(T);
 }
-int glp_ios_next_node(glp_tree *T, int p){
+int glp_ios_next_node (glp_tree * T, int p){
     if (!__symbolic_glp_ios_next_node) {
         if (!module) {
             if (!load_module()) {
@@ -2674,7 +2674,7 @@ int glp_ios_next_node(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_next_node(T, p);
 }
-int glp_ios_prev_node(glp_tree *T, int p){
+int glp_ios_prev_node (glp_tree * T, int p){
     if (!__symbolic_glp_ios_prev_node) {
         if (!module) {
             if (!load_module()) {
@@ -2693,7 +2693,7 @@ int glp_ios_prev_node(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_prev_node(T, p);
 }
-int glp_ios_up_node(glp_tree *T, int p){
+int glp_ios_up_node (glp_tree * T, int p){
     if (!__symbolic_glp_ios_up_node) {
         if (!module) {
             if (!load_module()) {
@@ -2712,7 +2712,7 @@ int glp_ios_up_node(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_up_node(T, p);
 }
-int glp_ios_node_level(glp_tree *T, int p){
+int glp_ios_node_level (glp_tree * T, int p){
     if (!__symbolic_glp_ios_node_level) {
         if (!module) {
             if (!load_module()) {
@@ -2731,7 +2731,7 @@ int glp_ios_node_level(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_node_level(T, p);
 }
-double glp_ios_node_bound(glp_tree *T, int p){
+double glp_ios_node_bound (glp_tree * T, int p){
     if (!__symbolic_glp_ios_node_bound) {
         if (!module) {
             if (!load_module()) {
@@ -2750,7 +2750,7 @@ double glp_ios_node_bound(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_node_bound(T, p);
 }
-int glp_ios_best_node(glp_tree *T){
+int glp_ios_best_node (glp_tree * T){
     if (!__symbolic_glp_ios_best_node) {
         if (!module) {
             if (!load_module()) {
@@ -2769,7 +2769,7 @@ int glp_ios_best_node(glp_tree *T){
     }
     return __symbolic_glp_ios_best_node(T);
 }
-double glp_ios_mip_gap(glp_tree *T){
+double glp_ios_mip_gap (glp_tree * T){
     if (!__symbolic_glp_ios_mip_gap) {
         if (!module) {
             if (!load_module()) {
@@ -2788,7 +2788,7 @@ double glp_ios_mip_gap(glp_tree *T){
     }
     return __symbolic_glp_ios_mip_gap(T);
 }
-void *glp_ios_node_data(glp_tree *T, int p){
+void *glp_ios_node_data (glp_tree * T, int p){
     if (!__symbolic_glp_ios_node_data) {
         if (!module) {
             if (!load_module()) {
@@ -2807,7 +2807,7 @@ void *glp_ios_node_data(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_node_data(T, p);
 }
-void glp_ios_row_attr(glp_tree *T, int i, glp_attr *attr){
+void glp_ios_row_attr (glp_tree * T, int i, glp_attr * attr){
     if (!__symbolic_glp_ios_row_attr) {
         if (!module) {
             if (!load_module()) {
@@ -2826,7 +2826,7 @@ void glp_ios_row_attr(glp_tree *T, int i, glp_attr *attr){
     }
     return __symbolic_glp_ios_row_attr(T, i, attr);
 }
-int glp_ios_pool_size(glp_tree *T){
+int glp_ios_pool_size (glp_tree * T){
     if (!__symbolic_glp_ios_pool_size) {
         if (!module) {
             if (!load_module()) {
@@ -2845,7 +2845,7 @@ int glp_ios_pool_size(glp_tree *T){
     }
     return __symbolic_glp_ios_pool_size(T);
 }
-int glp_ios_add_row(glp_tree *T, const char *name, int klass, int flags, int len, const int ind[], const double val[], int type, double rhs){
+int glp_ios_add_row (glp_tree * T, const char *name, int klass, int flags, int len, const int ind[], const double val[], int type, double rhs){
     if (!__symbolic_glp_ios_add_row) {
         if (!module) {
             if (!load_module()) {
@@ -2864,7 +2864,7 @@ int glp_ios_add_row(glp_tree *T, const char *name, int klass, int flags, int len
     }
     return __symbolic_glp_ios_add_row(T, name, klass, flags, len, ind, val, type, rhs);
 }
-void glp_ios_del_row(glp_tree *T, int i){
+void glp_ios_del_row (glp_tree * T, int i){
     if (!__symbolic_glp_ios_del_row) {
         if (!module) {
             if (!load_module()) {
@@ -2883,7 +2883,7 @@ void glp_ios_del_row(glp_tree *T, int i){
     }
     return __symbolic_glp_ios_del_row(T, i);
 }
-void glp_ios_clear_pool(glp_tree *T){
+void glp_ios_clear_pool (glp_tree * T){
     if (!__symbolic_glp_ios_clear_pool) {
         if (!module) {
             if (!load_module()) {
@@ -2902,7 +2902,7 @@ void glp_ios_clear_pool(glp_tree *T){
     }
     return __symbolic_glp_ios_clear_pool(T);
 }
-int glp_ios_can_branch(glp_tree *T, int j){
+int glp_ios_can_branch (glp_tree * T, int j){
     if (!__symbolic_glp_ios_can_branch) {
         if (!module) {
             if (!load_module()) {
@@ -2921,7 +2921,7 @@ int glp_ios_can_branch(glp_tree *T, int j){
     }
     return __symbolic_glp_ios_can_branch(T, j);
 }
-void glp_ios_branch_upon(glp_tree *T, int j, int sel){
+void glp_ios_branch_upon (glp_tree * T, int j, int sel){
     if (!__symbolic_glp_ios_branch_upon) {
         if (!module) {
             if (!load_module()) {
@@ -2940,7 +2940,7 @@ void glp_ios_branch_upon(glp_tree *T, int j, int sel){
     }
     return __symbolic_glp_ios_branch_upon(T, j, sel);
 }
-void glp_ios_select_node(glp_tree *T, int p){
+void glp_ios_select_node (glp_tree * T, int p){
     if (!__symbolic_glp_ios_select_node) {
         if (!module) {
             if (!load_module()) {
@@ -2959,7 +2959,7 @@ void glp_ios_select_node(glp_tree *T, int p){
     }
     return __symbolic_glp_ios_select_node(T, p);
 }
-int glp_ios_heur_sol(glp_tree *T, const double x[]){
+int glp_ios_heur_sol (glp_tree * T, const double x[]){
     if (!__symbolic_glp_ios_heur_sol) {
         if (!module) {
             if (!load_module()) {
@@ -2978,7 +2978,7 @@ int glp_ios_heur_sol(glp_tree *T, const double x[]){
     }
     return __symbolic_glp_ios_heur_sol(T, x);
 }
-void glp_ios_terminate(glp_tree *T){
+void glp_ios_terminate (glp_tree * T){
     if (!__symbolic_glp_ios_terminate) {
         if (!module) {
             if (!load_module()) {
@@ -2997,7 +2997,7 @@ void glp_ios_terminate(glp_tree *T){
     }
     return __symbolic_glp_ios_terminate(T);
 }
-void glp_init_mpscp(glp_mpscp *parm){
+void glp_init_mpscp (glp_mpscp * parm){
     if (!__symbolic_glp_init_mpscp) {
         if (!module) {
             if (!load_module()) {
@@ -3016,7 +3016,7 @@ void glp_init_mpscp(glp_mpscp *parm){
     }
     return __symbolic_glp_init_mpscp(parm);
 }
-int glp_read_mps(glp_prob *P, int fmt, const glp_mpscp *parm, const char *fname){
+int glp_read_mps (glp_prob * P, int fmt, const glp_mpscp * parm, const char *fname){
     if (!__symbolic_glp_read_mps) {
         if (!module) {
             if (!load_module()) {
@@ -3035,7 +3035,7 @@ int glp_read_mps(glp_prob *P, int fmt, const glp_mpscp *parm, const char *fname)
     }
     return __symbolic_glp_read_mps(P, fmt, parm, fname);
 }
-int glp_write_mps(glp_prob *P, int fmt, const glp_mpscp *parm, const char *fname){
+int glp_write_mps (glp_prob * P, int fmt, const glp_mpscp * parm, const char *fname){
     if (!__symbolic_glp_write_mps) {
         if (!module) {
             if (!load_module()) {
@@ -3054,7 +3054,7 @@ int glp_write_mps(glp_prob *P, int fmt, const glp_mpscp *parm, const char *fname
     }
     return __symbolic_glp_write_mps(P, fmt, parm, fname);
 }
-void glp_init_cpxcp(glp_cpxcp *parm){
+void glp_init_cpxcp (glp_cpxcp * parm){
     if (!__symbolic_glp_init_cpxcp) {
         if (!module) {
             if (!load_module()) {
@@ -3073,7 +3073,7 @@ void glp_init_cpxcp(glp_cpxcp *parm){
     }
     return __symbolic_glp_init_cpxcp(parm);
 }
-int glp_read_lp(glp_prob *P, const glp_cpxcp *parm, const char *fname){
+int glp_read_lp (glp_prob * P, const glp_cpxcp * parm, const char *fname){
     if (!__symbolic_glp_read_lp) {
         if (!module) {
             if (!load_module()) {
@@ -3092,7 +3092,7 @@ int glp_read_lp(glp_prob *P, const glp_cpxcp *parm, const char *fname){
     }
     return __symbolic_glp_read_lp(P, parm, fname);
 }
-int glp_write_lp(glp_prob *P, const glp_cpxcp *parm, const char *fname){
+int glp_write_lp (glp_prob * P, const glp_cpxcp * parm, const char *fname){
     if (!__symbolic_glp_write_lp) {
         if (!module) {
             if (!load_module()) {
@@ -3111,7 +3111,7 @@ int glp_write_lp(glp_prob *P, const glp_cpxcp *parm, const char *fname){
     }
     return __symbolic_glp_write_lp(P, parm, fname);
 }
-int glp_read_prob(glp_prob *P, int flags, const char *fname){
+int glp_read_prob (glp_prob * P, int flags, const char *fname){
     if (!__symbolic_glp_read_prob) {
         if (!module) {
             if (!load_module()) {
@@ -3130,7 +3130,7 @@ int glp_read_prob(glp_prob *P, int flags, const char *fname){
     }
     return __symbolic_glp_read_prob(P, flags, fname);
 }
-int glp_write_prob(glp_prob *P, int flags, const char *fname){
+int glp_write_prob (glp_prob * P, int flags, const char *fname){
     if (!__symbolic_glp_write_prob) {
         if (!module) {
             if (!load_module()) {
@@ -3149,7 +3149,7 @@ int glp_write_prob(glp_prob *P, int flags, const char *fname){
     }
     return __symbolic_glp_write_prob(P, flags, fname);
 }
-glp_tran *glp_mpl_alloc_wksp(void){
+glp_tran *glp_mpl_alloc_wksp (void){
     if (!__symbolic_glp_mpl_alloc_wksp) {
         if (!module) {
             if (!load_module()) {
@@ -3168,7 +3168,7 @@ glp_tran *glp_mpl_alloc_wksp(void){
     }
     return __symbolic_glp_mpl_alloc_wksp();
 }
-int glp_mpl_read_model(glp_tran *tran, const char *fname, int skip){
+int glp_mpl_read_model (glp_tran * tran, const char *fname, int skip){
     if (!__symbolic_glp_mpl_read_model) {
         if (!module) {
             if (!load_module()) {
@@ -3187,7 +3187,7 @@ int glp_mpl_read_model(glp_tran *tran, const char *fname, int skip){
     }
     return __symbolic_glp_mpl_read_model(tran, fname, skip);
 }
-int glp_mpl_read_data(glp_tran *tran, const char *fname){
+int glp_mpl_read_data (glp_tran * tran, const char *fname){
     if (!__symbolic_glp_mpl_read_data) {
         if (!module) {
             if (!load_module()) {
@@ -3206,7 +3206,7 @@ int glp_mpl_read_data(glp_tran *tran, const char *fname){
     }
     return __symbolic_glp_mpl_read_data(tran, fname);
 }
-int glp_mpl_generate(glp_tran *tran, const char *fname){
+int glp_mpl_generate (glp_tran * tran, const char *fname){
     if (!__symbolic_glp_mpl_generate) {
         if (!module) {
             if (!load_module()) {
@@ -3225,7 +3225,7 @@ int glp_mpl_generate(glp_tran *tran, const char *fname){
     }
     return __symbolic_glp_mpl_generate(tran, fname);
 }
-void glp_mpl_build_prob(glp_tran *tran, glp_prob *prob){
+void glp_mpl_build_prob (glp_tran * tran, glp_prob * prob){
     if (!__symbolic_glp_mpl_build_prob) {
         if (!module) {
             if (!load_module()) {
@@ -3244,7 +3244,7 @@ void glp_mpl_build_prob(glp_tran *tran, glp_prob *prob){
     }
     return __symbolic_glp_mpl_build_prob(tran, prob);
 }
-int glp_mpl_postsolve(glp_tran *tran, glp_prob *prob, int sol){
+int glp_mpl_postsolve (glp_tran * tran, glp_prob * prob, int sol){
     if (!__symbolic_glp_mpl_postsolve) {
         if (!module) {
             if (!load_module()) {
@@ -3263,7 +3263,7 @@ int glp_mpl_postsolve(glp_tran *tran, glp_prob *prob, int sol){
     }
     return __symbolic_glp_mpl_postsolve(tran, prob, sol);
 }
-void glp_mpl_free_wksp(glp_tran *tran){
+void glp_mpl_free_wksp (glp_tran * tran){
     if (!__symbolic_glp_mpl_free_wksp) {
         if (!module) {
             if (!load_module()) {
@@ -3282,7 +3282,7 @@ void glp_mpl_free_wksp(glp_tran *tran){
     }
     return __symbolic_glp_mpl_free_wksp(tran);
 }
-int glp_main(int argc, const char *argv[]){
+int glp_main (int argc, const char *argv[]){
     if (!__symbolic_glp_main) {
         if (!module) {
             if (!load_module()) {
@@ -3301,7 +3301,7 @@ int glp_main(int argc, const char *argv[]){
     }
     return __symbolic_glp_main(argc, argv);
 }
-int glp_init_env(void){
+int glp_init_env (void){
     if (!__symbolic_glp_init_env) {
         if (!module) {
             if (!load_module()) {
@@ -3320,7 +3320,7 @@ int glp_init_env(void){
     }
     return __symbolic_glp_init_env();
 }
-const char *glp_version(void){
+const char *glp_version (void){
     if (!__symbolic_glp_version) {
         if (!module) {
             if (!load_module()) {
@@ -3339,7 +3339,7 @@ const char *glp_version(void){
     }
     return __symbolic_glp_version();
 }
-int glp_free_env(void){
+int glp_free_env (void){
     if (!__symbolic_glp_free_env) {
         if (!module) {
             if (!load_module()) {
@@ -3358,7 +3358,7 @@ int glp_free_env(void){
     }
     return __symbolic_glp_free_env();
 }
-void glp_printf(const char *fmt, ...){
+void glp_printf (const char *fmt, ...){
     if (!__symbolic_glp_printf) {
         if (!module) {
             if (!load_module()) {
@@ -3377,7 +3377,7 @@ void glp_printf(const char *fmt, ...){
     }
     return __symbolic_glp_printf(fmt);
 }
-void glp_vprintf(const char *fmt, va_list arg){
+void glp_vprintf (const char *fmt, va_list arg){
     if (!__symbolic_glp_vprintf) {
         if (!module) {
             if (!load_module()) {
@@ -3396,7 +3396,7 @@ void glp_vprintf(const char *fmt, va_list arg){
     }
     return __symbolic_glp_vprintf(fmt, arg);
 }
-int glp_term_out(int flag){
+int glp_term_out (int flag){
     if (!__symbolic_glp_term_out) {
         if (!module) {
             if (!load_module()) {
@@ -3415,7 +3415,7 @@ int glp_term_out(int flag){
     }
     return __symbolic_glp_term_out(flag);
 }
-void glp_term_hook(int (*func)(void *info, const char *s), void *info){
+void glp_term_hook (int (*func) (void *info, const char *s), void *info){
     if (!__symbolic_glp_term_hook) {
         if (!module) {
             if (!load_module()) {
@@ -3434,7 +3434,7 @@ void glp_term_hook(int (*func)(void *info, const char *s), void *info){
     }
     return __symbolic_glp_term_hook(func, info);
 }
-int glp_open_tee(const char *fname){
+int glp_open_tee (const char *fname){
     if (!__symbolic_glp_open_tee) {
         if (!module) {
             if (!load_module()) {
@@ -3453,7 +3453,7 @@ int glp_open_tee(const char *fname){
     }
     return __symbolic_glp_open_tee(fname);
 }
-int glp_close_tee(void){
+int glp_close_tee (void){
     if (!__symbolic_glp_close_tee) {
         if (!module) {
             if (!load_module()) {
@@ -3472,7 +3472,7 @@ int glp_close_tee(void){
     }
     return __symbolic_glp_close_tee();
 }
-_glp_error glp_error_(const char *file, int line){
+_glp_error glp_error_ (const char *file, int line){
     if (!__symbolic_glp_error_) {
         if (!module) {
             if (!load_module()) {
@@ -3491,7 +3491,7 @@ _glp_error glp_error_(const char *file, int line){
     }
     return __symbolic_glp_error_(file, line);
 }
-void glp_assert_(const char *expr, const char *file, int line){
+void glp_assert_ (const char *expr, const char *file, int line){
     if (!__symbolic_glp_assert_) {
         if (!module) {
             if (!load_module()) {
@@ -3510,7 +3510,7 @@ void glp_assert_(const char *expr, const char *file, int line){
     }
     return __symbolic_glp_assert_(expr, file, line);
 }
-void glp_error_hook(void (*func)(void *info), void *info){
+void glp_error_hook (void (*func) (void *info), void *info){
     if (!__symbolic_glp_error_hook) {
         if (!module) {
             if (!load_module()) {
@@ -3529,7 +3529,7 @@ void glp_error_hook(void (*func)(void *info), void *info){
     }
     return __symbolic_glp_error_hook(func, info);
 }
-void *glp_malloc(int size){
+void *glp_malloc (int size){
     if (!__symbolic_glp_malloc) {
         if (!module) {
             if (!load_module()) {
@@ -3548,7 +3548,7 @@ void *glp_malloc(int size){
     }
     return __symbolic_glp_malloc(size);
 }
-void *glp_calloc(int n, int size){
+void *glp_calloc (int n, int size){
     if (!__symbolic_glp_calloc) {
         if (!module) {
             if (!load_module()) {
@@ -3567,7 +3567,7 @@ void *glp_calloc(int n, int size){
     }
     return __symbolic_glp_calloc(n, size);
 }
-void glp_free(void *ptr){
+void glp_free (void *ptr){
     if (!__symbolic_glp_free) {
         if (!module) {
             if (!load_module()) {
@@ -3586,7 +3586,7 @@ void glp_free(void *ptr){
     }
     return __symbolic_glp_free(ptr);
 }
-void glp_mem_limit(int limit){
+void glp_mem_limit (int limit){
     if (!__symbolic_glp_mem_limit) {
         if (!module) {
             if (!load_module()) {
@@ -3605,7 +3605,7 @@ void glp_mem_limit(int limit){
     }
     return __symbolic_glp_mem_limit(limit);
 }
-void glp_mem_usage(int *count, int *cpeak, glp_long *total, glp_long *tpeak){
+void glp_mem_usage (int *count, int *cpeak, glp_long * total, glp_long * tpeak){
     if (!__symbolic_glp_mem_usage) {
         if (!module) {
             if (!load_module()) {
@@ -3624,7 +3624,7 @@ void glp_mem_usage(int *count, int *cpeak, glp_long *total, glp_long *tpeak){
     }
     return __symbolic_glp_mem_usage(count, cpeak, total, tpeak);
 }
-glp_long glp_time(void){
+glp_long glp_time (void){
     if (!__symbolic_glp_time) {
         if (!module) {
             if (!load_module()) {
@@ -3643,7 +3643,7 @@ glp_long glp_time(void){
     }
     return __symbolic_glp_time();
 }
-double glp_difftime(glp_long t1, glp_long t0){
+double glp_difftime (glp_long t1, glp_long t0){
     if (!__symbolic_glp_difftime) {
         if (!module) {
             if (!load_module()) {
@@ -3662,7 +3662,7 @@ double glp_difftime(glp_long t1, glp_long t0){
     }
     return __symbolic_glp_difftime(t1, t0);
 }
-glp_data *glp_sdf_open_file(const char *fname){
+glp_data *glp_sdf_open_file (const char *fname){
     if (!__symbolic_glp_sdf_open_file) {
         if (!module) {
             if (!load_module()) {
@@ -3681,7 +3681,7 @@ glp_data *glp_sdf_open_file(const char *fname){
     }
     return __symbolic_glp_sdf_open_file(fname);
 }
-void glp_sdf_set_jump(glp_data *data, void *jump){
+void glp_sdf_set_jump (glp_data * data, void *jump){
     if (!__symbolic_glp_sdf_set_jump) {
         if (!module) {
             if (!load_module()) {
@@ -3700,7 +3700,7 @@ void glp_sdf_set_jump(glp_data *data, void *jump){
     }
     return __symbolic_glp_sdf_set_jump(data, jump);
 }
-void glp_sdf_error(glp_data *data, const char *fmt, ...){
+void glp_sdf_error (glp_data * data, const char *fmt, ...){
     if (!__symbolic_glp_sdf_error) {
         if (!module) {
             if (!load_module()) {
@@ -3719,7 +3719,7 @@ void glp_sdf_error(glp_data *data, const char *fmt, ...){
     }
     return __symbolic_glp_sdf_error(data, fmt);
 }
-void glp_sdf_warning(glp_data *data, const char *fmt, ...){
+void glp_sdf_warning (glp_data * data, const char *fmt, ...){
     if (!__symbolic_glp_sdf_warning) {
         if (!module) {
             if (!load_module()) {
@@ -3738,7 +3738,7 @@ void glp_sdf_warning(glp_data *data, const char *fmt, ...){
     }
     return __symbolic_glp_sdf_warning(data, fmt);
 }
-int glp_sdf_read_int(glp_data *data){
+int glp_sdf_read_int (glp_data * data){
     if (!__symbolic_glp_sdf_read_int) {
         if (!module) {
             if (!load_module()) {
@@ -3757,7 +3757,7 @@ int glp_sdf_read_int(glp_data *data){
     }
     return __symbolic_glp_sdf_read_int(data);
 }
-double glp_sdf_read_num(glp_data *data){
+double glp_sdf_read_num (glp_data * data){
     if (!__symbolic_glp_sdf_read_num) {
         if (!module) {
             if (!load_module()) {
@@ -3776,7 +3776,7 @@ double glp_sdf_read_num(glp_data *data){
     }
     return __symbolic_glp_sdf_read_num(data);
 }
-const char *glp_sdf_read_item(glp_data *data){
+const char *glp_sdf_read_item (glp_data * data){
     if (!__symbolic_glp_sdf_read_item) {
         if (!module) {
             if (!load_module()) {
@@ -3795,7 +3795,7 @@ const char *glp_sdf_read_item(glp_data *data){
     }
     return __symbolic_glp_sdf_read_item(data);
 }
-const char *glp_sdf_read_text(glp_data *data){
+const char *glp_sdf_read_text (glp_data * data){
     if (!__symbolic_glp_sdf_read_text) {
         if (!module) {
             if (!load_module()) {
@@ -3814,7 +3814,7 @@ const char *glp_sdf_read_text(glp_data *data){
     }
     return __symbolic_glp_sdf_read_text(data);
 }
-int glp_sdf_line(glp_data *data){
+int glp_sdf_line (glp_data * data){
     if (!__symbolic_glp_sdf_line) {
         if (!module) {
             if (!load_module()) {
@@ -3833,7 +3833,7 @@ int glp_sdf_line(glp_data *data){
     }
     return __symbolic_glp_sdf_line(data);
 }
-void glp_sdf_close_file(glp_data *data){
+void glp_sdf_close_file (glp_data * data){
     if (!__symbolic_glp_sdf_close_file) {
         if (!module) {
             if (!load_module()) {
@@ -3852,7 +3852,7 @@ void glp_sdf_close_file(glp_data *data){
     }
     return __symbolic_glp_sdf_close_file(data);
 }
-glp_graph *glp_create_graph(int v_size, int a_size){
+glp_graph *glp_create_graph (int v_size, int a_size){
     if (!__symbolic_glp_create_graph) {
         if (!module) {
             if (!load_module()) {
@@ -3871,7 +3871,7 @@ glp_graph *glp_create_graph(int v_size, int a_size){
     }
     return __symbolic_glp_create_graph(v_size, a_size);
 }
-void glp_set_graph_name(glp_graph *G, const char *name){
+void glp_set_graph_name (glp_graph * G, const char *name){
     if (!__symbolic_glp_set_graph_name) {
         if (!module) {
             if (!load_module()) {
@@ -3890,7 +3890,7 @@ void glp_set_graph_name(glp_graph *G, const char *name){
     }
     return __symbolic_glp_set_graph_name(G, name);
 }
-int glp_add_vertices(glp_graph *G, int nadd){
+int glp_add_vertices (glp_graph * G, int nadd){
     if (!__symbolic_glp_add_vertices) {
         if (!module) {
             if (!load_module()) {
@@ -3909,7 +3909,7 @@ int glp_add_vertices(glp_graph *G, int nadd){
     }
     return __symbolic_glp_add_vertices(G, nadd);
 }
-void glp_set_vertex_name(glp_graph *G, int i, const char *name){
+void glp_set_vertex_name (glp_graph * G, int i, const char *name){
     if (!__symbolic_glp_set_vertex_name) {
         if (!module) {
             if (!load_module()) {
@@ -3928,7 +3928,7 @@ void glp_set_vertex_name(glp_graph *G, int i, const char *name){
     }
     return __symbolic_glp_set_vertex_name(G, i, name);
 }
-glp_arc *glp_add_arc(glp_graph *G, int i, int j){
+glp_arc *glp_add_arc (glp_graph * G, int i, int j){
     if (!__symbolic_glp_add_arc) {
         if (!module) {
             if (!load_module()) {
@@ -3947,7 +3947,7 @@ glp_arc *glp_add_arc(glp_graph *G, int i, int j){
     }
     return __symbolic_glp_add_arc(G, i, j);
 }
-void glp_del_vertices(glp_graph *G, int ndel, const int num[]){
+void glp_del_vertices (glp_graph * G, int ndel, const int num[]){
     if (!__symbolic_glp_del_vertices) {
         if (!module) {
             if (!load_module()) {
@@ -3966,7 +3966,7 @@ void glp_del_vertices(glp_graph *G, int ndel, const int num[]){
     }
     return __symbolic_glp_del_vertices(G, ndel, num);
 }
-void glp_del_arc(glp_graph *G, glp_arc *a){
+void glp_del_arc (glp_graph * G, glp_arc * a){
     if (!__symbolic_glp_del_arc) {
         if (!module) {
             if (!load_module()) {
@@ -3985,7 +3985,7 @@ void glp_del_arc(glp_graph *G, glp_arc *a){
     }
     return __symbolic_glp_del_arc(G, a);
 }
-void glp_erase_graph(glp_graph *G, int v_size, int a_size){
+void glp_erase_graph (glp_graph * G, int v_size, int a_size){
     if (!__symbolic_glp_erase_graph) {
         if (!module) {
             if (!load_module()) {
@@ -4004,7 +4004,7 @@ void glp_erase_graph(glp_graph *G, int v_size, int a_size){
     }
     return __symbolic_glp_erase_graph(G, v_size, a_size);
 }
-void glp_delete_graph(glp_graph *G){
+void glp_delete_graph (glp_graph * G){
     if (!__symbolic_glp_delete_graph) {
         if (!module) {
             if (!load_module()) {
@@ -4023,7 +4023,7 @@ void glp_delete_graph(glp_graph *G){
     }
     return __symbolic_glp_delete_graph(G);
 }
-void glp_create_v_index(glp_graph *G){
+void glp_create_v_index (glp_graph * G){
     if (!__symbolic_glp_create_v_index) {
         if (!module) {
             if (!load_module()) {
@@ -4042,7 +4042,7 @@ void glp_create_v_index(glp_graph *G){
     }
     return __symbolic_glp_create_v_index(G);
 }
-int glp_find_vertex(glp_graph *G, const char *name){
+int glp_find_vertex (glp_graph * G, const char *name){
     if (!__symbolic_glp_find_vertex) {
         if (!module) {
             if (!load_module()) {
@@ -4061,7 +4061,7 @@ int glp_find_vertex(glp_graph *G, const char *name){
     }
     return __symbolic_glp_find_vertex(G, name);
 }
-void glp_delete_v_index(glp_graph *G){
+void glp_delete_v_index (glp_graph * G){
     if (!__symbolic_glp_delete_v_index) {
         if (!module) {
             if (!load_module()) {
@@ -4080,7 +4080,7 @@ void glp_delete_v_index(glp_graph *G){
     }
     return __symbolic_glp_delete_v_index(G);
 }
-int glp_read_graph(glp_graph *G, const char *fname){
+int glp_read_graph (glp_graph * G, const char *fname){
     if (!__symbolic_glp_read_graph) {
         if (!module) {
             if (!load_module()) {
@@ -4099,7 +4099,7 @@ int glp_read_graph(glp_graph *G, const char *fname){
     }
     return __symbolic_glp_read_graph(G, fname);
 }
-int glp_write_graph(glp_graph *G, const char *fname){
+int glp_write_graph (glp_graph * G, const char *fname){
     if (!__symbolic_glp_write_graph) {
         if (!module) {
             if (!load_module()) {
@@ -4118,7 +4118,7 @@ int glp_write_graph(glp_graph *G, const char *fname){
     }
     return __symbolic_glp_write_graph(G, fname);
 }
-void glp_mincost_lp(glp_prob *P, glp_graph *G, int names, int v_rhs, int a_low, int a_cap, int a_cost){
+void glp_mincost_lp (glp_prob * P, glp_graph * G, int names, int v_rhs, int a_low, int a_cap, int a_cost){
     if (!__symbolic_glp_mincost_lp) {
         if (!module) {
             if (!load_module()) {
@@ -4137,7 +4137,7 @@ void glp_mincost_lp(glp_prob *P, glp_graph *G, int names, int v_rhs, int a_low, 
     }
     return __symbolic_glp_mincost_lp(P, G, names, v_rhs, a_low, a_cap, a_cost);
 }
-int glp_mincost_okalg(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, double *sol, int a_x, int v_pi){
+int glp_mincost_okalg (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost, double *sol, int a_x, int v_pi){
     if (!__symbolic_glp_mincost_okalg) {
         if (!module) {
             if (!load_module()) {
@@ -4156,7 +4156,7 @@ int glp_mincost_okalg(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost,
     }
     return __symbolic_glp_mincost_okalg(G, v_rhs, a_low, a_cap, a_cost, sol, a_x, v_pi);
 }
-void glp_maxflow_lp(glp_prob *P, glp_graph *G, int names, int s, int t, int a_cap){
+void glp_maxflow_lp (glp_prob * P, glp_graph * G, int names, int s, int t, int a_cap){
     if (!__symbolic_glp_maxflow_lp) {
         if (!module) {
             if (!load_module()) {
@@ -4175,7 +4175,7 @@ void glp_maxflow_lp(glp_prob *P, glp_graph *G, int names, int s, int t, int a_ca
     }
     return __symbolic_glp_maxflow_lp(P, G, names, s, t, a_cap);
 }
-int glp_maxflow_ffalg(glp_graph *G, int s, int t, int a_cap, double *sol, int a_x, int v_cut){
+int glp_maxflow_ffalg (glp_graph * G, int s, int t, int a_cap, double *sol, int a_x, int v_cut){
     if (!__symbolic_glp_maxflow_ffalg) {
         if (!module) {
             if (!load_module()) {
@@ -4194,7 +4194,7 @@ int glp_maxflow_ffalg(glp_graph *G, int s, int t, int a_cap, double *sol, int a_
     }
     return __symbolic_glp_maxflow_ffalg(G, s, t, a_cap, sol, a_x, v_cut);
 }
-int glp_check_asnprob(glp_graph *G, int v_set){
+int glp_check_asnprob (glp_graph * G, int v_set){
     if (!__symbolic_glp_check_asnprob) {
         if (!module) {
             if (!load_module()) {
@@ -4213,7 +4213,7 @@ int glp_check_asnprob(glp_graph *G, int v_set){
     }
     return __symbolic_glp_check_asnprob(G, v_set);
 }
-int glp_asnprob_lp(glp_prob *P, int form, glp_graph *G, int names, int v_set, int a_cost){
+int glp_asnprob_lp (glp_prob * P, int form, glp_graph * G, int names, int v_set, int a_cost){
     if (!__symbolic_glp_asnprob_lp) {
         if (!module) {
             if (!load_module()) {
@@ -4232,7 +4232,7 @@ int glp_asnprob_lp(glp_prob *P, int form, glp_graph *G, int names, int v_set, in
     }
     return __symbolic_glp_asnprob_lp(P, form, G, names, v_set, a_cost);
 }
-int glp_asnprob_okalg(int form, glp_graph *G, int v_set, int a_cost, double *sol, int a_x){
+int glp_asnprob_okalg (int form, glp_graph * G, int v_set, int a_cost, double *sol, int a_x){
     if (!__symbolic_glp_asnprob_okalg) {
         if (!module) {
             if (!load_module()) {
@@ -4251,7 +4251,7 @@ int glp_asnprob_okalg(int form, glp_graph *G, int v_set, int a_cost, double *sol
     }
     return __symbolic_glp_asnprob_okalg(form, G, v_set, a_cost, sol, a_x);
 }
-int glp_asnprob_hall(glp_graph *G, int v_set, int a_x){
+int glp_asnprob_hall (glp_graph * G, int v_set, int a_x){
     if (!__symbolic_glp_asnprob_hall) {
         if (!module) {
             if (!load_module()) {
@@ -4270,7 +4270,7 @@ int glp_asnprob_hall(glp_graph *G, int v_set, int a_x){
     }
     return __symbolic_glp_asnprob_hall(G, v_set, a_x);
 }
-int glp_read_mincost(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname){
+int glp_read_mincost (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname){
     if (!__symbolic_glp_read_mincost) {
         if (!module) {
             if (!load_module()) {
@@ -4289,7 +4289,7 @@ int glp_read_mincost(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, 
     }
     return __symbolic_glp_read_mincost(G, v_rhs, a_low, a_cap, a_cost, fname);
 }
-int glp_write_mincost(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname){
+int glp_write_mincost (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost, const char *fname){
     if (!__symbolic_glp_write_mincost) {
         if (!module) {
             if (!load_module()) {
@@ -4308,7 +4308,7 @@ int glp_write_mincost(glp_graph *G, int v_rhs, int a_low, int a_cap, int a_cost,
     }
     return __symbolic_glp_write_mincost(G, v_rhs, a_low, a_cap, a_cost, fname);
 }
-int glp_read_maxflow(glp_graph *G, int *s, int *t, int a_cap, const char *fname){
+int glp_read_maxflow (glp_graph * G, int *s, int *t, int a_cap, const char *fname){
     if (!__symbolic_glp_read_maxflow) {
         if (!module) {
             if (!load_module()) {
@@ -4327,7 +4327,7 @@ int glp_read_maxflow(glp_graph *G, int *s, int *t, int a_cap, const char *fname)
     }
     return __symbolic_glp_read_maxflow(G, s, t, a_cap, fname);
 }
-int glp_write_maxflow(glp_graph *G, int s, int t, int a_cap, const char *fname){
+int glp_write_maxflow (glp_graph * G, int s, int t, int a_cap, const char *fname){
     if (!__symbolic_glp_write_maxflow) {
         if (!module) {
             if (!load_module()) {
@@ -4346,7 +4346,7 @@ int glp_write_maxflow(glp_graph *G, int s, int t, int a_cap, const char *fname){
     }
     return __symbolic_glp_write_maxflow(G, s, t, a_cap, fname);
 }
-int glp_read_asnprob(glp_graph *G, int v_set, int a_cost, const char *fname){
+int glp_read_asnprob (glp_graph * G, int v_set, int a_cost, const char *fname){
     if (!__symbolic_glp_read_asnprob) {
         if (!module) {
             if (!load_module()) {
@@ -4365,7 +4365,7 @@ int glp_read_asnprob(glp_graph *G, int v_set, int a_cost, const char *fname){
     }
     return __symbolic_glp_read_asnprob(G, v_set, a_cost, fname);
 }
-int glp_write_asnprob(glp_graph *G, int v_set, int a_cost, const char *fname){
+int glp_write_asnprob (glp_graph * G, int v_set, int a_cost, const char *fname){
     if (!__symbolic_glp_write_asnprob) {
         if (!module) {
             if (!load_module()) {
@@ -4384,7 +4384,7 @@ int glp_write_asnprob(glp_graph *G, int v_set, int a_cost, const char *fname){
     }
     return __symbolic_glp_write_asnprob(G, v_set, a_cost, fname);
 }
-int glp_read_ccdata(glp_graph *G, int v_wgt, const char *fname){
+int glp_read_ccdata (glp_graph * G, int v_wgt, const char *fname){
     if (!__symbolic_glp_read_ccdata) {
         if (!module) {
             if (!load_module()) {
@@ -4403,7 +4403,7 @@ int glp_read_ccdata(glp_graph *G, int v_wgt, const char *fname){
     }
     return __symbolic_glp_read_ccdata(G, v_wgt, fname);
 }
-int glp_write_ccdata(glp_graph *G, int v_wgt, const char *fname){
+int glp_write_ccdata (glp_graph * G, int v_wgt, const char *fname){
     if (!__symbolic_glp_write_ccdata) {
         if (!module) {
             if (!load_module()) {
@@ -4422,7 +4422,7 @@ int glp_write_ccdata(glp_graph *G, int v_wgt, const char *fname){
     }
     return __symbolic_glp_write_ccdata(G, v_wgt, fname);
 }
-int glp_netgen(glp_graph *G, int v_rhs, int a_cap, int a_cost, const int parm[1+15]){
+int glp_netgen (glp_graph * G, int v_rhs, int a_cap, int a_cost, const int parm[1 + 15]){
     if (!__symbolic_glp_netgen) {
         if (!module) {
             if (!load_module()) {
@@ -4441,7 +4441,7 @@ int glp_netgen(glp_graph *G, int v_rhs, int a_cap, int a_cost, const int parm[1+
     }
     return __symbolic_glp_netgen(G, v_rhs, a_cap, a_cost, parm);
 }
-int glp_gridgen(glp_graph *G, int v_rhs, int a_cap, int a_cost, const int parm[1+14]){
+int glp_gridgen (glp_graph * G, int v_rhs, int a_cap, int a_cost, const int parm[1 + 14]){
     if (!__symbolic_glp_gridgen) {
         if (!module) {
             if (!load_module()) {
@@ -4460,7 +4460,7 @@ int glp_gridgen(glp_graph *G, int v_rhs, int a_cap, int a_cost, const int parm[1
     }
     return __symbolic_glp_gridgen(G, v_rhs, a_cap, a_cost, parm);
 }
-int glp_rmfgen(glp_graph *G, int *s, int *t, int a_cap, const int parm[1+5]){
+int glp_rmfgen (glp_graph * G, int *s, int *t, int a_cap, const int parm[1 + 5]){
     if (!__symbolic_glp_rmfgen) {
         if (!module) {
             if (!load_module()) {
@@ -4479,7 +4479,7 @@ int glp_rmfgen(glp_graph *G, int *s, int *t, int a_cap, const int parm[1+5]){
     }
     return __symbolic_glp_rmfgen(G, s, t, a_cap, parm);
 }
-int glp_weak_comp(glp_graph *G, int v_num){
+int glp_weak_comp (glp_graph * G, int v_num){
     if (!__symbolic_glp_weak_comp) {
         if (!module) {
             if (!load_module()) {
@@ -4498,7 +4498,7 @@ int glp_weak_comp(glp_graph *G, int v_num){
     }
     return __symbolic_glp_weak_comp(G, v_num);
 }
-int glp_strong_comp(glp_graph *G, int v_num){
+int glp_strong_comp (glp_graph * G, int v_num){
     if (!__symbolic_glp_strong_comp) {
         if (!module) {
             if (!load_module()) {
@@ -4517,7 +4517,7 @@ int glp_strong_comp(glp_graph *G, int v_num){
     }
     return __symbolic_glp_strong_comp(G, v_num);
 }
-int glp_top_sort(glp_graph *G, int v_num){
+int glp_top_sort (glp_graph * G, int v_num){
     if (!__symbolic_glp_top_sort) {
         if (!module) {
             if (!load_module()) {
@@ -4536,7 +4536,7 @@ int glp_top_sort(glp_graph *G, int v_num){
     }
     return __symbolic_glp_top_sort(G, v_num);
 }
-int glp_wclique_exact(glp_graph *G, int v_wgt, double *sol, int v_set){
+int glp_wclique_exact (glp_graph * G, int v_wgt, double *sol, int v_set){
     if (!__symbolic_glp_wclique_exact) {
         if (!module) {
             if (!load_module()) {
@@ -4555,7 +4555,7 @@ int glp_wclique_exact(glp_graph *G, int v_wgt, double *sol, int v_set){
     }
     return __symbolic_glp_wclique_exact(G, v_wgt, sol, v_set);
 }
-glp_prob *_glp_lpx_create_prob(void){
+glp_prob *_glp_lpx_create_prob (void){
     if (!__symbolic__glp_lpx_create_prob) {
         if (!module) {
             if (!load_module()) {
@@ -4574,7 +4574,7 @@ glp_prob *_glp_lpx_create_prob(void){
     }
     return __symbolic__glp_lpx_create_prob();
 }
-void _glp_lpx_set_prob_name(glp_prob *lp, const char *name){
+void _glp_lpx_set_prob_name (glp_prob * lp, const char *name){
     if (!__symbolic__glp_lpx_set_prob_name) {
         if (!module) {
             if (!load_module()) {
@@ -4593,7 +4593,7 @@ void _glp_lpx_set_prob_name(glp_prob *lp, const char *name){
     }
     return __symbolic__glp_lpx_set_prob_name(lp, name);
 }
-void _glp_lpx_set_obj_name(glp_prob *lp, const char *name){
+void _glp_lpx_set_obj_name (glp_prob * lp, const char *name){
     if (!__symbolic__glp_lpx_set_obj_name) {
         if (!module) {
             if (!load_module()) {
@@ -4612,7 +4612,7 @@ void _glp_lpx_set_obj_name(glp_prob *lp, const char *name){
     }
     return __symbolic__glp_lpx_set_obj_name(lp, name);
 }
-void _glp_lpx_set_obj_dir(glp_prob *lp, int dir){
+void _glp_lpx_set_obj_dir (glp_prob * lp, int dir){
     if (!__symbolic__glp_lpx_set_obj_dir) {
         if (!module) {
             if (!load_module()) {
@@ -4631,7 +4631,7 @@ void _glp_lpx_set_obj_dir(glp_prob *lp, int dir){
     }
     return __symbolic__glp_lpx_set_obj_dir(lp, dir);
 }
-int _glp_lpx_add_rows(glp_prob *lp, int nrs){
+int _glp_lpx_add_rows (glp_prob * lp, int nrs){
     if (!__symbolic__glp_lpx_add_rows) {
         if (!module) {
             if (!load_module()) {
@@ -4650,7 +4650,7 @@ int _glp_lpx_add_rows(glp_prob *lp, int nrs){
     }
     return __symbolic__glp_lpx_add_rows(lp, nrs);
 }
-int _glp_lpx_add_cols(glp_prob *lp, int ncs){
+int _glp_lpx_add_cols (glp_prob * lp, int ncs){
     if (!__symbolic__glp_lpx_add_cols) {
         if (!module) {
             if (!load_module()) {
@@ -4669,7 +4669,7 @@ int _glp_lpx_add_cols(glp_prob *lp, int ncs){
     }
     return __symbolic__glp_lpx_add_cols(lp, ncs);
 }
-void _glp_lpx_set_row_name(glp_prob *lp, int i, const char *name){
+void _glp_lpx_set_row_name (glp_prob * lp, int i, const char *name){
     if (!__symbolic__glp_lpx_set_row_name) {
         if (!module) {
             if (!load_module()) {
@@ -4688,7 +4688,7 @@ void _glp_lpx_set_row_name(glp_prob *lp, int i, const char *name){
     }
     return __symbolic__glp_lpx_set_row_name(lp, i, name);
 }
-void _glp_lpx_set_col_name(glp_prob *lp, int j, const char *name){
+void _glp_lpx_set_col_name (glp_prob * lp, int j, const char *name){
     if (!__symbolic__glp_lpx_set_col_name) {
         if (!module) {
             if (!load_module()) {
@@ -4707,7 +4707,7 @@ void _glp_lpx_set_col_name(glp_prob *lp, int j, const char *name){
     }
     return __symbolic__glp_lpx_set_col_name(lp, j, name);
 }
-void _glp_lpx_set_row_bnds(glp_prob *lp, int i, int type, double lb, double ub){
+void _glp_lpx_set_row_bnds (glp_prob * lp, int i, int type, double lb, double ub){
     if (!__symbolic__glp_lpx_set_row_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -4726,7 +4726,7 @@ void _glp_lpx_set_row_bnds(glp_prob *lp, int i, int type, double lb, double ub){
     }
     return __symbolic__glp_lpx_set_row_bnds(lp, i, type, lb, ub);
 }
-void _glp_lpx_set_col_bnds(glp_prob *lp, int j, int type, double lb, double ub){
+void _glp_lpx_set_col_bnds (glp_prob * lp, int j, int type, double lb, double ub){
     if (!__symbolic__glp_lpx_set_col_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -4745,7 +4745,7 @@ void _glp_lpx_set_col_bnds(glp_prob *lp, int j, int type, double lb, double ub){
     }
     return __symbolic__glp_lpx_set_col_bnds(lp, j, type, lb, ub);
 }
-void _glp_lpx_set_obj_coef(glp_prob *lp, int j, double coef){
+void _glp_lpx_set_obj_coef (glp_prob * lp, int j, double coef){
     if (!__symbolic__glp_lpx_set_obj_coef) {
         if (!module) {
             if (!load_module()) {
@@ -4764,7 +4764,7 @@ void _glp_lpx_set_obj_coef(glp_prob *lp, int j, double coef){
     }
     return __symbolic__glp_lpx_set_obj_coef(lp, j, coef);
 }
-void _glp_lpx_set_mat_row(glp_prob *lp, int i, int len, const int ind[], const double val[]){
+void _glp_lpx_set_mat_row (glp_prob * lp, int i, int len, const int ind[], const double val[]){
     if (!__symbolic__glp_lpx_set_mat_row) {
         if (!module) {
             if (!load_module()) {
@@ -4783,7 +4783,7 @@ void _glp_lpx_set_mat_row(glp_prob *lp, int i, int len, const int ind[], const d
     }
     return __symbolic__glp_lpx_set_mat_row(lp, i, len, ind, val);
 }
-void _glp_lpx_set_mat_col(glp_prob *lp, int j, int len, const int ind[], const double val[]){
+void _glp_lpx_set_mat_col (glp_prob * lp, int j, int len, const int ind[], const double val[]){
     if (!__symbolic__glp_lpx_set_mat_col) {
         if (!module) {
             if (!load_module()) {
@@ -4802,7 +4802,7 @@ void _glp_lpx_set_mat_col(glp_prob *lp, int j, int len, const int ind[], const d
     }
     return __symbolic__glp_lpx_set_mat_col(lp, j, len, ind, val);
 }
-void _glp_lpx_load_matrix(glp_prob *lp, int ne, const int ia[], const int ja[], const double ar[]){
+void _glp_lpx_load_matrix (glp_prob * lp, int ne, const int ia[], const int ja[], const double ar[]){
     if (!__symbolic__glp_lpx_load_matrix) {
         if (!module) {
             if (!load_module()) {
@@ -4821,7 +4821,7 @@ void _glp_lpx_load_matrix(glp_prob *lp, int ne, const int ia[], const int ja[], 
     }
     return __symbolic__glp_lpx_load_matrix(lp, ne, ia, ja, ar);
 }
-void _glp_lpx_del_rows(glp_prob *lp, int nrs, const int num[]){
+void _glp_lpx_del_rows (glp_prob * lp, int nrs, const int num[]){
     if (!__symbolic__glp_lpx_del_rows) {
         if (!module) {
             if (!load_module()) {
@@ -4840,7 +4840,7 @@ void _glp_lpx_del_rows(glp_prob *lp, int nrs, const int num[]){
     }
     return __symbolic__glp_lpx_del_rows(lp, nrs, num);
 }
-void _glp_lpx_del_cols(glp_prob *lp, int ncs, const int num[]){
+void _glp_lpx_del_cols (glp_prob * lp, int ncs, const int num[]){
     if (!__symbolic__glp_lpx_del_cols) {
         if (!module) {
             if (!load_module()) {
@@ -4859,7 +4859,7 @@ void _glp_lpx_del_cols(glp_prob *lp, int ncs, const int num[]){
     }
     return __symbolic__glp_lpx_del_cols(lp, ncs, num);
 }
-void _glp_lpx_delete_prob(glp_prob *lp){
+void _glp_lpx_delete_prob (glp_prob * lp){
     if (!__symbolic__glp_lpx_delete_prob) {
         if (!module) {
             if (!load_module()) {
@@ -4878,7 +4878,7 @@ void _glp_lpx_delete_prob(glp_prob *lp){
     }
     return __symbolic__glp_lpx_delete_prob(lp);
 }
-const char *_glp_lpx_get_prob_name(glp_prob *lp){
+const char *_glp_lpx_get_prob_name (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_prob_name) {
         if (!module) {
             if (!load_module()) {
@@ -4897,7 +4897,7 @@ const char *_glp_lpx_get_prob_name(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_prob_name(lp);
 }
-const char *_glp_lpx_get_obj_name(glp_prob *lp){
+const char *_glp_lpx_get_obj_name (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_obj_name) {
         if (!module) {
             if (!load_module()) {
@@ -4916,7 +4916,7 @@ const char *_glp_lpx_get_obj_name(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_obj_name(lp);
 }
-int _glp_lpx_get_obj_dir(glp_prob *lp){
+int _glp_lpx_get_obj_dir (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_obj_dir) {
         if (!module) {
             if (!load_module()) {
@@ -4935,7 +4935,7 @@ int _glp_lpx_get_obj_dir(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_obj_dir(lp);
 }
-int _glp_lpx_get_num_rows(glp_prob *lp){
+int _glp_lpx_get_num_rows (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_num_rows) {
         if (!module) {
             if (!load_module()) {
@@ -4954,7 +4954,7 @@ int _glp_lpx_get_num_rows(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_num_rows(lp);
 }
-int _glp_lpx_get_num_cols(glp_prob *lp){
+int _glp_lpx_get_num_cols (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_num_cols) {
         if (!module) {
             if (!load_module()) {
@@ -4973,7 +4973,7 @@ int _glp_lpx_get_num_cols(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_num_cols(lp);
 }
-const char *_glp_lpx_get_row_name(glp_prob *lp, int i){
+const char *_glp_lpx_get_row_name (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_name) {
         if (!module) {
             if (!load_module()) {
@@ -4992,7 +4992,7 @@ const char *_glp_lpx_get_row_name(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_name(lp, i);
 }
-const char *_glp_lpx_get_col_name(glp_prob *lp, int j){
+const char *_glp_lpx_get_col_name (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_name) {
         if (!module) {
             if (!load_module()) {
@@ -5011,7 +5011,7 @@ const char *_glp_lpx_get_col_name(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_name(lp, j);
 }
-int _glp_lpx_get_row_type(glp_prob *lp, int i){
+int _glp_lpx_get_row_type (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_type) {
         if (!module) {
             if (!load_module()) {
@@ -5030,7 +5030,7 @@ int _glp_lpx_get_row_type(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_type(lp, i);
 }
-double _glp_lpx_get_row_lb(glp_prob *lp, int i){
+double _glp_lpx_get_row_lb (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_lb) {
         if (!module) {
             if (!load_module()) {
@@ -5049,7 +5049,7 @@ double _glp_lpx_get_row_lb(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_lb(lp, i);
 }
-double _glp_lpx_get_row_ub(glp_prob *lp, int i){
+double _glp_lpx_get_row_ub (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_ub) {
         if (!module) {
             if (!load_module()) {
@@ -5068,7 +5068,7 @@ double _glp_lpx_get_row_ub(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_ub(lp, i);
 }
-void _glp_lpx_get_row_bnds(glp_prob *lp, int i, int *typx, double *lb, double *ub){
+void _glp_lpx_get_row_bnds (glp_prob * lp, int i, int *typx, double *lb, double *ub){
     if (!__symbolic__glp_lpx_get_row_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -5087,7 +5087,7 @@ void _glp_lpx_get_row_bnds(glp_prob *lp, int i, int *typx, double *lb, double *u
     }
     return __symbolic__glp_lpx_get_row_bnds(lp, i, typx, lb, ub);
 }
-int _glp_lpx_get_col_type(glp_prob *lp, int j){
+int _glp_lpx_get_col_type (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_type) {
         if (!module) {
             if (!load_module()) {
@@ -5106,7 +5106,7 @@ int _glp_lpx_get_col_type(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_type(lp, j);
 }
-double _glp_lpx_get_col_lb(glp_prob *lp, int j){
+double _glp_lpx_get_col_lb (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_lb) {
         if (!module) {
             if (!load_module()) {
@@ -5125,7 +5125,7 @@ double _glp_lpx_get_col_lb(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_lb(lp, j);
 }
-double _glp_lpx_get_col_ub(glp_prob *lp, int j){
+double _glp_lpx_get_col_ub (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_ub) {
         if (!module) {
             if (!load_module()) {
@@ -5144,7 +5144,7 @@ double _glp_lpx_get_col_ub(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_ub(lp, j);
 }
-void _glp_lpx_get_col_bnds(glp_prob *lp, int j, int *typx, double *lb, double *ub){
+void _glp_lpx_get_col_bnds (glp_prob * lp, int j, int *typx, double *lb, double *ub){
     if (!__symbolic__glp_lpx_get_col_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -5163,7 +5163,7 @@ void _glp_lpx_get_col_bnds(glp_prob *lp, int j, int *typx, double *lb, double *u
     }
     return __symbolic__glp_lpx_get_col_bnds(lp, j, typx, lb, ub);
 }
-double _glp_lpx_get_obj_coef(glp_prob *lp, int j){
+double _glp_lpx_get_obj_coef (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_obj_coef) {
         if (!module) {
             if (!load_module()) {
@@ -5182,7 +5182,7 @@ double _glp_lpx_get_obj_coef(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_obj_coef(lp, j);
 }
-int _glp_lpx_get_num_nz(glp_prob *lp){
+int _glp_lpx_get_num_nz (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_num_nz) {
         if (!module) {
             if (!load_module()) {
@@ -5201,7 +5201,7 @@ int _glp_lpx_get_num_nz(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_num_nz(lp);
 }
-int _glp_lpx_get_mat_row(glp_prob *lp, int i, int ind[], double val[]){
+int _glp_lpx_get_mat_row (glp_prob * lp, int i, int ind[], double val[]){
     if (!__symbolic__glp_lpx_get_mat_row) {
         if (!module) {
             if (!load_module()) {
@@ -5220,7 +5220,7 @@ int _glp_lpx_get_mat_row(glp_prob *lp, int i, int ind[], double val[]){
     }
     return __symbolic__glp_lpx_get_mat_row(lp, i, ind, val);
 }
-int _glp_lpx_get_mat_col(glp_prob *lp, int j, int ind[], double val[]){
+int _glp_lpx_get_mat_col (glp_prob * lp, int j, int ind[], double val[]){
     if (!__symbolic__glp_lpx_get_mat_col) {
         if (!module) {
             if (!load_module()) {
@@ -5239,7 +5239,7 @@ int _glp_lpx_get_mat_col(glp_prob *lp, int j, int ind[], double val[]){
     }
     return __symbolic__glp_lpx_get_mat_col(lp, j, ind, val);
 }
-void _glp_lpx_create_index(glp_prob *lp){
+void _glp_lpx_create_index (glp_prob * lp){
     if (!__symbolic__glp_lpx_create_index) {
         if (!module) {
             if (!load_module()) {
@@ -5258,7 +5258,7 @@ void _glp_lpx_create_index(glp_prob *lp){
     }
     return __symbolic__glp_lpx_create_index(lp);
 }
-int _glp_lpx_find_row(glp_prob *lp, const char *name){
+int _glp_lpx_find_row (glp_prob * lp, const char *name){
     if (!__symbolic__glp_lpx_find_row) {
         if (!module) {
             if (!load_module()) {
@@ -5277,7 +5277,7 @@ int _glp_lpx_find_row(glp_prob *lp, const char *name){
     }
     return __symbolic__glp_lpx_find_row(lp, name);
 }
-int _glp_lpx_find_col(glp_prob *lp, const char *name){
+int _glp_lpx_find_col (glp_prob * lp, const char *name){
     if (!__symbolic__glp_lpx_find_col) {
         if (!module) {
             if (!load_module()) {
@@ -5296,7 +5296,7 @@ int _glp_lpx_find_col(glp_prob *lp, const char *name){
     }
     return __symbolic__glp_lpx_find_col(lp, name);
 }
-void _glp_lpx_delete_index(glp_prob *lp){
+void _glp_lpx_delete_index (glp_prob * lp){
     if (!__symbolic__glp_lpx_delete_index) {
         if (!module) {
             if (!load_module()) {
@@ -5315,7 +5315,7 @@ void _glp_lpx_delete_index(glp_prob *lp){
     }
     return __symbolic__glp_lpx_delete_index(lp);
 }
-void _glp_lpx_scale_prob(glp_prob *lp){
+void _glp_lpx_scale_prob (glp_prob * lp){
     if (!__symbolic__glp_lpx_scale_prob) {
         if (!module) {
             if (!load_module()) {
@@ -5334,7 +5334,7 @@ void _glp_lpx_scale_prob(glp_prob *lp){
     }
     return __symbolic__glp_lpx_scale_prob(lp);
 }
-void _glp_lpx_unscale_prob(glp_prob *lp){
+void _glp_lpx_unscale_prob (glp_prob * lp){
     if (!__symbolic__glp_lpx_unscale_prob) {
         if (!module) {
             if (!load_module()) {
@@ -5353,7 +5353,7 @@ void _glp_lpx_unscale_prob(glp_prob *lp){
     }
     return __symbolic__glp_lpx_unscale_prob(lp);
 }
-void _glp_lpx_set_row_stat(glp_prob *lp, int i, int stat){
+void _glp_lpx_set_row_stat (glp_prob * lp, int i, int stat){
     if (!__symbolic__glp_lpx_set_row_stat) {
         if (!module) {
             if (!load_module()) {
@@ -5372,7 +5372,7 @@ void _glp_lpx_set_row_stat(glp_prob *lp, int i, int stat){
     }
     return __symbolic__glp_lpx_set_row_stat(lp, i, stat);
 }
-void _glp_lpx_set_col_stat(glp_prob *lp, int j, int stat){
+void _glp_lpx_set_col_stat (glp_prob * lp, int j, int stat){
     if (!__symbolic__glp_lpx_set_col_stat) {
         if (!module) {
             if (!load_module()) {
@@ -5391,7 +5391,7 @@ void _glp_lpx_set_col_stat(glp_prob *lp, int j, int stat){
     }
     return __symbolic__glp_lpx_set_col_stat(lp, j, stat);
 }
-void _glp_lpx_std_basis(glp_prob *lp){
+void _glp_lpx_std_basis (glp_prob * lp){
     if (!__symbolic__glp_lpx_std_basis) {
         if (!module) {
             if (!load_module()) {
@@ -5410,7 +5410,7 @@ void _glp_lpx_std_basis(glp_prob *lp){
     }
     return __symbolic__glp_lpx_std_basis(lp);
 }
-void _glp_lpx_adv_basis(glp_prob *lp){
+void _glp_lpx_adv_basis (glp_prob * lp){
     if (!__symbolic__glp_lpx_adv_basis) {
         if (!module) {
             if (!load_module()) {
@@ -5429,7 +5429,7 @@ void _glp_lpx_adv_basis(glp_prob *lp){
     }
     return __symbolic__glp_lpx_adv_basis(lp);
 }
-void _glp_lpx_cpx_basis(glp_prob *lp){
+void _glp_lpx_cpx_basis (glp_prob * lp){
     if (!__symbolic__glp_lpx_cpx_basis) {
         if (!module) {
             if (!load_module()) {
@@ -5448,7 +5448,7 @@ void _glp_lpx_cpx_basis(glp_prob *lp){
     }
     return __symbolic__glp_lpx_cpx_basis(lp);
 }
-int _glp_lpx_simplex(glp_prob *lp){
+int _glp_lpx_simplex (glp_prob * lp){
     if (!__symbolic__glp_lpx_simplex) {
         if (!module) {
             if (!load_module()) {
@@ -5467,7 +5467,7 @@ int _glp_lpx_simplex(glp_prob *lp){
     }
     return __symbolic__glp_lpx_simplex(lp);
 }
-int _glp_lpx_exact(glp_prob *lp){
+int _glp_lpx_exact (glp_prob * lp){
     if (!__symbolic__glp_lpx_exact) {
         if (!module) {
             if (!load_module()) {
@@ -5486,7 +5486,7 @@ int _glp_lpx_exact(glp_prob *lp){
     }
     return __symbolic__glp_lpx_exact(lp);
 }
-int _glp_lpx_get_status(glp_prob *lp){
+int _glp_lpx_get_status (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_status) {
         if (!module) {
             if (!load_module()) {
@@ -5505,7 +5505,7 @@ int _glp_lpx_get_status(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_status(lp);
 }
-int _glp_lpx_get_prim_stat(glp_prob *lp){
+int _glp_lpx_get_prim_stat (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_prim_stat) {
         if (!module) {
             if (!load_module()) {
@@ -5524,7 +5524,7 @@ int _glp_lpx_get_prim_stat(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_prim_stat(lp);
 }
-int _glp_lpx_get_dual_stat(glp_prob *lp){
+int _glp_lpx_get_dual_stat (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_dual_stat) {
         if (!module) {
             if (!load_module()) {
@@ -5543,7 +5543,7 @@ int _glp_lpx_get_dual_stat(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_dual_stat(lp);
 }
-double _glp_lpx_get_obj_val(glp_prob *lp){
+double _glp_lpx_get_obj_val (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_obj_val) {
         if (!module) {
             if (!load_module()) {
@@ -5562,7 +5562,7 @@ double _glp_lpx_get_obj_val(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_obj_val(lp);
 }
-int _glp_lpx_get_row_stat(glp_prob *lp, int i){
+int _glp_lpx_get_row_stat (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_stat) {
         if (!module) {
             if (!load_module()) {
@@ -5581,7 +5581,7 @@ int _glp_lpx_get_row_stat(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_stat(lp, i);
 }
-double _glp_lpx_get_row_prim(glp_prob *lp, int i){
+double _glp_lpx_get_row_prim (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_prim) {
         if (!module) {
             if (!load_module()) {
@@ -5600,7 +5600,7 @@ double _glp_lpx_get_row_prim(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_prim(lp, i);
 }
-double _glp_lpx_get_row_dual(glp_prob *lp, int i){
+double _glp_lpx_get_row_dual (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_get_row_dual) {
         if (!module) {
             if (!load_module()) {
@@ -5619,7 +5619,7 @@ double _glp_lpx_get_row_dual(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_get_row_dual(lp, i);
 }
-void _glp_lpx_get_row_info(glp_prob *lp, int i, int *tagx, double *vx, double *dx){
+void _glp_lpx_get_row_info (glp_prob * lp, int i, int *tagx, double *vx, double *dx){
     if (!__symbolic__glp_lpx_get_row_info) {
         if (!module) {
             if (!load_module()) {
@@ -5638,7 +5638,7 @@ void _glp_lpx_get_row_info(glp_prob *lp, int i, int *tagx, double *vx, double *d
     }
     return __symbolic__glp_lpx_get_row_info(lp, i, tagx, vx, dx);
 }
-int _glp_lpx_get_col_stat(glp_prob *lp, int j){
+int _glp_lpx_get_col_stat (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_stat) {
         if (!module) {
             if (!load_module()) {
@@ -5657,7 +5657,7 @@ int _glp_lpx_get_col_stat(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_stat(lp, j);
 }
-double _glp_lpx_get_col_prim(glp_prob *lp, int j){
+double _glp_lpx_get_col_prim (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_prim) {
         if (!module) {
             if (!load_module()) {
@@ -5676,7 +5676,7 @@ double _glp_lpx_get_col_prim(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_prim(lp, j);
 }
-double _glp_lpx_get_col_dual(glp_prob *lp, int j){
+double _glp_lpx_get_col_dual (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_dual) {
         if (!module) {
             if (!load_module()) {
@@ -5695,7 +5695,7 @@ double _glp_lpx_get_col_dual(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_dual(lp, j);
 }
-void _glp_lpx_get_col_info(glp_prob *lp, int j, int *tagx, double *vx, double *dx){
+void _glp_lpx_get_col_info (glp_prob * lp, int j, int *tagx, double *vx, double *dx){
     if (!__symbolic__glp_lpx_get_col_info) {
         if (!module) {
             if (!load_module()) {
@@ -5714,7 +5714,7 @@ void _glp_lpx_get_col_info(glp_prob *lp, int j, int *tagx, double *vx, double *d
     }
     return __symbolic__glp_lpx_get_col_info(lp, j, tagx, vx, dx);
 }
-int _glp_lpx_get_ray_info(glp_prob *lp){
+int _glp_lpx_get_ray_info (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_ray_info) {
         if (!module) {
             if (!load_module()) {
@@ -5733,7 +5733,7 @@ int _glp_lpx_get_ray_info(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_ray_info(lp);
 }
-void _glp_lpx_check_kkt(glp_prob *lp, int scaled, LPXKKT *kkt){
+void _glp_lpx_check_kkt (glp_prob * lp, int scaled, LPXKKT * kkt){
     if (!__symbolic__glp_lpx_check_kkt) {
         if (!module) {
             if (!load_module()) {
@@ -5752,7 +5752,7 @@ void _glp_lpx_check_kkt(glp_prob *lp, int scaled, LPXKKT *kkt){
     }
     return __symbolic__glp_lpx_check_kkt(lp, scaled, kkt);
 }
-int _glp_lpx_warm_up(glp_prob *lp){
+int _glp_lpx_warm_up (glp_prob * lp){
     if (!__symbolic__glp_lpx_warm_up) {
         if (!module) {
             if (!load_module()) {
@@ -5771,7 +5771,7 @@ int _glp_lpx_warm_up(glp_prob *lp){
     }
     return __symbolic__glp_lpx_warm_up(lp);
 }
-int _glp_lpx_eval_tab_row(glp_prob *lp, int k, int ind[], double val[]){
+int _glp_lpx_eval_tab_row (glp_prob * lp, int k, int ind[], double val[]){
     if (!__symbolic__glp_lpx_eval_tab_row) {
         if (!module) {
             if (!load_module()) {
@@ -5790,7 +5790,7 @@ int _glp_lpx_eval_tab_row(glp_prob *lp, int k, int ind[], double val[]){
     }
     return __symbolic__glp_lpx_eval_tab_row(lp, k, ind, val);
 }
-int _glp_lpx_eval_tab_col(glp_prob *lp, int k, int ind[], double val[]){
+int _glp_lpx_eval_tab_col (glp_prob * lp, int k, int ind[], double val[]){
     if (!__symbolic__glp_lpx_eval_tab_col) {
         if (!module) {
             if (!load_module()) {
@@ -5809,7 +5809,7 @@ int _glp_lpx_eval_tab_col(glp_prob *lp, int k, int ind[], double val[]){
     }
     return __symbolic__glp_lpx_eval_tab_col(lp, k, ind, val);
 }
-int _glp_lpx_transform_row(glp_prob *lp, int len, int ind[], double val[]){
+int _glp_lpx_transform_row (glp_prob * lp, int len, int ind[], double val[]){
     if (!__symbolic__glp_lpx_transform_row) {
         if (!module) {
             if (!load_module()) {
@@ -5828,7 +5828,7 @@ int _glp_lpx_transform_row(glp_prob *lp, int len, int ind[], double val[]){
     }
     return __symbolic__glp_lpx_transform_row(lp, len, ind, val);
 }
-int _glp_lpx_transform_col(glp_prob *lp, int len, int ind[], double val[]){
+int _glp_lpx_transform_col (glp_prob * lp, int len, int ind[], double val[]){
     if (!__symbolic__glp_lpx_transform_col) {
         if (!module) {
             if (!load_module()) {
@@ -5847,7 +5847,7 @@ int _glp_lpx_transform_col(glp_prob *lp, int len, int ind[], double val[]){
     }
     return __symbolic__glp_lpx_transform_col(lp, len, ind, val);
 }
-int _glp_lpx_prim_ratio_test(glp_prob *lp, int len, const int ind[], const double val[], int how, double tol){
+int _glp_lpx_prim_ratio_test (glp_prob * lp, int len, const int ind[], const double val[], int how, double tol){
     if (!__symbolic__glp_lpx_prim_ratio_test) {
         if (!module) {
             if (!load_module()) {
@@ -5866,7 +5866,7 @@ int _glp_lpx_prim_ratio_test(glp_prob *lp, int len, const int ind[], const doubl
     }
     return __symbolic__glp_lpx_prim_ratio_test(lp, len, ind, val, how, tol);
 }
-int _glp_lpx_dual_ratio_test(glp_prob *lp, int len, const int ind[], const double val[], int how, double tol){
+int _glp_lpx_dual_ratio_test (glp_prob * lp, int len, const int ind[], const double val[], int how, double tol){
     if (!__symbolic__glp_lpx_dual_ratio_test) {
         if (!module) {
             if (!load_module()) {
@@ -5885,7 +5885,7 @@ int _glp_lpx_dual_ratio_test(glp_prob *lp, int len, const int ind[], const doubl
     }
     return __symbolic__glp_lpx_dual_ratio_test(lp, len, ind, val, how, tol);
 }
-int _glp_lpx_interior(glp_prob *lp){
+int _glp_lpx_interior (glp_prob * lp){
     if (!__symbolic__glp_lpx_interior) {
         if (!module) {
             if (!load_module()) {
@@ -5904,7 +5904,7 @@ int _glp_lpx_interior(glp_prob *lp){
     }
     return __symbolic__glp_lpx_interior(lp);
 }
-int _glp_lpx_ipt_status(glp_prob *lp){
+int _glp_lpx_ipt_status (glp_prob * lp){
     if (!__symbolic__glp_lpx_ipt_status) {
         if (!module) {
             if (!load_module()) {
@@ -5923,7 +5923,7 @@ int _glp_lpx_ipt_status(glp_prob *lp){
     }
     return __symbolic__glp_lpx_ipt_status(lp);
 }
-double _glp_lpx_ipt_obj_val(glp_prob *lp){
+double _glp_lpx_ipt_obj_val (glp_prob * lp){
     if (!__symbolic__glp_lpx_ipt_obj_val) {
         if (!module) {
             if (!load_module()) {
@@ -5942,7 +5942,7 @@ double _glp_lpx_ipt_obj_val(glp_prob *lp){
     }
     return __symbolic__glp_lpx_ipt_obj_val(lp);
 }
-double _glp_lpx_ipt_row_prim(glp_prob *lp, int i){
+double _glp_lpx_ipt_row_prim (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_ipt_row_prim) {
         if (!module) {
             if (!load_module()) {
@@ -5961,7 +5961,7 @@ double _glp_lpx_ipt_row_prim(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_ipt_row_prim(lp, i);
 }
-double _glp_lpx_ipt_row_dual(glp_prob *lp, int i){
+double _glp_lpx_ipt_row_dual (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_ipt_row_dual) {
         if (!module) {
             if (!load_module()) {
@@ -5980,7 +5980,7 @@ double _glp_lpx_ipt_row_dual(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_ipt_row_dual(lp, i);
 }
-double _glp_lpx_ipt_col_prim(glp_prob *lp, int j){
+double _glp_lpx_ipt_col_prim (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_ipt_col_prim) {
         if (!module) {
             if (!load_module()) {
@@ -5999,7 +5999,7 @@ double _glp_lpx_ipt_col_prim(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_ipt_col_prim(lp, j);
 }
-double _glp_lpx_ipt_col_dual(glp_prob *lp, int j){
+double _glp_lpx_ipt_col_dual (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_ipt_col_dual) {
         if (!module) {
             if (!load_module()) {
@@ -6018,7 +6018,7 @@ double _glp_lpx_ipt_col_dual(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_ipt_col_dual(lp, j);
 }
-void _glp_lpx_set_class(glp_prob *lp, int klass){
+void _glp_lpx_set_class (glp_prob * lp, int klass){
     if (!__symbolic__glp_lpx_set_class) {
         if (!module) {
             if (!load_module()) {
@@ -6037,7 +6037,7 @@ void _glp_lpx_set_class(glp_prob *lp, int klass){
     }
     return __symbolic__glp_lpx_set_class(lp, klass);
 }
-int _glp_lpx_get_class(glp_prob *lp){
+int _glp_lpx_get_class (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_class) {
         if (!module) {
             if (!load_module()) {
@@ -6056,7 +6056,7 @@ int _glp_lpx_get_class(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_class(lp);
 }
-void _glp_lpx_set_col_kind(glp_prob *lp, int j, int kind){
+void _glp_lpx_set_col_kind (glp_prob * lp, int j, int kind){
     if (!__symbolic__glp_lpx_set_col_kind) {
         if (!module) {
             if (!load_module()) {
@@ -6075,7 +6075,7 @@ void _glp_lpx_set_col_kind(glp_prob *lp, int j, int kind){
     }
     return __symbolic__glp_lpx_set_col_kind(lp, j, kind);
 }
-int _glp_lpx_get_col_kind(glp_prob *lp, int j){
+int _glp_lpx_get_col_kind (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_get_col_kind) {
         if (!module) {
             if (!load_module()) {
@@ -6094,7 +6094,7 @@ int _glp_lpx_get_col_kind(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_get_col_kind(lp, j);
 }
-int _glp_lpx_get_num_int(glp_prob *lp){
+int _glp_lpx_get_num_int (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_num_int) {
         if (!module) {
             if (!load_module()) {
@@ -6113,7 +6113,7 @@ int _glp_lpx_get_num_int(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_num_int(lp);
 }
-int _glp_lpx_get_num_bin(glp_prob *lp){
+int _glp_lpx_get_num_bin (glp_prob * lp){
     if (!__symbolic__glp_lpx_get_num_bin) {
         if (!module) {
             if (!load_module()) {
@@ -6132,7 +6132,7 @@ int _glp_lpx_get_num_bin(glp_prob *lp){
     }
     return __symbolic__glp_lpx_get_num_bin(lp);
 }
-int _glp_lpx_integer(glp_prob *lp){
+int _glp_lpx_integer (glp_prob * lp){
     if (!__symbolic__glp_lpx_integer) {
         if (!module) {
             if (!load_module()) {
@@ -6151,7 +6151,7 @@ int _glp_lpx_integer(glp_prob *lp){
     }
     return __symbolic__glp_lpx_integer(lp);
 }
-int _glp_lpx_intopt(glp_prob *lp){
+int _glp_lpx_intopt (glp_prob * lp){
     if (!__symbolic__glp_lpx_intopt) {
         if (!module) {
             if (!load_module()) {
@@ -6170,7 +6170,7 @@ int _glp_lpx_intopt(glp_prob *lp){
     }
     return __symbolic__glp_lpx_intopt(lp);
 }
-int _glp_lpx_mip_status(glp_prob *lp){
+int _glp_lpx_mip_status (glp_prob * lp){
     if (!__symbolic__glp_lpx_mip_status) {
         if (!module) {
             if (!load_module()) {
@@ -6189,7 +6189,7 @@ int _glp_lpx_mip_status(glp_prob *lp){
     }
     return __symbolic__glp_lpx_mip_status(lp);
 }
-double _glp_lpx_mip_obj_val(glp_prob *lp){
+double _glp_lpx_mip_obj_val (glp_prob * lp){
     if (!__symbolic__glp_lpx_mip_obj_val) {
         if (!module) {
             if (!load_module()) {
@@ -6208,7 +6208,7 @@ double _glp_lpx_mip_obj_val(glp_prob *lp){
     }
     return __symbolic__glp_lpx_mip_obj_val(lp);
 }
-double _glp_lpx_mip_row_val(glp_prob *lp, int i){
+double _glp_lpx_mip_row_val (glp_prob * lp, int i){
     if (!__symbolic__glp_lpx_mip_row_val) {
         if (!module) {
             if (!load_module()) {
@@ -6227,7 +6227,7 @@ double _glp_lpx_mip_row_val(glp_prob *lp, int i){
     }
     return __symbolic__glp_lpx_mip_row_val(lp, i);
 }
-double _glp_lpx_mip_col_val(glp_prob *lp, int j){
+double _glp_lpx_mip_col_val (glp_prob * lp, int j){
     if (!__symbolic__glp_lpx_mip_col_val) {
         if (!module) {
             if (!load_module()) {
@@ -6246,7 +6246,7 @@ double _glp_lpx_mip_col_val(glp_prob *lp, int j){
     }
     return __symbolic__glp_lpx_mip_col_val(lp, j);
 }
-void _glp_lpx_check_int(glp_prob *lp, LPXKKT *kkt){
+void _glp_lpx_check_int (glp_prob * lp, LPXKKT * kkt){
     if (!__symbolic__glp_lpx_check_int) {
         if (!module) {
             if (!load_module()) {
@@ -6265,7 +6265,7 @@ void _glp_lpx_check_int(glp_prob *lp, LPXKKT *kkt){
     }
     return __symbolic__glp_lpx_check_int(lp, kkt);
 }
-void _glp_lpx_reset_parms(glp_prob *lp){
+void _glp_lpx_reset_parms (glp_prob * lp){
     if (!__symbolic__glp_lpx_reset_parms) {
         if (!module) {
             if (!load_module()) {
@@ -6284,7 +6284,7 @@ void _glp_lpx_reset_parms(glp_prob *lp){
     }
     return __symbolic__glp_lpx_reset_parms(lp);
 }
-void _glp_lpx_set_int_parm(glp_prob *lp, int parm, int val){
+void _glp_lpx_set_int_parm (glp_prob * lp, int parm, int val){
     if (!__symbolic__glp_lpx_set_int_parm) {
         if (!module) {
             if (!load_module()) {
@@ -6303,7 +6303,7 @@ void _glp_lpx_set_int_parm(glp_prob *lp, int parm, int val){
     }
     return __symbolic__glp_lpx_set_int_parm(lp, parm, val);
 }
-int _glp_lpx_get_int_parm(glp_prob *lp, int parm){
+int _glp_lpx_get_int_parm (glp_prob * lp, int parm){
     if (!__symbolic__glp_lpx_get_int_parm) {
         if (!module) {
             if (!load_module()) {
@@ -6322,7 +6322,7 @@ int _glp_lpx_get_int_parm(glp_prob *lp, int parm){
     }
     return __symbolic__glp_lpx_get_int_parm(lp, parm);
 }
-void _glp_lpx_set_real_parm(glp_prob *lp, int parm, double val){
+void _glp_lpx_set_real_parm (glp_prob * lp, int parm, double val){
     if (!__symbolic__glp_lpx_set_real_parm) {
         if (!module) {
             if (!load_module()) {
@@ -6341,7 +6341,7 @@ void _glp_lpx_set_real_parm(glp_prob *lp, int parm, double val){
     }
     return __symbolic__glp_lpx_set_real_parm(lp, parm, val);
 }
-double _glp_lpx_get_real_parm(glp_prob *lp, int parm){
+double _glp_lpx_get_real_parm (glp_prob * lp, int parm){
     if (!__symbolic__glp_lpx_get_real_parm) {
         if (!module) {
             if (!load_module()) {
@@ -6360,7 +6360,7 @@ double _glp_lpx_get_real_parm(glp_prob *lp, int parm){
     }
     return __symbolic__glp_lpx_get_real_parm(lp, parm);
 }
-glp_prob *_glp_lpx_read_mps(const char *fname){
+glp_prob *_glp_lpx_read_mps (const char *fname){
     if (!__symbolic__glp_lpx_read_mps) {
         if (!module) {
             if (!load_module()) {
@@ -6379,7 +6379,7 @@ glp_prob *_glp_lpx_read_mps(const char *fname){
     }
     return __symbolic__glp_lpx_read_mps(fname);
 }
-int _glp_lpx_write_mps(glp_prob *lp, const char *fname){
+int _glp_lpx_write_mps (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_write_mps) {
         if (!module) {
             if (!load_module()) {
@@ -6398,7 +6398,7 @@ int _glp_lpx_write_mps(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_write_mps(lp, fname);
 }
-int _glp_lpx_read_bas(glp_prob *lp, const char *fname){
+int _glp_lpx_read_bas (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_read_bas) {
         if (!module) {
             if (!load_module()) {
@@ -6417,7 +6417,7 @@ int _glp_lpx_read_bas(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_read_bas(lp, fname);
 }
-int _glp_lpx_write_bas(glp_prob *lp, const char *fname){
+int _glp_lpx_write_bas (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_write_bas) {
         if (!module) {
             if (!load_module()) {
@@ -6436,7 +6436,7 @@ int _glp_lpx_write_bas(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_write_bas(lp, fname);
 }
-glp_prob *_glp_lpx_read_freemps(const char *fname){
+glp_prob *_glp_lpx_read_freemps (const char *fname){
     if (!__symbolic__glp_lpx_read_freemps) {
         if (!module) {
             if (!load_module()) {
@@ -6455,7 +6455,7 @@ glp_prob *_glp_lpx_read_freemps(const char *fname){
     }
     return __symbolic__glp_lpx_read_freemps(fname);
 }
-int _glp_lpx_write_freemps(glp_prob *lp, const char *fname){
+int _glp_lpx_write_freemps (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_write_freemps) {
         if (!module) {
             if (!load_module()) {
@@ -6474,7 +6474,7 @@ int _glp_lpx_write_freemps(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_write_freemps(lp, fname);
 }
-glp_prob *_glp_lpx_read_cpxlp(const char *fname){
+glp_prob *_glp_lpx_read_cpxlp (const char *fname){
     if (!__symbolic__glp_lpx_read_cpxlp) {
         if (!module) {
             if (!load_module()) {
@@ -6493,7 +6493,7 @@ glp_prob *_glp_lpx_read_cpxlp(const char *fname){
     }
     return __symbolic__glp_lpx_read_cpxlp(fname);
 }
-int _glp_lpx_write_cpxlp(glp_prob *lp, const char *fname){
+int _glp_lpx_write_cpxlp (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_write_cpxlp) {
         if (!module) {
             if (!load_module()) {
@@ -6512,7 +6512,7 @@ int _glp_lpx_write_cpxlp(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_write_cpxlp(lp, fname);
 }
-glp_prob *_glp_lpx_read_model(const char *model, const char *data, const char *output){
+glp_prob *_glp_lpx_read_model (const char *model, const char *data, const char *output){
     if (!__symbolic__glp_lpx_read_model) {
         if (!module) {
             if (!load_module()) {
@@ -6531,7 +6531,7 @@ glp_prob *_glp_lpx_read_model(const char *model, const char *data, const char *o
     }
     return __symbolic__glp_lpx_read_model(model, data, output);
 }
-int _glp_lpx_print_prob(glp_prob *lp, const char *fname){
+int _glp_lpx_print_prob (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_print_prob) {
         if (!module) {
             if (!load_module()) {
@@ -6550,7 +6550,7 @@ int _glp_lpx_print_prob(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_print_prob(lp, fname);
 }
-int _glp_lpx_print_sol(glp_prob *lp, const char *fname){
+int _glp_lpx_print_sol (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_print_sol) {
         if (!module) {
             if (!load_module()) {
@@ -6569,7 +6569,7 @@ int _glp_lpx_print_sol(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_print_sol(lp, fname);
 }
-int _glp_lpx_print_sens_bnds(glp_prob *lp, const char *fname){
+int _glp_lpx_print_sens_bnds (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_print_sens_bnds) {
         if (!module) {
             if (!load_module()) {
@@ -6588,7 +6588,7 @@ int _glp_lpx_print_sens_bnds(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_print_sens_bnds(lp, fname);
 }
-int _glp_lpx_print_ips(glp_prob *lp, const char *fname){
+int _glp_lpx_print_ips (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_print_ips) {
         if (!module) {
             if (!load_module()) {
@@ -6607,7 +6607,7 @@ int _glp_lpx_print_ips(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_print_ips(lp, fname);
 }
-int _glp_lpx_print_mip(glp_prob *lp, const char *fname){
+int _glp_lpx_print_mip (glp_prob * lp, const char *fname){
     if (!__symbolic__glp_lpx_print_mip) {
         if (!module) {
             if (!load_module()) {
@@ -6626,7 +6626,7 @@ int _glp_lpx_print_mip(glp_prob *lp, const char *fname){
     }
     return __symbolic__glp_lpx_print_mip(lp, fname);
 }
-int _glp_lpx_is_b_avail(glp_prob *lp){
+int _glp_lpx_is_b_avail (glp_prob * lp){
     if (!__symbolic__glp_lpx_is_b_avail) {
         if (!module) {
             if (!load_module()) {
@@ -6645,7 +6645,7 @@ int _glp_lpx_is_b_avail(glp_prob *lp){
     }
     return __symbolic__glp_lpx_is_b_avail(lp);
 }
-int _glp_lpx_write_pb(glp_prob *lp, const char *fname, int normalized, int binarize){
+int _glp_lpx_write_pb (glp_prob * lp, const char *fname, int normalized, int binarize){
     if (!__symbolic__glp_lpx_write_pb) {
         if (!module) {
             if (!load_module()) {
@@ -6664,7 +6664,7 @@ int _glp_lpx_write_pb(glp_prob *lp, const char *fname, int normalized, int binar
     }
     return __symbolic__glp_lpx_write_pb(lp, fname, normalized, binarize);
 }
-int _glp_lpx_main(int argc, const char *argv[]){
+int _glp_lpx_main (int argc, const char *argv[]){
     if (!__symbolic__glp_lpx_main) {
         if (!module) {
             if (!load_module()) {
