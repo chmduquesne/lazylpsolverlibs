@@ -20,28 +20,13 @@ DEPENDENCIES
 INSTALLATION
 ============
 ./configure
-make download
-make generate_stubs
 make
 make install
 
 BUILDING THE WINDOWS VERSION
 ============================
 You need mingw32. Install it, then find out the path of the compiler, and
-adapt "--host=" in the following "./configure" snippet
-
-./configure --prefix=/tmp/win32 \
-            --host=i586-mingw32msvc \
-            PKG_CONFIG_LIBDIR=tools/wine/lib/pkgconfig \
-            CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32"
-make download
-make tools/wine
-make generate_stubs
-make
-make install
-make nsis
-
-then grab the generated .exe from /tmp/win32
+modify share/package.sh according to your needs
 
 INSTALLING THE WINDOWS VERSION
 ==============================

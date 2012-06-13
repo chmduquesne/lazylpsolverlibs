@@ -15,14 +15,14 @@ compile_linux(){
 }
 
 get_wine_build_deps(){
-    mkdir -p tools/wine
+    mkdir -p share/wine
     wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.28/glib-dev_2.28.8-1_win32.zip
-    unzip glib-dev_2.28.8-1_win32.zip -d tools/wine
+    unzip glib-dev_2.28.8-1_win32.zip -d share/wine
     rm glib-dev_2.28.8-1_win32.zip
     wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-dev_0.18.1.1-2_win32.zip
-    unzip gettext-runtime-dev_0.18.1.1-2_win32.zip -d tools/wine
+    unzip gettext-runtime-dev_0.18.1.1-2_win32.zip -d share/wine
     rm gettext-runtime-dev_0.18.1.1-2_win32.zip
-    sed -i "s#^prefix=.*#prefix=tools/wine#g" tools/wine/lib/pkgconfig/*.pc
+    sed -i "s#^prefix=.*#prefix=share/wine#g" share/wine/lib/pkgconfig/*.pc
 }
 
 compile_windows(){
@@ -32,8 +32,8 @@ compile_windows(){
     get_wine_build_deps
     ./get.headers
     ./configure --prefix=/tmp/packaging/windows/install \
-                --host=i486-mingw32 \
-                PKG_CONFIG_LIBDIR=tools/wine/lib/pkgconfig \
+                --host=i586-mingw32msvc \
+                PKG_CONFIG_LIBDIR=share/wine/lib/pkgconfig \
                 CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32"
     make generate_stubs
     make
@@ -50,7 +50,7 @@ package_fedora(){
 }
 
 package_windows(){
-    cp tools/lazylpsolverlibs.nsi COPYING /tmp/packaging/windows/install
+    cp share/lazylpsolverlibs.nsi COPYING /tmp/packaging/windows/install
     cd /tmp/packaging/windows/install
     sed -i "s/VERSION/$(version)/g" lazylpsolverlibs.nsi
     makensis lazylpsolverlibs.nsi
