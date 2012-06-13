@@ -8,10 +8,7 @@ compile_linux(){
     mkdir -p /tmp/packaging/linux
     tar xvzf $package_archive -C /tmp/packaging/linux
     cd /tmp/packaging/linux/lazylpsolverlibs-$(version)
-    ./get.headers
     ./configure --prefix=/tmp/packaging/linux/install \
-        CFLAGS="-g -O2 -Itools/include" \
-        CPPFLAGS="-Itools/include"
     make
     make install
     cd -
@@ -37,8 +34,7 @@ compile_windows(){
     ./configure --prefix=/tmp/packaging/windows/install \
                 --host=i486-mingw32 \
                 PKG_CONFIG_LIBDIR=tools/wine/lib/pkgconfig \
-                CFLAGS="-Itools/include" \
-                CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32 -Itools/include"
+                CPPFLAGS="-DBUILD_CPXSTATIC -D_WIN32"
     make generate_stubs
     make
     make install

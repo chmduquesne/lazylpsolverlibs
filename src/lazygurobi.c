@@ -84,108 +84,108 @@ int load_module(){
 
 /* imported functions */
 
-int (*__symbolic_GRBgetattrinfo)(GRBmodel *model, const char *attrname, int *datatypeP, int *sizeP, int *settableP) = NULL;
-int (*__symbolic_GRBgetintattr)(GRBmodel *model, const char *attrname, int *valueP) = NULL;
-int (*__symbolic_GRBsetintattr)(GRBmodel *model, const char *attrname, int newvalue) = NULL;
-int (*__symbolic_GRBgetintattrelement)(GRBmodel *model, const char *attrname, int element, int *valueP) = NULL;
-int (*__symbolic_GRBsetintattrelement)(GRBmodel *model, const char *attrname, int element, int newvalue) = NULL;
-int (*__symbolic_GRBgetintattrarray)(GRBmodel *model, const char *attrname, int first, int len, int *values) = NULL;
-int (*__symbolic_GRBsetintattrarray)(GRBmodel *model, const char *attrname, int first, int len, int *newvalues) = NULL;
-int (*__symbolic_GRBgetintattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, int *values) = NULL;
-int (*__symbolic_GRBsetintattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, int *newvalues) = NULL;
-int (*__symbolic_GRBgetcharattrelement)(GRBmodel *model, const char *attrname, int element, char *valueP) = NULL;
-int (*__symbolic_GRBsetcharattrelement)(GRBmodel *model, const char *attrname, int element, char newvalue) = NULL;
-int (*__symbolic_GRBgetcharattrarray)(GRBmodel *model, const char *attrname, int first, int len, char *values) = NULL;
-int (*__symbolic_GRBsetcharattrarray)(GRBmodel *model, const char *attrname, int first, int len, char *newvalues) = NULL;
-int (*__symbolic_GRBgetcharattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, char *values) = NULL;
-int (*__symbolic_GRBsetcharattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, char *newvalues) = NULL;
-int (*__symbolic_GRBgetdblattr)(GRBmodel *model, const char *attrname, double *valueP) = NULL;
-int (*__symbolic_GRBsetdblattr)(GRBmodel *model, const char *attrname, double newvalue) = NULL;
-int (*__symbolic_GRBgetdblattrelement)(GRBmodel *model, const char *attrname, int element, double *valueP) = NULL;
-int (*__symbolic_GRBsetdblattrelement)(GRBmodel *model, const char *attrname, int element, double newvalue) = NULL;
-int (*__symbolic_GRBgetdblattrarray)(GRBmodel *model, const char *attrname, int first, int len, double *values) = NULL;
-int (*__symbolic_GRBsetdblattrarray)(GRBmodel *model, const char *attrname, int first, int len, double *newvalues) = NULL;
-int (*__symbolic_GRBgetdblattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, double *values) = NULL;
-int (*__symbolic_GRBsetdblattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, double *newvalues) = NULL;
-int (*__symbolic_GRBgetstrattr)(GRBmodel *model, const char *attrname, char **valueP) = NULL;
-int (*__symbolic_GRBsetstrattr)(GRBmodel *model, const char *attrname, char *newvalue) = NULL;
-int (*__symbolic_GRBgetstrattrelement)(GRBmodel *model, const char *attrname, int element, char **valueP) = NULL;
-int (*__symbolic_GRBsetstrattrelement)(GRBmodel *model, const char *attrname, int element, char *newvalue) = NULL;
-int (*__symbolic_GRBgetstrattrarray)(GRBmodel *model, const char *attrname, int first, int len, char **values) = NULL;
-int (*__symbolic_GRBsetstrattrarray)(GRBmodel *model, const char *attrname, int first, int len, char **newvalues) = NULL;
-int (*__symbolic_GRBgetstrattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, char **values) = NULL;
-int (*__symbolic_GRBsetstrattrlist)(GRBmodel *model, const char *attrname, int len, int *ind, char **newvalues) = NULL;
-int (*__symbolic_GRBsetcallbackfunc)(GRBmodel *model, int ( *cb)(GRBmodel *model, void *cbdata, int where, void *usrdata), void *usrdata) = NULL;
-int (*__symbolic_GRBgetcallbackfunc)(GRBmodel *model, int ( **cbP)(GRBmodel *model, void *cbdata, int where, void *usrdata)) = NULL;
-int (*__symbolic_GRBcbget)(void *cbdata, int where, int what, void *resultP) = NULL;
-int (*__symbolic_GRBcbsolution)(void *cbdata, const double *solution) = NULL;
-int (*__symbolic_GRBcbcut)(void *cbdata, int cutlen, const int *cutind, const double *cutval, char cutsense, double cutrhs) = NULL;
-int (*__symbolic_GRBgetcoeff)(GRBmodel *model, int constr, int var, double *valP) = NULL;
-int (*__symbolic_GRBgetconstrs)(GRBmodel *model, int *numnzP, int *cbeg, int *cind, double *cval, int start, int len) = NULL;
-int (*__symbolic_GRBgetvars)(GRBmodel *model, int *numnzP, int *vbeg, int *vind, double *vval, int start, int len) = NULL;
-int (*__symbolic_GRBgetsos)(GRBmodel *model, int *nummembersP, int *sostype, int *beg, int *ind, double *weight, int start, int len) = NULL;
-int (*__symbolic_GRBoptimize)(GRBmodel *model) = NULL;
-GRBmodel * (*__symbolic_GRBcopymodel)(GRBmodel *model) = NULL;
-GRBmodel * (*__symbolic_GRBfixedmodel)(GRBmodel *model) = NULL;
-int (*__symbolic_GRBgetcbwhatinfo)(void *cbdata, int what, int *typeP, int *sizeP) = NULL;
-GRBmodel * (*__symbolic_GRBrelaxmodel)(GRBmodel *model) = NULL;
-int (*__symbolic_GRBconverttofixed)(GRBmodel *lp) = NULL;
-GRBmodel * (*__symbolic_GRBpresolvemodel)(GRBmodel *model) = NULL;
-GRBmodel * (*__symbolic_GRBiismodel)(GRBmodel *model) = NULL;
-GRBmodel * (*__symbolic_GRBfeasibility)(GRBmodel *model) = NULL;
-int (*__symbolic_GRBreadmodel)(GRBenv *env, const char *filename, GRBmodel **modelP) = NULL;
-int (*__symbolic_GRBread)(GRBmodel *model, const char *filename) = NULL;
-int (*__symbolic_GRBwrite)(GRBmodel *model, const char *filename) = NULL;
-int (*__symbolic_GRBnewmodel)(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars, double *obj, double *lb, double *ub, char *vtype, char **varnames) = NULL;
-int (*__symbolic_GRBloadmodel)(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars, int numconstrs, int objsense, double objcon, double *obj, char *sense, double *rhs, int *vbeg, int *vlen, int *vind, double *vval, double *lb, double *ub, char *vtype, char **varnames, char **constrnames) = NULL;
-int (*__symbolic_GRBaddvar)(GRBmodel *model, int numnz, int *vind, double *vval, double obj, double lb, double ub, char vtype, char *varname) = NULL;
-int (*__symbolic_GRBaddvars)(GRBmodel *model, int numvars, int numnz, int *vbeg, int *vind, double *vval, double *obj, double *lb, double *ub, char *vtype, char **varnames) = NULL;
-int (*__symbolic_GRBaddconstr)(GRBmodel *model, int numnz, int *cind, double *cval, char sense, double rhs, char *constrnames) = NULL;
-int (*__symbolic_GRBaddconstrs)(GRBmodel *model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, char *sense, double *rhs, char **constrnames) = NULL;
-int (*__symbolic_GRBaddrangeconstr)(GRBmodel *model, int numnz, int *cind, double *cval, double lower, double upper, char *constrnames) = NULL;
-int (*__symbolic_GRBaddrangeconstrs)(GRBmodel *model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, double *lower, double *upper, char **constrnames) = NULL;
-int (*__symbolic_GRBaddsos)(GRBmodel *model, int numsos, int nummembers, int *types, int *beg, int *ind, double *weight) = NULL;
-int (*__symbolic_GRBdelvars)(GRBmodel *model, int len, int *ind) = NULL;
-int (*__symbolic_GRBdelconstrs)(GRBmodel *model, int len, int *ind) = NULL;
-int (*__symbolic_GRBdelsos)(GRBmodel *model, int len, int *ind) = NULL;
-int (*__symbolic_GRBchgcoeffs)(GRBmodel *model, int cnt, int *cind, int *vind, double *val) = NULL;
-int (*__symbolic_GRBupdatemodel)(GRBmodel *model) = NULL;
-int (*__symbolic_GRBresetmodel)(GRBmodel *model) = NULL;
-int (*__symbolic_GRBfreemodel)(GRBmodel *model) = NULL;
-int (*__symbolic_GRBcomputeIIS)(GRBmodel *lp) = NULL;
-int (*__symbolic_GRBstrongbranch)(GRBmodel *model, int num, int *cand, double *downobjbd, double *upobjbd, int *statusP) = NULL;
-int (*__symbolic_GRBcheckmodel)(GRBmodel *model) = NULL;
-void (*__symbolic_GRBsetsignal)(GRBmodel *model) = NULL;
-void (*__symbolic_GRBterminate)(GRBmodel *model) = NULL;
-void (*__symbolic_GRBmsg)(GRBenv *env, const char *message) = NULL;
-int (*__symbolic_GRBgetlogfile)(GRBenv *env, FILE **logfileP) = NULL;
-int (*__symbolic_GRBsetlogfile)(GRBenv *env, FILE *logfile) = NULL;
-int (*__symbolic_GRBgetintparam)(GRBenv *env, const char *paramname, int *valueP) = NULL;
-int (*__symbolic_GRBgetdblparam)(GRBenv *env, const char *paramname, double *valueP) = NULL;
-int (*__symbolic_GRBgetstrparam)(GRBenv *env, const char *paramname, char *valueP) = NULL;
-int (*__symbolic_GRBgetintparaminfo)(GRBenv *env, const char *paramname, int *valueP, int *minP, int *maxP, int *defP) = NULL;
-int (*__symbolic_GRBgetdblparaminfo)(GRBenv *env, const char *paramname, double *valueP, double *minP, double *maxP, double *defP) = NULL;
-int (*__symbolic_GRBgetstrparaminfo)(GRBenv *env, const char *paramname, char *valueP, char *defP) = NULL;
-int (*__symbolic_GRBsetintparam)(GRBenv *env, const char *paramname, int value) = NULL;
-int (*__symbolic_GRBsetdblparam)(GRBenv *env, const char *paramname, double value) = NULL;
-int (*__symbolic_GRBsetstrparam)(GRBenv *env, const char *paramname, const char *value) = NULL;
-int (*__symbolic_GRBgetparamtype)(GRBenv *env, const char *paramname) = NULL;
-int (*__symbolic_GRBresetparams)(GRBenv *env) = NULL;
-int (*__symbolic_GRBwriteparams)(GRBenv *env, const char *filename) = NULL;
-int (*__symbolic_GRBreadparams)(GRBenv *env, const char *filename) = NULL;
-int (*__symbolic_GRBgetnumparams)(GRBenv *env) = NULL;
-int (*__symbolic_GRBgetparamname)(GRBenv *env, int i, char **paramnameP) = NULL;
-int (*__symbolic_GRBloadenv)(GRBenv **envP, const char *logfilename) = NULL;
-GRBenv * (*__symbolic_GRBgetenv)(GRBmodel *model) = NULL;
-void (*__symbolic_GRBfreeenv)(GRBenv *env) = NULL;
-const char * (*__symbolic_GRBgeterrormsg)(GRBenv *env) = NULL;
-const char * (*__symbolic_GRBgetmerrormsg)(GRBmodel *model) = NULL;
-void (*__symbolic_GRBversion)(int *majorP, int *minorP, int *technicalP) = NULL;
-char * (*__symbolic_GRBplatform)(void) = NULL;
+int (*__symbolic_GRBgetattrinfo) (GRBmodel * model, const char *attrname, int *datatypeP, int *sizeP, int *settableP) = NULL;
+int (*__symbolic_GRBgetintattr) (GRBmodel * model, const char *attrname, int *valueP) = NULL;
+int (*__symbolic_GRBsetintattr) (GRBmodel * model, const char *attrname, int newvalue) = NULL;
+int (*__symbolic_GRBgetintattrelement) (GRBmodel * model, const char *attrname, int element, int *valueP) = NULL;
+int (*__symbolic_GRBsetintattrelement) (GRBmodel * model, const char *attrname, int element, int newvalue) = NULL;
+int (*__symbolic_GRBgetintattrarray) (GRBmodel * model, const char *attrname, int first, int len, int *values) = NULL;
+int (*__symbolic_GRBsetintattrarray) (GRBmodel * model, const char *attrname, int first, int len, int *newvalues) = NULL;
+int (*__symbolic_GRBgetintattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, int *values) = NULL;
+int (*__symbolic_GRBsetintattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, int *newvalues) = NULL;
+int (*__symbolic_GRBgetcharattrelement) (GRBmodel * model, const char *attrname, int element, char *valueP) = NULL;
+int (*__symbolic_GRBsetcharattrelement) (GRBmodel * model, const char *attrname, int element, char newvalue) = NULL;
+int (*__symbolic_GRBgetcharattrarray) (GRBmodel * model, const char *attrname, int first, int len, char *values) = NULL;
+int (*__symbolic_GRBsetcharattrarray) (GRBmodel * model, const char *attrname, int first, int len, char *newvalues) = NULL;
+int (*__symbolic_GRBgetcharattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, char *values) = NULL;
+int (*__symbolic_GRBsetcharattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, char *newvalues) = NULL;
+int (*__symbolic_GRBgetdblattr) (GRBmodel * model, const char *attrname, double *valueP) = NULL;
+int (*__symbolic_GRBsetdblattr) (GRBmodel * model, const char *attrname, double newvalue) = NULL;
+int (*__symbolic_GRBgetdblattrelement) (GRBmodel * model, const char *attrname, int element, double *valueP) = NULL;
+int (*__symbolic_GRBsetdblattrelement) (GRBmodel * model, const char *attrname, int element, double newvalue) = NULL;
+int (*__symbolic_GRBgetdblattrarray) (GRBmodel * model, const char *attrname, int first, int len, double *values) = NULL;
+int (*__symbolic_GRBsetdblattrarray) (GRBmodel * model, const char *attrname, int first, int len, double *newvalues) = NULL;
+int (*__symbolic_GRBgetdblattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, double *values) = NULL;
+int (*__symbolic_GRBsetdblattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, double *newvalues) = NULL;
+int (*__symbolic_GRBgetstrattr) (GRBmodel * model, const char *attrname, char **valueP) = NULL;
+int (*__symbolic_GRBsetstrattr) (GRBmodel * model, const char *attrname, char *newvalue) = NULL;
+int (*__symbolic_GRBgetstrattrelement) (GRBmodel * model, const char *attrname, int element, char **valueP) = NULL;
+int (*__symbolic_GRBsetstrattrelement) (GRBmodel * model, const char *attrname, int element, char *newvalue) = NULL;
+int (*__symbolic_GRBgetstrattrarray) (GRBmodel * model, const char *attrname, int first, int len, char **values) = NULL;
+int (*__symbolic_GRBsetstrattrarray) (GRBmodel * model, const char *attrname, int first, int len, char **newvalues) = NULL;
+int (*__symbolic_GRBgetstrattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, char **values) = NULL;
+int (*__symbolic_GRBsetstrattrlist) (GRBmodel * model, const char *attrname, int len, int *ind, char **newvalues) = NULL;
+int (*__symbolic_GRBsetcallbackfunc) (GRBmodel * model, int ( * cb) (GRBmodel *model, void *cbdata, int where, void *usrdata), void *usrdata) = NULL;
+int (*__symbolic_GRBgetcallbackfunc) (GRBmodel * model, int ( ** cbP) (GRBmodel *model, void *cbdata, int where, void *usrdata)) = NULL;
+int (*__symbolic_GRBcbget) (void *cbdata, int where, int what, void *resultP) = NULL;
+int (*__symbolic_GRBcbsolution) (void *cbdata, const double *solution) = NULL;
+int (*__symbolic_GRBcbcut) (void *cbdata, int cutlen, const int *cutind, const double *cutval, char cutsense, double cutrhs) = NULL;
+int (*__symbolic_GRBgetcoeff) (GRBmodel * model, int constr, int var, double *valP) = NULL;
+int (*__symbolic_GRBgetconstrs) (GRBmodel * model, int *numnzP, int *cbeg, int *cind, double *cval, int start, int len) = NULL;
+int (*__symbolic_GRBgetvars) (GRBmodel * model, int *numnzP, int *vbeg, int *vind, double *vval, int start, int len) = NULL;
+int (*__symbolic_GRBgetsos) (GRBmodel * model, int *nummembersP, int *sostype, int *beg, int *ind, double *weight, int start, int len) = NULL;
+int (*__symbolic_GRBoptimize) (GRBmodel * model) = NULL;
+GRBmodel * (*__symbolic_GRBcopymodel) (GRBmodel * model) = NULL;
+GRBmodel * (*__symbolic_GRBfixedmodel) (GRBmodel * model) = NULL;
+int (*__symbolic_GRBgetcbwhatinfo) (void *cbdata, int what, int *typeP, int *sizeP) = NULL;
+GRBmodel * (*__symbolic_GRBrelaxmodel) (GRBmodel * model) = NULL;
+int (*__symbolic_GRBconverttofixed) (GRBmodel * lp) = NULL;
+GRBmodel * (*__symbolic_GRBpresolvemodel) (GRBmodel * model) = NULL;
+GRBmodel * (*__symbolic_GRBiismodel) (GRBmodel * model) = NULL;
+GRBmodel * (*__symbolic_GRBfeasibility) (GRBmodel * model) = NULL;
+int (*__symbolic_GRBreadmodel) (GRBenv * env, const char *filename, GRBmodel ** modelP) = NULL;
+int (*__symbolic_GRBread) (GRBmodel * model, const char *filename) = NULL;
+int (*__symbolic_GRBwrite) (GRBmodel * model, const char *filename) = NULL;
+int (*__symbolic_GRBnewmodel) (GRBenv * env, GRBmodel ** modelP, const char *Pname, int numvars, double *obj, double *lb, double *ub, char *vtype, char **varnames) = NULL;
+int (*__symbolic_GRBloadmodel) (GRBenv * env, GRBmodel ** modelP, const char *Pname, int numvars, int numconstrs, int objsense, double objcon, double *obj, char *sense, double *rhs, int *vbeg, int *vlen, int *vind, double *vval, double *lb, double *ub, char *vtype, char **varnames, char **constrnames) = NULL;
+int (*__symbolic_GRBaddvar) (GRBmodel * model, int numnz, int *vind, double *vval, double obj, double lb, double ub, char vtype, char *varname) = NULL;
+int (*__symbolic_GRBaddvars) (GRBmodel * model, int numvars, int numnz, int *vbeg, int *vind, double *vval, double *obj, double *lb, double *ub, char *vtype, char **varnames) = NULL;
+int (*__symbolic_GRBaddconstr) (GRBmodel * model, int numnz, int *cind, double *cval, char sense, double rhs, char *constrnames) = NULL;
+int (*__symbolic_GRBaddconstrs) (GRBmodel * model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, char *sense, double *rhs, char **constrnames) = NULL;
+int (*__symbolic_GRBaddrangeconstr) (GRBmodel * model, int numnz, int *cind, double *cval, double lower, double upper, char *constrnames) = NULL;
+int (*__symbolic_GRBaddrangeconstrs) (GRBmodel * model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, double *lower, double *upper, char **constrnames) = NULL;
+int (*__symbolic_GRBaddsos) (GRBmodel * model, int numsos, int nummembers, int *types, int *beg, int *ind, double *weight) = NULL;
+int (*__symbolic_GRBdelvars) (GRBmodel * model, int len, int *ind) = NULL;
+int (*__symbolic_GRBdelconstrs) (GRBmodel * model, int len, int *ind) = NULL;
+int (*__symbolic_GRBdelsos) (GRBmodel * model, int len, int *ind) = NULL;
+int (*__symbolic_GRBchgcoeffs) (GRBmodel * model, int cnt, int *cind, int *vind, double *val) = NULL;
+int (*__symbolic_GRBupdatemodel) (GRBmodel * model) = NULL;
+int (*__symbolic_GRBresetmodel) (GRBmodel * model) = NULL;
+int (*__symbolic_GRBfreemodel) (GRBmodel * model) = NULL;
+int (*__symbolic_GRBcomputeIIS) (GRBmodel * lp) = NULL;
+int (*__symbolic_GRBstrongbranch) (GRBmodel * model, int num, int *cand, double *downobjbd, double *upobjbd, int *statusP) = NULL;
+int (*__symbolic_GRBcheckmodel) (GRBmodel * model) = NULL;
+void (*__symbolic_GRBsetsignal) (GRBmodel * model) = NULL;
+void (*__symbolic_GRBterminate) (GRBmodel * model) = NULL;
+void (*__symbolic_GRBmsg) (GRBenv * env, const char *message) = NULL;
+int (*__symbolic_GRBgetlogfile) (GRBenv * env, FILE ** logfileP) = NULL;
+int (*__symbolic_GRBsetlogfile) (GRBenv * env, FILE * logfile) = NULL;
+int (*__symbolic_GRBgetintparam) (GRBenv * env, const char *paramname, int *valueP) = NULL;
+int (*__symbolic_GRBgetdblparam) (GRBenv * env, const char *paramname, double *valueP) = NULL;
+int (*__symbolic_GRBgetstrparam) (GRBenv * env, const char *paramname, char *valueP) = NULL;
+int (*__symbolic_GRBgetintparaminfo) (GRBenv * env, const char *paramname, int *valueP, int *minP, int *maxP, int *defP) = NULL;
+int (*__symbolic_GRBgetdblparaminfo) (GRBenv * env, const char *paramname, double *valueP, double *minP, double *maxP, double *defP) = NULL;
+int (*__symbolic_GRBgetstrparaminfo) (GRBenv * env, const char *paramname, char *valueP, char *defP) = NULL;
+int (*__symbolic_GRBsetintparam) (GRBenv * env, const char *paramname, int value) = NULL;
+int (*__symbolic_GRBsetdblparam) (GRBenv * env, const char *paramname, double value) = NULL;
+int (*__symbolic_GRBsetstrparam) (GRBenv * env, const char *paramname, const char *value) = NULL;
+int (*__symbolic_GRBgetparamtype) (GRBenv * env, const char *paramname) = NULL;
+int (*__symbolic_GRBresetparams) (GRBenv * env) = NULL;
+int (*__symbolic_GRBwriteparams) (GRBenv * env, const char *filename) = NULL;
+int (*__symbolic_GRBreadparams) (GRBenv * env, const char *filename) = NULL;
+int (*__symbolic_GRBgetnumparams) (GRBenv * env) = NULL;
+int (*__symbolic_GRBgetparamname) (GRBenv * env, int i, char **paramnameP) = NULL;
+int (*__symbolic_GRBloadenv) (GRBenv ** envP, const char *logfilename) = NULL;
+GRBenv * (*__symbolic_GRBgetenv) (GRBmodel * model) = NULL;
+void (*__symbolic_GRBfreeenv) (GRBenv * env) = NULL;
+const char * (*__symbolic_GRBgeterrormsg) (GRBenv * env) = NULL;
+const char * (*__symbolic_GRBgetmerrormsg) (GRBmodel * model) = NULL;
+void (*__symbolic_GRBversion) (int *majorP, int *minorP, int *technicalP) = NULL;
+char * (*__symbolic_GRBplatform) (void) = NULL;
 
 /* hijacked functions */
 
-int GRBgetattrinfo(GRBmodel *model, const char *attrname, int *datatypeP, int *sizeP, int *settableP){
+int GRBgetattrinfo (GRBmodel * model, const char *attrname, int *datatypeP, int *sizeP, int *settableP){
     if (!__symbolic_GRBgetattrinfo) {
         if (!module) {
             if (!load_module()) {
@@ -204,7 +204,7 @@ int GRBgetattrinfo(GRBmodel *model, const char *attrname, int *datatypeP, int *s
     }
     return __symbolic_GRBgetattrinfo(model, attrname, datatypeP, sizeP, settableP);
 }
-int GRBgetintattr(GRBmodel *model, const char *attrname, int *valueP){
+int GRBgetintattr (GRBmodel * model, const char *attrname, int *valueP){
     if (!__symbolic_GRBgetintattr) {
         if (!module) {
             if (!load_module()) {
@@ -223,7 +223,7 @@ int GRBgetintattr(GRBmodel *model, const char *attrname, int *valueP){
     }
     return __symbolic_GRBgetintattr(model, attrname, valueP);
 }
-int GRBsetintattr(GRBmodel *model, const char *attrname, int newvalue){
+int GRBsetintattr (GRBmodel * model, const char *attrname, int newvalue){
     if (!__symbolic_GRBsetintattr) {
         if (!module) {
             if (!load_module()) {
@@ -242,7 +242,7 @@ int GRBsetintattr(GRBmodel *model, const char *attrname, int newvalue){
     }
     return __symbolic_GRBsetintattr(model, attrname, newvalue);
 }
-int GRBgetintattrelement(GRBmodel *model, const char *attrname, int element, int *valueP){
+int GRBgetintattrelement (GRBmodel * model, const char *attrname, int element, int *valueP){
     if (!__symbolic_GRBgetintattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -261,7 +261,7 @@ int GRBgetintattrelement(GRBmodel *model, const char *attrname, int element, int
     }
     return __symbolic_GRBgetintattrelement(model, attrname, element, valueP);
 }
-int GRBsetintattrelement(GRBmodel *model, const char *attrname, int element, int newvalue){
+int GRBsetintattrelement (GRBmodel * model, const char *attrname, int element, int newvalue){
     if (!__symbolic_GRBsetintattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -280,7 +280,7 @@ int GRBsetintattrelement(GRBmodel *model, const char *attrname, int element, int
     }
     return __symbolic_GRBsetintattrelement(model, attrname, element, newvalue);
 }
-int GRBgetintattrarray(GRBmodel *model, const char *attrname, int first, int len, int *values){
+int GRBgetintattrarray (GRBmodel * model, const char *attrname, int first, int len, int *values){
     if (!__symbolic_GRBgetintattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -299,7 +299,7 @@ int GRBgetintattrarray(GRBmodel *model, const char *attrname, int first, int len
     }
     return __symbolic_GRBgetintattrarray(model, attrname, first, len, values);
 }
-int GRBsetintattrarray(GRBmodel *model, const char *attrname, int first, int len, int *newvalues){
+int GRBsetintattrarray (GRBmodel * model, const char *attrname, int first, int len, int *newvalues){
     if (!__symbolic_GRBsetintattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -318,7 +318,7 @@ int GRBsetintattrarray(GRBmodel *model, const char *attrname, int first, int len
     }
     return __symbolic_GRBsetintattrarray(model, attrname, first, len, newvalues);
 }
-int GRBgetintattrlist(GRBmodel *model, const char *attrname, int len, int *ind, int *values){
+int GRBgetintattrlist (GRBmodel * model, const char *attrname, int len, int *ind, int *values){
     if (!__symbolic_GRBgetintattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -337,7 +337,7 @@ int GRBgetintattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
     }
     return __symbolic_GRBgetintattrlist(model, attrname, len, ind, values);
 }
-int GRBsetintattrlist(GRBmodel *model, const char *attrname, int len, int *ind, int *newvalues){
+int GRBsetintattrlist (GRBmodel * model, const char *attrname, int len, int *ind, int *newvalues){
     if (!__symbolic_GRBsetintattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -356,7 +356,7 @@ int GRBsetintattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
     }
     return __symbolic_GRBsetintattrlist(model, attrname, len, ind, newvalues);
 }
-int GRBgetcharattrelement(GRBmodel *model, const char *attrname, int element, char *valueP){
+int GRBgetcharattrelement (GRBmodel * model, const char *attrname, int element, char *valueP){
     if (!__symbolic_GRBgetcharattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -375,7 +375,7 @@ int GRBgetcharattrelement(GRBmodel *model, const char *attrname, int element, ch
     }
     return __symbolic_GRBgetcharattrelement(model, attrname, element, valueP);
 }
-int GRBsetcharattrelement(GRBmodel *model, const char *attrname, int element, char newvalue){
+int GRBsetcharattrelement (GRBmodel * model, const char *attrname, int element, char newvalue){
     if (!__symbolic_GRBsetcharattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -394,7 +394,7 @@ int GRBsetcharattrelement(GRBmodel *model, const char *attrname, int element, ch
     }
     return __symbolic_GRBsetcharattrelement(model, attrname, element, newvalue);
 }
-int GRBgetcharattrarray(GRBmodel *model, const char *attrname, int first, int len, char *values){
+int GRBgetcharattrarray (GRBmodel * model, const char *attrname, int first, int len, char *values){
     if (!__symbolic_GRBgetcharattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -413,7 +413,7 @@ int GRBgetcharattrarray(GRBmodel *model, const char *attrname, int first, int le
     }
     return __symbolic_GRBgetcharattrarray(model, attrname, first, len, values);
 }
-int GRBsetcharattrarray(GRBmodel *model, const char *attrname, int first, int len, char *newvalues){
+int GRBsetcharattrarray (GRBmodel * model, const char *attrname, int first, int len, char *newvalues){
     if (!__symbolic_GRBsetcharattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -432,7 +432,7 @@ int GRBsetcharattrarray(GRBmodel *model, const char *attrname, int first, int le
     }
     return __symbolic_GRBsetcharattrarray(model, attrname, first, len, newvalues);
 }
-int GRBgetcharattrlist(GRBmodel *model, const char *attrname, int len, int *ind, char *values){
+int GRBgetcharattrlist (GRBmodel * model, const char *attrname, int len, int *ind, char *values){
     if (!__symbolic_GRBgetcharattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -451,7 +451,7 @@ int GRBgetcharattrlist(GRBmodel *model, const char *attrname, int len, int *ind,
     }
     return __symbolic_GRBgetcharattrlist(model, attrname, len, ind, values);
 }
-int GRBsetcharattrlist(GRBmodel *model, const char *attrname, int len, int *ind, char *newvalues){
+int GRBsetcharattrlist (GRBmodel * model, const char *attrname, int len, int *ind, char *newvalues){
     if (!__symbolic_GRBsetcharattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -470,7 +470,7 @@ int GRBsetcharattrlist(GRBmodel *model, const char *attrname, int len, int *ind,
     }
     return __symbolic_GRBsetcharattrlist(model, attrname, len, ind, newvalues);
 }
-int GRBgetdblattr(GRBmodel *model, const char *attrname, double *valueP){
+int GRBgetdblattr (GRBmodel * model, const char *attrname, double *valueP){
     if (!__symbolic_GRBgetdblattr) {
         if (!module) {
             if (!load_module()) {
@@ -489,7 +489,7 @@ int GRBgetdblattr(GRBmodel *model, const char *attrname, double *valueP){
     }
     return __symbolic_GRBgetdblattr(model, attrname, valueP);
 }
-int GRBsetdblattr(GRBmodel *model, const char *attrname, double newvalue){
+int GRBsetdblattr (GRBmodel * model, const char *attrname, double newvalue){
     if (!__symbolic_GRBsetdblattr) {
         if (!module) {
             if (!load_module()) {
@@ -508,7 +508,7 @@ int GRBsetdblattr(GRBmodel *model, const char *attrname, double newvalue){
     }
     return __symbolic_GRBsetdblattr(model, attrname, newvalue);
 }
-int GRBgetdblattrelement(GRBmodel *model, const char *attrname, int element, double *valueP){
+int GRBgetdblattrelement (GRBmodel * model, const char *attrname, int element, double *valueP){
     if (!__symbolic_GRBgetdblattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -527,7 +527,7 @@ int GRBgetdblattrelement(GRBmodel *model, const char *attrname, int element, dou
     }
     return __symbolic_GRBgetdblattrelement(model, attrname, element, valueP);
 }
-int GRBsetdblattrelement(GRBmodel *model, const char *attrname, int element, double newvalue){
+int GRBsetdblattrelement (GRBmodel * model, const char *attrname, int element, double newvalue){
     if (!__symbolic_GRBsetdblattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -546,7 +546,7 @@ int GRBsetdblattrelement(GRBmodel *model, const char *attrname, int element, dou
     }
     return __symbolic_GRBsetdblattrelement(model, attrname, element, newvalue);
 }
-int GRBgetdblattrarray(GRBmodel *model, const char *attrname, int first, int len, double *values){
+int GRBgetdblattrarray (GRBmodel * model, const char *attrname, int first, int len, double *values){
     if (!__symbolic_GRBgetdblattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -565,7 +565,7 @@ int GRBgetdblattrarray(GRBmodel *model, const char *attrname, int first, int len
     }
     return __symbolic_GRBgetdblattrarray(model, attrname, first, len, values);
 }
-int GRBsetdblattrarray(GRBmodel *model, const char *attrname, int first, int len, double *newvalues){
+int GRBsetdblattrarray (GRBmodel * model, const char *attrname, int first, int len, double *newvalues){
     if (!__symbolic_GRBsetdblattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -584,7 +584,7 @@ int GRBsetdblattrarray(GRBmodel *model, const char *attrname, int first, int len
     }
     return __symbolic_GRBsetdblattrarray(model, attrname, first, len, newvalues);
 }
-int GRBgetdblattrlist(GRBmodel *model, const char *attrname, int len, int *ind, double *values){
+int GRBgetdblattrlist (GRBmodel * model, const char *attrname, int len, int *ind, double *values){
     if (!__symbolic_GRBgetdblattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -603,7 +603,7 @@ int GRBgetdblattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
     }
     return __symbolic_GRBgetdblattrlist(model, attrname, len, ind, values);
 }
-int GRBsetdblattrlist(GRBmodel *model, const char *attrname, int len, int *ind, double *newvalues){
+int GRBsetdblattrlist (GRBmodel * model, const char *attrname, int len, int *ind, double *newvalues){
     if (!__symbolic_GRBsetdblattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -622,7 +622,7 @@ int GRBsetdblattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
     }
     return __symbolic_GRBsetdblattrlist(model, attrname, len, ind, newvalues);
 }
-int GRBgetstrattr(GRBmodel *model, const char *attrname, char **valueP){
+int GRBgetstrattr (GRBmodel * model, const char *attrname, char **valueP){
     if (!__symbolic_GRBgetstrattr) {
         if (!module) {
             if (!load_module()) {
@@ -641,7 +641,7 @@ int GRBgetstrattr(GRBmodel *model, const char *attrname, char **valueP){
     }
     return __symbolic_GRBgetstrattr(model, attrname, valueP);
 }
-int GRBsetstrattr(GRBmodel *model, const char *attrname, char *newvalue){
+int GRBsetstrattr (GRBmodel * model, const char *attrname, char *newvalue){
     if (!__symbolic_GRBsetstrattr) {
         if (!module) {
             if (!load_module()) {
@@ -660,7 +660,7 @@ int GRBsetstrattr(GRBmodel *model, const char *attrname, char *newvalue){
     }
     return __symbolic_GRBsetstrattr(model, attrname, newvalue);
 }
-int GRBgetstrattrelement(GRBmodel *model, const char *attrname, int element, char **valueP){
+int GRBgetstrattrelement (GRBmodel * model, const char *attrname, int element, char **valueP){
     if (!__symbolic_GRBgetstrattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -679,7 +679,7 @@ int GRBgetstrattrelement(GRBmodel *model, const char *attrname, int element, cha
     }
     return __symbolic_GRBgetstrattrelement(model, attrname, element, valueP);
 }
-int GRBsetstrattrelement(GRBmodel *model, const char *attrname, int element, char *newvalue){
+int GRBsetstrattrelement (GRBmodel * model, const char *attrname, int element, char *newvalue){
     if (!__symbolic_GRBsetstrattrelement) {
         if (!module) {
             if (!load_module()) {
@@ -698,7 +698,7 @@ int GRBsetstrattrelement(GRBmodel *model, const char *attrname, int element, cha
     }
     return __symbolic_GRBsetstrattrelement(model, attrname, element, newvalue);
 }
-int GRBgetstrattrarray(GRBmodel *model, const char *attrname, int first, int len, char **values){
+int GRBgetstrattrarray (GRBmodel * model, const char *attrname, int first, int len, char **values){
     if (!__symbolic_GRBgetstrattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -717,7 +717,7 @@ int GRBgetstrattrarray(GRBmodel *model, const char *attrname, int first, int len
     }
     return __symbolic_GRBgetstrattrarray(model, attrname, first, len, values);
 }
-int GRBsetstrattrarray(GRBmodel *model, const char *attrname, int first, int len, char **newvalues){
+int GRBsetstrattrarray (GRBmodel * model, const char *attrname, int first, int len, char **newvalues){
     if (!__symbolic_GRBsetstrattrarray) {
         if (!module) {
             if (!load_module()) {
@@ -736,7 +736,7 @@ int GRBsetstrattrarray(GRBmodel *model, const char *attrname, int first, int len
     }
     return __symbolic_GRBsetstrattrarray(model, attrname, first, len, newvalues);
 }
-int GRBgetstrattrlist(GRBmodel *model, const char *attrname, int len, int *ind, char **values){
+int GRBgetstrattrlist (GRBmodel * model, const char *attrname, int len, int *ind, char **values){
     if (!__symbolic_GRBgetstrattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -755,7 +755,7 @@ int GRBgetstrattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
     }
     return __symbolic_GRBgetstrattrlist(model, attrname, len, ind, values);
 }
-int GRBsetstrattrlist(GRBmodel *model, const char *attrname, int len, int *ind, char **newvalues){
+int GRBsetstrattrlist (GRBmodel * model, const char *attrname, int len, int *ind, char **newvalues){
     if (!__symbolic_GRBsetstrattrlist) {
         if (!module) {
             if (!load_module()) {
@@ -774,7 +774,7 @@ int GRBsetstrattrlist(GRBmodel *model, const char *attrname, int len, int *ind, 
     }
     return __symbolic_GRBsetstrattrlist(model, attrname, len, ind, newvalues);
 }
-int GRBsetcallbackfunc(GRBmodel *model, int ( *cb)(GRBmodel *model, void *cbdata, int where, void *usrdata), void *usrdata){
+int GRBsetcallbackfunc (GRBmodel * model, int ( * cb) (GRBmodel *model, void *cbdata, int where, void *usrdata), void *usrdata){
     if (!__symbolic_GRBsetcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -793,7 +793,7 @@ int GRBsetcallbackfunc(GRBmodel *model, int ( *cb)(GRBmodel *model, void *cbdata
     }
     return __symbolic_GRBsetcallbackfunc(model, cb, usrdata);
 }
-int GRBgetcallbackfunc(GRBmodel *model, int ( **cbP)(GRBmodel *model, void *cbdata, int where, void *usrdata)){
+int GRBgetcallbackfunc (GRBmodel * model, int ( ** cbP) (GRBmodel *model, void *cbdata, int where, void *usrdata)){
     if (!__symbolic_GRBgetcallbackfunc) {
         if (!module) {
             if (!load_module()) {
@@ -812,7 +812,7 @@ int GRBgetcallbackfunc(GRBmodel *model, int ( **cbP)(GRBmodel *model, void *cbda
     }
     return __symbolic_GRBgetcallbackfunc(model, cbP);
 }
-int GRBcbget(void *cbdata, int where, int what, void *resultP){
+int GRBcbget (void *cbdata, int where, int what, void *resultP){
     if (!__symbolic_GRBcbget) {
         if (!module) {
             if (!load_module()) {
@@ -831,7 +831,7 @@ int GRBcbget(void *cbdata, int where, int what, void *resultP){
     }
     return __symbolic_GRBcbget(cbdata, where, what, resultP);
 }
-int GRBcbsolution(void *cbdata, const double *solution){
+int GRBcbsolution (void *cbdata, const double *solution){
     if (!__symbolic_GRBcbsolution) {
         if (!module) {
             if (!load_module()) {
@@ -850,7 +850,7 @@ int GRBcbsolution(void *cbdata, const double *solution){
     }
     return __symbolic_GRBcbsolution(cbdata, solution);
 }
-int GRBcbcut(void *cbdata, int cutlen, const int *cutind, const double *cutval, char cutsense, double cutrhs){
+int GRBcbcut (void *cbdata, int cutlen, const int *cutind, const double *cutval, char cutsense, double cutrhs){
     if (!__symbolic_GRBcbcut) {
         if (!module) {
             if (!load_module()) {
@@ -869,7 +869,7 @@ int GRBcbcut(void *cbdata, int cutlen, const int *cutind, const double *cutval, 
     }
     return __symbolic_GRBcbcut(cbdata, cutlen, cutind, cutval, cutsense, cutrhs);
 }
-int GRBgetcoeff(GRBmodel *model, int constr, int var, double *valP){
+int GRBgetcoeff (GRBmodel * model, int constr, int var, double *valP){
     if (!__symbolic_GRBgetcoeff) {
         if (!module) {
             if (!load_module()) {
@@ -888,7 +888,7 @@ int GRBgetcoeff(GRBmodel *model, int constr, int var, double *valP){
     }
     return __symbolic_GRBgetcoeff(model, constr, var, valP);
 }
-int GRBgetconstrs(GRBmodel *model, int *numnzP, int *cbeg, int *cind, double *cval, int start, int len){
+int GRBgetconstrs (GRBmodel * model, int *numnzP, int *cbeg, int *cind, double *cval, int start, int len){
     if (!__symbolic_GRBgetconstrs) {
         if (!module) {
             if (!load_module()) {
@@ -907,7 +907,7 @@ int GRBgetconstrs(GRBmodel *model, int *numnzP, int *cbeg, int *cind, double *cv
     }
     return __symbolic_GRBgetconstrs(model, numnzP, cbeg, cind, cval, start, len);
 }
-int GRBgetvars(GRBmodel *model, int *numnzP, int *vbeg, int *vind, double *vval, int start, int len){
+int GRBgetvars (GRBmodel * model, int *numnzP, int *vbeg, int *vind, double *vval, int start, int len){
     if (!__symbolic_GRBgetvars) {
         if (!module) {
             if (!load_module()) {
@@ -926,7 +926,7 @@ int GRBgetvars(GRBmodel *model, int *numnzP, int *vbeg, int *vind, double *vval,
     }
     return __symbolic_GRBgetvars(model, numnzP, vbeg, vind, vval, start, len);
 }
-int GRBgetsos(GRBmodel *model, int *nummembersP, int *sostype, int *beg, int *ind, double *weight, int start, int len){
+int GRBgetsos (GRBmodel * model, int *nummembersP, int *sostype, int *beg, int *ind, double *weight, int start, int len){
     if (!__symbolic_GRBgetsos) {
         if (!module) {
             if (!load_module()) {
@@ -945,7 +945,7 @@ int GRBgetsos(GRBmodel *model, int *nummembersP, int *sostype, int *beg, int *in
     }
     return __symbolic_GRBgetsos(model, nummembersP, sostype, beg, ind, weight, start, len);
 }
-int GRBoptimize(GRBmodel *model){
+int GRBoptimize (GRBmodel * model){
     if (!__symbolic_GRBoptimize) {
         if (!module) {
             if (!load_module()) {
@@ -964,7 +964,7 @@ int GRBoptimize(GRBmodel *model){
     }
     return __symbolic_GRBoptimize(model);
 }
-GRBmodel * GRBcopymodel(GRBmodel *model){
+GRBmodel * GRBcopymodel (GRBmodel * model){
     if (!__symbolic_GRBcopymodel) {
         if (!module) {
             if (!load_module()) {
@@ -983,7 +983,7 @@ GRBmodel * GRBcopymodel(GRBmodel *model){
     }
     return __symbolic_GRBcopymodel(model);
 }
-GRBmodel * GRBfixedmodel(GRBmodel *model){
+GRBmodel * GRBfixedmodel (GRBmodel * model){
     if (!__symbolic_GRBfixedmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1002,7 +1002,7 @@ GRBmodel * GRBfixedmodel(GRBmodel *model){
     }
     return __symbolic_GRBfixedmodel(model);
 }
-int GRBgetcbwhatinfo(void *cbdata, int what, int *typeP, int *sizeP){
+int GRBgetcbwhatinfo (void *cbdata, int what, int *typeP, int *sizeP){
     if (!__symbolic_GRBgetcbwhatinfo) {
         if (!module) {
             if (!load_module()) {
@@ -1021,7 +1021,7 @@ int GRBgetcbwhatinfo(void *cbdata, int what, int *typeP, int *sizeP){
     }
     return __symbolic_GRBgetcbwhatinfo(cbdata, what, typeP, sizeP);
 }
-GRBmodel * GRBrelaxmodel(GRBmodel *model){
+GRBmodel * GRBrelaxmodel (GRBmodel * model){
     if (!__symbolic_GRBrelaxmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1040,7 +1040,7 @@ GRBmodel * GRBrelaxmodel(GRBmodel *model){
     }
     return __symbolic_GRBrelaxmodel(model);
 }
-int GRBconverttofixed(GRBmodel *lp){
+int GRBconverttofixed (GRBmodel * lp){
     if (!__symbolic_GRBconverttofixed) {
         if (!module) {
             if (!load_module()) {
@@ -1059,7 +1059,7 @@ int GRBconverttofixed(GRBmodel *lp){
     }
     return __symbolic_GRBconverttofixed(lp);
 }
-GRBmodel * GRBpresolvemodel(GRBmodel *model){
+GRBmodel * GRBpresolvemodel (GRBmodel * model){
     if (!__symbolic_GRBpresolvemodel) {
         if (!module) {
             if (!load_module()) {
@@ -1078,7 +1078,7 @@ GRBmodel * GRBpresolvemodel(GRBmodel *model){
     }
     return __symbolic_GRBpresolvemodel(model);
 }
-GRBmodel * GRBiismodel(GRBmodel *model){
+GRBmodel * GRBiismodel (GRBmodel * model){
     if (!__symbolic_GRBiismodel) {
         if (!module) {
             if (!load_module()) {
@@ -1097,7 +1097,7 @@ GRBmodel * GRBiismodel(GRBmodel *model){
     }
     return __symbolic_GRBiismodel(model);
 }
-GRBmodel * GRBfeasibility(GRBmodel *model){
+GRBmodel * GRBfeasibility (GRBmodel * model){
     if (!__symbolic_GRBfeasibility) {
         if (!module) {
             if (!load_module()) {
@@ -1116,7 +1116,7 @@ GRBmodel * GRBfeasibility(GRBmodel *model){
     }
     return __symbolic_GRBfeasibility(model);
 }
-int GRBreadmodel(GRBenv *env, const char *filename, GRBmodel **modelP){
+int GRBreadmodel (GRBenv * env, const char *filename, GRBmodel ** modelP){
     if (!__symbolic_GRBreadmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1135,7 +1135,7 @@ int GRBreadmodel(GRBenv *env, const char *filename, GRBmodel **modelP){
     }
     return __symbolic_GRBreadmodel(env, filename, modelP);
 }
-int GRBread(GRBmodel *model, const char *filename){
+int GRBread (GRBmodel * model, const char *filename){
     if (!__symbolic_GRBread) {
         if (!module) {
             if (!load_module()) {
@@ -1154,7 +1154,7 @@ int GRBread(GRBmodel *model, const char *filename){
     }
     return __symbolic_GRBread(model, filename);
 }
-int GRBwrite(GRBmodel *model, const char *filename){
+int GRBwrite (GRBmodel * model, const char *filename){
     if (!__symbolic_GRBwrite) {
         if (!module) {
             if (!load_module()) {
@@ -1173,7 +1173,7 @@ int GRBwrite(GRBmodel *model, const char *filename){
     }
     return __symbolic_GRBwrite(model, filename);
 }
-int GRBnewmodel(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars, double *obj, double *lb, double *ub, char *vtype, char **varnames){
+int GRBnewmodel (GRBenv * env, GRBmodel ** modelP, const char *Pname, int numvars, double *obj, double *lb, double *ub, char *vtype, char **varnames){
     if (!__symbolic_GRBnewmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1192,7 +1192,7 @@ int GRBnewmodel(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars, 
     }
     return __symbolic_GRBnewmodel(env, modelP, Pname, numvars, obj, lb, ub, vtype, varnames);
 }
-int GRBloadmodel(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars, int numconstrs, int objsense, double objcon, double *obj, char *sense, double *rhs, int *vbeg, int *vlen, int *vind, double *vval, double *lb, double *ub, char *vtype, char **varnames, char **constrnames){
+int GRBloadmodel (GRBenv * env, GRBmodel ** modelP, const char *Pname, int numvars, int numconstrs, int objsense, double objcon, double *obj, char *sense, double *rhs, int *vbeg, int *vlen, int *vind, double *vval, double *lb, double *ub, char *vtype, char **varnames, char **constrnames){
     if (!__symbolic_GRBloadmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1211,7 +1211,7 @@ int GRBloadmodel(GRBenv *env, GRBmodel **modelP, const char *Pname, int numvars,
     }
     return __symbolic_GRBloadmodel(env, modelP, Pname, numvars, numconstrs, objsense, objcon, obj, sense, rhs, vbeg, vlen, vind, vval, lb, ub, vtype, varnames, constrnames);
 }
-int GRBaddvar(GRBmodel *model, int numnz, int *vind, double *vval, double obj, double lb, double ub, char vtype, char *varname){
+int GRBaddvar (GRBmodel * model, int numnz, int *vind, double *vval, double obj, double lb, double ub, char vtype, char *varname){
     if (!__symbolic_GRBaddvar) {
         if (!module) {
             if (!load_module()) {
@@ -1230,7 +1230,7 @@ int GRBaddvar(GRBmodel *model, int numnz, int *vind, double *vval, double obj, d
     }
     return __symbolic_GRBaddvar(model, numnz, vind, vval, obj, lb, ub, vtype, varname);
 }
-int GRBaddvars(GRBmodel *model, int numvars, int numnz, int *vbeg, int *vind, double *vval, double *obj, double *lb, double *ub, char *vtype, char **varnames){
+int GRBaddvars (GRBmodel * model, int numvars, int numnz, int *vbeg, int *vind, double *vval, double *obj, double *lb, double *ub, char *vtype, char **varnames){
     if (!__symbolic_GRBaddvars) {
         if (!module) {
             if (!load_module()) {
@@ -1249,7 +1249,7 @@ int GRBaddvars(GRBmodel *model, int numvars, int numnz, int *vbeg, int *vind, do
     }
     return __symbolic_GRBaddvars(model, numvars, numnz, vbeg, vind, vval, obj, lb, ub, vtype, varnames);
 }
-int GRBaddconstr(GRBmodel *model, int numnz, int *cind, double *cval, char sense, double rhs, char *constrnames){
+int GRBaddconstr (GRBmodel * model, int numnz, int *cind, double *cval, char sense, double rhs, char *constrnames){
     if (!__symbolic_GRBaddconstr) {
         if (!module) {
             if (!load_module()) {
@@ -1268,7 +1268,7 @@ int GRBaddconstr(GRBmodel *model, int numnz, int *cind, double *cval, char sense
     }
     return __symbolic_GRBaddconstr(model, numnz, cind, cval, sense, rhs, constrnames);
 }
-int GRBaddconstrs(GRBmodel *model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, char *sense, double *rhs, char **constrnames){
+int GRBaddconstrs (GRBmodel * model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, char *sense, double *rhs, char **constrnames){
     if (!__symbolic_GRBaddconstrs) {
         if (!module) {
             if (!load_module()) {
@@ -1287,7 +1287,7 @@ int GRBaddconstrs(GRBmodel *model, int numconstrs, int numnz, int *cbeg, int *ci
     }
     return __symbolic_GRBaddconstrs(model, numconstrs, numnz, cbeg, cind, cval, sense, rhs, constrnames);
 }
-int GRBaddrangeconstr(GRBmodel *model, int numnz, int *cind, double *cval, double lower, double upper, char *constrnames){
+int GRBaddrangeconstr (GRBmodel * model, int numnz, int *cind, double *cval, double lower, double upper, char *constrnames){
     if (!__symbolic_GRBaddrangeconstr) {
         if (!module) {
             if (!load_module()) {
@@ -1306,7 +1306,7 @@ int GRBaddrangeconstr(GRBmodel *model, int numnz, int *cind, double *cval, doubl
     }
     return __symbolic_GRBaddrangeconstr(model, numnz, cind, cval, lower, upper, constrnames);
 }
-int GRBaddrangeconstrs(GRBmodel *model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, double *lower, double *upper, char **constrnames){
+int GRBaddrangeconstrs (GRBmodel * model, int numconstrs, int numnz, int *cbeg, int *cind, double *cval, double *lower, double *upper, char **constrnames){
     if (!__symbolic_GRBaddrangeconstrs) {
         if (!module) {
             if (!load_module()) {
@@ -1325,7 +1325,7 @@ int GRBaddrangeconstrs(GRBmodel *model, int numconstrs, int numnz, int *cbeg, in
     }
     return __symbolic_GRBaddrangeconstrs(model, numconstrs, numnz, cbeg, cind, cval, lower, upper, constrnames);
 }
-int GRBaddsos(GRBmodel *model, int numsos, int nummembers, int *types, int *beg, int *ind, double *weight){
+int GRBaddsos (GRBmodel * model, int numsos, int nummembers, int *types, int *beg, int *ind, double *weight){
     if (!__symbolic_GRBaddsos) {
         if (!module) {
             if (!load_module()) {
@@ -1344,7 +1344,7 @@ int GRBaddsos(GRBmodel *model, int numsos, int nummembers, int *types, int *beg,
     }
     return __symbolic_GRBaddsos(model, numsos, nummembers, types, beg, ind, weight);
 }
-int GRBdelvars(GRBmodel *model, int len, int *ind){
+int GRBdelvars (GRBmodel * model, int len, int *ind){
     if (!__symbolic_GRBdelvars) {
         if (!module) {
             if (!load_module()) {
@@ -1363,7 +1363,7 @@ int GRBdelvars(GRBmodel *model, int len, int *ind){
     }
     return __symbolic_GRBdelvars(model, len, ind);
 }
-int GRBdelconstrs(GRBmodel *model, int len, int *ind){
+int GRBdelconstrs (GRBmodel * model, int len, int *ind){
     if (!__symbolic_GRBdelconstrs) {
         if (!module) {
             if (!load_module()) {
@@ -1382,7 +1382,7 @@ int GRBdelconstrs(GRBmodel *model, int len, int *ind){
     }
     return __symbolic_GRBdelconstrs(model, len, ind);
 }
-int GRBdelsos(GRBmodel *model, int len, int *ind){
+int GRBdelsos (GRBmodel * model, int len, int *ind){
     if (!__symbolic_GRBdelsos) {
         if (!module) {
             if (!load_module()) {
@@ -1401,7 +1401,7 @@ int GRBdelsos(GRBmodel *model, int len, int *ind){
     }
     return __symbolic_GRBdelsos(model, len, ind);
 }
-int GRBchgcoeffs(GRBmodel *model, int cnt, int *cind, int *vind, double *val){
+int GRBchgcoeffs (GRBmodel * model, int cnt, int *cind, int *vind, double *val){
     if (!__symbolic_GRBchgcoeffs) {
         if (!module) {
             if (!load_module()) {
@@ -1420,7 +1420,7 @@ int GRBchgcoeffs(GRBmodel *model, int cnt, int *cind, int *vind, double *val){
     }
     return __symbolic_GRBchgcoeffs(model, cnt, cind, vind, val);
 }
-int GRBupdatemodel(GRBmodel *model){
+int GRBupdatemodel (GRBmodel * model){
     if (!__symbolic_GRBupdatemodel) {
         if (!module) {
             if (!load_module()) {
@@ -1439,7 +1439,7 @@ int GRBupdatemodel(GRBmodel *model){
     }
     return __symbolic_GRBupdatemodel(model);
 }
-int GRBresetmodel(GRBmodel *model){
+int GRBresetmodel (GRBmodel * model){
     if (!__symbolic_GRBresetmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1458,7 +1458,7 @@ int GRBresetmodel(GRBmodel *model){
     }
     return __symbolic_GRBresetmodel(model);
 }
-int GRBfreemodel(GRBmodel *model){
+int GRBfreemodel (GRBmodel * model){
     if (!__symbolic_GRBfreemodel) {
         if (!module) {
             if (!load_module()) {
@@ -1477,7 +1477,7 @@ int GRBfreemodel(GRBmodel *model){
     }
     return __symbolic_GRBfreemodel(model);
 }
-int GRBcomputeIIS(GRBmodel *lp){
+int GRBcomputeIIS (GRBmodel * lp){
     if (!__symbolic_GRBcomputeIIS) {
         if (!module) {
             if (!load_module()) {
@@ -1496,7 +1496,7 @@ int GRBcomputeIIS(GRBmodel *lp){
     }
     return __symbolic_GRBcomputeIIS(lp);
 }
-int GRBstrongbranch(GRBmodel *model, int num, int *cand, double *downobjbd, double *upobjbd, int *statusP){
+int GRBstrongbranch (GRBmodel * model, int num, int *cand, double *downobjbd, double *upobjbd, int *statusP){
     if (!__symbolic_GRBstrongbranch) {
         if (!module) {
             if (!load_module()) {
@@ -1515,7 +1515,7 @@ int GRBstrongbranch(GRBmodel *model, int num, int *cand, double *downobjbd, doub
     }
     return __symbolic_GRBstrongbranch(model, num, cand, downobjbd, upobjbd, statusP);
 }
-int GRBcheckmodel(GRBmodel *model){
+int GRBcheckmodel (GRBmodel * model){
     if (!__symbolic_GRBcheckmodel) {
         if (!module) {
             if (!load_module()) {
@@ -1534,7 +1534,7 @@ int GRBcheckmodel(GRBmodel *model){
     }
     return __symbolic_GRBcheckmodel(model);
 }
-void GRBsetsignal(GRBmodel *model){
+void GRBsetsignal (GRBmodel * model){
     if (!__symbolic_GRBsetsignal) {
         if (!module) {
             if (!load_module()) {
@@ -1553,7 +1553,7 @@ void GRBsetsignal(GRBmodel *model){
     }
     return __symbolic_GRBsetsignal(model);
 }
-void GRBterminate(GRBmodel *model){
+void GRBterminate (GRBmodel * model){
     if (!__symbolic_GRBterminate) {
         if (!module) {
             if (!load_module()) {
@@ -1572,7 +1572,7 @@ void GRBterminate(GRBmodel *model){
     }
     return __symbolic_GRBterminate(model);
 }
-void GRBmsg(GRBenv *env, const char *message){
+void GRBmsg (GRBenv * env, const char *message){
     if (!__symbolic_GRBmsg) {
         if (!module) {
             if (!load_module()) {
@@ -1591,7 +1591,7 @@ void GRBmsg(GRBenv *env, const char *message){
     }
     return __symbolic_GRBmsg(env, message);
 }
-int GRBgetlogfile(GRBenv *env, FILE **logfileP){
+int GRBgetlogfile (GRBenv * env, FILE ** logfileP){
     if (!__symbolic_GRBgetlogfile) {
         if (!module) {
             if (!load_module()) {
@@ -1610,7 +1610,7 @@ int GRBgetlogfile(GRBenv *env, FILE **logfileP){
     }
     return __symbolic_GRBgetlogfile(env, logfileP);
 }
-int GRBsetlogfile(GRBenv *env, FILE *logfile){
+int GRBsetlogfile (GRBenv * env, FILE * logfile){
     if (!__symbolic_GRBsetlogfile) {
         if (!module) {
             if (!load_module()) {
@@ -1629,7 +1629,7 @@ int GRBsetlogfile(GRBenv *env, FILE *logfile){
     }
     return __symbolic_GRBsetlogfile(env, logfile);
 }
-int GRBgetintparam(GRBenv *env, const char *paramname, int *valueP){
+int GRBgetintparam (GRBenv * env, const char *paramname, int *valueP){
     if (!__symbolic_GRBgetintparam) {
         if (!module) {
             if (!load_module()) {
@@ -1648,7 +1648,7 @@ int GRBgetintparam(GRBenv *env, const char *paramname, int *valueP){
     }
     return __symbolic_GRBgetintparam(env, paramname, valueP);
 }
-int GRBgetdblparam(GRBenv *env, const char *paramname, double *valueP){
+int GRBgetdblparam (GRBenv * env, const char *paramname, double *valueP){
     if (!__symbolic_GRBgetdblparam) {
         if (!module) {
             if (!load_module()) {
@@ -1667,7 +1667,7 @@ int GRBgetdblparam(GRBenv *env, const char *paramname, double *valueP){
     }
     return __symbolic_GRBgetdblparam(env, paramname, valueP);
 }
-int GRBgetstrparam(GRBenv *env, const char *paramname, char *valueP){
+int GRBgetstrparam (GRBenv * env, const char *paramname, char *valueP){
     if (!__symbolic_GRBgetstrparam) {
         if (!module) {
             if (!load_module()) {
@@ -1686,7 +1686,7 @@ int GRBgetstrparam(GRBenv *env, const char *paramname, char *valueP){
     }
     return __symbolic_GRBgetstrparam(env, paramname, valueP);
 }
-int GRBgetintparaminfo(GRBenv *env, const char *paramname, int *valueP, int *minP, int *maxP, int *defP){
+int GRBgetintparaminfo (GRBenv * env, const char *paramname, int *valueP, int *minP, int *maxP, int *defP){
     if (!__symbolic_GRBgetintparaminfo) {
         if (!module) {
             if (!load_module()) {
@@ -1705,7 +1705,7 @@ int GRBgetintparaminfo(GRBenv *env, const char *paramname, int *valueP, int *min
     }
     return __symbolic_GRBgetintparaminfo(env, paramname, valueP, minP, maxP, defP);
 }
-int GRBgetdblparaminfo(GRBenv *env, const char *paramname, double *valueP, double *minP, double *maxP, double *defP){
+int GRBgetdblparaminfo (GRBenv * env, const char *paramname, double *valueP, double *minP, double *maxP, double *defP){
     if (!__symbolic_GRBgetdblparaminfo) {
         if (!module) {
             if (!load_module()) {
@@ -1724,7 +1724,7 @@ int GRBgetdblparaminfo(GRBenv *env, const char *paramname, double *valueP, doubl
     }
     return __symbolic_GRBgetdblparaminfo(env, paramname, valueP, minP, maxP, defP);
 }
-int GRBgetstrparaminfo(GRBenv *env, const char *paramname, char *valueP, char *defP){
+int GRBgetstrparaminfo (GRBenv * env, const char *paramname, char *valueP, char *defP){
     if (!__symbolic_GRBgetstrparaminfo) {
         if (!module) {
             if (!load_module()) {
@@ -1743,7 +1743,7 @@ int GRBgetstrparaminfo(GRBenv *env, const char *paramname, char *valueP, char *d
     }
     return __symbolic_GRBgetstrparaminfo(env, paramname, valueP, defP);
 }
-int GRBsetintparam(GRBenv *env, const char *paramname, int value){
+int GRBsetintparam (GRBenv * env, const char *paramname, int value){
     if (!__symbolic_GRBsetintparam) {
         if (!module) {
             if (!load_module()) {
@@ -1762,7 +1762,7 @@ int GRBsetintparam(GRBenv *env, const char *paramname, int value){
     }
     return __symbolic_GRBsetintparam(env, paramname, value);
 }
-int GRBsetdblparam(GRBenv *env, const char *paramname, double value){
+int GRBsetdblparam (GRBenv * env, const char *paramname, double value){
     if (!__symbolic_GRBsetdblparam) {
         if (!module) {
             if (!load_module()) {
@@ -1781,7 +1781,7 @@ int GRBsetdblparam(GRBenv *env, const char *paramname, double value){
     }
     return __symbolic_GRBsetdblparam(env, paramname, value);
 }
-int GRBsetstrparam(GRBenv *env, const char *paramname, const char *value){
+int GRBsetstrparam (GRBenv * env, const char *paramname, const char *value){
     if (!__symbolic_GRBsetstrparam) {
         if (!module) {
             if (!load_module()) {
@@ -1800,7 +1800,7 @@ int GRBsetstrparam(GRBenv *env, const char *paramname, const char *value){
     }
     return __symbolic_GRBsetstrparam(env, paramname, value);
 }
-int GRBgetparamtype(GRBenv *env, const char *paramname){
+int GRBgetparamtype (GRBenv * env, const char *paramname){
     if (!__symbolic_GRBgetparamtype) {
         if (!module) {
             if (!load_module()) {
@@ -1819,7 +1819,7 @@ int GRBgetparamtype(GRBenv *env, const char *paramname){
     }
     return __symbolic_GRBgetparamtype(env, paramname);
 }
-int GRBresetparams(GRBenv *env){
+int GRBresetparams (GRBenv * env){
     if (!__symbolic_GRBresetparams) {
         if (!module) {
             if (!load_module()) {
@@ -1838,7 +1838,7 @@ int GRBresetparams(GRBenv *env){
     }
     return __symbolic_GRBresetparams(env);
 }
-int GRBwriteparams(GRBenv *env, const char *filename){
+int GRBwriteparams (GRBenv * env, const char *filename){
     if (!__symbolic_GRBwriteparams) {
         if (!module) {
             if (!load_module()) {
@@ -1857,7 +1857,7 @@ int GRBwriteparams(GRBenv *env, const char *filename){
     }
     return __symbolic_GRBwriteparams(env, filename);
 }
-int GRBreadparams(GRBenv *env, const char *filename){
+int GRBreadparams (GRBenv * env, const char *filename){
     if (!__symbolic_GRBreadparams) {
         if (!module) {
             if (!load_module()) {
@@ -1876,7 +1876,7 @@ int GRBreadparams(GRBenv *env, const char *filename){
     }
     return __symbolic_GRBreadparams(env, filename);
 }
-int GRBgetnumparams(GRBenv *env){
+int GRBgetnumparams (GRBenv * env){
     if (!__symbolic_GRBgetnumparams) {
         if (!module) {
             if (!load_module()) {
@@ -1895,7 +1895,7 @@ int GRBgetnumparams(GRBenv *env){
     }
     return __symbolic_GRBgetnumparams(env);
 }
-int GRBgetparamname(GRBenv *env, int i, char **paramnameP){
+int GRBgetparamname (GRBenv * env, int i, char **paramnameP){
     if (!__symbolic_GRBgetparamname) {
         if (!module) {
             if (!load_module()) {
@@ -1914,7 +1914,7 @@ int GRBgetparamname(GRBenv *env, int i, char **paramnameP){
     }
     return __symbolic_GRBgetparamname(env, i, paramnameP);
 }
-int GRBloadenv(GRBenv **envP, const char *logfilename){
+int GRBloadenv (GRBenv ** envP, const char *logfilename){
     if (!__symbolic_GRBloadenv) {
         if (!module) {
             if (!load_module()) {
@@ -1933,7 +1933,7 @@ int GRBloadenv(GRBenv **envP, const char *logfilename){
     }
     return __symbolic_GRBloadenv(envP, logfilename);
 }
-GRBenv * GRBgetenv(GRBmodel *model){
+GRBenv * GRBgetenv (GRBmodel * model){
     if (!__symbolic_GRBgetenv) {
         if (!module) {
             if (!load_module()) {
@@ -1952,7 +1952,7 @@ GRBenv * GRBgetenv(GRBmodel *model){
     }
     return __symbolic_GRBgetenv(model);
 }
-void GRBfreeenv(GRBenv *env){
+void GRBfreeenv (GRBenv * env){
     if (!__symbolic_GRBfreeenv) {
         if (!module) {
             if (!load_module()) {
@@ -1971,7 +1971,7 @@ void GRBfreeenv(GRBenv *env){
     }
     return __symbolic_GRBfreeenv(env);
 }
-const char * GRBgeterrormsg(GRBenv *env){
+const char * GRBgeterrormsg (GRBenv * env){
     if (!__symbolic_GRBgeterrormsg) {
         if (!module) {
             if (!load_module()) {
@@ -1990,7 +1990,7 @@ const char * GRBgeterrormsg(GRBenv *env){
     }
     return __symbolic_GRBgeterrormsg(env);
 }
-const char * GRBgetmerrormsg(GRBmodel *model){
+const char * GRBgetmerrormsg (GRBmodel * model){
     if (!__symbolic_GRBgetmerrormsg) {
         if (!module) {
             if (!load_module()) {
@@ -2009,7 +2009,7 @@ const char * GRBgetmerrormsg(GRBmodel *model){
     }
     return __symbolic_GRBgetmerrormsg(model);
 }
-void GRBversion(int *majorP, int *minorP, int *technicalP){
+void GRBversion (int *majorP, int *minorP, int *technicalP){
     if (!__symbolic_GRBversion) {
         if (!module) {
             if (!load_module()) {
@@ -2028,7 +2028,7 @@ void GRBversion(int *majorP, int *minorP, int *technicalP){
     }
     return __symbolic_GRBversion(majorP, minorP, technicalP);
 }
-char * GRBplatform(void){
+char * GRBplatform (void){
     if (!__symbolic_GRBplatform) {
         if (!module) {
             if (!load_module()) {
