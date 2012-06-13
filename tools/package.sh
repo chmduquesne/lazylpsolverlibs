@@ -8,7 +8,7 @@ compile_linux(){
     mkdir -p /tmp/packaging/linux
     tar xvzf $package_archive -C /tmp/packaging/linux
     cd /tmp/packaging/linux/lazylpsolverlibs-$(version)
-    ./configure --prefix=/tmp/packaging/linux/install \
+    ./configure --prefix=/tmp/packaging/linux/install
     make
     make install
     cd -
