@@ -37,8 +37,8 @@ pkgconfig_DATA += pkgconfig/lazygurobi.pc
 
 lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
 lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS)
-lib_liblazygurobi_la_LIBADD = $(GMODULE_LIBS) -lm
-lib_liblazygurobi_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
+lib_liblazygurobi_la_LIBADD = $(GMODULE_LIBS)
+lib_liblazygurobi_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc -Wl,--no-as-needed,-lm
 
 bin_test_lazygurobi_SOURCES = test/test_lazygurobi.c
 bin_test_lazygurobi_LDFLAGS = lib/liblazygurobi.la
