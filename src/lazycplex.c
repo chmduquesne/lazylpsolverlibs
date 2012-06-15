@@ -68,11 +68,11 @@ GModule *module = NULL;
 /* searches and loads the actual library */
 int load_module(){
     /* environment variable */
-    char *LAZYLPSOLVERLIBS_CPLEX_LIB_PATH;
-    LAZYLPSOLVERLIBS_CPLEX_LIB_PATH = getenv("LAZYLPSOLVERLIBS_CPLEX_LIB_PATH");
+    char *LAZYLPSOLVERLIBS_CPLEX_LIB;
+    LAZYLPSOLVERLIBS_CPLEX_LIB = getenv("LAZYLPSOLVERLIBS_CPLEX_LIB");
     if (!module) module = g_module_open("/usr/lib/libcplex.so", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
-    if (LAZYLPSOLVERLIBS_CPLEX_LIB_PATH != NULL) {
-        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_CPLEX_LIB_PATH, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
+    if (LAZYLPSOLVERLIBS_CPLEX_LIB != NULL) {
+        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_CPLEX_LIB, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     }
     if (!module) module = g_module_open_all("cplex123", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     if (!module) module = g_module_open_all("cplex121", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
@@ -630,7 +630,7 @@ CPXLPptr CPXcreateprob (CPXCENVptr env, int *status_p, const char *probname_str)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -649,7 +649,7 @@ CPXLPptr CPXcloneprob (CPXCENVptr env, CPXCLPptr lp, int *status_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -668,7 +668,7 @@ int CPXcopylpwnames (CPXCENVptr env, CPXLPptr lp, int numcols, int numrows, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -687,7 +687,7 @@ int CPXcopylp (CPXCENVptr env, CPXLPptr lp, int numcols, int numrows, int objsen
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -706,7 +706,7 @@ int CPXcopyobjname (CPXCENVptr env, CPXLPptr lp, const char *objname_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -725,7 +725,7 @@ int CPXcopybase (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rstat
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -744,7 +744,7 @@ int CPXcleanup (CPXCENVptr env, CPXLPptr lp, double eps){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -763,7 +763,7 @@ int CPXcopystart (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int *rsta
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -782,7 +782,7 @@ int CPXfreeprob (CPXCENVptr env, CPXLPptr * lp_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -801,7 +801,7 @@ int CPXcopynettolp (CPXCENVptr env, CPXLPptr lp, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -820,7 +820,7 @@ int CPXNETextract (CPXCENVptr env, CPXNETptr net, CPXCLPptr lp, int *colmap, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -839,7 +839,7 @@ int CPXlpopt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -858,7 +858,7 @@ int CPXconcurrentlpopt (CPXCENVptr env, CPXCENVptr * childenv, CPXLPptr lp, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -877,7 +877,7 @@ int CPXconcurrentmipopt (CPXCENVptr env, CPXCENVptr * childenv, CPXLPptr lp, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -896,7 +896,7 @@ int CPXprimopt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -915,7 +915,7 @@ int CPXdualopt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -934,7 +934,7 @@ int CPXhybnetopt (CPXCENVptr env, CPXLPptr lp, int method){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -953,7 +953,7 @@ int CPXsiftopt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -972,7 +972,7 @@ int CPXpratio (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -991,7 +991,7 @@ int CPXdratio (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1010,7 +1010,7 @@ int CPXpivot (CPXCENVptr env, CPXLPptr lp, int jenter, int jleave, int leavestat
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1029,7 +1029,7 @@ int CPXsetphase2 (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1048,7 +1048,7 @@ int CPXcheckpfeas (CPXCENVptr env, CPXLPptr lp, int *infeas_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1067,7 +1067,7 @@ int CPXcheckdfeas (CPXCENVptr env, CPXLPptr lp, int *infeas_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1086,7 +1086,7 @@ int CPXchecksoln (CPXCENVptr env, CPXLPptr lp, int *lpstatus_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1105,7 +1105,7 @@ int CPXsolution (CPXCENVptr env, CPXCLPptr lp, int *lpstat_p, double *objval_p, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1124,7 +1124,7 @@ int CPXsolninfo (CPXCENVptr env, CPXCLPptr lp, int *solnmethod_p, int *solntype_
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1143,7 +1143,7 @@ int CPXgetstat (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1162,7 +1162,7 @@ CPXCHARptr CPXgetstatstring (CPXCENVptr env, int statind, char *buffer_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1181,7 +1181,7 @@ int CPXgetmethod (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1200,7 +1200,7 @@ int CPXgetobjval (CPXCENVptr env, CPXCLPptr lp, double *objval_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1219,7 +1219,7 @@ int CPXgetx (CPXCENVptr env, CPXCLPptr lp, double *x, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1238,7 +1238,7 @@ int CPXgetax (CPXCENVptr env, CPXCLPptr lp, double *x, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1257,7 +1257,7 @@ int CPXgetpi (CPXCENVptr env, CPXCLPptr lp, double *pi, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1276,7 +1276,7 @@ int CPXgetslack (CPXCENVptr env, CPXCLPptr lp, double *slack, int begin, int end
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1295,7 +1295,7 @@ int CPXgetrowinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *infe
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1314,7 +1314,7 @@ int CPXgetcolinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *infe
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1333,7 +1333,7 @@ int CPXgetdj (CPXCENVptr env, CPXCLPptr lp, double *dj, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1352,7 +1352,7 @@ int CPXgetgrad (CPXCENVptr env, CPXCLPptr lp, int j, int *head, double *y){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1371,7 +1371,7 @@ int CPXgetijdiv (CPXCENVptr env, CPXCLPptr lp, int *idiv_p, int *jdiv_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1390,7 +1390,7 @@ int CPXgetbase (CPXCENVptr env, CPXCLPptr lp, int *cstat, int *rstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1409,7 +1409,7 @@ int CPXgetitcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1428,7 +1428,7 @@ int CPXgetphase1cnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1447,7 +1447,7 @@ int CPXgetsiftitcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1466,7 +1466,7 @@ int CPXgetsiftphase1cnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1485,7 +1485,7 @@ int CPXgetbaritcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1504,7 +1504,7 @@ int CPXgetcrossppushcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1523,7 +1523,7 @@ int CPXgetcrosspexchcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1542,7 +1542,7 @@ int CPXgetcrossdpushcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1561,7 +1561,7 @@ int CPXgetcrossdexchcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1580,7 +1580,7 @@ int CPXgetpsbcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1599,7 +1599,7 @@ int CPXgetdsbcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1618,7 +1618,7 @@ int CPXgetdblquality (CPXCENVptr env, CPXCLPptr lp, double *quality_p, int what)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1637,7 +1637,7 @@ int CPXgetsolnpooldblquality (CPXCENVptr env, CPXCLPptr lp, int soln, double *qu
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1656,7 +1656,7 @@ int CPXgetintquality (CPXCENVptr env, CPXCLPptr lp, int *quality_p, int what){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1675,7 +1675,7 @@ int CPXgetsolnpoolintquality (CPXCENVptr env, CPXCLPptr lp, int soln, int *quali
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1694,7 +1694,7 @@ int CPXrhssa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1713,7 +1713,7 @@ int CPXboundsa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lblowe
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1732,7 +1732,7 @@ int CPXobjsa (CPXCENVptr env, CPXCLPptr lp, int begin, int end, double *lower, d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1751,7 +1751,7 @@ int CPXErangesa (CPXENVptr env, CPXLPptr lp, int begin, int end, double *lblower
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1770,7 +1770,7 @@ int CPXrefineconflict (CPXCENVptr env, CPXLPptr lp, int *confnumrows_p, int *con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1789,7 +1789,7 @@ int CPXgetconflict (CPXCENVptr env, CPXCLPptr lp, int *confstat_p, int *rowind, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1808,7 +1808,7 @@ int CPXrefineconflictext (CPXCENVptr env, CPXLPptr lp, int grpcnt, int concnt, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1827,7 +1827,7 @@ int CPXgetconflictext (CPXCENVptr env, CPXCLPptr lp, int *grpstat, int beg, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1846,7 +1846,7 @@ int CPXclpwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1865,7 +1865,7 @@ int CPXrobustopt (CPXCENVptr env, CPXLPptr lp, CPXLPptr lblp, CPXLPptr ublp, dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1884,7 +1884,7 @@ int CPXfeasopt (CPXCENVptr env, CPXLPptr lp, const double *rhs, const double *rn
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1903,7 +1903,7 @@ int CPXEfeasopt (CPXCENVptr env, CPXLPptr lp, const double *rhs, const double *r
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1922,7 +1922,7 @@ int CPXfeasoptext (CPXCENVptr env, CPXLPptr lp, int grpcnt, int concnt, const do
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1941,7 +1941,7 @@ int CPXnewrows (CPXCENVptr env, CPXLPptr lp, int rcnt, const double *rhs, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1960,7 +1960,7 @@ int CPXaddrows (CPXCENVptr env, CPXLPptr lp, int ccnt, int rcnt, int nzcnt, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1979,7 +1979,7 @@ int CPXnewcols (CPXCENVptr env, CPXLPptr lp, int ccnt, const double *obj, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -1998,7 +1998,7 @@ int CPXaddcols (CPXCENVptr env, CPXLPptr lp, int ccnt, int nzcnt, const double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2017,7 +2017,7 @@ int CPXdelrows (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2036,7 +2036,7 @@ int CPXdelsetrows (CPXCENVptr env, CPXLPptr lp, int *delstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2055,7 +2055,7 @@ int CPXdelcols (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2074,7 +2074,7 @@ int CPXdelsetcols (CPXCENVptr env, CPXLPptr lp, int *delstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2093,7 +2093,7 @@ int CPXchgname (CPXCENVptr env, CPXLPptr lp, int key, int ij, const char *newnam
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2112,7 +2112,7 @@ int CPXchgrowname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cha
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2131,7 +2131,7 @@ int CPXchgcolname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cha
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2150,7 +2150,7 @@ int CPXdelnames (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2169,7 +2169,7 @@ int CPXchgprobname (CPXCENVptr env, CPXLPptr lp, const char *probname_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2188,7 +2188,7 @@ int CPXchgcoef (CPXCENVptr env, CPXLPptr lp, int i, int j, double newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2207,7 +2207,7 @@ int CPXchgcoeflist (CPXCENVptr env, CPXLPptr lp, int numcoefs, const int *rowlis
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2226,7 +2226,7 @@ int CPXchgbds (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2245,7 +2245,7 @@ int CPXchgobj (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2264,7 +2264,7 @@ int CPXchgrhs (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2283,7 +2283,7 @@ int CPXchgrngval (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2302,7 +2302,7 @@ int CPXchgsense (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2321,7 +2321,7 @@ void CPXchgobjsen (CPXCENVptr env, CPXLPptr lp, int maxormin){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2340,7 +2340,7 @@ int CPXchgprobtype (CPXCENVptr env, CPXLPptr lp, int type){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2359,7 +2359,7 @@ int CPXchgprobtypesolnpool (CPXCENVptr env, CPXLPptr lp, int type, int soln){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2378,7 +2378,7 @@ int CPXcompletelp (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2397,7 +2397,7 @@ int CPXpreaddrows (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, const doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2416,7 +2416,7 @@ int CPXprechgobj (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2435,7 +2435,7 @@ int CPXgetnumcols (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2454,7 +2454,7 @@ int CPXgetnumrows (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2473,7 +2473,7 @@ int CPXgetnumnz (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2492,7 +2492,7 @@ int CPXgetobjsen (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2511,7 +2511,7 @@ int CPXgetobj (CPXCENVptr env, CPXCLPptr lp, double *obj, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2530,7 +2530,7 @@ int CPXgetrhs (CPXCENVptr env, CPXCLPptr lp, double *rhs, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2549,7 +2549,7 @@ int CPXgetsense (CPXCENVptr env, CPXCLPptr lp, char *sense, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2568,7 +2568,7 @@ int CPXgetcols (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *cmatbeg, int *c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2587,7 +2587,7 @@ int CPXgetrows (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *rmatbeg, int *r
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2606,7 +2606,7 @@ int CPXgetlb (CPXCENVptr env, CPXCLPptr lp, double *lb, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2625,7 +2625,7 @@ int CPXgetub (CPXCENVptr env, CPXCLPptr lp, double *ub, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2644,7 +2644,7 @@ int CPXgetrngval (CPXCENVptr env, CPXCLPptr lp, double *rngval, int begin, int e
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2663,7 +2663,7 @@ int CPXgetprobname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspace, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2682,7 +2682,7 @@ int CPXgetobjname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspace, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2701,7 +2701,7 @@ int CPXgetcolname (CPXCENVptr env, CPXCLPptr lp, char **name, char *namestore, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2720,7 +2720,7 @@ int CPXgetrowname (CPXCENVptr env, CPXCLPptr lp, char **name, char *namestore, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2739,7 +2739,7 @@ int CPXgetcoef (CPXCENVptr env, CPXCLPptr lp, int i, int j, double *coef_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2758,7 +2758,7 @@ int CPXgetrowindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int *in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2777,7 +2777,7 @@ int CPXgetcolindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int *in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2796,7 +2796,7 @@ int CPXgetprobtype (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2815,7 +2815,7 @@ int CPXreadcopyprob (CPXCENVptr env, CPXLPptr lp, const char *filename_str, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2834,7 +2834,7 @@ int CPXreadcopybase (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2853,7 +2853,7 @@ int CPXreadcopysol (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2872,7 +2872,7 @@ int CPXwriteprob (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2891,7 +2891,7 @@ int CPXmbasewrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2910,7 +2910,7 @@ int CPXsolwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2929,7 +2929,7 @@ int CPXsolwritesolnpool (CPXCENVptr env, CPXCLPptr lp, int soln, const char *fil
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2948,7 +2948,7 @@ int CPXsolwritesolnpoolall (CPXCENVptr env, CPXCLPptr lp, const char *filename_s
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2967,7 +2967,7 @@ int CPXembwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -2986,7 +2986,7 @@ int CPXdperwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3005,7 +3005,7 @@ int CPXpperwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3024,7 +3024,7 @@ int CPXpreslvwrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str, doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3043,7 +3043,7 @@ int CPXdualwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, double
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3062,7 +3062,7 @@ int CPXsetdefaults (CPXENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3081,7 +3081,7 @@ int CPXsetintparam (CPXENVptr env, int whichparam, int newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3100,7 +3100,7 @@ int CPXsetdblparam (CPXENVptr env, int whichparam, double newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3119,7 +3119,7 @@ int CPXsetstrparam (CPXENVptr env, int whichparam, const char *newvalue_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3138,7 +3138,7 @@ int CPXgetintparam (CPXCENVptr env, int whichparam, int *value_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3157,7 +3157,7 @@ int CPXgetdblparam (CPXCENVptr env, int whichparam, double *value_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3176,7 +3176,7 @@ int CPXgetstrparam (CPXCENVptr env, int whichparam, char *value_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3195,7 +3195,7 @@ int CPXinfointparam (CPXCENVptr env, int whichparam, int *defvalue_p, int *minva
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3214,7 +3214,7 @@ int CPXinfodblparam (CPXCENVptr env, int whichparam, double *defvalue_p, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3233,7 +3233,7 @@ int CPXinfostrparam (CPXCENVptr env, int whichparam, char *defvalue_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3252,7 +3252,7 @@ int CPXgetparamname (CPXCENVptr env, int whichparam, char *name_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3271,7 +3271,7 @@ int CPXgetparamnum (CPXCENVptr env, const char *name_str, int *whichparam_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3290,7 +3290,7 @@ int CPXgetparamtype (CPXCENVptr env, int whichparam, int *paramtype){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3309,7 +3309,7 @@ int CPXreadcopyparam (CPXENVptr env, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3328,7 +3328,7 @@ int CPXwriteparam (CPXCENVptr env, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3347,7 +3347,7 @@ int CPXgetchgparam (CPXCENVptr env, int *cnt_p, int *paramnum, int pspace, int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3366,7 +3366,7 @@ int CPXtuneparam (CPXENVptr env, CPXLPptr lp, int intcnt, const int *intnum, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3385,7 +3385,7 @@ int CPXtuneparamprobset (CPXENVptr env, int filecnt, char **filename, char **fil
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3404,7 +3404,7 @@ CPXCCHARptr CPXversion (CPXCENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3423,7 +3423,7 @@ CPXENVptr CPXopenCPLEX (int *status_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3442,7 +3442,7 @@ CPXENVptr CPXopenCPLEXruntime (int *status_p, int serialnum, const char *licenvs
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3461,7 +3461,7 @@ int CPXcloseCPLEX (CPXENVptr * env_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3480,7 +3480,7 @@ int CPXsetstaringsol (const char *ilm_license_str, int ilm_license_signature){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3499,7 +3499,7 @@ CPXENVptr CPXparenv (CPXENVptr env, int *status_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3518,7 +3518,7 @@ int CPXfreeparenv (CPXENVptr env, CPXENVptr * child_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3537,7 +3537,7 @@ int CPXcheckcopylp (CPXCENVptr env, CPXCLPptr lp, int numcols, int numrows, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3556,7 +3556,7 @@ int CPXcheckcopylpwnames (CPXCENVptr env, CPXCLPptr lp, int numcols, int numrows
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3575,7 +3575,7 @@ int CPXcheckaddcols (CPXCENVptr env, CPXCLPptr lp, int ccnt, int nzcnt, const do
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3594,7 +3594,7 @@ int CPXcheckaddrows (CPXCENVptr env, CPXCLPptr lp, int ccnt, int rcnt, int nzcnt
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3613,7 +3613,7 @@ int CPXcheckchgcoeflist (CPXCENVptr env, CPXCLPptr lp, int numcoefs, const int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3632,7 +3632,7 @@ int CPXcheckvals (CPXCENVptr env, CPXCLPptr lp, int cnt, const int *rowind, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3651,7 +3651,7 @@ int CPXgetchannels (CPXCENVptr env, CPXCHANNELptr * cpxresults_p, CPXCHANNELptr 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3670,7 +3670,7 @@ int CPXsetlogfile (CPXENVptr env, CPXFILEptr lfile){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3689,7 +3689,7 @@ int CPXgetlogfile (CPXCENVptr env, CPXFILEptr * logfile_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3708,7 +3708,7 @@ int CPXmsg (CPXCHANNELptr channel, const char *format, ...){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3727,7 +3727,7 @@ int CPXmsgstr (CPXCHANNELptr channel, const char *msg_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3746,7 +3746,7 @@ void CPXflushchannel (CPXCENVptr env, CPXCHANNELptr channel){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3765,7 +3765,7 @@ int CPXflushstdchannels (CPXCENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3784,7 +3784,7 @@ CPXCHANNELptr CPXaddchannel (CPXENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3803,7 +3803,7 @@ int CPXaddfpdest (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3822,7 +3822,7 @@ int CPXdelfpdest (CPXCENVptr env, CPXCHANNELptr channel, CPXFILEptr fileptr){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3841,7 +3841,7 @@ int CPXaddfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3860,7 +3860,7 @@ int CPXdelfuncdest (CPXCENVptr env, CPXCHANNELptr channel, void *handle, void ( 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3879,7 +3879,7 @@ void CPXdelchannel (CPXENVptr env, CPXCHANNELptr * channel_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3898,7 +3898,7 @@ void CPXdisconnectchannel (CPXCENVptr env, CPXCHANNELptr channel){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3917,7 +3917,7 @@ CPXCCHARptr CPXgeterrorstring (CPXCENVptr env, int errcode, char *buffer_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3936,7 +3936,7 @@ int CPXsetlpcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3955,7 +3955,7 @@ int CPXsetnetcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3974,7 +3974,7 @@ int CPXsettuningcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -3993,7 +3993,7 @@ int CPXgetcallbackinfo (CPXCENVptr env, void *cbdata, int wherefrom, int whichin
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4012,7 +4012,7 @@ int CPXgetlpcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, void
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4031,7 +4031,7 @@ int CPXgetnetcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4050,7 +4050,7 @@ int CPXgettuningcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4069,7 +4069,7 @@ int CPXsetprofcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, int, v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4088,7 +4088,7 @@ CPXFILEptr CPXfopen (const char *filename_str, const char *type_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4107,7 +4107,7 @@ int CPXfclose (CPXFILEptr stream){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4126,7 +4126,7 @@ int CPXfputs (const char *s_str, CPXFILEptr stream){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4145,7 +4145,7 @@ CPXVOIDptr CPXmalloc (size_t size){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4164,7 +4164,7 @@ CPXVOIDptr CPXrealloc (void *ptr, size_t size){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4183,7 +4183,7 @@ CPXVOIDptr CPXmemcpy (void *s1, void *s2, size_t n){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4202,7 +4202,7 @@ void CPXfree (void *ptr){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4221,7 +4221,7 @@ int CPXstrlen (const char *s_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4240,7 +4240,7 @@ CPXCHARptr CPXstrcpy (char *dest_str, const char *src_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4259,7 +4259,7 @@ int CPXputenv (const char *envsetting_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4278,7 +4278,7 @@ void CPXEisort (int n, int *a, int *perm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4297,7 +4297,7 @@ void CPXEinsort (int n, int *a){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4316,7 +4316,7 @@ int CPXEgetThreadNumber (CPXCENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4335,7 +4335,7 @@ int CPXEgetmaxthreads (CPXCENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4354,7 +4354,7 @@ int CPXEsetJNI (CPXENVptr env, CPXVOIDptr jni){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4373,7 +4373,7 @@ CPXVOIDptr CPXEgetJNI (CPXCENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4392,7 +4392,7 @@ int CPXEsetnamefunctions (CPXENVptr env, void *userdata, const char *( * getcnam
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4411,7 +4411,7 @@ int CPXEsetnamedef (CPXENVptr env, const char *def_str, int deftype){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4430,7 +4430,7 @@ int CPXEdelnames (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4449,7 +4449,7 @@ CPXVOIDptr CPXEgetCache (CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4468,7 +4468,7 @@ int CPXEcacheNewCols (CPXCENVptr env, CPXLPptr lp, int ccnt, const double *zobj,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4487,7 +4487,7 @@ int CPXEcacheNewRows (CPXCENVptr env, CPXLPptr lp, int rcnt, const double *zrhs,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4506,7 +4506,7 @@ int CPXEcacheNewNZsByNZ (CPXCENVptr env, CPXLPptr lp, int nzcnt, const int *rowl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4525,7 +4525,7 @@ int CPXEgetorigcolind (CPXCENVptr env, CPXCLPptr lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4544,7 +4544,7 @@ int CPXEgetorigrowind (CPXCENVptr env, CPXCLPptr lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4563,7 +4563,7 @@ double CPXEgetbigreal (CPXCENVptr env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4582,7 +4582,7 @@ int CPXEispromotion (CPXCENVptr env, int rspace, int cspace, int ispace){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4601,7 +4601,7 @@ int CPXEgetnumrownz (CPXCENVptr env, CPXCLPptr lp, int *mark){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4620,7 +4620,7 @@ int CPXEcangetbase (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4639,7 +4639,7 @@ int CPXEwriteparam (CPXCENVptr env, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4658,7 +4658,7 @@ int CPXsetterminate (CPXENVptr env, volatile int *terminate_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4677,7 +4677,7 @@ void CPXEsetterminatefunc (CPXENVptr env, int ( * terminatefunc) (CPXCENVptr)){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4696,7 +4696,7 @@ int CPXEnsAddNames (struct cpxnameset *nset, int n, const char *const *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4715,7 +4715,7 @@ int CPXgetbhead (CPXCENVptr env, CPXCLPptr lp, int *head, double *x){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4734,7 +4734,7 @@ int CPXbinvcol (CPXCENVptr env, CPXCLPptr lp, int j, double *x){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4753,7 +4753,7 @@ int CPXbinvrow (CPXCENVptr env, CPXCLPptr lp, int i, double *y){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4772,7 +4772,7 @@ int CPXbinvacol (CPXCENVptr env, CPXCLPptr lp, int j, double *x){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4791,7 +4791,7 @@ int CPXbinvarow (CPXCENVptr env, CPXCLPptr lp, int i, double *z){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4810,7 +4810,7 @@ int CPXftran (CPXCENVptr env, CPXCLPptr lp, double *x){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4829,7 +4829,7 @@ int CPXbtran (CPXCENVptr env, CPXCLPptr lp, double *y){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4848,7 +4848,7 @@ int CPXgetijrow (CPXCENVptr env, CPXCLPptr lp, int i, int j, int *row_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4867,7 +4867,7 @@ int CPXgetray (CPXCENVptr env, CPXCLPptr lp, double *z){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4886,7 +4886,7 @@ int CPXgetweight (CPXCENVptr env, CPXCLPptr lp, int rcnt, const int *rmatbeg, co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4905,7 +4905,7 @@ int CPXmdleave (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, double
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4924,7 +4924,7 @@ int CPXstrongbranch (CPXCENVptr env, CPXLPptr lp, const int *indices, int cnt, d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4943,7 +4943,7 @@ int CPXdualfarkas (CPXCENVptr env, CPXCLPptr lp, double *y, double *proof_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4962,7 +4962,7 @@ int CPXgetobjoffset (CPXCENVptr env, CPXCLPptr lp, double *objoffset_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -4981,7 +4981,7 @@ int CPXcopypartialbase (CPXCENVptr env, CPXLPptr lp, int ccnt, const int *cindic
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5000,7 +5000,7 @@ int CPXgetbasednorms (CPXCENVptr env, CPXCLPptr lp, int *cstat, int *rstat, doub
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5019,7 +5019,7 @@ int CPXcopybasednorms (CPXCENVptr env, CPXLPptr lp, const int *cstat, const int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5038,7 +5038,7 @@ int CPXgetdnorms (CPXCENVptr env, CPXCLPptr lp, double *norm, int *head, int *le
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5057,7 +5057,7 @@ int CPXcopydnorms (CPXCENVptr env, CPXLPptr lp, const double *norm, const int *h
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5076,7 +5076,7 @@ void CPXkilldnorms (CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5095,7 +5095,7 @@ int CPXgetpnorms (CPXCENVptr env, CPXCLPptr lp, double *cnorm, double *rnorm, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5114,7 +5114,7 @@ int CPXcopypnorms (CPXCENVptr env, CPXLPptr lp, const double *cnorm, const doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5133,7 +5133,7 @@ void CPXkillpnorms (CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5152,7 +5152,7 @@ int CPXpivotin (CPXCENVptr env, CPXLPptr lp, const int *rlist, int rlen){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5171,7 +5171,7 @@ int CPXpivotout (CPXCENVptr env, CPXLPptr lp, const int *clist, int clen){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5190,7 +5190,7 @@ int CPXunscaleprob (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5209,7 +5209,7 @@ int CPXtightenbds (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5228,7 +5228,7 @@ int CPXpresolve (CPXCENVptr env, CPXLPptr lp, int method){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5247,7 +5247,7 @@ int CPXbasicpresolve (CPXCENVptr env, CPXLPptr lp, double *redlb, double *redub,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5266,7 +5266,7 @@ int CPXslackfromx (CPXCENVptr env, CPXCLPptr lp, const double *x, double *slack)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5285,7 +5285,7 @@ int CPXdjfrompi (CPXCENVptr env, CPXCLPptr lp, const double *pi, double *dj){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5304,7 +5304,7 @@ int CPXqpdjfrompi (CPXCENVptr env, CPXCLPptr lp, const double *pi, const double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5323,7 +5323,7 @@ int CPXfreepresolve (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5342,7 +5342,7 @@ int CPXgetredlp (CPXCENVptr env, CPXCLPptr lp, CPXCLPptr * redlp_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5361,7 +5361,7 @@ int CPXcrushx (CPXCENVptr env, CPXCLPptr lp, const double *x, double *prex){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5380,7 +5380,7 @@ int CPXuncrushx (CPXCENVptr env, CPXCLPptr lp, double *x, const double *prex){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5399,7 +5399,7 @@ int CPXcrushpi (CPXCENVptr env, CPXCLPptr lp, const double *pi, double *prepi){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5418,7 +5418,7 @@ int CPXuncrushpi (CPXCENVptr env, CPXCLPptr lp, double *pi, const double *prepi)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5437,7 +5437,7 @@ int CPXqpuncrushpi (CPXCENVptr env, CPXCLPptr lp, double *pi, const double *prep
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5456,7 +5456,7 @@ int CPXcrushform (CPXCENVptr env, CPXCLPptr lp, int len, const int *ind, const d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5475,7 +5475,7 @@ int CPXuncrushform (CPXCENVptr env, CPXCLPptr lp, int plen, const int *pind, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5494,7 +5494,7 @@ int CPXgetprestat (CPXCENVptr env, CPXCLPptr lp, int *prestat_p, int *pcstat, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5513,7 +5513,7 @@ int CPXcopyprotected (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5532,7 +5532,7 @@ int CPXgetprotected (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5551,7 +5551,7 @@ int CPXEaggregatevars (CPXCENVptr env, CPXLPptr lp, int start, int end, const ch
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5570,7 +5570,7 @@ int CPXgettime (CPXCENVptr env, double *timestamp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5589,7 +5589,7 @@ int CPXlpwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5608,7 +5608,7 @@ int CPXlprewrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5627,7 +5627,7 @@ int CPXmpswrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5646,7 +5646,7 @@ int CPXmpsrewrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5665,7 +5665,7 @@ int CPXsavwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5684,7 +5684,7 @@ int CPXreadcopyvec (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5703,7 +5703,7 @@ int CPXvecwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5722,7 +5722,7 @@ int CPXbinsolwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5741,7 +5741,7 @@ int CPXtxtsolwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5760,7 +5760,7 @@ int CPXwritesol (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, const c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5779,7 +5779,7 @@ int CPXgetiis (CPXCENVptr env, CPXCLPptr lp, int *iisstat_p, int *rowind, int *r
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5798,7 +5798,7 @@ int CPXfindiis (CPXCENVptr env, CPXLPptr lp, int *iisnumrows_p, int *iisnumcols_
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5817,7 +5817,7 @@ int CPXdisplayiis (CPXCENVptr env, CPXCLPptr lp, CPXCHANNELptr channel, int disp
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5836,7 +5836,7 @@ int CPXiiswrite (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5855,7 +5855,7 @@ int CPXhybbaropt (CPXCENVptr env, CPXLPptr lp, int method){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5874,7 +5874,7 @@ int CPXbaropt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5893,7 +5893,7 @@ void CPXEgeneric_lock (volatile int *lock){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5912,7 +5912,7 @@ void CPXEgeneric_unlock (volatile int *lock){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5931,7 +5931,7 @@ int CPXsetorderhookfunc (CPXENVptr env, int ( * orderhook) (CPXCENVptr, int, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5950,7 +5950,7 @@ void CPXgetorderhookfunc (CPXCENVptr env, int ( ** orderhook_p) (CPXCENVptr, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5969,7 +5969,7 @@ int CPXcopyctype (CPXCENVptr env, CPXLPptr lp, const char *xctype){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -5988,7 +5988,7 @@ int CPXcopyorder (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6007,7 +6007,7 @@ int CPXcopysos (CPXCENVptr env, CPXLPptr lp, int numsos, int numsosnz, const cha
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6026,7 +6026,7 @@ int CPXcopymipstart (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6045,7 +6045,7 @@ int CPXchgmipstart (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6064,7 +6064,7 @@ int CPXchgmipstarts (CPXCENVptr env, CPXLPptr lp, int mcnt, const int *mipstarti
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6083,7 +6083,7 @@ int CPXaddmipstarts (CPXCENVptr env, CPXLPptr lp, int mcnt, int nzcnt, const int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6102,7 +6102,7 @@ int CPXdelmipstarts (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6121,7 +6121,7 @@ int CPXdelsetmipstarts (CPXCENVptr env, CPXLPptr lp, int *delstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6140,7 +6140,7 @@ int CPXrefinemipstartconflict (CPXCENVptr env, CPXLPptr lp, int mipstartindex, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6159,7 +6159,7 @@ int CPXrefinemipstartconflictext (CPXCENVptr env, CPXLPptr lp, int mipstartindex
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6178,7 +6178,7 @@ int CPXmipopt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6197,7 +6197,7 @@ int CPXgetmipitcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6216,7 +6216,7 @@ int CPXgetbestobjval (CPXCENVptr env, CPXCLPptr lp, double *objval_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6235,7 +6235,7 @@ int CPXgetmiprelgap (CPXCENVptr env, CPXCLPptr lp, double *gap_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6254,7 +6254,7 @@ int CPXgetcutoff (CPXCENVptr env, CPXCLPptr lp, double *cutoff_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6273,7 +6273,7 @@ int CPXgetnodecnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6292,7 +6292,7 @@ int CPXgetnodeleftcnt (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6311,7 +6311,7 @@ int CPXgetnodeint (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6330,7 +6330,7 @@ int CPXgetnumcuts (CPXCENVptr env, CPXCLPptr lp, int cuttype, int *num_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6349,7 +6349,7 @@ int CPXgetnummipstarts (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6368,7 +6368,7 @@ int CPXgetmipstart (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, doub
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6387,7 +6387,7 @@ int CPXgetmipstarts (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *beg, int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6406,7 +6406,7 @@ int CPXgetmipstartname (CPXCENVptr env, CPXCLPptr lp, char **name, char *store, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6425,7 +6425,7 @@ int CPXgetmipstartindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6444,7 +6444,7 @@ int CPXgetsolnpoolmipstart (CPXCENVptr env, CPXCLPptr lp, int soln, int *cnt_p, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6463,7 +6463,7 @@ int CPXgetsolnpoolnummipstarts (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6482,7 +6482,7 @@ int CPXgetsubstat (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6501,7 +6501,7 @@ int CPXgetsubmethod (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6520,7 +6520,7 @@ int CPXchgctype (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, const
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6539,7 +6539,7 @@ int CPXaddsos (CPXCENVptr env, CPXLPptr lp, int numsos, int numsosnz, const char
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6558,7 +6558,7 @@ int CPXdelsetsos (CPXCENVptr env, CPXLPptr lp, int *delset){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6577,7 +6577,7 @@ int CPXgetctype (CPXCENVptr env, CPXCLPptr lp, char *xctype, int begin, int end)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6596,7 +6596,7 @@ int CPXgetnumsos (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6615,7 +6615,7 @@ int CPXgetsos (CPXCENVptr env, CPXCLPptr lp, int *numsosnz_p, char *sostype, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6634,7 +6634,7 @@ int CPXgetsosname (CPXCENVptr env, CPXCLPptr lp, char **name, char *namestore, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6653,7 +6653,7 @@ int CPXgetsosindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int *in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6672,7 +6672,7 @@ int CPXgetsosinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *infe
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6691,7 +6691,7 @@ int CPXgetnumindconstrs (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6710,7 +6710,7 @@ int CPXgetindconstr (CPXCENVptr env, CPXCLPptr lp, int *indvar_p, int *complemen
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6729,7 +6729,7 @@ int CPXEgetindicator (CPXCENVptr env, CPXCLPptr lp, int *indvar_p, int *compleme
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6748,7 +6748,7 @@ int CPXgetindconstrindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6767,7 +6767,7 @@ int CPXgetindconstrname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspa
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6786,7 +6786,7 @@ int CPXgetindconstrslack (CPXCENVptr env, CPXCLPptr lp, double *indslack, int be
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6805,7 +6805,7 @@ int CPXindconstrslackfromx (CPXCENVptr env, CPXCLPptr lp, const double *x, doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6824,7 +6824,7 @@ int CPXgetindconstrinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6843,7 +6843,7 @@ int CPXdelindconstrs (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6862,7 +6862,7 @@ int CPXgetnumint (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6881,7 +6881,7 @@ int CPXgetnumbin (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6900,7 +6900,7 @@ int CPXgetnumsemicont (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6919,7 +6919,7 @@ int CPXgetnumsemiint (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6938,7 +6938,7 @@ int CPXgetorder (CPXCENVptr env, CPXCLPptr lp, int *cnt_p, int *indices, int *pr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6957,7 +6957,7 @@ int CPXpopulate (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6976,7 +6976,7 @@ int CPXgetsolnpoolnumfilters (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -6995,7 +6995,7 @@ int CPXaddsolnpooldivfilter (CPXCENVptr env, CPXLPptr lp, double lower_bound, do
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7014,7 +7014,7 @@ int CPXaddsolnpoolrngfilter (CPXCENVptr env, CPXLPptr lp, double lb, double ub, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7033,7 +7033,7 @@ int CPXgetsolnpoolfiltertype (CPXCENVptr env, CPXCLPptr lp, int *ftype_p, int wh
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7052,7 +7052,7 @@ int CPXgetsolnpooldivfilter (CPXCENVptr env, CPXCLPptr lp, double *lowercutoff_p
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7071,7 +7071,7 @@ int CPXgetsolnpoolfilter (CPXCENVptr env, CPXCLPptr lp, int *ftype_p, double *lo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7090,7 +7090,7 @@ int CPXgetsolnpoolrngfilter (CPXCENVptr env, CPXCLPptr lp, double *lb_p, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7109,7 +7109,7 @@ int CPXgetsolnpoolfiltername (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int b
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7128,7 +7128,7 @@ int CPXgetsolnpoolfilterindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_s
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7147,7 +7147,7 @@ int CPXdelsolnpoolfilters (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7166,7 +7166,7 @@ int CPXdelsetsolnpoolfilters (CPXCENVptr env, CPXLPptr lp, int *delstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7185,7 +7185,7 @@ int CPXgetsolnpoolnumsolns (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7204,7 +7204,7 @@ int CPXgetsolnpoolnumreplaced (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7223,7 +7223,7 @@ int CPXgetsolnpoolmeanobjval (CPXCENVptr env, CPXCLPptr lp, double *meanobjval_p
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7242,7 +7242,7 @@ int CPXgetsolnpoolobjval (CPXCENVptr env, CPXCLPptr lp, int soln, double *objval
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7261,7 +7261,7 @@ int CPXgetsolnpoolx (CPXCENVptr env, CPXCLPptr lp, int soln, double *x, int begi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7280,7 +7280,7 @@ int CPXgetsolnpoolslack (CPXCENVptr env, CPXCLPptr lp, int soln, double *slack, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7299,7 +7299,7 @@ int CPXgetsolnpoolqconstrslack (CPXCENVptr env, CPXCLPptr lp, int soln, double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7318,7 +7318,7 @@ int CPXgetsolnpoolsolnname (CPXCENVptr env, CPXCLPptr lp, char *store, int store
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7337,7 +7337,7 @@ int CPXgetsolnpoolsolnindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7356,7 +7356,7 @@ int CPXdelsolnpoolsolns (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7375,7 +7375,7 @@ int CPXdelsetsolnpoolsolns (CPXCENVptr env, CPXLPptr lp, int *delstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7394,7 +7394,7 @@ int CPXreadcopyorder (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7413,7 +7413,7 @@ int CPXreadcopysolnpoolfilters (CPXCENVptr env, CPXLPptr lp, const char *filenam
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7432,7 +7432,7 @@ int CPXreadcopymipstart (CPXCENVptr env, CPXLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7451,7 +7451,7 @@ int CPXreadcopymipstarts (CPXCENVptr env, CPXLPptr lp, const char *filename_str)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7470,7 +7470,7 @@ int CPXordwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7489,7 +7489,7 @@ int CPXmstwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7508,7 +7508,7 @@ int CPXwritemipstarts (CPXCENVptr env, CPXCLPptr lp, const char *filename_str, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7527,7 +7527,7 @@ int CPXmstwritesolnpool (CPXCENVptr env, CPXCLPptr lp, int soln, const char *fil
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7546,7 +7546,7 @@ int CPXmstwritesolnpoolall (CPXCENVptr env, CPXCLPptr lp, const char *filename_s
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7565,7 +7565,7 @@ int CPXfltwrite (CPXCENVptr env, CPXCLPptr lp, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7584,7 +7584,7 @@ int CPXcheckcopyctype (CPXCENVptr env, CPXCLPptr lp, const char *xctype){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7603,7 +7603,7 @@ int CPXcheckcopysos (CPXCENVptr env, CPXCLPptr lp, int numsos, int numsosnz, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7622,7 +7622,7 @@ int CPXEchgsosname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, ch
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7641,7 +7641,7 @@ int CPXsetinfocallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7660,7 +7660,7 @@ int CPXgetinfocallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, vo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7679,7 +7679,7 @@ int CPXsetmipcallbackfunc (CPXENVptr env, int ( * callback) (CPXCENVptr, void *,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7698,7 +7698,7 @@ int CPXgetmipcallbackfunc (CPXCENVptr env, int ( ** callback_p) (CPXCENVptr, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7717,7 +7717,7 @@ int CPXsetbranchcallbackfunc (CPXENVptr env, int ( * branchcallback) (CPXCENVptr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7736,7 +7736,7 @@ int CPXsetbranchnosolncallbackfunc (CPXENVptr env, int ( * branchnosolncallback)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7755,7 +7755,7 @@ int CPXsetcutcallbackfunc (CPXENVptr env, int ( * cutcallback) (CPXCENVptr xenv,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7774,7 +7774,7 @@ int CPXsetnodecallbackfunc (CPXENVptr env, int ( * nodecallback) (CPXCENVptr xen
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7793,7 +7793,7 @@ int CPXsetheuristiccallbackfunc (CPXENVptr env, int ( * heuristiccallback) (CPXC
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7812,7 +7812,7 @@ int CPXsetincumbentcallbackfunc (CPXENVptr env, int ( * incumbentcallback) (CPXC
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7831,7 +7831,7 @@ int CPXsetsolvecallbackfunc (CPXENVptr env, int ( * solvecallback) (CPXCENVptr x
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7850,7 +7850,7 @@ int CPXsetdeletenodecallbackfunc (CPXENVptr env, void ( * deletecallback) (CPXCE
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7869,7 +7869,7 @@ void CPXgetbranchcallbackfunc (CPXCENVptr env, int ( ** branchcallback_p) (CPXCE
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7888,7 +7888,7 @@ void CPXgetbranchnosolncallbackfunc (CPXCENVptr env, int ( ** branchnosolncallba
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7907,7 +7907,7 @@ void CPXgetcutcallbackfunc (CPXCENVptr env, int ( ** cutcallback_p) (CPXCENVptr 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7926,7 +7926,7 @@ void CPXgetnodecallbackfunc (CPXCENVptr env, int ( ** nodecallback_p) (CPXCENVpt
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7945,7 +7945,7 @@ void CPXgetheuristiccallbackfunc (CPXCENVptr env, int ( ** heuristiccallback_p) 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7964,7 +7964,7 @@ void CPXgetincumbentcallbackfunc (CPXCENVptr env, int ( ** incumbentcallback_p) 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -7983,7 +7983,7 @@ void CPXgetsolvecallbackfunc (CPXCENVptr env, int ( ** solvecallback_p) (CPXCENV
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8002,7 +8002,7 @@ void CPXgetdeletenodecallbackfunc (CPXCENVptr env, void ( ** deletecallback_p) (
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8021,7 +8021,7 @@ int CPXgetcallbacknodelp (CPXCENVptr env, void *cbdata, int wherefrom, CPXLPptr 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8040,7 +8040,7 @@ int CPXgetcallbacknodeinfo (CPXCENVptr env, void *cbdata, int wherefrom, int nod
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8059,7 +8059,7 @@ int CPXgetcallbackseqinfo (CPXCENVptr env, void *cbdata, int wherefrom, int seqi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8078,7 +8078,7 @@ int CPXgetcallbacksosinfo (CPXCENVptr env, void *cbdata, int wherefrom, int sosi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8097,7 +8097,7 @@ int CPXgetcallbackindicatorinfo (CPXCENVptr env, void *cbdata, int wherefrom, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8116,7 +8116,7 @@ int CPXcutcallbackadd (CPXCENVptr env, void *cbdata, int wherefrom, int nzcnt, d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8135,7 +8135,7 @@ int CPXcutcallbackaddlocal (CPXCENVptr env, void *cbdata, int wherefrom, int nzc
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8154,7 +8154,7 @@ int CPXbranchcallbackbranchbds (CPXCENVptr env, void *cbdata, int wherefrom, dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8173,7 +8173,7 @@ int CPXbranchcallbackbranchgeneral (CPXCENVptr env, void *cbdata, int wherefrom,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8192,7 +8192,7 @@ int CPXbranchcallbackbranchconstraints (CPXCENVptr env, void *cbdata, int wheref
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8211,7 +8211,7 @@ int CPXgetcallbacknodex (CPXCENVptr env, void *cbdata, int wherefrom, double *x,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8230,7 +8230,7 @@ int CPXgetcallbacknodeobjval (CPXCENVptr env, void *cbdata, int wherefrom, doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8249,7 +8249,7 @@ int CPXgetcallbackctype (CPXCENVptr env, void *cbdata, int wherefrom, char *xcty
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8268,7 +8268,7 @@ int CPXgetcallbackorder (CPXCENVptr env, void *cbdata, int wherefrom, int *prior
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8287,7 +8287,7 @@ int CPXgetcallbackpseudocosts (CPXCENVptr env, void *cbdata, int wherefrom, doub
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8306,7 +8306,7 @@ int CPXgetcallbackincumbent (CPXCENVptr env, void *cbdata, int wherefrom, double
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8325,7 +8325,7 @@ int CPXgetcallbacknodeintfeas (CPXCENVptr env, void *cbdata, int wherefrom, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8344,7 +8344,7 @@ int CPXgetcallbackgloballb (CPXCENVptr env, void *cbdata, int wherefrom, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8363,7 +8363,7 @@ int CPXgetcallbackglobalub (CPXCENVptr env, void *cbdata, int wherefrom, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8382,7 +8382,7 @@ int CPXgetcallbacknodelb (CPXCENVptr env, void *cbdata, int wherefrom, double *l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8401,7 +8401,7 @@ int CPXgetcallbacknodeub (CPXCENVptr env, void *cbdata, int wherefrom, double *u
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8420,7 +8420,7 @@ int CPXgetcallbacklp (CPXCENVptr env, void *cbdata, int wherefrom, CPXCLPptr * l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8439,7 +8439,7 @@ int CPXgetcallbacknodestat (CPXCENVptr env, void *cbdata, int wherefrom, int *no
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8458,7 +8458,7 @@ int CPXgetcallbackbranchconstraints (CPXCENVptr env, void *cbdata, int wherefrom
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8477,7 +8477,7 @@ int CPXaddusercuts (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, const doub
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8496,7 +8496,7 @@ int CPXaddlazyconstraints (CPXCENVptr env, CPXLPptr lp, int rcnt, int nzcnt, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8515,7 +8515,7 @@ int CPXfreeusercuts (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8534,7 +8534,7 @@ int CPXfreelazyconstraints (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8553,7 +8553,7 @@ int CPXEgetusercuts (CPXCENVptr env, CPXCLPptr lp, int *rcnt_p, int *nzcnt_p, do
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8572,7 +8572,7 @@ int CPXEgetusercutname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspac
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8591,7 +8591,7 @@ int CPXEgetlazyconstraints (CPXCENVptr env, CPXCLPptr lp, int *rcnt_p, int *nzcn
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8610,7 +8610,7 @@ int CPXEgetlazyconstraintname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8629,7 +8629,7 @@ int CPXordread (CPXCENVptr env, const char *filename_str, int numcols, char **co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8648,7 +8648,7 @@ int CPXaddindconstr (CPXCENVptr env, CPXLPptr lp, int indvar, int complemented, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8667,7 +8667,7 @@ int CPXEgetnumgconstrs (CPXCENVptr env, CPXCLPptr lp, int contype){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8686,7 +8686,7 @@ int CPXEdelgconstrs (CPXCENVptr env, CPXLPptr lp, int contype, int beg, int end)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8705,7 +8705,7 @@ int CPXEaddindconstr (CPXCENVptr env, CPXLPptr lp, int indicator, int complement
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8724,7 +8724,7 @@ int CPXEaddminexpr (CPXCENVptr env, CPXLPptr lp, int y, double constant, int nex
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8743,7 +8743,7 @@ int CPXEaddmaxexpr (CPXCENVptr env, CPXLPptr lp, int y, double constant, int nex
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8762,7 +8762,7 @@ int CPXEaddpwl (CPXCENVptr env, CPXLPptr lp, int y, int npoints, double *point, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8781,7 +8781,7 @@ int CPXEaddabs (CPXCENVptr env, CPXLPptr lp, int y, int x, const char *lname_str
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8800,7 +8800,7 @@ int CPXEaddsetvar (CPXCENVptr env, CPXLPptr lp, const int npvalues, const double
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8819,7 +8819,7 @@ int CPXEchgsetvar (CPXCENVptr env, CPXLPptr lp, const int setvarid, const int np
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8838,7 +8838,7 @@ int CPXEgetsetvarvalues (CPXCENVptr env, CPXLPptr lp, const int setvarid, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8857,7 +8857,7 @@ int CPXEaddsetvarmember (CPXCENVptr env, CPXLPptr lp, const int indvarid, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8876,7 +8876,7 @@ int CPXEaddsetvarcard (CPXCENVptr env, CPXLPptr lp, const int cardvarid, const i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8895,7 +8895,7 @@ int CPXEaddsetvarsum (CPXCENVptr env, CPXLPptr lp, const int sumvarid, const int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8914,7 +8914,7 @@ int CPXEaddsetvarmin (CPXCENVptr env, CPXLPptr lp, const int minvarid, const int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8933,7 +8933,7 @@ int CPXEaddsetvarmax (CPXCENVptr env, CPXLPptr lp, const int maxvarid, const int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8952,7 +8952,7 @@ int CPXEaddsetvarsubset (CPXCENVptr env, CPXLPptr lp, const int setvar1, const i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8971,7 +8971,7 @@ int CPXEaddsetvardomain (CPXCENVptr env, CPXLPptr lp, const int setvar, const in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -8990,7 +8990,7 @@ int CPXEaddsetvarunion (CPXCENVptr env, CPXLPptr lp, const int unionsetvar, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9009,7 +9009,7 @@ int CPXEaddsetvarintersection (CPXCENVptr env, CPXLPptr lp, const int unionsetva
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9028,7 +9028,7 @@ int CPXEaddsetvarnullintersect (CPXCENVptr env, CPXLPptr lp, const int servar1, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9047,7 +9047,7 @@ int CPXEaddsetvarintersect (CPXCENVptr env, CPXLPptr lp, const int servar1, cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9066,7 +9066,7 @@ int CPXEaddsetvareq (CPXCENVptr env, CPXLPptr lp, const int servar1, const int s
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9085,7 +9085,7 @@ int CPXEaddsetvarneq (CPXCENVptr env, CPXLPptr lp, const int servar1, const int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9104,7 +9104,7 @@ int CPXEaddsetvarneqcst (CPXCENVptr env, CPXLPptr lp, const int servar1, const i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9123,7 +9123,7 @@ CPXNETptr CPXNETcreateprob (CPXENVptr env, int *status_p, const char *name_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9142,7 +9142,7 @@ int CPXNETfreeprob (CPXENVptr env, CPXNETptr * net_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9161,7 +9161,7 @@ int CPXNETcopynet (CPXCENVptr env, CPXNETptr net, int objsen, int nnodes, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9180,7 +9180,7 @@ int CPXNETcopybase (CPXCENVptr env, CPXNETptr net, const int *astat, const int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9199,7 +9199,7 @@ int CPXNETaddnodes (CPXCENVptr env, CPXNETptr net, int nnodes, const double *sup
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9218,7 +9218,7 @@ int CPXNETaddarcs (CPXCENVptr env, CPXNETptr net, int narcs, const int *fromnode
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9237,7 +9237,7 @@ int CPXNETdelnodes (CPXCENVptr env, CPXNETptr net, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9256,7 +9256,7 @@ int CPXNETdelarcs (CPXCENVptr env, CPXNETptr net, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9275,7 +9275,7 @@ int CPXNETdelset (CPXCENVptr env, CPXNETptr net, int *whichnodes, int *whicharcs
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9294,7 +9294,7 @@ int CPXNETprimopt (CPXCENVptr env, CPXNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9313,7 +9313,7 @@ int CPXNETgetstat (CPXCENVptr env, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9332,7 +9332,7 @@ int CPXNETgetobjval (CPXCENVptr env, CPXCNETptr net, double *objval_p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9351,7 +9351,7 @@ int CPXNETgetx (CPXCENVptr env, CPXCNETptr net, double *x, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9370,7 +9370,7 @@ int CPXNETgetpi (CPXCENVptr env, CPXCNETptr net, double *pi, int begin, int end)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9389,7 +9389,7 @@ int CPXNETgetslack (CPXCENVptr env, CPXCNETptr net, double *slack, int begin, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9408,7 +9408,7 @@ int CPXNETgetdj (CPXCENVptr env, CPXCNETptr net, double *dj, int begin, int end)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9427,7 +9427,7 @@ int CPXNETgetitcnt (CPXCENVptr env, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9446,7 +9446,7 @@ int CPXNETgetphase1cnt (CPXCENVptr env, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9465,7 +9465,7 @@ int CPXNETgetbase (CPXCENVptr env, CPXCNETptr net, int *astat, int *nstat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9484,7 +9484,7 @@ int CPXNETsolution (CPXCENVptr env, CPXCNETptr net, int *netstat_p, double *objv
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9503,7 +9503,7 @@ int CPXNETsolninfo (CPXCENVptr env, CPXCNETptr net, int *pfeasind_p, int *dfeasi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9522,7 +9522,7 @@ int CPXNETchgname (CPXCENVptr env, CPXNETptr net, int key, int vindex, const cha
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9541,7 +9541,7 @@ int CPXNETchgarcname (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9560,7 +9560,7 @@ int CPXNETchgnodename (CPXCENVptr env, CPXNETptr net, int cnt, const int *indice
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9579,7 +9579,7 @@ int CPXNETchgobjsen (CPXCENVptr env, CPXNETptr net, int maxormin){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9598,7 +9598,7 @@ int CPXNETchgbds (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices, co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9617,7 +9617,7 @@ int CPXNETchgarcnodes (CPXCENVptr env, CPXNETptr net, int cnt, const int *indice
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9636,7 +9636,7 @@ int CPXNETchgobj (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices, co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9655,7 +9655,7 @@ int CPXNETchgsupply (CPXCENVptr env, CPXNETptr net, int cnt, const int *indices,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9674,7 +9674,7 @@ int CPXNETgetobjsen (CPXCENVptr env, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9693,7 +9693,7 @@ int CPXNETgetsupply (CPXCENVptr env, CPXCNETptr net, double *supply, int begin, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9712,7 +9712,7 @@ int CPXNETgetprobname (CPXCENVptr env, CPXCNETptr net, char *buf_str, int bufspa
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9731,7 +9731,7 @@ int CPXNETgetnodename (CPXCENVptr env, CPXCNETptr net, char **nnames, char *name
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9750,7 +9750,7 @@ int CPXNETgetarcname (CPXCENVptr env, CPXCNETptr net, char **nnames, char *names
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9769,7 +9769,7 @@ int CPXNETgetlb (CPXCENVptr env, CPXCNETptr net, double *low, int begin, int end
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9788,7 +9788,7 @@ int CPXNETgetub (CPXCENVptr env, CPXCNETptr net, double *up, int begin, int end)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9807,7 +9807,7 @@ int CPXNETgetobj (CPXCENVptr env, CPXCNETptr net, double *obj, int begin, int en
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9826,7 +9826,7 @@ int CPXNETgetarcnodes (CPXCENVptr env, CPXCNETptr net, int *fromnode, int *tonod
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9845,7 +9845,7 @@ int CPXNETgetnodearcs (CPXCENVptr env, CPXCNETptr net, int *arccnt_p, int *arcbe
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9864,7 +9864,7 @@ int CPXNETgetnumnodes (CPXCENVptr env, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9883,7 +9883,7 @@ int CPXNETgetnumarcs (CPXCENVptr env, CPXCNETptr net){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9902,7 +9902,7 @@ int CPXNETgetnodeindex (CPXCENVptr env, CPXCNETptr net, const char *lname_str, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9921,7 +9921,7 @@ int CPXNETgetarcindex (CPXCENVptr env, CPXCNETptr net, const char *lname_str, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9940,7 +9940,7 @@ int CPXNETreadcopyprob (CPXCENVptr env, CPXNETptr net, const char *filename_str)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9959,7 +9959,7 @@ int CPXNETreadcopybase (CPXCENVptr env, CPXNETptr net, const char *filename_str)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9978,7 +9978,7 @@ int CPXNETwriteprob (CPXCENVptr env, CPXCNETptr net, const char *filename_str, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -9997,7 +9997,7 @@ int CPXNETbasewrite (CPXCENVptr env, CPXCNETptr net, const char *filename_str){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10016,7 +10016,7 @@ int CPXNETcheckcopynet (CPXCENVptr env, CPXNETptr net, int objsen, int nnodes, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10035,7 +10035,7 @@ int CPXcopyquad (CPXCENVptr env, CPXLPptr lp, const int *qmatbeg, const int *qma
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10054,7 +10054,7 @@ int CPXcopyqpsep (CPXCENVptr env, CPXLPptr lp, const double *qsepvec){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10073,7 +10073,7 @@ int CPXchgqpcoef (CPXCENVptr env, CPXLPptr lp, int i, int j, double newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10092,7 +10092,7 @@ int CPXgetnumqpnz (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10111,7 +10111,7 @@ int CPXgetnumquad (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10130,7 +10130,7 @@ int CPXgetqpcoef (CPXCENVptr env, CPXCLPptr lp, int rownum, int colnum, double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10149,7 +10149,7 @@ int CPXgetquad (CPXCENVptr env, CPXCLPptr lp, int *nzcnt_p, int *qmatbeg, int *q
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10168,7 +10168,7 @@ int CPXqpindefcertificate (CPXCENVptr env, CPXCLPptr lp, double *x){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10187,7 +10187,7 @@ int CPXcheckcopyqpsep (CPXCENVptr env, CPXCLPptr lp, const double *qsepvec){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10206,7 +10206,7 @@ int CPXcheckcopyquad (CPXCENVptr env, CPXCLPptr lp, const int *qmatbeg, const in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10225,7 +10225,7 @@ int CPXqpopt (CPXCENVptr env, CPXLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10244,7 +10244,7 @@ int CPXaddqconstr (CPXCENVptr env, CPXLPptr lp, int linnzcnt, int quadnzcnt, dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10263,7 +10263,7 @@ int CPXdelqconstrs (CPXCENVptr env, CPXLPptr lp, int begin, int end){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10282,7 +10282,7 @@ int CPXgetnumqconstrs (CPXCENVptr env, CPXCLPptr lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10301,7 +10301,7 @@ int CPXgetqconstrindex (CPXCENVptr env, CPXCLPptr lp, const char *lname_str, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10320,7 +10320,7 @@ int CPXgetqconstr (CPXCENVptr env, CPXCLPptr lp, int *linnzcnt_p, int *quadnzcnt
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10339,7 +10339,7 @@ int CPXgetqconstrname (CPXCENVptr env, CPXCLPptr lp, char *buf_str, int bufspace
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10358,7 +10358,7 @@ int CPXgetqconstrslack (CPXCENVptr env, CPXCLPptr lp, double *qcslack, int begin
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10377,7 +10377,7 @@ int CPXqconstrslackfromx (CPXCENVptr env, CPXCLPptr lp, const double *x, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10396,7 +10396,7 @@ int CPXgetqconstrinfeas (CPXCENVptr env, CPXCLPptr lp, const double *x, double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10415,7 +10415,7 @@ int CPXgetxqxax (CPXCENVptr env, CPXCLPptr lp, double *xqxax, int begin, int end
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }
@@ -10434,7 +10434,7 @@ int CPXEchgqcname (CPXCENVptr env, CPXLPptr lp, int cnt, const int *indices, cha
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_CPLEX_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libcplex.so to the full path of the library\n");
             }

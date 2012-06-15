@@ -68,11 +68,11 @@ GModule *module = NULL;
 /* searches and loads the actual library */
 int load_module(){
     /* environment variable */
-    char *LAZYLPSOLVERLIBS_GLPK_LIB_PATH;
-    LAZYLPSOLVERLIBS_GLPK_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GLPK_LIB_PATH");
+    char *LAZYLPSOLVERLIBS_GLPK_LIB;
+    LAZYLPSOLVERLIBS_GLPK_LIB = getenv("LAZYLPSOLVERLIBS_GLPK_LIB");
     if (!module) module = g_module_open("/usr/lib/libglpk.so", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
-    if (LAZYLPSOLVERLIBS_GLPK_LIB_PATH != NULL) {
-        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_GLPK_LIB_PATH, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
+    if (LAZYLPSOLVERLIBS_GLPK_LIB != NULL) {
+        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_GLPK_LIB, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     }
     if (!module) module = g_module_open_all("glpk", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     return (module != NULL);
@@ -420,7 +420,7 @@ glp_prob *glp_create_prob (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -439,7 +439,7 @@ void glp_set_prob_name (glp_prob * P, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -458,7 +458,7 @@ void glp_set_obj_name (glp_prob * P, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -477,7 +477,7 @@ void glp_set_obj_dir (glp_prob * P, int dir){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -496,7 +496,7 @@ int glp_add_rows (glp_prob * P, int nrs){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -515,7 +515,7 @@ int glp_add_cols (glp_prob * P, int ncs){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -534,7 +534,7 @@ void glp_set_row_name (glp_prob * P, int i, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -553,7 +553,7 @@ void glp_set_col_name (glp_prob * P, int j, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -572,7 +572,7 @@ void glp_set_row_bnds (glp_prob * P, int i, int type, double lb, double ub){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -591,7 +591,7 @@ void glp_set_col_bnds (glp_prob * P, int j, int type, double lb, double ub){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -610,7 +610,7 @@ void glp_set_obj_coef (glp_prob * P, int j, double coef){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -629,7 +629,7 @@ void glp_set_mat_row (glp_prob * P, int i, int len, const int ind[], const doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -648,7 +648,7 @@ void glp_set_mat_col (glp_prob * P, int j, int len, const int ind[], const doubl
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -667,7 +667,7 @@ void glp_load_matrix (glp_prob * P, int ne, const int ia[], const int ja[], cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -686,7 +686,7 @@ int glp_check_dup (int m, int n, int ne, const int ia[], const int ja[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -705,7 +705,7 @@ void glp_sort_matrix (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -724,7 +724,7 @@ void glp_del_rows (glp_prob * P, int nrs, const int num[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -743,7 +743,7 @@ void glp_del_cols (glp_prob * P, int ncs, const int num[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -762,7 +762,7 @@ void glp_copy_prob (glp_prob * dest, glp_prob * prob, int names){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -781,7 +781,7 @@ void glp_erase_prob (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -800,7 +800,7 @@ void glp_delete_prob (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -819,7 +819,7 @@ const char *glp_get_prob_name (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -838,7 +838,7 @@ const char *glp_get_obj_name (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -857,7 +857,7 @@ int glp_get_obj_dir (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -876,7 +876,7 @@ int glp_get_num_rows (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -895,7 +895,7 @@ int glp_get_num_cols (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -914,7 +914,7 @@ const char *glp_get_row_name (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -933,7 +933,7 @@ const char *glp_get_col_name (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -952,7 +952,7 @@ int glp_get_row_type (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -971,7 +971,7 @@ double glp_get_row_lb (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -990,7 +990,7 @@ double glp_get_row_ub (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1009,7 +1009,7 @@ int glp_get_col_type (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1028,7 +1028,7 @@ double glp_get_col_lb (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1047,7 +1047,7 @@ double glp_get_col_ub (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1066,7 +1066,7 @@ double glp_get_obj_coef (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1085,7 +1085,7 @@ int glp_get_num_nz (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1104,7 +1104,7 @@ int glp_get_mat_row (glp_prob * P, int i, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1123,7 +1123,7 @@ int glp_get_mat_col (glp_prob * P, int j, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1142,7 +1142,7 @@ void glp_create_index (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1161,7 +1161,7 @@ int glp_find_row (glp_prob * P, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1180,7 +1180,7 @@ int glp_find_col (glp_prob * P, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1199,7 +1199,7 @@ void glp_delete_index (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1218,7 +1218,7 @@ void glp_set_rii (glp_prob * P, int i, double rii){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1237,7 +1237,7 @@ void glp_set_sjj (glp_prob * P, int j, double sjj){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1256,7 +1256,7 @@ double glp_get_rii (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1275,7 +1275,7 @@ double glp_get_sjj (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1294,7 +1294,7 @@ void glp_scale_prob (glp_prob * P, int flags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1313,7 +1313,7 @@ void glp_unscale_prob (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1332,7 +1332,7 @@ void glp_set_row_stat (glp_prob * P, int i, int stat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1351,7 +1351,7 @@ void glp_set_col_stat (glp_prob * P, int j, int stat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1370,7 +1370,7 @@ void glp_std_basis (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1389,7 +1389,7 @@ void glp_adv_basis (glp_prob * P, int flags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1408,7 +1408,7 @@ void glp_cpx_basis (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1427,7 +1427,7 @@ int glp_simplex (glp_prob * P, const glp_smcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1446,7 +1446,7 @@ int glp_exact (glp_prob * P, const glp_smcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1465,7 +1465,7 @@ void glp_init_smcp (glp_smcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1484,7 +1484,7 @@ int glp_get_status (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1503,7 +1503,7 @@ int glp_get_prim_stat (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1522,7 +1522,7 @@ int glp_get_dual_stat (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1541,7 +1541,7 @@ double glp_get_obj_val (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1560,7 +1560,7 @@ int glp_get_row_stat (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1579,7 +1579,7 @@ double glp_get_row_prim (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1598,7 +1598,7 @@ double glp_get_row_dual (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1617,7 +1617,7 @@ int glp_get_col_stat (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1636,7 +1636,7 @@ double glp_get_col_prim (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1655,7 +1655,7 @@ double glp_get_col_dual (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1674,7 +1674,7 @@ int glp_get_unbnd_ray (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1693,7 +1693,7 @@ int glp_interior (glp_prob * P, const glp_iptcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1712,7 +1712,7 @@ void glp_init_iptcp (glp_iptcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1731,7 +1731,7 @@ int glp_ipt_status (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1750,7 +1750,7 @@ double glp_ipt_obj_val (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1769,7 +1769,7 @@ double glp_ipt_row_prim (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1788,7 +1788,7 @@ double glp_ipt_row_dual (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1807,7 +1807,7 @@ double glp_ipt_col_prim (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1826,7 +1826,7 @@ double glp_ipt_col_dual (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1845,7 +1845,7 @@ void glp_set_col_kind (glp_prob * P, int j, int kind){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1864,7 +1864,7 @@ int glp_get_col_kind (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1883,7 +1883,7 @@ int glp_get_num_int (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1902,7 +1902,7 @@ int glp_get_num_bin (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1921,7 +1921,7 @@ int glp_intopt (glp_prob * P, const glp_iocp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1940,7 +1940,7 @@ void glp_init_iocp (glp_iocp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1959,7 +1959,7 @@ int glp_mip_status (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1978,7 +1978,7 @@ double glp_mip_obj_val (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -1997,7 +1997,7 @@ double glp_mip_row_val (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2016,7 +2016,7 @@ double glp_mip_col_val (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2035,7 +2035,7 @@ int glp_print_sol (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2054,7 +2054,7 @@ int glp_read_sol (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2073,7 +2073,7 @@ int glp_write_sol (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2092,7 +2092,7 @@ int glp_print_ranges (glp_prob * P, int len, const int list[], int flags, const 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2111,7 +2111,7 @@ int glp_print_ipt (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2130,7 +2130,7 @@ int glp_read_ipt (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2149,7 +2149,7 @@ int glp_write_ipt (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2168,7 +2168,7 @@ int glp_print_mip (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2187,7 +2187,7 @@ int glp_read_mip (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2206,7 +2206,7 @@ int glp_write_mip (glp_prob * P, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2225,7 +2225,7 @@ int glp_bf_exists (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2244,7 +2244,7 @@ int glp_factorize (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2263,7 +2263,7 @@ int glp_bf_updated (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2282,7 +2282,7 @@ void glp_get_bfcp (glp_prob * P, glp_bfcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2301,7 +2301,7 @@ void glp_set_bfcp (glp_prob * P, const glp_bfcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2320,7 +2320,7 @@ int glp_get_bhead (glp_prob * P, int k){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2339,7 +2339,7 @@ int glp_get_row_bind (glp_prob * P, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2358,7 +2358,7 @@ int glp_get_col_bind (glp_prob * P, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2377,7 +2377,7 @@ void glp_ftran (glp_prob * P, double x[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2396,7 +2396,7 @@ void glp_btran (glp_prob * P, double x[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2415,7 +2415,7 @@ int glp_warm_up (glp_prob * P){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2434,7 +2434,7 @@ int glp_eval_tab_row (glp_prob * P, int k, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2453,7 +2453,7 @@ int glp_eval_tab_col (glp_prob * P, int k, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2472,7 +2472,7 @@ int glp_transform_row (glp_prob * P, int len, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2491,7 +2491,7 @@ int glp_transform_col (glp_prob * P, int len, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2510,7 +2510,7 @@ int glp_prim_rtest (glp_prob * P, int len, const int ind[], const double val[], 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2529,7 +2529,7 @@ int glp_dual_rtest (glp_prob * P, int len, const int ind[], const double val[], 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2548,7 +2548,7 @@ void glp_analyze_bound (glp_prob * P, int k, double *value1, int *var1, double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2567,7 +2567,7 @@ void glp_analyze_coef (glp_prob * P, int k, double *coef1, int *var1, double *va
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2586,7 +2586,7 @@ int glp_ios_reason (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2605,7 +2605,7 @@ glp_prob *glp_ios_get_prob (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2624,7 +2624,7 @@ void glp_ios_tree_size (glp_tree * T, int *a_cnt, int *n_cnt, int *t_cnt){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2643,7 +2643,7 @@ int glp_ios_curr_node (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2662,7 +2662,7 @@ int glp_ios_next_node (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2681,7 +2681,7 @@ int glp_ios_prev_node (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2700,7 +2700,7 @@ int glp_ios_up_node (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2719,7 +2719,7 @@ int glp_ios_node_level (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2738,7 +2738,7 @@ double glp_ios_node_bound (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2757,7 +2757,7 @@ int glp_ios_best_node (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2776,7 +2776,7 @@ double glp_ios_mip_gap (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2795,7 +2795,7 @@ void *glp_ios_node_data (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2814,7 +2814,7 @@ void glp_ios_row_attr (glp_tree * T, int i, glp_attr * attr){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2833,7 +2833,7 @@ int glp_ios_pool_size (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2852,7 +2852,7 @@ int glp_ios_add_row (glp_tree * T, const char *name, int klass, int flags, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2871,7 +2871,7 @@ void glp_ios_del_row (glp_tree * T, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2890,7 +2890,7 @@ void glp_ios_clear_pool (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2909,7 +2909,7 @@ int glp_ios_can_branch (glp_tree * T, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2928,7 +2928,7 @@ void glp_ios_branch_upon (glp_tree * T, int j, int sel){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2947,7 +2947,7 @@ void glp_ios_select_node (glp_tree * T, int p){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2966,7 +2966,7 @@ int glp_ios_heur_sol (glp_tree * T, const double x[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -2985,7 +2985,7 @@ void glp_ios_terminate (glp_tree * T){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3004,7 +3004,7 @@ void glp_init_mpscp (glp_mpscp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3023,7 +3023,7 @@ int glp_read_mps (glp_prob * P, int fmt, const glp_mpscp * parm, const char *fna
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3042,7 +3042,7 @@ int glp_write_mps (glp_prob * P, int fmt, const glp_mpscp * parm, const char *fn
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3061,7 +3061,7 @@ void glp_init_cpxcp (glp_cpxcp * parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3080,7 +3080,7 @@ int glp_read_lp (glp_prob * P, const glp_cpxcp * parm, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3099,7 +3099,7 @@ int glp_write_lp (glp_prob * P, const glp_cpxcp * parm, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3118,7 +3118,7 @@ int glp_read_prob (glp_prob * P, int flags, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3137,7 +3137,7 @@ int glp_write_prob (glp_prob * P, int flags, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3156,7 +3156,7 @@ glp_tran *glp_mpl_alloc_wksp (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3175,7 +3175,7 @@ int glp_mpl_read_model (glp_tran * tran, const char *fname, int skip){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3194,7 +3194,7 @@ int glp_mpl_read_data (glp_tran * tran, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3213,7 +3213,7 @@ int glp_mpl_generate (glp_tran * tran, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3232,7 +3232,7 @@ void glp_mpl_build_prob (glp_tran * tran, glp_prob * prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3251,7 +3251,7 @@ int glp_mpl_postsolve (glp_tran * tran, glp_prob * prob, int sol){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3270,7 +3270,7 @@ void glp_mpl_free_wksp (glp_tran * tran){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3289,7 +3289,7 @@ int glp_main (int argc, const char *argv[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3308,7 +3308,7 @@ int glp_init_env (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3327,7 +3327,7 @@ const char *glp_version (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3346,7 +3346,7 @@ int glp_free_env (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3365,7 +3365,7 @@ void glp_printf (const char *fmt, ...){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3384,7 +3384,7 @@ void glp_vprintf (const char *fmt, va_list arg){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3403,7 +3403,7 @@ int glp_term_out (int flag){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3422,7 +3422,7 @@ void glp_term_hook (int (*func) (void *info, const char *s), void *info){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3441,7 +3441,7 @@ int glp_open_tee (const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3460,7 +3460,7 @@ int glp_close_tee (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3479,7 +3479,7 @@ _glp_error glp_error_ (const char *file, int line){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3498,7 +3498,7 @@ void glp_assert_ (const char *expr, const char *file, int line){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3517,7 +3517,7 @@ void glp_error_hook (void (*func) (void *info), void *info){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3536,7 +3536,7 @@ void *glp_malloc (int size){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3555,7 +3555,7 @@ void *glp_calloc (int n, int size){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3574,7 +3574,7 @@ void glp_free (void *ptr){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3593,7 +3593,7 @@ void glp_mem_limit (int limit){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3612,7 +3612,7 @@ void glp_mem_usage (int *count, int *cpeak, glp_long * total, glp_long * tpeak){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3631,7 +3631,7 @@ glp_long glp_time (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3650,7 +3650,7 @@ double glp_difftime (glp_long t1, glp_long t0){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3669,7 +3669,7 @@ glp_data *glp_sdf_open_file (const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3688,7 +3688,7 @@ void glp_sdf_set_jump (glp_data * data, void *jump){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3707,7 +3707,7 @@ void glp_sdf_error (glp_data * data, const char *fmt, ...){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3726,7 +3726,7 @@ void glp_sdf_warning (glp_data * data, const char *fmt, ...){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3745,7 +3745,7 @@ int glp_sdf_read_int (glp_data * data){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3764,7 +3764,7 @@ double glp_sdf_read_num (glp_data * data){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3783,7 +3783,7 @@ const char *glp_sdf_read_item (glp_data * data){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3802,7 +3802,7 @@ const char *glp_sdf_read_text (glp_data * data){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3821,7 +3821,7 @@ int glp_sdf_line (glp_data * data){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3840,7 +3840,7 @@ void glp_sdf_close_file (glp_data * data){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3859,7 +3859,7 @@ glp_graph *glp_create_graph (int v_size, int a_size){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3878,7 +3878,7 @@ void glp_set_graph_name (glp_graph * G, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3897,7 +3897,7 @@ int glp_add_vertices (glp_graph * G, int nadd){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3916,7 +3916,7 @@ void glp_set_vertex_name (glp_graph * G, int i, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3935,7 +3935,7 @@ glp_arc *glp_add_arc (glp_graph * G, int i, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3954,7 +3954,7 @@ void glp_del_vertices (glp_graph * G, int ndel, const int num[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3973,7 +3973,7 @@ void glp_del_arc (glp_graph * G, glp_arc * a){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -3992,7 +3992,7 @@ void glp_erase_graph (glp_graph * G, int v_size, int a_size){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4011,7 +4011,7 @@ void glp_delete_graph (glp_graph * G){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4030,7 +4030,7 @@ void glp_create_v_index (glp_graph * G){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4049,7 +4049,7 @@ int glp_find_vertex (glp_graph * G, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4068,7 +4068,7 @@ void glp_delete_v_index (glp_graph * G){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4087,7 +4087,7 @@ int glp_read_graph (glp_graph * G, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4106,7 +4106,7 @@ int glp_write_graph (glp_graph * G, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4125,7 +4125,7 @@ void glp_mincost_lp (glp_prob * P, glp_graph * G, int names, int v_rhs, int a_lo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4144,7 +4144,7 @@ int glp_mincost_okalg (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cos
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4163,7 +4163,7 @@ void glp_maxflow_lp (glp_prob * P, glp_graph * G, int names, int s, int t, int a
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4182,7 +4182,7 @@ int glp_maxflow_ffalg (glp_graph * G, int s, int t, int a_cap, double *sol, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4201,7 +4201,7 @@ int glp_check_asnprob (glp_graph * G, int v_set){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4220,7 +4220,7 @@ int glp_asnprob_lp (glp_prob * P, int form, glp_graph * G, int names, int v_set,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4239,7 +4239,7 @@ int glp_asnprob_okalg (int form, glp_graph * G, int v_set, int a_cost, double *s
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4258,7 +4258,7 @@ int glp_asnprob_hall (glp_graph * G, int v_set, int a_x){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4277,7 +4277,7 @@ int glp_read_mincost (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cost
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4296,7 +4296,7 @@ int glp_write_mincost (glp_graph * G, int v_rhs, int a_low, int a_cap, int a_cos
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4315,7 +4315,7 @@ int glp_read_maxflow (glp_graph * G, int *s, int *t, int a_cap, const char *fnam
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4334,7 +4334,7 @@ int glp_write_maxflow (glp_graph * G, int s, int t, int a_cap, const char *fname
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4353,7 +4353,7 @@ int glp_read_asnprob (glp_graph * G, int v_set, int a_cost, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4372,7 +4372,7 @@ int glp_write_asnprob (glp_graph * G, int v_set, int a_cost, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4391,7 +4391,7 @@ int glp_read_ccdata (glp_graph * G, int v_wgt, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4410,7 +4410,7 @@ int glp_write_ccdata (glp_graph * G, int v_wgt, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4429,7 +4429,7 @@ int glp_netgen (glp_graph * G, int v_rhs, int a_cap, int a_cost, const int parm[
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4448,7 +4448,7 @@ int glp_gridgen (glp_graph * G, int v_rhs, int a_cap, int a_cost, const int parm
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4467,7 +4467,7 @@ int glp_rmfgen (glp_graph * G, int *s, int *t, int a_cap, const int parm[1 + 5])
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4486,7 +4486,7 @@ int glp_weak_comp (glp_graph * G, int v_num){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4505,7 +4505,7 @@ int glp_strong_comp (glp_graph * G, int v_num){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4524,7 +4524,7 @@ int glp_top_sort (glp_graph * G, int v_num){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4543,7 +4543,7 @@ int glp_wclique_exact (glp_graph * G, int v_wgt, double *sol, int v_set){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4562,7 +4562,7 @@ glp_prob *_glp_lpx_create_prob (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4581,7 +4581,7 @@ void _glp_lpx_set_prob_name (glp_prob * lp, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4600,7 +4600,7 @@ void _glp_lpx_set_obj_name (glp_prob * lp, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4619,7 +4619,7 @@ void _glp_lpx_set_obj_dir (glp_prob * lp, int dir){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4638,7 +4638,7 @@ int _glp_lpx_add_rows (glp_prob * lp, int nrs){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4657,7 +4657,7 @@ int _glp_lpx_add_cols (glp_prob * lp, int ncs){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4676,7 +4676,7 @@ void _glp_lpx_set_row_name (glp_prob * lp, int i, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4695,7 +4695,7 @@ void _glp_lpx_set_col_name (glp_prob * lp, int j, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4714,7 +4714,7 @@ void _glp_lpx_set_row_bnds (glp_prob * lp, int i, int type, double lb, double ub
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4733,7 +4733,7 @@ void _glp_lpx_set_col_bnds (glp_prob * lp, int j, int type, double lb, double ub
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4752,7 +4752,7 @@ void _glp_lpx_set_obj_coef (glp_prob * lp, int j, double coef){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4771,7 +4771,7 @@ void _glp_lpx_set_mat_row (glp_prob * lp, int i, int len, const int ind[], const
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4790,7 +4790,7 @@ void _glp_lpx_set_mat_col (glp_prob * lp, int j, int len, const int ind[], const
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4809,7 +4809,7 @@ void _glp_lpx_load_matrix (glp_prob * lp, int ne, const int ia[], const int ja[]
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4828,7 +4828,7 @@ void _glp_lpx_del_rows (glp_prob * lp, int nrs, const int num[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4847,7 +4847,7 @@ void _glp_lpx_del_cols (glp_prob * lp, int ncs, const int num[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4866,7 +4866,7 @@ void _glp_lpx_delete_prob (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4885,7 +4885,7 @@ const char *_glp_lpx_get_prob_name (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4904,7 +4904,7 @@ const char *_glp_lpx_get_obj_name (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4923,7 +4923,7 @@ int _glp_lpx_get_obj_dir (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4942,7 +4942,7 @@ int _glp_lpx_get_num_rows (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4961,7 +4961,7 @@ int _glp_lpx_get_num_cols (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4980,7 +4980,7 @@ const char *_glp_lpx_get_row_name (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -4999,7 +4999,7 @@ const char *_glp_lpx_get_col_name (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5018,7 +5018,7 @@ int _glp_lpx_get_row_type (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5037,7 +5037,7 @@ double _glp_lpx_get_row_lb (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5056,7 +5056,7 @@ double _glp_lpx_get_row_ub (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5075,7 +5075,7 @@ void _glp_lpx_get_row_bnds (glp_prob * lp, int i, int *typx, double *lb, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5094,7 +5094,7 @@ int _glp_lpx_get_col_type (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5113,7 +5113,7 @@ double _glp_lpx_get_col_lb (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5132,7 +5132,7 @@ double _glp_lpx_get_col_ub (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5151,7 +5151,7 @@ void _glp_lpx_get_col_bnds (glp_prob * lp, int j, int *typx, double *lb, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5170,7 +5170,7 @@ double _glp_lpx_get_obj_coef (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5189,7 +5189,7 @@ int _glp_lpx_get_num_nz (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5208,7 +5208,7 @@ int _glp_lpx_get_mat_row (glp_prob * lp, int i, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5227,7 +5227,7 @@ int _glp_lpx_get_mat_col (glp_prob * lp, int j, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5246,7 +5246,7 @@ void _glp_lpx_create_index (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5265,7 +5265,7 @@ int _glp_lpx_find_row (glp_prob * lp, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5284,7 +5284,7 @@ int _glp_lpx_find_col (glp_prob * lp, const char *name){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5303,7 +5303,7 @@ void _glp_lpx_delete_index (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5322,7 +5322,7 @@ void _glp_lpx_scale_prob (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5341,7 +5341,7 @@ void _glp_lpx_unscale_prob (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5360,7 +5360,7 @@ void _glp_lpx_set_row_stat (glp_prob * lp, int i, int stat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5379,7 +5379,7 @@ void _glp_lpx_set_col_stat (glp_prob * lp, int j, int stat){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5398,7 +5398,7 @@ void _glp_lpx_std_basis (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5417,7 +5417,7 @@ void _glp_lpx_adv_basis (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5436,7 +5436,7 @@ void _glp_lpx_cpx_basis (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5455,7 +5455,7 @@ int _glp_lpx_simplex (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5474,7 +5474,7 @@ int _glp_lpx_exact (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5493,7 +5493,7 @@ int _glp_lpx_get_status (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5512,7 +5512,7 @@ int _glp_lpx_get_prim_stat (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5531,7 +5531,7 @@ int _glp_lpx_get_dual_stat (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5550,7 +5550,7 @@ double _glp_lpx_get_obj_val (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5569,7 +5569,7 @@ int _glp_lpx_get_row_stat (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5588,7 +5588,7 @@ double _glp_lpx_get_row_prim (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5607,7 +5607,7 @@ double _glp_lpx_get_row_dual (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5626,7 +5626,7 @@ void _glp_lpx_get_row_info (glp_prob * lp, int i, int *tagx, double *vx, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5645,7 +5645,7 @@ int _glp_lpx_get_col_stat (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5664,7 +5664,7 @@ double _glp_lpx_get_col_prim (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5683,7 +5683,7 @@ double _glp_lpx_get_col_dual (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5702,7 +5702,7 @@ void _glp_lpx_get_col_info (glp_prob * lp, int j, int *tagx, double *vx, double 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5721,7 +5721,7 @@ int _glp_lpx_get_ray_info (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5740,7 +5740,7 @@ void _glp_lpx_check_kkt (glp_prob * lp, int scaled, LPXKKT * kkt){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5759,7 +5759,7 @@ int _glp_lpx_warm_up (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5778,7 +5778,7 @@ int _glp_lpx_eval_tab_row (glp_prob * lp, int k, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5797,7 +5797,7 @@ int _glp_lpx_eval_tab_col (glp_prob * lp, int k, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5816,7 +5816,7 @@ int _glp_lpx_transform_row (glp_prob * lp, int len, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5835,7 +5835,7 @@ int _glp_lpx_transform_col (glp_prob * lp, int len, int ind[], double val[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5854,7 +5854,7 @@ int _glp_lpx_prim_ratio_test (glp_prob * lp, int len, const int ind[], const dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5873,7 +5873,7 @@ int _glp_lpx_dual_ratio_test (glp_prob * lp, int len, const int ind[], const dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5892,7 +5892,7 @@ int _glp_lpx_interior (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5911,7 +5911,7 @@ int _glp_lpx_ipt_status (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5930,7 +5930,7 @@ double _glp_lpx_ipt_obj_val (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5949,7 +5949,7 @@ double _glp_lpx_ipt_row_prim (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5968,7 +5968,7 @@ double _glp_lpx_ipt_row_dual (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -5987,7 +5987,7 @@ double _glp_lpx_ipt_col_prim (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6006,7 +6006,7 @@ double _glp_lpx_ipt_col_dual (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6025,7 +6025,7 @@ void _glp_lpx_set_class (glp_prob * lp, int klass){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6044,7 +6044,7 @@ int _glp_lpx_get_class (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6063,7 +6063,7 @@ void _glp_lpx_set_col_kind (glp_prob * lp, int j, int kind){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6082,7 +6082,7 @@ int _glp_lpx_get_col_kind (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6101,7 +6101,7 @@ int _glp_lpx_get_num_int (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6120,7 +6120,7 @@ int _glp_lpx_get_num_bin (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6139,7 +6139,7 @@ int _glp_lpx_integer (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6158,7 +6158,7 @@ int _glp_lpx_intopt (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6177,7 +6177,7 @@ int _glp_lpx_mip_status (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6196,7 +6196,7 @@ double _glp_lpx_mip_obj_val (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6215,7 +6215,7 @@ double _glp_lpx_mip_row_val (glp_prob * lp, int i){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6234,7 +6234,7 @@ double _glp_lpx_mip_col_val (glp_prob * lp, int j){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6253,7 +6253,7 @@ void _glp_lpx_check_int (glp_prob * lp, LPXKKT * kkt){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6272,7 +6272,7 @@ void _glp_lpx_reset_parms (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6291,7 +6291,7 @@ void _glp_lpx_set_int_parm (glp_prob * lp, int parm, int val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6310,7 +6310,7 @@ int _glp_lpx_get_int_parm (glp_prob * lp, int parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6329,7 +6329,7 @@ void _glp_lpx_set_real_parm (glp_prob * lp, int parm, double val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6348,7 +6348,7 @@ double _glp_lpx_get_real_parm (glp_prob * lp, int parm){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6367,7 +6367,7 @@ glp_prob *_glp_lpx_read_mps (const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6386,7 +6386,7 @@ int _glp_lpx_write_mps (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6405,7 +6405,7 @@ int _glp_lpx_read_bas (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6424,7 +6424,7 @@ int _glp_lpx_write_bas (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6443,7 +6443,7 @@ glp_prob *_glp_lpx_read_freemps (const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6462,7 +6462,7 @@ int _glp_lpx_write_freemps (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6481,7 +6481,7 @@ glp_prob *_glp_lpx_read_cpxlp (const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6500,7 +6500,7 @@ int _glp_lpx_write_cpxlp (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6519,7 +6519,7 @@ glp_prob *_glp_lpx_read_model (const char *model, const char *data, const char *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6538,7 +6538,7 @@ int _glp_lpx_print_prob (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6557,7 +6557,7 @@ int _glp_lpx_print_sol (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6576,7 +6576,7 @@ int _glp_lpx_print_sens_bnds (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6595,7 +6595,7 @@ int _glp_lpx_print_ips (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6614,7 +6614,7 @@ int _glp_lpx_print_mip (glp_prob * lp, const char *fname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6633,7 +6633,7 @@ int _glp_lpx_is_b_avail (glp_prob * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6652,7 +6652,7 @@ int _glp_lpx_write_pb (glp_prob * lp, const char *fname, int normalized, int bin
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }
@@ -6671,7 +6671,7 @@ int _glp_lpx_main (int argc, const char *argv[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GLPK_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GLPK_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libglpk.so to the full path of the library\n");
             }

@@ -68,11 +68,11 @@ GModule *module = NULL;
 /* searches and loads the actual library */
 int load_module(){
     /* environment variable */
-    char *LAZYLPSOLVERLIBS_GUROBI_LIB_PATH;
-    LAZYLPSOLVERLIBS_GUROBI_LIB_PATH = getenv("LAZYLPSOLVERLIBS_GUROBI_LIB_PATH");
+    char *LAZYLPSOLVERLIBS_GUROBI_LIB;
+    LAZYLPSOLVERLIBS_GUROBI_LIB = getenv("LAZYLPSOLVERLIBS_GUROBI_LIB");
     if (!module) module = g_module_open("/usr/lib/libgurobi.so", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
-    if (LAZYLPSOLVERLIBS_GUROBI_LIB_PATH != NULL) {
-        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_GUROBI_LIB_PATH, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
+    if (LAZYLPSOLVERLIBS_GUROBI_LIB != NULL) {
+        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_GUROBI_LIB, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     }
     if (!module) module = g_module_open_all("gurobi50", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     if (!module) module = g_module_open_all("gurobi461", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
@@ -192,7 +192,7 @@ int GRBgetattrinfo (GRBmodel * model, const char *attrname, int *datatypeP, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -211,7 +211,7 @@ int GRBgetintattr (GRBmodel * model, const char *attrname, int *valueP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -230,7 +230,7 @@ int GRBsetintattr (GRBmodel * model, const char *attrname, int newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -249,7 +249,7 @@ int GRBgetintattrelement (GRBmodel * model, const char *attrname, int element, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -268,7 +268,7 @@ int GRBsetintattrelement (GRBmodel * model, const char *attrname, int element, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -287,7 +287,7 @@ int GRBgetintattrarray (GRBmodel * model, const char *attrname, int first, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -306,7 +306,7 @@ int GRBsetintattrarray (GRBmodel * model, const char *attrname, int first, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -325,7 +325,7 @@ int GRBgetintattrlist (GRBmodel * model, const char *attrname, int len, int *ind
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -344,7 +344,7 @@ int GRBsetintattrlist (GRBmodel * model, const char *attrname, int len, int *ind
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -363,7 +363,7 @@ int GRBgetcharattrelement (GRBmodel * model, const char *attrname, int element, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -382,7 +382,7 @@ int GRBsetcharattrelement (GRBmodel * model, const char *attrname, int element, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -401,7 +401,7 @@ int GRBgetcharattrarray (GRBmodel * model, const char *attrname, int first, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -420,7 +420,7 @@ int GRBsetcharattrarray (GRBmodel * model, const char *attrname, int first, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -439,7 +439,7 @@ int GRBgetcharattrlist (GRBmodel * model, const char *attrname, int len, int *in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -458,7 +458,7 @@ int GRBsetcharattrlist (GRBmodel * model, const char *attrname, int len, int *in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -477,7 +477,7 @@ int GRBgetdblattr (GRBmodel * model, const char *attrname, double *valueP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -496,7 +496,7 @@ int GRBsetdblattr (GRBmodel * model, const char *attrname, double newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -515,7 +515,7 @@ int GRBgetdblattrelement (GRBmodel * model, const char *attrname, int element, d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -534,7 +534,7 @@ int GRBsetdblattrelement (GRBmodel * model, const char *attrname, int element, d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -553,7 +553,7 @@ int GRBgetdblattrarray (GRBmodel * model, const char *attrname, int first, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -572,7 +572,7 @@ int GRBsetdblattrarray (GRBmodel * model, const char *attrname, int first, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -591,7 +591,7 @@ int GRBgetdblattrlist (GRBmodel * model, const char *attrname, int len, int *ind
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -610,7 +610,7 @@ int GRBsetdblattrlist (GRBmodel * model, const char *attrname, int len, int *ind
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -629,7 +629,7 @@ int GRBgetstrattr (GRBmodel * model, const char *attrname, char **valueP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -648,7 +648,7 @@ int GRBsetstrattr (GRBmodel * model, const char *attrname, char *newvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -667,7 +667,7 @@ int GRBgetstrattrelement (GRBmodel * model, const char *attrname, int element, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -686,7 +686,7 @@ int GRBsetstrattrelement (GRBmodel * model, const char *attrname, int element, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -705,7 +705,7 @@ int GRBgetstrattrarray (GRBmodel * model, const char *attrname, int first, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -724,7 +724,7 @@ int GRBsetstrattrarray (GRBmodel * model, const char *attrname, int first, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -743,7 +743,7 @@ int GRBgetstrattrlist (GRBmodel * model, const char *attrname, int len, int *ind
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -762,7 +762,7 @@ int GRBsetstrattrlist (GRBmodel * model, const char *attrname, int len, int *ind
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -781,7 +781,7 @@ int GRBsetcallbackfunc (GRBmodel * model, int ( * cb) (GRBmodel *model, void *cb
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -800,7 +800,7 @@ int GRBgetcallbackfunc (GRBmodel * model, int ( ** cbP) (GRBmodel *model, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -819,7 +819,7 @@ int GRBcbget (void *cbdata, int where, int what, void *resultP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -838,7 +838,7 @@ int GRBcbsolution (void *cbdata, const double *solution){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -857,7 +857,7 @@ int GRBcbcut (void *cbdata, int cutlen, const int *cutind, const double *cutval,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -876,7 +876,7 @@ int GRBgetcoeff (GRBmodel * model, int constr, int var, double *valP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -895,7 +895,7 @@ int GRBgetconstrs (GRBmodel * model, int *numnzP, int *cbeg, int *cind, double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -914,7 +914,7 @@ int GRBgetvars (GRBmodel * model, int *numnzP, int *vbeg, int *vind, double *vva
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -933,7 +933,7 @@ int GRBgetsos (GRBmodel * model, int *nummembersP, int *sostype, int *beg, int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -952,7 +952,7 @@ int GRBoptimize (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -971,7 +971,7 @@ GRBmodel * GRBcopymodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -990,7 +990,7 @@ GRBmodel * GRBfixedmodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1009,7 +1009,7 @@ int GRBgetcbwhatinfo (void *cbdata, int what, int *typeP, int *sizeP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1028,7 +1028,7 @@ GRBmodel * GRBrelaxmodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1047,7 +1047,7 @@ int GRBconverttofixed (GRBmodel * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1066,7 +1066,7 @@ GRBmodel * GRBpresolvemodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1085,7 +1085,7 @@ GRBmodel * GRBiismodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1104,7 +1104,7 @@ GRBmodel * GRBfeasibility (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1123,7 +1123,7 @@ int GRBreadmodel (GRBenv * env, const char *filename, GRBmodel ** modelP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1142,7 +1142,7 @@ int GRBread (GRBmodel * model, const char *filename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1161,7 +1161,7 @@ int GRBwrite (GRBmodel * model, const char *filename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1180,7 +1180,7 @@ int GRBnewmodel (GRBenv * env, GRBmodel ** modelP, const char *Pname, int numvar
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1199,7 +1199,7 @@ int GRBloadmodel (GRBenv * env, GRBmodel ** modelP, const char *Pname, int numva
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1218,7 +1218,7 @@ int GRBaddvar (GRBmodel * model, int numnz, int *vind, double *vval, double obj,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1237,7 +1237,7 @@ int GRBaddvars (GRBmodel * model, int numvars, int numnz, int *vbeg, int *vind, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1256,7 +1256,7 @@ int GRBaddconstr (GRBmodel * model, int numnz, int *cind, double *cval, char sen
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1275,7 +1275,7 @@ int GRBaddconstrs (GRBmodel * model, int numconstrs, int numnz, int *cbeg, int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1294,7 +1294,7 @@ int GRBaddrangeconstr (GRBmodel * model, int numnz, int *cind, double *cval, dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1313,7 +1313,7 @@ int GRBaddrangeconstrs (GRBmodel * model, int numconstrs, int numnz, int *cbeg, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1332,7 +1332,7 @@ int GRBaddsos (GRBmodel * model, int numsos, int nummembers, int *types, int *be
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1351,7 +1351,7 @@ int GRBdelvars (GRBmodel * model, int len, int *ind){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1370,7 +1370,7 @@ int GRBdelconstrs (GRBmodel * model, int len, int *ind){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1389,7 +1389,7 @@ int GRBdelsos (GRBmodel * model, int len, int *ind){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1408,7 +1408,7 @@ int GRBchgcoeffs (GRBmodel * model, int cnt, int *cind, int *vind, double *val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1427,7 +1427,7 @@ int GRBupdatemodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1446,7 +1446,7 @@ int GRBresetmodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1465,7 +1465,7 @@ int GRBfreemodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1484,7 +1484,7 @@ int GRBcomputeIIS (GRBmodel * lp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1503,7 +1503,7 @@ int GRBstrongbranch (GRBmodel * model, int num, int *cand, double *downobjbd, do
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1522,7 +1522,7 @@ int GRBcheckmodel (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1541,7 +1541,7 @@ void GRBsetsignal (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1560,7 +1560,7 @@ void GRBterminate (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1579,7 +1579,7 @@ void GRBmsg (GRBenv * env, const char *message){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1598,7 +1598,7 @@ int GRBgetlogfile (GRBenv * env, FILE ** logfileP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1617,7 +1617,7 @@ int GRBsetlogfile (GRBenv * env, FILE * logfile){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1636,7 +1636,7 @@ int GRBgetintparam (GRBenv * env, const char *paramname, int *valueP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1655,7 +1655,7 @@ int GRBgetdblparam (GRBenv * env, const char *paramname, double *valueP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1674,7 +1674,7 @@ int GRBgetstrparam (GRBenv * env, const char *paramname, char *valueP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1693,7 +1693,7 @@ int GRBgetintparaminfo (GRBenv * env, const char *paramname, int *valueP, int *m
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1712,7 +1712,7 @@ int GRBgetdblparaminfo (GRBenv * env, const char *paramname, double *valueP, dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1731,7 +1731,7 @@ int GRBgetstrparaminfo (GRBenv * env, const char *paramname, char *valueP, char 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1750,7 +1750,7 @@ int GRBsetintparam (GRBenv * env, const char *paramname, int value){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1769,7 +1769,7 @@ int GRBsetdblparam (GRBenv * env, const char *paramname, double value){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1788,7 +1788,7 @@ int GRBsetstrparam (GRBenv * env, const char *paramname, const char *value){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1807,7 +1807,7 @@ int GRBgetparamtype (GRBenv * env, const char *paramname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1826,7 +1826,7 @@ int GRBresetparams (GRBenv * env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1845,7 +1845,7 @@ int GRBwriteparams (GRBenv * env, const char *filename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1864,7 +1864,7 @@ int GRBreadparams (GRBenv * env, const char *filename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1883,7 +1883,7 @@ int GRBgetnumparams (GRBenv * env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1902,7 +1902,7 @@ int GRBgetparamname (GRBenv * env, int i, char **paramnameP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1921,7 +1921,7 @@ int GRBloadenv (GRBenv ** envP, const char *logfilename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1940,7 +1940,7 @@ GRBenv * GRBgetenv (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1959,7 +1959,7 @@ void GRBfreeenv (GRBenv * env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1978,7 +1978,7 @@ const char * GRBgeterrormsg (GRBenv * env){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -1997,7 +1997,7 @@ const char * GRBgetmerrormsg (GRBmodel * model){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -2016,7 +2016,7 @@ void GRBversion (int *majorP, int *minorP, int *technicalP){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
@@ -2035,7 +2035,7 @@ char * GRBplatform (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_GUROBI_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libgurobi.so to the full path of the library\n");
             }
