@@ -68,11 +68,11 @@ GModule *module = NULL;
 /* searches and loads the actual library */
 int load_module(){
     /* environment variable */
-    char *LAZYLPSOLVERLIBS_XPRS_LIB_PATH;
-    LAZYLPSOLVERLIBS_XPRS_LIB_PATH = getenv("LAZYLPSOLVERLIBS_XPRS_LIB_PATH");
+    char *LAZYLPSOLVERLIBS_XPRS_LIB;
+    LAZYLPSOLVERLIBS_XPRS_LIB = getenv("LAZYLPSOLVERLIBS_XPRS_LIB");
     if (!module) module = g_module_open("/usr/lib/libxprs.so", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
-    if (LAZYLPSOLVERLIBS_XPRS_LIB_PATH != NULL) {
-        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_XPRS_LIB_PATH, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
+    if (LAZYLPSOLVERLIBS_XPRS_LIB != NULL) {
+        if (!module) module = g_module_open(LAZYLPSOLVERLIBS_XPRS_LIB, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     }
     if (!module) module = g_module_open_all("xprs", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     return (module != NULL);
@@ -394,7 +394,7 @@ int XPRScopycallbacks (XPRSprob dest, XPRSprob src){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -413,7 +413,7 @@ int XPRScopycontrols (XPRSprob dest, XPRSprob src){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -432,7 +432,7 @@ int XPRScopyprob (XPRSprob dest, XPRSprob src, const char *probname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -451,7 +451,7 @@ int XPRScreateprob (XPRSprob * _probholder){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -470,7 +470,7 @@ int XPRSdestroyprob (XPRSprob _prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -489,7 +489,7 @@ int XPRSinit (const char *path){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -508,7 +508,7 @@ int XPRSfree (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -527,7 +527,7 @@ int XPRSgetbanner (char *banner){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -546,7 +546,7 @@ int XPRSgetversion (char *version){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -565,7 +565,7 @@ int XPRSgetdaysleft (int *daysleft){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -584,7 +584,7 @@ int XPRSlicense (int *_i1, char *_c1){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -603,7 +603,7 @@ int XPRSbeginlicensing (int *r_dontAlreadyHaveLicense){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -622,7 +622,7 @@ int XPRSendlicensing (void){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -641,7 +641,7 @@ int XPRSgetlicerrmsg (char *msg, int len){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -660,7 +660,7 @@ int XPRSsetlogfile (XPRSprob prob, const char *logname){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -679,7 +679,7 @@ int XPRSsetintcontrol (XPRSprob prob, int _index, int _ivalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -698,7 +698,7 @@ int XPRSsetdblcontrol (XPRSprob prob, int _index, double _dvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -717,7 +717,7 @@ int XPRSinterrupt (XPRSprob prob, int reason){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -736,7 +736,7 @@ int XPRSgetprobname (XPRSprob prob, char *_svalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -755,7 +755,7 @@ int XPRSgetqobj (XPRSprob prob, int _icol, int _jcol, double *_dval){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -774,7 +774,7 @@ int XPRSsetprobname (XPRSprob prob, const char *_svalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -793,7 +793,7 @@ int XPRSsetstrcontrol (XPRSprob prob, int _index, const char *_svalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -812,7 +812,7 @@ int XPRSgetintcontrol (XPRSprob prob, int _index, int *_ivalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -831,7 +831,7 @@ int XPRSgetdblcontrol (XPRSprob prob, int _index, double *_dvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -850,7 +850,7 @@ int XPRSgetstrcontrol (XPRSprob prob, int _index, char *_svalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -869,7 +869,7 @@ int XPRSgetintattrib (XPRSprob prob, int _index, int *_ivalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -888,7 +888,7 @@ int XPRSgetstrattrib (XPRSprob prob, int _index, char *_cvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -907,7 +907,7 @@ int XPRSgetdblattrib (XPRSprob prob, int _index, double *_dvalue){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -926,7 +926,7 @@ int XPRSsetdefaultcontrol (XPRSprob prob, int _index){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -945,7 +945,7 @@ int XPRSsetdefaults (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -964,7 +964,7 @@ int XPRSgoal (XPRSprob prob, const char *_filename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -983,7 +983,7 @@ int XPRSreadprob (XPRSprob prob, const char *_sprobname, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1002,7 +1002,7 @@ int XPRSloadlp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1021,7 +1021,7 @@ int XPRSloadqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1040,7 +1040,7 @@ int XPRSloadqglobal (XPRSprob prob, const char *probname, int ncols, int nrows, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1059,7 +1059,7 @@ int XPRSfixglobal (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1078,7 +1078,7 @@ int XPRSfixglobals (XPRSprob prob, int ifround){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1097,7 +1097,7 @@ int XPRSloadmodelcuts (XPRSprob prob, int nmodcuts, const int _mrows[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1116,7 +1116,7 @@ int XPRSloaddelayedrows (XPRSprob prob, int nrows, const int _mrows[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1135,7 +1135,7 @@ int XPRSloaddirs (XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1154,7 +1154,7 @@ int XPRSloadbranchdirs (XPRSprob prob, int ndirs, const int _mcols[], const int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1173,7 +1173,7 @@ int XPRSloadpresolvedirs (XPRSprob prob, int ndirs, const int _mcols[], const in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1192,7 +1192,7 @@ int XPRSgetdirs (XPRSprob prob, int *ndirs, int _mcols[], int _mpri[], char _sbr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1211,7 +1211,7 @@ int XPRSloadglobal (XPRSprob prob, const char *_sprobname, int ncols, int nrows,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1230,7 +1230,7 @@ int XPRSaddnames (XPRSprob prob, int _itype, const char _sname[], int first, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1249,7 +1249,7 @@ int XPRSaddsetnames (XPRSprob prob, const char _sname[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1268,7 +1268,7 @@ int XPRSscale (XPRSprob prob, const int mrscal[], const int mcscal[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1287,7 +1287,7 @@ int XPRSreaddirs (XPRSprob prob, const char *_sfilename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1306,7 +1306,7 @@ int XPRSwritedirs (XPRSprob prob, const char *_sfilename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1325,7 +1325,7 @@ int XPRSsetindicators (XPRSprob prob, int nrows, const int _mrows[], const int _
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1344,7 +1344,7 @@ int XPRSgetindicators (XPRSprob prob, int _inds[], int _comps[], int first, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1363,7 +1363,7 @@ int XPRSdelindicators (XPRSprob prob, int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1382,7 +1382,7 @@ int XPRSminim (XPRSprob prob, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1401,7 +1401,7 @@ int XPRSmaxim (XPRSprob prob, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1420,7 +1420,7 @@ int XPRSlpoptimize (XPRSprob prob, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1439,7 +1439,7 @@ int XPRSmipoptimize (XPRSprob prob, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1458,7 +1458,7 @@ int XPRSrange (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1477,7 +1477,7 @@ int XPRSgetrowrange (XPRSprob prob, double _upact[], double _loact[], double _uu
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1496,7 +1496,7 @@ int XPRSgetcolrange (XPRSprob prob, double _upact[], double _loact[], double _uu
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1515,7 +1515,7 @@ int XPRSgetpivotorder (XPRSprob prob, int mpiv[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1534,7 +1534,7 @@ int XPRSgetpresolvemap (XPRSprob prob, int rowmap[], int colmap[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1553,7 +1553,7 @@ int XPRSreadbasis (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1572,7 +1572,7 @@ int XPRSwritebasis (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1591,7 +1591,7 @@ int XPRSglobal (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1610,7 +1610,7 @@ int XPRSinitglobal (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1629,7 +1629,7 @@ int XPRSwriteprtsol (XPRSprob prob, const char *_sfilename, const char *_sflags)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1648,7 +1648,7 @@ int XPRSalter (XPRSprob prob, const char *_sfilename){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1667,7 +1667,7 @@ int XPRSwritesol (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1686,7 +1686,7 @@ int XPRSwritebinsol (XPRSprob prob, const char *_sfilename, const char *_sflags)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1705,7 +1705,7 @@ int XPRSreadbinsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1724,7 +1724,7 @@ int XPRSwriteslxsol (XPRSprob prob, const char *_sfilename, const char *_sflags)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1743,7 +1743,7 @@ int XPRSreadslxsol (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1762,7 +1762,7 @@ int XPRSwriteprtrange (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1781,7 +1781,7 @@ int XPRSwriterange (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1800,7 +1800,7 @@ int XPRSgetsol (XPRSprob prob, double _dx[], double _dslack[], double _dual[], d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1819,7 +1819,7 @@ int XPRSgetpresolvesol (XPRSprob prob, double _dx[], double _dslack[], double _d
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1838,7 +1838,7 @@ int XPRSgetinfeas (XPRSprob prob, int *npv, int *nps, int *nds, int *ndv, int mx
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1857,7 +1857,7 @@ int XPRSgetscaledinfeas (XPRSprob prob, int *npv, int *nps, int *nds, int *ndv, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1876,7 +1876,7 @@ int XPRSgetunbvec (XPRSprob prob, int *icol){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1895,7 +1895,7 @@ int XPRSbtran (XPRSprob prob, double dwork[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1914,7 +1914,7 @@ int XPRSftran (XPRSprob prob, double dwork[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1933,7 +1933,7 @@ int XPRSgetobj (XPRSprob prob, double _dobj[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1952,7 +1952,7 @@ int XPRSgetrhs (XPRSprob prob, double _drhs[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1971,7 +1971,7 @@ int XPRSgetrhsrange (XPRSprob prob, double _drng[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -1990,7 +1990,7 @@ int XPRSgetlb (XPRSprob prob, double _dbdl[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2009,7 +2009,7 @@ int XPRSgetub (XPRSprob prob, double _dbdu[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2028,7 +2028,7 @@ int XPRSgetcols (XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[],
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2047,7 +2047,7 @@ int XPRSgetrows (XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[],
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2066,7 +2066,7 @@ int XPRSgetcoef (XPRSprob prob, int _irow, int _icol, double *_dval){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2085,7 +2085,7 @@ int XPRSgetmqobj (XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[]
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2104,7 +2104,7 @@ int XPRSiisclear (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2123,7 +2123,7 @@ int XPRSiisfirst (XPRSprob prob, int ifiis, int *status_code){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2142,7 +2142,7 @@ int XPRSiisnext (XPRSprob prob, int *status_code){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2161,7 +2161,7 @@ int XPRSiisstatus (XPRSprob prob, int *iiscount, int rowsizes[], int colsizes[],
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2180,7 +2180,7 @@ int XPRSiisall (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2199,7 +2199,7 @@ int XPRSiiswrite (XPRSprob prob, int number, const char *fn, int filetype, const
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2218,7 +2218,7 @@ int XPRSiisisolations (XPRSprob prob, int number){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2237,7 +2237,7 @@ int XPRSgetiisdata (XPRSprob prob, int number, int *rownumber, int *colnumber, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2256,7 +2256,7 @@ int XPRSgetiis (XPRSprob prob, int *ncols, int *nrows, int _miiscol[], int _miis
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2275,7 +2275,7 @@ int XPRSgetpresolvebasis (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2294,7 +2294,7 @@ int XPRSloadpresolvebasis (XPRSprob prob, const int _mrowstatus[], const int _mc
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2313,7 +2313,7 @@ int XPRSgetglobal (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2332,7 +2332,7 @@ int XPRSwriteprob (XPRSprob prob, const char *_sfilename, const char *_sflags){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2351,7 +2351,7 @@ int XPRSgetnames (XPRSprob prob, int _itype, char _sbuff[], int first, int last)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2370,7 +2370,7 @@ int XPRSgetrowtype (XPRSprob prob, char _srowtype[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2389,7 +2389,7 @@ int XPRSloadsecurevecs (XPRSprob prob, int nrows, int ncols, const int mrow[], c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2408,7 +2408,7 @@ int XPRSgetcoltype (XPRSprob prob, char _coltype[], int first, int last){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2427,7 +2427,7 @@ int XPRSgetbasis (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2446,7 +2446,7 @@ int XPRSloadbasis (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2465,7 +2465,7 @@ int XPRSgetindex (XPRSprob prob, int _itype, const char *_sname, int *_iseq){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2484,7 +2484,7 @@ int XPRSaddrows (XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2503,7 +2503,7 @@ int XPRSdelrows (XPRSprob prob, int nrows, const int _mindex[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2522,7 +2522,7 @@ int XPRSdelnode (XPRSprob prob, int _inode, int ifboth){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2541,7 +2541,7 @@ int XPRSaddcols (XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2560,7 +2560,7 @@ int XPRSdelcols (XPRSprob prob, int ncols, const int _mindex[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2579,7 +2579,7 @@ int XPRSchgcoltype (XPRSprob prob, int ncols, const int _mindex[], const char _c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2598,7 +2598,7 @@ int XPRSchgrowtype (XPRSprob prob, int nrows, const int _mindex[], const char _s
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2617,7 +2617,7 @@ int XPRSchgbounds (XPRSprob prob, int nbnds, const int _mindex[], const char _sb
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2636,7 +2636,7 @@ int XPRSchgobj (XPRSprob prob, int ncols, const int _mindex[], const double _dob
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2655,7 +2655,7 @@ int XPRSchgcoef (XPRSprob prob, int _irow, int _icol, double _dval){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2674,7 +2674,7 @@ int XPRSchgmcoef (XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2693,7 +2693,7 @@ int XPRSchgmqobj (XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2712,7 +2712,7 @@ int XPRSchgqobj (XPRSprob prob, int _icol, int _jcol, double _dval){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2731,7 +2731,7 @@ int XPRSchgrhs (XPRSprob prob, int nrows, const int _mindex[], const double _drh
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2750,7 +2750,7 @@ int XPRSchgrhsrange (XPRSprob prob, int nrows, const int _mindex[], const double
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2769,7 +2769,7 @@ int XPRSchgobjsense (XPRSprob prob, int objsense){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2788,7 +2788,7 @@ int XPRSsave (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2807,7 +2807,7 @@ int XPRSrestore (XPRSprob prob, const char *_sprobname, const char *_force){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2826,7 +2826,7 @@ int XPRSpivot (XPRSprob prob, int _in, int _out){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2845,7 +2845,7 @@ int XPRSgetpivots (XPRSprob prob, int _in, int _mout[], double _dout[], double *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2864,7 +2864,7 @@ int XPRSsetcblplog (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vConte
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2883,7 +2883,7 @@ int XPRSsetcbgloballog (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2902,7 +2902,7 @@ int XPRSsetcbcutlog (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vCon
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2921,7 +2921,7 @@ int XPRSsetcbbarlog (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vCon
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2940,7 +2940,7 @@ int XPRSsetcbcutmgr (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vCon
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2959,7 +2959,7 @@ int XPRSsetcbchgnode (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2978,7 +2978,7 @@ int XPRSsetcboptnode (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -2997,7 +2997,7 @@ int XPRSsetcbprenode (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3016,7 +3016,7 @@ int XPRSsetcbinfnode (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3035,7 +3035,7 @@ int XPRSsetcbnewnode (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3054,7 +3054,7 @@ int XPRSsetcbnodecutoff (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3073,7 +3073,7 @@ int XPRSsetcbpreintsol (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3092,7 +3092,7 @@ int XPRSsetcbintsol (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vCo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3111,7 +3111,7 @@ int XPRSsetcbchgbranch (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3130,7 +3130,7 @@ int XPRSsetcbchgbranchobject (XPRSprob prob, void ( * f_chgbranchobject) (XPRSpr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3149,7 +3149,7 @@ int XPRSsetcbestimate (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3168,7 +3168,7 @@ int XPRSsetcbsepnode (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vC
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3187,7 +3187,7 @@ int XPRSsetcbmessage (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3206,7 +3206,7 @@ int XPRSsetcbmipthread (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_pr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3225,7 +3225,7 @@ int XPRSsetcbdestroymt (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3244,7 +3244,7 @@ int XPRSgetcblplog (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vCont
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3263,7 +3263,7 @@ int XPRSgetcbgloballog (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3282,7 +3282,7 @@ int XPRSgetcbcutlog (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vCo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3301,7 +3301,7 @@ int XPRSgetcbbarlog (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vCo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3320,7 +3320,7 @@ int XPRSgetcbcutmgr (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vCo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3339,7 +3339,7 @@ int XPRSgetcbchgnode (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3358,7 +3358,7 @@ int XPRSgetcboptnode (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3377,7 +3377,7 @@ int XPRSgetcbprenode (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3396,7 +3396,7 @@ int XPRSgetcbinfnode (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3415,7 +3415,7 @@ int XPRSgetcbnewnode (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3434,7 +3434,7 @@ int XPRSgetcbnodecutoff (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3453,7 +3453,7 @@ int XPRSgetcbpreintsol (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, vo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3472,7 +3472,7 @@ int XPRSgetcbintsol (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vC
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3491,7 +3491,7 @@ int XPRSgetcbchgbranch (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, vo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3510,7 +3510,7 @@ int XPRSgetcbchgbranchobject (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSp
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3529,7 +3529,7 @@ int XPRSgetcbestimate (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3548,7 +3548,7 @@ int XPRSgetcbsepnode (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3567,7 +3567,7 @@ int XPRSgetcbmessage (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3586,7 +3586,7 @@ int XPRSgetcbmipthread (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_p
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3605,7 +3605,7 @@ int XPRSgetcbdestroymt (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, vo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3624,7 +3624,7 @@ int XPRSaddcuts (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3643,7 +3643,7 @@ int XPRSdelcuts (XPRSprob prob, int ibasis, int itype, int interp, double delta,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3662,7 +3662,7 @@ int XPRSdelcpcuts (XPRSprob prob, int itype, int interp, int ncuts, const XPRScu
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3681,7 +3681,7 @@ int XPRSgetcutlist (XPRSprob prob, int itype, int interp, int *ncuts, int maxcut
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3700,7 +3700,7 @@ int XPRSgetcpcutlist (XPRSprob prob, int itype, int interp, double delta, int *n
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3719,7 +3719,7 @@ int XPRSgetcpcuts (XPRSprob prob, const XPRScut mindex[], int ncuts, int size, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3738,7 +3738,7 @@ int XPRSloadcuts (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3757,7 +3757,7 @@ int XPRSstorecuts (XPRSprob prob, int ncuts, int nodupl, const int mtype[], cons
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3776,7 +3776,7 @@ int XPRSpresolverow (XPRSprob prob, char qrtype, int nzo, const int mcolso[], co
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3795,7 +3795,7 @@ int XPRSloadmipsol (XPRSprob prob, const double dsol[], int *status){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3814,7 +3814,7 @@ int XPRSstorebounds (XPRSprob prob, int nbnds, const int mcols[], const char qbt
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3833,7 +3833,7 @@ int XPRSsetbranchcuts (XPRSprob prob, int nbcuts, const XPRScut mindex[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3852,7 +3852,7 @@ int XPRSsetbranchbounds (XPRSprob prob, void *mindex){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3871,7 +3871,7 @@ int XPRSgetlasterror (XPRSprob prob, char *errmsg){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3890,7 +3890,7 @@ int XPRSbasiscondition (XPRSprob prob, double *condnum, double *scondnum){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3909,7 +3909,7 @@ int XPRSgetmipsol (XPRSprob prob, double _dx[], double _dslack[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3928,7 +3928,7 @@ int XPRSgetlpsol (XPRSprob prob, double _dx[], double _dslack[], double _dual[],
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3947,7 +3947,7 @@ int XPRSpostsolve (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3966,7 +3966,7 @@ int XPRSdelsets (XPRSprob prob, int nsets, const int msindex[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -3985,7 +3985,7 @@ int XPRSaddsets (XPRSprob prob, int newsets, int newnz, const char qstype[], con
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4004,7 +4004,7 @@ int XPRSsetmessagestatus (XPRSprob prob, int errcode, int bEnabledStatus){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4023,7 +4023,7 @@ int XPRSgetmessagestatus (XPRSprob prob, int errcode, int *bEnabledStatus){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4042,7 +4042,7 @@ int XPRSrepairweightedinfeas (XPRSprob prob, int *scode, const double lrp_array[
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4061,7 +4061,7 @@ int XPRSrepairinfeas (XPRSprob prob, int *scode, char ptype, char phase2, char g
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4080,7 +4080,7 @@ int XPRSgetcutslack (XPRSprob prob, XPRScut cut, double *dslack){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4099,7 +4099,7 @@ int XPRSgetcutmap (XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[])
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4118,7 +4118,7 @@ int XPRSgetnamelist (XPRSprob prob, int _itype, char _sbuff[], int names_len, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4137,7 +4137,7 @@ int XPRSgetnamelistobject (XPRSprob prob, int _itype, XPRSnamelist * r_nl){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4156,7 +4156,7 @@ int XPRSlogfilehandler (XPRSobject obj, void *vUserContext, void *vSystemThreadI
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4175,7 +4175,7 @@ int XPRSgetobjecttypename (XPRSobject obj, const char **sObjectName){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4194,7 +4194,7 @@ int XPRSobjsa (XPRSprob prob, int ncols, const int mindex[], double lower[], dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4213,7 +4213,7 @@ int XPRSrhssa (XPRSprob prob, int nrows, const int mindex[], double lower[], dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4232,7 +4232,7 @@ int XPRS_ge_setcbmsghandler (int ( * f_msghandler) (XPRSobject vXPRSObject, void
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4251,7 +4251,7 @@ int XPRS_ge_getlasterror (int *iMsgCode, char *_msg, int _iStringBufferBytes, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4270,7 +4270,7 @@ int XPRS_msp_create (XPRSmipsolpool * msp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4289,7 +4289,7 @@ int XPRS_msp_destroy (XPRSmipsolpool msp){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4308,7 +4308,7 @@ int XPRS_msp_probattach (XPRSmipsolpool msp, XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4327,7 +4327,7 @@ int XPRS_msp_probdetach (XPRSmipsolpool msp, XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4346,7 +4346,7 @@ int XPRS_msp_setcbmsghandler (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobj
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4365,7 +4365,7 @@ int XPRS_msp_getsollist (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4384,7 +4384,7 @@ int XPRS_msp_getsollist2 (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4403,7 +4403,7 @@ int XPRS_msp_getsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4422,7 +4422,7 @@ int XPRS_msp_loadsol (XPRSmipsolpool msp, int *iSolutionId, const double x[], in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4441,7 +4441,7 @@ int XPRS_msp_delsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4460,7 +4460,7 @@ int XPRS_msp_getintattribprobsol (XPRSmipsolpool msp, XPRSprob prob_to_rank_agai
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4479,7 +4479,7 @@ int XPRS_msp_getdblattribprobsol (XPRSmipsolpool msp, XPRSprob prob_to_rank_agai
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4498,7 +4498,7 @@ int XPRS_msp_getintattribprob (XPRSmipsolpool msp, XPRSprob prob, int iAttribId,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4517,7 +4517,7 @@ int XPRS_msp_getdblattribprob (XPRSmipsolpool msp, XPRSprob prob, int iAttribId,
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4536,7 +4536,7 @@ int XPRS_msp_getintattribsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutio
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4555,7 +4555,7 @@ int XPRS_msp_getdblattribsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutio
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4574,7 +4574,7 @@ int XPRS_msp_getintcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSoluti
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4593,7 +4593,7 @@ int XPRS_msp_getdblcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSoluti
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4612,7 +4612,7 @@ int XPRS_msp_setintcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSoluti
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4631,7 +4631,7 @@ int XPRS_msp_setdblcontrolsol (XPRSmipsolpool msp, int iSolutionId, int *iSoluti
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4650,7 +4650,7 @@ int XPRS_msp_getintattribprobextreme (XPRSmipsolpool msp, XPRSprob prob_to_rank_
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4669,7 +4669,7 @@ int XPRS_msp_getdblattribprobextreme (XPRSmipsolpool msp, XPRSprob prob_to_rank_
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4688,7 +4688,7 @@ int XPRS_msp_getintattrib (XPRSmipsolpool msp, int iAttribId, int *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4707,7 +4707,7 @@ int XPRS_msp_getdblattrib (XPRSmipsolpool msp, int iAttribId, double *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4726,7 +4726,7 @@ int XPRS_msp_getintcontrol (XPRSmipsolpool msp, int iControlId, int *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4745,7 +4745,7 @@ int XPRS_msp_getdblcontrol (XPRSmipsolpool msp, int iControlId, double *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4764,7 +4764,7 @@ int XPRS_msp_setintcontrol (XPRSmipsolpool msp, int iControlId, int Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4783,7 +4783,7 @@ int XPRS_msp_setdblcontrol (XPRSmipsolpool msp, int iControlId, double Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4802,7 +4802,7 @@ int XPRS_msp_setsolname (XPRSmipsolpool msp, int iSolutionId, const char *sNewSo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4821,7 +4821,7 @@ int XPRS_msp_getsolname (XPRSmipsolpool msp, int iSolutionId, char *_sname, int 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4840,7 +4840,7 @@ int XPRS_msp_findsolbyname (XPRSmipsolpool msp, const char *sSolutionName, int *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4859,7 +4859,7 @@ int XPRS_msp_writeslxsol (XPRSmipsolpool msp, XPRSprob prob_context, int iSoluti
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4878,7 +4878,7 @@ int XPRS_msp_readslxsol (XPRSmipsolpool msp, XPRSnamelist col_name_list, const c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4897,7 +4897,7 @@ int XPRS_msp_getlasterror (XPRSmipsolpool msp, int *iMsgCode, char *_msg, int _i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4916,7 +4916,7 @@ int XPRS_nml_create (XPRSnamelist * r_nl){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4935,7 +4935,7 @@ int XPRS_nml_destroy (XPRSnamelist nml){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4954,7 +4954,7 @@ int XPRS_nml_getnamecount (XPRSnamelist nml, int *count){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4973,7 +4973,7 @@ int XPRS_nml_getmaxnamelen (XPRSnamelist nml, int *namlen){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -4992,7 +4992,7 @@ int XPRS_nml_getnames (XPRSnamelist nml, int padlen, char buf[], int buflen, int
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5011,7 +5011,7 @@ int XPRS_nml_addnames (XPRSnamelist nml, const char buf[], int firstIndex, int l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5030,7 +5030,7 @@ int XPRS_nml_removenames (XPRSnamelist nml, int firstIndex, int lastIndex){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5049,7 +5049,7 @@ int XPRS_nml_findname (XPRSnamelist nml, const char *name, int *r_index){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5068,7 +5068,7 @@ int XPRS_nml_copynames (XPRSnamelist dst, XPRSnamelist src){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5087,7 +5087,7 @@ int XPRS_nml_getlasterror (XPRSnamelist nml, int *iMsgCode, char *_msg, int _iSt
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5106,7 +5106,7 @@ int XPRS_nml_setcbmsghandler (XPRSnamelist nml, int ( * f_msghandler) (XPRSobjec
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5125,7 +5125,7 @@ int XPRSgetqrowcoeff (XPRSprob prob, int irow, int icol, int jcol, double *dval)
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5144,7 +5144,7 @@ int XPRSgetqrowqmatrix (XPRSprob prob, int irow, int mstart[], int mclind[], dou
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5163,7 +5163,7 @@ int XPRSgetqrowqmatrixtriplets (XPRSprob prob, int irow, int *nqelem, int mqcol1
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5182,7 +5182,7 @@ int XPRSchgqrowcoeff (XPRSprob prob, int irow, int icol, int jcol, double dval){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5201,7 +5201,7 @@ int XPRSgetqrows (XPRSprob prob, int *qmn, int qcrows[]){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5220,7 +5220,7 @@ int XPRSaddqmatrix (XPRSprob prob, int irow, int nqtr, const int mqc1[], const i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5239,7 +5239,7 @@ int XPRSdelqmatrix (XPRSprob prob, int irow){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5258,7 +5258,7 @@ int XPRSloadqcqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, c
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5277,7 +5277,7 @@ int XPRSloadqcqpglobal (XPRSprob prob, const char *_sprobname, int ncols, int nr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5296,7 +5296,7 @@ int XPRS_mse_create (XPRSmipsolenum * mse){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5315,7 +5315,7 @@ int XPRS_mse_destroy (XPRSmipsolenum mse){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5334,7 +5334,7 @@ int XPRS_mse_getsollist (XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5353,7 +5353,7 @@ int XPRS_mse_getsolmetric (XPRSmipsolenum mse, int iSolutionId, int *iSolutionId
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5372,7 +5372,7 @@ int XPRS_mse_getcullchoice (XPRSmipsolenum mse, int iMetricId, int cull_sol_id_l
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5391,7 +5391,7 @@ int XPRS_mse_minim (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int (
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5410,7 +5410,7 @@ int XPRS_mse_maxim (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int (
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5429,7 +5429,7 @@ int XPRS_mse_opt (XPRSmipsolenum mse, XPRSprob prob, XPRSmipsolpool msp, int ( *
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5448,7 +5448,7 @@ int XPRS_mse_getintattrib (XPRSmipsolenum mse, int iAttribId, int *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5467,7 +5467,7 @@ int XPRS_mse_getdblattrib (XPRSmipsolenum mse, int iAttribId, double *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5486,7 +5486,7 @@ int XPRS_mse_getintcontrol (XPRSmipsolenum mse, int iAttribId, int *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5505,7 +5505,7 @@ int XPRS_mse_getdblcontrol (XPRSmipsolenum mse, int iAttribId, double *Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5524,7 +5524,7 @@ int XPRS_mse_setintcontrol (XPRSmipsolenum mse, int iAttribId, int Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5543,7 +5543,7 @@ int XPRS_mse_setdblcontrol (XPRSmipsolenum mse, int iAttribId, double Val){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5562,7 +5562,7 @@ int XPRS_mse_getlasterror (XPRSmipsolenum mse, int *iMsgCode, char *_msg, int _i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5581,7 +5581,7 @@ int XPRS_mse_setcbmsghandler (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobj
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5600,7 +5600,7 @@ int XPRS_mse_setsolbasename (XPRSmipsolenum mse, const char *sSolutionBaseName){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5619,7 +5619,7 @@ int XPRS_mse_getsolbasename (XPRSmipsolenum mse, char *_sname, int _iStringBuffe
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5638,7 +5638,7 @@ int XPRS_mse_setcbgetsolutiondiff (XPRSmipsolenum mse, int ( * f_mse_getsolution
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5657,7 +5657,7 @@ int XPRS_mse_getcbgetsolutiondiff (XPRSmipsolenum mse, int ( ** f_mse_getsolutio
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5676,7 +5676,7 @@ int XPRSinitializenlphessian (XPRSprob prob, const int mstart[], const int mcol[
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5695,7 +5695,7 @@ int XPRSinitializenlphessian_indexpairs (XPRSprob prob, int nqcelem, const int m
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5714,7 +5714,7 @@ int XPRSsetcbnlpevaluate (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, vo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5733,7 +5733,7 @@ int XPRSsetcbnlpgradient (XPRSprob prob, void ( * f_gradient) (XPRSprob prob, vo
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5752,7 +5752,7 @@ int XPRSsetcbnlphessian (XPRSprob prob, void ( * f_hessian) (XPRSprob prob, void
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5771,7 +5771,7 @@ int XPRSgetcbnlpevaluate (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5790,7 +5790,7 @@ int XPRSgetcbnlpgradient (XPRSprob prob, void ( ** f_gradient) (XPRSprob prob, v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5809,7 +5809,7 @@ int XPRSgetcbnlphessian (XPRSprob prob, void ( ** f_hessian) (XPRSprob prob, voi
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5828,7 +5828,7 @@ int XPRSresetnlp (XPRSprob prob){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5847,7 +5847,7 @@ int XPRSsetcbbariteration (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, v
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5866,7 +5866,7 @@ int XPRSgetcbbariteration (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, 
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5885,7 +5885,7 @@ int XPRS_bo_create (XPRSbranchobject * p_object, XPRSprob prob, int isoriginal){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5904,7 +5904,7 @@ int XPRS_bo_destroy (XPRSbranchobject obranch){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5923,7 +5923,7 @@ int XPRS_bo_store (XPRSbranchobject obranch, int *p_status){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5942,7 +5942,7 @@ int XPRS_bo_addbranches (XPRSbranchobject obranch, int nbranches){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5961,7 +5961,7 @@ int XPRS_bo_getbranches (XPRSbranchobject obranch, int *p_nbranches){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5980,7 +5980,7 @@ int XPRS_bo_setpriority (XPRSbranchobject obranch, int ipriority){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -5999,7 +5999,7 @@ int XPRS_bo_setpreferredbranch (XPRSbranchobject obranch, int ibranch){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6018,7 +6018,7 @@ int XPRS_bo_addbounds (XPRSbranchobject obranch, int ibranch, int nbounds, const
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6037,7 +6037,7 @@ int XPRS_bo_getbounds (XPRSbranchobject obranch, int ibranch, int *p_nbounds, in
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6056,7 +6056,7 @@ int XPRS_bo_addrows (XPRSbranchobject obranch, int ibranch, int nrows, int nelem
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6075,7 +6075,7 @@ int XPRS_bo_getrows (XPRSbranchobject obranch, int ibranch, int *p_nrows, int nr
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6094,7 +6094,7 @@ int XPRS_bo_addcuts (XPRSbranchobject obranch, int ibranch, int ncuts, const XPR
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6113,7 +6113,7 @@ int XPRS_bo_getid (XPRSbranchobject obranch, int *p_id){
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6132,7 +6132,7 @@ int XPRS_bo_setcbmsghandler (XPRSbranchobject obranch, int ( * f_msghandler) (XP
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
@@ -6151,7 +6151,7 @@ int XPRS_bo_getlasterror (XPRSbranchobject obranch, int *iMsgCode, char *_msg, i
                 fprintf(stderr,
                 "lazylpsolverlibs: could no load library. Suggestions:\n");
                 fprintf(stderr,
-                " - point the LAZYLPSOLVERLIBS_XPRS_LIB_PATH environment variable to the full path of the library\n");
+                " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n");
                 fprintf(stderr,
                 " - (if you are root) symlink /usr/lib/libxprs.so to the full path of the library\n");
             }
