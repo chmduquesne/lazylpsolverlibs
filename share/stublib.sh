@@ -48,28 +48,37 @@ make_func(){
     symbol="__symbolic_$name"
     args=$(func_args "$*")
     echo "$*" | sed 's/;/{/g'
-    echo "    if (!$symbol) {
+    echo "    int debug;
+    if (!$symbol) {
+        debug = debug_enabled();
         if (!module) {
+            if (debug) fprintf (stderr, \"lazylpsolverlibs: looking for a suitable library in the standard system path\\\n\");
             if (!load_module()) {
+                if (debug) fprintf (stderr, \"lazylpsolverlibs: library lookup failed!\\\n\");
                 fprintf(stderr,
-                \"lazylpsolverlibs: could no load library. Suggestions:\\\n\");"
+                \"lazylpsolverlibs: could not load library. Suggestions:\\\n\");"
     if [ x"$environment_var" != x ]; then
         echo "                fprintf(stderr,
                 \" - point the $environment_var environment variable to the full path of the library\\\n\");"
     fi
     if [ x"$try_first" != x ]; then
         echo "                fprintf(stderr,
-                \" - (if you are root) symlink $try_first to the full path of the library\\\n\");"
+                \" - or more secure, symlink $try_first to the full path of the library (you need root access).\\\n\");"
     fi
-    echo "            }
+    echo "            } else {
+                if (debug) fprintf(stderr,\"lazylpsolverlibs: Success!\\\n\");
+            }
         }
         if (!g_module_symbol(module, \"$name\", (gpointer *) &$symbol)) {
-                fprintf(stderr,
-                \"lazylpsolverlibs: the symbol $name could not be found: expect a segfault\\\n\");
+            fprintf(stderr,
+                \"lazylpsolverlibs: the symbol $name could not be found! Exiting your program to avoid a segfault.\\\n\");
+                exit(1);
+        } else {
+            if (debug) fprintf(stderr, \"lazylpsolverlibs: sucessfully imported the symbol $name.\\\n\");
         }
     }
-    return $symbol($args);"
-    echo "}"
+    return $symbol($args);
+}"
 }
 
 # declare a symbol to import a function that matches the input function
@@ -97,84 +106,57 @@ make_include_headers(){
 # create the loading interface
 make_loading_interface(){
     echo "
-/* searches and loads a library from standard paths */
-GModule *g_module_open_all(const gchar *name, GModuleFlags flags) {
-    char *LIB_PATH, *LIB_PATH_COPY, *p, *dir, *path, *_name;
-    GModule *res;
-
-    p = NULL;
-    dir = NULL;
-    res = NULL;
-    path = NULL;
-
-    /* workaround https://bugzilla.gnome.org/show_bug.cgi?id=671212 */
-#ifdef _WIN32
-    _name = g_strconcat(name, \".dll\", NULL);
-#else
-    _name = g_strconcat(name, NULL);
-#endif
-
-#ifdef _WIN32
-    LIB_PATH = getenv(\"PATH\");
-#define PATH_SEP ';'
-#else
-    LIB_PATH = getenv(\"LD_LIBRARY_PATH\");
-#define PATH_SEP ':'
-#endif
-
-    path = g_module_build_path(NULL, _name);
-    res = g_module_open(path, flags);
-    g_free(path);
-
-    if (res) {
-        g_free(_name);
-        return res;
-    }
-    if (LIB_PATH) {
-        LIB_PATH_COPY = malloc(strlen(LIB_PATH));
-        strncpy(LIB_PATH_COPY, LIB_PATH, strlen(LIB_PATH));
-        p = LIB_PATH_COPY;
-        dir = p;
-        while ((p = strchr(p, PATH_SEP))) {
-            *p = '\\\0';
-            p++;
-            path = g_module_build_path(dir, _name);
-            res = g_module_open(path, flags);
-            g_free(path);
-            if (res) {
-                g_free(_name);
-                free(LIB_PATH_COPY);
-                return res;
-            }
-            dir = p;
-        }
-        g_free(_name);
-        res = g_module_open(g_module_build_path(dir, name), flags);
-        free(LIB_PATH_COPY);
-    }
-    return res;
+/*
+ * returns true if the environment variable LAZYLPSOLVERLIBS_DEBUG is set
+ * to \"on\", 0 otherwise
+ */
+int debug_enabled() {
+    const char * LAZYLPSOLVERLIBS_DEBUG;
+    LAZYLPSOLVERLIBS_DEBUG = getenv(\"LAZYLPSOLVERLIBS_DEBUG\");
+    if (LAZYLPSOLVERLIBS_DEBUG != NULL)
+        if (strncmp(LAZYLPSOLVERLIBS_DEBUG, \"on\", 3) == 0)
+            return 1;
+    return 0;
 }
 
 /* handle to the library */
 GModule *module = NULL;
 
 /* searches and loads the actual library */
-int load_module(){"
+int load_module(){
+    char *path;
+    int debug;
+    debug = debug_enabled();"
 if [ x"$environment_var" != x ]; then
     echo "    /* environment variable */"
     echo "    char *$environment_var;"
     echo "    $environment_var = getenv(\"$environment_var\");"
 fi
 if [ x"$try_first" != x ]; then
-    echo "    if (!module) module = g_module_open(\"$try_first\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "    if (!module) {"
+    echo "        if (debug) fprintf (stderr, \"lazylpsolverlibs: attempting to load library from %s\\\n\", \"$try_first\");"
+    echo "        module = g_module_open(\"$try_first\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "    }"
 fi
 if [ x"$environment_var" != x ]; then
     echo "    if ($environment_var != NULL) {"
-    echo "        if (!module) module = g_module_open($environment_var, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "        if (!module) {"
+    echo "            if (debug) fprintf (stderr, \"lazylpsolverlibs: attempting to load library from %s\\\n\", $environment_var);"
+    echo "            module = g_module_open($environment_var, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "        }"
     echo "    }"
 fi
 for name in $libnames; do
-    echo "    if (!module) module = g_module_open_all(\"$name\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "    if (!module) {"
+    echo "#ifdef _WIN32"
+    echo "        path = g_module_build_path(NULL, \"${name}.dll\");"
+    echo "#else"
+    echo "        path = g_module_build_path(NULL, \"$name\");"
+    echo "#endif"
+    echo "        if (debug) fprintf (stderr, \"lazylpsolverlibs: attempting to load library from %s\\\n\", path);"
+    echo "        module = g_module_open(path, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
+    echo "        g_free(path);"
+    echo "    }"
 done
 echo "    return (module != NULL);
 }"
