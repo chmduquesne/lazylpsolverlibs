@@ -2,6 +2,7 @@ lib_LTLIBRARIES =
 bin_PROGRAMS =
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA =
+AM_CPPFLAGS = -I$(top_srcdir)/lazylpsolverlibs
 
 # lazycplex
 lib_LTLIBRARIES += lib/liblazycplex.la
@@ -9,12 +10,11 @@ bin_PROGRAMS += bin/test_lazycplex
 pkgconfig_DATA += pkgconfig/lazycplex.pc
 
 lib_liblazycplex_la_SOURCES = src/lazycplex.c
-lib_liblazycplex_la_CFLAGS = $(GMODULE_CFLAGS) -I lazylpsolverlibs
+lib_liblazycplex_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazycplex_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazycplex_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
 bin_test_lazycplex_SOURCES = test/test_lazycplex.c
-bin_test_lazycplex_CFLAGS = -I lazylpsolverlibs
 bin_test_lazycplex_LDFLAGS = lib/liblazycplex.la
 
 # lazyxprx
@@ -23,12 +23,11 @@ bin_PROGRAMS += bin/test_lazyxprs
 pkgconfig_DATA += pkgconfig/lazyxprs.pc
 
 lib_liblazyxprs_la_SOURCES = src/lazyxprs.c
-lib_liblazyxprs_la_CFLAGS = $(GMODULE_CFLAGS) -I lazylpsolverlibs
+lib_liblazyxprs_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyxprs_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazyxprs_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
 bin_test_lazyxprs_SOURCES = test/test_lazyxprs.c
-bin_test_lazyxprs_CFLAGS = -I lazylpsolverlibs
 bin_test_lazyxprs_LDFLAGS = lib/liblazyxprs.la
 
 # lazygurobi
@@ -37,12 +36,11 @@ bin_PROGRAMS += bin/test_lazygurobi
 pkgconfig_DATA += pkgconfig/lazygurobi.pc
 
 lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
-lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS) -I lazylpsolverlibs
+lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazygurobi_la_LIBADD = $(GMODULE_LIBS) -lm
 lib_liblazygurobi_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
 bin_test_lazygurobi_SOURCES = test/test_lazygurobi.c
-bin_test_lazygurobi_CFLAGS = -I lazylpsolverlibs
 bin_test_lazygurobi_LDFLAGS = lib/liblazygurobi.la
 
 # lazyglpk
@@ -51,12 +49,11 @@ bin_PROGRAMS += bin/test_lazyglpk
 pkgconfig_DATA += pkgconfig/lazyglpk.pc
 
 lib_liblazyglpk_la_SOURCES = src/lazyglpk.c
-lib_liblazyglpk_la_CFLAGS = $(GMODULE_CFLAGS) -I lazylpsolverlibs
+lib_liblazyglpk_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyglpk_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazyglpk_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
 bin_test_lazyglpk_SOURCES = test/test_lazyglpk.c
-bin_test_lazyglpk_CFLAGS = -I lazylpsolverlibs
 bin_test_lazyglpk_LDFLAGS = lib/liblazyglpk.la
 
 nobase_include_HEADERS =  lazylpsolverlibs/ilcplex/cplex.h \
