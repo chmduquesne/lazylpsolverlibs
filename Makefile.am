@@ -62,7 +62,7 @@ nobase_include_HEADERS =  lazylpsolverlibs/ilcplex/cplex.h \
                           lazylpsolverlibs/glpk.h
 dist_data_DATA = share/stublib.sh \
                  share/filter_header.sh \
-                 share/package.sh \
+                 share/package_windows.sh \
                  share/lazylpsolverlibs.nsi
 
 # This target to regenerate the files. For maintenance only.
