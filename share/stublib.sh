@@ -110,9 +110,8 @@ make_loading_interface(){
 int debug_enabled() {
     const char * LAZYLPSOLVERLIBS_DEBUG;
     LAZYLPSOLVERLIBS_DEBUG = getenv(\"LAZYLPSOLVERLIBS_DEBUG\");
-    if (LAZYLPSOLVERLIBS_DEBUG != NULL)
-        if (strncmp(LAZYLPSOLVERLIBS_DEBUG, \"on\", 3) == 0)
-            return 1;
+    if (LAZYLPSOLVERLIBS_DEBUG != NULL && strlen(LAZYLPSOLVERLIBS_DEBUG) > 0)
+        return 1;
     return 0;
 }
 
