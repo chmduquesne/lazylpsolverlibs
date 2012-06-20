@@ -6,7 +6,7 @@ version 0.0.3:
         This version *breaks* the backward compatibility by changing the
         names of some headers. If you were previously using
         lazylpsolverlibs and this annoys you, drop me an email
-        (<chm.duquesne@gmail.com>). I'll be happy to introduce backward
+        (<chmd@chmd.fr>). I'll be happy to introduce backward
         compatible headers. Because right now I don't think anyone uses
         this library, I am taking the risk not to add these backward
         compatible headers for the sake of simplicity...
@@ -28,3 +28,7 @@ version 0.1.3:
 version 0.1.4:
     - Added debug output
     - Exit on symbol not found
+version 0.1.41:
+    - xpress update
+    - Minor changes regarding the way the LAZYLPSOLVERLIBS_DEBUG variable
+      is checked
