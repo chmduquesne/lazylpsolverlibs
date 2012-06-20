@@ -14,9 +14,8 @@
 int debug_enabled() {
     const char * LAZYLPSOLVERLIBS_DEBUG;
     LAZYLPSOLVERLIBS_DEBUG = getenv("LAZYLPSOLVERLIBS_DEBUG");
-    if (LAZYLPSOLVERLIBS_DEBUG != NULL)
-        if (strncmp(LAZYLPSOLVERLIBS_DEBUG, "on", 3) == 0)
-            return 1;
+    if (LAZYLPSOLVERLIBS_DEBUG != NULL && strlen(LAZYLPSOLVERLIBS_DEBUG) > 0)
+        return 1;
     return 0;
 }
 
@@ -64,12 +63,15 @@ int (*__symbolic_XPRSfree) (void) = NULL;
 int (*__symbolic_XPRSgetbanner) (char *banner) = NULL;
 int (*__symbolic_XPRSgetversion) (char *version) = NULL;
 int (*__symbolic_XPRSgetdaysleft) (int *daysleft) = NULL;
+int (*__symbolic_XPRSsetcheckedmode) (int checked_mode) = NULL;
+int (*__symbolic_XPRSgetcheckedmode) (int *r_checked_mode) = NULL;
 int (*__symbolic_XPRSlicense) (int *_i1, char *_c1) = NULL;
 int (*__symbolic_XPRSbeginlicensing) (int *r_dontAlreadyHaveLicense) = NULL;
 int (*__symbolic_XPRSendlicensing) (void) = NULL;
 int (*__symbolic_XPRSgetlicerrmsg) (char *msg, int len) = NULL;
 int (*__symbolic_XPRSsetlogfile) (XPRSprob prob, const char *logname) = NULL;
 int (*__symbolic_XPRSsetintcontrol) (XPRSprob prob, int _index, int _ivalue) = NULL;
+int (*__symbolic_XPRSsetintcontrol64) (XPRSprob prob, int _index, long _ivalue) = NULL;
 int (*__symbolic_XPRSsetdblcontrol) (XPRSprob prob, int _index, double _dvalue) = NULL;
 int (*__symbolic_XPRSinterrupt) (XPRSprob prob, int reason) = NULL;
 int (*__symbolic_XPRSgetprobname) (XPRSprob prob, char *_svalue) = NULL;
@@ -77,18 +79,25 @@ int (*__symbolic_XPRSgetqobj) (XPRSprob prob, int _icol, int _jcol, double *_dva
 int (*__symbolic_XPRSsetprobname) (XPRSprob prob, const char *_svalue) = NULL;
 int (*__symbolic_XPRSsetstrcontrol) (XPRSprob prob, int _index, const char *_svalue) = NULL;
 int (*__symbolic_XPRSgetintcontrol) (XPRSprob prob, int _index, int *_ivalue) = NULL;
+int (*__symbolic_XPRSgetintcontrol64) (XPRSprob prob, int _index, long * _ivalue) = NULL;
 int (*__symbolic_XPRSgetdblcontrol) (XPRSprob prob, int _index, double *_dvalue) = NULL;
 int (*__symbolic_XPRSgetstrcontrol) (XPRSprob prob, int _index, char *_svalue) = NULL;
 int (*__symbolic_XPRSgetintattrib) (XPRSprob prob, int _index, int *_ivalue) = NULL;
+int (*__symbolic_XPRSgetintattrib64) (XPRSprob prob, int _index, long * _ivalue) = NULL;
 int (*__symbolic_XPRSgetstrattrib) (XPRSprob prob, int _index, char *_cvalue) = NULL;
 int (*__symbolic_XPRSgetdblattrib) (XPRSprob prob, int _index, double *_dvalue) = NULL;
 int (*__symbolic_XPRSsetdefaultcontrol) (XPRSprob prob, int _index) = NULL;
 int (*__symbolic_XPRSsetdefaults) (XPRSprob prob) = NULL;
+int (*__symbolic_XPRSgetcontrolinfo) (XPRSprob prob, const char *sCaName, int *iHeaderId, int *iTypeinfo) = NULL;
+int (*__symbolic_XPRSgetattribinfo) (XPRSprob prob, const char *sCaName, int *iHeaderId, int *iTypeinfo) = NULL;
 int (*__symbolic_XPRSgoal) (XPRSprob prob, const char *_filename, const char *_sflags) = NULL;
 int (*__symbolic_XPRSreadprob) (XPRSprob prob, const char *_sprobname, const char *_sflags) = NULL;
 int (*__symbolic_XPRSloadlp) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]) = NULL;
+int (*__symbolic_XPRSloadlp64) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]) = NULL;
 int (*__symbolic_XPRSloadqp) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]) = NULL;
-int (*__symbolic_XPRSloadqglobal) (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], const int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSloadqp64) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], long nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]) = NULL;
+int (*__symbolic_XPRSloadqglobal) (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSloadqglobal64) (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const long matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], long nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const long msstart[], const int mscols[], const double dref[]) = NULL;
 int (*__symbolic_XPRSfixglobal) (XPRSprob prob) = NULL;
 int (*__symbolic_XPRSfixglobals) (XPRSprob prob, int ifround) = NULL;
 int (*__symbolic_XPRSloadmodelcuts) (XPRSprob prob, int nmodcuts, const int _mrows[]) = NULL;
@@ -98,6 +107,7 @@ int (*__symbolic_XPRSloadbranchdirs) (XPRSprob prob, int ndirs, const int _mcols
 int (*__symbolic_XPRSloadpresolvedirs) (XPRSprob prob, int ndirs, const int _mcols[], const int _mpri[], const char _sbr[], const double dupc[], const double ddpc[]) = NULL;
 int (*__symbolic_XPRSgetdirs) (XPRSprob prob, int *ndirs, int _mcols[], int _mpri[], char _sbr[], double dupc[], double ddpc[]) = NULL;
 int (*__symbolic_XPRSloadglobal) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const int _msstart[], const int _mscols[], const double _dref[]) = NULL;
+int (*__symbolic_XPRSloadglobal64) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const long _msstart[], const int _mscols[], const double _dref[]) = NULL;
 int (*__symbolic_XPRSaddnames) (XPRSprob prob, int _itype, const char _sname[], int first, int last) = NULL;
 int (*__symbolic_XPRSaddsetnames) (XPRSprob prob, const char _sname[], int first, int last) = NULL;
 int (*__symbolic_XPRSscale) (XPRSprob prob, const int mrscal[], const int mcscal[]) = NULL;
@@ -141,9 +151,12 @@ int (*__symbolic_XPRSgetrhsrange) (XPRSprob prob, double _drng[], int first, int
 int (*__symbolic_XPRSgetlb) (XPRSprob prob, double _dbdl[], int first, int last) = NULL;
 int (*__symbolic_XPRSgetub) (XPRSprob prob, double _dbdu[], int first, int last) = NULL;
 int (*__symbolic_XPRSgetcols) (XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSgetcols64) (XPRSprob prob, long _mstart[], int _mrwind[], double _dmatval[], long maxcoeffs, long * ncoeffs, int first, int last) = NULL;
 int (*__symbolic_XPRSgetrows) (XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSgetrows64) (XPRSprob prob, long _mstart[], int _mclind[], double _dmatval[], long maxcoeffs, long * ncoeffs, int first, int last) = NULL;
 int (*__symbolic_XPRSgetcoef) (XPRSprob prob, int _irow, int _icol, double *_dval) = NULL;
 int (*__symbolic_XPRSgetmqobj) (XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
+int (*__symbolic_XPRSgetmqobj64) (XPRSprob prob, long _mstart[], int _mclind[], double _dobjval[], long maxcoeffs, long * ncoeffs, int first, int last) = NULL;
 int (*__symbolic_XPRSiisclear) (XPRSprob prob) = NULL;
 int (*__symbolic_XPRSiisfirst) (XPRSprob prob, int ifiis, int *status_code) = NULL;
 int (*__symbolic_XPRSiisnext) (XPRSprob prob, int *status_code) = NULL;
@@ -156,6 +169,7 @@ int (*__symbolic_XPRSgetiis) (XPRSprob prob, int *ncols, int *nrows, int _miisco
 int (*__symbolic_XPRSgetpresolvebasis) (XPRSprob prob, int _mrowstatus[], int _mcolstatus[]) = NULL;
 int (*__symbolic_XPRSloadpresolvebasis) (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]) = NULL;
 int (*__symbolic_XPRSgetglobal) (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], int _msstart[], int _mscols[], double _dref[]) = NULL;
+int (*__symbolic_XPRSgetglobal64) (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], long _msstart[], int _mscols[], double _dref[]) = NULL;
 int (*__symbolic_XPRSwriteprob) (XPRSprob prob, const char *_sfilename, const char *_sflags) = NULL;
 int (*__symbolic_XPRSgetnames) (XPRSprob prob, int _itype, char _sbuff[], int first, int last) = NULL;
 int (*__symbolic_XPRSgetrowtype) (XPRSprob prob, char _srowtype[], int first, int last) = NULL;
@@ -165,9 +179,10 @@ int (*__symbolic_XPRSgetbasis) (XPRSprob prob, int _mrowstatus[], int _mcolstatu
 int (*__symbolic_XPRSloadbasis) (XPRSprob prob, const int _mrowstatus[], const int _mcolstatus[]) = NULL;
 int (*__symbolic_XPRSgetindex) (XPRSprob prob, int _itype, const char *_sname, int *_iseq) = NULL;
 int (*__symbolic_XPRSaddrows) (XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const int _mstart[], const int _mclind[], const double _dmatval[]) = NULL;
+int (*__symbolic_XPRSaddrows64) (XPRSprob prob, int nrows, long ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const long _mstart[], const int _mclind[], const double _dmatval[]) = NULL;
 int (*__symbolic_XPRSdelrows) (XPRSprob prob, int nrows, const int _mindex[]) = NULL;
-int (*__symbolic_XPRSdelnode) (XPRSprob prob, int _inode, int ifboth) = NULL;
 int (*__symbolic_XPRSaddcols) (XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], const int _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]) = NULL;
+int (*__symbolic_XPRSaddcols64) (XPRSprob prob, int ncols, long ncoeffs, const double _dobj[], const long _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]) = NULL;
 int (*__symbolic_XPRSdelcols) (XPRSprob prob, int ncols, const int _mindex[]) = NULL;
 int (*__symbolic_XPRSchgcoltype) (XPRSprob prob, int ncols, const int _mindex[], const char _coltype[]) = NULL;
 int (*__symbolic_XPRSchgrowtype) (XPRSprob prob, int nrows, const int _mindex[], const char _srowtype[]) = NULL;
@@ -175,65 +190,32 @@ int (*__symbolic_XPRSchgbounds) (XPRSprob prob, int nbnds, const int _mindex[], 
 int (*__symbolic_XPRSchgobj) (XPRSprob prob, int ncols, const int _mindex[], const double _dobj[]) = NULL;
 int (*__symbolic_XPRSchgcoef) (XPRSprob prob, int _irow, int _icol, double _dval) = NULL;
 int (*__symbolic_XPRSchgmcoef) (XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]) = NULL;
+int (*__symbolic_XPRSchgmcoef64) (XPRSprob prob, long ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]) = NULL;
 int (*__symbolic_XPRSchgmqobj) (XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[], const double _dval[]) = NULL;
+int (*__symbolic_XPRSchgmqobj64) (XPRSprob prob, long ncols, const int _mcol1[], const int _mcol2[], const double _dval[]) = NULL;
 int (*__symbolic_XPRSchgqobj) (XPRSprob prob, int _icol, int _jcol, double _dval) = NULL;
 int (*__symbolic_XPRSchgrhs) (XPRSprob prob, int nrows, const int _mindex[], const double _drhs[]) = NULL;
 int (*__symbolic_XPRSchgrhsrange) (XPRSprob prob, int nrows, const int _mindex[], const double _drng[]) = NULL;
 int (*__symbolic_XPRSchgobjsense) (XPRSprob prob, int objsense) = NULL;
+int (*__symbolic_XPRSchgglblimit) (XPRSprob prob, int ncols, const int _mindex[], const double _dlimit[]) = NULL;
 int (*__symbolic_XPRSsave) (XPRSprob prob) = NULL;
 int (*__symbolic_XPRSrestore) (XPRSprob prob, const char *_sprobname, const char *_force) = NULL;
 int (*__symbolic_XPRSpivot) (XPRSprob prob, int _in, int _out) = NULL;
 int (*__symbolic_XPRSgetpivots) (XPRSprob prob, int _in, int _mout[], double _dout[], double *_dobjo, int *npiv, int maxpiv) = NULL;
-int (*__symbolic_XPRSsetcblplog) (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbgloballog) (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbcutlog) (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbbarlog) (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbcutmgr) (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbchgnode) (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p) = NULL;
-int (*__symbolic_XPRSsetcboptnode) (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p) = NULL;
-int (*__symbolic_XPRSsetcbprenode) (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p) = NULL;
-int (*__symbolic_XPRSsetcbinfnode) (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbnewnode) (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p) = NULL;
-int (*__symbolic_XPRSsetcbnodecutoff) (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p) = NULL;
-int (*__symbolic_XPRSsetcbpreintsol) (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p) = NULL;
-int (*__symbolic_XPRSsetcbintsol) (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSsetcbchgbranch) (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p) = NULL;
-int (*__symbolic_XPRSsetcbchgbranchobject) (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p) = NULL;
-int (*__symbolic_XPRSsetcbestimate) (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p) = NULL;
-int (*__symbolic_XPRSsetcbsepnode) (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p) = NULL;
-int (*__symbolic_XPRSsetcbmessage) (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p) = NULL;
-int (*__symbolic_XPRSsetcbmipthread) (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p) = NULL;
-int (*__symbolic_XPRSsetcbdestroymt) (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p) = NULL;
-int (*__symbolic_XPRSgetcblplog) (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbgloballog) (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbcutlog) (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbbarlog) (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbcutmgr) (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbchgnode) (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void **p) = NULL;
-int (*__symbolic_XPRSgetcboptnode) (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *vContext, int *feas), void **p) = NULL;
-int (*__symbolic_XPRSgetcbprenode) (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void **p) = NULL;
-int (*__symbolic_XPRSgetcbinfnode) (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbnewnode) (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void **p) = NULL;
-int (*__symbolic_XPRSgetcbnodecutoff) (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void **p) = NULL;
-int (*__symbolic_XPRSgetcbpreintsol) (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void **p) = NULL;
-int (*__symbolic_XPRSgetcbintsol) (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vContext), void **p) = NULL;
-int (*__symbolic_XPRSgetcbchgbranch) (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void **p) = NULL;
-int (*__symbolic_XPRSgetcbchgbranchobject) (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void **p) = NULL;
-int (*__symbolic_XPRSgetcbestimate) (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void **p) = NULL;
-int (*__symbolic_XPRSgetcbsepnode) (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void **p) = NULL;
-int (*__symbolic_XPRSgetcbmessage) (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void **p) = NULL;
-int (*__symbolic_XPRSgetcbmipthread) (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void **p) = NULL;
-int (*__symbolic_XPRSgetcbdestroymt) (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, void *vContext), void **p) = NULL;
 int (*__symbolic_XPRSaddcuts) (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], const int mcols[], const double dmatval[]) = NULL;
+int (*__symbolic_XPRSaddcuts64) (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const long mstart[], const int mcols[], const double dmatval[]) = NULL;
 int (*__symbolic_XPRSdelcuts) (XPRSprob prob, int ibasis, int itype, int interp, double delta, int ncuts, const XPRScut mcutind[]) = NULL;
 int (*__symbolic_XPRSdelcpcuts) (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]) = NULL;
 int (*__symbolic_XPRSgetcutlist) (XPRSprob prob, int itype, int interp, int *ncuts, int maxcuts, XPRScut mcutind[]) = NULL;
 int (*__symbolic_XPRSgetcpcutlist) (XPRSprob prob, int itype, int interp, double delta, int *ncuts, int maxcuts, XPRScut mcutind[], double dviol[]) = NULL;
 int (*__symbolic_XPRSgetcpcuts) (XPRSprob prob, const XPRScut mindex[], int ncuts, int size, int mtype[], char qrtype[], int mstart[], int mcols[], double dmatval[], double drhs[]) = NULL;
+int (*__symbolic_XPRSgetcpcuts64) (XPRSprob prob, const XPRScut mindex[], int ncuts, long size, int mtype[], char qrtype[], long mstart[], int mcols[], double dmatval[], double drhs[]) = NULL;
 int (*__symbolic_XPRSloadcuts) (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]) = NULL;
 int (*__symbolic_XPRSstorecuts) (XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]) = NULL;
+int (*__symbolic_XPRSstorecuts64) (XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const long mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]) = NULL;
 int (*__symbolic_XPRSpresolverow) (XPRSprob prob, char qrtype, int nzo, const int mcolso[], const double dvalo[], double drhso, int maxcoeffs, int *nzp, int mcolsp[], double dvalp[], double *drhsp, int *status) = NULL;
 int (*__symbolic_XPRSloadmipsol) (XPRSprob prob, const double dsol[], int *status) = NULL;
+int (*__symbolic_XPRSaddmipsol) (XPRSprob prob, int ilength, const double mipsolval[], const int mipsolcol[], int *p_id) = NULL;
 int (*__symbolic_XPRSstorebounds) (XPRSprob prob, int nbnds, const int mcols[], const char qbtype[], const double dbnd[], void **mindex) = NULL;
 int (*__symbolic_XPRSsetbranchcuts) (XPRSprob prob, int nbcuts, const XPRScut mindex[]) = NULL;
 int (*__symbolic_XPRSsetbranchbounds) (XPRSprob prob, void *mindex) = NULL;
@@ -244,28 +226,128 @@ int (*__symbolic_XPRSgetlpsol) (XPRSprob prob, double _dx[], double _dslack[], d
 int (*__symbolic_XPRSpostsolve) (XPRSprob prob) = NULL;
 int (*__symbolic_XPRSdelsets) (XPRSprob prob, int nsets, const int msindex[]) = NULL;
 int (*__symbolic_XPRSaddsets) (XPRSprob prob, int newsets, int newnz, const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSaddsets64) (XPRSprob prob, int newsets, long newnz, const char qstype[], const long msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSstrongbranch) (XPRSprob prob, const int nbnds, const int _mindex[], const char _sboundtype[], const double _dbnd[], const int itrlimit, double _dsbobjval[], int _msbstatus[]) = NULL;
+int (*__symbolic_XPRSgetprimalray) (XPRSprob prob, double _dpray[], int *_hasray) = NULL;
+int (*__symbolic_XPRSgetdualray) (XPRSprob prob, double _ddray[], int *_hasray) = NULL;
 int (*__symbolic_XPRSsetmessagestatus) (XPRSprob prob, int errcode, int bEnabledStatus) = NULL;
 int (*__symbolic_XPRSgetmessagestatus) (XPRSprob prob, int errcode, int *bEnabledStatus) = NULL;
 int (*__symbolic_XPRSrepairweightedinfeas) (XPRSprob prob, int *scode, const double lrp_array[], const double grp_array[], const double lbp_array[], const double ubp_array[], char second_phase, double delta, const char *optflags) = NULL;
 int (*__symbolic_XPRSrepairinfeas) (XPRSprob prob, int *scode, char ptype, char phase2, char globalflags, double lrp, double grp, double lbp, double ubp, double delta) = NULL;
 int (*__symbolic_XPRSgetcutslack) (XPRSprob prob, XPRScut cut, double *dslack) = NULL;
 int (*__symbolic_XPRSgetcutmap) (XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[]) = NULL;
+int (*__symbolic_XPRSbasisstability) (XPRSprob prob, int typecode, int norm, int ifscaled, double *dval) = NULL;
 int (*__symbolic_XPRSgetnamelist) (XPRSprob prob, int _itype, char _sbuff[], int names_len, int *names_len_reqd, int first, int last) = NULL;
 int (*__symbolic_XPRSgetnamelistobject) (XPRSprob prob, int _itype, XPRSnamelist * r_nl) = NULL;
 int (*__symbolic_XPRSlogfilehandler) (XPRSobject obj, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode) = NULL;
 int (*__symbolic_XPRSgetobjecttypename) (XPRSobject obj, const char **sObjectName) = NULL;
+int (*__symbolic_XPRSsetcblplog) (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcblplog) (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcblplog) (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecblplog) (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbgloballog) (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbgloballog) (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbgloballog) (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbgloballog) (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbcutlog) (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbcutlog) (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbcutlog) (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbcutlog) (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbbarlog) (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbbarlog) (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbbarlog) (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbbarlog) (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbcutmgr) (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbcutmgr) (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbcutmgr) (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbcutmgr) (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbchgnode) (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p) = NULL;
+int (*__symbolic_XPRSgetcbchgnode) (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void **p) = NULL;
+int (*__symbolic_XPRSaddcbchgnode) (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbchgnode) (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p) = NULL;
+int (*__symbolic_XPRSsetcboptnode) (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p) = NULL;
+int (*__symbolic_XPRSgetcboptnode) (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *vContext, int *feas), void **p) = NULL;
+int (*__symbolic_XPRSaddcboptnode) (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecboptnode) (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p) = NULL;
+int (*__symbolic_XPRSsetcbprenode) (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p) = NULL;
+int (*__symbolic_XPRSgetcbprenode) (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void **p) = NULL;
+int (*__symbolic_XPRSaddcbprenode) (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbprenode) (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p) = NULL;
+int (*__symbolic_XPRSsetcbinfnode) (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbinfnode) (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbinfnode) (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbinfnode) (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbnodecutoff) (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p) = NULL;
+int (*__symbolic_XPRSgetcbnodecutoff) (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void **p) = NULL;
+int (*__symbolic_XPRSaddcbnodecutoff) (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbnodecutoff) (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p) = NULL;
+int (*__symbolic_XPRSsetcbintsol) (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbintsol) (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbintsol) (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbintsol) (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbpreintsol) (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p) = NULL;
+int (*__symbolic_XPRSgetcbpreintsol) (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void **p) = NULL;
+int (*__symbolic_XPRSaddcbpreintsol) (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbpreintsol) (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p) = NULL;
+int (*__symbolic_XPRSsetcbchgbranch) (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p) = NULL;
+int (*__symbolic_XPRSgetcbchgbranch) (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void **p) = NULL;
+int (*__symbolic_XPRSaddcbchgbranch) (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbchgbranch) (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p) = NULL;
+int (*__symbolic_XPRSsetcbestimate) (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p) = NULL;
+int (*__symbolic_XPRSgetcbestimate) (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void **p) = NULL;
+int (*__symbolic_XPRSaddcbestimate) (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbestimate) (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p) = NULL;
+int (*__symbolic_XPRSsetcbsepnode) (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p) = NULL;
+int (*__symbolic_XPRSgetcbsepnode) (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void **p) = NULL;
+int (*__symbolic_XPRSaddcbsepnode) (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbsepnode) (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p) = NULL;
+int (*__symbolic_XPRSsetcbmessage) (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p) = NULL;
+int (*__symbolic_XPRSgetcbmessage) (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void **p) = NULL;
+int (*__symbolic_XPRSaddcbmessage) (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbmessage) (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p) = NULL;
+int (*__symbolic_XPRSsetcbmipthread) (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p) = NULL;
+int (*__symbolic_XPRSgetcbmipthread) (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void **p) = NULL;
+int (*__symbolic_XPRSaddcbmipthread) (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbmipthread) (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p) = NULL;
+int (*__symbolic_XPRSsetcbdestroymt) (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSgetcbdestroymt) (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, void *vContext), void **p) = NULL;
+int (*__symbolic_XPRSaddcbdestroymt) (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbdestroymt) (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p) = NULL;
+int (*__symbolic_XPRSsetcbnewnode) (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p) = NULL;
+int (*__symbolic_XPRSgetcbnewnode) (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void **p) = NULL;
+int (*__symbolic_XPRSaddcbnewnode) (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbnewnode) (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p) = NULL;
+int (*__symbolic_XPRSsetcbbariteration) (XPRSprob prob, void ( * f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void *p) = NULL;
+int (*__symbolic_XPRSgetcbbariteration) (XPRSprob prob, void ( ** f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void **p) = NULL;
+int (*__symbolic_XPRSaddcbbariteration) (XPRSprob prob, void ( * f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbbariteration) (XPRSprob prob, void ( * f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void *p) = NULL;
+int (*__symbolic_XPRSsetcbchgbranchobject) (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p) = NULL;
+int (*__symbolic_XPRSgetcbchgbranchobject) (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void **p) = NULL;
+int (*__symbolic_XPRSaddcbchgbranchobject) (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbchgbranchobject) (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p) = NULL;
+int (*__symbolic_XPRSsetcbgapnotify) (XPRSprob prob, void ( * f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void *p) = NULL;
+int (*__symbolic_XPRSgetcbgapnotify) (XPRSprob prob, void ( ** f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void **p) = NULL;
+int (*__symbolic_XPRSaddcbgapnotify) (XPRSprob prob, void ( * f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbgapnotify) (XPRSprob prob, void ( * f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void *p) = NULL;
+int (*__symbolic_XPRSsetcbusersolnotify) (XPRSprob prob, void ( * f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void *p) = NULL;
+int (*__symbolic_XPRSgetcbusersolnotify) (XPRSprob prob, void ( ** f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void **p) = NULL;
+int (*__symbolic_XPRSaddcbusersolnotify) (XPRSprob prob, void ( * f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void *p, int priority) = NULL;
+int (*__symbolic_XPRSremovecbusersolnotify) (XPRSprob prob, void ( * f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void *p) = NULL;
 int (*__symbolic_XPRSobjsa) (XPRSprob prob, int ncols, const int mindex[], double lower[], double upper[]) = NULL;
 int (*__symbolic_XPRSrhssa) (XPRSprob prob, int nrows, const int mindex[], double lower[], double upper[]) = NULL;
 int (*__symbolic_XPRS_ge_setcbmsghandler) (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_ge_getcbmsghandler) (int ( ** f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void **p) = NULL;
+int (*__symbolic_XPRS_ge_addcbmsghandler) (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p, int priority) = NULL;
+int (*__symbolic_XPRS_ge_removecbmsghandler) (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRS_ge_getlasterror) (int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
 int (*__symbolic_XPRS_msp_create) (XPRSmipsolpool * msp) = NULL;
 int (*__symbolic_XPRS_msp_destroy) (XPRSmipsolpool msp) = NULL;
 int (*__symbolic_XPRS_msp_probattach) (XPRSmipsolpool msp, XPRSprob prob) = NULL;
 int (*__symbolic_XPRS_msp_probdetach) (XPRSmipsolpool msp, XPRSprob prob) = NULL;
-int (*__symbolic_XPRS_msp_setcbmsghandler) (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRS_msp_getsollist) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols) = NULL;
 int (*__symbolic_XPRS_msp_getsollist2) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int bUseUserBitFilter, int iUserBitMask, int iUserBitPattern, int bUseInternalBitFilter, int iInternalBitMask, int iInternalBitPattern, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols) = NULL;
 int (*__symbolic_XPRS_msp_getsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_, double x[], int iColFirst, int iColLast, int *nValuesReturned) = NULL;
+int (*__symbolic_XPRS_msp_getslack) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, double slack[], int iRowFirst, int iRowLast, int *nValuesReturned) = NULL;
 int (*__symbolic_XPRS_msp_loadsol) (XPRSmipsolpool msp, int *iSolutionId, const double x[], int nCols, const char *sSolutionName, int *bNameModifiedForUniqueness, int *iSolutionIdOfExistingDuplicatePreventedLoad) = NULL;
 int (*__symbolic_XPRS_msp_delsol) (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus_) = NULL;
 int (*__symbolic_XPRS_msp_getintattribprobsol) (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, int iAttribId, int *Dst) = NULL;
@@ -292,6 +374,10 @@ int (*__symbolic_XPRS_msp_findsolbyname) (XPRSmipsolpool msp, const char *sSolut
 int (*__symbolic_XPRS_msp_writeslxsol) (XPRSmipsolpool msp, XPRSprob prob_context, int iSolutionId, int *iSolutionIdStatus_, const char *sFileName, const char *sFlags) = NULL;
 int (*__symbolic_XPRS_msp_readslxsol) (XPRSmipsolpool msp, XPRSnamelist col_name_list, const char *sFileName, const char *sFlags, int *iSolutionId_Beg, int *iSolutionId_End) = NULL;
 int (*__symbolic_XPRS_msp_getlasterror) (XPRSmipsolpool msp, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
+int (*__symbolic_XPRS_msp_setcbmsghandler) (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_msp_getcbmsghandler) (XPRSmipsolpool msp, int ( ** f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void **p) = NULL;
+int (*__symbolic_XPRS_msp_addcbmsghandler) (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p, int priority) = NULL;
+int (*__symbolic_XPRS_msp_removecbmsghandler) (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRS_nml_create) (XPRSnamelist * r_nl) = NULL;
 int (*__symbolic_XPRS_nml_destroy) (XPRSnamelist nml) = NULL;
 int (*__symbolic_XPRS_nml_getnamecount) (XPRSnamelist nml, int *count) = NULL;
@@ -302,16 +388,18 @@ int (*__symbolic_XPRS_nml_removenames) (XPRSnamelist nml, int firstIndex, int la
 int (*__symbolic_XPRS_nml_findname) (XPRSnamelist nml, const char *name, int *r_index) = NULL;
 int (*__symbolic_XPRS_nml_copynames) (XPRSnamelist dst, XPRSnamelist src) = NULL;
 int (*__symbolic_XPRS_nml_getlasterror) (XPRSnamelist nml, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_nml_setcbmsghandler) (XPRSnamelist nml, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRSgetqrowcoeff) (XPRSprob prob, int irow, int icol, int jcol, double *dval) = NULL;
 int (*__symbolic_XPRSgetqrowqmatrix) (XPRSprob prob, int irow, int mstart[], int mclind[], double dobjval[], int maxcoeffs, int *ncoeffs, int first, int last) = NULL;
 int (*__symbolic_XPRSgetqrowqmatrixtriplets) (XPRSprob prob, int irow, int *nqelem, int mqcol1[], int mqcol2[], double dqe[]) = NULL;
 int (*__symbolic_XPRSchgqrowcoeff) (XPRSprob prob, int irow, int icol, int jcol, double dval) = NULL;
 int (*__symbolic_XPRSgetqrows) (XPRSprob prob, int *qmn, int qcrows[]) = NULL;
 int (*__symbolic_XPRSaddqmatrix) (XPRSprob prob, int irow, int nqtr, const int mqc1[], const int mqc2[], const double dqew[]) = NULL;
+int (*__symbolic_XPRSaddqmatrix64) (XPRSprob prob, int irow, long nqtr, const int mqc1[], const int mqc2[], const double dqew[]) = NULL;
 int (*__symbolic_XPRSdelqmatrix) (XPRSprob prob, int irow) = NULL;
 int (*__symbolic_XPRSloadqcqp) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]) = NULL;
+int (*__symbolic_XPRSloadqcqp64) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], long nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const long qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]) = NULL;
 int (*__symbolic_XPRSloadqcqpglobal) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]) = NULL;
+int (*__symbolic_XPRSloadqcqpglobal64) (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], long nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const long qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const long msstart[], const int mscols[], const double dref[]) = NULL;
 int (*__symbolic_XPRS_mse_create) (XPRSmipsolenum * mse) = NULL;
 int (*__symbolic_XPRS_mse_destroy) (XPRSmipsolenum mse) = NULL;
 int (*__symbolic_XPRS_mse_getsollist) (XPRSmipsolenum mse, int iMetricId, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds[], int *nReturnedSolIds, int *nSols) = NULL;
@@ -327,22 +415,16 @@ int (*__symbolic_XPRS_mse_getdblcontrol) (XPRSmipsolenum mse, int iAttribId, dou
 int (*__symbolic_XPRS_mse_setintcontrol) (XPRSmipsolenum mse, int iAttribId, int Val) = NULL;
 int (*__symbolic_XPRS_mse_setdblcontrol) (XPRSmipsolenum mse, int iAttribId, double Val) = NULL;
 int (*__symbolic_XPRS_mse_getlasterror) (XPRSmipsolenum mse, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
-int (*__symbolic_XPRS_mse_setcbmsghandler) (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRS_mse_setsolbasename) (XPRSmipsolenum mse, const char *sSolutionBaseName) = NULL;
 int (*__symbolic_XPRS_mse_getsolbasename) (XPRSmipsolenum mse, char *_sname, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
 int (*__symbolic_XPRS_mse_setcbgetsolutiondiff) (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p) = NULL;
 int (*__symbolic_XPRS_mse_getcbgetsolutiondiff) (XPRSmipsolenum mse, int ( ** f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void **p) = NULL;
-int (*__symbolic_XPRSinitializenlphessian) (XPRSprob prob, const int mstart[], const int mcol[]) = NULL;
-int (*__symbolic_XPRSinitializenlphessian_indexpairs) (XPRSprob prob, int nqcelem, const int mcol1[], const int mcol2[]) = NULL;
-int (*__symbolic_XPRSsetcbnlpevaluate) (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void *p) = NULL;
-int (*__symbolic_XPRSsetcbnlpgradient) (XPRSprob prob, void ( * f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void *p) = NULL;
-int (*__symbolic_XPRSsetcbnlphessian) (XPRSprob prob, void ( * f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void *p) = NULL;
-int (*__symbolic_XPRSgetcbnlpevaluate) (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void **p) = NULL;
-int (*__symbolic_XPRSgetcbnlpgradient) (XPRSprob prob, void ( ** f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void **p) = NULL;
-int (*__symbolic_XPRSgetcbnlphessian) (XPRSprob prob, void ( ** f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void **p) = NULL;
-int (*__symbolic_XPRSresetnlp) (XPRSprob prob) = NULL;
-int (*__symbolic_XPRSsetcbbariteration) (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void *p) = NULL;
-int (*__symbolic_XPRSgetcbbariteration) (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void **p) = NULL;
+int (*__symbolic_XPRS_mse_addcbgetsolutiondiff) (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p, int priority) = NULL;
+int (*__symbolic_XPRS_mse_removecbgetsolutiondiff) (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p) = NULL;
+int (*__symbolic_XPRS_mse_setcbmsghandler) (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
+int (*__symbolic_XPRS_mse_getcbmsghandler) (XPRSmipsolenum mse, int ( ** f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void **p) = NULL;
+int (*__symbolic_XPRS_mse_addcbmsghandler) (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p, int priority) = NULL;
+int (*__symbolic_XPRS_mse_removecbmsghandler) (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRS_bo_create) (XPRSbranchobject * p_object, XPRSprob prob, int isoriginal) = NULL;
 int (*__symbolic_XPRS_bo_destroy) (XPRSbranchobject obranch) = NULL;
 int (*__symbolic_XPRS_bo_store) (XPRSbranchobject obranch, int *p_status) = NULL;
@@ -356,7 +438,6 @@ int (*__symbolic_XPRS_bo_addrows) (XPRSbranchobject obranch, int ibranch, int nr
 int (*__symbolic_XPRS_bo_getrows) (XPRSbranchobject obranch, int ibranch, int *p_nrows, int nrows_size, int *p_nelems, int nelems_size, char crtype[], double drrhs[], int mrbeg[], int mcol[], double dval[]) = NULL;
 int (*__symbolic_XPRS_bo_addcuts) (XPRSbranchobject obranch, int ibranch, int ncuts, const XPRScut mcutind[]) = NULL;
 int (*__symbolic_XPRS_bo_getid) (XPRSbranchobject obranch, int *p_id) = NULL;
-int (*__symbolic_XPRS_bo_setcbmsghandler) (XPRSbranchobject obranch, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p) = NULL;
 int (*__symbolic_XPRS_bo_getlasterror) (XPRSbranchobject obranch, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString) = NULL;
 
 /* hijacked functions */
@@ -581,6 +662,50 @@ int XPRSgetdaysleft (int *daysleft){
     }
     return __symbolic_XPRSgetdaysleft(daysleft);
 }
+int XPRSsetcheckedmode (int checked_mode){
+    if (!__symbolic_XPRSsetcheckedmode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcheckedmode", (gpointer *) &__symbolic_XPRSsetcheckedmode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcheckedmode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcheckedmode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcheckedmode(checked_mode);
+}
+int XPRSgetcheckedmode (int *r_checked_mode){
+    if (!__symbolic_XPRSgetcheckedmode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcheckedmode", (gpointer *) &__symbolic_XPRSgetcheckedmode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcheckedmode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcheckedmode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcheckedmode(r_checked_mode);
+}
 int XPRSlicense (int *_i1, char *_c1){
     if (!__symbolic_XPRSlicense) {
         if (!module) {
@@ -712,6 +837,28 @@ int XPRSsetintcontrol (XPRSprob prob, int _index, int _ivalue){
         }
     }
     return __symbolic_XPRSsetintcontrol(prob, _index, _ivalue);
+}
+int XPRSsetintcontrol64 (XPRSprob prob, int _index, long _ivalue){
+    if (!__symbolic_XPRSsetintcontrol64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetintcontrol64", (gpointer *) &__symbolic_XPRSsetintcontrol64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetintcontrol64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetintcontrol64.\n");
+        }
+    }
+    return __symbolic_XPRSsetintcontrol64(prob, _index, _ivalue);
 }
 int XPRSsetdblcontrol (XPRSprob prob, int _index, double _dvalue){
     if (!__symbolic_XPRSsetdblcontrol) {
@@ -867,6 +1014,28 @@ int XPRSgetintcontrol (XPRSprob prob, int _index, int *_ivalue){
     }
     return __symbolic_XPRSgetintcontrol(prob, _index, _ivalue);
 }
+int XPRSgetintcontrol64 (XPRSprob prob, int _index, long * _ivalue){
+    if (!__symbolic_XPRSgetintcontrol64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetintcontrol64", (gpointer *) &__symbolic_XPRSgetintcontrol64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetintcontrol64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetintcontrol64.\n");
+        }
+    }
+    return __symbolic_XPRSgetintcontrol64(prob, _index, _ivalue);
+}
 int XPRSgetdblcontrol (XPRSprob prob, int _index, double *_dvalue){
     if (!__symbolic_XPRSgetdblcontrol) {
         if (!module) {
@@ -932,6 +1101,28 @@ int XPRSgetintattrib (XPRSprob prob, int _index, int *_ivalue){
         }
     }
     return __symbolic_XPRSgetintattrib(prob, _index, _ivalue);
+}
+int XPRSgetintattrib64 (XPRSprob prob, int _index, long * _ivalue){
+    if (!__symbolic_XPRSgetintattrib64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetintattrib64", (gpointer *) &__symbolic_XPRSgetintattrib64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetintattrib64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetintattrib64.\n");
+        }
+    }
+    return __symbolic_XPRSgetintattrib64(prob, _index, _ivalue);
 }
 int XPRSgetstrattrib (XPRSprob prob, int _index, char *_cvalue){
     if (!__symbolic_XPRSgetstrattrib) {
@@ -1021,6 +1212,50 @@ int XPRSsetdefaults (XPRSprob prob){
     }
     return __symbolic_XPRSsetdefaults(prob);
 }
+int XPRSgetcontrolinfo (XPRSprob prob, const char *sCaName, int *iHeaderId, int *iTypeinfo){
+    if (!__symbolic_XPRSgetcontrolinfo) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcontrolinfo", (gpointer *) &__symbolic_XPRSgetcontrolinfo)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcontrolinfo could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcontrolinfo.\n");
+        }
+    }
+    return __symbolic_XPRSgetcontrolinfo(prob, sCaName, iHeaderId, iTypeinfo);
+}
+int XPRSgetattribinfo (XPRSprob prob, const char *sCaName, int *iHeaderId, int *iTypeinfo){
+    if (!__symbolic_XPRSgetattribinfo) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetattribinfo", (gpointer *) &__symbolic_XPRSgetattribinfo)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetattribinfo could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetattribinfo.\n");
+        }
+    }
+    return __symbolic_XPRSgetattribinfo(prob, sCaName, iHeaderId, iTypeinfo);
+}
 int XPRSgoal (XPRSprob prob, const char *_filename, const char *_sflags){
     if (!__symbolic_XPRSgoal) {
         if (!module) {
@@ -1087,6 +1322,28 @@ int XPRSloadlp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, con
     }
     return __symbolic_XPRSloadlp(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub);
 }
+int XPRSloadlp64 (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[]){
+    if (!__symbolic_XPRSloadlp64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSloadlp64", (gpointer *) &__symbolic_XPRSloadlp64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSloadlp64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSloadlp64.\n");
+        }
+    }
+    return __symbolic_XPRSloadlp64(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub);
+}
 int XPRSloadqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]){
     if (!__symbolic_XPRSloadqp) {
         if (!module) {
@@ -1109,7 +1366,29 @@ int XPRSloadqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, con
     }
     return __symbolic_XPRSloadqp(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval);
 }
-int XPRSloadqglobal (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], const int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
+int XPRSloadqp64 (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], long nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[]){
+    if (!__symbolic_XPRSloadqp64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSloadqp64", (gpointer *) &__symbolic_XPRSloadqp64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSloadqp64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSloadqp64.\n");
+        }
+    }
+    return __symbolic_XPRSloadqp64(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval);
+}
+int XPRSloadqglobal (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const int matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], int nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
     if (!__symbolic_XPRSloadqglobal) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
@@ -1130,6 +1409,28 @@ int XPRSloadqglobal (XPRSprob prob, const char *probname, int ncols, int nrows, 
         }
     }
     return __symbolic_XPRSloadqglobal(prob, probname, ncols, nrows, qsenx, rhsx, range, objx, matbeg, matcnt, matind, dmtval, bndl, bndu, nquads, mqcol1, mqcol2, dqval, ngents, nsets, qgtype, mgcols, dlim, qstype, msstart, mscols, dref);
+}
+int XPRSloadqglobal64 (XPRSprob prob, const char *probname, int ncols, int nrows, const char qsenx[], const double rhsx[], const double range[], const double objx[], const long matbeg[], const int matcnt[], const int matind[], const double dmtval[], const double bndl[], const double bndu[], long nquads, const int mqcol1[], const int mqcol2[], const double dqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const long msstart[], const int mscols[], const double dref[]){
+    if (!__symbolic_XPRSloadqglobal64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSloadqglobal64", (gpointer *) &__symbolic_XPRSloadqglobal64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSloadqglobal64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSloadqglobal64.\n");
+        }
+    }
+    return __symbolic_XPRSloadqglobal64(prob, probname, ncols, nrows, qsenx, rhsx, range, objx, matbeg, matcnt, matind, dmtval, bndl, bndu, nquads, mqcol1, mqcol2, dqval, ngents, nsets, qgtype, mgcols, dlim, qstype, msstart, mscols, dref);
 }
 int XPRSfixglobal (XPRSprob prob){
     if (!__symbolic_XPRSfixglobal) {
@@ -1328,6 +1629,28 @@ int XPRSloadglobal (XPRSprob prob, const char *_sprobname, int ncols, int nrows,
         }
     }
     return __symbolic_XPRSloadglobal(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, ngents, nsets, _qgtype, _mgcols, _dlim, _stype, _msstart, _mscols, _dref);
+}
+int XPRSloadglobal64 (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], int ngents, int nsets, const char _qgtype[], const int _mgcols[], const double _dlim[], const char _stype[], const long _msstart[], const int _mscols[], const double _dref[]){
+    if (!__symbolic_XPRSloadglobal64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSloadglobal64", (gpointer *) &__symbolic_XPRSloadglobal64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSloadglobal64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSloadglobal64.\n");
+        }
+    }
+    return __symbolic_XPRSloadglobal64(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, ngents, nsets, _qgtype, _mgcols, _dlim, _stype, _msstart, _mscols, _dref);
 }
 int XPRSaddnames (XPRSprob prob, int _itype, const char _sname[], int first, int last){
     if (!__symbolic_XPRSaddnames) {
@@ -2275,6 +2598,28 @@ int XPRSgetcols (XPRSprob prob, int _mstart[], int _mrwind[], double _dmatval[],
     }
     return __symbolic_XPRSgetcols(prob, _mstart, _mrwind, _dmatval, maxcoeffs, ncoeffs, first, last);
 }
+int XPRSgetcols64 (XPRSprob prob, long _mstart[], int _mrwind[], double _dmatval[], long maxcoeffs, long * ncoeffs, int first, int last){
+    if (!__symbolic_XPRSgetcols64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcols64", (gpointer *) &__symbolic_XPRSgetcols64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcols64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcols64.\n");
+        }
+    }
+    return __symbolic_XPRSgetcols64(prob, _mstart, _mrwind, _dmatval, maxcoeffs, ncoeffs, first, last);
+}
 int XPRSgetrows (XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[], int maxcoeffs, int *ncoeffs, int first, int last){
     if (!__symbolic_XPRSgetrows) {
         if (!module) {
@@ -2296,6 +2641,28 @@ int XPRSgetrows (XPRSprob prob, int _mstart[], int _mclind[], double _dmatval[],
         }
     }
     return __symbolic_XPRSgetrows(prob, _mstart, _mclind, _dmatval, maxcoeffs, ncoeffs, first, last);
+}
+int XPRSgetrows64 (XPRSprob prob, long _mstart[], int _mclind[], double _dmatval[], long maxcoeffs, long * ncoeffs, int first, int last){
+    if (!__symbolic_XPRSgetrows64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetrows64", (gpointer *) &__symbolic_XPRSgetrows64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetrows64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetrows64.\n");
+        }
+    }
+    return __symbolic_XPRSgetrows64(prob, _mstart, _mclind, _dmatval, maxcoeffs, ncoeffs, first, last);
 }
 int XPRSgetcoef (XPRSprob prob, int _irow, int _icol, double *_dval){
     if (!__symbolic_XPRSgetcoef) {
@@ -2340,6 +2707,28 @@ int XPRSgetmqobj (XPRSprob prob, int _mstart[], int _mclind[], double _dobjval[]
         }
     }
     return __symbolic_XPRSgetmqobj(prob, _mstart, _mclind, _dobjval, maxcoeffs, ncoeffs, first, last);
+}
+int XPRSgetmqobj64 (XPRSprob prob, long _mstart[], int _mclind[], double _dobjval[], long maxcoeffs, long * ncoeffs, int first, int last){
+    if (!__symbolic_XPRSgetmqobj64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetmqobj64", (gpointer *) &__symbolic_XPRSgetmqobj64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetmqobj64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetmqobj64.\n");
+        }
+    }
+    return __symbolic_XPRSgetmqobj64(prob, _mstart, _mclind, _dobjval, maxcoeffs, ncoeffs, first, last);
 }
 int XPRSiisclear (XPRSprob prob){
     if (!__symbolic_XPRSiisclear) {
@@ -2605,6 +2994,28 @@ int XPRSgetglobal (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _
     }
     return __symbolic_XPRSgetglobal(prob, ngents, nsets, _sgtype, _mgcols, _dlim, _sstype, _msstart, _mscols, _dref);
 }
+int XPRSgetglobal64 (XPRSprob prob, int *ngents, int *nsets, char _sgtype[], int _mgcols[], double _dlim[], char _sstype[], long _msstart[], int _mscols[], double _dref[]){
+    if (!__symbolic_XPRSgetglobal64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetglobal64", (gpointer *) &__symbolic_XPRSgetglobal64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetglobal64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetglobal64.\n");
+        }
+    }
+    return __symbolic_XPRSgetglobal64(prob, ngents, nsets, _sgtype, _mgcols, _dlim, _sstype, _msstart, _mscols, _dref);
+}
 int XPRSwriteprob (XPRSprob prob, const char *_sfilename, const char *_sflags){
     if (!__symbolic_XPRSwriteprob) {
         if (!module) {
@@ -2803,6 +3214,28 @@ int XPRSaddrows (XPRSprob prob, int nrows, int ncoeffs, const char _srowtype[], 
     }
     return __symbolic_XPRSaddrows(prob, nrows, ncoeffs, _srowtype, _drhs, _drng, _mstart, _mclind, _dmatval);
 }
+int XPRSaddrows64 (XPRSprob prob, int nrows, long ncoeffs, const char _srowtype[], const double _drhs[], const double _drng[], const long _mstart[], const int _mclind[], const double _dmatval[]){
+    if (!__symbolic_XPRSaddrows64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddrows64", (gpointer *) &__symbolic_XPRSaddrows64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddrows64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddrows64.\n");
+        }
+    }
+    return __symbolic_XPRSaddrows64(prob, nrows, ncoeffs, _srowtype, _drhs, _drng, _mstart, _mclind, _dmatval);
+}
 int XPRSdelrows (XPRSprob prob, int nrows, const int _mindex[]){
     if (!__symbolic_XPRSdelrows) {
         if (!module) {
@@ -2825,28 +3258,6 @@ int XPRSdelrows (XPRSprob prob, int nrows, const int _mindex[]){
     }
     return __symbolic_XPRSdelrows(prob, nrows, _mindex);
 }
-int XPRSdelnode (XPRSprob prob, int _inode, int ifboth){
-    if (!__symbolic_XPRSdelnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSdelnode", (gpointer *) &__symbolic_XPRSdelnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSdelnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSdelnode.\n");
-        }
-    }
-    return __symbolic_XPRSdelnode(prob, _inode, ifboth);
-}
 int XPRSaddcols (XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], const int _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]){
     if (!__symbolic_XPRSaddcols) {
         if (!module) {
@@ -2868,6 +3279,28 @@ int XPRSaddcols (XPRSprob prob, int ncols, int ncoeffs, const double _dobj[], co
         }
     }
     return __symbolic_XPRSaddcols(prob, ncols, ncoeffs, _dobj, _mstart, _mrwind, _dmatval, _dbdl, _dbdu);
+}
+int XPRSaddcols64 (XPRSprob prob, int ncols, long ncoeffs, const double _dobj[], const long _mstart[], const int _mrwind[], const double _dmatval[], const double _dbdl[], const double _dbdu[]){
+    if (!__symbolic_XPRSaddcols64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcols64", (gpointer *) &__symbolic_XPRSaddcols64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcols64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcols64.\n");
+        }
+    }
+    return __symbolic_XPRSaddcols64(prob, ncols, ncoeffs, _dobj, _mstart, _mrwind, _dmatval, _dbdl, _dbdu);
 }
 int XPRSdelcols (XPRSprob prob, int ncols, const int _mindex[]){
     if (!__symbolic_XPRSdelcols) {
@@ -3023,6 +3456,28 @@ int XPRSchgmcoef (XPRSprob prob, int ncoeffs, const int _mrow[], const int _mcol
     }
     return __symbolic_XPRSchgmcoef(prob, ncoeffs, _mrow, _mcol, _dval);
 }
+int XPRSchgmcoef64 (XPRSprob prob, long ncoeffs, const int _mrow[], const int _mcol[], const double _dval[]){
+    if (!__symbolic_XPRSchgmcoef64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSchgmcoef64", (gpointer *) &__symbolic_XPRSchgmcoef64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSchgmcoef64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSchgmcoef64.\n");
+        }
+    }
+    return __symbolic_XPRSchgmcoef64(prob, ncoeffs, _mrow, _mcol, _dval);
+}
 int XPRSchgmqobj (XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2[], const double _dval[]){
     if (!__symbolic_XPRSchgmqobj) {
         if (!module) {
@@ -3044,6 +3499,28 @@ int XPRSchgmqobj (XPRSprob prob, int ncols, const int _mcol1[], const int _mcol2
         }
     }
     return __symbolic_XPRSchgmqobj(prob, ncols, _mcol1, _mcol2, _dval);
+}
+int XPRSchgmqobj64 (XPRSprob prob, long ncols, const int _mcol1[], const int _mcol2[], const double _dval[]){
+    if (!__symbolic_XPRSchgmqobj64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSchgmqobj64", (gpointer *) &__symbolic_XPRSchgmqobj64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSchgmqobj64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSchgmqobj64.\n");
+        }
+    }
+    return __symbolic_XPRSchgmqobj64(prob, ncols, _mcol1, _mcol2, _dval);
 }
 int XPRSchgqobj (XPRSprob prob, int _icol, int _jcol, double _dval){
     if (!__symbolic_XPRSchgqobj) {
@@ -3133,6 +3610,28 @@ int XPRSchgobjsense (XPRSprob prob, int objsense){
     }
     return __symbolic_XPRSchgobjsense(prob, objsense);
 }
+int XPRSchgglblimit (XPRSprob prob, int ncols, const int _mindex[], const double _dlimit[]){
+    if (!__symbolic_XPRSchgglblimit) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSchgglblimit", (gpointer *) &__symbolic_XPRSchgglblimit)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSchgglblimit could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSchgglblimit.\n");
+        }
+    }
+    return __symbolic_XPRSchgglblimit(prob, ncols, _mindex, _dlimit);
+}
 int XPRSsave (XPRSprob prob){
     if (!__symbolic_XPRSsave) {
         if (!module) {
@@ -3221,886 +3720,6 @@ int XPRSgetpivots (XPRSprob prob, int _in, int _mout[], double _dout[], double *
     }
     return __symbolic_XPRSgetpivots(prob, _in, _mout, _dout, _dobjo, npiv, maxpiv);
 }
-int XPRSsetcblplog (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcblplog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcblplog", (gpointer *) &__symbolic_XPRSsetcblplog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcblplog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcblplog.\n");
-        }
-    }
-    return __symbolic_XPRSsetcblplog(prob, f_lplog, p);
-}
-int XPRSsetcbgloballog (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbgloballog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbgloballog", (gpointer *) &__symbolic_XPRSsetcbgloballog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbgloballog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbgloballog.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbgloballog(prob, f_globallog, p);
-}
-int XPRSsetcbcutlog (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbcutlog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbcutlog", (gpointer *) &__symbolic_XPRSsetcbcutlog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbcutlog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbcutlog.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbcutlog(prob, f_cutlog, p);
-}
-int XPRSsetcbbarlog (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbbarlog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbbarlog", (gpointer *) &__symbolic_XPRSsetcbbarlog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbbarlog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbbarlog.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbbarlog(prob, f_barlog, p);
-}
-int XPRSsetcbcutmgr (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbcutmgr) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbcutmgr", (gpointer *) &__symbolic_XPRSsetcbcutmgr)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbcutmgr could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbcutmgr.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbcutmgr(prob, f_cutmgr, p);
-}
-int XPRSsetcbchgnode (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p){
-    if (!__symbolic_XPRSsetcbchgnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbchgnode", (gpointer *) &__symbolic_XPRSsetcbchgnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbchgnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbchgnode.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbchgnode(prob, f_chgnode, p);
-}
-int XPRSsetcboptnode (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p){
-    if (!__symbolic_XPRSsetcboptnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcboptnode", (gpointer *) &__symbolic_XPRSsetcboptnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcboptnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcboptnode.\n");
-        }
-    }
-    return __symbolic_XPRSsetcboptnode(prob, f_optnode, p);
-}
-int XPRSsetcbprenode (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p){
-    if (!__symbolic_XPRSsetcbprenode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbprenode", (gpointer *) &__symbolic_XPRSsetcbprenode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbprenode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbprenode.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbprenode(prob, f_prenode, p);
-}
-int XPRSsetcbinfnode (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbinfnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbinfnode", (gpointer *) &__symbolic_XPRSsetcbinfnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbinfnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbinfnode.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbinfnode(prob, f_infnode, p);
-}
-int XPRSsetcbnewnode (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p){
-    if (!__symbolic_XPRSsetcbnewnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbnewnode", (gpointer *) &__symbolic_XPRSsetcbnewnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnewnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnewnode.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbnewnode(prob, f_newnode, p);
-}
-int XPRSsetcbnodecutoff (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p){
-    if (!__symbolic_XPRSsetcbnodecutoff) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbnodecutoff", (gpointer *) &__symbolic_XPRSsetcbnodecutoff)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnodecutoff could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnodecutoff.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbnodecutoff(prob, f_nodecutoff, p);
-}
-int XPRSsetcbpreintsol (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p){
-    if (!__symbolic_XPRSsetcbpreintsol) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbpreintsol", (gpointer *) &__symbolic_XPRSsetcbpreintsol)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbpreintsol could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbpreintsol.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbpreintsol(prob, f_preintsol, p);
-}
-int XPRSsetcbintsol (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbintsol) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbintsol", (gpointer *) &__symbolic_XPRSsetcbintsol)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbintsol could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbintsol.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbintsol(prob, f_intsol, p);
-}
-int XPRSsetcbchgbranch (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p){
-    if (!__symbolic_XPRSsetcbchgbranch) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbchgbranch", (gpointer *) &__symbolic_XPRSsetcbchgbranch)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbchgbranch could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbchgbranch.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbchgbranch(prob, f_chgbranch, p);
-}
-int XPRSsetcbchgbranchobject (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p){
-    if (!__symbolic_XPRSsetcbchgbranchobject) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbchgbranchobject", (gpointer *) &__symbolic_XPRSsetcbchgbranchobject)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbchgbranchobject could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbchgbranchobject.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbchgbranchobject(prob, f_chgbranchobject, p);
-}
-int XPRSsetcbestimate (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p){
-    if (!__symbolic_XPRSsetcbestimate) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbestimate", (gpointer *) &__symbolic_XPRSsetcbestimate)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbestimate could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbestimate.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbestimate(prob, f_estimate, p);
-}
-int XPRSsetcbsepnode (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p){
-    if (!__symbolic_XPRSsetcbsepnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbsepnode", (gpointer *) &__symbolic_XPRSsetcbsepnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbsepnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbsepnode.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbsepnode(prob, f_sepnode, p);
-}
-int XPRSsetcbmessage (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p){
-    if (!__symbolic_XPRSsetcbmessage) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbmessage", (gpointer *) &__symbolic_XPRSsetcbmessage)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbmessage could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbmessage.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbmessage(prob, f_message, p);
-}
-int XPRSsetcbmipthread (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p){
-    if (!__symbolic_XPRSsetcbmipthread) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbmipthread", (gpointer *) &__symbolic_XPRSsetcbmipthread)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbmipthread could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbmipthread.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbmipthread(prob, f_mipthread, p);
-}
-int XPRSsetcbdestroymt (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p){
-    if (!__symbolic_XPRSsetcbdestroymt) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbdestroymt", (gpointer *) &__symbolic_XPRSsetcbdestroymt)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbdestroymt could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbdestroymt.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbdestroymt(prob, f_destroymt, p);
-}
-int XPRSgetcblplog (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcblplog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcblplog", (gpointer *) &__symbolic_XPRSgetcblplog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcblplog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcblplog.\n");
-        }
-    }
-    return __symbolic_XPRSgetcblplog(prob, f_lplog, p);
-}
-int XPRSgetcbgloballog (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbgloballog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbgloballog", (gpointer *) &__symbolic_XPRSgetcbgloballog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbgloballog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbgloballog.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbgloballog(prob, f_globallog, p);
-}
-int XPRSgetcbcutlog (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbcutlog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbcutlog", (gpointer *) &__symbolic_XPRSgetcbcutlog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbcutlog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbcutlog.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbcutlog(prob, f_cutlog, p);
-}
-int XPRSgetcbbarlog (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbbarlog) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbbarlog", (gpointer *) &__symbolic_XPRSgetcbbarlog)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbbarlog could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbbarlog.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbbarlog(prob, f_barlog, p);
-}
-int XPRSgetcbcutmgr (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbcutmgr) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbcutmgr", (gpointer *) &__symbolic_XPRSgetcbcutmgr)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbcutmgr could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbcutmgr.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbcutmgr(prob, f_cutmgr, p);
-}
-int XPRSgetcbchgnode (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void **p){
-    if (!__symbolic_XPRSgetcbchgnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbchgnode", (gpointer *) &__symbolic_XPRSgetcbchgnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbchgnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbchgnode.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbchgnode(prob, f_chgnode, p);
-}
-int XPRSgetcboptnode (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *vContext, int *feas), void **p){
-    if (!__symbolic_XPRSgetcboptnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcboptnode", (gpointer *) &__symbolic_XPRSgetcboptnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcboptnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcboptnode.\n");
-        }
-    }
-    return __symbolic_XPRSgetcboptnode(prob, f_optnode, p);
-}
-int XPRSgetcbprenode (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void **p){
-    if (!__symbolic_XPRSgetcbprenode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbprenode", (gpointer *) &__symbolic_XPRSgetcbprenode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbprenode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbprenode.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbprenode(prob, f_prenode, p);
-}
-int XPRSgetcbinfnode (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbinfnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbinfnode", (gpointer *) &__symbolic_XPRSgetcbinfnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbinfnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbinfnode.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbinfnode(prob, f_infnode, p);
-}
-int XPRSgetcbnewnode (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void **p){
-    if (!__symbolic_XPRSgetcbnewnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbnewnode", (gpointer *) &__symbolic_XPRSgetcbnewnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnewnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnewnode.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbnewnode(prob, f_newnode, p);
-}
-int XPRSgetcbnodecutoff (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void **p){
-    if (!__symbolic_XPRSgetcbnodecutoff) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbnodecutoff", (gpointer *) &__symbolic_XPRSgetcbnodecutoff)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnodecutoff could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnodecutoff.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbnodecutoff(prob, f_nodecutoff, p);
-}
-int XPRSgetcbpreintsol (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void **p){
-    if (!__symbolic_XPRSgetcbpreintsol) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbpreintsol", (gpointer *) &__symbolic_XPRSgetcbpreintsol)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbpreintsol could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbpreintsol.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbpreintsol(prob, f_preintsol, p);
-}
-int XPRSgetcbintsol (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbintsol) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbintsol", (gpointer *) &__symbolic_XPRSgetcbintsol)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbintsol could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbintsol.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbintsol(prob, f_intsol, p);
-}
-int XPRSgetcbchgbranch (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void **p){
-    if (!__symbolic_XPRSgetcbchgbranch) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbchgbranch", (gpointer *) &__symbolic_XPRSgetcbchgbranch)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbchgbranch could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbchgbranch.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbchgbranch(prob, f_chgbranch, p);
-}
-int XPRSgetcbchgbranchobject (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void **p){
-    if (!__symbolic_XPRSgetcbchgbranchobject) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbchgbranchobject", (gpointer *) &__symbolic_XPRSgetcbchgbranchobject)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbchgbranchobject could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbchgbranchobject.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbchgbranchobject(prob, f_chgbranchobject, p);
-}
-int XPRSgetcbestimate (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void **p){
-    if (!__symbolic_XPRSgetcbestimate) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbestimate", (gpointer *) &__symbolic_XPRSgetcbestimate)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbestimate could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbestimate.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbestimate(prob, f_estimate, p);
-}
-int XPRSgetcbsepnode (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void **p){
-    if (!__symbolic_XPRSgetcbsepnode) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbsepnode", (gpointer *) &__symbolic_XPRSgetcbsepnode)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbsepnode could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbsepnode.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbsepnode(prob, f_sepnode, p);
-}
-int XPRSgetcbmessage (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void **p){
-    if (!__symbolic_XPRSgetcbmessage) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbmessage", (gpointer *) &__symbolic_XPRSgetcbmessage)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbmessage could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbmessage.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbmessage(prob, f_message, p);
-}
-int XPRSgetcbmipthread (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void **p){
-    if (!__symbolic_XPRSgetcbmipthread) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbmipthread", (gpointer *) &__symbolic_XPRSgetcbmipthread)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbmipthread could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbmipthread.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbmipthread(prob, f_mipthread, p);
-}
-int XPRSgetcbdestroymt (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, void *vContext), void **p){
-    if (!__symbolic_XPRSgetcbdestroymt) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbdestroymt", (gpointer *) &__symbolic_XPRSgetcbdestroymt)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbdestroymt could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbdestroymt.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbdestroymt(prob, f_destroymt, p);
-}
 int XPRSaddcuts (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const int mstart[], const int mcols[], const double dmatval[]){
     if (!__symbolic_XPRSaddcuts) {
         if (!module) {
@@ -4122,6 +3741,28 @@ int XPRSaddcuts (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[
         }
     }
     return __symbolic_XPRSaddcuts(prob, ncuts, mtype, qrtype, drhs, mstart, mcols, dmatval);
+}
+int XPRSaddcuts64 (XPRSprob prob, int ncuts, const int mtype[], const char qrtype[], const double drhs[], const long mstart[], const int mcols[], const double dmatval[]){
+    if (!__symbolic_XPRSaddcuts64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcuts64", (gpointer *) &__symbolic_XPRSaddcuts64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcuts64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcuts64.\n");
+        }
+    }
+    return __symbolic_XPRSaddcuts64(prob, ncuts, mtype, qrtype, drhs, mstart, mcols, dmatval);
 }
 int XPRSdelcuts (XPRSprob prob, int ibasis, int itype, int interp, double delta, int ncuts, const XPRScut mcutind[]){
     if (!__symbolic_XPRSdelcuts) {
@@ -4233,6 +3874,28 @@ int XPRSgetcpcuts (XPRSprob prob, const XPRScut mindex[], int ncuts, int size, i
     }
     return __symbolic_XPRSgetcpcuts(prob, mindex, ncuts, size, mtype, qrtype, mstart, mcols, dmatval, drhs);
 }
+int XPRSgetcpcuts64 (XPRSprob prob, const XPRScut mindex[], int ncuts, long size, int mtype[], char qrtype[], long mstart[], int mcols[], double dmatval[], double drhs[]){
+    if (!__symbolic_XPRSgetcpcuts64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcpcuts64", (gpointer *) &__symbolic_XPRSgetcpcuts64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcpcuts64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcpcuts64.\n");
+        }
+    }
+    return __symbolic_XPRSgetcpcuts64(prob, mindex, ncuts, size, mtype, qrtype, mstart, mcols, dmatval, drhs);
+}
 int XPRSloadcuts (XPRSprob prob, int itype, int interp, int ncuts, const XPRScut mcutind[]){
     if (!__symbolic_XPRSloadcuts) {
         if (!module) {
@@ -4277,6 +3940,28 @@ int XPRSstorecuts (XPRSprob prob, int ncuts, int nodupl, const int mtype[], cons
     }
     return __symbolic_XPRSstorecuts(prob, ncuts, nodupl, mtype, qrtype, drhs, mstart, mindex, mcols, dmatval);
 }
+int XPRSstorecuts64 (XPRSprob prob, int ncuts, int nodupl, const int mtype[], const char qrtype[], const double drhs[], const long mstart[], XPRScut mindex[], const int mcols[], const double dmatval[]){
+    if (!__symbolic_XPRSstorecuts64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSstorecuts64", (gpointer *) &__symbolic_XPRSstorecuts64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSstorecuts64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSstorecuts64.\n");
+        }
+    }
+    return __symbolic_XPRSstorecuts64(prob, ncuts, nodupl, mtype, qrtype, drhs, mstart, mindex, mcols, dmatval);
+}
 int XPRSpresolverow (XPRSprob prob, char qrtype, int nzo, const int mcolso[], const double dvalo[], double drhso, int maxcoeffs, int *nzp, int mcolsp[], double dvalp[], double *drhsp, int *status){
     if (!__symbolic_XPRSpresolverow) {
         if (!module) {
@@ -4320,6 +4005,28 @@ int XPRSloadmipsol (XPRSprob prob, const double dsol[], int *status){
         }
     }
     return __symbolic_XPRSloadmipsol(prob, dsol, status);
+}
+int XPRSaddmipsol (XPRSprob prob, int ilength, const double mipsolval[], const int mipsolcol[], int *p_id){
+    if (!__symbolic_XPRSaddmipsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddmipsol", (gpointer *) &__symbolic_XPRSaddmipsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddmipsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddmipsol.\n");
+        }
+    }
+    return __symbolic_XPRSaddmipsol(prob, ilength, mipsolval, mipsolcol, p_id);
 }
 int XPRSstorebounds (XPRSprob prob, int nbnds, const int mcols[], const char qbtype[], const double dbnd[], void **mindex){
     if (!__symbolic_XPRSstorebounds) {
@@ -4541,6 +4248,94 @@ int XPRSaddsets (XPRSprob prob, int newsets, int newnz, const char qstype[], con
     }
     return __symbolic_XPRSaddsets(prob, newsets, newnz, qstype, msstart, mscols, dref);
 }
+int XPRSaddsets64 (XPRSprob prob, int newsets, long newnz, const char qstype[], const long msstart[], const int mscols[], const double dref[]){
+    if (!__symbolic_XPRSaddsets64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddsets64", (gpointer *) &__symbolic_XPRSaddsets64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddsets64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddsets64.\n");
+        }
+    }
+    return __symbolic_XPRSaddsets64(prob, newsets, newnz, qstype, msstart, mscols, dref);
+}
+int XPRSstrongbranch (XPRSprob prob, const int nbnds, const int _mindex[], const char _sboundtype[], const double _dbnd[], const int itrlimit, double _dsbobjval[], int _msbstatus[]){
+    if (!__symbolic_XPRSstrongbranch) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSstrongbranch", (gpointer *) &__symbolic_XPRSstrongbranch)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSstrongbranch could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSstrongbranch.\n");
+        }
+    }
+    return __symbolic_XPRSstrongbranch(prob, nbnds, _mindex, _sboundtype, _dbnd, itrlimit, _dsbobjval, _msbstatus);
+}
+int XPRSgetprimalray (XPRSprob prob, double _dpray[], int *_hasray){
+    if (!__symbolic_XPRSgetprimalray) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetprimalray", (gpointer *) &__symbolic_XPRSgetprimalray)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetprimalray could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetprimalray.\n");
+        }
+    }
+    return __symbolic_XPRSgetprimalray(prob, _dpray, _hasray);
+}
+int XPRSgetdualray (XPRSprob prob, double _ddray[], int *_hasray){
+    if (!__symbolic_XPRSgetdualray) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetdualray", (gpointer *) &__symbolic_XPRSgetdualray)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetdualray could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetdualray.\n");
+        }
+    }
+    return __symbolic_XPRSgetdualray(prob, _ddray, _hasray);
+}
 int XPRSsetmessagestatus (XPRSprob prob, int errcode, int bEnabledStatus){
     if (!__symbolic_XPRSsetmessagestatus) {
         if (!module) {
@@ -4673,6 +4468,28 @@ int XPRSgetcutmap (XPRSprob prob, int ncuts, const XPRScut cuts[], int cutmap[])
     }
     return __symbolic_XPRSgetcutmap(prob, ncuts, cuts, cutmap);
 }
+int XPRSbasisstability (XPRSprob prob, int typecode, int norm, int ifscaled, double *dval){
+    if (!__symbolic_XPRSbasisstability) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSbasisstability", (gpointer *) &__symbolic_XPRSbasisstability)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSbasisstability could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSbasisstability.\n");
+        }
+    }
+    return __symbolic_XPRSbasisstability(prob, typecode, norm, ifscaled, dval);
+}
 int XPRSgetnamelist (XPRSprob prob, int _itype, char _sbuff[], int names_len, int *names_len_reqd, int first, int last){
     if (!__symbolic_XPRSgetnamelist) {
         if (!module) {
@@ -4761,6 +4578,2030 @@ int XPRSgetobjecttypename (XPRSobject obj, const char **sObjectName){
     }
     return __symbolic_XPRSgetobjecttypename(obj, sObjectName);
 }
+int XPRSsetcblplog (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcblplog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcblplog", (gpointer *) &__symbolic_XPRSsetcblplog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcblplog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcblplog.\n");
+        }
+    }
+    return __symbolic_XPRSsetcblplog(prob, f_lplog, p);
+}
+int XPRSgetcblplog (XPRSprob prob, int ( ** f_lplog) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcblplog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcblplog", (gpointer *) &__symbolic_XPRSgetcblplog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcblplog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcblplog.\n");
+        }
+    }
+    return __symbolic_XPRSgetcblplog(prob, f_lplog, p);
+}
+int XPRSaddcblplog (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcblplog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcblplog", (gpointer *) &__symbolic_XPRSaddcblplog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcblplog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcblplog.\n");
+        }
+    }
+    return __symbolic_XPRSaddcblplog(prob, f_lplog, p, priority);
+}
+int XPRSremovecblplog (XPRSprob prob, int ( * f_lplog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecblplog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecblplog", (gpointer *) &__symbolic_XPRSremovecblplog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecblplog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecblplog.\n");
+        }
+    }
+    return __symbolic_XPRSremovecblplog(prob, f_lplog, p);
+}
+int XPRSsetcbgloballog (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbgloballog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbgloballog", (gpointer *) &__symbolic_XPRSsetcbgloballog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbgloballog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbgloballog.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbgloballog(prob, f_globallog, p);
+}
+int XPRSgetcbgloballog (XPRSprob prob, int ( ** f_globallog) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbgloballog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbgloballog", (gpointer *) &__symbolic_XPRSgetcbgloballog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbgloballog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbgloballog.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbgloballog(prob, f_globallog, p);
+}
+int XPRSaddcbgloballog (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbgloballog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbgloballog", (gpointer *) &__symbolic_XPRSaddcbgloballog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbgloballog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbgloballog.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbgloballog(prob, f_globallog, p, priority);
+}
+int XPRSremovecbgloballog (XPRSprob prob, int ( * f_globallog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbgloballog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbgloballog", (gpointer *) &__symbolic_XPRSremovecbgloballog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbgloballog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbgloballog.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbgloballog(prob, f_globallog, p);
+}
+int XPRSsetcbcutlog (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbcutlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbcutlog", (gpointer *) &__symbolic_XPRSsetcbcutlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbcutlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbcutlog.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbcutlog(prob, f_cutlog, p);
+}
+int XPRSgetcbcutlog (XPRSprob prob, int ( ** f_cutlog) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbcutlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbcutlog", (gpointer *) &__symbolic_XPRSgetcbcutlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbcutlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbcutlog.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbcutlog(prob, f_cutlog, p);
+}
+int XPRSaddcbcutlog (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbcutlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbcutlog", (gpointer *) &__symbolic_XPRSaddcbcutlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbcutlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbcutlog.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbcutlog(prob, f_cutlog, p, priority);
+}
+int XPRSremovecbcutlog (XPRSprob prob, int ( * f_cutlog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbcutlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbcutlog", (gpointer *) &__symbolic_XPRSremovecbcutlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbcutlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbcutlog.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbcutlog(prob, f_cutlog, p);
+}
+int XPRSsetcbbarlog (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbbarlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbbarlog", (gpointer *) &__symbolic_XPRSsetcbbarlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbbarlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbbarlog.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbbarlog(prob, f_barlog, p);
+}
+int XPRSgetcbbarlog (XPRSprob prob, int ( ** f_barlog) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbbarlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbbarlog", (gpointer *) &__symbolic_XPRSgetcbbarlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbbarlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbbarlog.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbbarlog(prob, f_barlog, p);
+}
+int XPRSaddcbbarlog (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbbarlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbbarlog", (gpointer *) &__symbolic_XPRSaddcbbarlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbbarlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbbarlog.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbbarlog(prob, f_barlog, p, priority);
+}
+int XPRSremovecbbarlog (XPRSprob prob, int ( * f_barlog) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbbarlog) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbbarlog", (gpointer *) &__symbolic_XPRSremovecbbarlog)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbbarlog could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbbarlog.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbbarlog(prob, f_barlog, p);
+}
+int XPRSsetcbcutmgr (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbcutmgr) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbcutmgr", (gpointer *) &__symbolic_XPRSsetcbcutmgr)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbcutmgr could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbcutmgr.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbcutmgr(prob, f_cutmgr, p);
+}
+int XPRSgetcbcutmgr (XPRSprob prob, int ( ** f_cutmgr) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbcutmgr) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbcutmgr", (gpointer *) &__symbolic_XPRSgetcbcutmgr)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbcutmgr could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbcutmgr.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbcutmgr(prob, f_cutmgr, p);
+}
+int XPRSaddcbcutmgr (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbcutmgr) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbcutmgr", (gpointer *) &__symbolic_XPRSaddcbcutmgr)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbcutmgr could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbcutmgr.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbcutmgr(prob, f_cutmgr, p, priority);
+}
+int XPRSremovecbcutmgr (XPRSprob prob, int ( * f_cutmgr) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbcutmgr) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbcutmgr", (gpointer *) &__symbolic_XPRSremovecbcutmgr)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbcutmgr could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbcutmgr.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbcutmgr(prob, f_cutmgr, p);
+}
+int XPRSsetcbchgnode (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p){
+    if (!__symbolic_XPRSsetcbchgnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbchgnode", (gpointer *) &__symbolic_XPRSsetcbchgnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbchgnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbchgnode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbchgnode(prob, f_chgnode, p);
+}
+int XPRSgetcbchgnode (XPRSprob prob, void ( ** f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void **p){
+    if (!__symbolic_XPRSgetcbchgnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbchgnode", (gpointer *) &__symbolic_XPRSgetcbchgnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbchgnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbchgnode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbchgnode(prob, f_chgnode, p);
+}
+int XPRSaddcbchgnode (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p, int priority){
+    if (!__symbolic_XPRSaddcbchgnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbchgnode", (gpointer *) &__symbolic_XPRSaddcbchgnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbchgnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbchgnode.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbchgnode(prob, f_chgnode, p, priority);
+}
+int XPRSremovecbchgnode (XPRSprob prob, void ( * f_chgnode) (XPRSprob prob, void *vContext, int *nodnum), void *p){
+    if (!__symbolic_XPRSremovecbchgnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbchgnode", (gpointer *) &__symbolic_XPRSremovecbchgnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbchgnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbchgnode.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbchgnode(prob, f_chgnode, p);
+}
+int XPRSsetcboptnode (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p){
+    if (!__symbolic_XPRSsetcboptnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcboptnode", (gpointer *) &__symbolic_XPRSsetcboptnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcboptnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcboptnode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcboptnode(prob, f_optnode, p);
+}
+int XPRSgetcboptnode (XPRSprob prob, void ( ** f_optnode) (XPRSprob prob, void *vContext, int *feas), void **p){
+    if (!__symbolic_XPRSgetcboptnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcboptnode", (gpointer *) &__symbolic_XPRSgetcboptnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcboptnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcboptnode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcboptnode(prob, f_optnode, p);
+}
+int XPRSaddcboptnode (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p, int priority){
+    if (!__symbolic_XPRSaddcboptnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcboptnode", (gpointer *) &__symbolic_XPRSaddcboptnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcboptnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcboptnode.\n");
+        }
+    }
+    return __symbolic_XPRSaddcboptnode(prob, f_optnode, p, priority);
+}
+int XPRSremovecboptnode (XPRSprob prob, void ( * f_optnode) (XPRSprob prob, void *vContext, int *feas), void *p){
+    if (!__symbolic_XPRSremovecboptnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecboptnode", (gpointer *) &__symbolic_XPRSremovecboptnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecboptnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecboptnode.\n");
+        }
+    }
+    return __symbolic_XPRSremovecboptnode(prob, f_optnode, p);
+}
+int XPRSsetcbprenode (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p){
+    if (!__symbolic_XPRSsetcbprenode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbprenode", (gpointer *) &__symbolic_XPRSsetcbprenode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbprenode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbprenode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbprenode(prob, f_prenode, p);
+}
+int XPRSgetcbprenode (XPRSprob prob, void ( ** f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void **p){
+    if (!__symbolic_XPRSgetcbprenode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbprenode", (gpointer *) &__symbolic_XPRSgetcbprenode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbprenode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbprenode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbprenode(prob, f_prenode, p);
+}
+int XPRSaddcbprenode (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p, int priority){
+    if (!__symbolic_XPRSaddcbprenode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbprenode", (gpointer *) &__symbolic_XPRSaddcbprenode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbprenode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbprenode.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbprenode(prob, f_prenode, p, priority);
+}
+int XPRSremovecbprenode (XPRSprob prob, void ( * f_prenode) (XPRSprob prob, void *vContext, int *nodinfeas), void *p){
+    if (!__symbolic_XPRSremovecbprenode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbprenode", (gpointer *) &__symbolic_XPRSremovecbprenode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbprenode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbprenode.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbprenode(prob, f_prenode, p);
+}
+int XPRSsetcbinfnode (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbinfnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbinfnode", (gpointer *) &__symbolic_XPRSsetcbinfnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbinfnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbinfnode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbinfnode(prob, f_infnode, p);
+}
+int XPRSgetcbinfnode (XPRSprob prob, void ( ** f_infnode) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbinfnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbinfnode", (gpointer *) &__symbolic_XPRSgetcbinfnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbinfnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbinfnode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbinfnode(prob, f_infnode, p);
+}
+int XPRSaddcbinfnode (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbinfnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbinfnode", (gpointer *) &__symbolic_XPRSaddcbinfnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbinfnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbinfnode.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbinfnode(prob, f_infnode, p, priority);
+}
+int XPRSremovecbinfnode (XPRSprob prob, void ( * f_infnode) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbinfnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbinfnode", (gpointer *) &__symbolic_XPRSremovecbinfnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbinfnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbinfnode.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbinfnode(prob, f_infnode, p);
+}
+int XPRSsetcbnodecutoff (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p){
+    if (!__symbolic_XPRSsetcbnodecutoff) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbnodecutoff", (gpointer *) &__symbolic_XPRSsetcbnodecutoff)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnodecutoff could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnodecutoff.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbnodecutoff(prob, f_nodecutoff, p);
+}
+int XPRSgetcbnodecutoff (XPRSprob prob, void ( ** f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void **p){
+    if (!__symbolic_XPRSgetcbnodecutoff) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbnodecutoff", (gpointer *) &__symbolic_XPRSgetcbnodecutoff)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnodecutoff could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnodecutoff.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbnodecutoff(prob, f_nodecutoff, p);
+}
+int XPRSaddcbnodecutoff (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p, int priority){
+    if (!__symbolic_XPRSaddcbnodecutoff) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbnodecutoff", (gpointer *) &__symbolic_XPRSaddcbnodecutoff)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbnodecutoff could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbnodecutoff.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbnodecutoff(prob, f_nodecutoff, p, priority);
+}
+int XPRSremovecbnodecutoff (XPRSprob prob, void ( * f_nodecutoff) (XPRSprob prob, void *vContext, int nodnum), void *p){
+    if (!__symbolic_XPRSremovecbnodecutoff) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbnodecutoff", (gpointer *) &__symbolic_XPRSremovecbnodecutoff)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbnodecutoff could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbnodecutoff.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbnodecutoff(prob, f_nodecutoff, p);
+}
+int XPRSsetcbintsol (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbintsol", (gpointer *) &__symbolic_XPRSsetcbintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbintsol.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbintsol(prob, f_intsol, p);
+}
+int XPRSgetcbintsol (XPRSprob prob, void ( ** f_intsol) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbintsol", (gpointer *) &__symbolic_XPRSgetcbintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbintsol.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbintsol(prob, f_intsol, p);
+}
+int XPRSaddcbintsol (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbintsol", (gpointer *) &__symbolic_XPRSaddcbintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbintsol.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbintsol(prob, f_intsol, p, priority);
+}
+int XPRSremovecbintsol (XPRSprob prob, void ( * f_intsol) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbintsol", (gpointer *) &__symbolic_XPRSremovecbintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbintsol.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbintsol(prob, f_intsol, p);
+}
+int XPRSsetcbpreintsol (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p){
+    if (!__symbolic_XPRSsetcbpreintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbpreintsol", (gpointer *) &__symbolic_XPRSsetcbpreintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbpreintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbpreintsol.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbpreintsol(prob, f_preintsol, p);
+}
+int XPRSgetcbpreintsol (XPRSprob prob, void ( ** f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void **p){
+    if (!__symbolic_XPRSgetcbpreintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbpreintsol", (gpointer *) &__symbolic_XPRSgetcbpreintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbpreintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbpreintsol.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbpreintsol(prob, f_preintsol, p);
+}
+int XPRSaddcbpreintsol (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p, int priority){
+    if (!__symbolic_XPRSaddcbpreintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbpreintsol", (gpointer *) &__symbolic_XPRSaddcbpreintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbpreintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbpreintsol.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbpreintsol(prob, f_preintsol, p, priority);
+}
+int XPRSremovecbpreintsol (XPRSprob prob, void ( * f_preintsol) (XPRSprob prob, void *vContext, int isheuristic, int *ifreject, double *cutoff), void *p){
+    if (!__symbolic_XPRSremovecbpreintsol) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbpreintsol", (gpointer *) &__symbolic_XPRSremovecbpreintsol)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbpreintsol could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbpreintsol.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbpreintsol(prob, f_preintsol, p);
+}
+int XPRSsetcbchgbranch (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p){
+    if (!__symbolic_XPRSsetcbchgbranch) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbchgbranch", (gpointer *) &__symbolic_XPRSsetcbchgbranch)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbchgbranch could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbchgbranch.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbchgbranch(prob, f_chgbranch, p);
+}
+int XPRSgetcbchgbranch (XPRSprob prob, void ( ** f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void **p){
+    if (!__symbolic_XPRSgetcbchgbranch) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbchgbranch", (gpointer *) &__symbolic_XPRSgetcbchgbranch)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbchgbranch could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbchgbranch.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbchgbranch(prob, f_chgbranch, p);
+}
+int XPRSaddcbchgbranch (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p, int priority){
+    if (!__symbolic_XPRSaddcbchgbranch) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbchgbranch", (gpointer *) &__symbolic_XPRSaddcbchgbranch)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbchgbranch could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbchgbranch.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbchgbranch(prob, f_chgbranch, p, priority);
+}
+int XPRSremovecbchgbranch (XPRSprob prob, void ( * f_chgbranch) (XPRSprob prob, void *vContext, int *entity, int *up, double *estdeg), void *p){
+    if (!__symbolic_XPRSremovecbchgbranch) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbchgbranch", (gpointer *) &__symbolic_XPRSremovecbchgbranch)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbchgbranch could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbchgbranch.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbchgbranch(prob, f_chgbranch, p);
+}
+int XPRSsetcbestimate (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p){
+    if (!__symbolic_XPRSsetcbestimate) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbestimate", (gpointer *) &__symbolic_XPRSsetcbestimate)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbestimate could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbestimate.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbestimate(prob, f_estimate, p);
+}
+int XPRSgetcbestimate (XPRSprob prob, int ( ** f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void **p){
+    if (!__symbolic_XPRSgetcbestimate) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbestimate", (gpointer *) &__symbolic_XPRSgetcbestimate)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbestimate could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbestimate.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbestimate(prob, f_estimate, p);
+}
+int XPRSaddcbestimate (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p, int priority){
+    if (!__symbolic_XPRSaddcbestimate) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbestimate", (gpointer *) &__symbolic_XPRSaddcbestimate)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbestimate could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbestimate.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbestimate(prob, f_estimate, p, priority);
+}
+int XPRSremovecbestimate (XPRSprob prob, int ( * f_estimate) (XPRSprob prob, void *vContext, int *iglsel, int *iprio, double *degbest, double *degworst, double *curval, int *ifupx, int *nglinf, double *degsum, int *nbr), void *p){
+    if (!__symbolic_XPRSremovecbestimate) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbestimate", (gpointer *) &__symbolic_XPRSremovecbestimate)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbestimate could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbestimate.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbestimate(prob, f_estimate, p);
+}
+int XPRSsetcbsepnode (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p){
+    if (!__symbolic_XPRSsetcbsepnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbsepnode", (gpointer *) &__symbolic_XPRSsetcbsepnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbsepnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbsepnode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbsepnode(prob, f_sepnode, p);
+}
+int XPRSgetcbsepnode (XPRSprob prob, int ( ** f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void **p){
+    if (!__symbolic_XPRSgetcbsepnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbsepnode", (gpointer *) &__symbolic_XPRSgetcbsepnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbsepnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbsepnode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbsepnode(prob, f_sepnode, p);
+}
+int XPRSaddcbsepnode (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p, int priority){
+    if (!__symbolic_XPRSaddcbsepnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbsepnode", (gpointer *) &__symbolic_XPRSaddcbsepnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbsepnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbsepnode.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbsepnode(prob, f_sepnode, p, priority);
+}
+int XPRSremovecbsepnode (XPRSprob prob, int ( * f_sepnode) (XPRSprob prob, void *vContext, int ibr, int iglsel, int ifup, double curval), void *p){
+    if (!__symbolic_XPRSremovecbsepnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbsepnode", (gpointer *) &__symbolic_XPRSremovecbsepnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbsepnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbsepnode.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbsepnode(prob, f_sepnode, p);
+}
+int XPRSsetcbmessage (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p){
+    if (!__symbolic_XPRSsetcbmessage) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbmessage", (gpointer *) &__symbolic_XPRSsetcbmessage)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbmessage could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbmessage.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbmessage(prob, f_message, p);
+}
+int XPRSgetcbmessage (XPRSprob prob, void ( ** f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void **p){
+    if (!__symbolic_XPRSgetcbmessage) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbmessage", (gpointer *) &__symbolic_XPRSgetcbmessage)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbmessage could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbmessage.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbmessage(prob, f_message, p);
+}
+int XPRSaddcbmessage (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p, int priority){
+    if (!__symbolic_XPRSaddcbmessage) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbmessage", (gpointer *) &__symbolic_XPRSaddcbmessage)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbmessage could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbmessage.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbmessage(prob, f_message, p, priority);
+}
+int XPRSremovecbmessage (XPRSprob prob, void ( * f_message) (XPRSprob prob, void *vContext, const char *msg, int len, int msgtype), void *p){
+    if (!__symbolic_XPRSremovecbmessage) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbmessage", (gpointer *) &__symbolic_XPRSremovecbmessage)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbmessage could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbmessage.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbmessage(prob, f_message, p);
+}
+int XPRSsetcbmipthread (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p){
+    if (!__symbolic_XPRSsetcbmipthread) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbmipthread", (gpointer *) &__symbolic_XPRSsetcbmipthread)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbmipthread could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbmipthread.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbmipthread(prob, f_mipthread, p);
+}
+int XPRSgetcbmipthread (XPRSprob prob, void ( ** f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void **p){
+    if (!__symbolic_XPRSgetcbmipthread) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbmipthread", (gpointer *) &__symbolic_XPRSgetcbmipthread)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbmipthread could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbmipthread.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbmipthread(prob, f_mipthread, p);
+}
+int XPRSaddcbmipthread (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p, int priority){
+    if (!__symbolic_XPRSaddcbmipthread) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbmipthread", (gpointer *) &__symbolic_XPRSaddcbmipthread)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbmipthread could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbmipthread.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbmipthread(prob, f_mipthread, p, priority);
+}
+int XPRSremovecbmipthread (XPRSprob prob, void ( * f_mipthread) (XPRSprob master_prob, void *vContext, XPRSprob prob), void *p){
+    if (!__symbolic_XPRSremovecbmipthread) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbmipthread", (gpointer *) &__symbolic_XPRSremovecbmipthread)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbmipthread could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbmipthread.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbmipthread(prob, f_mipthread, p);
+}
+int XPRSsetcbdestroymt (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSsetcbdestroymt) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbdestroymt", (gpointer *) &__symbolic_XPRSsetcbdestroymt)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbdestroymt could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbdestroymt.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbdestroymt(prob, f_destroymt, p);
+}
+int XPRSgetcbdestroymt (XPRSprob prob, void ( ** f_destroymt) (XPRSprob prob, void *vContext), void **p){
+    if (!__symbolic_XPRSgetcbdestroymt) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbdestroymt", (gpointer *) &__symbolic_XPRSgetcbdestroymt)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbdestroymt could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbdestroymt.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbdestroymt(prob, f_destroymt, p);
+}
+int XPRSaddcbdestroymt (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p, int priority){
+    if (!__symbolic_XPRSaddcbdestroymt) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbdestroymt", (gpointer *) &__symbolic_XPRSaddcbdestroymt)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbdestroymt could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbdestroymt.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbdestroymt(prob, f_destroymt, p, priority);
+}
+int XPRSremovecbdestroymt (XPRSprob prob, void ( * f_destroymt) (XPRSprob prob, void *vContext), void *p){
+    if (!__symbolic_XPRSremovecbdestroymt) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbdestroymt", (gpointer *) &__symbolic_XPRSremovecbdestroymt)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbdestroymt could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbdestroymt.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbdestroymt(prob, f_destroymt, p);
+}
+int XPRSsetcbnewnode (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p){
+    if (!__symbolic_XPRSsetcbnewnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbnewnode", (gpointer *) &__symbolic_XPRSsetcbnewnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnewnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnewnode.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbnewnode(prob, f_newnode, p);
+}
+int XPRSgetcbnewnode (XPRSprob prob, void ( ** f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void **p){
+    if (!__symbolic_XPRSgetcbnewnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbnewnode", (gpointer *) &__symbolic_XPRSgetcbnewnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnewnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnewnode.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbnewnode(prob, f_newnode, p);
+}
+int XPRSaddcbnewnode (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p, int priority){
+    if (!__symbolic_XPRSaddcbnewnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbnewnode", (gpointer *) &__symbolic_XPRSaddcbnewnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbnewnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbnewnode.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbnewnode(prob, f_newnode, p, priority);
+}
+int XPRSremovecbnewnode (XPRSprob prob, void ( * f_newnode) (XPRSprob prob, void *vContext, int parentnode, int newnode, int branch), void *p){
+    if (!__symbolic_XPRSremovecbnewnode) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbnewnode", (gpointer *) &__symbolic_XPRSremovecbnewnode)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbnewnode could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbnewnode.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbnewnode(prob, f_newnode, p);
+}
+int XPRSsetcbbariteration (XPRSprob prob, void ( * f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void *p){
+    if (!__symbolic_XPRSsetcbbariteration) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbbariteration", (gpointer *) &__symbolic_XPRSsetcbbariteration)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbbariteration could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbbariteration.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbbariteration(prob, f_bariteration, p);
+}
+int XPRSgetcbbariteration (XPRSprob prob, void ( ** f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void **p){
+    if (!__symbolic_XPRSgetcbbariteration) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbbariteration", (gpointer *) &__symbolic_XPRSgetcbbariteration)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbbariteration could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbbariteration.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbbariteration(prob, f_bariteration, p);
+}
+int XPRSaddcbbariteration (XPRSprob prob, void ( * f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void *p, int priority){
+    if (!__symbolic_XPRSaddcbbariteration) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbbariteration", (gpointer *) &__symbolic_XPRSaddcbbariteration)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbbariteration could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbbariteration.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbbariteration(prob, f_bariteration, p, priority);
+}
+int XPRSremovecbbariteration (XPRSprob prob, void ( * f_bariteration) (XPRSprob prob, void *vContext, int *barrier_action), void *p){
+    if (!__symbolic_XPRSremovecbbariteration) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbbariteration", (gpointer *) &__symbolic_XPRSremovecbbariteration)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbbariteration could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbbariteration.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbbariteration(prob, f_bariteration, p);
+}
+int XPRSsetcbchgbranchobject (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p){
+    if (!__symbolic_XPRSsetcbchgbranchobject) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbchgbranchobject", (gpointer *) &__symbolic_XPRSsetcbchgbranchobject)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbchgbranchobject could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbchgbranchobject.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbchgbranchobject(prob, f_chgbranchobject, p);
+}
+int XPRSgetcbchgbranchobject (XPRSprob prob, void ( ** f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void **p){
+    if (!__symbolic_XPRSgetcbchgbranchobject) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbchgbranchobject", (gpointer *) &__symbolic_XPRSgetcbchgbranchobject)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbchgbranchobject could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbchgbranchobject.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbchgbranchobject(prob, f_chgbranchobject, p);
+}
+int XPRSaddcbchgbranchobject (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p, int priority){
+    if (!__symbolic_XPRSaddcbchgbranchobject) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbchgbranchobject", (gpointer *) &__symbolic_XPRSaddcbchgbranchobject)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbchgbranchobject could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbchgbranchobject.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbchgbranchobject(prob, f_chgbranchobject, p, priority);
+}
+int XPRSremovecbchgbranchobject (XPRSprob prob, void ( * f_chgbranchobject) (XPRSprob prob, void *vContext, XPRSbranchobject obranch, XPRSbranchobject * p_newobject), void *p){
+    if (!__symbolic_XPRSremovecbchgbranchobject) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbchgbranchobject", (gpointer *) &__symbolic_XPRSremovecbchgbranchobject)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbchgbranchobject could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbchgbranchobject.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbchgbranchobject(prob, f_chgbranchobject, p);
+}
+int XPRSsetcbgapnotify (XPRSprob prob, void ( * f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void *p){
+    if (!__symbolic_XPRSsetcbgapnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbgapnotify", (gpointer *) &__symbolic_XPRSsetcbgapnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbgapnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbgapnotify.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbgapnotify(prob, f_gapnotify, p);
+}
+int XPRSgetcbgapnotify (XPRSprob prob, void ( ** f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void **p){
+    if (!__symbolic_XPRSgetcbgapnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbgapnotify", (gpointer *) &__symbolic_XPRSgetcbgapnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbgapnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbgapnotify.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbgapnotify(prob, f_gapnotify, p);
+}
+int XPRSaddcbgapnotify (XPRSprob prob, void ( * f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void *p, int priority){
+    if (!__symbolic_XPRSaddcbgapnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbgapnotify", (gpointer *) &__symbolic_XPRSaddcbgapnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbgapnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbgapnotify.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbgapnotify(prob, f_gapnotify, p, priority);
+}
+int XPRSremovecbgapnotify (XPRSprob prob, void ( * f_gapnotify) (XPRSprob prob, void *vContext, double *newRelGapNotifyTarget, double *newAbsGapNotifyTarget, double *newAbsGapNotifyObjTarget, double *newAbsGapNotifyBoundTarget), void *p){
+    if (!__symbolic_XPRSremovecbgapnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbgapnotify", (gpointer *) &__symbolic_XPRSremovecbgapnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbgapnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbgapnotify.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbgapnotify(prob, f_gapnotify, p);
+}
+int XPRSsetcbusersolnotify (XPRSprob prob, void ( * f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void *p){
+    if (!__symbolic_XPRSsetcbusersolnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSsetcbusersolnotify", (gpointer *) &__symbolic_XPRSsetcbusersolnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbusersolnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbusersolnotify.\n");
+        }
+    }
+    return __symbolic_XPRSsetcbusersolnotify(prob, f_usersolnotify, p);
+}
+int XPRSgetcbusersolnotify (XPRSprob prob, void ( ** f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void **p){
+    if (!__symbolic_XPRSgetcbusersolnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSgetcbusersolnotify", (gpointer *) &__symbolic_XPRSgetcbusersolnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbusersolnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbusersolnotify.\n");
+        }
+    }
+    return __symbolic_XPRSgetcbusersolnotify(prob, f_usersolnotify, p);
+}
+int XPRSaddcbusersolnotify (XPRSprob prob, void ( * f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void *p, int priority){
+    if (!__symbolic_XPRSaddcbusersolnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddcbusersolnotify", (gpointer *) &__symbolic_XPRSaddcbusersolnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddcbusersolnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddcbusersolnotify.\n");
+        }
+    }
+    return __symbolic_XPRSaddcbusersolnotify(prob, f_usersolnotify, p, priority);
+}
+int XPRSremovecbusersolnotify (XPRSprob prob, void ( * f_usersolnotify) (XPRSprob prob, void *vContext, int id, int status), void *p){
+    if (!__symbolic_XPRSremovecbusersolnotify) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSremovecbusersolnotify", (gpointer *) &__symbolic_XPRSremovecbusersolnotify)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSremovecbusersolnotify could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSremovecbusersolnotify.\n");
+        }
+    }
+    return __symbolic_XPRSremovecbusersolnotify(prob, f_usersolnotify, p);
+}
 int XPRSobjsa (XPRSprob prob, int ncols, const int mindex[], double lower[], double upper[]){
     if (!__symbolic_XPRSobjsa) {
         if (!module) {
@@ -4826,6 +6667,72 @@ int XPRS_ge_setcbmsghandler (int ( * f_msghandler) (XPRSobject vXPRSObject, void
         }
     }
     return __symbolic_XPRS_ge_setcbmsghandler(f_msghandler, p);
+}
+int XPRS_ge_getcbmsghandler (int ( ** f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void **p){
+    if (!__symbolic_XPRS_ge_getcbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_ge_getcbmsghandler", (gpointer *) &__symbolic_XPRS_ge_getcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_ge_getcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_ge_getcbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_ge_getcbmsghandler(f_msghandler, p);
+}
+int XPRS_ge_addcbmsghandler (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p, int priority){
+    if (!__symbolic_XPRS_ge_addcbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_ge_addcbmsghandler", (gpointer *) &__symbolic_XPRS_ge_addcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_ge_addcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_ge_addcbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_ge_addcbmsghandler(f_msghandler, p, priority);
+}
+int XPRS_ge_removecbmsghandler (int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
+    if (!__symbolic_XPRS_ge_removecbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_ge_removecbmsghandler", (gpointer *) &__symbolic_XPRS_ge_removecbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_ge_removecbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_ge_removecbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_ge_removecbmsghandler(f_msghandler, p);
 }
 int XPRS_ge_getlasterror (int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_ge_getlasterror) {
@@ -4937,28 +6844,6 @@ int XPRS_msp_probdetach (XPRSmipsolpool msp, XPRSprob prob){
     }
     return __symbolic_XPRS_msp_probdetach(msp, prob);
 }
-int XPRS_msp_setcbmsghandler (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
-    if (!__symbolic_XPRS_msp_setcbmsghandler) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRS_msp_setcbmsghandler", (gpointer *) &__symbolic_XPRS_msp_setcbmsghandler)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_msp_setcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_msp_setcbmsghandler.\n");
-        }
-    }
-    return __symbolic_XPRS_msp_setcbmsghandler(msp, f_msghandler, p);
-}
 int XPRS_msp_getsollist (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iRankAttrib, int bRankAscending, int iRankFirstIndex_Ob, int iRankLastIndex_Ob, int iSolutionIds_Zb[], int *nReturnedSolIds, int *nSols){
     if (!__symbolic_XPRS_msp_getsollist) {
         if (!module) {
@@ -5024,6 +6909,28 @@ int XPRS_msp_getsol (XPRSmipsolpool msp, int iSolutionId, int *iSolutionIdStatus
         }
     }
     return __symbolic_XPRS_msp_getsol(msp, iSolutionId, iSolutionIdStatus_, x, iColFirst, iColLast, nValuesReturned);
+}
+int XPRS_msp_getslack (XPRSmipsolpool msp, XPRSprob prob_to_rank_against, int iSolutionId, int *iSolutionIdStatus_, double slack[], int iRowFirst, int iRowLast, int *nValuesReturned){
+    if (!__symbolic_XPRS_msp_getslack) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_msp_getslack", (gpointer *) &__symbolic_XPRS_msp_getslack)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_msp_getslack could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_msp_getslack.\n");
+        }
+    }
+    return __symbolic_XPRS_msp_getslack(msp, prob_to_rank_against, iSolutionId, iSolutionIdStatus_, slack, iRowFirst, iRowLast, nValuesReturned);
 }
 int XPRS_msp_loadsol (XPRSmipsolpool msp, int *iSolutionId, const double x[], int nCols, const char *sSolutionName, int *bNameModifiedForUniqueness, int *iSolutionIdOfExistingDuplicatePreventedLoad){
     if (!__symbolic_XPRS_msp_loadsol) {
@@ -5597,6 +7504,94 @@ int XPRS_msp_getlasterror (XPRSmipsolpool msp, int *iMsgCode, char *_msg, int _i
     }
     return __symbolic_XPRS_msp_getlasterror(msp, iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
+int XPRS_msp_setcbmsghandler (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
+    if (!__symbolic_XPRS_msp_setcbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_msp_setcbmsghandler", (gpointer *) &__symbolic_XPRS_msp_setcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_msp_setcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_msp_setcbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_msp_setcbmsghandler(msp, f_msghandler, p);
+}
+int XPRS_msp_getcbmsghandler (XPRSmipsolpool msp, int ( ** f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void **p){
+    if (!__symbolic_XPRS_msp_getcbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_msp_getcbmsghandler", (gpointer *) &__symbolic_XPRS_msp_getcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_msp_getcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_msp_getcbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_msp_getcbmsghandler(msp, f_msghandler, p);
+}
+int XPRS_msp_addcbmsghandler (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p, int priority){
+    if (!__symbolic_XPRS_msp_addcbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_msp_addcbmsghandler", (gpointer *) &__symbolic_XPRS_msp_addcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_msp_addcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_msp_addcbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_msp_addcbmsghandler(msp, f_msghandler, p, priority);
+}
+int XPRS_msp_removecbmsghandler (XPRSmipsolpool msp, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
+    if (!__symbolic_XPRS_msp_removecbmsghandler) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRS_msp_removecbmsghandler", (gpointer *) &__symbolic_XPRS_msp_removecbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_msp_removecbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_msp_removecbmsghandler.\n");
+        }
+    }
+    return __symbolic_XPRS_msp_removecbmsghandler(msp, f_msghandler, p);
+}
 int XPRS_nml_create (XPRSnamelist * r_nl){
     if (!__symbolic_XPRS_nml_create) {
         if (!module) {
@@ -5817,28 +7812,6 @@ int XPRS_nml_getlasterror (XPRSnamelist nml, int *iMsgCode, char *_msg, int _iSt
     }
     return __symbolic_XPRS_nml_getlasterror(nml, iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_nml_setcbmsghandler (XPRSnamelist nml, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
-    if (!__symbolic_XPRS_nml_setcbmsghandler) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRS_nml_setcbmsghandler", (gpointer *) &__symbolic_XPRS_nml_setcbmsghandler)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_nml_setcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_nml_setcbmsghandler.\n");
-        }
-    }
-    return __symbolic_XPRS_nml_setcbmsghandler(nml, f_msghandler, p);
-}
 int XPRSgetqrowcoeff (XPRSprob prob, int irow, int icol, int jcol, double *dval){
     if (!__symbolic_XPRSgetqrowcoeff) {
         if (!module) {
@@ -5971,6 +7944,28 @@ int XPRSaddqmatrix (XPRSprob prob, int irow, int nqtr, const int mqc1[], const i
     }
     return __symbolic_XPRSaddqmatrix(prob, irow, nqtr, mqc1, mqc2, dqew);
 }
+int XPRSaddqmatrix64 (XPRSprob prob, int irow, long nqtr, const int mqc1[], const int mqc2[], const double dqew[]){
+    if (!__symbolic_XPRSaddqmatrix64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSaddqmatrix64", (gpointer *) &__symbolic_XPRSaddqmatrix64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSaddqmatrix64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSaddqmatrix64.\n");
+        }
+    }
+    return __symbolic_XPRSaddqmatrix64(prob, irow, nqtr, mqc1, mqc2, dqew);
+}
 int XPRSdelqmatrix (XPRSprob prob, int irow){
     if (!__symbolic_XPRSdelqmatrix) {
         if (!module) {
@@ -6015,6 +8010,28 @@ int XPRSloadqcqp (XPRSprob prob, const char *_sprobname, int ncols, int nrows, c
     }
     return __symbolic_XPRSloadqcqp(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval, qmn, qcrows, qcnquads, qcmqcol1, qcmqcol2, qcdqval);
 }
+int XPRSloadqcqp64 (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _mstart[], const int _mnel[], const int _mrwind[], const double _dmatval[], const double _dlb[], const double _dub[], long nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const long qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[]){
+    if (!__symbolic_XPRSloadqcqp64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSloadqcqp64", (gpointer *) &__symbolic_XPRSloadqcqp64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSloadqcqp64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSloadqcqp64.\n");
+        }
+    }
+    return __symbolic_XPRSloadqcqp64(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _mstart, _mnel, _mrwind, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval, qmn, qcrows, qcnquads, qcmqcol1, qcmqcol2, qcdqval);
+}
 int XPRSloadqcqpglobal (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const int _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], int nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const int qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const int msstart[], const int mscols[], const double dref[]){
     if (!__symbolic_XPRSloadqcqpglobal) {
         if (!module) {
@@ -6036,6 +8053,28 @@ int XPRSloadqcqpglobal (XPRSprob prob, const char *_sprobname, int ncols, int nr
         }
     }
     return __symbolic_XPRSloadqcqpglobal(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _matbeg, _matcnt, _matrow, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval, qmn, qcrows, qcnquads, qcmqcol1, qcmqcol2, qcdqval, ngents, nsets, qgtype, mgcols, dlim, qstype, msstart, mscols, dref);
+}
+int XPRSloadqcqpglobal64 (XPRSprob prob, const char *_sprobname, int ncols, int nrows, const char _srowtypes[], const double _drhs[], const double _drange[], const double _dobj[], const long _matbeg[], const int _matcnt[], const int _matrow[], const double _dmatval[], const double _dlb[], const double _dub[], long nquads, const int _mqcol1[], const int _mqcol2[], const double _dqval[], int qmn, const int qcrows[], const long qcnquads[], const int qcmqcol1[], const int qcmqcol2[], const double qcdqval[], const int ngents, const int nsets, const char qgtype[], const int mgcols[], const double dlim[], const char qstype[], const long msstart[], const int mscols[], const double dref[]){
+    if (!__symbolic_XPRSloadqcqpglobal64) {
+        if (!module) {
+            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
+            if (!load_module()) {
+                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
+                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
+                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
+             );
+            } else {
+                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
+            }
+        }
+        if (!g_module_symbol(module, "XPRSloadqcqpglobal64", (gpointer *) &__symbolic_XPRSloadqcqpglobal64)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSloadqcqpglobal64 could not be found! Exiting your program to avoid a segfault.\n");
+            exit(1);
+        } else {
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSloadqcqpglobal64.\n");
+        }
+    }
+    return __symbolic_XPRSloadqcqpglobal64(prob, _sprobname, ncols, nrows, _srowtypes, _drhs, _drange, _dobj, _matbeg, _matcnt, _matrow, _dmatval, _dlb, _dub, nquads, _mqcol1, _mqcol2, _dqval, qmn, qcrows, qcnquads, qcmqcol1, qcmqcol2, qcdqval, ngents, nsets, qgtype, mgcols, dlim, qstype, msstart, mscols, dref);
 }
 int XPRS_mse_create (XPRSmipsolenum * mse){
     if (!__symbolic_XPRS_mse_create) {
@@ -6367,28 +8406,6 @@ int XPRS_mse_getlasterror (XPRSmipsolenum mse, int *iMsgCode, char *_msg, int _i
     }
     return __symbolic_XPRS_mse_getlasterror(mse, iMsgCode, _msg, _iStringBufferBytes, _iBytesInInternalString);
 }
-int XPRS_mse_setcbmsghandler (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
-    if (!__symbolic_XPRS_mse_setcbmsghandler) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRS_mse_setcbmsghandler", (gpointer *) &__symbolic_XPRS_mse_setcbmsghandler)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_setcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_setcbmsghandler.\n");
-        }
-    }
-    return __symbolic_XPRS_mse_setcbmsghandler(mse, f_msghandler, p);
-}
 int XPRS_mse_setsolbasename (XPRSmipsolenum mse, const char *sSolutionBaseName){
     if (!__symbolic_XPRS_mse_setsolbasename) {
         if (!module) {
@@ -6477,8 +8494,8 @@ int XPRS_mse_getcbgetsolutiondiff (XPRSmipsolenum mse, int ( ** f_mse_getsolutio
     }
     return __symbolic_XPRS_mse_getcbgetsolutiondiff(mse, f_mse_getsolutiondiff, p);
 }
-int XPRSinitializenlphessian (XPRSprob prob, const int mstart[], const int mcol[]){
-    if (!__symbolic_XPRSinitializenlphessian) {
+int XPRS_mse_addcbgetsolutiondiff (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p, int priority){
+    if (!__symbolic_XPRS_mse_addcbgetsolutiondiff) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
             if (!load_module()) {
@@ -6490,17 +8507,17 @@ int XPRSinitializenlphessian (XPRSprob prob, const int mstart[], const int mcol[
                 DEBUG_PRINT("lazylpsolverlibs: Success!\n");
             }
         }
-        if (!g_module_symbol(module, "XPRSinitializenlphessian", (gpointer *) &__symbolic_XPRSinitializenlphessian)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSinitializenlphessian could not be found! Exiting your program to avoid a segfault.\n");
+        if (!g_module_symbol(module, "XPRS_mse_addcbgetsolutiondiff", (gpointer *) &__symbolic_XPRS_mse_addcbgetsolutiondiff)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_addcbgetsolutiondiff could not be found! Exiting your program to avoid a segfault.\n");
             exit(1);
         } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSinitializenlphessian.\n");
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_addcbgetsolutiondiff.\n");
         }
     }
-    return __symbolic_XPRSinitializenlphessian(prob, mstart, mcol);
+    return __symbolic_XPRS_mse_addcbgetsolutiondiff(mse, f_mse_getsolutiondiff, p, priority);
 }
-int XPRSinitializenlphessian_indexpairs (XPRSprob prob, int nqcelem, const int mcol1[], const int mcol2[]){
-    if (!__symbolic_XPRSinitializenlphessian_indexpairs) {
+int XPRS_mse_removecbgetsolutiondiff (XPRSmipsolenum mse, int ( * f_mse_getsolutiondiff) (XPRSmipsolenum mse, void *vContext, int nCols, int iSolutionId_1, int iElemCount_1, double dMipObj_1, const double Vals_1[], const int iSparseIndices_1[], int iSolutionId_2, int iElemCount_2, double dMipObj_2, const double Vals_2[], const int iSparseIndices_2[], double *dDiffMetric), void *p){
+    if (!__symbolic_XPRS_mse_removecbgetsolutiondiff) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
             if (!load_module()) {
@@ -6512,17 +8529,17 @@ int XPRSinitializenlphessian_indexpairs (XPRSprob prob, int nqcelem, const int m
                 DEBUG_PRINT("lazylpsolverlibs: Success!\n");
             }
         }
-        if (!g_module_symbol(module, "XPRSinitializenlphessian_indexpairs", (gpointer *) &__symbolic_XPRSinitializenlphessian_indexpairs)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSinitializenlphessian_indexpairs could not be found! Exiting your program to avoid a segfault.\n");
+        if (!g_module_symbol(module, "XPRS_mse_removecbgetsolutiondiff", (gpointer *) &__symbolic_XPRS_mse_removecbgetsolutiondiff)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_removecbgetsolutiondiff could not be found! Exiting your program to avoid a segfault.\n");
             exit(1);
         } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSinitializenlphessian_indexpairs.\n");
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_removecbgetsolutiondiff.\n");
         }
     }
-    return __symbolic_XPRSinitializenlphessian_indexpairs(prob, nqcelem, mcol1, mcol2);
+    return __symbolic_XPRS_mse_removecbgetsolutiondiff(mse, f_mse_getsolutiondiff, p);
 }
-int XPRSsetcbnlpevaluate (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void *p){
-    if (!__symbolic_XPRSsetcbnlpevaluate) {
+int XPRS_mse_setcbmsghandler (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
+    if (!__symbolic_XPRS_mse_setcbmsghandler) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
             if (!load_module()) {
@@ -6534,17 +8551,17 @@ int XPRSsetcbnlpevaluate (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, vo
                 DEBUG_PRINT("lazylpsolverlibs: Success!\n");
             }
         }
-        if (!g_module_symbol(module, "XPRSsetcbnlpevaluate", (gpointer *) &__symbolic_XPRSsetcbnlpevaluate)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnlpevaluate could not be found! Exiting your program to avoid a segfault.\n");
+        if (!g_module_symbol(module, "XPRS_mse_setcbmsghandler", (gpointer *) &__symbolic_XPRS_mse_setcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_setcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
             exit(1);
         } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnlpevaluate.\n");
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_setcbmsghandler.\n");
         }
     }
-    return __symbolic_XPRSsetcbnlpevaluate(prob, f_evaluate, p);
+    return __symbolic_XPRS_mse_setcbmsghandler(mse, f_msghandler, p);
 }
-int XPRSsetcbnlpgradient (XPRSprob prob, void ( * f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void *p){
-    if (!__symbolic_XPRSsetcbnlpgradient) {
+int XPRS_mse_getcbmsghandler (XPRSmipsolenum mse, int ( ** f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void **p){
+    if (!__symbolic_XPRS_mse_getcbmsghandler) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
             if (!load_module()) {
@@ -6556,17 +8573,17 @@ int XPRSsetcbnlpgradient (XPRSprob prob, void ( * f_gradient) (XPRSprob prob, vo
                 DEBUG_PRINT("lazylpsolverlibs: Success!\n");
             }
         }
-        if (!g_module_symbol(module, "XPRSsetcbnlpgradient", (gpointer *) &__symbolic_XPRSsetcbnlpgradient)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnlpgradient could not be found! Exiting your program to avoid a segfault.\n");
+        if (!g_module_symbol(module, "XPRS_mse_getcbmsghandler", (gpointer *) &__symbolic_XPRS_mse_getcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_getcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
             exit(1);
         } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnlpgradient.\n");
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_getcbmsghandler.\n");
         }
     }
-    return __symbolic_XPRSsetcbnlpgradient(prob, f_gradient, p);
+    return __symbolic_XPRS_mse_getcbmsghandler(mse, f_msghandler, p);
 }
-int XPRSsetcbnlphessian (XPRSprob prob, void ( * f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void *p){
-    if (!__symbolic_XPRSsetcbnlphessian) {
+int XPRS_mse_addcbmsghandler (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p, int priority){
+    if (!__symbolic_XPRS_mse_addcbmsghandler) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
             if (!load_module()) {
@@ -6578,17 +8595,17 @@ int XPRSsetcbnlphessian (XPRSprob prob, void ( * f_hessian) (XPRSprob prob, void
                 DEBUG_PRINT("lazylpsolverlibs: Success!\n");
             }
         }
-        if (!g_module_symbol(module, "XPRSsetcbnlphessian", (gpointer *) &__symbolic_XPRSsetcbnlphessian)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbnlphessian could not be found! Exiting your program to avoid a segfault.\n");
+        if (!g_module_symbol(module, "XPRS_mse_addcbmsghandler", (gpointer *) &__symbolic_XPRS_mse_addcbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_addcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
             exit(1);
         } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbnlphessian.\n");
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_addcbmsghandler.\n");
         }
     }
-    return __symbolic_XPRSsetcbnlphessian(prob, f_hessian, p);
+    return __symbolic_XPRS_mse_addcbmsghandler(mse, f_msghandler, p, priority);
 }
-int XPRSgetcbnlpevaluate (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, const double x[], double *v), void **p){
-    if (!__symbolic_XPRSgetcbnlpevaluate) {
+int XPRS_mse_removecbmsghandler (XPRSmipsolenum mse, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
+    if (!__symbolic_XPRS_mse_removecbmsghandler) {
         if (!module) {
             DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
             if (!load_module()) {
@@ -6600,124 +8617,14 @@ int XPRSgetcbnlpevaluate (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, v
                 DEBUG_PRINT("lazylpsolverlibs: Success!\n");
             }
         }
-        if (!g_module_symbol(module, "XPRSgetcbnlpevaluate", (gpointer *) &__symbolic_XPRSgetcbnlpevaluate)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnlpevaluate could not be found! Exiting your program to avoid a segfault.\n");
+        if (!g_module_symbol(module, "XPRS_mse_removecbmsghandler", (gpointer *) &__symbolic_XPRS_mse_removecbmsghandler)) {
+            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_mse_removecbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
             exit(1);
         } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnlpevaluate.\n");
+            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_mse_removecbmsghandler.\n");
         }
     }
-    return __symbolic_XPRSgetcbnlpevaluate(prob, f_evaluate, p);
-}
-int XPRSgetcbnlpgradient (XPRSprob prob, void ( ** f_gradient) (XPRSprob prob, void *vContext, const double x[], double g[]), void **p){
-    if (!__symbolic_XPRSgetcbnlpgradient) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbnlpgradient", (gpointer *) &__symbolic_XPRSgetcbnlpgradient)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnlpgradient could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnlpgradient.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbnlpgradient(prob, f_gradient, p);
-}
-int XPRSgetcbnlphessian (XPRSprob prob, void ( ** f_hessian) (XPRSprob prob, void *vContext, const double x[], const int mstart[], const int mqcol[], double dqe[]), void **p){
-    if (!__symbolic_XPRSgetcbnlphessian) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbnlphessian", (gpointer *) &__symbolic_XPRSgetcbnlphessian)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbnlphessian could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbnlphessian.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbnlphessian(prob, f_hessian, p);
-}
-int XPRSresetnlp (XPRSprob prob){
-    if (!__symbolic_XPRSresetnlp) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSresetnlp", (gpointer *) &__symbolic_XPRSresetnlp)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSresetnlp could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSresetnlp.\n");
-        }
-    }
-    return __symbolic_XPRSresetnlp(prob);
-}
-int XPRSsetcbbariteration (XPRSprob prob, void ( * f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void *p){
-    if (!__symbolic_XPRSsetcbbariteration) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSsetcbbariteration", (gpointer *) &__symbolic_XPRSsetcbbariteration)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSsetcbbariteration could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSsetcbbariteration.\n");
-        }
-    }
-    return __symbolic_XPRSsetcbbariteration(prob, f_evaluate, p);
-}
-int XPRSgetcbbariteration (XPRSprob prob, void ( ** f_evaluate) (XPRSprob prob, void *vContext, int *barrier_action), void **p){
-    if (!__symbolic_XPRSgetcbbariteration) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRSgetcbbariteration", (gpointer *) &__symbolic_XPRSgetcbbariteration)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRSgetcbbariteration could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRSgetcbbariteration.\n");
-        }
-    }
-    return __symbolic_XPRSgetcbbariteration(prob, f_evaluate, p);
+    return __symbolic_XPRS_mse_removecbmsghandler(mse, f_msghandler, p);
 }
 int XPRS_bo_create (XPRSbranchobject * p_object, XPRSprob prob, int isoriginal){
     if (!__symbolic_XPRS_bo_create) {
@@ -7004,28 +8911,6 @@ int XPRS_bo_getid (XPRSbranchobject obranch, int *p_id){
         }
     }
     return __symbolic_XPRS_bo_getid(obranch, p_id);
-}
-int XPRS_bo_setcbmsghandler (XPRSbranchobject obranch, int ( * f_msghandler) (XPRSobject vXPRSObject, void *vUserContext, void *vSystemThreadId, const char *sMsg, int iMsgType, int iMsgCode), void *p){
-    if (!__symbolic_XPRS_bo_setcbmsghandler) {
-        if (!module) {
-            DEBUG_PRINT("lazylpsolverlibs: looking for a suitable library in the standard system path\n");
-            if (!load_module()) {
-                fprintf(stderr, "lazylpsolverlibs: Library lookup failed! Suggestions:\n"
-                    " - point the LAZYLPSOLVERLIBS_XPRS_LIB environment variable to the full path of the library\n"
-                    " - or more secure, symlink /usr/lib/libxprs.so to the full path of the library (you need root access).\n"
-             );
-            } else {
-                DEBUG_PRINT("lazylpsolverlibs: Success!\n");
-            }
-        }
-        if (!g_module_symbol(module, "XPRS_bo_setcbmsghandler", (gpointer *) &__symbolic_XPRS_bo_setcbmsghandler)) {
-            fprintf(stderr, "lazylpsolverlibs: the symbol XPRS_bo_setcbmsghandler could not be found! Exiting your program to avoid a segfault.\n");
-            exit(1);
-        } else {
-            DEBUG_PRINT("lazylpsolverlibs: sucessfully imported the symbol XPRS_bo_setcbmsghandler.\n");
-        }
-    }
-    return __symbolic_XPRS_bo_setcbmsghandler(obranch, f_msghandler, p);
 }
 int XPRS_bo_getlasterror (XPRSbranchobject obranch, int *iMsgCode, char *_msg, int _iStringBufferBytes, int *_iBytesInInternalString){
     if (!__symbolic_XPRS_bo_getlasterror) {
