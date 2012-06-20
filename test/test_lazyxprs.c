@@ -86,15 +86,18 @@ int main()
    char banner[256];
    int istudent;
 
-   /* Delete and define log file */
-   /*   remove(sLogFile); */
-   /*   if (nReturn=XPRSsetlogfile(probg,sLogFile)) errormsg("XPRSsetlogfile",__LINE__,nReturn); */
-
    /* Initialise Optimizer */
    nReturn=XPRSinit(NULL);
-   XPRSgetbanner(banner); printf("%s",banner);
-   if (nReturn == 8) return(1);
+   if (nReturn != 0 && nReturn != 32) {
+      XPRSgetlicerrmsg(banner, sizeof(banner));
+      puts(banner);
+      return(1);
+   }
    istudent = (nReturn == 32); /* Check for student license */
+
+   /* Output Banner */
+   banner[0]=0;
+   XPRSgetbanner(banner); puts(banner);
 
    nReturn=XPRScreateprob(&probg);
    if (nReturn != 0 && nReturn != 32) errormsg("XPRScreateprob",__LINE__,nReturn);
