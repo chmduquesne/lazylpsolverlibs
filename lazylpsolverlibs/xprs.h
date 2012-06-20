@@ -15,6 +15,13 @@
 #else
 #define XPRS_CC
 #endif
+#if defined(_WIN32)
+#define XPRSint64 __int64
+#elif defined(__LP64__) || defined(_LP64) || defined(__ILP64__) || defined(_ILP64)
+#define XPRSint64 long
+#else
+#define XPRSint64 long long
+#endif
 typedef struct XPRSobject_s *XPRSobject;
 typedef struct xo_prob_struct *XPRSprob;
 typedef struct XPRSglobalenv_s *XPRSglobalenv;
@@ -25,12 +32,11 @@ typedef struct XPRSmipsolenum_s *XPRSmipsolenum;
 typedef struct XPRSprobperturber_s *XPRSprobperturber;
 typedef struct xo_user_branch_entity_s *XPRSbranchobject;
 typedef struct PoolCut *XPRScut;
+typedef struct xo_TreeNode_s *XPRSnode;
 #define XPRS_PLUSINFINITY 1.0e+20
 #define XPRS_MINUSINFINITY -1.0e+20
 #define XPRS_MAXINT 2147483647
-#define XPRS_OBJ_MINIMIZE 1
-#define XPRS_OBJ_MAXIMIZE -1
-#define XPVERSION 20
+#define XPVERSION 23
 #define XPRS_MPSRHSNAME 6001
 #define XPRS_MPSOBJNAME 6002
 #define XPRS_MPSRANGENAME 6003
@@ -45,8 +51,6 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_ETATOL 7007
 #define XPRS_RELPIVOTTOL 7008
 #define XPRS_MIPTOL 7009
-#define XPRS_DEGRADEFACTOR 7010
-#define XPRS_MIPTARGET 7011
 #define XPRS_MIPADDCUTOFF 7012
 #define XPRS_MIPABSCUTOFF 7013
 #define XPRS_MIPRELCUTOFF 7014
@@ -63,6 +67,8 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_ELIMTOL 7042
 #define XPRS_PERTURB 7044
 #define XPRS_MARKOWITZTOL 7047
+#define XPRS_MIPABSGAPNOTIFY 7064
+#define XPRS_MIPRELGAPNOTIFY 7065
 #define XPRS_PPFACTOR 7069
 #define XPRS_SBEFFORT 7086
 #define XPRS_HEURDIVERANDOMIZE 7089
@@ -72,9 +78,15 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_INDLINBIGM 7099
 #define XPRS_TREEMEMORYSAVINGTARGET 7100
 #define XPRS_GLOBALFILEBIAS 7101
+#define XPRS_INDPRELINBIGM 7102
+#define XPRS_RELAXTREEMEMORYLIMIT 7105
+#define XPRS_MIPABSGAPNOTIFYOBJ 7108
+#define XPRS_MIPABSGAPNOTIFYBOUND 7109
+#define XPRS_PRESOLVEMAXGROW 7110
+#define XPRS_CROSSOVERRELPIVOTTOL 7113
+#define XPRS_CROSSOVERRELPIVOTTOLSAFE 7114
 #define XPRS_EXTRAROWS 8004
 #define XPRS_EXTRACOLS 8005
-#define XPRS_EXTRAELEMS 8006
 #define XPRS_LPITERLIMIT 8007
 #define XPRS_LPLOG 8009
 #define XPRS_SCALING 8010
@@ -86,7 +98,6 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MAXNODE 8018
 #define XPRS_MAXTIME 8020
 #define XPRS_MAXMIPSOL 8021
-#define XPRS_KEEPMIPSOL 8022
 #define XPRS_DEFAULTALG 8023
 #define XPRS_VARSELECTION 8025
 #define XPRS_NODESELECTION 8026
@@ -96,7 +107,7 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MPSECHO 8032
 #define XPRS_MAXPAGELINES 8034
 #define XPRS_OUTPUTLOG 8035
-#define XPRS_EXTRAPRESOLVE 8037
+#define XPRS_BARSOLUTION 8038
 #define XPRS_CACHESIZE 8043
 #define XPRS_CROSSOVER 8044
 #define XPRS_BARITERLIMIT 8045
@@ -110,7 +121,6 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_VERSION 8061
 #define XPRS_BIGMMETHOD 8068
 #define XPRS_MPSNAMELENGTH 8071
-#define XPRS_SOLUTIONFILE 8072
 #define XPRS_PRESOLVEOPS 8077
 #define XPRS_MIPPRESOLVE 8078
 #define XPRS_MIPTHREADS 8079
@@ -118,7 +128,11 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_BREADTHFIRST 8082
 #define XPRS_AUTOPERTURB 8084
 #define XPRS_DENSECOLLIMIT 8086
+#define XPRS_CALLBACKFROMMASTERTHREAD 8090
+#define XPRS_MAXMCOEFFBUFFERELEMS 8091
 #define XPRS_CUTFREQ 8116
+#define XPRS_SYMSELECT 8117
+#define XPRS_SYMMETRY 8118
 #define XPRS_TRACE 8130
 #define XPRS_MAXIIS 8131
 #define XPRS_CPUTIME 8133
@@ -155,13 +169,14 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_HEURSELECT 8178
 #define XPRS_BARSTART 8180
 #define XPRS_EXTRASETS 8190
-#define XPRS_EXTRASETELEMS 8191
 #define XPRS_FEASIBILITYPUMP 8193
 #define XPRS_PRECOEFELIM 8194
 #define XPRS_PREDOMCOL 8195
 #define XPRS_HEURSEARCHFREQ 8196
 #define XPRS_HEURDIVESPEEDUP 8197
 #define XPRS_SBESTIMATE 8198
+#define XPRS_MAXCHECKSONMAXTIME 8203
+#define XPRS_MAXCHECKSONMAXCUTTIME 8204
 #define XPRS_HISTORYCOSTS 8206
 #define XPRS_ALGAFTERCROSSOVER 8208
 #define XPRS_LINELENGTH 8209
@@ -188,14 +203,25 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MAXLOCALBACKTRACK 8257
 #define XPRS_BACKTRACKTIE 8266
 #define XPRS_BRANCHDISJ 8267
+#define XPRS_MIPFRACREDUCE 8270
 #define XPRS_LPTHREADS 8274
 #define XPRS_MAXSCALEFACTOR 8275
 #define XPRS_HEURTHREADS 8276
 #define XPRS_THREADS 8278
+#define XPRS_HEURBEFORELP 8280
 #define XPRS_PREDOMROW 8281
 #define XPRS_BRANCHSTRUCTURAL 8282
 #define XPRS_QUADRATICUNSHIFT 8284
 #define XPRS_BARPRESOLVEOPS 8286
+#define XPRS_QSIMPLEXOPS 8288
+#define XPRS_CONFLICTCUTS 8292
+#define XPRS_CORESPERCPU 8296
+#define XPRS_SLEEPONTHREADWAIT 8302
+#define XPRS_PREDUPROW 8307
+#define XPRS_CPUPLATFORM 8312
+#define XPRS_EXTRAELEMS 8006
+#define XPRS_EXTRAPRESOLVE 8037
+#define XPRS_EXTRASETELEMS 8191
 #define XPRS_MATRIXNAME 3001
 #define XPRS_BOUNDNAME 3002
 #define XPRS_OBJNAME 3003
@@ -206,10 +232,13 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MIPOBJVAL 2003
 #define XPRS_BESTBOUND 2004
 #define XPRS_OBJRHS 2005
+#define XPRS_MIPBESTOBJVAL 2006
 #define XPRS_OBJSENSE 2008
 #define XPRS_BRANCHVALUE 2009
 #define XPRS_PENALTYVALUE 2061
 #define XPRS_CURRMIPCUTOFF 2062
+#define XPRS_BARCONDA 2063
+#define XPRS_BARCONDD 2064
 #define XPRS_BARPRIMALOBJ 4001
 #define XPRS_BARDUALOBJ 4002
 #define XPRS_BARPRIMALINF 4003
@@ -217,8 +246,6 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_BARCGAP 4005
 #define XPRS_ROWS 1001
 #define XPRS_SETS 1004
-#define XPRS_SETMEMBERS 1005
-#define XPRS_ELEMS 1006
 #define XPRS_PRIMALINFEAS 1007
 #define XPRS_DUALINFEAS 1008
 #define XPRS_SIMPLEXITER 1009
@@ -233,7 +260,6 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_COLS 1018
 #define XPRS_SPAREROWS 1019
 #define XPRS_SPARECOLS 1020
-#define XPRS_SPAREELEMS 1021
 #define XPRS_SPAREMIPENTS 1022
 #define XPRS_ERRORCODE 1023
 #define XPRS_MIPINFEAS 1024
@@ -245,26 +271,42 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MIPENTS 1032
 #define XPRS_BRANCHVAR 1036
 #define XPRS_MIPTHREADID 1037
+#define XPRS_ALGORITHM 1049
 #define XPRS_ORIGINALROWS 1124
+#define XPRS_ORIGINALQELEMS 1157
 #define XPRS_STOPSTATUS 1179
+#define XPRS_ORIGINALMIPENTS 1191
+#define XPRS_ORIGINALSETS 1194
 #define XPRS_SPARESETS 1203
-#define XPRS_SPARESETELEMS 1204
+#define XPRS_CHECKSONMAXTIME 1208
+#define XPRS_CHECKSONMAXCUTTIME 1209
 #define XPRS_ORIGINALCOLS 1214
 #define XPRS_QCELEMS 1232
 #define XPRS_QCONSTRAINTS 1234
-#define XPRS_NLPHESSIANELEMS 1243
+#define XPRS_ORIGINALQCELEMS 1237
+#define XPRS_ORIGINALQCONSTRAINTS 1239
+#define XPRS_PEAKTOTALTREEMEMORYUSAGE 1240
 #define XPRS_CURRENTNODE 1248
 #define XPRS_TREEMEMORYUSAGE 1251
 #define XPRS_GLOBALFILESIZE 1252
 #define XPRS_GLOBALFILEUSAGE 1253
 #define XPRS_INDICATORS 1254
+#define XPRS_ORIGINALINDICATORS 1255
 #define XPRS_CORESDETECTED 1260
+#define XPRS_BARSING 1281
+#define XPRS_BARSINGR 1282
+#define XPRS_PRESOLVEINDEX 1284
 #define XPRS_BARITER 5001
 #define XPRS_BARAASIZE 5002
 #define XPRS_BARLSIZE 5003
 #define XPRS_BARDENSECOL 5004
 #define XPRS_BARCROSSOVER 5005
-#define XPRS_IIS 1031
+#define XPRS_IIS XPRS_NUMIIS
+#define XPRS_SETMEMBERS 1005
+#define XPRS_ELEMS 1006
+#define XPRS_SPAREELEMS 1021
+#define XPRS_ORIGINALSETMEMBERS 1195
+#define XPRS_SPARESETELEMS 1204
 #define XPRS_MSP_DEFAULTUSERSOLFEASTOL 6209
 #define XPRS_MSP_DEFAULTUSERSOLMIPTOL 6210
 #define XPRS_MSP_SOL_FEASTOL 6402
@@ -272,6 +314,8 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MSP_DUPLICATESOLUTIONSPOLICY 6203
 #define XPRS_MSP_INCLUDEPROBNAMEINLOGGING 6211
 #define XPRS_MSP_WRITESLXSOLLOGGING 6212
+#define XPRS_MSP_ENABLESLACKSTORAGE 6213
+#define XPRS_MSP_OUTPUTLOG 6214
 #define XPRS_MSP_SOL_BITFIELDSUSR 6406
 #define XPRS_MSP_SOLPRB_OBJ 6500
 #define XPRS_MSP_SOLPRB_INFSUM_PRIMAL 6502
@@ -332,6 +376,7 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MSE_CALLBACKCULLSOLS_DIVERSITY 6602
 #define XPRS_MSE_CALLBACKCULLSOLS_MODOBJECT 6603
 #define XPRS_MSE_OPTIMIZEDIVERSITY 6607
+#define XPRS_MSE_OUTPUTLOG 6610
 #define XPRS_MSE_DIVERSITYSUM 6608
 #define XPRS_MSE_SOLUTIONS 6600
 #define XPRS_MSE_METRIC_MIPOBJECT 6604
@@ -340,12 +385,20 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_PTB_PERMUTE_INTENSITY_ROW 6702
 #define XPRS_PTB_PERMUTE_INTENSITY_COL 6703
 #define XPRS_PTB_SHIFTSCALE_COLS_INTENSITY 6722
+#define XPRS_PTB_SHIFTSCALE_COLS_MAXRANGEFORCOMPLEMENTING 6729
+#define XPRS_PTB_SHIFTSCALE_ROWS_INTENSITY 6762
 #define XPRS_PTB_PERMUTE_ACTIVE 6700
 #define XPRS_PTB_PERMUTE_SEEDLAST 6701
 #define XPRS_PTB_PERTURB_COST2_ACTIVE 6710
 #define XPRS_PTB_PERTURB_COST2_SEEDLAST 6711
 #define XPRS_PTB_SHIFTSCALE_COLS_ACTIVE 6720
 #define XPRS_PTB_SHIFTSCALE_COLS_SEEDLAST 6721
+#define XPRS_PTB_SHIFTSCALE_COLS_SHIFT_ACTIVE_I 6725
+#define XPRS_PTB_SHIFTSCALE_COLS_NEGATE_ACTIVE_I 6726
+#define XPRS_PTB_SHIFTSCALE_COLS_COMPLEMENT_ACTIVE_I 6727
+#define XPRS_PTB_SHIFTSCALE_COLS_COMPLEMENT_ACTIVE_B 6728
+#define XPRS_PTB_SHIFTSCALE_ROWS_ACTIVE 6760
+#define XPRS_PTB_SHIFTSCALE_ROWS_SEEDLAST 6761
 #define XPRS_PTB_PERTURB_COST2_TOTALABSCOSTCHANGE 6713
 #define XPRS_PTB_SHIFTSCALE_COLS_FIXEDOBJDELTA 6724
 #define XPRS_PTB_PERMUTE_PERMCOUNT_ROW 6704
@@ -368,6 +421,7 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_MIP_SOLUTION 4
 #define XPRS_MIP_INFEAS 5
 #define XPRS_MIP_OPTIMAL 6
+#define XPRS_MIP_UNBOUNDED 7
 #define XPRS_BAR_DEFAULT 0
 #define XPRS_BAR_MIN_DEGREE 1
 #define XPRS_BAR_MIN_LOCAL_FILL 2
@@ -376,6 +430,8 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_ALG_DUAL 2
 #define XPRS_ALG_PRIMAL 3
 #define XPRS_ALG_BARRIER 4
+#define XPRS_ALG_NETWORK 5
+#define XPRS_STOP_NONE 0
 #define XPRS_STOP_TIMELIMIT 1
 #define XPRS_STOP_CTRLC 2
 #define XPRS_STOP_NODELIMIT 3
@@ -383,6 +439,142 @@ typedef struct PoolCut *XPRScut;
 #define XPRS_STOP_MIPGAP 5
 #define XPRS_STOP_SOLLIMIT 6
 #define XPRS_STOP_USER 9
+#define XPRS_ANA_AUTOMATIC -1
+#define XPRS_ANA_NEVER 0
+#define XPRS_ANA_ALWAYS 1
+#define XPRS_BOOL_OFF 0
+#define XPRS_BOOL_ON 1
+#define XPRS_BACKTRACKALG_BEST_ESTIMATE 2
+#define XPRS_BACKTRACKALG_BEST_BOUND 3
+#define XPRS_BACKTRACKALG_DEEPEST_NODE 4
+#define XPRS_BACKTRACKALG_HIGHEST_NODE 5
+#define XPRS_BACKTRACKALG_EARLIEST_NODE 6
+#define XPRS_BACKTRACKALG_LATEST_NODE 7
+#define XPRS_BACKTRACKALG_RANDOM 8
+#define XPRS_BACKTRACKALG_MIN_INFEAS 9
+#define XPRS_BACKTRACKALG_BEST_ESTIMATE_MIN_INFEAS 10
+#define XPRS_BACKTRACKALG_DEEPEST_BEST_ESTIMATE 11
+#define XPRS_BRANCH_MIN_EST_FIRST 0
+#define XPRS_BRANCH_MAX_EST_FIRST 1
+#define XPRS_ALG_PULL_CHOLESKY 0
+#define XPRS_ALG_PUSH_CHOLESKY 1
+#define XPRS_XDRPBEFORE_CROSSOVER 1
+#define XPRS_XDRPINSIDE_CROSSOVER 2
+#define XPRS_XDRPAGGRESSIVE_BEFORE_CROSSOVER 4
+#define XPRS_DUALGRADIENT_AUTOMATIC -1
+#define XPRS_DUALGRADIENT_DEVEX 0
+#define XPRS_DUALGRADIENT_STEEPESTEDGE 1
+#define XPRS_DUALSTRATEGY_REMOVE_INFEAS_WITH_PRIMAL 0
+#define XPRS_DUALSTRATEGY_REMOVE_INFEAS_WITH_DUAL 1
+#define XPRS_FEASIBILITYPUMP_NEVER 0
+#define XPRS_FEASIBILITYPUMP_ALWAYS 1
+#define XPRS_FEASIBILITYPUMP_LASTRESORT 2
+#define XPRS_HEURSEARCH_LOCAL_SEARCH_LARGE_NEIGHBOURHOOD 0
+#define XPRS_HEURSEARCH_LOCAL_SEARCH_NODE_NEIGHBOURHOOD 1
+#define XPRS_HEURSEARCH_LOCAL_SEARCH_SOLUTION_NEIGHBOURHOOD 2
+#define XPRS_HEURSTRATEGY_AUTOMATIC -1
+#define XPRS_HEURSTRATEGY_NONE 0
+#define XPRS_HEURSTRATEGY_BASIC 1
+#define XPRS_HEURSTRATEGY_ENHANCED 2
+#define XPRS_HEURSTRATEGY_EXTENSIVE 3
+#define XPRS_NODESELECTION_LOCAL_FIRST 1
+#define XPRS_NODESELECTION_BEST_FIRST 2
+#define XPRS_NODESELECTION_LOCAL_DEPTH_FIRST 3
+#define XPRS_NODESELECTION_BEST_FIRST_THEN_LOCAL_FIRST 4
+#define XPRS_NODESELECTION_DEPTH_FIRST 5
+#define XPRS_OUTPUTLOG_NO_OUTPUT 0
+#define XPRS_OUTPUTLOG_FULL_OUTPUT 1
+#define XPRS_OUTPUTLOG_ERRORS_AND_WARNINGS 2
+#define XPRS_OUTPUTLOG_ERRORS 3
+#define XPRS_PREPROBING_AUTOMATIC -1
+#define XPRS_PREPROBING_DISABLED 0
+#define XPRS_PREPROBING_LIGHT 1
+#define XPRS_PREPROBING_FULL 2
+#define XPRS_PREPROBING_FULL_AND_REPEAT 3
+#define XPRS_PRESOLVEOPS_SINGLETONCOLUMNREMOVAL 1
+#define XPRS_PRESOLVEOPS_SINGLETONROWREMOVAL 2
+#define XPRS_PRESOLVEOPS_FORCINGROWREMOVAL 4
+#define XPRS_PRESOLVEOPS_DUALREDUCTIONS 8
+#define XPRS_PRESOLVEOPS_REDUNDANTROWREMOVAL 16
+#define XPRS_PRESOLVEOPS_DUPLICATECOLUMNREMOVAL 32
+#define XPRS_PRESOLVEOPS_DUPLICATEROWREMOVAL 64
+#define XPRS_PRESOLVEOPS_STRONGDUALREDUCTIONS 128
+#define XPRS_PRESOLVEOPS_VARIABLEELIMINATIONS 256
+#define XPRS_PRESOLVEOPS_NOIPREDUCTIONS 512
+#define XPRS_PRESOLVEOPS_NOSEMICONTINUOUSREDUCTIONS 1024
+#define XPRS_PRESOLVEOPS_NOADVANCEDIPREDUCTIONS 2048
+#define XPRS_PRESOLVEOPS_LINEARLYDEPENDANTROWREMOVAL 4096
+#define XPRS_PRESOLVEOPS_NOINTEGERVARIABLEANDSOSDETECTION 8192
+#define XPRS_PRESOLVESTATE_PROBLEMLOADED (1<<0)
+#define XPRS_PRESOLVESTATE_PROBLEMLPPRESOLVED (1<<1)
+#define XPRS_PRESOLVESTATE_PROBLEMMIPPRESOLVED (1<<2)
+#define XPRS_PRESOLVESTATE_SOLUTIONVALID (1<<7)
+#define XPRS_MIPPRESOLVE_REDUCED_COST_FIXING 1
+#define XPRS_MIPPRESOLVE_LOGIC_PREPROCESSING 2
+#define XPRS_MIPPRESOLVE_ALLOW_CHANGE_BOUNDS 8
+#define XPRS_PRESOLVE_NOPRIMALINFEASIBILITY -1
+#define XPRS_PRESOLVE_NONE 0
+#define XPRS_PRESOLVE_DEFAULT 1
+#define XPRS_PRESOLVE_KEEPREDUNDANTBOUNDS 2
+#define XPRS_PRICING_PARTIAL -1
+#define XPRS_PRICING_DEFAULT 0
+#define XPRS_PRICING_DEVEX 1
+#define XPRS_CUTSTRATEGY_DEFAULT -1
+#define XPRS_CUTSTRATEGY_NONE 0
+#define XPRS_CUTSTRATEGY_CONSERVATIVE 1
+#define XPRS_CUTSTRATEGY_MODERATE 2
+#define XPRS_CUTSTRATEGY_AGGRESSIVE 3
+#define XPRS_VARSELECTION_AUTOMATIC -1
+#define XPRS_VARSELECTION_MIN_UPDOWN_PSEUDO_COSTS 1
+#define XPRS_VARSELECTION_SUM_UPDOWN_PSEUDO_COSTS 2
+#define XPRS_VARSELECTION_MAX_UPDOWN_PSEUDO_COSTS_PLUS_TWICE_MIN 3
+#define XPRS_VARSELECTION_MAX_UPDOWN_PSEUDO_COSTS 4
+#define XPRS_VARSELECTION_DOWN_PSEUDO_COST 5
+#define XPRS_VARSELECTION_UP_PSEUDO_COST 6
+#define XPRS_SCALING_ROW_SCALING 1
+#define XPRS_SCALING_COLUMN_SCALING 2
+#define XPRS_SCALING_ROW_SCALING_AGAIN 4
+#define XPRS_SCALING_MAXIMUM 8
+#define XPRS_SCALING_CURTIS_REID 16
+#define XPRS_SCALING_BY_MAX_ELEM_NOT_GEO_MEAN 32
+#define XPRS_SCALING_OBJECTIVE_SCALING 64
+#define XPRS_SCALING_EXCLUDE_QUADRATIC_FROM_SCALE_FACTOR 128
+#define XPRS_CUTSELECT_CLIQUE (32+1823)
+#define XPRS_CUTSELECT_MIR (64+1823)
+#define XPRS_CUTSELECT_COVER (128+1823)
+#define XPRS_CUTSELECT_FLOWPATH (2048+1823)
+#define XPRS_CUTSELECT_IMPLICATION (4096+1823)
+#define XPRS_CUTSELECT_LIFT_AND_PROJECT (8192+1823)
+#define XPRS_CUTSELECT_DISABLE_CUT_ROWS (16384+1823)
+#define XPRS_CUTSELECT_GUB_COVER (32768+1823)
+#define XPRS_CUTSELECT_DEFAULT (-1)
+#define XPRS_TREEDIAGNOSTICS_MEMORY_USAGE_SUMMARIES 1
+#define XPRS_TREEDIAGNOSTICS_MEMORY_SAVED_REPORTS 2
+#define XPRS_BARPRESOLVEOPS_STANDARD_PRESOLVE 0
+#define XPRS_BARPRESOLVEOPS_EXTRA_BARRIER_PRESOLVE 1
+#define XPRS_PRECOEFELIM_DISABLED 0
+#define XPRS_PRECOEFELIM_AGGRESSIVE 1
+#define XPRS_PRECOEFELIM_CAUTIOUS 2
+#define XPRS_PREDOMROW_AUTOMATIC -1
+#define XPRS_PREDOMROW_DISABLED 0
+#define XPRS_PREDOMROW_CAUTIOUS 1
+#define XPRS_PREDOMROW_MEDIUM 2
+#define XPRS_PREDOMROW_AGGRESSIVE 3
+#define XPRS_PREDOMCOL_AUTOMATIC -1
+#define XPRS_PREDOMCOL_DISABLED 0
+#define XPRS_PREDOMCOL_CAUTIOUS 1
+#define XPRS_PREDOMCOL_AGGRESSIVE 2
+#define XPRS_PRIMALUNSHIFT_ALLOW_DUAL_UNSHIFT 0
+#define XPRS_PRIMALUNSHIFT_NO_DUAL_UNSHIFT 1
+#define XPRS_REPAIRINDEFINITEQ_REPAIR_IF_POSSIBLE 0
+#define XPRS_REPAIRINDEFINITEQ_NO_REPAIR 1
+#define XPRS_OBJ_MINIMIZE 1
+#define XPRS_OBJ_MAXIMIZE -1
+#define XPRS_TYPE_NOTDEFINED 0
+#define XPRS_TYPE_INT 1
+#define XPRS_TYPE_INT64 2
+#define XPRS_TYPE_DOUBLE 3
+#define XPRS_TYPE_STRING 4
 #define XPRS_ISUSERSOLUTION 0x1
 #define XPRS_ISREPROCESSEDUSERSOLUTION 0x2
 #ifdef __cplusplus
@@ -400,12 +592,16 @@ extern "C"
   int XPRS_CC XPRSgetbanner (char *banner);
   int XPRS_CC XPRSgetversion (char *version);
   int XPRS_CC XPRSgetdaysleft (int *daysleft);
+  int XPRS_CC XPRSsetcheckedmode (int checked_mode);
+  int XPRS_CC XPRSgetcheckedmode (int *r_checked_mode);
   int XPRS_CC XPRSlicense (int *_i1, char *_c1);
   int XPRS_CC XPRSbeginlicensing (int *r_dontAlreadyHaveLicense);
   int XPRS_CC XPRSendlicensing (void);
   int XPRS_CC XPRSgetlicerrmsg (char *msg, int len);
   int XPRS_CC XPRSsetlogfile (XPRSprob prob, const char *logname);
   int XPRS_CC XPRSsetintcontrol (XPRSprob prob, int _index, int _ivalue);
+  int XPRS_CC XPRSsetintcontrol64 (XPRSprob prob, int _index,
+                                   XPRSint64 _ivalue);
   int XPRS_CC XPRSsetdblcontrol (XPRSprob prob, int _index, double _dvalue);
   int XPRS_CC XPRSinterrupt (XPRSprob prob, int reason);
   int XPRS_CC XPRSgetprobname (XPRSprob prob, char *_svalue);
@@ -415,13 +611,21 @@ extern "C"
   int XPRS_CC XPRSsetstrcontrol (XPRSprob prob, int _index,
                                  const char *_svalue);
   int XPRS_CC XPRSgetintcontrol (XPRSprob prob, int _index, int *_ivalue);
+  int XPRS_CC XPRSgetintcontrol64 (XPRSprob prob, int _index,
+                                   XPRSint64 * _ivalue);
   int XPRS_CC XPRSgetdblcontrol (XPRSprob prob, int _index, double *_dvalue);
   int XPRS_CC XPRSgetstrcontrol (XPRSprob prob, int _index, char *_svalue);
   int XPRS_CC XPRSgetintattrib (XPRSprob prob, int _index, int *_ivalue);
+  int XPRS_CC XPRSgetintattrib64 (XPRSprob prob, int _index,
+                                  XPRSint64 * _ivalue);
   int XPRS_CC XPRSgetstrattrib (XPRSprob prob, int _index, char *_cvalue);
   int XPRS_CC XPRSgetdblattrib (XPRSprob prob, int _index, double *_dvalue);
   int XPRS_CC XPRSsetdefaultcontrol (XPRSprob prob, int _index);
   int XPRS_CC XPRSsetdefaults (XPRSprob prob);
+  int XPRS_CC XPRSgetcontrolinfo (XPRSprob prob, const char *sCaName,
+                                  int *iHeaderId, int *iTypeinfo);
+  int XPRS_CC XPRSgetattribinfo (XPRSprob prob, const char *sCaName,
+                                 int *iHeaderId, int *iTypeinfo);
   int XPRS_CC XPRSgoal (XPRSprob prob, const char *_filename,
                         const char *_sflags);
   int XPRS_CC XPRSreadprob (XPRSprob prob, const char *_sprobname,
@@ -433,6 +637,13 @@ extern "C"
                           const int _mnel[], const int _mrwind[],
                           const double _dmatval[], const double _dlb[],
                           const double _dub[]);
+  int XPRS_CC XPRSloadlp64 (XPRSprob prob, const char *_sprobname, int ncols,
+                            int nrows, const char _srowtypes[],
+                            const double _drhs[], const double _drange[],
+                            const double _dobj[], const XPRSint64 _mstart[],
+                            const int _mnel[], const int _mrwind[],
+                            const double _dmatval[], const double _dlb[],
+                            const double _dub[]);
   int XPRS_CC XPRSloadqp (XPRSprob prob, const char *_sprobname, int ncols,
                           int nrows, const char _srowtypes[],
                           const double _drhs[], const double _drange[],
@@ -442,19 +653,42 @@ extern "C"
                           const double _dub[], int nquads,
                           const int _mqcol1[], const int _mqcol2[],
                           const double _dqval[]);
+  int XPRS_CC XPRSloadqp64 (XPRSprob prob, const char *_sprobname, int ncols,
+                            int nrows, const char _srowtypes[],
+                            const double _drhs[], const double _drange[],
+                            const double _dobj[], const XPRSint64 _mstart[],
+                            const int _mnel[], const int _mrwind[],
+                            const double _dmatval[], const double _dlb[],
+                            const double _dub[], XPRSint64 nquads,
+                            const int _mqcol1[], const int _mqcol2[],
+                            const double _dqval[]);
   int XPRS_CC XPRSloadqglobal (XPRSprob prob, const char *probname, int ncols,
                                int nrows, const char qsenx[],
                                const double rhsx[], const double range[],
                                const double objx[], const int matbeg[],
                                const int matcnt[], const int matind[],
                                const double dmtval[], const double bndl[],
-                               const double bndu[], const int nquads,
+                               const double bndu[], int nquads,
                                const int mqcol1[], const int mqcol2[],
                                const double dqval[], const int ngents,
                                const int nsets, const char qgtype[],
                                const int mgcols[], const double dlim[],
                                const char qstype[], const int msstart[],
                                const int mscols[], const double dref[]);
+  int XPRS_CC XPRSloadqglobal64 (XPRSprob prob, const char *probname,
+                                 int ncols, int nrows, const char qsenx[],
+                                 const double rhsx[], const double range[],
+                                 const double objx[],
+                                 const XPRSint64 matbeg[], const int matcnt[],
+                                 const int matind[], const double dmtval[],
+                                 const double bndl[], const double bndu[],
+                                 XPRSint64 nquads, const int mqcol1[],
+                                 const int mqcol2[], const double dqval[],
+                                 const int ngents, const int nsets,
+                                 const char qgtype[], const int mgcols[],
+                                 const double dlim[], const char qstype[],
+                                 const XPRSint64 msstart[],
+                                 const int mscols[], const double dref[]);
   int XPRS_CC XPRSfixglobal (XPRSprob prob);
   int XPRS_CC XPRSfixglobals (XPRSprob prob, int ifround);
   int XPRS_CC XPRSloadmodelcuts (XPRSprob prob, int nmodcuts,
@@ -484,6 +718,18 @@ extern "C"
                               const double _dlim[], const char _stype[],
                               const int _msstart[], const int _mscols[],
                               const double _dref[]);
+  int XPRS_CC XPRSloadglobal64 (XPRSprob prob, const char *_sprobname,
+                                int ncols, int nrows, const char _srowtypes[],
+                                const double _drhs[], const double _drange[],
+                                const double _dobj[],
+                                const XPRSint64 _mstart[], const int _mnel[],
+                                const int _mrwind[], const double _dmatval[],
+                                const double _dlb[], const double _dub[],
+                                int ngents, int nsets, const char _qgtype[],
+                                const int _mgcols[], const double _dlim[],
+                                const char _stype[],
+                                const XPRSint64 _msstart[],
+                                const int _mscols[], const double _dref[]);
   int XPRS_CC XPRSaddnames (XPRSprob prob, int _itype, const char _sname[],
                             int first, int last);
   int XPRS_CC XPRSaddsetnames (XPRSprob prob, const char _sname[], int first,
@@ -554,14 +800,26 @@ extern "C"
   int XPRS_CC XPRSgetcols (XPRSprob prob, int _mstart[], int _mrwind[],
                            double _dmatval[], int maxcoeffs, int *ncoeffs,
                            int first, int last);
+  int XPRS_CC XPRSgetcols64 (XPRSprob prob, XPRSint64 _mstart[],
+                             int _mrwind[], double _dmatval[],
+                             XPRSint64 maxcoeffs, XPRSint64 * ncoeffs,
+                             int first, int last);
   int XPRS_CC XPRSgetrows (XPRSprob prob, int _mstart[], int _mclind[],
                            double _dmatval[], int maxcoeffs, int *ncoeffs,
                            int first, int last);
+  int XPRS_CC XPRSgetrows64 (XPRSprob prob, XPRSint64 _mstart[],
+                             int _mclind[], double _dmatval[],
+                             XPRSint64 maxcoeffs, XPRSint64 * ncoeffs,
+                             int first, int last);
   int XPRS_CC XPRSgetcoef (XPRSprob prob, int _irow, int _icol,
                            double *_dval);
   int XPRS_CC XPRSgetmqobj (XPRSprob prob, int _mstart[], int _mclind[],
                             double _dobjval[], int maxcoeffs, int *ncoeffs,
                             int first, int last);
+  int XPRS_CC XPRSgetmqobj64 (XPRSprob prob, XPRSint64 _mstart[],
+                              int _mclind[], double _dobjval[],
+                              XPRSint64 maxcoeffs, XPRSint64 * ncoeffs,
+                              int first, int last);
   int XPRS_CC XPRSiisclear (XPRSprob prob);
   int XPRS_CC XPRSiisfirst (XPRSprob prob, int ifiis, int *status_code);
   int XPRS_CC XPRSiisnext (XPRSprob prob, int *status_code);
@@ -587,6 +845,10 @@ extern "C"
                              char _sgtype[], int _mgcols[], double _dlim[],
                              char _sstype[], int _msstart[], int _mscols[],
                              double _dref[]);
+  int XPRS_CC XPRSgetglobal64 (XPRSprob prob, int *ngents, int *nsets,
+                               char _sgtype[], int _mgcols[], double _dlim[],
+                               char _sstype[], XPRSint64 _msstart[],
+                               int _mscols[], double _dref[]);
   int XPRS_CC XPRSwriteprob (XPRSprob prob, const char *_sfilename,
                              const char *_sflags);
   int XPRS_CC XPRSgetnames (XPRSprob prob, int _itype, char _sbuff[],
@@ -607,12 +869,19 @@ extern "C"
                            const char _srowtype[], const double _drhs[],
                            const double _drng[], const int _mstart[],
                            const int _mclind[], const double _dmatval[]);
+  int XPRS_CC XPRSaddrows64 (XPRSprob prob, int nrows, XPRSint64 ncoeffs,
+                             const char _srowtype[], const double _drhs[],
+                             const double _drng[], const XPRSint64 _mstart[],
+                             const int _mclind[], const double _dmatval[]);
   int XPRS_CC XPRSdelrows (XPRSprob prob, int nrows, const int _mindex[]);
-  int XPRS_CC XPRSdelnode (XPRSprob prob, int _inode, int ifboth);
   int XPRS_CC XPRSaddcols (XPRSprob prob, int ncols, int ncoeffs,
                            const double _dobj[], const int _mstart[],
                            const int _mrwind[], const double _dmatval[],
                            const double _dbdl[], const double _dbdu[]);
+  int XPRS_CC XPRSaddcols64 (XPRSprob prob, int ncols, XPRSint64 ncoeffs,
+                             const double _dobj[], const XPRSint64 _mstart[],
+                             const int _mrwind[], const double _dmatval[],
+                             const double _dbdl[], const double _dbdu[]);
   int XPRS_CC XPRSdelcols (XPRSprob prob, int ncols, const int _mindex[]);
   int XPRS_CC XPRSchgcoltype (XPRSprob prob, int ncols, const int _mindex[],
                               const char _coltype[]);
@@ -625,14 +894,22 @@ extern "C"
   int XPRS_CC XPRSchgcoef (XPRSprob prob, int _irow, int _icol, double _dval);
   int XPRS_CC XPRSchgmcoef (XPRSprob prob, int ncoeffs, const int _mrow[],
                             const int _mcol[], const double _dval[]);
+  int XPRS_CC XPRSchgmcoef64 (XPRSprob prob, XPRSint64 ncoeffs,
+                              const int _mrow[], const int _mcol[],
+                              const double _dval[]);
   int XPRS_CC XPRSchgmqobj (XPRSprob prob, int ncols, const int _mcol1[],
                             const int _mcol2[], const double _dval[]);
+  int XPRS_CC XPRSchgmqobj64 (XPRSprob prob, XPRSint64 ncols,
+                              const int _mcol1[], const int _mcol2[],
+                              const double _dval[]);
   int XPRS_CC XPRSchgqobj (XPRSprob prob, int _icol, int _jcol, double _dval);
   int XPRS_CC XPRSchgrhs (XPRSprob prob, int nrows, const int _mindex[],
                           const double _drhs[]);
   int XPRS_CC XPRSchgrhsrange (XPRSprob prob, int nrows, const int _mindex[],
                                const double _drng[]);
   int XPRS_CC XPRSchgobjsense (XPRSprob prob, int objsense);
+  int XPRS_CC XPRSchgglblimit (XPRSprob prob, int ncols, const int _mindex[],
+                               const double _dlimit[]);
   int XPRS_CC XPRSsave (XPRSprob prob);
   int XPRS_CC XPRSrestore (XPRSprob prob, const char *_sprobname,
                            const char *_force);
@@ -640,260 +917,14 @@ extern "C"
   int XPRS_CC XPRSgetpivots (XPRSprob prob, int _in, int _mout[],
                              double _dout[], double *_dobjo, int *npiv,
                              int maxpiv);
-  int XPRS_CC XPRSsetcblplog (XPRSprob prob,
-                              int (XPRS_CC * f_lplog) (XPRSprob prob,
-                                                       void *vContext),
-                              void *p);
-  int XPRS_CC XPRSsetcbgloballog (XPRSprob prob,
-                                  int (XPRS_CC * f_globallog) (XPRSprob prob,
-                                                               void
-                                                               *vContext),
-                                  void *p);
-  int XPRS_CC XPRSsetcbcutlog (XPRSprob prob,
-                               int (XPRS_CC * f_cutlog) (XPRSprob prob,
-                                                         void *vContext),
-                               void *p);
-  int XPRS_CC XPRSsetcbbarlog (XPRSprob prob,
-                               int (XPRS_CC * f_barlog) (XPRSprob prob,
-                                                         void *vContext),
-                               void *p);
-  int XPRS_CC XPRSsetcbcutmgr (XPRSprob prob,
-                               int (XPRS_CC * f_cutmgr) (XPRSprob prob,
-                                                         void *vContext),
-                               void *p);
-  int XPRS_CC XPRSsetcbchgnode (XPRSprob prob,
-                                void (XPRS_CC * f_chgnode) (XPRSprob prob,
-                                                            void *vContext,
-                                                            int *nodnum),
-                                void *p);
-  int XPRS_CC XPRSsetcboptnode (XPRSprob prob,
-                                void (XPRS_CC * f_optnode) (XPRSprob prob,
-                                                            void *vContext,
-                                                            int *feas),
-                                void *p);
-  int XPRS_CC XPRSsetcbprenode (XPRSprob prob,
-                                void (XPRS_CC * f_prenode) (XPRSprob prob,
-                                                            void *vContext,
-                                                            int *nodinfeas),
-                                void *p);
-  int XPRS_CC XPRSsetcbinfnode (XPRSprob prob,
-                                void (XPRS_CC * f_infnode) (XPRSprob prob,
-                                                            void *vContext),
-                                void *p);
-  int XPRS_CC XPRSsetcbnewnode (XPRSprob prob,
-                                void (XPRS_CC * f_newnode) (XPRSprob prob,
-                                                            void *vContext,
-                                                            int parentnode,
-                                                            int newnode,
-                                                            int branch),
-                                void *p);
-  int XPRS_CC XPRSsetcbnodecutoff (XPRSprob prob,
-                                   void (XPRS_CC *
-                                         f_nodecutoff) (XPRSprob prob,
-                                                        void *vContext,
-                                                        int nodnum), void *p);
-  int XPRS_CC XPRSsetcbpreintsol (XPRSprob prob,
-                                  void (XPRS_CC * f_preintsol) (XPRSprob prob,
-                                                                void
-                                                                *vContext,
-                                                                int
-                                                                isheuristic,
-                                                                int *ifreject,
-                                                                double
-                                                                *cutoff),
-                                  void *p);
-  int XPRS_CC XPRSsetcbintsol (XPRSprob prob,
-                               void (XPRS_CC * f_intsol) (XPRSprob prob,
-                                                          void *vContext),
-                               void *p);
-  int XPRS_CC XPRSsetcbchgbranch (XPRSprob prob,
-                                  void (XPRS_CC * f_chgbranch) (XPRSprob prob,
-                                                                void
-                                                                *vContext,
-                                                                int *entity,
-                                                                int *up,
-                                                                double
-                                                                *estdeg),
-                                  void *p);
-  int XPRS_CC XPRSsetcbchgbranchobject (XPRSprob prob,
-                                        void (XPRS_CC *
-                                              f_chgbranchobject) (XPRSprob
-                                                                  prob,
-                                                                  void
-                                                                  *vContext,
-                                                                  XPRSbranchobject
-                                                                  obranch,
-                                                                  XPRSbranchobject
-                                                                  *
-                                                                  p_newobject),
-                                        void *p);
-  int XPRS_CC XPRSsetcbestimate (XPRSprob prob,
-                                 int (XPRS_CC * f_estimate) (XPRSprob prob,
-                                                             void *vContext,
-                                                             int *iglsel,
-                                                             int *iprio,
-                                                             double *degbest,
-                                                             double *degworst,
-                                                             double *curval,
-                                                             int *ifupx,
-                                                             int *nglinf,
-                                                             double *degsum,
-                                                             int *nbr),
-                                 void *p);
-  int XPRS_CC XPRSsetcbsepnode (XPRSprob prob,
-                                int (XPRS_CC * f_sepnode) (XPRSprob prob,
-                                                           void *vContext,
-                                                           int ibr,
-                                                           int iglsel,
-                                                           int ifup,
-                                                           double curval),
-                                void *p);
-  int XPRS_CC XPRSsetcbmessage (XPRSprob prob,
-                                void (XPRS_CC * f_message) (XPRSprob prob,
-                                                            void *vContext,
-                                                            const char *msg,
-                                                            int len,
-                                                            int msgtype),
-                                void *p);
-  int XPRS_CC XPRSsetcbmipthread (XPRSprob prob,
-                                  void (XPRS_CC *
-                                        f_mipthread) (XPRSprob master_prob,
-                                                      void *vContext,
-                                                      XPRSprob prob),
-                                  void *p);
-  int XPRS_CC XPRSsetcbdestroymt (XPRSprob prob,
-                                  void (XPRS_CC * f_destroymt) (XPRSprob prob,
-                                                                void
-                                                                *vContext),
-                                  void *p);
-  int XPRS_CC XPRSgetcblplog (XPRSprob prob,
-                              int (XPRS_CC ** f_lplog) (XPRSprob prob,
-                                                        void *vContext),
-                              void **p);
-  int XPRS_CC XPRSgetcbgloballog (XPRSprob prob,
-                                  int (XPRS_CC ** f_globallog) (XPRSprob prob,
-                                                                void
-                                                                *vContext),
-                                  void **p);
-  int XPRS_CC XPRSgetcbcutlog (XPRSprob prob,
-                               int (XPRS_CC ** f_cutlog) (XPRSprob prob,
-                                                          void *vContext),
-                               void **p);
-  int XPRS_CC XPRSgetcbbarlog (XPRSprob prob,
-                               int (XPRS_CC ** f_barlog) (XPRSprob prob,
-                                                          void *vContext),
-                               void **p);
-  int XPRS_CC XPRSgetcbcutmgr (XPRSprob prob,
-                               int (XPRS_CC ** f_cutmgr) (XPRSprob prob,
-                                                          void *vContext),
-                               void **p);
-  int XPRS_CC XPRSgetcbchgnode (XPRSprob prob,
-                                void (XPRS_CC ** f_chgnode) (XPRSprob prob,
-                                                             void *vContext,
-                                                             int *nodnum),
-                                void **p);
-  int XPRS_CC XPRSgetcboptnode (XPRSprob prob,
-                                void (XPRS_CC ** f_optnode) (XPRSprob prob,
-                                                             void *vContext,
-                                                             int *feas),
-                                void **p);
-  int XPRS_CC XPRSgetcbprenode (XPRSprob prob,
-                                void (XPRS_CC ** f_prenode) (XPRSprob prob,
-                                                             void *vContext,
-                                                             int *nodinfeas),
-                                void **p);
-  int XPRS_CC XPRSgetcbinfnode (XPRSprob prob,
-                                void (XPRS_CC ** f_infnode) (XPRSprob prob,
-                                                             void *vContext),
-                                void **p);
-  int XPRS_CC XPRSgetcbnewnode (XPRSprob prob,
-                                void (XPRS_CC ** f_newnode) (XPRSprob prob,
-                                                             void *vContext,
-                                                             int parentnode,
-                                                             int newnode,
-                                                             int branch),
-                                void **p);
-  int XPRS_CC XPRSgetcbnodecutoff (XPRSprob prob,
-                                   void (XPRS_CC **
-                                         f_nodecutoff) (XPRSprob prob,
-                                                        void *vContext,
-                                                        int nodnum),
-                                   void **p);
-  int XPRS_CC XPRSgetcbpreintsol (XPRSprob prob,
-                                  void (XPRS_CC **
-                                        f_preintsol) (XPRSprob prob,
-                                                      void *vContext,
-                                                      int isheuristic,
-                                                      int *ifreject,
-                                                      double *cutoff),
-                                  void **p);
-  int XPRS_CC XPRSgetcbintsol (XPRSprob prob,
-                               void (XPRS_CC ** f_intsol) (XPRSprob prob,
-                                                           void *vContext),
-                               void **p);
-  int XPRS_CC XPRSgetcbchgbranch (XPRSprob prob,
-                                  void (XPRS_CC **
-                                        f_chgbranch) (XPRSprob prob,
-                                                      void *vContext,
-                                                      int *entity, int *up,
-                                                      double *estdeg),
-                                  void **p);
-  int XPRS_CC XPRSgetcbchgbranchobject (XPRSprob prob,
-                                        void (XPRS_CC **
-                                              f_chgbranchobject) (XPRSprob
-                                                                  prob,
-                                                                  void
-                                                                  *vContext,
-                                                                  XPRSbranchobject
-                                                                  obranch,
-                                                                  XPRSbranchobject
-                                                                  *
-                                                                  p_newobject),
-                                        void **p);
-  int XPRS_CC XPRSgetcbestimate (XPRSprob prob,
-                                 int (XPRS_CC ** f_estimate) (XPRSprob prob,
-                                                              void *vContext,
-                                                              int *iglsel,
-                                                              int *iprio,
-                                                              double *degbest,
-                                                              double
-                                                              *degworst,
-                                                              double *curval,
-                                                              int *ifupx,
-                                                              int *nglinf,
-                                                              double *degsum,
-                                                              int *nbr),
-                                 void **p);
-  int XPRS_CC XPRSgetcbsepnode (XPRSprob prob,
-                                int (XPRS_CC ** f_sepnode) (XPRSprob prob,
-                                                            void *vContext,
-                                                            int ibr,
-                                                            int iglsel,
-                                                            int ifup,
-                                                            double curval),
-                                void **p);
-  int XPRS_CC XPRSgetcbmessage (XPRSprob prob,
-                                void (XPRS_CC ** f_message) (XPRSprob prob,
-                                                             void *vContext,
-                                                             const char *msg,
-                                                             int len,
-                                                             int msgtype),
-                                void **p);
-  int XPRS_CC XPRSgetcbmipthread (XPRSprob prob,
-                                  void (XPRS_CC **
-                                        f_mipthread) (XPRSprob master_prob,
-                                                      void *vContext,
-                                                      XPRSprob prob),
-                                  void **p);
-  int XPRS_CC XPRSgetcbdestroymt (XPRSprob prob,
-                                  void (XPRS_CC **
-                                        f_destroymt) (XPRSprob prob,
-                                                      void *vContext),
-                                  void **p);
   int XPRS_CC XPRSaddcuts (XPRSprob prob, int ncuts, const int mtype[],
                            const char qrtype[], const double drhs[],
                            const int mstart[], const int mcols[],
                            const double dmatval[]);
+  int XPRS_CC XPRSaddcuts64 (XPRSprob prob, int ncuts, const int mtype[],
+                             const char qrtype[], const double drhs[],
+                             const XPRSint64 mstart[], const int mcols[],
+                             const double dmatval[]);
   int XPRS_CC XPRSdelcuts (XPRSprob prob, int ibasis, int itype, int interp,
                            double delta, int ncuts, const XPRScut mcutind[]);
   int XPRS_CC XPRSdelcpcuts (XPRSprob prob, int itype, int interp, int ncuts,
@@ -907,6 +938,10 @@ extern "C"
                              int size, int mtype[], char qrtype[],
                              int mstart[], int mcols[], double dmatval[],
                              double drhs[]);
+  int XPRS_CC XPRSgetcpcuts64 (XPRSprob prob, const XPRScut mindex[],
+                               int ncuts, XPRSint64 size, int mtype[],
+                               char qrtype[], XPRSint64 mstart[], int mcols[],
+                               double dmatval[], double drhs[]);
   int XPRS_CC XPRSloadcuts (XPRSprob prob, int itype, int interp, int ncuts,
                             const XPRScut mcutind[]);
   int XPRS_CC XPRSstorecuts (XPRSprob prob, int ncuts, int nodupl,
@@ -914,6 +949,11 @@ extern "C"
                              const double drhs[], const int mstart[],
                              XPRScut mindex[], const int mcols[],
                              const double dmatval[]);
+  int XPRS_CC XPRSstorecuts64 (XPRSprob prob, int ncuts, int nodupl,
+                               const int mtype[], const char qrtype[],
+                               const double drhs[], const XPRSint64 mstart[],
+                               XPRScut mindex[], const int mcols[],
+                               const double dmatval[]);
   int XPRS_CC XPRSpresolverow (XPRSprob prob, char qrtype, int nzo,
                                const int mcolso[], const double dvalo[],
                                double drhso, int maxcoeffs, int *nzp,
@@ -921,6 +961,9 @@ extern "C"
                                int *status);
   int XPRS_CC XPRSloadmipsol (XPRSprob prob, const double dsol[],
                               int *status);
+  int XPRS_CC XPRSaddmipsol (XPRSprob prob, int ilength,
+                             const double mipsolval[], const int mipsolcol[],
+                             int *p_id);
   int XPRS_CC XPRSstorebounds (XPRSprob prob, int nbnds, const int mcols[],
                                const char qbtype[], const double dbnd[],
                                void **mindex);
@@ -938,6 +981,15 @@ extern "C"
   int XPRS_CC XPRSaddsets (XPRSprob prob, int newsets, int newnz,
                            const char qstype[], const int msstart[],
                            const int mscols[], const double dref[]);
+  int XPRS_CC XPRSaddsets64 (XPRSprob prob, int newsets, XPRSint64 newnz,
+                             const char qstype[], const XPRSint64 msstart[],
+                             const int mscols[], const double dref[]);
+  int XPRS_CC XPRSstrongbranch (XPRSprob prob, const int nbnds,
+                                const int _mindex[], const char _sboundtype[],
+                                const double _dbnd[], const int itrlimit,
+                                double _dsbobjval[], int _msbstatus[]);
+  int XPRS_CC XPRSgetprimalray (XPRSprob prob, double _dpray[], int *_hasray);
+  int XPRS_CC XPRSgetdualray (XPRSprob prob, double _ddray[], int *_hasray);
   int XPRS_CC XPRSsetmessagestatus (XPRSprob prob, int errcode,
                                     int bEnabledStatus);
   int XPRS_CC XPRSgetmessagestatus (XPRSprob prob, int errcode,
@@ -956,6 +1008,8 @@ extern "C"
   int XPRS_CC XPRSgetcutslack (XPRSprob prob, XPRScut cut, double *dslack);
   int XPRS_CC XPRSgetcutmap (XPRSprob prob, int ncuts, const XPRScut cuts[],
                              int cutmap[]);
+  int XPRS_CC XPRSbasisstability (XPRSprob prob, int typecode, int norm,
+                                  int ifscaled, double *dval);
   int XPRS_CC XPRSgetnamelist (XPRSprob prob, int _itype, char _sbuff[],
                                int names_len, int *names_len_reqd, int first,
                                int last);
@@ -966,6 +1020,623 @@ extern "C"
                                   int iMsgType, int iMsgCode);
   int XPRS_CC XPRSgetobjecttypename (XPRSobject obj,
                                      const char **sObjectName);
+  int XPRS_CC XPRSsetcblplog (XPRSprob prob,
+                              int (XPRS_CC * f_lplog) (XPRSprob prob,
+                                                       void *vContext),
+                              void *p);
+  int XPRS_CC XPRSgetcblplog (XPRSprob prob,
+                              int (XPRS_CC ** f_lplog) (XPRSprob prob,
+                                                        void *vContext),
+                              void **p);
+  int XPRS_CC XPRSaddcblplog (XPRSprob prob,
+                              int (XPRS_CC * f_lplog) (XPRSprob prob,
+                                                       void *vContext),
+                              void *p, int priority);
+  int XPRS_CC XPRSremovecblplog (XPRSprob prob,
+                                 int (XPRS_CC * f_lplog) (XPRSprob prob,
+                                                          void *vContext),
+                                 void *p);
+  int XPRS_CC XPRSsetcbgloballog (XPRSprob prob,
+                                  int (XPRS_CC * f_globallog) (XPRSprob prob,
+                                                               void
+                                                               *vContext),
+                                  void *p);
+  int XPRS_CC XPRSgetcbgloballog (XPRSprob prob,
+                                  int (XPRS_CC ** f_globallog) (XPRSprob prob,
+                                                                void
+                                                                *vContext),
+                                  void **p);
+  int XPRS_CC XPRSaddcbgloballog (XPRSprob prob,
+                                  int (XPRS_CC * f_globallog) (XPRSprob prob,
+                                                               void
+                                                               *vContext),
+                                  void *p, int priority);
+  int XPRS_CC XPRSremovecbgloballog (XPRSprob prob,
+                                     int (XPRS_CC *
+                                          f_globallog) (XPRSprob prob,
+                                                        void *vContext),
+                                     void *p);
+  int XPRS_CC XPRSsetcbcutlog (XPRSprob prob,
+                               int (XPRS_CC * f_cutlog) (XPRSprob prob,
+                                                         void *vContext),
+                               void *p);
+  int XPRS_CC XPRSgetcbcutlog (XPRSprob prob,
+                               int (XPRS_CC ** f_cutlog) (XPRSprob prob,
+                                                          void *vContext),
+                               void **p);
+  int XPRS_CC XPRSaddcbcutlog (XPRSprob prob,
+                               int (XPRS_CC * f_cutlog) (XPRSprob prob,
+                                                         void *vContext),
+                               void *p, int priority);
+  int XPRS_CC XPRSremovecbcutlog (XPRSprob prob,
+                                  int (XPRS_CC * f_cutlog) (XPRSprob prob,
+                                                            void *vContext),
+                                  void *p);
+  int XPRS_CC XPRSsetcbbarlog (XPRSprob prob,
+                               int (XPRS_CC * f_barlog) (XPRSprob prob,
+                                                         void *vContext),
+                               void *p);
+  int XPRS_CC XPRSgetcbbarlog (XPRSprob prob,
+                               int (XPRS_CC ** f_barlog) (XPRSprob prob,
+                                                          void *vContext),
+                               void **p);
+  int XPRS_CC XPRSaddcbbarlog (XPRSprob prob,
+                               int (XPRS_CC * f_barlog) (XPRSprob prob,
+                                                         void *vContext),
+                               void *p, int priority);
+  int XPRS_CC XPRSremovecbbarlog (XPRSprob prob,
+                                  int (XPRS_CC * f_barlog) (XPRSprob prob,
+                                                            void *vContext),
+                                  void *p);
+  int XPRS_CC XPRSsetcbcutmgr (XPRSprob prob,
+                               int (XPRS_CC * f_cutmgr) (XPRSprob prob,
+                                                         void *vContext),
+                               void *p);
+  int XPRS_CC XPRSgetcbcutmgr (XPRSprob prob,
+                               int (XPRS_CC ** f_cutmgr) (XPRSprob prob,
+                                                          void *vContext),
+                               void **p);
+  int XPRS_CC XPRSaddcbcutmgr (XPRSprob prob,
+                               int (XPRS_CC * f_cutmgr) (XPRSprob prob,
+                                                         void *vContext),
+                               void *p, int priority);
+  int XPRS_CC XPRSremovecbcutmgr (XPRSprob prob,
+                                  int (XPRS_CC * f_cutmgr) (XPRSprob prob,
+                                                            void *vContext),
+                                  void *p);
+  int XPRS_CC XPRSsetcbchgnode (XPRSprob prob,
+                                void (XPRS_CC * f_chgnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int *nodnum),
+                                void *p);
+  int XPRS_CC XPRSgetcbchgnode (XPRSprob prob,
+                                void (XPRS_CC ** f_chgnode) (XPRSprob prob,
+                                                             void *vContext,
+                                                             int *nodnum),
+                                void **p);
+  int XPRS_CC XPRSaddcbchgnode (XPRSprob prob,
+                                void (XPRS_CC * f_chgnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int *nodnum),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecbchgnode (XPRSprob prob,
+                                   void (XPRS_CC * f_chgnode) (XPRSprob prob,
+                                                               void *vContext,
+                                                               int *nodnum),
+                                   void *p);
+  int XPRS_CC XPRSsetcboptnode (XPRSprob prob,
+                                void (XPRS_CC * f_optnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int *feas),
+                                void *p);
+  int XPRS_CC XPRSgetcboptnode (XPRSprob prob,
+                                void (XPRS_CC ** f_optnode) (XPRSprob prob,
+                                                             void *vContext,
+                                                             int *feas),
+                                void **p);
+  int XPRS_CC XPRSaddcboptnode (XPRSprob prob,
+                                void (XPRS_CC * f_optnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int *feas),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecboptnode (XPRSprob prob,
+                                   void (XPRS_CC * f_optnode) (XPRSprob prob,
+                                                               void *vContext,
+                                                               int *feas),
+                                   void *p);
+  int XPRS_CC XPRSsetcbprenode (XPRSprob prob,
+                                void (XPRS_CC * f_prenode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int *nodinfeas),
+                                void *p);
+  int XPRS_CC XPRSgetcbprenode (XPRSprob prob,
+                                void (XPRS_CC ** f_prenode) (XPRSprob prob,
+                                                             void *vContext,
+                                                             int *nodinfeas),
+                                void **p);
+  int XPRS_CC XPRSaddcbprenode (XPRSprob prob,
+                                void (XPRS_CC * f_prenode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int *nodinfeas),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecbprenode (XPRSprob prob,
+                                   void (XPRS_CC * f_prenode) (XPRSprob prob,
+                                                               void *vContext,
+                                                               int
+                                                               *nodinfeas),
+                                   void *p);
+  int XPRS_CC XPRSsetcbinfnode (XPRSprob prob,
+                                void (XPRS_CC * f_infnode) (XPRSprob prob,
+                                                            void *vContext),
+                                void *p);
+  int XPRS_CC XPRSgetcbinfnode (XPRSprob prob,
+                                void (XPRS_CC ** f_infnode) (XPRSprob prob,
+                                                             void *vContext),
+                                void **p);
+  int XPRS_CC XPRSaddcbinfnode (XPRSprob prob,
+                                void (XPRS_CC * f_infnode) (XPRSprob prob,
+                                                            void *vContext),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecbinfnode (XPRSprob prob,
+                                   void (XPRS_CC * f_infnode) (XPRSprob prob,
+                                                               void
+                                                               *vContext),
+                                   void *p);
+  int XPRS_CC XPRSsetcbnodecutoff (XPRSprob prob,
+                                   void (XPRS_CC *
+                                         f_nodecutoff) (XPRSprob prob,
+                                                        void *vContext,
+                                                        int nodnum), void *p);
+  int XPRS_CC XPRSgetcbnodecutoff (XPRSprob prob,
+                                   void (XPRS_CC **
+                                         f_nodecutoff) (XPRSprob prob,
+                                                        void *vContext,
+                                                        int nodnum),
+                                   void **p);
+  int XPRS_CC XPRSaddcbnodecutoff (XPRSprob prob,
+                                   void (XPRS_CC *
+                                         f_nodecutoff) (XPRSprob prob,
+                                                        void *vContext,
+                                                        int nodnum), void *p,
+                                   int priority);
+  int XPRS_CC XPRSremovecbnodecutoff (XPRSprob prob,
+                                      void (XPRS_CC *
+                                            f_nodecutoff) (XPRSprob prob,
+                                                           void *vContext,
+                                                           int nodnum),
+                                      void *p);
+  int XPRS_CC XPRSsetcbintsol (XPRSprob prob,
+                               void (XPRS_CC * f_intsol) (XPRSprob prob,
+                                                          void *vContext),
+                               void *p);
+  int XPRS_CC XPRSgetcbintsol (XPRSprob prob,
+                               void (XPRS_CC ** f_intsol) (XPRSprob prob,
+                                                           void *vContext),
+                               void **p);
+  int XPRS_CC XPRSaddcbintsol (XPRSprob prob,
+                               void (XPRS_CC * f_intsol) (XPRSprob prob,
+                                                          void *vContext),
+                               void *p, int priority);
+  int XPRS_CC XPRSremovecbintsol (XPRSprob prob,
+                                  void (XPRS_CC * f_intsol) (XPRSprob prob,
+                                                             void *vContext),
+                                  void *p);
+  int XPRS_CC XPRSsetcbpreintsol (XPRSprob prob,
+                                  void (XPRS_CC * f_preintsol) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                int
+                                                                isheuristic,
+                                                                int *ifreject,
+                                                                double
+                                                                *cutoff),
+                                  void *p);
+  int XPRS_CC XPRSgetcbpreintsol (XPRSprob prob,
+                                  void (XPRS_CC **
+                                        f_preintsol) (XPRSprob prob,
+                                                      void *vContext,
+                                                      int isheuristic,
+                                                      int *ifreject,
+                                                      double *cutoff),
+                                  void **p);
+  int XPRS_CC XPRSaddcbpreintsol (XPRSprob prob,
+                                  void (XPRS_CC * f_preintsol) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                int
+                                                                isheuristic,
+                                                                int *ifreject,
+                                                                double
+                                                                *cutoff),
+                                  void *p, int priority);
+  int XPRS_CC XPRSremovecbpreintsol (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_preintsol) (XPRSprob prob,
+                                                         void *vContext,
+                                                         int isheuristic,
+                                                         int *ifreject,
+                                                         double *cutoff),
+                                     void *p);
+  int XPRS_CC XPRSsetcbchgbranch (XPRSprob prob,
+                                  void (XPRS_CC * f_chgbranch) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                int *entity,
+                                                                int *up,
+                                                                double
+                                                                *estdeg),
+                                  void *p);
+  int XPRS_CC XPRSgetcbchgbranch (XPRSprob prob,
+                                  void (XPRS_CC **
+                                        f_chgbranch) (XPRSprob prob,
+                                                      void *vContext,
+                                                      int *entity, int *up,
+                                                      double *estdeg),
+                                  void **p);
+  int XPRS_CC XPRSaddcbchgbranch (XPRSprob prob,
+                                  void (XPRS_CC * f_chgbranch) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                int *entity,
+                                                                int *up,
+                                                                double
+                                                                *estdeg),
+                                  void *p, int priority);
+  int XPRS_CC XPRSremovecbchgbranch (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_chgbranch) (XPRSprob prob,
+                                                         void *vContext,
+                                                         int *entity, int *up,
+                                                         double *estdeg),
+                                     void *p);
+  int XPRS_CC XPRSsetcbestimate (XPRSprob prob,
+                                 int (XPRS_CC * f_estimate) (XPRSprob prob,
+                                                             void *vContext,
+                                                             int *iglsel,
+                                                             int *iprio,
+                                                             double *degbest,
+                                                             double *degworst,
+                                                             double *curval,
+                                                             int *ifupx,
+                                                             int *nglinf,
+                                                             double *degsum,
+                                                             int *nbr),
+                                 void *p);
+  int XPRS_CC XPRSgetcbestimate (XPRSprob prob,
+                                 int (XPRS_CC ** f_estimate) (XPRSprob prob,
+                                                              void *vContext,
+                                                              int *iglsel,
+                                                              int *iprio,
+                                                              double *degbest,
+                                                              double
+                                                              *degworst,
+                                                              double *curval,
+                                                              int *ifupx,
+                                                              int *nglinf,
+                                                              double *degsum,
+                                                              int *nbr),
+                                 void **p);
+  int XPRS_CC XPRSaddcbestimate (XPRSprob prob,
+                                 int (XPRS_CC * f_estimate) (XPRSprob prob,
+                                                             void *vContext,
+                                                             int *iglsel,
+                                                             int *iprio,
+                                                             double *degbest,
+                                                             double *degworst,
+                                                             double *curval,
+                                                             int *ifupx,
+                                                             int *nglinf,
+                                                             double *degsum,
+                                                             int *nbr),
+                                 void *p, int priority);
+  int XPRS_CC XPRSremovecbestimate (XPRSprob prob,
+                                    int (XPRS_CC * f_estimate) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                int *iglsel,
+                                                                int *iprio,
+                                                                double
+                                                                *degbest,
+                                                                double
+                                                                *degworst,
+                                                                double
+                                                                *curval,
+                                                                int *ifupx,
+                                                                int *nglinf,
+                                                                double
+                                                                *degsum,
+                                                                int *nbr),
+                                    void *p);
+  int XPRS_CC XPRSsetcbsepnode (XPRSprob prob,
+                                int (XPRS_CC * f_sepnode) (XPRSprob prob,
+                                                           void *vContext,
+                                                           int ibr,
+                                                           int iglsel,
+                                                           int ifup,
+                                                           double curval),
+                                void *p);
+  int XPRS_CC XPRSgetcbsepnode (XPRSprob prob,
+                                int (XPRS_CC ** f_sepnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int ibr,
+                                                            int iglsel,
+                                                            int ifup,
+                                                            double curval),
+                                void **p);
+  int XPRS_CC XPRSaddcbsepnode (XPRSprob prob,
+                                int (XPRS_CC * f_sepnode) (XPRSprob prob,
+                                                           void *vContext,
+                                                           int ibr,
+                                                           int iglsel,
+                                                           int ifup,
+                                                           double curval),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecbsepnode (XPRSprob prob,
+                                   int (XPRS_CC * f_sepnode) (XPRSprob prob,
+                                                              void *vContext,
+                                                              int ibr,
+                                                              int iglsel,
+                                                              int ifup,
+                                                              double curval),
+                                   void *p);
+  int XPRS_CC XPRSsetcbmessage (XPRSprob prob,
+                                void (XPRS_CC * f_message) (XPRSprob prob,
+                                                            void *vContext,
+                                                            const char *msg,
+                                                            int len,
+                                                            int msgtype),
+                                void *p);
+  int XPRS_CC XPRSgetcbmessage (XPRSprob prob,
+                                void (XPRS_CC ** f_message) (XPRSprob prob,
+                                                             void *vContext,
+                                                             const char *msg,
+                                                             int len,
+                                                             int msgtype),
+                                void **p);
+  int XPRS_CC XPRSaddcbmessage (XPRSprob prob,
+                                void (XPRS_CC * f_message) (XPRSprob prob,
+                                                            void *vContext,
+                                                            const char *msg,
+                                                            int len,
+                                                            int msgtype),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecbmessage (XPRSprob prob,
+                                   void (XPRS_CC * f_message) (XPRSprob prob,
+                                                               void *vContext,
+                                                               const char
+                                                               *msg, int len,
+                                                               int msgtype),
+                                   void *p);
+  int XPRS_CC XPRSsetcbmipthread (XPRSprob prob,
+                                  void (XPRS_CC *
+                                        f_mipthread) (XPRSprob master_prob,
+                                                      void *vContext,
+                                                      XPRSprob prob),
+                                  void *p);
+  int XPRS_CC XPRSgetcbmipthread (XPRSprob prob,
+                                  void (XPRS_CC **
+                                        f_mipthread) (XPRSprob master_prob,
+                                                      void *vContext,
+                                                      XPRSprob prob),
+                                  void **p);
+  int XPRS_CC XPRSaddcbmipthread (XPRSprob prob,
+                                  void (XPRS_CC *
+                                        f_mipthread) (XPRSprob master_prob,
+                                                      void *vContext,
+                                                      XPRSprob prob), void *p,
+                                  int priority);
+  int XPRS_CC XPRSremovecbmipthread (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_mipthread) (XPRSprob master_prob,
+                                                         void *vContext,
+                                                         XPRSprob prob),
+                                     void *p);
+  int XPRS_CC XPRSsetcbdestroymt (XPRSprob prob,
+                                  void (XPRS_CC * f_destroymt) (XPRSprob prob,
+                                                                void
+                                                                *vContext),
+                                  void *p);
+  int XPRS_CC XPRSgetcbdestroymt (XPRSprob prob,
+                                  void (XPRS_CC **
+                                        f_destroymt) (XPRSprob prob,
+                                                      void *vContext),
+                                  void **p);
+  int XPRS_CC XPRSaddcbdestroymt (XPRSprob prob,
+                                  void (XPRS_CC * f_destroymt) (XPRSprob prob,
+                                                                void
+                                                                *vContext),
+                                  void *p, int priority);
+  int XPRS_CC XPRSremovecbdestroymt (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_destroymt) (XPRSprob prob,
+                                                         void *vContext),
+                                     void *p);
+  int XPRS_CC XPRSsetcbnewnode (XPRSprob prob,
+                                void (XPRS_CC * f_newnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int parentnode,
+                                                            int newnode,
+                                                            int branch),
+                                void *p);
+  int XPRS_CC XPRSgetcbnewnode (XPRSprob prob,
+                                void (XPRS_CC ** f_newnode) (XPRSprob prob,
+                                                             void *vContext,
+                                                             int parentnode,
+                                                             int newnode,
+                                                             int branch),
+                                void **p);
+  int XPRS_CC XPRSaddcbnewnode (XPRSprob prob,
+                                void (XPRS_CC * f_newnode) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int parentnode,
+                                                            int newnode,
+                                                            int branch),
+                                void *p, int priority);
+  int XPRS_CC XPRSremovecbnewnode (XPRSprob prob,
+                                   void (XPRS_CC * f_newnode) (XPRSprob prob,
+                                                               void *vContext,
+                                                               int parentnode,
+                                                               int newnode,
+                                                               int branch),
+                                   void *p);
+  int XPRS_CC XPRSsetcbbariteration (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_bariteration) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int
+                                                            *barrier_action),
+                                     void *p);
+  int XPRS_CC XPRSgetcbbariteration (XPRSprob prob,
+                                     void (XPRS_CC **
+                                           f_bariteration) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int
+                                                            *barrier_action),
+                                     void **p);
+  int XPRS_CC XPRSaddcbbariteration (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_bariteration) (XPRSprob prob,
+                                                            void *vContext,
+                                                            int
+                                                            *barrier_action),
+                                     void *p, int priority);
+  int XPRS_CC XPRSremovecbbariteration (XPRSprob prob,
+                                        void (XPRS_CC *
+                                              f_bariteration) (XPRSprob prob,
+                                                               void *vContext,
+                                                               int
+                                                               *barrier_action),
+                                        void *p);
+  int XPRS_CC XPRSsetcbchgbranchobject (XPRSprob prob,
+                                        void (XPRS_CC *
+                                              f_chgbranchobject) (XPRSprob
+                                                                  prob,
+                                                                  void
+                                                                  *vContext,
+                                                                  XPRSbranchobject
+                                                                  obranch,
+                                                                  XPRSbranchobject
+                                                                  *
+                                                                  p_newobject),
+                                        void *p);
+  int XPRS_CC XPRSgetcbchgbranchobject (XPRSprob prob,
+                                        void (XPRS_CC **
+                                              f_chgbranchobject) (XPRSprob
+                                                                  prob,
+                                                                  void
+                                                                  *vContext,
+                                                                  XPRSbranchobject
+                                                                  obranch,
+                                                                  XPRSbranchobject
+                                                                  *
+                                                                  p_newobject),
+                                        void **p);
+  int XPRS_CC XPRSaddcbchgbranchobject (XPRSprob prob,
+                                        void (XPRS_CC *
+                                              f_chgbranchobject) (XPRSprob
+                                                                  prob,
+                                                                  void
+                                                                  *vContext,
+                                                                  XPRSbranchobject
+                                                                  obranch,
+                                                                  XPRSbranchobject
+                                                                  *
+                                                                  p_newobject),
+                                        void *p, int priority);
+  int XPRS_CC XPRSremovecbchgbranchobject (XPRSprob prob,
+                                           void (XPRS_CC *
+                                                 f_chgbranchobject) (XPRSprob
+                                                                     prob,
+                                                                     void
+                                                                     *vContext,
+                                                                     XPRSbranchobject
+                                                                     obranch,
+                                                                     XPRSbranchobject
+                                                                     *
+                                                                     p_newobject),
+                                           void *p);
+  int XPRS_CC XPRSsetcbgapnotify (XPRSprob prob,
+                                  void (XPRS_CC * f_gapnotify) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                double
+                                                                *newRelGapNotifyTarget,
+                                                                double
+                                                                *newAbsGapNotifyTarget,
+                                                                double
+                                                                *newAbsGapNotifyObjTarget,
+                                                                double
+                                                                *newAbsGapNotifyBoundTarget),
+                                  void *p);
+  int XPRS_CC XPRSgetcbgapnotify (XPRSprob prob,
+                                  void (XPRS_CC **
+                                        f_gapnotify) (XPRSprob prob,
+                                                      void *vContext,
+                                                      double
+                                                      *newRelGapNotifyTarget,
+                                                      double
+                                                      *newAbsGapNotifyTarget,
+                                                      double
+                                                      *newAbsGapNotifyObjTarget,
+                                                      double
+                                                      *newAbsGapNotifyBoundTarget),
+                                  void **p);
+  int XPRS_CC XPRSaddcbgapnotify (XPRSprob prob,
+                                  void (XPRS_CC * f_gapnotify) (XPRSprob prob,
+                                                                void
+                                                                *vContext,
+                                                                double
+                                                                *newRelGapNotifyTarget,
+                                                                double
+                                                                *newAbsGapNotifyTarget,
+                                                                double
+                                                                *newAbsGapNotifyObjTarget,
+                                                                double
+                                                                *newAbsGapNotifyBoundTarget),
+                                  void *p, int priority);
+  int XPRS_CC XPRSremovecbgapnotify (XPRSprob prob,
+                                     void (XPRS_CC *
+                                           f_gapnotify) (XPRSprob prob,
+                                                         void *vContext,
+                                                         double
+                                                         *newRelGapNotifyTarget,
+                                                         double
+                                                         *newAbsGapNotifyTarget,
+                                                         double
+                                                         *newAbsGapNotifyObjTarget,
+                                                         double
+                                                         *newAbsGapNotifyBoundTarget),
+                                     void *p);
+  int XPRS_CC XPRSsetcbusersolnotify (XPRSprob prob,
+                                      void (XPRS_CC *
+                                            f_usersolnotify) (XPRSprob prob,
+                                                              void *vContext,
+                                                              int id,
+                                                              int status),
+                                      void *p);
+  int XPRS_CC XPRSgetcbusersolnotify (XPRSprob prob,
+                                      void (XPRS_CC **
+                                            f_usersolnotify) (XPRSprob prob,
+                                                              void *vContext,
+                                                              int id,
+                                                              int status),
+                                      void **p);
+  int XPRS_CC XPRSaddcbusersolnotify (XPRSprob prob,
+                                      void (XPRS_CC *
+                                            f_usersolnotify) (XPRSprob prob,
+                                                              void *vContext,
+                                                              int id,
+                                                              int status),
+                                      void *p, int priority);
+  int XPRS_CC XPRSremovecbusersolnotify (XPRSprob prob,
+                                         void (XPRS_CC *
+                                               f_usersolnotify) (XPRSprob
+                                                                 prob,
+                                                                 void
+                                                                 *vContext,
+                                                                 int id,
+                                                                 int status),
+                                         void *p);
   int XPRS_CC XPRSobjsa (XPRSprob prob, int ncols, const int mindex[],
                          double lower[], double upper[]);
   int XPRS_CC XPRSrhssa (XPRSprob prob, int nrows, const int mindex[],
@@ -975,6 +1646,22 @@ extern "C"
                              (XPRSobject vXPRSObject, void *vUserContext,
                               void *vSystemThreadId, const char *sMsg,
                               int iMsgType, int iMsgCode), void *p);
+  int XPRS_CC
+    XPRS_ge_getcbmsghandler (int (XPRS_CC ** f_msghandler)
+                             (XPRSobject vXPRSObject, void *vUserContext,
+                              void *vSystemThreadId, const char *sMsg,
+                              int iMsgType, int iMsgCode), void **p);
+  int XPRS_CC
+    XPRS_ge_addcbmsghandler (int (XPRS_CC * f_msghandler)
+                             (XPRSobject vXPRSObject, void *vUserContext,
+                              void *vSystemThreadId, const char *sMsg,
+                              int iMsgType, int iMsgCode), void *p,
+                             int priority);
+  int XPRS_CC
+    XPRS_ge_removecbmsghandler (int (XPRS_CC * f_msghandler)
+                                (XPRSobject vXPRSObject, void *vUserContext,
+                                 void *vSystemThreadId, const char *sMsg,
+                                 int iMsgType, int iMsgCode), void *p);
   int XPRS_CC XPRS_ge_getlasterror (int *iMsgCode, char *_msg,
                                     int _iStringBufferBytes,
                                     int *_iBytesInInternalString);
@@ -982,18 +1669,6 @@ extern "C"
   int XPRS_CC XPRS_msp_destroy (XPRSmipsolpool msp);
   int XPRS_CC XPRS_msp_probattach (XPRSmipsolpool msp, XPRSprob prob);
   int XPRS_CC XPRS_msp_probdetach (XPRSmipsolpool msp, XPRSprob prob);
-  int XPRS_CC XPRS_msp_setcbmsghandler (XPRSmipsolpool msp,
-                                        int (XPRS_CC *
-                                             f_msghandler) (XPRSobject
-                                                            vXPRSObject,
-                                                            void
-                                                            *vUserContext,
-                                                            void
-                                                            *vSystemThreadId,
-                                                            const char *sMsg,
-                                                            int iMsgType,
-                                                            int iMsgCode),
-                                        void *p);
   int XPRS_CC XPRS_msp_getsollist (XPRSmipsolpool msp,
                                    XPRSprob prob_to_rank_against,
                                    int iRankAttrib, int bRankAscending,
@@ -1017,6 +1692,11 @@ extern "C"
                                int *iSolutionIdStatus_, double x[],
                                int iColFirst, int iColLast,
                                int *nValuesReturned);
+  int XPRS_CC XPRS_msp_getslack (XPRSmipsolpool msp,
+                                 XPRSprob prob_to_rank_against,
+                                 int iSolutionId, int *iSolutionIdStatus_,
+                                 double slack[], int iRowFirst, int iRowLast,
+                                 int *nValuesReturned);
   int XPRS_CC XPRS_msp_loadsol (XPRSmipsolpool msp, int *iSolutionId,
                                 const double x[], int nCols,
                                 const char *sSolutionName,
@@ -1104,6 +1784,55 @@ extern "C"
   int XPRS_CC XPRS_msp_getlasterror (XPRSmipsolpool msp, int *iMsgCode,
                                      char *_msg, int _iStringBufferBytes,
                                      int *_iBytesInInternalString);
+  int XPRS_CC XPRS_msp_setcbmsghandler (XPRSmipsolpool msp,
+                                        int (XPRS_CC *
+                                             f_msghandler) (XPRSobject
+                                                            vXPRSObject,
+                                                            void
+                                                            *vUserContext,
+                                                            void
+                                                            *vSystemThreadId,
+                                                            const char *sMsg,
+                                                            int iMsgType,
+                                                            int iMsgCode),
+                                        void *p);
+  int XPRS_CC XPRS_msp_getcbmsghandler (XPRSmipsolpool msp,
+                                        int (XPRS_CC **
+                                             f_msghandler) (XPRSobject
+                                                            vXPRSObject,
+                                                            void
+                                                            *vUserContext,
+                                                            void
+                                                            *vSystemThreadId,
+                                                            const char *sMsg,
+                                                            int iMsgType,
+                                                            int iMsgCode),
+                                        void **p);
+  int XPRS_CC XPRS_msp_addcbmsghandler (XPRSmipsolpool msp,
+                                        int (XPRS_CC *
+                                             f_msghandler) (XPRSobject
+                                                            vXPRSObject,
+                                                            void
+                                                            *vUserContext,
+                                                            void
+                                                            *vSystemThreadId,
+                                                            const char *sMsg,
+                                                            int iMsgType,
+                                                            int iMsgCode),
+                                        void *p, int priority);
+  int XPRS_CC XPRS_msp_removecbmsghandler (XPRSmipsolpool msp,
+                                           int (XPRS_CC *
+                                                f_msghandler) (XPRSobject
+                                                               vXPRSObject,
+                                                               void
+                                                               *vUserContext,
+                                                               void
+                                                               *vSystemThreadId,
+                                                               const char
+                                                               *sMsg,
+                                                               int iMsgType,
+                                                               int iMsgCode),
+                                           void *p);
   int XPRS_CC XPRS_nml_create (XPRSnamelist * r_nl);
   int XPRS_CC XPRS_nml_destroy (XPRSnamelist nml);
   int XPRS_CC XPRS_nml_getnamecount (XPRSnamelist nml, int *count);
@@ -1121,18 +1850,6 @@ extern "C"
   int XPRS_CC XPRS_nml_getlasterror (XPRSnamelist nml, int *iMsgCode,
                                      char *_msg, int _iStringBufferBytes,
                                      int *_iBytesInInternalString);
-  int XPRS_CC XPRS_nml_setcbmsghandler (XPRSnamelist nml,
-                                        int (XPRS_CC *
-                                             f_msghandler) (XPRSobject
-                                                            vXPRSObject,
-                                                            void
-                                                            *vUserContext,
-                                                            void
-                                                            *vSystemThreadId,
-                                                            const char *sMsg,
-                                                            int iMsgType,
-                                                            int iMsgCode),
-                                        void *p);
   int XPRS_CC XPRSgetqrowcoeff (XPRSprob prob, int irow, int icol, int jcol,
                                 double *dval);
   int XPRS_CC XPRSgetqrowqmatrix (XPRSprob prob, int irow, int mstart[],
@@ -1148,6 +1865,9 @@ extern "C"
   int XPRS_CC XPRSaddqmatrix (XPRSprob prob, int irow, int nqtr,
                               const int mqc1[], const int mqc2[],
                               const double dqew[]);
+  int XPRS_CC XPRSaddqmatrix64 (XPRSprob prob, int irow, XPRSint64 nqtr,
+                                const int mqc1[], const int mqc2[],
+                                const double dqew[]);
   int XPRS_CC XPRSdelqmatrix (XPRSprob prob, int irow);
   int XPRS_CC XPRSloadqcqp (XPRSprob prob, const char *_sprobname, int ncols,
                             int nrows, const char _srowtypes[],
@@ -1161,6 +1881,18 @@ extern "C"
                             const int qcrows[], const int qcnquads[],
                             const int qcmqcol1[], const int qcmqcol2[],
                             const double qcdqval[]);
+  int XPRS_CC XPRSloadqcqp64 (XPRSprob prob, const char *_sprobname,
+                              int ncols, int nrows, const char _srowtypes[],
+                              const double _drhs[], const double _drange[],
+                              const double _dobj[], const XPRSint64 _mstart[],
+                              const int _mnel[], const int _mrwind[],
+                              const double _dmatval[], const double _dlb[],
+                              const double _dub[], XPRSint64 nquads,
+                              const int _mqcol1[], const int _mqcol2[],
+                              const double _dqval[], int qmn,
+                              const int qcrows[], const XPRSint64 qcnquads[],
+                              const int qcmqcol1[], const int qcmqcol2[],
+                              const double qcdqval[]);
   int XPRS_CC XPRSloadqcqpglobal (XPRSprob prob, const char *_sprobname,
                                   int ncols, int nrows,
                                   const char _srowtypes[],
@@ -1180,6 +1912,29 @@ extern "C"
                                   const int mgcols[], const double dlim[],
                                   const char qstype[], const int msstart[],
                                   const int mscols[], const double dref[]);
+  int XPRS_CC XPRSloadqcqpglobal64 (XPRSprob prob, const char *_sprobname,
+                                    int ncols, int nrows,
+                                    const char _srowtypes[],
+                                    const double _drhs[],
+                                    const double _drange[],
+                                    const double _dobj[],
+                                    const XPRSint64 _matbeg[],
+                                    const int _matcnt[], const int _matrow[],
+                                    const double _dmatval[],
+                                    const double _dlb[], const double _dub[],
+                                    XPRSint64 nquads, const int _mqcol1[],
+                                    const int _mqcol2[],
+                                    const double _dqval[], int qmn,
+                                    const int qcrows[],
+                                    const XPRSint64 qcnquads[],
+                                    const int qcmqcol1[],
+                                    const int qcmqcol2[],
+                                    const double qcdqval[], const int ngents,
+                                    const int nsets, const char qgtype[],
+                                    const int mgcols[], const double dlim[],
+                                    const char qstype[],
+                                    const XPRSint64 msstart[],
+                                    const int mscols[], const double dref[]);
   int XPRS_CC XPRS_mse_create (XPRSmipsolenum * mse);
   int XPRS_CC XPRS_mse_destroy (XPRSmipsolenum mse);
   int XPRS_CC XPRS_mse_getsollist (XPRSmipsolenum mse, int iMetricId,
@@ -1259,18 +2014,6 @@ extern "C"
   int XPRS_CC XPRS_mse_getlasterror (XPRSmipsolenum mse, int *iMsgCode,
                                      char *_msg, int _iStringBufferBytes,
                                      int *_iBytesInInternalString);
-  int XPRS_CC XPRS_mse_setcbmsghandler (XPRSmipsolenum mse,
-                                        int (XPRS_CC *
-                                             f_msghandler) (XPRSobject
-                                                            vXPRSObject,
-                                                            void
-                                                            *vUserContext,
-                                                            void
-                                                            *vSystemThreadId,
-                                                            const char *sMsg,
-                                                            int iMsgType,
-                                                            int iMsgCode),
-                                        void *p);
   int XPRS_CC XPRS_mse_setsolbasename (XPRSmipsolenum mse,
                                        const char *sSolutionBaseName);
   int XPRS_CC XPRS_mse_getsolbasename (XPRSmipsolenum mse, char *_sname,
@@ -1308,71 +2051,89 @@ extern "C"
                                               const double Vals_2[],
                                               const int iSparseIndices_2[],
                                               double *dDiffMetric), void **p);
-  int XPRS_CC XPRSinitializenlphessian (XPRSprob prob, const int mstart[],
-                                        const int mcol[]);
-  int XPRS_CC XPRSinitializenlphessian_indexpairs (XPRSprob prob, int nqcelem,
-                                                   const int mcol1[],
-                                                   const int mcol2[]);
-  int XPRS_CC XPRSsetcbnlpevaluate (XPRSprob prob,
-                                    void (XPRS_CC *
-                                          f_evaluate) (XPRSprob prob,
-                                                       void *vContext,
-                                                       const double x[],
-                                                       double *v), void *p);
-  int XPRS_CC XPRSsetcbnlpgradient (XPRSprob prob,
-                                    void (XPRS_CC *
-                                          f_gradient) (XPRSprob prob,
-                                                       void *vContext,
-                                                       const double x[],
-                                                       double g[]), void *p);
-  int XPRS_CC XPRSsetcbnlphessian (XPRSprob prob,
-                                   void (XPRS_CC * f_hessian) (XPRSprob prob,
-                                                               void *vContext,
-                                                               const double
-                                                               x[],
-                                                               const int
-                                                               mstart[],
-                                                               const int
-                                                               mqcol[],
-                                                               double dqe[]),
-                                   void *p);
-  int XPRS_CC XPRSgetcbnlpevaluate (XPRSprob prob,
-                                    void (XPRS_CC **
-                                          f_evaluate) (XPRSprob prob,
-                                                       void *vContext,
-                                                       const double x[],
-                                                       double *v), void **p);
-  int XPRS_CC XPRSgetcbnlpgradient (XPRSprob prob,
-                                    void (XPRS_CC **
-                                          f_gradient) (XPRSprob prob,
-                                                       void *vContext,
-                                                       const double x[],
-                                                       double g[]), void **p);
-  int XPRS_CC XPRSgetcbnlphessian (XPRSprob prob,
-                                   void (XPRS_CC ** f_hessian) (XPRSprob prob,
-                                                                void
-                                                                *vContext,
-                                                                const double
-                                                                x[],
-                                                                const int
-                                                                mstart[],
-                                                                const int
-                                                                mqcol[],
-                                                                double dqe[]),
-                                   void **p);
-  int XPRS_CC XPRSresetnlp (XPRSprob prob);
-  int XPRS_CC XPRSsetcbbariteration (XPRSprob prob,
-                                     void (XPRS_CC *
-                                           f_evaluate) (XPRSprob prob,
-                                                        void *vContext,
-                                                        int *barrier_action),
-                                     void *p);
-  int XPRS_CC XPRSgetcbbariteration (XPRSprob prob,
-                                     void (XPRS_CC **
-                                           f_evaluate) (XPRSprob prob,
-                                                        void *vContext,
-                                                        int *barrier_action),
-                                     void **p);
+  int XPRS_CC XPRS_mse_addcbgetsolutiondiff (XPRSmipsolenum mse,
+                                             int (XPRS_CC *
+                                                  f_mse_getsolutiondiff)
+                                             (XPRSmipsolenum mse,
+                                              void *vContext, int nCols,
+                                              int iSolutionId_1,
+                                              int iElemCount_1,
+                                              double dMipObj_1,
+                                              const double Vals_1[],
+                                              const int iSparseIndices_1[],
+                                              int iSolutionId_2,
+                                              int iElemCount_2,
+                                              double dMipObj_2,
+                                              const double Vals_2[],
+                                              const int iSparseIndices_2[],
+                                              double *dDiffMetric), void *p,
+                                             int priority);
+  int XPRS_CC XPRS_mse_removecbgetsolutiondiff (XPRSmipsolenum mse,
+                                                int (XPRS_CC *
+                                                     f_mse_getsolutiondiff)
+                                                (XPRSmipsolenum mse,
+                                                 void *vContext, int nCols,
+                                                 int iSolutionId_1,
+                                                 int iElemCount_1,
+                                                 double dMipObj_1,
+                                                 const double Vals_1[],
+                                                 const int iSparseIndices_1[],
+                                                 int iSolutionId_2,
+                                                 int iElemCount_2,
+                                                 double dMipObj_2,
+                                                 const double Vals_2[],
+                                                 const int iSparseIndices_2[],
+                                                 double *dDiffMetric),
+                                                void *p);
+  int XPRS_CC XPRS_mse_setcbmsghandler (XPRSmipsolenum mse,
+                                        int (XPRS_CC *
+                                             f_msghandler) (XPRSobject
+                                                            vXPRSObject,
+                                                            void
+                                                            *vUserContext,
+                                                            void
+                                                            *vSystemThreadId,
+                                                            const char *sMsg,
+                                                            int iMsgType,
+                                                            int iMsgCode),
+                                        void *p);
+  int XPRS_CC XPRS_mse_getcbmsghandler (XPRSmipsolenum mse,
+                                        int (XPRS_CC **
+                                             f_msghandler) (XPRSobject
+                                                            vXPRSObject,
+                                                            void
+                                                            *vUserContext,
+                                                            void
+                                                            *vSystemThreadId,
+                                                            const char *sMsg,
+                                                            int iMsgType,
+                                                            int iMsgCode),
+                                        void **p);
+  int XPRS_CC XPRS_mse_addcbmsghandler (XPRSmipsolenum mse,
+                                        int (XPRS_CC *
+                                             f_msghandler) (XPRSobject
+                                                            vXPRSObject,
+                                                            void
+                                                            *vUserContext,
+                                                            void
+                                                            *vSystemThreadId,
+                                                            const char *sMsg,
+                                                            int iMsgType,
+                                                            int iMsgCode),
+                                        void *p, int priority);
+  int XPRS_CC XPRS_mse_removecbmsghandler (XPRSmipsolenum mse,
+                                           int (XPRS_CC *
+                                                f_msghandler) (XPRSobject
+                                                               vXPRSObject,
+                                                               void
+                                                               *vUserContext,
+                                                               void
+                                                               *vSystemThreadId,
+                                                               const char
+                                                               *sMsg,
+                                                               int iMsgType,
+                                                               int iMsgCode),
+                                           void *p);
   int XPRS_CC XPRS_bo_create (XPRSbranchobject * p_object, XPRSprob prob,
                               int isoriginal);
   int XPRS_CC XPRS_bo_destroy (XPRSbranchobject obranch);
@@ -1401,17 +2162,6 @@ extern "C"
   int XPRS_CC XPRS_bo_addcuts (XPRSbranchobject obranch, int ibranch,
                                int ncuts, const XPRScut mcutind[]);
   int XPRS_CC XPRS_bo_getid (XPRSbranchobject obranch, int *p_id);
-  int XPRS_CC XPRS_bo_setcbmsghandler (XPRSbranchobject obranch,
-                                       int (XPRS_CC *
-                                            f_msghandler) (XPRSobject
-                                                           vXPRSObject,
-                                                           void *vUserContext,
-                                                           void
-                                                           *vSystemThreadId,
-                                                           const char *sMsg,
-                                                           int iMsgType,
-                                                           int iMsgCode),
-                                       void *p);
   int XPRS_CC XPRS_bo_getlasterror (XPRSbranchobject obranch, int *iMsgCode,
                                     char *_msg, int _iStringBufferBytes,
                                     int *_iBytesInInternalString);
