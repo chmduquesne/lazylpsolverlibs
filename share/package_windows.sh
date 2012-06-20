@@ -43,6 +43,6 @@ package(){
 }
 
 package_archive=$1
-rm -rf /tmp/packaging
+rm -rf /tmp/win32
 compile
 package
