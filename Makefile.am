@@ -7,7 +7,7 @@ AM_CPPFLAGS = -I$(top_srcdir)/lazylpsolverlibs
 # lazycplex
 lib_LTLIBRARIES += lib/liblazycplex.la
 bin_PROGRAMS += bin/test_lazycplex
-pkgconfig_DATA += pkgconfig/lazycplex.pc
+pkgconfig_DATA += lib/pkgconfig/lazycplex.pc
 
 lib_liblazycplex_la_SOURCES = src/lazycplex.c
 lib_liblazycplex_la_CFLAGS = $(GMODULE_CFLAGS)
@@ -20,7 +20,7 @@ bin_test_lazycplex_LDFLAGS = lib/liblazycplex.la
 # lazyxprx
 lib_LTLIBRARIES += lib/liblazyxprs.la
 bin_PROGRAMS += bin/test_lazyxprs
-pkgconfig_DATA += pkgconfig/lazyxprs.pc
+pkgconfig_DATA += lib/pkgconfig/lazyxprs.pc
 
 lib_liblazyxprs_la_SOURCES = src/lazyxprs.c
 lib_liblazyxprs_la_CFLAGS = $(GMODULE_CFLAGS)
@@ -33,7 +33,7 @@ bin_test_lazyxprs_LDFLAGS = lib/liblazyxprs.la
 # lazygurobi
 lib_LTLIBRARIES += lib/liblazygurobi.la
 bin_PROGRAMS += bin/test_lazygurobi
-pkgconfig_DATA += pkgconfig/lazygurobi.pc
+pkgconfig_DATA += lib/pkgconfig/lazygurobi.pc
 
 lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
 lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS)
@@ -46,7 +46,7 @@ bin_test_lazygurobi_LDFLAGS = lib/liblazygurobi.la
 # lazyglpk
 lib_LTLIBRARIES += lib/liblazyglpk.la
 bin_PROGRAMS += bin/test_lazyglpk
-pkgconfig_DATA += pkgconfig/lazyglpk.pc
+pkgconfig_DATA += lib/pkgconfig/lazyglpk.pc
 
 lib_liblazyglpk_la_SOURCES = src/lazyglpk.c
 lib_liblazyglpk_la_CFLAGS = $(GMODULE_CFLAGS)
