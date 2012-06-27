@@ -32,3 +32,5 @@ version 0.1.41:
     - xpress update
     - Minor changes regarding the way the LAZYLPSOLVERLIBS_DEBUG variable
       is checked
+version 0.1.42:
+    - the pkgconfig source directory is moved to lib (more standard)
