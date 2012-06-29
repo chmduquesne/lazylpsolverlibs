@@ -6,7 +6,7 @@ AM_CPPFLAGS = -I$(top_srcdir)/lazylpsolverlibs
 
 # lazycplex
 lib_LTLIBRARIES += lib/liblazycplex.la
-bin_PROGRAMS += bin/test_lazycplex
+bin_PROGRAMS += bin/lazycplex_test
 pkgconfig_DATA += lib/pkgconfig/lazycplex.pc
 
 lib_liblazycplex_la_SOURCES = src/lazycplex.c
@@ -14,12 +14,12 @@ lib_liblazycplex_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazycplex_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazycplex_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
-bin_test_lazycplex_SOURCES = test/test_lazycplex.c
-bin_test_lazycplex_LDFLAGS = lib/liblazycplex.la
+bin_lazycplex_test_SOURCES = test/test_lazycplex.c
+bin_lazycplex_test_LDFLAGS = lib/liblazycplex.la
 
 # lazyxprx
 lib_LTLIBRARIES += lib/liblazyxprs.la
-bin_PROGRAMS += bin/test_lazyxprs
+bin_PROGRAMS += bin/lazyxprs_test
 pkgconfig_DATA += lib/pkgconfig/lazyxprs.pc
 
 lib_liblazyxprs_la_SOURCES = src/lazyxprs.c
@@ -27,25 +27,27 @@ lib_liblazyxprs_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyxprs_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazyxprs_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
-bin_test_lazyxprs_SOURCES = test/test_lazyxprs.c
-bin_test_lazyxprs_LDFLAGS = lib/liblazyxprs.la
+bin_lazyxprs_test_SOURCES = test/test_lazyxprs.c
+bin_lazyxprs_test_LDFLAGS = lib/liblazyxprs.la
 
 # lazygurobi
 lib_LTLIBRARIES += lib/liblazygurobi.la
-bin_PROGRAMS += bin/test_lazygurobi
+bin_PROGRAMS += bin/lazygurobi_test
 pkgconfig_DATA += lib/pkgconfig/lazygurobi.pc
 
 lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
 lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazygurobi_la_LIBADD = $(GMODULE_LIBS)
+# There is a technical reason to force lm
+# https://groups.google.com/forum/?fromgroups#!topic/gurobi/wsaJ_vxSjDU
 lib_liblazygurobi_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc -Wl,--no-as-needed,-lm
 
-bin_test_lazygurobi_SOURCES = test/test_lazygurobi.c
-bin_test_lazygurobi_LDFLAGS = lib/liblazygurobi.la
+bin_lazygurobi_test_SOURCES = test/test_lazygurobi.c
+bin_lazygurobi_test_LDFLAGS = lib/liblazygurobi.la
 
 # lazyglpk
 lib_LTLIBRARIES += lib/liblazyglpk.la
-bin_PROGRAMS += bin/test_lazyglpk
+bin_PROGRAMS += bin/lazyglpk_test
 pkgconfig_DATA += lib/pkgconfig/lazyglpk.pc
 
 lib_liblazyglpk_la_SOURCES = src/lazyglpk.c
@@ -53,8 +55,8 @@ lib_liblazyglpk_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyglpk_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazyglpk_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
 
-bin_test_lazyglpk_SOURCES = test/test_lazyglpk.c
-bin_test_lazyglpk_LDFLAGS = lib/liblazyglpk.la
+bin_lazyglpk_test_SOURCES = test/test_lazyglpk.c
+bin_lazyglpk_test_LDFLAGS = lib/liblazyglpk.la
 
 nobase_include_HEADERS =  lazylpsolverlibs/ilcplex/cplex.h \
                           lazylpsolverlibs/xprs.h \
@@ -64,6 +66,11 @@ dist_data_DATA = share/stublib.sh \
                  share/filter_header.sh \
                  share/package_windows.sh \
                  share/lazylpsolverlibs.nsi
+
+man1_MANS = share/man/lazycplex_test.1 \
+            share/man/lazyxprs_test.1 \
+            share/man/lazygurobi_test.1 \
+            share/man/lazyglpk_test.1
 
 # This target to regenerate the files. For maintenance only.
 generate_stubs:
