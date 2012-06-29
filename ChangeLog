@@ -34,3 +34,6 @@ version 0.1.41:
       is checked
 version 0.1.42:
     - the pkgconfig source directory is moved to lib (more standard)
+version 0.1.43:
+    - the binaries test_lazy<solver> are renamed lazy<solver>_test
+    - adding man pages
