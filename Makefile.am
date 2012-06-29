@@ -67,10 +67,10 @@ dist_data_DATA = share/stublib.sh \
                  share/package_windows.sh \
                  share/lazylpsolverlibs.nsi
 
-man1_MANS = share/man/lazycplex_test.1 \
-            share/man/lazyxprs_test.1 \
-            share/man/lazygurobi_test.1 \
-            share/man/lazyglpk_test.1
+man1_MANS = share/man/man1/lazycplex_test.1 \
+            share/man/man1/lazyxprs_test.1 \
+            share/man/man1/lazygurobi_test.1 \
+            share/man/man1/lazyglpk_test.1
 
 # This target to regenerate the files. For maintenance only.
 generate_stubs:

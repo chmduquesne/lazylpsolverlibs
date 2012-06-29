@@ -3,12 +3,12 @@
 .Dt LAZYLPSOLVERLIBS 1 "lazylpsolverlibs manual"
 .Os @PACKAGE_VERSION@
 .Sh NAME
-.Nm lazygurobi_test
-.Nd helper program to configure lazylpsolverlibs to work with gurobi
+.Nm lazyxprs_test
+.Nd helper program to configure lazylpsolverlibs to work with xpress
 .Sh SYNOPSIS
-.Nm lazygurobi_test
+.Nm lazyxprs_test
 .Sh DESCRIPTION
-This program will solve try to solve a linear program with gurobi.  Success
+This program will solve try to solve a linear program with xpress.  Success
 indicates that the solver is correctly configured to work with
 lazylpsolverlibs. Failure indicates that the solver was not found or could
 not be interacted with.
@@ -16,22 +16,24 @@ not be interacted with.
 The following environment variables are used.
 .Bl -tag -width ".." -compact
 .Pp
-.It Cm LAZLPSOLVERLIBS_GUROBI_LIB
-Interpreted as the full path to gurobi library.
+.It Cm LAZLPSOLVERLIBS_XPRS_LIB
+Interpreted as the full path to xpress library.
 .Pp
 .It Cm LAZLPSOLVERLIBS_DEBUG
 If non empty, enables debug output on stdout.
+.El
 .Sh FILES
 .Bl -tag -width ".." -compact
 .Pp
-.It Cm /usr/lib/libgurobi.so
-This file is always checked first as a candidate for gurobi library. It
-takes precedence over the variable LAZLPSOLVERLIBS_GUROBI_LIB. You should
+.It Cm /usr/lib/libxprs.so
+This file is always checked first as a candidate for xpress library. It
+takes precedence over the variable LAZLPSOLVERLIBS_XPRS_LIB. You should
 symlink this file to the actual solver library.
+.El
 .Sh EXIT STATUS
 The exit status is 0 if the solver is correctly configured and 1 otherwise.
 .Sh SEE ALSO
-lazycplex_test(1) lazyxprs_test(1) lazyglpk_test(1)
+lazygurobi_test(1) lazyxprs_test(1) lazyglpk_test(1)
 .Sh AUTHORS
 .An Christophe-Marie Duquesne
 .Aq chmd@chmd.fr
