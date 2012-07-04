@@ -4,10 +4,16 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA =
 AM_CPPFLAGS = -I$(top_srcdir)/lazylpsolverlibs
 
+src:
+	mkdir src
+
 # lazycplex
 lib_LTLIBRARIES += lib/liblazycplex.la
 bin_PROGRAMS += bin/lazycplex_test
 pkgconfig_DATA += lib/pkgconfig/lazycplex.pc
+
+src/lazycplex.c: src
+	sh share/lazylpsolverlibs/stublib.sh -l cplex123,cplex121,cplex120,cplex112,cplex111,cplex110,cplex102,cplex101,cplex100,cplex91,cplex90,cplex81,cplex80,cplex75,cplex71,cplex70,cplex66,cplex65,cplex60,cplex50,cplex40,cplex30,cplex21,cplex20 -e LAZYLPSOLVERLIBS_CPLEX_LIB -f /usr/lib/libcplex.so -i lazylpsolverlibs/ilcplex/cplex.h -d"<ilcplex/cplex.h>" -c"cpp $(CPPFLAGS)" > src/lazycplex.c
 
 lib_liblazycplex_la_SOURCES = src/lazycplex.c
 lib_liblazycplex_la_CFLAGS = $(GMODULE_CFLAGS)
@@ -22,6 +28,9 @@ lib_LTLIBRARIES += lib/liblazyxprs.la
 bin_PROGRAMS += bin/lazyxprs_test
 pkgconfig_DATA += lib/pkgconfig/lazyxprs.pc
 
+src/lazyxprs.c: src
+	sh share/lazylpsolverlibs/stublib.sh -l xprs -e LAZYLPSOLVERLIBS_XPRS_LIB -f /usr/lib/libxprs.so -i lazylpsolverlibs/xprs.h -d"<xprs.h>" -c"cpp $(CPPFLAGS)" > src/lazyxprs.c
+
 lib_liblazyxprs_la_SOURCES = src/lazyxprs.c
 lib_liblazyxprs_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyxprs_la_LIBADD = $(GMODULE_LIBS)
@@ -34,6 +43,9 @@ bin_lazyxprs_test_LDFLAGS = lib/liblazyxprs.la
 lib_LTLIBRARIES += lib/liblazygurobi.la
 bin_PROGRAMS += bin/lazygurobi_test
 pkgconfig_DATA += lib/pkgconfig/lazygurobi.pc
+
+src/lazygurobi.c: src
+	sh share/lazylpsolverlibs/stublib.sh -l gurobi50,gurobi461,gurobi452,gurobi402,gurobi303 -e LAZYLPSOLVERLIBS_GUROBI_LIB -f /usr/lib/libgurobi.so -i lazylpsolverlibs/gurobi_c.h -d"<gurobi_c.h>" -c"cpp $(CPPFLAGS)" > src/lazygurobi.c
 
 lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
 lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS)
@@ -49,6 +61,9 @@ bin_lazygurobi_test_LDFLAGS = lib/liblazygurobi.la
 lib_LTLIBRARIES += lib/liblazyglpk.la
 bin_PROGRAMS += bin/lazyglpk_test
 pkgconfig_DATA += lib/pkgconfig/lazyglpk.pc
+
+src/lazyglpk.c: src
+	sh share/lazylpsolverlibs/stublib.sh -l glpk -e LAZYLPSOLVERLIBS_GLPK_LIB -f /usr/lib/libglpk.so -i lazylpsolverlibs/glpk.h -d"<glpk.h>" -c"cpp $(CPPFLAGS)" > src/lazyglpk.c
 
 lib_liblazyglpk_la_SOURCES = src/lazyglpk.c
 lib_liblazyglpk_la_CFLAGS = $(GMODULE_CFLAGS)
@@ -72,9 +87,5 @@ man1_MANS = share/man/man1/lazycplex_test.1 \
             share/man/man1/lazygurobi_test.1 \
             share/man/man1/lazyglpk_test.1
 
-# This target to regenerate the files. For maintenance only.
-generate_stubs:
-	sh share/stublib.sh -l cplex123,cplex121,cplex120,cplex112,cplex111,cplex110,cplex102,cplex101,cplex100,cplex91,cplex90,cplex81,cplex80,cplex75,cplex71,cplex70,cplex66,cplex65,cplex60,cplex50,cplex40,cplex30,cplex21,cplex20 -e LAZYLPSOLVERLIBS_CPLEX_LIB -f /usr/lib/libcplex.so -i lazylpsolverlibs/ilcplex/cplex.h -d"<ilcplex/cplex.h>" -c"cpp $(CPPFLAGS)" > src/lazycplex.c
-	sh share/stublib.sh -l gurobi50,gurobi461,gurobi452,gurobi402,gurobi303 -e LAZYLPSOLVERLIBS_GUROBI_LIB -f /usr/lib/libgurobi.so -i lazylpsolverlibs/gurobi_c.h -d"<gurobi_c.h>" -c"cpp $(CPPFLAGS)" > src/lazygurobi.c
-	sh share/stublib.sh -l xprs -e LAZYLPSOLVERLIBS_XPRS_LIB -f /usr/lib/libxprs.so -i lazylpsolverlibs/xprs.h -d"<xprs.h>" -c"cpp $(CPPFLAGS)" > src/lazyxprs.c
-	sh share/stublib.sh -l glpk -e LAZYLPSOLVERLIBS_GLPK_LIB -f /usr/lib/libglpk.so -i lazylpsolverlibs/glpk.h -d"<glpk.h>" -c"cpp $(CPPFLAGS)" > src/lazyglpk.c
+clean-local:
+	rm src/*.c
