@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # extract the function name from a function declaration
 func_name(){

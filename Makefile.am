@@ -88,4 +88,4 @@ man1_MANS = share/man/man1/lazycplex_test.1 \
             share/man/man1/lazyglpk_test.1
 
 clean-local:
-	rm src/*.c
+	rm -f src/*.c
