@@ -1,4 +1,4 @@
-AC_INIT([lazylpsolverlibs], [0.1.44], [chmd@chmd.fr], [lazylpsolverlibs],
+AC_INIT([lazylpsolverlibs], [0.1.5], [chmd@chmd.fr], [lazylpsolverlibs],
         [https://code.google.com/p/lazylpsolverlibs/])
 AC_PREREQ([2.59])
 AC_PROG_CC
