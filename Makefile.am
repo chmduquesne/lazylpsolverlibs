@@ -15,7 +15,7 @@ pkgconfig_DATA += lib/pkgconfig/lazycplex.pc
 src/lazycplex.c: src
 	sh share/lazylpsolverlibs/stublib.sh -l cplex123,cplex121,cplex120,cplex112,cplex111,cplex110,cplex102,cplex101,cplex100,cplex91,cplex90,cplex81,cplex80,cplex75,cplex71,cplex70,cplex66,cplex65,cplex60,cplex50,cplex40,cplex30,cplex21,cplex20 -e LAZYLPSOLVERLIBS_CPLEX_LIB -f /usr/lib/libcplex.so -i lazylpsolverlibs/ilcplex/cplex.h -d"<ilcplex/cplex.h>" -c"cpp $(CPPFLAGS)" > src/lazycplex.c
 
-lib_liblazycplex_la_SOURCES = src/lazycplex.c
+nodist_lib_liblazycplex_la_SOURCES = src/lazycplex.c
 lib_liblazycplex_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazycplex_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazycplex_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
@@ -31,7 +31,7 @@ pkgconfig_DATA += lib/pkgconfig/lazyxprs.pc
 src/lazyxprs.c: src
 	sh share/lazylpsolverlibs/stublib.sh -l xprs -e LAZYLPSOLVERLIBS_XPRS_LIB -f /usr/lib/libxprs.so -i lazylpsolverlibs/xprs.h -d"<xprs.h>" -c"cpp $(CPPFLAGS)" > src/lazyxprs.c
 
-lib_liblazyxprs_la_SOURCES = src/lazyxprs.c
+nodist_lib_liblazyxprs_la_SOURCES = src/lazyxprs.c
 lib_liblazyxprs_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyxprs_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazyxprs_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
@@ -47,7 +47,7 @@ pkgconfig_DATA += lib/pkgconfig/lazygurobi.pc
 src/lazygurobi.c: src
 	sh share/lazylpsolverlibs/stublib.sh -l gurobi50,gurobi461,gurobi452,gurobi402,gurobi303 -e LAZYLPSOLVERLIBS_GUROBI_LIB -f /usr/lib/libgurobi.so -i lazylpsolverlibs/gurobi_c.h -d"<gurobi_c.h>" -c"cpp $(CPPFLAGS)" > src/lazygurobi.c
 
-lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
+nodist_lib_liblazygurobi_la_SOURCES = src/lazygurobi.c
 lib_liblazygurobi_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazygurobi_la_LIBADD = $(GMODULE_LIBS)
 # There is a technical reason to force lm
@@ -65,7 +65,7 @@ pkgconfig_DATA += lib/pkgconfig/lazyglpk.pc
 src/lazyglpk.c: src
 	sh share/lazylpsolverlibs/stublib.sh -l glpk -e LAZYLPSOLVERLIBS_GLPK_LIB -f /usr/lib/libglpk.so -i lazylpsolverlibs/glpk.h -d"<glpk.h>" -c"cpp $(CPPFLAGS)" > src/lazyglpk.c
 
-lib_liblazyglpk_la_SOURCES = src/lazyglpk.c
+nodist_lib_liblazyglpk_la_SOURCES = src/lazyglpk.c
 lib_liblazyglpk_la_CFLAGS = $(GMODULE_CFLAGS)
 lib_liblazyglpk_la_LIBADD = $(GMODULE_LIBS)
 lib_liblazyglpk_la_LDFLAGS = -no-undefined --enable-runtime-pseudo-reloc
