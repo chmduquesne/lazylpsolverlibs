@@ -62,11 +62,11 @@ nobase_include_HEADERS =  lazylpsolverlibs/ilcplex/cplex.h \
                           lazylpsolverlibs/xprs.h \
                           lazylpsolverlibs/gurobi_c.h \
                           lazylpsolverlibs/glpk.h
-dist_data_DATA = share/stublib.sh \
-                 share/filter_header.sh \
-                 share/package_windows.sh \
-                 share/lazylpsolverlibs.nsi
-
+lazylpsolverlibssharedir=${datadir}/lazylpsolverlibs
+dist_lazylpsolverlibsshare_DATA= share/lazylpsolverlibs/stublib.sh \
+                                 share/lazylpsolverlibs/filter_header.sh \
+                                 share/lazylpsolverlibs/package_windows.sh \
+                                 share/lazylpsolverlibs/lazylpsolverlibs.nsi
 man1_MANS = share/man/man1/lazycplex_test.1 \
             share/man/man1/lazyxprs_test.1 \
             share/man/man1/lazygurobi_test.1 \
