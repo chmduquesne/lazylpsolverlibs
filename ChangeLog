@@ -45,3 +45,5 @@ version 0.1.5:
       share)
 version 0.1.50:
     - changing version number to please debian - uscan
+version 1.0.0:
+    - Complete rewrite of testers -> renamed to -config
