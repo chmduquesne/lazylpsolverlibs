@@ -47,3 +47,5 @@ version 0.1.50:
     - changing version number to please debian - uscan
 version 1.0.0:
     - Complete rewrite of testers -> renamed to -config
+version 1.1.0:
+    - Typo corrections in sources
