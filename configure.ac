@@ -1,6 +1,6 @@
-AC_INIT([lazylpsolverlibs], [1.0.0], [chmd@chmd.fr], [lazylpsolverlibs],
+AC_INIT([lazylpsolverlibs], [1.1.0], [chmd@chmd.fr], [lazylpsolverlibs],
         [https://code.google.com/p/lazylpsolverlibs/])
-GENERIC_LIBRARY_VERSION="1:0:0"
+GENERIC_LIBRARY_VERSION="1:1:0"
 #                        | | |
 #                 +------+ | +---+
 #                 |        |     |

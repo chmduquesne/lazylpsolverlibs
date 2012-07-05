@@ -68,7 +68,7 @@ make_func(){
             fprintf(stderr, \"lazylpsolverlibs: the symbol $name could not be found! Exiting your program to avoid a segfault.\\\n\");
             exit(1);
         } else {
-            DEBUG_PRINT(\"lazylpsolverlibs: sucessfully imported the symbol $name.\\\n\");
+            DEBUG_PRINT(\"lazylpsolverlibs: successfully imported the symbol $name.\\\n\");
         }
     }
     return $symbol($args);
