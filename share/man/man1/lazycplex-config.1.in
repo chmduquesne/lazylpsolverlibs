@@ -1,17 +1,21 @@
 .\" template from man 7 groff_mdoc
-.Dd June 28, 2012
+.Dd @DATE@
 .Dt LAZYLPSOLVERLIBS 1 "lazylpsolverlibs manual"
 .Os @PACKAGE_VERSION@
 .Sh NAME
-.Nm lazycplex_test
-.Nd helper program to configure lazylpsolverlibs to work with cplex
+.Nm lazycplex-config
+.Nd Helper program to configure lazylpsolverlibs to work with cplex
 .Sh SYNOPSIS
-.Nm lazycplex_test
+.Nm lazycplex-config
 .Sh DESCRIPTION
-This program will solve try to solve a linear program with cplex.  Success
-indicates that the solver is correctly configured to work with
-lazylpsolverlibs. Failure indicates that the solver was not found or could
-not be interacted with.
+This program tries to solve a linear program with cplex. Success indicates
+that the solver is correctly configured to work with lazylpsolverlibs.
+Failure indicates that the solver was not found or could not be interacted
+with. In case of failure, consider re-running this command with the
+environment variable LAZYLPSOLVERLIBS_DEBUG set to be non empty.
+lazylpsolverlibs will automatically look for the solver library in
+standard paths. The search can be influenced by setting an environment
+variable (see ENVIRONMENT), or via a symbolic link (see FILES).
 .Sh ENVIRONMENT
 The following environment variables are used.
 .Bl -tag -width ".." -compact
@@ -25,7 +29,7 @@ If non empty, enables debug output on stdout.
 .Sh FILES
 .Bl -tag -width ".." -compact
 .Pp
-.It Cm /usr/lib/libcplex.so
+.It Cm /usr/local/lib/libcplex.so
 This file is always checked first as a candidate for cplex library. It
 takes precedence over the variable LAZLPSOLVERLIBS_CPLEX_LIB. You should
 symlink this file to the actual solver library.
@@ -33,7 +37,7 @@ symlink this file to the actual solver library.
 .Sh EXIT STATUS
 The exit status is 0 if the solver is correctly configured and 1 otherwise.
 .Sh SEE ALSO
-lazygurobi_test(1) lazyxprs_test(1) lazyglpk_test(1)
+lazygurobi-config(1) lazyxprs-config(1) lazyglpk-config(1)
 .Sh AUTHORS
 .An Christophe-Marie Duquesne
 .Aq chmd@chmd.fr
