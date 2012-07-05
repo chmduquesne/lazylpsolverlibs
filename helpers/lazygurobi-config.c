@@ -33,7 +33,7 @@ main(int argc, const char *argv[]) {
     double val[] = { 1.0, 1.0 };
 
     /* prepare environment */
-    error = GRBloadenv(&env, "prob.log");
+    error = GRBloadenv(&env, NULL);
     if (error || env == NULL) {
         fprintf(stderr, "Error: could not open gurobi environment\n");
         exit(1);
