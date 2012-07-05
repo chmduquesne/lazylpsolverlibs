@@ -43,3 +43,5 @@ version 0.1.5:
     - Regenerating the code every time (for the sake of portability)
     - Installing the shared scripts in share/lazylpsolverlibs (rather than
       share)
+version 0.1.50:
+    - changing version number to please debian - uscan
