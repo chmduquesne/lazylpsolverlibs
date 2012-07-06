@@ -2,6 +2,13 @@
  * Copyright 2012 Christophe-Marie Duquesne
  *
  * This file is part of lazylpsolverlibs
+ *
+ * You can redistribute it and/or modify it under the terms of the Eclipse
+ * Public License version 1.0, or (at your option) any later version.
+ *
+ * You should have received a copy of the Eclipse Public License along
+ * with lazylpsolverlibs (file EPL). If not, see
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 #include <gurobi_c.h>
 #include <stdlib.h>
