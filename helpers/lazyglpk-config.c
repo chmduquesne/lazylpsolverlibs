@@ -1,7 +1,13 @@
 /*
  * Copyright 2012 Christophe-Marie Duquesne
  *
- * This file is part of lazylpsolverlibs
+ * This file is part of lazylpsolverlibs.
+ *
+ * You can redistribute it and/or modify it under the terms of the GNU
+ * General Public License version 3 or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with GLPK (file GPL). If not, see <http://www.gnu.org/licenses/>.
  */
 #include <glpk.h>
 #include <stdio.h>
