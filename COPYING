@@ -2,5 +2,5 @@ lazylpsolverlibs is dual licensed.
 - all files relating to glpk are licensed under the GPL v3+:
   helpers/lazyglpk-config.c
   lazylpsolverlibs/glpk.h
-- all other files are licensed under the EPL v1+
-See the files GPL and EPL
+- all other files are licensed under the MIT license
+See the files GPL and MIT

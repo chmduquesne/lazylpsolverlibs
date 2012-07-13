@@ -3,12 +3,12 @@
  *
  * This file is part of lazylpsolverlibs.
  *
- * You can redistribute it and/or modify it under the terms of the Eclipse
- * Public License version 1.0, or (at your option) any later version.
+ * You can redistribute it and/or modify it under the terms of the MIT
+ * license.
  *
- * You should have received a copy of the Eclipse Public License along
- * with lazylpsolverlibs (file EPL). If not, see
- * http://www.eclipse.org/legal/epl-v10.html
+ * You should have received a copy of the MIT license along
+ * with lazylpsolverlibs (file MIT). If not, see
+ * http://www.opensource.org/licenses/mit-license.php/
  */
 #include <ilcplex/cplex.h>
 #include <stdio.h>

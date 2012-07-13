@@ -2,12 +2,13 @@
 #
 # This file is part of lazylpsolverlibs.
 #
-# You can redistribute it and/or modify it under the terms of the Eclipse
-# Public License version 1.0, or (at your option) any later version.
+# You can redistribute it and/or modify it under the terms of the MIT
+# license.
 #
-# You should have received a copy of the Eclipse Public License along
-# with lazylpsolverlibs (file EPL). If not, see
-# http://www.eclipse.org/legal/epl-v10.html
+# You should have received a copy of the MIT license along
+# with lazylpsolverlibs (file MIT). If not, see
+# http://www.opensource.org/licenses/mit-license.php/
+
 
 # extract the function name from a function declaration
 func_name(){
@@ -54,31 +55,11 @@ func_args(){
 # imports the original symbol and passes its arguments to this symbol.
 make_func(){
     name=$(func_name "$*")
-    symbol="__symbolic_$name"
+    symbol="native_$name"
     args=$(func_args "$*")
     echo "$*" | sed 's/;/{/g'
     echo "    if (!$symbol) {
-        if (!module) {
-            DEBUG_PRINT(\"lazylpsolverlibs: looking for a suitable library in the standard system path\\\n\");
-            if (!load_module()) {
-                fprintf(stderr, \"lazylpsolverlibs: Library lookup failed! Suggestions:\\\n\""
-    if [ x"$environment_var" != x ]; then
-        echo "                    \" - point the $environment_var environment variable to the full path of the library\\\n\""
-    fi
-    if [ x"$try_first" != x ]; then
-        echo "                    \" - or more secure, symlink $try_first to the full path of the library (you need root access).\\\n\""
-    fi
-    echo "             );
-            } else {
-                DEBUG_PRINT(\"lazylpsolverlibs: Success!\\\n\");
-            }
-        }
-        if (!g_module_symbol(module, \"$name\", (gpointer *) &$symbol)) {
-            fprintf(stderr, \"lazylpsolverlibs: the symbol $name could not be found! Exiting your program to avoid a segfault.\\\n\");
-            exit(1);
-        } else {
-            DEBUG_PRINT(\"lazylpsolverlibs: successfully imported the symbol $name.\\\n\");
-        }
+        load_symbol_or_die(\"$name\", (gpointer *) &$symbol);
     }
     return $symbol($args);
 }"
@@ -88,7 +69,7 @@ make_func(){
 # declaration to
 make_symbol_decl(){
     name=$(func_name "$*")
-    symbol="__symbolic_$name"
+    symbol="native_$name"
     echo "$*"   | sed "s/\<$name\>/(*$symbol)/g" \
                 | sed 's/;/ = NULL;/g'
 }
@@ -99,10 +80,14 @@ make_include_headers(){
     echo "#include <stdio.h>"
     echo "#include <stdlib.h>"
     echo "#include <string.h>"
+    echo "#include <stdbool.h>"
     if [ x"$declared_header" != x ]; then
         echo "#include $declared_header"
     else
         echo "#include $header"
+    fi
+    if [ x"$register_callback" != x ]; then
+        echo "#include <lazylpsolverlibs.h>"
     fi
 }
 
@@ -110,7 +95,10 @@ make_include_headers(){
 make_loading_interface(){
     echo "
 /* A debugging macro */
-#define DEBUG_PRINT(...) if (debug_enabled()) { fprintf( stderr, __VA_ARGS__ ); }
+#define PRINT_DEBUG(fmt, args ...) if (debug_enabled()) { \\
+    fprintf( stderr, \"\\\nlazylpsolverlibs (%s): \" fmt, __FUNCTION__, ## args ); }
+#define PRINT_ERR(fmt, args ...) \\
+    fprintf( stderr, \"\\\nlazylpsolverlibs (%s): \" fmt, __FUNCTION__, ## args );
 
 /*
  * returns true if the environment variable LAZYLPSOLVERLIBS_DEBUG is set
@@ -127,24 +115,28 @@ int debug_enabled() {
 /* handle to the library */
 GModule *module = NULL;
 
+/* if != NULL, called whenever the library is about to crash */
+void (*failure_callback)(const char *err) = NULL;
+
 /* searches and loads the actual library */
-int load_module(){
+void __attribute__((constructor)) on_library_load(){
     char *path;"
 if [ x"$environment_var" != x ]; then
     echo "    /* environment variable */"
     echo "    char *$environment_var;"
+    echo "    PRINT_DEBUG(\"Looking for a suitable library.\\\n\");"
     echo "    $environment_var = getenv(\"$environment_var\");"
 fi
 if [ x"$try_first" != x ]; then
     echo "    if (!module) {"
-    echo "        DEBUG_PRINT (\"lazylpsolverlibs: attempting to load library from %s\\\n\", \"$try_first\");"
+    echo "        PRINT_DEBUG (\"loading %s...\\\n\", \"$try_first\");"
     echo "        module = g_module_open(\"$try_first\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
     echo "    }"
 fi
 if [ x"$environment_var" != x ]; then
     echo "    if ($environment_var != NULL) {"
     echo "        if (!module) {"
-    echo "            DEBUG_PRINT (\"lazylpsolverlibs: attempting to load library from %s\\\n\", $environment_var);"
+    echo "            PRINT_DEBUG (\"loading %s...\\\n\", $environment_var);"
     echo "            module = g_module_open($environment_var, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
     echo "        }"
     echo "    }"
@@ -156,13 +148,46 @@ for name in $libnames; do
     echo "#else"
     echo "        path = g_module_build_path(NULL, \"$name\");"
     echo "#endif"
-    echo "        DEBUG_PRINT(\"lazylpsolverlibs: attempting to load library from %s\\\n\", path);"
+    echo "        PRINT_DEBUG(\"loading %s...\\\n\", path);"
     echo "        module = g_module_open(path, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
     echo "        g_free(path);"
     echo "    }"
 done
-echo "    return (module != NULL);
+echo "    if (module == NULL){
+        PRINT_ERR(\"Library lookup failed!\\\n\"
+                  \"Please specify the full path to the library through one of:\\\n\""
+if [ x"$environment_var" != x ]; then
+    echo "                    \" - the environment variable $environment_var\\\n\""
+fi
+if [ x"$try_first" != x ]; then
+    echo "                    \" - the symbolic link $try_first\\\n\""
+fi
+    echo "        \"Set the environment variable LAZYLPSOLVERLIBS_DEBUG for more debug output.\\\n\");
+    } else
+        PRINT_DEBUG(\"Success!\\\n\");
+}
+
+void load_symbol_or_die(const char *name, gpointer *symbol){
+    if (!g_module_symbol(module, name, symbol)) {
+        if (failure_callback) {
+            failure_callback(name);
+        } else {
+            PRINT_ERR (\"the symbol %s could not be found!\\\n\", name);
+            PRINT_ERR (\"No callback provided: aborting.\\\n\");
+            abort();
+        }
+    } else {
+        PRINT_DEBUG(\"successfully imported the symbol %s.\\\n\", name);
+    }
 }"
+
+
+if [ x"$register_callback" != x ]; then
+    echo "
+void $register_callback(void (*f)(const char *err)) {
+    failure_callback = f;
+}"
+fi
 }
 
 header_to_cfile(){
@@ -207,7 +232,7 @@ usage(){
 }
 
 cpp=cpp
-while getopts "hi:l:e:f:d:c:" opt; do
+while getopts "hi:l:e:f:d:c:r:" opt; do
     case $opt in
         h)
             usage
@@ -230,6 +255,9 @@ while getopts "hi:l:e:f:d:c:" opt; do
             ;;
         c)
             cpp=$OPTARG
+            ;;
+        r)
+            register_callback=$OPTARG
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
