@@ -15,7 +15,6 @@ lazylpsolverlibs is hosted at https://code.google.com/p/lazylpsolverlibs/
 DEPENDENCIES
 ============
 - glib-2.0
-- headers of gurobi, cplex, xpress and glpk
 
 INSTALLATION
 ============
@@ -38,16 +37,16 @@ For example, to test with glpk:
   download the all-in-one bundle on http://www.gtk.org/download/win32.php
   Extract it to C:\Program Files\GnuWin32
 - Now install lazylpsolverlibs through the setup file, and try to run
-  test_lazyglpk.exe: It should tell you that it succesfully solved a
+  lazyglpk-config.exe: It should tell you that it succesfully solved a
   problem.
 
 TESTING
 =======
 You must have the related solver. Run:
-    test_lazycplex
-    test_lazyglpk
-    test_lazygurobi
-    test_lazyxprs
+    lazycplex-config
+    lazyglpk-config
+    lazygurobi-config
+    lazyxprs-config
 
 USING
 =====
