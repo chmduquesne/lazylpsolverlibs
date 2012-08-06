@@ -58,9 +58,8 @@ make_func(){
     symbol="native_$name"
     args=$(func_args "$*")
     echo "$*" | sed 's/;/{/g'
-    echo "    if (!$symbol) {
+    echo "    if (!$symbol)
         load_symbol_or_die(\"$name\", (gpointer *) &$symbol);
-    }
     return $symbol($args);
 }"
 }
@@ -74,111 +73,90 @@ make_symbol_decl(){
                 | sed 's/;/ = NULL;/g'
 }
 
-# declare the necessary headers
-make_include_headers(){
-    echo "#include <gmodule.h>"
-    echo "#include <stdio.h>"
-    echo "#include <stdlib.h>"
-    echo "#include <string.h>"
-    echo "#include <stdbool.h>"
-    if [ x"$declared_header" != x ]; then
-        echo "#include $declared_header"
-    else
-        echo "#include $header"
-    fi
-    if [ x"$register_callback" != x ]; then
-        echo "#include <lazylpsolverlibs.h>"
-    fi
-}
-
 # create the loading interface
 make_loading_interface(){
-    echo "
-/* A debugging macro */
-#define PRINT_DEBUG(fmt, args ...) if (debug_enabled()) { \\
-    fprintf( stderr, \"\\\nlazylpsolverlibs (%s): \" fmt, __FUNCTION__, ## args ); }
+echo "#include <gmodule.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>"
+if [ x"$declared_header" != x ]; then
+    echo "#include $declared_header"
+else
+    echo "#include $header"
+fi
+if [ x"$register_callback" != x ]; then
+    echo "#include <lazylpsolverlibs.h>"
+fi
+echo "
+/* Debugging macros */
+#define PRINT_DEBUG(fmt, args ...) if (is_debug_enabled()) { \\
+    fprintf( stderr, \"\\\n(%s): \" fmt, __FUNCTION__, ## args ); }
 #define PRINT_ERR(fmt, args ...) \\
-    fprintf( stderr, \"\\\nlazylpsolverlibs (%s): \" fmt, __FUNCTION__, ## args );
+    fprintf( stderr, \"\\\n(%s): \" fmt, __FUNCTION__, ## args );
 
-/*
- * returns true if the environment variable LAZYLPSOLVERLIBS_DEBUG is set
- * to \"on\", 0 otherwise
- */
-int debug_enabled() {
-    const char * LAZYLPSOLVERLIBS_DEBUG;
-    LAZYLPSOLVERLIBS_DEBUG = getenv(\"LAZYLPSOLVERLIBS_DEBUG\");
-    if (LAZYLPSOLVERLIBS_DEBUG != NULL && strlen(LAZYLPSOLVERLIBS_DEBUG) > 0)
-        return 1;
-    return 0;
+static void __attribute__((constructor)) on_library_load();
+static bool is_debug_enabled();
+static void default_failure_callback(const char *symbol);
+static void load_symbol_or_die(const char *name, gpointer *symbol);
+
+/* Handle to the library */
+static GModule *module = NULL;
+
+/* Called whenever the library is about to crash */
+static void (*failure_callback)(const char *err) = default_failure_callback;
+
+/* True if the environment variable LAZYLPSOLVERLIBS_DEBUG is non empty */
+bool is_debug_enabled() {
+    const char *s = getenv(\"LAZYLPSOLVERLIBS_DEBUG\");
+    return (s != NULL && strlen(s) > 0);
 }
 
-/* handle to the library */
-GModule *module = NULL;
+/* Prints the failing symbol and aborts */
+void default_failure_callback(const char *symbol){
+    PRINT_ERR (\"the symbol %s could not be found!\\\n\", symbol);
+    abort();
+}
 
-/* if != NULL, called whenever the library is about to crash */
-void (*failure_callback)(const char *err) = NULL;
-
-/* searches and loads the actual library */
+/* Searches and loads the actual library */
 void __attribute__((constructor)) on_library_load(){
-    char *path;"
-if [ x"$environment_var" != x ]; then
-    echo "    /* environment variable */"
-    echo "    char *$environment_var;"
-    echo "    PRINT_DEBUG(\"Looking for a suitable library.\\\n\");"
-    echo "    $environment_var = getenv(\"$environment_var\");"
-fi
-if [ x"$try_first" != x ]; then
-    echo "    if (!module) {"
-    echo "        PRINT_DEBUG (\"loading %s...\\\n\", \"$try_first\");"
-    echo "        module = g_module_open(\"$try_first\", G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
-    echo "    }"
-fi
-if [ x"$environment_var" != x ]; then
-    echo "    if ($environment_var != NULL) {"
-    echo "        if (!module) {"
-    echo "            PRINT_DEBUG (\"loading %s...\\\n\", $environment_var);"
-    echo "            module = g_module_open($environment_var, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
-    echo "        }"
-    echo "    }"
-fi
+    int i;
+    char *s=getenv(\"$environment_var\");
+    char *libnames[] = {
+        \"$try_first\",
+        \"\",
+#ifdef _WIN32"
 for name in $libnames; do
-    echo "    if (!module) {"
-    echo "#ifdef _WIN32"
-    echo "        path = g_module_build_path(NULL, \"${name}.dll\");"
-    echo "#else"
-    echo "        path = g_module_build_path(NULL, \"$name\");"
-    echo "#endif"
-    echo "        PRINT_DEBUG(\"loading %s...\\\n\", path);"
-    echo "        module = g_module_open(path, G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);"
-    echo "        g_free(path);"
-    echo "    }"
+    echo "        \"$name.dll\","
 done
-echo "    if (module == NULL){
-        PRINT_ERR(\"Library lookup failed!\\\n\"
-                  \"Please specify the full path to the library through one of:\\\n\""
+echo "#else"
+for name in $libnames; do
+    echo "        \"lib$name.so\","
+done
+echo "#endif"
+echo "        NULL };"
 if [ x"$environment_var" != x ]; then
-    echo "                    \" - the environment variable $environment_var\\\n\""
+    echo "    if (s)
+        libnames[1] = s;"
 fi
-if [ x"$try_first" != x ]; then
-    echo "                    \" - the symbolic link $try_first\\\n\""
-fi
-    echo "        \"Set the environment variable LAZYLPSOLVERLIBS_DEBUG for more debug output.\\\n\");
-    } else
+echo "    PRINT_DEBUG(\"Looking for a suitable library.\\\n\");
+    for (i = 0; libnames[i] != NULL; i++){
+        if (module != NULL)
+            break;
+        PRINT_DEBUG(\"Trying to load %s...\\\n\", libnames[i]);
+        module = g_module_open(libnames[i], G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
+    }
+    if (module == NULL)
+        PRINT_ERR(\"Library lookup failed! Check the manual to customize the lookup.\")
+    else
         PRINT_DEBUG(\"Success!\\\n\");
 }
 
 void load_symbol_or_die(const char *name, gpointer *symbol){
-    if (!g_module_symbol(module, name, symbol)) {
-        if (failure_callback) {
-            failure_callback(name);
-        } else {
-            PRINT_ERR (\"the symbol %s could not be found!\\\n\", name);
-            PRINT_ERR (\"No callback provided: aborting.\\\n\");
-            abort();
-        }
-    } else {
+    if (!g_module_symbol(module, name, symbol))
+        failure_callback(name);
+    else
         PRINT_DEBUG(\"successfully imported the symbol %s.\\\n\", name);
-    }
 }"
 
 
@@ -203,7 +181,6 @@ header_to_cfile(){
                 | sed 's/^ *//g' \
                 | grep -v 'typedef' \
                 > $func_decl
-    make_include_headers
     make_loading_interface
     echo ""
     echo "/* imported functions */"
