@@ -1,0 +1,70 @@
+.\" template from man 7 groff_mdoc
+.Dd @DATE@
+.Dt LAZYLPSOLVERLIBS 1 "lazylpsolverlibs manual"
+.Os @PACKAGE_VERSION@
+.Sh NAME
+.Nm lazylpsolverlibs-config
+.Nd Helper program to configure lazylpsolverlibs
+.Sh SYNOPSIS
+.Nm lazylpsolverlibs-config
+.Sh DESCRIPTION
+This program attempts to solve linear programs with different solvers, and
+reports which solver libraries could be detected and used. The solver
+library lookup can be influenced by setting an environment variable (see
+ENVIRONMENT), or via a symbolic link (see FILES).
+.Sh ENVIRONMENT
+The following environment variables are used.
+.Bl -tag -width ".." -compact
+.Pp
+.It Cm LAZLPSOLVERLIBS_CPLEX_LIB
+Interpreted as the full path to the cplex library.
+.Pp
+.It Cm LAZYLPSOLVERLIBS_GLPK_LIB
+Interpreted as the full path to the glpk library.
+.Pp
+.It Cm LAZYLPSOLVERLIBS_GUROBI_LIB
+Interpreted as the full path to the gurobi library.
+.Pp
+.It Cm LAZYLPSOLVERLIBS_XPRS_LIB
+Interpreted as the full path to the xpress library.
+.Pp
+.It Cm LAZLPSOLVERLIBS_DEBUG
+If non empty, enables debug output on stdout.
+.El
+.Sh FILES
+.Bl -tag -width ".." -compact
+.Pp
+.It Cm /usr/local/lib/libcplex.so
+This file is always checked first as a candidate for the cplex library. It
+takes precedence over the variable LAZLPSOLVERLIBS_CPLEX_LIB. You should
+symlink this file to the actual solver library.
+.Pp
+.It Cm /usr/local/lib/libglpk.so
+This file is always checked first as a candidate for the glpk library. It
+takes precedence over the variable LAZLPSOLVERLIBS_GLPK_LIB. You should
+symlink this file to the actual solver library.
+.Pp
+.It Cm /usr/local/lib/libgurobi.so
+This file is always checked first as a candidate for the gurobi library.
+It takes precedence over the variable LAZLPSOLVERLIBS_GUROBI_LIB. You
+should symlink this file to the actual solver library.
+.Pp
+.It Cm /usr/local/lib/libxprs.so
+This file is always checked first as a candidate for the xpress library.
+It takes precedence over the variable LAZLPSOLVERLIBS_XPRS_LIB. You should
+symlink this file to the actual solver library.
+.El
+.Sh EXIT STATUS
+The exit status is always 0.
+.Sh AUTHORS
+.An Christophe-Marie Duquesne
+.Aq chmd@chmd.fr
+.Sh BUGS
+No known bugs.
+.Sh WARNING
+The lazylpsolverlibs libraries allow loading arbitrary libraries through
+environment variables, possibly introducing a security threat for your
+system if used in programs that SETUID root. If you want to prevent this,
+please do point @libdir@/libxxx.so (where xxx is your solver) to a
+valid system library (any library will do). Whenever a library is loaded
+from that path, the check for environment variables is skipped.

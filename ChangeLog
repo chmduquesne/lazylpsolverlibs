@@ -1,51 +1,55 @@
 version 0.0.3:
-    - Added proper windows support with an installer
-    - Added a way to force the library to load with environment variables
-    - Added a check for known versions of libraries
-    - Backward compatibility note:
-        This version *breaks* the backward compatibility by changing the
-        names of some headers. If you were previously using
-        lazylpsolverlibs and this annoys you, drop me an email
-        (<chmd@chmd.fr>). I'll be happy to introduce backward
-        compatible headers. Because right now I don't think anyone uses
-        this library, I am taking the risk not to add these backward
-        compatible headers for the sake of simplicity...
-        Header renaming: lazy_gurobi_c.h -> lazygurobi.h
-        Header renaming: lazy_cplex.h -> lazycplex.h
-        Header renaming: lazy_xprs.h -> lazyxprs.h
-        Header renaming: lazy_glpk.h -> lazyglpk.h
+	- Added proper windows support with an installer
+	- Added a way to force the library to load with environment variables
+	- Added a check for known versions of libraries
+	- Backward compatibility note:
+		This version *breaks* the backward compatibility by changing the
+		names of some headers. If you were previously using
+		lazylpsolverlibs and this annoys you, drop me an email
+		(<chmd@chmd.fr>). I'll be happy to introduce backward
+		compatible headers. Because right now I don't think anyone uses
+		this library, I am taking the risk not to add these backward
+		compatible headers for the sake of simplicity...
+		Header renaming: lazy_gurobi_c.h -> lazygurobi.h
+		Header renaming: lazy_cplex.h -> lazycplex.h
+		Header renaming: lazy_xprs.h -> lazyxprs.h
+		Header renaming: lazy_glpk.h -> lazyglpk.h
 version 0.1.0:
-    - Switched from ltdl to glib for license compliance
-    - Added feedback for the variables that are set in
-      test_lazylpsolverlibs
+	- Switched from ltdl to glib for license compliance
+	- Added feedback for the variables that are set in
+	test_lazylpsolverlibs
 version 0.1.1:
-    - Updated the dependencies in the README and the INSTALL files
+	- Updated the dependencies in the README and the INSTALL files
 version 0.1.2:
-    - Switched to an autotools build system
-    - Complete symbol faking
+	- Switched to an autotools build system
+	- Complete symbol faking
 version 0.1.3:
-    - Added headers to compile against
+	- Added headers to compile against
 version 0.1.4:
-    - Added debug output
-    - Exit on symbol not found
+	- Added debug output
+	- Exit on symbol not found
 version 0.1.41:
-    - xpress update
-    - Minor changes regarding the way the LAZYLPSOLVERLIBS_DEBUG variable
-      is checked
+	- xpress update
+	- Minor changes regarding the way the LAZYLPSOLVERLIBS_DEBUG variable
+	is checked
 version 0.1.42:
-    - the pkgconfig source directory is moved to lib (more standard)
+	- the pkgconfig source directory is moved to lib (more standard)
 version 0.1.43:
-    - the binaries test_lazy<solver> are renamed lazy<solver>_test
-    - adding man pages
+	- the binaries test_lazy<solver> are renamed lazy<solver>_test
+	- adding man pages
 version 0.1.44:
-    - Correction of some manpages
+	- Correction of some manpages
 version 0.1.5:
-    - Regenerating the code every time (for the sake of portability)
-    - Installing the shared scripts in share/lazylpsolverlibs (rather than
-      share)
+	- Regenerating the code every time (for the sake of portability)
+	- Installing the shared scripts in share/lazylpsolverlibs (rather than
+	share)
 version 0.1.50:
-    - changing version number to please debian - uscan
+	- changing version number to please debian - uscan
 version 1.0.0:
-    - Complete rewrite of testers -> renamed to -config
+	- Complete rewrite of testers -> renamed to -config
 version 1.1.0:
-    - Typo corrections in sources
+	- Typo corrections in sources
+Version 1.2.0:
+	- Turning back to a single tool to check solver presence.
+	- Adding manpage for this tool
+	- Adding callbacks to libraries to handle the errors
