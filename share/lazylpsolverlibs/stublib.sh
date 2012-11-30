@@ -147,13 +147,13 @@ echo "    PRINT_DEBUG(\"Looking for a suitable library.\\\n\");
         module = g_module_open(libnames[i], G_MODULE_BIND_LAZY|G_MODULE_BIND_LOCAL);
     }
     if (module == NULL)
-        PRINT_ERR(\"Library lookup failed! Check the manual to customize the lookup.\")
+        PRINT_DEBUG(\"Library lookup failed! Check the manual to customize the lookup.\\\n\")
     else
         PRINT_DEBUG(\"Success!\\\n\");
 }
 
 void load_symbol_or_die(const char *name, gpointer *symbol){
-    if (!g_module_symbol(module, name, symbol))
+    if (!module || !g_module_symbol(module, name, symbol))
         failure_callback(name);
     else
         PRINT_DEBUG(\"successfully imported the symbol %s.\\\n\", name);

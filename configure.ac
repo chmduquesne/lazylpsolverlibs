@@ -1,6 +1,6 @@
-AC_INIT([lazylpsolverlibs], [1.1.0], [chmd@chmd.fr], [lazylpsolverlibs],
+AC_INIT([lazylpsolverlibs], [1.2.0], [chmd@chmd.fr], [lazylpsolverlibs],
         [https://code.google.com/p/lazylpsolverlibs/])
-GENERIC_LIBRARY_VERSION="1:1:0"
+GENERIC_LIBRARY_VERSION="1:2:0"
 #                        | | |
 #                 +------+ | +---+
 #                 |        |     |
@@ -27,8 +27,5 @@ AC_CONFIG_FILES([Makefile \
                  lib/pkgconfig/lazyxprs.pc \
                  lib/pkgconfig/lazygurobi.pc \
                  lib/pkgconfig/lazyglpk.pc \
-                 share/man/man1/lazycplex-config.1 \
-                 share/man/man1/lazyxprs-config.1 \
-                 share/man/man1/lazygurobi-config.1 \
-                 share/man/man1/lazyglpk-config.1])
+                 share/man/man1/lazylpsolverlibs-config.1])
 AC_OUTPUT
