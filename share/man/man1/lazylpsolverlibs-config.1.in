@@ -34,22 +34,22 @@ If non empty, enables debug output on stdout.
 .Sh FILES
 .Bl -tag -width ".." -compact
 .Pp
-.It Cm /usr/local/lib/libcplex.so
+.It Cm @libdir@/libcplex.so
 This file is always checked first as a candidate for the cplex library. It
 takes precedence over the variable LAZLPSOLVERLIBS_CPLEX_LIB. You should
 symlink this file to the actual solver library.
 .Pp
-.It Cm /usr/local/lib/libglpk.so
+.It Cm @libdir@/libglpk.so
 This file is always checked first as a candidate for the glpk library. It
 takes precedence over the variable LAZLPSOLVERLIBS_GLPK_LIB. You should
 symlink this file to the actual solver library.
 .Pp
-.It Cm /usr/local/lib/libgurobi.so
+.It Cm @libdir@/libgurobi.so
 This file is always checked first as a candidate for the gurobi library.
 It takes precedence over the variable LAZLPSOLVERLIBS_GUROBI_LIB. You
 should symlink this file to the actual solver library.
 .Pp
-.It Cm /usr/local/lib/libxprs.so
+.It Cm @libdir@/libxprs.so
 This file is always checked first as a candidate for the xpress library.
 It takes precedence over the variable LAZLPSOLVERLIBS_XPRS_LIB. You should
 symlink this file to the actual solver library.
@@ -59,8 +59,8 @@ The exit status is always 0.
 .Sh AUTHORS
 .An Christophe-Marie Duquesne
 .Aq chmd@chmd.fr
-.Sh BUGS
-No known bugs.
+.Sh REPORTING BUGS
+Report lazylpsolverlibs bugs to chmd@chmd.fr
 .Sh WARNING
 The lazylpsolverlibs libraries allow loading arbitrary libraries through
 environment variables, possibly introducing a security threat for your
@@ -68,3 +68,7 @@ system if used in programs that SETUID root. If you want to prevent this,
 please do point @libdir@/libxxx.so (where xxx is your solver) to a
 valid system library (any library will do). Whenever a library is loaded
 from that path, the check for environment variables is skipped.
+.Sh COPYRIGHT
+The solver headers which are distributed with lazylpsolverlibs are the
+property of the respective compagnies who own them. The Glpk related
+code is under GPLV3+, and the rest is under MIT.
